@@ -12,21 +12,32 @@ body {
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   line-height: 1.6;
   color: #1a1a1a;
-  background-color: #000000;
+  background-color: #ffffff;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
 }
 
-/* Tesla Model X Navigation */
-.tesla-nav {
+/* ==================================================
+   TESLA WHITE THEME - MAIN PORTFOLIO
+   ================================================== */
+
+/* Engineering Portfolio Container */
+.engineering-portfolio {
+  min-height: 100vh;
+  background: #ffffff;
+  color: #1a1a1a;
+}
+
+/* Tesla White Navigation */
+.tesla-white-nav {
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
-  background: rgba(0, 0, 0, 0.95);
+  background: rgba(255, 255, 255, 0.95);
   backdrop-filter: blur(20px);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
   z-index: 1000;
   padding: 0;
 }
@@ -41,24 +52,24 @@ body {
   padding: 0 24px;
 }
 
-.tesla-logo {
+.tesla-white-logo {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
 }
 
-.tesla-logo h3 {
+.tesla-white-logo h3 {
   font-size: 18px;
   font-weight: 700;
-  color: #ffffff;
+  color: #1a1a1a;
   font-family: 'JetBrains Mono', monospace;
   letter-spacing: 2px;
   line-height: 1;
 }
 
-.tesla-logo span {
+.tesla-white-logo span {
   font-size: 10px;
-  color: #888888;
+  color: #666666;
   font-weight: 500;
   letter-spacing: 1px;
   text-transform: uppercase;
@@ -70,8 +81,8 @@ body {
   gap: 32px;
 }
 
-.tesla-link {
-  color: #ffffff;
+.tesla-white-link {
+  color: #1a1a1a;
   text-decoration: none;
   font-size: 14px;
   font-weight: 500;
@@ -79,11 +90,11 @@ body {
   position: relative;
 }
 
-.tesla-link:hover {
+.tesla-white-link:hover {
   color: #3b82f6;
 }
 
-.tesla-link::after {
+.tesla-white-link::after {
   content: '';
   position: absolute;
   bottom: -4px;
@@ -94,11 +105,11 @@ body {
   transition: width 0.3s ease;
 }
 
-.tesla-link:hover::after {
+.tesla-white-link:hover::after {
   width: 100%;
 }
 
-.tesla-cta {
+.tesla-white-cta {
   background: #3b82f6;
   color: #ffffff;
   padding: 8px 16px;
@@ -109,72 +120,24 @@ body {
   transition: all 0.2s ease;
 }
 
-.tesla-cta:hover {
+.tesla-white-cta:hover {
   background: #2563eb;
   transform: translateY(-1px);
 }
 
-.tesla-back {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  color: #ffffff;
-  text-decoration: none;
-  font-size: 14px;
-  font-weight: 500;
-  transition: color 0.2s ease;
-}
-
-.tesla-back:hover {
-  color: #3b82f6;
-}
-
-.tesla-nav-actions {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-}
-
-.tesla-nav-btn {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  background: none;
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  color: #ffffff;
-  padding: 8px 16px;
-  border-radius: 4px;
-  font-size: 14px;
-  font-weight: 500;
-  cursor: pointer;
-  transition: all 0.2s ease;
-}
-
-.tesla-nav-btn:hover {
-  border-color: #3b82f6;
-  color: #3b82f6;
-}
-
-/* Nanotech Portfolio Container */
-.nanotech-portfolio {
-  min-height: 100vh;
-  background: #000000;
-  color: #ffffff;
-  padding-top: 60px;
-}
-
-/* Tesla Hero Section */
-.tesla-hero {
+/* Tesla White Hero Section */
+.tesla-white-hero {
   min-height: 100vh;
   position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: #000000;
+  background: #ffffff;
   overflow: hidden;
+  padding-top: 60px;
 }
 
-.tesla-hero-bg {
+.mechanical-bg {
   position: absolute;
   top: 0;
   left: 0;
@@ -183,79 +146,67 @@ body {
   z-index: 1;
 }
 
-/* Nanotech Particles Animation */
-.nanotech-particles {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-}
-
-.particle {
-  position: absolute;
-  width: 2px;
-  height: 2px;
-  background: #3b82f6;
-  border-radius: 50%;
-  animation: float 8s infinite ease-in-out;
-  box-shadow: 0 0 6px #3b82f6;
-}
-
-.particle:nth-child(1) {
-  top: 20%;
-  left: 20%;
-  animation-delay: 0s;
-}
-
-.particle:nth-child(2) {
-  top: 60%;
-  left: 80%;
-  animation-delay: 2s;
-}
-
-.particle:nth-child(3) {
-  top: 80%;
-  left: 30%;
-  animation-delay: 4s;
-}
-
-.particle:nth-child(4) {
-  top: 30%;
-  left: 70%;
-  animation-delay: 6s;
-}
-
-.particle:nth-child(5) {
-  top: 70%;
-  left: 10%;
-  animation-delay: 1s;
-}
-
-@keyframes float {
-  0%, 100% { transform: translateY(0px) scale(1); opacity: 0.3; }
-  50% { transform: translateY(-20px) scale(1.2); opacity: 1; }
-}
-
-/* Optical Grid Background */
-.optical-grid {
+/* Precision Grid Background */
+.precision-grid {
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
   background-image: 
-    linear-gradient(90deg, rgba(59, 130, 246, 0.03) 1px, transparent 1px),
-    linear-gradient(rgba(59, 130, 246, 0.03) 1px, transparent 1px);
-  background-size: 60px 60px;
-  animation: grid-shift 20s linear infinite;
+    linear-gradient(90deg, rgba(59, 130, 246, 0.02) 1px, transparent 1px),
+    linear-gradient(rgba(59, 130, 246, 0.02) 1px, transparent 1px);
+  background-size: 40px 40px;
+  animation: precision-shift 30s linear infinite;
 }
 
-@keyframes grid-shift {
+@keyframes precision-shift {
   0% { transform: translate(0, 0); }
-  100% { transform: translate(60px, 60px); }
+  100% { transform: translate(40px, 40px); }
 }
 
-.tesla-hero-content {
+/* Engineering Particles */
+.engineering-particles {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.gear-particle {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  background: #3b82f6;
+  border-radius: 2px;
+  animation: mechanical-float 12s infinite ease-in-out;
+  opacity: 0.4;
+}
+
+.gear-particle:nth-child(1) {
+  top: 20%;
+  left: 20%;
+  animation-delay: 0s;
+}
+
+.gear-particle:nth-child(2) {
+  top: 60%;
+  left: 80%;
+  animation-delay: 4s;
+}
+
+.gear-particle:nth-child(3) {
+  top: 80%;
+  left: 30%;
+  animation-delay: 8s;
+}
+
+@keyframes mechanical-float {
+  0%, 100% { transform: translateY(0px) rotate(0deg); opacity: 0.2; }
+  50% { transform: translateY(-30px) rotate(180deg); opacity: 0.6; }
+}
+
+.tesla-white-hero-content {
   position: relative;
   z-index: 2;
   max-width: 1200px;
@@ -264,12 +215,12 @@ body {
   text-align: center;
 }
 
-.tesla-badge {
+.engineering-badge {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  background: rgba(59, 130, 246, 0.1);
-  border: 1px solid rgba(59, 130, 246, 0.3);
+  background: rgba(59, 130, 246, 0.05);
+  border: 1px solid rgba(59, 130, 246, 0.2);
   color: #3b82f6;
   padding: 8px 16px;
   border-radius: 4px;
@@ -280,65 +231,71 @@ body {
   margin-bottom: 32px;
 }
 
-.tesla-title {
+.tesla-white-title {
   font-size: clamp(48px, 8vw, 80px);
   font-weight: 800;
   line-height: 1.1;
-  color: #ffffff;
+  color: #1a1a1a;
   margin-bottom: 16px;
 }
 
-.nanotech-gradient {
-  background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+.engineering-gradient {
+  background: linear-gradient(135deg, #3b82f6 0%, #1e40af 100%);
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
-.tesla-subtitle {
+.tesla-white-subtitle {
   font-size: 18px;
-  color: #888888;
-  max-width: 600px;
+  color: #666666;
+  max-width: 700px;
   margin: 0 auto 48px auto;
   line-height: 1.6;
 }
 
-/* Tesla Specs Grid */
-.tesla-specs-grid {
+/* Engineering Metrics Grid */
+.engineering-metrics-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   gap: 24px;
   margin-bottom: 48px;
-  max-width: 800px;
+  max-width: 900px;
   margin-left: auto;
   margin-right: auto;
 }
 
-.tesla-spec {
+.metric-card {
   text-align: center;
-  padding: 24px;
-  background: rgba(255, 255, 255, 0.02);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 32px 24px;
+  background: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.08);
   border-radius: 8px;
   transition: all 0.3s ease;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
 }
 
-.tesla-spec:hover {
-  background: rgba(255, 255, 255, 0.05);
+.metric-card:hover {
   border-color: #3b82f6;
   transform: translateY(-4px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
 }
 
-.spec-value {
-  font-size: 32px;
+.metric-card.featured {
+  border-color: #3b82f6;
+  background: rgba(59, 130, 246, 0.02);
+}
+
+.metric-number {
+  font-size: 36px;
   font-weight: 800;
-  color: #ffffff;
+  color: #1a1a1a;
   font-family: 'JetBrains Mono', monospace;
   margin-bottom: 8px;
 }
 
-.spec-label {
-  font-size: 14px;
+.metric-label {
+  font-size: 12px;
   color: #3b82f6;
   font-weight: 600;
   text-transform: uppercase;
@@ -346,12 +303,12 @@ body {
   margin-bottom: 4px;
 }
 
-.spec-detail {
+.metric-detail {
   font-size: 12px;
-  color: #888888;
+  color: #666666;
 }
 
-.tesla-actions {
+.tesla-white-actions {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -359,7 +316,7 @@ body {
   flex-wrap: wrap;
 }
 
-.tesla-primary-btn {
+.tesla-white-primary {
   display: inline-flex;
   align-items: center;
   gap: 8px;
@@ -373,24 +330,23 @@ body {
   transition: all 0.2s ease;
 }
 
-.tesla-primary-btn:hover {
+.tesla-white-primary:hover {
   background: #2563eb;
   transform: translateY(-2px);
 }
 
-.tesla-secondary-btn {
-  background: none;
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  color: #ffffff;
+.tesla-white-secondary {
+  color: #1a1a1a;
+  text-decoration: none;
   padding: 16px 32px;
+  border: 1px solid rgba(0, 0, 0, 0.15);
   border-radius: 4px;
   font-size: 16px;
   font-weight: 600;
-  cursor: pointer;
   transition: all 0.2s ease;
 }
 
-.tesla-secondary-btn:hover {
+.tesla-white-secondary:hover {
   border-color: #3b82f6;
   color: #3b82f6;
 }
@@ -402,126 +358,45 @@ body {
   padding: 0 24px;
 }
 
-/* Performance Section */
-.tesla-performance {
+/* Tesla White Specifications */
+.tesla-white-specs {
   padding: 120px 0;
-  background: #000000;
+  background: #f8fafc;
 }
 
-.performance-header {
+.specs-white-header {
   text-align: center;
   margin-bottom: 80px;
 }
 
-.performance-header h2 {
+.specs-white-header h2 {
   font-size: 48px;
   font-weight: 800;
-  color: #ffffff;
+  color: #1a1a1a;
   margin-bottom: 16px;
 }
 
-.performance-header p {
+.specs-white-header p {
   font-size: 18px;
-  color: #888888;
-}
-
-.performance-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 32px;
-}
-
-.performance-card {
-  background: rgba(255, 255, 255, 0.02);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 8px;
-  padding: 32px;
-  display: flex;
-  align-items: flex-start;
-  gap: 24px;
-  transition: all 0.3s ease;
-}
-
-.performance-card:hover {
-  background: rgba(255, 255, 255, 0.05);
-  border-color: #3b82f6;
-  transform: translateY(-4px);
-}
-
-.performance-card.primary {
-  border-color: #3b82f6;
-  background: rgba(59, 130, 246, 0.05);
-}
-
-.performance-icon {
-  flex-shrink: 0;
-  width: 48px;
-  height: 48px;
-  background: rgba(59, 130, 246, 0.1);
-  border-radius: 8px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #3b82f6;
-}
-
-.performance-data {
-  flex: 1;
-}
-
-.performance-value {
-  font-size: 36px;
-  font-weight: 800;
-  color: #ffffff;
-  font-family: 'JetBrains Mono', monospace;
-  margin-bottom: 8px;
-}
-
-.performance-label {
-  font-size: 16px;
-  color: #3b82f6;
-  font-weight: 600;
-  margin-bottom: 8px;
-}
-
-.performance-desc {
-  font-size: 14px;
-  color: #888888;
-  line-height: 1.5;
-}
-
-/* Tesla Specifications */
-.tesla-specs {
-  padding: 120px 0;
-  background: #0a0a0a;
-}
-
-.specs-header {
-  text-align: center;
-  margin-bottom: 80px;
-}
-
-.specs-header h2 {
-  font-size: 48px;
-  font-weight: 800;
-  color: #ffffff;
+  color: #666666;
   margin-bottom: 32px;
 }
 
-.tesla-spec-tabs {
+.tesla-white-tabs {
   display: flex;
   justify-content: center;
   gap: 8px;
-  background: rgba(255, 255, 255, 0.05);
+  background: #ffffff;
   padding: 8px;
   border-radius: 8px;
   display: inline-flex;
+  border: 1px solid rgba(0, 0, 0, 0.08);
 }
 
-.tesla-tab {
+.tesla-white-tab {
   background: none;
   border: none;
-  color: #888888;
+  color: #666666;
   padding: 12px 24px;
   border-radius: 4px;
   font-size: 14px;
@@ -530,49 +405,55 @@ body {
   transition: all 0.2s ease;
 }
 
-.tesla-tab.active {
+.tesla-white-tab.active {
   background: #3b82f6;
   color: #ffffff;
 }
 
-.tesla-tab:hover:not(.active) {
-  color: #ffffff;
-  background: rgba(255, 255, 255, 0.1);
+.tesla-white-tab:hover:not(.active) {
+  color: #1a1a1a;
+  background: rgba(0, 0, 0, 0.04);
 }
 
-.tesla-specs-content {
+.tesla-white-specs-content {
   margin-top: 48px;
 }
 
-.tesla-specs-grid {
+/* Performance Data Grid */
+.performance-data-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
   gap: 32px;
 }
 
-.tesla-spec-section {
-  background: rgba(255, 255, 255, 0.02);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+.performance-section {
+  background: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.08);
   border-radius: 8px;
   padding: 32px;
+  transition: all 0.3s ease;
 }
 
-.spec-section-header {
+.performance-section:hover {
+  border-color: #3b82f6;
+  transform: translateY(-4px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+}
+
+.section-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin-bottom: 24px;
 }
 
-.spec-section-header h3 {
+.section-header h3 {
   font-size: 20px;
   font-weight: 700;
-  color: #ffffff;
+  color: #1a1a1a;
 }
 
-.nanotech-badge {
-  background: #10b981;
-  color: #ffffff;
+.status-badge {
   padding: 4px 12px;
   border-radius: 12px;
   font-size: 12px;
@@ -580,264 +461,386 @@ body {
   text-transform: uppercase;
 }
 
-.nanotech-badge.expert {
-  background: #3b82f6;
+.status-badge.active {
+  background: #dbeafe;
+  color: #1e40af;
 }
 
-.spec-items {
+.status-badge.proven {
+  background: #dcfce7;
+  color: #15803d;
+}
+
+.status-badge.breakthrough {
+  background: #fef3c7;
+  color: #d97706;
+}
+
+.performance-metrics {
   display: flex;
   flex-direction: column;
   gap: 16px;
 }
 
-.tesla-spec-item {
+.perf-metric {
   display: flex;
-  justify-content: between;
-  align-items: center;
+  flex-direction: column;
+  gap: 4px;
   padding: 16px;
-  background: rgba(255, 255, 255, 0.02);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: #f8fafc;
+  border: 1px solid rgba(0, 0, 0, 0.06);
   border-radius: 4px;
   transition: all 0.2s ease;
 }
 
-.tesla-spec-item:hover {
-  background: rgba(255, 255, 255, 0.05);
+.perf-metric:hover {
+  background: #f1f5f9;
   border-color: #3b82f6;
 }
 
-.spec-key {
-  font-size: 14px;
-  color: #888888;
-  flex: 1;
+.perf-metric.highlighted {
+  border-left: 4px solid #3b82f6;
+  background: rgba(59, 130, 246, 0.02);
 }
 
-.spec-value {
-  font-size: 14px;
-  color: #ffffff;
-  font-weight: 600;
+.metric-label {
+  font-size: 12px;
+  color: #666666;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.metric-value {
+  font-size: 18px;
+  color: #1a1a1a;
+  font-weight: 700;
   font-family: 'JetBrains Mono', monospace;
 }
 
-/* Equipment Grid */
-.tesla-equipment-grid {
+.metric-unit {
+  font-size: 12px;
+  color: #3b82f6;
+  font-weight: 500;
+}
+
+/* Equipment Mastery Grid */
+.equipment-mastery-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
   gap: 32px;
 }
 
 .equipment-category {
-  background: rgba(255, 255, 255, 0.02);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.08);
   border-radius: 8px;
   padding: 32px;
 }
 
-.equipment-category h3 {
-  font-size: 20px;
-  font-weight: 700;
-  color: #ffffff;
-  margin-bottom: 24px;
-}
-
-.equipment-list {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-
-.tesla-equipment-item {
+.category-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 12px 16px;
-  background: rgba(255, 255, 255, 0.02);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 4px;
-  transition: all 0.2s ease;
+  margin-bottom: 24px;
 }
 
-.tesla-equipment-item:hover {
-  background: rgba(255, 255, 255, 0.05);
-  border-color: #3b82f6;
+.category-header h3 {
+  font-size: 20px;
+  font-weight: 700;
+  color: #1a1a1a;
 }
 
-.equipment-name {
-  font-size: 14px;
-  color: #ffffff;
-  font-weight: 500;
-}
-
-.equipment-status {
+.proficiency-indicator {
+  padding: 6px 16px;
+  border-radius: 12px;
   font-size: 12px;
-  color: #10b981;
   font-weight: 600;
   text-transform: uppercase;
 }
 
-/* Software Grid */
-.tesla-software-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-  gap: 32px;
+.proficiency-indicator.expert {
+  background: #dcfce7;
+  color: #15803d;
 }
 
-.software-category {
-  background: rgba(255, 255, 255, 0.02);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 8px;
-  padding: 32px;
+.proficiency-indicator.advanced {
+  background: #dbeafe;
+  color: #1e40af;
 }
 
-.software-category h3 {
-  font-size: 20px;
-  font-weight: 700;
-  color: #ffffff;
-  margin-bottom: 24px;
-}
-
-.software-list {
+.equipment-specs {
   display: flex;
   flex-direction: column;
   gap: 12px;
 }
 
-.tesla-software-item {
+.equipment-spec {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 12px 16px;
-  background: rgba(255, 255, 255, 0.02);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 16px;
+  background: #f8fafc;
+  border: 1px solid rgba(0, 0, 0, 0.06);
   border-radius: 4px;
   transition: all 0.2s ease;
 }
 
-.tesla-software-item:hover {
-  background: rgba(255, 255, 255, 0.05);
+.equipment-spec:hover {
+  background: #f1f5f9;
   border-color: #3b82f6;
+}
+
+.spec-name {
+  font-size: 14px;
+  color: #1a1a1a;
+  font-weight: 500;
+}
+
+.spec-status {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.status-bar {
+  width: 60px;
+  height: 4px;
+  background: #e5e7eb;
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.status-fill {
+  height: 100%;
+  border-radius: 2px;
+  transition: width 1s ease;
+}
+
+.status-fill.expert {
+  width: 95%;
+  background: linear-gradient(90deg, #10b981 0%, #059669 100%);
+}
+
+.spec-status span {
+  font-size: 12px;
+  color: #10b981;
+  font-weight: 600;
+}
+
+/* Software Proficiency Grid */
+.software-proficiency-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+  gap: 32px;
+}
+
+.software-category {
+  background: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 8px;
+  padding: 32px;
+}
+
+.proficiency-score {
+  background: #3b82f6;
+  color: #ffffff;
+  padding: 6px 16px;
+  border-radius: 12px;
+  font-size: 14px;
+  font-weight: 700;
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.software-specs {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.software-spec {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px;
+  background: #f8fafc;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  border-radius: 4px;
+  transition: all 0.2s ease;
+}
+
+.software-spec:hover {
+  background: #f1f5f9;
+  border-color: #3b82f6;
+}
+
+.software-info {
+  display: flex;
+  align-items: center;
+  gap: 12px;
 }
 
 .software-name {
   font-size: 14px;
-  color: #ffffff;
+  color: #1a1a1a;
   font-weight: 500;
 }
 
-.software-level {
+.version-tag {
+  background: #e5e7eb;
+  color: #374151;
+  padding: 2px 8px;
+  border-radius: 8px;
+  font-size: 10px;
+  font-weight: 500;
+  text-transform: uppercase;
+}
+
+.proficiency-meter {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.meter-fill {
+  width: 80px;
+  height: 4px;
+  border-radius: 2px;
+}
+
+.meter-fill.advanced {
+  background: linear-gradient(90deg, #3b82f6 0%, #1e40af 100%);
+}
+
+.meter-fill.expert {
+  background: linear-gradient(90deg, #10b981 0%, #059669 100%);
+}
+
+.proficiency-label {
   font-size: 12px;
   color: #3b82f6;
   font-weight: 600;
   text-transform: uppercase;
 }
 
-/* Nanotech Focus Grid */
-.nanotech-focus-grid {
+/* Systems Design Grid */
+.systems-design-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
   gap: 32px;
 }
 
-.nanotech-category {
-  background: rgba(255, 255, 255, 0.02);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+.system-capability {
+  background: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.08);
   border-radius: 8px;
   padding: 32px;
   transition: all 0.3s ease;
 }
 
-.nanotech-category:hover {
-  background: rgba(255, 255, 255, 0.05);
+.system-capability:hover {
   border-color: #3b82f6;
   transform: translateY(-4px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
 }
 
-.nanotech-header {
+.capability-header {
   display: flex;
   align-items: center;
   gap: 16px;
   margin-bottom: 24px;
 }
 
-.nanotech-header svg {
+.capability-header svg {
   color: #3b82f6;
 }
 
-.nanotech-header h3 {
-  font-size: 20px;
+.capability-header h3 {
+  font-size: 18px;
   font-weight: 700;
-  color: #ffffff;
+  color: #1a1a1a;
 }
 
-.nanotech-specs {
+.capability-specs {
   display: flex;
   flex-direction: column;
   gap: 16px;
 }
 
-.nano-spec {
+.capability-metric {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 12px;
-  background: rgba(59, 130, 246, 0.05);
+  padding: 12px 16px;
+  background: rgba(59, 130, 246, 0.02);
   border: 1px solid rgba(59, 130, 246, 0.1);
   border-radius: 4px;
 }
 
-.nano-label {
+.cap-label {
   font-size: 14px;
-  color: #888888;
+  color: #666666;
 }
 
-.nano-value {
+.cap-value {
   font-size: 14px;
   color: #3b82f6;
   font-weight: 600;
   font-family: 'JetBrains Mono', monospace;
 }
 
-/* Experience Section */
-.tesla-experience {
+/* Tesla White Experience */
+.tesla-white-experience {
   padding: 120px 0;
-  background: #000000;
+  background: #ffffff;
 }
 
-.tesla-experience h2 {
+.tesla-white-experience h2 {
   font-size: 48px;
   font-weight: 800;
-  color: #ffffff;
+  color: #1a1a1a;
+  text-align: center;
+  margin-bottom: 16px;
+}
+
+.section-subtitle {
+  font-size: 18px;
+  color: #666666;
   text-align: center;
   margin-bottom: 80px;
 }
 
-.experience-timeline {
+.experience-data-grid {
   display: flex;
   flex-direction: column;
   gap: 32px;
 }
 
-.tesla-experience-card {
-  display: grid;
-  grid-template-columns: 200px 1fr;
-  gap: 32px;
-  background: rgba(255, 255, 255, 0.02);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+.tesla-white-exp-card {
+  background: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.08);
   border-radius: 8px;
   padding: 32px;
   transition: all 0.3s ease;
 }
 
-.tesla-experience-card:hover {
-  background: rgba(255, 255, 255, 0.05);
+.tesla-white-exp-card:hover {
   border-color: #3b82f6;
   transform: translateY(-4px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
 }
 
-.exp-left {
+.exp-data-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.exp-timeline {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 4px;
 }
 
 .exp-period {
@@ -849,195 +852,234 @@ body {
 
 .exp-category {
   font-size: 12px;
-  color: #888888;
+  color: #666666;
   text-transform: uppercase;
   letter-spacing: 1px;
 }
 
-.exp-right h3 {
-  font-size: 20px;
-  font-weight: 700;
-  color: #ffffff;
-  margin-bottom: 4px;
-}
-
-.exp-right h4 {
-  font-size: 16px;
-  color: #3b82f6;
-  margin-bottom: 24px;
-}
-
-.exp-metrics {
-  display: flex;
-  gap: 24px;
-  margin-bottom: 24px;
-  flex-wrap: wrap;
-}
-
-.exp-metric {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+.exp-impact-score {
   text-align: center;
+  padding: 16px;
+  background: rgba(59, 130, 246, 0.05);
+  border: 1px solid rgba(59, 130, 246, 0.2);
+  border-radius: 8px;
 }
 
-.exp-metric .metric-value {
+.impact-number {
   font-size: 24px;
   font-weight: 800;
   color: #3b82f6;
   font-family: 'JetBrains Mono', monospace;
 }
 
-.exp-metric .metric-desc {
+.impact-label {
   font-size: 12px;
-  color: #888888;
-  max-width: 80px;
+  color: #666666;
+  font-weight: 500;
+  text-transform: uppercase;
 }
 
-.exp-achievements {
+.exp-data-content h3 {
+  font-size: 24px;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin-bottom: 4px;
+}
+
+.exp-data-content h4 {
+  font-size: 18px;
+  color: #3b82f6;
+  margin-bottom: 24px;
+}
+
+.exp-key-metrics {
+  display: flex;
+  gap: 32px;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+}
+
+.key-metric {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  align-items: center;
+  text-align: center;
+  min-width: 120px;
+}
+
+.metric-value-large {
+  font-size: 28px;
+  font-weight: 800;
+  color: #3b82f6;
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.metric-description {
+  font-size: 12px;
+  color: #666666;
+  text-align: center;
+}
+
+.exp-achievements-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.achievement-point {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
 }
 
 .achievement-bullet {
+  color: #3b82f6;
+  font-weight: 700;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.achievement-point span {
   font-size: 14px;
-  color: #888888;
+  color: #1a1a1a;
   line-height: 1.5;
 }
 
-/* Projects Section */
-.tesla-projects {
+/* Tesla White Projects */
+.tesla-white-projects {
   padding: 120px 0;
-  background: #0a0a0a;
+  background: #f8fafc;
 }
 
-.tesla-projects h2 {
+.tesla-white-projects h2 {
   font-size: 48px;
   font-weight: 800;
-  color: #ffffff;
+  color: #1a1a1a;
   text-align: center;
-  margin-bottom: 80px;
+  margin-bottom: 16px;
 }
 
-.projects-tesla-grid {
+.projects-engineering-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
   gap: 32px;
+  margin-top: 48px;
 }
 
-.tesla-project-card {
-  background: rgba(255, 255, 255, 0.02);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+.engineering-project-card {
+  background: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.08);
   border-radius: 8px;
-  overflow: hidden;
+  padding: 32px;
   transition: all 0.3s ease;
   position: relative;
 }
 
-.tesla-project-card:hover {
-  background: rgba(255, 255, 255, 0.05);
+.engineering-project-card:hover {
   border-color: #3b82f6;
   transform: translateY(-4px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
 }
 
-.tesla-project-card.featured {
+.engineering-project-card.breakthrough {
   border-color: #3b82f6;
-  background: rgba(59, 130, 246, 0.05);
+  background: rgba(59, 130, 246, 0.02);
 }
 
-.featured-label {
+.breakthrough-badge {
   position: absolute;
-  top: 16px;
-  right: 16px;
+  top: -12px;
+  right: 24px;
   display: flex;
   align-items: center;
   gap: 8px;
   background: #3b82f6;
   color: #ffffff;
-  padding: 8px 12px;
+  padding: 8px 16px;
   border-radius: 4px;
   font-size: 12px;
   font-weight: 600;
-  z-index: 2;
 }
 
-.project-visual {
-  position: relative;
-  height: 200px;
-  overflow: hidden;
+.project-engineering-content {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
 
-.project-visual img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  filter: brightness(0.7);
+.project-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 16px;
 }
 
-.project-overlay {
-  position: absolute;
-  bottom: 16px;
-  left: 16px;
+.project-header h3 {
+  font-size: 20px;
+  font-weight: 700;
+  color: #1a1a1a;
+  line-height: 1.3;
 }
 
-.project-category {
-  background: rgba(0, 0, 0, 0.8);
+.project-category-tag {
+  background: rgba(59, 130, 246, 0.1);
   color: #3b82f6;
-  padding: 8px 12px;
-  border-radius: 4px;
+  padding: 4px 12px;
+  border-radius: 12px;
   font-size: 12px;
   font-weight: 600;
   text-transform: uppercase;
+  white-space: nowrap;
 }
 
-.project-content {
-  padding: 24px;
-}
-
-.project-content h3 {
-  font-size: 18px;
-  font-weight: 700;
-  color: #ffffff;
-  margin-bottom: 12px;
-}
-
-.project-content p {
+.project-engineering-desc {
   font-size: 14px;
-  color: #888888;
-  line-height: 1.5;
-  margin-bottom: 16px;
+  color: #666666;
+  line-height: 1.6;
 }
 
-.project-specs {
+.project-specifications-grid h4 {
+  font-size: 14px;
+  font-weight: 600;
+  color: #1a1a1a;
+  margin-bottom: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.project-spec-item {
   display: flex;
-  flex-direction: column;
+  align-items: flex-start;
   gap: 8px;
-  margin-bottom: 16px;
-}
-
-.project-spec {
+  margin-bottom: 8px;
   font-size: 12px;
-  color: #888888;
+  color: #666666;
+  line-height: 1.4;
 }
 
-.project-tech {
+.spec-bullet {
+  color: #3b82f6;
+  font-weight: 600;
+  flex-shrink: 0;
+}
+
+.project-tech-stack {
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
-  margin-bottom: 16px;
 }
 
-.tech-pill {
-  background: rgba(59, 130, 246, 0.1);
-  color: #3b82f6;
-  padding: 4px 8px;
+.tech-tag-white {
+  background: #f1f5f9;
+  color: #374151;
+  padding: 4px 12px;
   border-radius: 12px;
   font-size: 12px;
   font-weight: 500;
+  border: 1px solid rgba(0, 0, 0, 0.06);
 }
 
-.project-cta {
+.project-engineering-cta {
   display: inline-flex;
   align-items: center;
   gap: 8px;
@@ -1045,95 +1087,126 @@ body {
   text-decoration: none;
   font-size: 14px;
   font-weight: 600;
+  padding: 12px 16px;
+  border: 1px solid rgba(59, 130, 246, 0.2);
+  border-radius: 4px;
   transition: all 0.2s ease;
 }
 
-.project-cta:hover {
+.project-engineering-cta:hover {
+  background: #3b82f6;
+  color: #ffffff;
   transform: translateX(4px);
 }
 
-/* Tesla Footer */
-.tesla-footer {
+/* Tesla White Footer */
+.tesla-white-footer {
   padding: 80px 0 40px 0;
-  background: #0a0a0a;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  background: #ffffff;
+  border-top: 1px solid rgba(0, 0, 0, 0.08);
 }
 
-.footer-content {
+.footer-white-content {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 48px;
-  align-items: center;
+  align-items: start;
 }
 
-.footer-left h3 {
+.footer-engineering-info h3 {
   font-size: 24px;
   font-weight: 800;
-  color: #ffffff;
+  color: #1a1a1a;
   font-family: 'JetBrains Mono', monospace;
   margin-bottom: 8px;
 }
 
-.footer-left p {
+.footer-engineering-info p {
   font-size: 16px;
-  color: #888888;
+  color: #666666;
+  margin-bottom: 12px;
+}
+
+.footer-credentials {
+  font-size: 14px;
+  color: #666666;
   margin-bottom: 16px;
 }
 
-.footer-status {
+.footer-credentials span {
+  margin: 0 4px;
+}
+
+.availability-status {
   display: flex;
   align-items: center;
   gap: 12px;
 }
 
-.status-dot {
+.status-indicator {
   width: 8px;
   height: 8px;
-  background: #10b981;
   border-radius: 50%;
-  animation: pulse 2s infinite;
+  animation: pulse-status 2s infinite;
 }
 
-@keyframes pulse {
+.status-indicator.available {
+  background: #10b981;
+}
+
+@keyframes pulse-status {
   0% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7); }
   70% { box-shadow: 0 0 0 10px rgba(16, 185, 129, 0); }
   100% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
 }
 
-.footer-status span {
+.availability-status span {
   font-size: 14px;
   color: #10b981;
   font-weight: 600;
 }
 
-.footer-right {
+.footer-engineering-specs {
   text-align: right;
 }
 
-.footer-specs {
+.footer-spec-group h4 {
+  font-size: 16px;
+  font-weight: 600;
+  color: #1a1a1a;
+  margin-bottom: 16px;
+}
+
+.footer-specs-list {
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 12px;
 }
 
 .footer-spec {
   display: flex;
-  flex-direction: column;
-  align-items: flex-end;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 12px;
+  background: #f8fafc;
+  border-radius: 4px;
 }
 
-.footer-spec .spec-value {
-  font-size: 16px;
-  font-weight: 700;
-  color: #ffffff;
+.spec-name {
+  font-size: 14px;
+  color: #666666;
+}
+
+.spec-capability {
+  font-size: 14px;
+  color: #3b82f6;
+  font-weight: 600;
   font-family: 'JetBrains Mono', monospace;
 }
 
-.footer-spec .spec-label {
-  font-size: 12px;
-  color: #888888;
-  text-transform: uppercase;
-}
+/* ==================================================
+   TESLA DARK THEME - PRISM PROJECT ONLY
+   ================================================== */
 
 /* PRISM Tesla Styles */
 .prism-tesla {
@@ -1482,6 +1555,11 @@ body {
 
 .beam-line.reflected {
   transform: rotate(30deg);
+}
+
+@keyframes beam-flow {
+  0%, 100% { opacity: 0.5; }
+  50% { opacity: 1; box-shadow: 0 0 10px rgba(59, 130, 246, 0.5); }
 }
 
 .mirror-point,
@@ -1923,11 +2001,11 @@ body {
     display: none;
   }
   
-  .tesla-title {
+  .tesla-white-title {
     font-size: clamp(36px, 6vw, 60px);
   }
   
-  .tesla-specs-grid {
+  .engineering-metrics-grid {
     grid-template-columns: repeat(2, 1fr);
   }
   
@@ -1940,24 +2018,15 @@ body {
     gap: 32px;
   }
   
-  .tesla-experience-card {
-    grid-template-columns: 1fr;
-    gap: 16px;
-  }
-  
-  .footer-content,
+  .footer-white-content,
   .prism-footer-content {
     grid-template-columns: 1fr;
     gap: 32px;
     text-align: center;
   }
   
-  .footer-right {
+  .footer-engineering-specs {
     text-align: center;
-  }
-  
-  .footer-tesla-spec {
-    align-items: center;
   }
 }
 
@@ -1970,45 +2039,48 @@ body {
     padding: 0 16px;
   }
   
-  .tesla-specs-grid,
+  .engineering-metrics-grid,
   .prism-performance-grid {
     grid-template-columns: 1fr;
   }
   
-  .performance-grid {
+  .performance-data-grid,
+  .equipment-mastery-grid,
+  .software-proficiency-grid,
+  .systems-design-grid {
     grid-template-columns: 1fr;
   }
   
-  .tesla-spec-nav,
-  .tesla-spec-tabs {
+  .tesla-white-tabs,
+  .tesla-spec-nav {
     flex-wrap: wrap;
     justify-content: center;
   }
   
-  .exp-metrics {
+  .exp-key-metrics {
     justify-content: center;
   }
   
-  .projects-tesla-grid,
+  .projects-engineering-grid,
   .apps-tesla-grid,
   .benchmarks-tesla-grid {
     grid-template-columns: 1fr;
   }
   
-  .tesla-actions {
+  .tesla-white-actions {
     flex-direction: column;
     align-items: stretch;
   }
   
-  .tesla-primary-btn,
-  .tesla-secondary-btn {
+  .tesla-white-primary,
+  .tesla-white-secondary {
     width: 100%;
     justify-content: center;
   }
 }
 
 @media (max-width: 480px) {
-  .tesla-title {
+  .tesla-white-title {
     font-size: 36px;
   }
   
@@ -2017,7 +2089,7 @@ body {
     letter-spacing: 4px;
   }
   
-  .performance-header h2,
+  .specs-white-header h2,
   .arch-header h2,
   .specs-tesla-header h2,
   .apps-header h2,
