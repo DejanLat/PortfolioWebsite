@@ -110,7 +110,7 @@ const PrismProject = () => {
                 <Settings size={24} />
               </div>
               <div className="kpi-content">
-                <span className="kpi-value"><0.003mm</span>
+                <span className="kpi-value">&lt;0.003mm</span>
                 <span className="kpi-label">Flatness Precision</span>
                 <span className="kpi-description">Crossed-roller bearing accuracy</span>
               </div>
