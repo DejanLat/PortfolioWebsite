@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { ChevronRight, Github, ExternalLink, Award, Users, Clock, TrendingUp, Play, Pause, ChevronLeft } from 'lucide-react';
+import { ChevronRight, Github, ExternalLink, Award, Users, Clock, TrendingUp, Target, Zap, Activity, Layers } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import mockData from '../data/mock';
 
@@ -21,300 +21,231 @@ const Portfolio = () => {
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentImageIndex((prev) => (prev + 1) % carouselImages.length);
-    }, 4000);
+    }, 5000);
     return () => clearInterval(interval);
   }, [carouselImages.length]);
 
-  const nextImage = () => {
-    setCurrentImageIndex((prev) => (prev + 1) % carouselImages.length);
-  };
-
-  const prevImage = () => {
-    setCurrentImageIndex((prev) => (prev - 1 + carouselImages.length) % carouselImages.length);
-  };
-
   return (
-    <div className="portfolio-container">
-      {/* Navigation */}
-      <nav className="nav-header">
-        <div className="nav-content">
-          <div className="nav-logo">
-            <h3>{mockData.personalInfo.name}</h3>
-            <span className="nav-title">Nanotechnology Engineer</span>
+    <div className="nanotech-portfolio">
+      {/* Tesla-style Navigation */}
+      <nav className="tesla-nav">
+        <div className="tesla-nav-content">
+          <div className="tesla-logo">
+            <h3>NANOTECH</h3>
+            <span>ENGINEER</span>
           </div>
-          <div className="nav-links">
-            <a href="#about" className="nav-link">Technical Profile</a>
-            <a href="#experience" className="nav-link">Experience</a>
-            <a href="#projects" className="nav-link">Projects</a>
-            <a href="#research" className="nav-link">Research</a>
-            <Link to="/prism" className="nav-link-primary">PRISM Microscope</Link>
+          <div className="tesla-nav-links">
+            <a href="#specs" className="tesla-link">Technical Specs</a>
+            <a href="#experience" className="tesla-link">Experience</a>
+            <a href="#projects" className="tesla-link">Projects</a>
+            <Link to="/prism" className="tesla-cta">PRISM System</Link>
           </div>
         </div>
       </nav>
 
-      {/* Hero Section with Technical Showcase */}
-      <section className="hero-section">
-        <div className="hero-backdrop">
-          <img 
-            src="https://images.unsplash.com/photo-1576141546153-3e04370b5ff7"
-            alt="Nanotechnology Engineering"
-            className="hero-background"
-          />
-          <div className="hero-overlay"></div>
+      {/* Tesla Model X Style Hero */}
+      <section className="tesla-hero">
+        <div className="tesla-hero-bg">
+          <div className="nanotech-particles">
+            <div className="particle"></div>
+            <div className="particle"></div>
+            <div className="particle"></div>
+            <div className="particle"></div>
+            <div className="particle"></div>
+          </div>
+          <div className="optical-grid"></div>
         </div>
         
         <motion.div 
-          className="hero-content"
-          initial={{ opacity: 0, y: 30 }}
+          className="tesla-hero-content"
+          initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
         >
-          <div className="hero-main">
-            <div className="hero-badge">
-              <span>Breakthrough Innovation</span>
-              <div className="badge-pulse"></div>
-            </div>
-            <h1 className="hero-title">
-              Precision Engineering at the
-              <span className="hero-accent"> Nanoscale</span>
-            </h1>
-            <p className="hero-description">
-              Developing revolutionary microscopy systems and quantum sensing technologies. 
-              Specialized in cryogenic imaging, piezo motor control, and high-precision optical systems 
-              for next-generation research applications.
-            </p>
-            
-            {/* Achievement Metrics */}
-            <div className="hero-metrics">
-              <div className="metric-card">
-                <div className="metric-value">5+</div>
-                <div className="metric-label">Patents & Research Publications</div>
-                <div className="metric-description">Breakthrough innovations in precision optics</div>
-              </div>
-              <div className="metric-card">
-                <div className="metric-value">20%</div>
-                <div className="metric-label">Process Optimization</div>
-                <div className="metric-description">Increased production capacity at Pirlitor</div>
-              </div>
-              <div className="metric-card">
-                <div className="metric-value">80%</div>
-                <div className="metric-label">Efficiency Improvement</div>
-                <div className="metric-description">Industrial process automation</div>
-              </div>
-              <div className="metric-card">
-                <div className="metric-value">49x</div>
-                <div className="metric-label">PRISM Magnification</div>
-                <div className="metric-description">Stable microscopy system</div>
-              </div>
-            </div>
+          <div className="tesla-badge">
+            <Target size={16} />
+            <span>PRECISION ENGINEERING • NANOSCALE</span>
+          </div>
+          
+          <h1 className="tesla-title">
+            Revolutionary
+            <br />
+            <span className="nanotech-gradient">Nanotechnology</span>
+          </h1>
+          
+          <p className="tesla-subtitle">
+            Advanced microscopy systems. Quantum sensing technologies. 
+            Precision engineering at the atomic level.
+          </p>
 
-            <div className="hero-cta">
-              <Link to="/prism" className="cta-primary">
-                <span>Explore PRISM Technology</span>
-                <ChevronRight size={20} />
-              </Link>
-              <a href="#technical-portfolio" className="cta-secondary">
-                <span>View Technical Portfolio</span>
-              </a>
+          {/* Tesla-style Specs Grid */}
+          <div className="tesla-specs-grid">
+            <div className="tesla-spec">
+              <div className="spec-value">49x</div>
+              <div className="spec-label">Magnification</div>
+              <div className="spec-detail">Stable Optical System</div>
             </div>
+            <div className="tesla-spec">
+              <div className="spec-value">10nm</div>
+              <div className="spec-label">Precision</div>
+              <div className="spec-detail">Piezo Resolution</div>
+            </div>
+            <div className="tesla-spec">
+              <div className="spec-value">±12.5mm</div>
+              <div className="spec-label">Range</div>
+              <div className="spec-detail">3-Axis Travel</div>
+            </div>
+            <div className="tesla-spec">
+              <div className="spec-value">4K</div>
+              <div className="spec-label">Cryogenic</div>
+              <div className="spec-detail">Operating Temp</div>
+            </div>
+          </div>
+
+          <div className="tesla-actions">
+            <Link to="/prism" className="tesla-primary-btn">
+              <span>View PRISM System</span>
+              <ChevronRight size={20} />
+            </Link>
+            <button className="tesla-secondary-btn">Technical Specs</button>
           </div>
         </motion.div>
       </section>
 
-      {/* Technical Portfolio Carousel */}
-      <section id="technical-portfolio" className="portfolio-carousel-section">
-        <div className="carousel-container">
-          <div className="carousel-header">
-            <h2>Technical Portfolio</h2>
-            <p>Advanced engineering projects showcasing precision optics, quantum systems, and nanotechnology applications</p>
+      {/* Performance Metrics - Tesla Style */}
+      <section className="tesla-performance">
+        <div className="tesla-container">
+          <div className="performance-header">
+            <h2>Performance</h2>
+            <p>Quantified impact across engineering projects</p>
           </div>
           
-          <div className="carousel-wrapper">
-            <button className="carousel-btn prev" onClick={prevImage}>
-              <ChevronLeft size={24} />
-            </button>
-            
-            <div className="carousel-content">
-              <div className="carousel-image-container">
-                <img 
-                  src={carouselImages[currentImageIndex].url}
-                  alt={carouselImages[currentImageIndex].title}
-                  className="carousel-image"
-                />
-                <div className="image-overlay">
-                  <div className="image-info">
-                    <h3>{carouselImages[currentImageIndex].title}</h3>
-                    <p>{carouselImages[currentImageIndex].description}</p>
-                    <div className="tech-badges">
-                      {carouselImages[currentImageIndex].technologies.map((tech, index) => (
-                        <span key={index} className="tech-badge">{tech}</span>
-                      ))}
-                    </div>
-                  </div>
-                </div>
+          <div className="performance-grid">
+            <div className="performance-card primary">
+              <div className="performance-icon">
+                <TrendingUp size={32} />
               </div>
-              
-              <div className="carousel-details">
-                <div className="detail-header">
-                  <h3>{carouselImages[currentImageIndex].title}</h3>
-                  <div className="detail-category">{carouselImages[currentImageIndex].category}</div>
-                </div>
-                <p className="detail-description">{carouselImages[currentImageIndex].description}</p>
-                
-                <div className="detail-specs">
-                  <h4>Key Specifications</h4>
-                  <ul>
-                    {carouselImages[currentImageIndex].specifications.map((spec, index) => (
-                      <li key={index}>{spec}</li>
-                    ))}
-                  </ul>
-                </div>
-
-                <div className="detail-impact">
-                  <h4>Impact & Results</h4>
-                  <div className="impact-metrics">
-                    {carouselImages[currentImageIndex].impact.map((item, index) => (
-                      <div key={index} className="impact-item">
-                        <span className="impact-value">{item.value}</span>
-                        <span className="impact-label">{item.label}</span>
-                      </div>
-                    ))}
-                  </div>
-                </div>
+              <div className="performance-data">
+                <div className="performance-value">20%</div>
+                <div className="performance-label">Capacity Increase</div>
+                <div className="performance-desc">Production optimization at Pirlitor Machine & Tool</div>
               </div>
             </div>
             
-            <button className="carousel-btn next" onClick={nextImage}>
-              <ChevronRight size={24} />
-            </button>
-          </div>
-          
-          <div className="carousel-indicators">
-            {carouselImages.map((_, index) => (
-              <button
-                key={index}
-                className={`indicator ${index === currentImageIndex ? 'active' : ''}`}
-                onClick={() => setCurrentImageIndex(index)}
-              />
-            ))}
+            <div className="performance-card">
+              <div className="performance-icon">
+                <Zap size={32} />
+              </div>
+              <div className="performance-data">
+                <div className="performance-value">80%</div>
+                <div className="performance-label">Process Efficiency</div>
+                <div className="performance-desc">Industrial automation using custom macros</div>
+              </div>
+            </div>
+            
+            <div className="performance-card">
+              <div className="performance-icon">
+                <Clock size={32} />
+              </div>
+              <div className="performance-data">
+                <div className="performance-value">800+</div>
+                <div className="performance-label">Automated Cards</div>
+                <div className="performance-desc">Shipping process automation in 3 days</div>
+              </div>
+            </div>
+            
+            <div className="performance-card">
+              <div className="performance-icon">
+                <Activity size={32} />
+              </div>
+              <div className="performance-data">
+                <div className="performance-value">5+</div>
+                <div className="performance-label">Patents Pending</div>
+                <div className="performance-desc">Breakthrough innovations in precision optics</div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Technical Specifications Dashboard */}
-      <section id="about" className="specs-dashboard">
-        <div className="specs-container">
+      {/* Technical Specifications - Clean Tesla Style */}
+      <section id="specs" className="tesla-specs">
+        <div className="tesla-container">
           <div className="specs-header">
             <h2>Technical Specifications</h2>
-            <p>Comprehensive overview of equipment proficiency, software expertise, and engineering capabilities</p>
-            <div className="spec-tabs">
+            <div className="tesla-spec-tabs">
               <button 
-                className={`spec-tab ${activeTab === 'overview' ? 'active' : ''}`}
+                className={`tesla-tab ${activeTab === 'overview' ? 'active' : ''}`}
                 onClick={() => setActiveTab('overview')}
               >
-                System Overview
+                Overview
               </button>
               <button 
-                className={`spec-tab ${activeTab === 'equipment' ? 'active' : ''}`}
+                className={`tesla-tab ${activeTab === 'equipment' ? 'active' : ''}`}
                 onClick={() => setActiveTab('equipment')}
               >
-                Equipment Mastery
+                Equipment
               </button>
               <button 
-                className={`spec-tab ${activeTab === 'software' ? 'active' : ''}`}
+                className={`tesla-tab ${activeTab === 'software' ? 'active' : ''}`}
                 onClick={() => setActiveTab('software')}
               >
-                Software Proficiency
+                Software
               </button>
               <button 
-                className={`spec-tab ${activeTab === 'research' ? 'active' : ''}`}
-                onClick={() => setActiveTab('research')}
+                className={`tesla-tab ${activeTab === 'nanotech' ? 'active' : ''}`}
+                onClick={() => setActiveTab('nanotech')}
               >
-                Research Focus
+                Nanotech Focus
               </button>
             </div>
           </div>
 
-          <div className="specs-content">
+          <div className="tesla-specs-content">
             {activeTab === 'overview' && (
-              <div className="spec-grid-enhanced">
-                <div className="spec-section-card">
-                  <div className="spec-card-header">
+              <div className="tesla-specs-grid">
+                <div className="tesla-spec-section">
+                  <div className="spec-section-header">
                     <h3>Academic Profile</h3>
-                    <div className="spec-status-badge">Active</div>
+                    <div className="nanotech-badge">Active</div>
                   </div>
-                  <div className="spec-items-enhanced">
-                    <div className="spec-item-enhanced">
-                      <span className="spec-label-enhanced">Institution</span>
-                      <span className="spec-value-enhanced">University of Waterloo</span>
-                      <span className="spec-detail">Co-operative Education Program</span>
+                  <div className="spec-items">
+                    <div className="tesla-spec-item">
+                      <span className="spec-key">Institution</span>
+                      <span className="spec-value">University of Waterloo</span>
                     </div>
-                    <div className="spec-item-enhanced">
-                      <span className="spec-label-enhanced">Specialization</span>
-                      <span className="spec-value-enhanced">Nanotechnology Engineering</span>
-                      <span className="spec-detail">Focus: Precision Optics & Quantum Systems</span>
+                    <div className="tesla-spec-item">
+                      <span className="spec-key">Program</span>
+                      <span className="spec-value">Nanotechnology Engineering</span>
                     </div>
-                    <div className="spec-item-enhanced">
-                      <span className="spec-label-enhanced">Research Areas</span>
-                      <span className="spec-value-enhanced">Cryogenic Imaging</span>
-                      <span className="spec-detail">Quantum Sensing, Microscopy Systems</span>
+                    <div className="tesla-spec-item">
+                      <span className="spec-key">Specialization</span>
+                      <span className="spec-value">Precision Optics & Quantum Systems</span>
+                    </div>
+                    <div className="tesla-spec-item">
+                      <span className="spec-key">Expected Graduation</span>
+                      <span className="spec-value">2026</span>
                     </div>
                   </div>
                 </div>
 
-                <div className="spec-section-card">
-                  <div className="spec-card-header">
+                <div className="tesla-spec-section">
+                  <div className="spec-section-header">
                     <h3>Core Competencies</h3>
-                    <div className="spec-status-badge expert">Expert</div>
+                    <div className="nanotech-badge expert">Expert</div>
                   </div>
-                  <div className="spec-items-enhanced">
-                    <div className="spec-item-enhanced">
-                      <span className="spec-label-enhanced">Precision Engineering</span>
-                      <span className="spec-value-enhanced">Nanometer Accuracy</span>
-                      <span className="spec-detail">10-30nm step resolution achieved</span>
+                  <div className="spec-items">
+                    <div className="tesla-spec-item">
+                      <span className="spec-key">Precision Engineering</span>
+                      <span className="spec-value">10-30nm Resolution</span>
                     </div>
-                    <div className="spec-item-enhanced">
-                      <span className="spec-label-enhanced">Optical Systems</span>
-                      <span className="spec-value-enhanced">49x Magnification</span>
-                      <span className="spec-detail">Beam orthogonality preservation</span>
+                    <div className="tesla-spec-item">
+                      <span className="spec-key">Optical Systems</span>
+                      <span className="spec-value">49x Stable Magnification</span>
                     </div>
-                    <div className="spec-item-enhanced">
-                      <span className="spec-label-enhanced">Process Optimization</span>
-                      <span className="spec-value-enhanced">80% Efficiency Gain</span>
-                      <span className="spec-detail">Industrial automation expertise</span>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="spec-section-card full-width">
-                  <div className="spec-card-header">
-                    <h3>Innovation Timeline</h3>
-                    <div className="spec-status-badge">Ongoing</div>
-                  </div>
-                  <div className="innovation-timeline">
-                    <div className="timeline-item">
-                      <div className="timeline-marker active"></div>
-                      <div className="timeline-content">
-                        <span className="timeline-date">2023</span>
-                        <h4>PRISM Development</h4>
-                        <p>Revolutionary scanning microscope design</p>
-                      </div>
-                    </div>
-                    <div className="timeline-item">
-                      <div className="timeline-marker active"></div>
-                      <div className="timeline-content">
-                        <span className="timeline-date">2023</span>
-                        <h4>Industrial Co-op</h4>
-                        <p>20% capacity increase at Pirlitor</p>
-                      </div>
-                    </div>
-                    <div className="timeline-item">
-                      <div className="timeline-marker"></div>
-                      <div className="timeline-content">
-                        <span className="timeline-date">2025</span>
-                        <h4>Final Co-op</h4>
-                        <p>Seeking advanced engineering role</p>
-                      </div>
+                    <div className="tesla-spec-item">
+                      <span className="spec-key">Process Optimization</span>
+                      <span className="spec-value">80% Efficiency Gains</span>
                     </div>
                   </div>
                 </div>
@@ -322,63 +253,32 @@ const Portfolio = () => {
             )}
 
             {activeTab === 'equipment' && (
-              <div className="equipment-grid">
+              <div className="tesla-equipment-grid">
                 <div className="equipment-category">
-                  <div className="category-header">
-                    <h3>Analysis & Characterization</h3>
-                    <img src="https://images.unsplash.com/photo-1614308460927-5024ba2e1dcb" alt="Precision Equipment" className="category-image" />
-                  </div>
-                  <div className="equipment-items">
+                  <h3>Analysis Equipment</h3>
+                  <div className="equipment-list">
                     {mockData.skills.machines.map((machine, index) => (
-                      <div key={index} className="equipment-item">
-                        <div className="equipment-icon"></div>
-                        <div className="equipment-details">
-                          <span className="equipment-name">{machine}</span>
-                          <span className="equipment-status">Certified</span>
-                        </div>
-                        <div className="proficiency-bar">
-                          <div className="proficiency-fill expert"></div>
-                        </div>
+                      <div key={index} className="tesla-equipment-item">
+                        <div className="equipment-name">{machine}</div>
+                        <div className="equipment-status">Certified</div>
                       </div>
                     ))}
                   </div>
                 </div>
-
                 <div className="equipment-category">
-                  <div className="category-header">
-                    <h3>Fabrication & Manufacturing</h3>
-                    <img src="https://images.unsplash.com/photo-1747999918007-e3442cabb23a" alt="Manufacturing Equipment" className="category-image" />
-                  </div>
-                  <div className="equipment-items">
-                    <div className="equipment-item">
-                      <div className="equipment-icon"></div>
-                      <div className="equipment-details">
-                        <span className="equipment-name">CNC Machining</span>
-                        <span className="equipment-status">Advanced</span>
-                      </div>
-                      <div className="proficiency-bar">
-                        <div className="proficiency-fill expert"></div>
-                      </div>
+                  <h3>Fabrication Systems</h3>
+                  <div className="equipment-list">
+                    <div className="tesla-equipment-item">
+                      <div className="equipment-name">CNC Machining Centers</div>
+                      <div className="equipment-status">Advanced</div>
                     </div>
-                    <div className="equipment-item">
-                      <div className="equipment-icon"></div>
-                      <div className="equipment-details">
-                        <span className="equipment-name">Precision Assembly</span>
-                        <span className="equipment-status">Expert</span>
-                      </div>
-                      <div className="proficiency-bar">
-                        <div className="proficiency-fill expert"></div>
-                      </div>
+                    <div className="tesla-equipment-item">
+                      <div className="equipment-name">Precision Assembly</div>
+                      <div className="equipment-status">Expert</div>
                     </div>
-                    <div className="equipment-item">
-                      <div className="equipment-icon"></div>
-                      <div className="equipment-details">
-                        <span className="equipment-name">Optical Alignment</span>
-                        <span className="equipment-status">Specialized</span>
-                      </div>
-                      <div className="proficiency-bar">
-                        <div className="proficiency-fill expert"></div>
-                      </div>
+                    <div className="tesla-equipment-item">
+                      <div className="equipment-name">Optical Alignment</div>
+                      <div className="equipment-status">Specialized</div>
                     </div>
                   </div>
                 </div>
@@ -386,42 +286,25 @@ const Portfolio = () => {
             )}
 
             {activeTab === 'software' && (
-              <div className="software-grid">
+              <div className="tesla-software-grid">
                 <div className="software-category">
-                  <div className="category-header">
-                    <h3>Engineering & Design</h3>
-                    <img src="https://images.unsplash.com/photo-1748261759887-faa2a9d76471" alt="CAD Design" className="category-image" />
-                  </div>
-                  <div className="software-stack">
+                  <h3>Engineering Software</h3>
+                  <div className="software-list">
                     {mockData.skills.frameworks.map((framework, index) => (
-                      <div key={index} className="software-item">
-                        <div className="software-info">
-                          <span className="software-name">{framework}</span>
-                          <span className="version-info">Latest</span>
-                        </div>
-                        <div className="usage-indicator">
-                          <div className="usage-fill high"></div>
-                        </div>
+                      <div key={index} className="tesla-software-item">
+                        <div className="software-name">{framework}</div>
+                        <div className="software-level">Advanced</div>
                       </div>
                     ))}
                   </div>
                 </div>
-
                 <div className="software-category">
-                  <div className="category-header">
-                    <h3>Programming & Analysis</h3>
-                    <img src="https://images.unsplash.com/photo-1631375937044-6dd5beac01d2" alt="Programming" className="category-image" />
-                  </div>
-                  <div className="software-stack">
+                  <h3>Programming Languages</h3>
+                  <div className="software-list">
                     {mockData.skills.languages.map((language, index) => (
-                      <div key={index} className="software-item">
-                        <div className="software-info">
-                          <span className="software-name">{language}</span>
-                          <span className="version-info">Production</span>
-                        </div>
-                        <div className="usage-indicator">
-                          <div className="usage-fill high"></div>
-                        </div>
+                      <div key={index} className="tesla-software-item">
+                        <div className="software-name">{language}</div>
+                        <div className="software-level">Expert</div>
                       </div>
                     ))}
                   </div>
@@ -429,37 +312,67 @@ const Portfolio = () => {
               </div>
             )}
 
-            {activeTab === 'research' && (
-              <div className="research-grid">
-                <div className="research-focus">
-                  <div className="research-header">
-                    <h3>Current Research Focus</h3>
-                    <img src="https://images.unsplash.com/photo-1579684256060-d5a308109e21" alt="Quantum Research" className="research-image" />
+            {activeTab === 'nanotech' && (
+              <div className="nanotech-focus-grid">
+                <div className="nanotech-category">
+                  <div className="nanotech-header">
+                    <Layers size={32} />
+                    <h3>Quantum Sensing</h3>
                   </div>
-                  <div className="research-areas">
-                    <div className="research-area">
-                      <h4>Quantum Sensing Systems</h4>
-                      <p>Development of nitrogen-vacancy center microscopy for magnetic field detection</p>
-                      <div className="research-metrics">
-                        <span>Sensitivity: nT-level</span>
-                        <span>Resolution: Sub-micron</span>
-                      </div>
+                  <div className="nanotech-specs">
+                    <div className="nano-spec">
+                      <span className="nano-label">NV Center Detection</span>
+                      <span className="nano-value">Single-spin sensitivity</span>
                     </div>
-                    <div className="research-area">
-                      <h4>Cryogenic Imaging</h4>
-                      <p>Ultra-low temperature optical systems for quantum material characterization</p>
-                      <div className="research-metrics">
-                        <span>Temperature: 4K-300K</span>
-                        <span>Stability: &lt;0.1% drift</span>
-                      </div>
+                    <div className="nano-spec">
+                      <span className="nano-label">Magnetic Field Resolution</span>
+                      <span className="nano-value">nT-level precision</span>
                     </div>
-                    <div className="research-area">
-                      <h4>Precision Microscopy</h4>
-                      <p>Advanced scanning probe techniques for nanoscale surface analysis</p>
-                      <div className="research-metrics">
-                        <span>Resolution: 10-30nm</span>
-                        <span>Range: ±12.5mm</span>
-                      </div>
+                    <div className="nano-spec">
+                      <span className="nano-label">Spatial Resolution</span>
+                      <span className="nano-value">Sub-micron mapping</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="nanotech-category">
+                  <div className="nanotech-header">
+                    <Target size={32} />
+                    <h3>Precision Optics</h3>
+                  </div>
+                  <div className="nanotech-specs">
+                    <div className="nano-spec">
+                      <span className="nano-label">Beam Orthogonality</span>
+                      <span className="nano-value">Perfect preservation</span>
+                    </div>
+                    <div className="nano-spec">
+                      <span className="nano-label">Magnification Stability</span>
+                      <span className="nano-value">49x consistent</span>
+                    </div>
+                    <div className="nano-spec">
+                      <span className="nano-label">Focus Range</span>
+                      <span className="nano-value">Nanometer precision</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="nanotech-category">
+                  <div className="nanotech-header">
+                    <Zap size={32} />
+                    <h3>Cryogenic Systems</h3>
+                  </div>
+                  <div className="nanotech-specs">
+                    <div className="nano-spec">
+                      <span className="nano-label">Operating Temperature</span>
+                      <span className="nano-value">4K to 300K</span>
+                    </div>
+                    <div className="nano-spec">
+                      <span className="nano-label">Thermal Stability</span>
+                      <span className="nano-value">&lt;0.1% drift</span>
+                    </div>
+                    <div className="nano-spec">
+                      <span className="nano-label">Vacuum Compatibility</span>
+                      <span className="nano-value">UHV ready</span>
                     </div>
                   </div>
                 </div>
@@ -469,63 +382,39 @@ const Portfolio = () => {
         </div>
       </section>
 
-      {/* Experience Section with Enhanced Visuals */}
-      <section id="experience" className="experience-section-enhanced">
-        <div className="experience-container">
-          <h2>Professional Experience</h2>
-          <p className="section-subtitle">Track record of delivering quantifiable results in advanced engineering environments</p>
-          
-          <div className="experience-timeline-enhanced">
+      {/* Experience Section - Tesla Clean Style */}
+      <section id="experience" className="tesla-experience">
+        <div className="tesla-container">
+          <h2>Experience</h2>
+          <div className="experience-timeline">
             {mockData.experience.map((exp, index) => (
               <motion.div 
                 key={index}
-                className="experience-card-enhanced"
-                initial={{ opacity: 0, x: -30 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
+                className="tesla-experience-card"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
                 viewport={{ once: true }}
               >
-                <div className="exp-visual">
-                  <img 
-                    src={exp.image} 
-                    alt={exp.company}
-                    className="exp-image"
-                  />
-                  <div className="exp-overlay">
-                    <span className="exp-category">{exp.category}</span>
-                  </div>
+                <div className="exp-left">
+                  <div className="exp-period">{exp.period}</div>
+                  <div className="exp-category">{exp.category}</div>
                 </div>
-                
-                <div className="exp-content">
-                  <div className="exp-header-enhanced">
-                    <div className="exp-title-group">
-                      <h3>{exp.role}</h3>
-                      <h4>{exp.company}</h4>
-                    </div>
-                    <div className="exp-period-enhanced">{exp.period}</div>
+                <div className="exp-right">
+                  <h3>{exp.role}</h3>
+                  <h4>{exp.company}</h4>
+                  <div className="exp-metrics">
+                    {exp.keyMetrics.map((metric, mIndex) => (
+                      <div key={mIndex} className="exp-metric">
+                        <span className="metric-value">{metric.value}</span>
+                        <span className="metric-desc">{metric.description}</span>
+                      </div>
+                    ))}
                   </div>
-                  
-                  <div className="exp-impact-summary">
-                    <div className="impact-highlights">
-                      {exp.keyMetrics.map((metric, mIndex) => (
-                        <div key={mIndex} className="impact-metric">
-                          <span className="metric-value">{metric.value}</span>
-                          <span className="metric-description">{metric.description}</span>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                  
-                  <div className="exp-achievements-enhanced">
-                    {exp.achievements.map((achievement, achIndex) => (
-                      <div key={achIndex} className="achievement-item-enhanced">
-                        <div className="achievement-icon-enhanced">
-                          {achievement.includes('20%') && <TrendingUp size={16} />}
-                          {achievement.includes('800') && <Clock size={16} />}
-                          {achievement.includes('80%') && <Award size={16} />}
-                          {achievement.includes('framework') && <Users size={16} />}
-                        </div>
-                        <span>{achievement}</span>
+                  <div className="exp-achievements">
+                    {exp.achievements.slice(0, 2).map((achievement, achIndex) => (
+                      <div key={achIndex} className="achievement-bullet">
+                        • {achievement}
                       </div>
                     ))}
                   </div>
@@ -536,68 +425,50 @@ const Portfolio = () => {
         </div>
       </section>
 
-      {/* Featured Projects with Technical Depth */}
-      <section id="projects" className="projects-section-enhanced">
-        <div className="projects-container">
-          <h2>Featured Engineering Projects</h2>
-          <p className="section-subtitle">Breakthrough innovations in precision engineering and nanotechnology applications</p>
-          
-          <div className="projects-grid-enhanced">
+      {/* Projects - Tesla Grid Style */}
+      <section id="projects" className="tesla-projects">
+        <div className="tesla-container">
+          <h2>Projects</h2>
+          <div className="projects-tesla-grid">
             {mockData.projects.map((project, index) => (
               <motion.div 
                 key={index}
-                className={`project-card-enhanced ${project.featured ? 'featured' : ''}`}
-                initial={{ opacity: 0, y: 30 }}
+                className={`tesla-project-card ${project.featured ? 'featured' : ''}`}
+                initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
                 viewport={{ once: true }}
               >
-                <div className="project-image-container">
-                  <img 
-                    src={project.image}
-                    alt={project.title}
-                    className="project-image"
-                  />
-                  {project.featured && (
-                    <div className="featured-badge-overlay">
-                      <Award size={16} />
-                      <span>Breakthrough Innovation</span>
-                    </div>
-                  )}
+                {project.featured && (
+                  <div className="featured-label">
+                    <Award size={16} />
+                    <span>Breakthrough</span>
+                  </div>
+                )}
+                <div className="project-visual">
+                  <img src={project.image} alt={project.title} />
                   <div className="project-overlay">
-                    <div className="project-category-badge">{project.category}</div>
+                    <div className="project-category">{project.category}</div>
                   </div>
                 </div>
-                
-                <div className="project-content-enhanced">
-                  <div className="project-header-enhanced">
-                    <h3>{project.title}</h3>
-                    <div className="project-links-enhanced">
-                      {project.github && <Github size={18} />}
-                      {project.demo && <ExternalLink size={18} />}
-                    </div>
-                  </div>
-                  
-                  <p className="project-description-enhanced">{project.description}</p>
-                  
-                  <div className="project-specifications">
-                    <h4>Key Specifications</h4>
-                    <ul>
-                      {project.specifications.map((spec, specIndex) => (
-                        <li key={specIndex}>{spec}</li>
-                      ))}
-                    </ul>
-                  </div>
-                  
-                  <div className="project-tech-enhanced">
-                    {project.technologies.map((tech, techIndex) => (
-                      <span key={techIndex} className="tech-tag-enhanced">{tech}</span>
+                <div className="project-content">
+                  <h3>{project.title}</h3>
+                  <p>{project.description}</p>
+                  <div className="project-specs">
+                    {project.specifications.slice(0, 3).map((spec, specIndex) => (
+                      <div key={specIndex} className="project-spec">
+                        • {spec}
+                      </div>
                     ))}
                   </div>
-                  
+                  <div className="project-tech">
+                    {project.technologies.slice(0, 4).map((tech, techIndex) => (
+                      <span key={techIndex} className="tech-pill">{tech}</span>
+                    ))}
+                  </div>
                   {project.featured && (
-                    <Link to="/prism" className="project-detail-link-enhanced">
-                      <span>Comprehensive Technical Analysis</span>
+                    <Link to="/prism" className="project-cta">
+                      <span>View System</span>
                       <ChevronRight size={16} />
                     </Link>
                   )}
@@ -608,41 +479,33 @@ const Portfolio = () => {
         </div>
       </section>
 
-      {/* Footer with Professional Contact */}
-      <footer className="footer-enhanced">
-        <div className="footer-content-enhanced">
-          <div className="footer-main">
-            <div className="footer-info">
-              <h3>{mockData.personalInfo.name}</h3>
-              <p>Nanotechnology Engineering Student</p>
-              <p>University of Waterloo • Co-operative Education</p>
-              <div className="footer-specialization">
-                <span>Specializing in Precision Optics • Quantum Systems • Advanced Microscopy</span>
+      {/* Tesla-style Footer */}
+      <footer className="tesla-footer">
+        <div className="tesla-container">
+          <div className="footer-content">
+            <div className="footer-left">
+              <h3>NANOTECH ENGINEER</h3>
+              <p>Precision engineering at the nanoscale</p>
+              <div className="footer-status">
+                <div className="status-dot"></div>
+                <span>Available for Co-op • Final Term</span>
               </div>
             </div>
-            
-            <div className="footer-availability">
-              <div className="availability-status">
-                <div className="status-indicator active"></div>
-                <span>Available for Co-op Opportunities</span>
+            <div className="footer-right">
+              <div className="footer-specs">
+                <div className="footer-spec">
+                  <span className="spec-value">University of Waterloo</span>
+                  <span className="spec-label">Institution</span>
+                </div>
+                <div className="footer-spec">
+                  <span className="spec-value">Nanotechnology Engineering</span>
+                  <span className="spec-label">Program</span>
+                </div>
+                <div className="footer-spec">
+                  <span className="spec-value">2026</span>
+                  <span className="spec-label">Graduation</span>
+                </div>
               </div>
-              <p>Seeking final co-op placement in advanced engineering, nanotechnology, or precision instrumentation</p>
-              <div className="contact-preferences">
-                <span>Open to: Full-time positions • Research collaborations • Technical consulting</span>
-              </div>
-            </div>
-          </div>
-          
-          <div className="footer-bottom">
-            <div className="footer-credentials">
-              <span>Google Data Analytics Certified • Microsoft Power BI Certified • University of Waterloo</span>
-            </div>
-            <div className="footer-links">
-              <Link to="/prism">PRISM Technical Documentation</Link>
-              <span>•</span>
-              <a href="#technical-portfolio">Portfolio</a>
-              <span>•</span>
-              <a href="#experience">Experience</a>
             </div>
           </div>
         </div>
