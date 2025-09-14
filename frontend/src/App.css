@@ -19,7 +19,7 @@ body {
 }
 
 /* ==================================================
-   TESLA WHITE THEME - MAIN PORTFOLIO
+   TESLA WHITE THEME - MAIN PORTFOLIO - ENHANCED
    ================================================== */
 
 /* Engineering Portfolio Container */
@@ -27,6 +27,885 @@ body {
   min-height: 100vh;
   background: #ffffff;
   color: #1a1a1a;
+}
+
+/* Enhanced Navigation with Carousel Controls */
+.nav-carousel-controls {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.carousel-play-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  background: rgba(59, 130, 246, 0.1);
+  border: 1px solid rgba(59, 130, 246, 0.2);
+  border-radius: 50%;
+  color: #3b82f6;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.carousel-play-btn:hover {
+  background: #3b82f6;
+  color: #ffffff;
+}
+
+.carousel-play-btn.playing {
+  animation: pulse-play 2s infinite;
+}
+
+@keyframes pulse-play {
+  0% { box-shadow: 0 0 0 0 rgba(59, 130, 246, 0.4); }
+  70% { box-shadow: 0 0 0 10px rgba(59, 130, 246, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(59, 130, 246, 0); }
+}
+
+/* Enhanced Hero Section with Image Carousel */
+.tesla-white-hero-enhanced {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  background: #ffffff;
+  overflow: hidden;
+  padding-top: 60px;
+}
+
+.hero-visual-container {
+  position: relative;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.hero-image-carousel {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.carousel-image-wrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.hero-carousel-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(0.8) contrast(1.1);
+  transition: transform 0.6s ease;
+}
+
+.hero-image-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+  padding: 2rem;
+  color: white;
+}
+
+.hero-image-overlay h4 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.hero-image-overlay p {
+  font-size: 1rem;
+  opacity: 0.9;
+}
+
+.carousel-navigation {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 2rem;
+  z-index: 10;
+}
+
+.carousel-nav-btn {
+  width: 48px;
+  height: 48px;
+  background: rgba(255, 255, 255, 0.9);
+  border: none;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+}
+
+.carousel-nav-btn:hover {
+  background: #3b82f6;
+  color: white;
+  transform: scale(1.1);
+}
+
+.carousel-indicators {
+  position: absolute;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 0.75rem;
+  z-index: 10;
+}
+
+.indicator {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(255, 255, 255, 0.5);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.indicator.active {
+  background: #3b82f6;
+  transform: scale(1.3);
+  box-shadow: 0 0 10px rgba(59, 130, 246, 0.5);
+}
+
+.hero-content-container {
+  padding: 0 2rem;
+}
+
+/* Enhanced Metrics with Visual Indicators */
+.engineering-metrics-enhanced {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+  margin-bottom: 48px;
+}
+
+.metric-card-enhanced {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 24px;
+  background: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 12px;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+.metric-card-enhanced:hover {
+  border-color: #3b82f6;
+  transform: translateY(-4px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+}
+
+.metric-card-enhanced.featured {
+  border-color: #3b82f6;
+  background: rgba(59, 130, 246, 0.02);
+}
+
+.metric-icon {
+  flex-shrink: 0;
+  width: 48px;
+  height: 48px;
+  background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+}
+
+.metric-content {
+  flex: 1;
+}
+
+.metric-number {
+  font-size: 28px;
+  font-weight: 800;
+  color: #1a1a1a;
+  font-family: 'JetBrains Mono', monospace;
+  margin-bottom: 4px;
+}
+
+.metric-label {
+  font-size: 12px;
+  color: #3b82f6;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 4px;
+}
+
+.metric-detail {
+  font-size: 13px;
+  color: #666666;
+  margin-bottom: 12px;
+}
+
+.metric-progress {
+  width: 100%;
+}
+
+.progress-bar {
+  width: 100%;
+  height: 4px;
+  background: #f1f5f9;
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #3b82f6 0%, #2563eb 100%);
+  border-radius: 2px;
+  transition: width 2s ease;
+  animation: fill-progress 2s ease-out;
+}
+
+@keyframes fill-progress {
+  from { width: 0%; }
+}
+
+/* Visual Statistics Overview */
+.stats-overview {
+  padding: 80px 0;
+  background: #f8fafc;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 32px;
+}
+
+.stat-visual-card {
+  background: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 16px;
+  padding: 32px;
+  text-align: center;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.stat-visual-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #3b82f6 0%, #8b5cf6 100%);
+}
+
+.stat-visual-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.15);
+}
+
+.stat-icon-large {
+  width: 80px;
+  height: 80px;
+  background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  margin: 0 auto 24px auto;
+}
+
+.stat-data {
+  text-align: center;
+}
+
+.stat-number {
+  font-size: 36px;
+  font-weight: 800;
+  color: #1a1a1a;
+  font-family: 'JetBrains Mono', monospace;
+  margin-bottom: 8px;
+}
+
+.stat-label {
+  font-size: 16px;
+  color: #3b82f6;
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+
+.stat-description {
+  font-size: 14px;
+  color: #666666;
+  line-height: 1.5;
+}
+
+/* Enhanced Specifications Section */
+.tesla-white-specs-enhanced {
+  padding: 120px 0;
+  background: #ffffff;
+}
+
+.specs-header-enhanced {
+  text-align: center;
+  margin-bottom: 80px;
+}
+
+.specs-header-enhanced h2 {
+  font-size: 48px;
+  font-weight: 800;
+  color: #1a1a1a;
+  margin-bottom: 16px;
+}
+
+.specs-header-enhanced p {
+  font-size: 18px;
+  color: #666666;
+  margin-bottom: 32px;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.tesla-white-tabs {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  background: #f8fafc;
+  padding: 8px;
+  border-radius: 12px;
+  display: inline-flex;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.tesla-white-tab {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: none;
+  border: none;
+  color: #666666;
+  padding: 12px 20px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.tesla-white-tab.active {
+  background: #3b82f6;
+  color: #ffffff;
+}
+
+.tesla-white-tab:hover:not(.active) {
+  color: #1a1a1a;
+  background: rgba(59, 130, 246, 0.1);
+}
+
+/* Equipment Showcase with Carousel */
+.equipment-showcase {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  align-items: start;
+}
+
+.equipment-carousel-section {
+  position: sticky;
+  top: 120px;
+}
+
+.equipment-carousel {
+  position: relative;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+}
+
+.equipment-image-container {
+  position: relative;
+  aspect-ratio: 4/3;
+}
+
+.equipment-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(0.9);
+}
+
+.equipment-image-info {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+  padding: 2rem;
+  color: white;
+}
+
+.equipment-image-info h4 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.equipment-image-info p {
+  font-size: 0.9rem;
+  opacity: 0.9;
+}
+
+.equipment-carousel-nav {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 1rem;
+  z-index: 10;
+}
+
+.equipment-specs-detailed {
+  background: #f8fafc;
+  border-radius: 16px;
+  padding: 32px;
+}
+
+.equipment-category-enhanced {
+  margin-bottom: 32px;
+}
+
+.category-header-enhanced {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.category-header-enhanced h3 {
+  font-size: 20px;
+  font-weight: 700;
+  color: #1a1a1a;
+}
+
+.equipment-grid-visual {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.equipment-item-visual {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 16px;
+  background: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 12px;
+  transition: all 0.3s ease;
+}
+
+.equipment-item-visual:hover {
+  border-color: #3b82f6;
+  transform: translateX(8px);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.equipment-icon-bg {
+  width: 40px;
+  height: 40px;
+  background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  flex-shrink: 0;
+}
+
+.equipment-details {
+  flex: 1;
+}
+
+.equipment-name {
+  font-size: 14px;
+  font-weight: 600;
+  color: #1a1a1a;
+  margin-bottom: 8px;
+}
+
+.equipment-proficiency {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.proficiency-bar-container {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex: 1;
+}
+
+.proficiency-bar-bg {
+  flex: 1;
+  height: 6px;
+  background: #f1f5f9;
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.proficiency-bar-fill {
+  height: 100%;
+  border-radius: 3px;
+  transition: width 1s ease;
+}
+
+.proficiency-bar-fill.expert {
+  background: linear-gradient(90deg, #10b981 0%, #059669 100%);
+}
+
+.proficiency-text {
+  font-size: 12px;
+  color: #10b981;
+  font-weight: 600;
+  min-width: 60px;
+}
+
+/* Performance Dashboard */
+.performance-dashboard {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+}
+
+.performance-charts {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.chart-container {
+  background: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 16px;
+  padding: 32px;
+}
+
+.chart-container h3 {
+  font-size: 20px;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin-bottom: 24px;
+}
+
+.performance-metrics-visual {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.metric-visual-item {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.metric-visual-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.metric-visual-header .metric-label {
+  font-size: 14px;
+  color: #666666;
+  font-weight: 500;
+}
+
+.metric-visual-header .metric-value {
+  font-size: 14px;
+  color: #3b82f6;
+  font-weight: 600;
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.metric-visual-bar {
+  width: 100%;
+  height: 8px;
+  background: #f1f5f9;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.visual-bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #3b82f6 0%, #2563eb 100%);
+  border-radius: 4px;
+  transition: width 1.5s ease;
+  animation: fill-bar-visual 1.5s ease-out;
+}
+
+@keyframes fill-bar-visual {
+  from { width: 0%; }
+}
+
+.impact-visualization {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  gap: 24px;
+}
+
+.impact-circle-chart {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.circle-chart {
+  position: relative;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: conic-gradient(#3b82f6 0deg, #3b82f6 var(--percentage), #f1f5f9 var(--percentage));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.circle-chart-inner {
+  width: 60px;
+  height: 60px;
+  background: #ffffff;
+  border-radius: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.circle-chart-value {
+  font-size: 14px;
+  font-weight: 700;
+  color: #3b82f6;
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.circle-chart-label {
+  font-size: 10px;
+  color: #666666;
+  font-weight: 500;
+}
+
+/* Software Mastery Visual */
+.software-mastery-visual {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+  gap: 48px;
+}
+
+.software-categories-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.software-category-visual {
+  background: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 16px;
+  padding: 32px;
+}
+
+.category-header-visual {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 32px;
+}
+
+.category-header-visual svg {
+  color: #3b82f6;
+}
+
+.category-header-visual h3 {
+  font-size: 20px;
+  font-weight: 700;
+  color: #1a1a1a;
+  flex: 1;
+}
+
+.overall-score {
+  background: #3b82f6;
+  color: #ffffff;
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-size: 16px;
+  font-weight: 700;
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.software-items-visual {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.software-item-visual {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px;
+  background: #f8fafc;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  border-radius: 10px;
+  transition: all 0.3s ease;
+}
+
+.software-item-visual:hover {
+  background: #f1f5f9;
+  border-color: #3b82f6;
+  transform: translateX(8px);
+}
+
+.software-name-visual {
+  font-size: 14px;
+  font-weight: 600;
+  color: #1a1a1a;
+}
+
+.software-mastery-indicator {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.mastery-dots {
+  display: flex;
+  gap: 4px;
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #e5e7eb;
+  transition: all 0.3s ease;
+}
+
+.dot.active {
+  background: #3b82f6;
+  transform: scale(1.2);
+}
+
+.mastery-level {
+  font-size: 12px;
+  color: #3b82f6;
+  font-weight: 600;
+  min-width: 60px;
+}
+
+/* Systems Design Showcase */
+.systems-design-showcase {
+  background: #f8fafc;
+  border-radius: 16px;
+  padding: 48px;
+}
+
+.systems-capabilities-visual {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 32px;
+}
+
+.capability-card-visual {
+  background: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 16px;
+  padding: 32px;
+  text-align: center;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.capability-card-visual::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #3b82f6 0%, #8b5cf6 100%);
+}
+
+.capability-card-visual:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.15);
+}
+
+.capability-icon-container {
+  width: 80px;
+  height: 80px;
+  background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  margin: 0 auto 24px auto;
+}
+
+.capability-card-visual h3 {
+  font-size: 20px;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin-bottom: 24px;
+}
+
+.capability-metrics-visual {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  text-align: left;
+}
+
+.metric-visual-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 16px;
+  background: #f8fafc;
+  border-radius: 8px;
+}
+
+.metric-name {
+  font-size: 14px;
+  color: #666666;
+  font-weight: 500;
+}
+
+.metric-value-highlight {
+  font-size: 14px;
+  color: #3b82f6;
+  font-weight: 700;
+  font-family: 'JetBrains Mono', monospace;
 }
 
 /* Tesla White Navigation */
