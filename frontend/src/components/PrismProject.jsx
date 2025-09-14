@@ -511,7 +511,7 @@ const PrismProject = () => {
                 </div>
                 <div className="chart-label">Operating Range</div>
               </div>
-              <div benchmark-comparison">
+              <div className="benchmark-comparison">
                 <span>Standard: 77K-300K</span>
                 <span className="improvement">Extended range</span>
               </div>
