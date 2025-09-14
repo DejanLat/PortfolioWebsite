@@ -1,5 +1,5 @@
 /* Import Fonts */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700;800&display=swap');
 
 /* Reset and Base Styles */
 * {
@@ -12,120 +12,169 @@ body {
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   line-height: 1.6;
   color: #1a1a1a;
-  background-color: #ffffff;
+  background-color: #000000;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
 }
 
-/* Enhanced Navigation */
-.nav-header {
+/* Tesla Model X Navigation */
+.tesla-nav {
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
-  background: rgba(255, 255, 255, 0.95);
+  background: rgba(0, 0, 0, 0.95);
   backdrop-filter: blur(20px);
-  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   z-index: 1000;
-  padding: 0 2rem;
-  transition: all 0.3s ease;
+  padding: 0;
 }
 
-.nav-content {
-  max-width: 1400px;
+.tesla-nav-content {
+  max-width: 1200px;
   margin: 0 auto;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 80px;
+  height: 60px;
+  padding: 0 24px;
 }
 
-.nav-logo {
+.tesla-logo {
   display: flex;
   flex-direction: column;
-  gap: 0.25rem;
+  align-items: flex-start;
 }
 
-.nav-logo h3 {
-  font-size: 1.5rem;
+.tesla-logo h3 {
+  font-size: 18px;
   font-weight: 700;
-  color: #1a1a1a;
+  color: #ffffff;
   font-family: 'JetBrains Mono', monospace;
+  letter-spacing: 2px;
+  line-height: 1;
 }
 
-.nav-title {
-  font-size: 0.8rem;
-  color: #666;
+.tesla-logo span {
+  font-size: 10px;
+  color: #888888;
   font-weight: 500;
+  letter-spacing: 1px;
   text-transform: uppercase;
-  letter-spacing: 0.5px;
 }
 
-.nav-links {
+.tesla-nav-links {
   display: flex;
   align-items: center;
-  gap: 2.5rem;
+  gap: 32px;
 }
 
-.nav-link {
+.tesla-link {
+  color: #ffffff;
   text-decoration: none;
-  color: #666;
+  font-size: 14px;
   font-weight: 500;
-  font-size: 0.95rem;
-  transition: all 0.3s ease;
+  transition: all 0.2s ease;
   position: relative;
-  padding: 0.5rem 0;
 }
 
-.nav-link:hover {
-  color: #1a1a1a;
-  transform: translateY(-1px);
+.tesla-link:hover {
+  color: #3b82f6;
 }
 
-.nav-link::after {
+.tesla-link::after {
   content: '';
   position: absolute;
-  bottom: 0;
+  bottom: -4px;
   left: 0;
   width: 0;
-  height: 2px;
-  background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
-  transition: width 0.4s ease;
+  height: 1px;
+  background: #3b82f6;
+  transition: width 0.3s ease;
 }
 
-.nav-link:hover::after {
+.tesla-link:hover::after {
   width: 100%;
 }
 
-.nav-link-primary {
-  background: linear-gradient(135deg, #1a1a1a 0%, #333 100%);
-  color: white !important;
-  padding: 0.75rem 1.5rem;
-  border-radius: 8px;
+.tesla-cta {
+  background: #3b82f6;
+  color: #ffffff;
+  padding: 8px 16px;
+  border-radius: 4px;
   text-decoration: none;
+  font-size: 14px;
   font-weight: 600;
-  font-size: 0.9rem;
-  transition: all 0.3s ease;
-  box-shadow: 0 2px 8px rgba(26, 26, 26, 0.15);
+  transition: all 0.2s ease;
 }
 
-.nav-link-primary:hover {
-  background: linear-gradient(135deg, #333 0%, #555 100%);
-  transform: translateY(-2px);
-  box-shadow: 0 4px 15px rgba(26, 26, 26, 0.25);
+.tesla-cta:hover {
+  background: #2563eb;
+  transform: translateY(-1px);
 }
 
-/* Enhanced Hero Section */
-.hero-section {
+.tesla-back {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+  transition: color 0.2s ease;
+}
+
+.tesla-back:hover {
+  color: #3b82f6;
+}
+
+.tesla-nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.tesla-nav-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: none;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #ffffff;
+  padding: 8px 16px;
+  border-radius: 4px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.tesla-nav-btn:hover {
+  border-color: #3b82f6;
+  color: #3b82f6;
+}
+
+/* Nanotech Portfolio Container */
+.nanotech-portfolio {
+  min-height: 100vh;
+  background: #000000;
+  color: #ffffff;
+  padding-top: 60px;
+}
+
+/* Tesla Hero Section */
+.tesla-hero {
   min-height: 100vh;
   position: relative;
   display: flex;
   align-items: center;
+  justify-content: center;
+  background: #000000;
   overflow: hidden;
-  background: #ffffff;
 }
 
-.hero-backdrop {
+.tesla-hero-bg {
   position: absolute;
   top: 0;
   left: 0;
@@ -134,2940 +183,1845 @@ body {
   z-index: 1;
 }
 
-.hero-background {
+/* Nanotech Particles Animation */
+.nanotech-particles {
+  position: absolute;
   width: 100%;
   height: 100%;
-  object-fit: cover;
-  filter: brightness(0.3) contrast(1.2);
+  overflow: hidden;
 }
 
-.hero-overlay {
+.particle {
+  position: absolute;
+  width: 2px;
+  height: 2px;
+  background: #3b82f6;
+  border-radius: 50%;
+  animation: float 8s infinite ease-in-out;
+  box-shadow: 0 0 6px #3b82f6;
+}
+
+.particle:nth-child(1) {
+  top: 20%;
+  left: 20%;
+  animation-delay: 0s;
+}
+
+.particle:nth-child(2) {
+  top: 60%;
+  left: 80%;
+  animation-delay: 2s;
+}
+
+.particle:nth-child(3) {
+  top: 80%;
+  left: 30%;
+  animation-delay: 4s;
+}
+
+.particle:nth-child(4) {
+  top: 30%;
+  left: 70%;
+  animation-delay: 6s;
+}
+
+.particle:nth-child(5) {
+  top: 70%;
+  left: 10%;
+  animation-delay: 1s;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px) scale(1); opacity: 0.3; }
+  50% { transform: translateY(-20px) scale(1.2); opacity: 1; }
+}
+
+/* Optical Grid Background */
+.optical-grid {
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  background: linear-gradient(
-    135deg,
-    rgba(255, 255, 255, 0.95) 0%,
-    rgba(255, 255, 255, 0.85) 50%,
-    rgba(248, 250, 252, 0.9) 100%
-  );
+  background-image: 
+    linear-gradient(90deg, rgba(59, 130, 246, 0.03) 1px, transparent 1px),
+    linear-gradient(rgba(59, 130, 246, 0.03) 1px, transparent 1px);
+  background-size: 60px 60px;
+  animation: grid-shift 20s linear infinite;
 }
 
-.hero-content {
+@keyframes grid-shift {
+  0% { transform: translate(0, 0); }
+  100% { transform: translate(60px, 60px); }
+}
+
+.tesla-hero-content {
   position: relative;
   z-index: 2;
-  max-width: 1400px;
+  max-width: 1200px;
   margin: 0 auto;
-  padding: 0 2rem;
-  width: 100%;
+  padding: 0 24px;
+  text-align: center;
 }
 
-.hero-main {
-  max-width: 800px;
-}
-
-.hero-badge {
+.tesla-badge {
   display: inline-flex;
   align-items: center;
-  gap: 0.75rem;
-  background: rgba(102, 126, 234, 0.1);
-  color: #667eea;
-  padding: 0.75rem 1.5rem;
-  border-radius: 50px;
-  font-size: 0.9rem;
+  gap: 8px;
+  background: rgba(59, 130, 246, 0.1);
+  border: 1px solid rgba(59, 130, 246, 0.3);
+  color: #3b82f6;
+  padding: 8px 16px;
+  border-radius: 4px;
+  font-size: 12px;
   font-weight: 600;
-  margin-bottom: 2rem;
-  border: 1px solid rgba(102, 126, 234, 0.2);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 32px;
+}
+
+.tesla-title {
+  font-size: clamp(48px, 8vw, 80px);
+  font-weight: 800;
+  line-height: 1.1;
+  color: #ffffff;
+  margin-bottom: 16px;
+}
+
+.nanotech-gradient {
+  background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.tesla-subtitle {
+  font-size: 18px;
+  color: #888888;
+  max-width: 600px;
+  margin: 0 auto 48px auto;
+  line-height: 1.6;
+}
+
+/* Tesla Specs Grid */
+.tesla-specs-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 24px;
+  margin-bottom: 48px;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.tesla-spec {
+  text-align: center;
+  padding: 24px;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+.tesla-spec:hover {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: #3b82f6;
+  transform: translateY(-4px);
+}
+
+.spec-value {
+  font-size: 32px;
+  font-weight: 800;
+  color: #ffffff;
+  font-family: 'JetBrains Mono', monospace;
+  margin-bottom: 8px;
+}
+
+.spec-label {
+  font-size: 14px;
+  color: #3b82f6;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 4px;
+}
+
+.spec-detail {
+  font-size: 12px;
+  color: #888888;
+}
+
+.tesla-actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+.tesla-primary-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #3b82f6;
+  color: #ffffff;
+  padding: 16px 32px;
+  border-radius: 4px;
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+
+.tesla-primary-btn:hover {
+  background: #2563eb;
+  transform: translateY(-2px);
+}
+
+.tesla-secondary-btn {
+  background: none;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: #ffffff;
+  padding: 16px 32px;
+  border-radius: 4px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.tesla-secondary-btn:hover {
+  border-color: #3b82f6;
+  color: #3b82f6;
+}
+
+/* Tesla Container */
+.tesla-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* Performance Section */
+.tesla-performance {
+  padding: 120px 0;
+  background: #000000;
+}
+
+.performance-header {
+  text-align: center;
+  margin-bottom: 80px;
+}
+
+.performance-header h2 {
+  font-size: 48px;
+  font-weight: 800;
+  color: #ffffff;
+  margin-bottom: 16px;
+}
+
+.performance-header p {
+  font-size: 18px;
+  color: #888888;
+}
+
+.performance-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 32px;
+}
+
+.performance-card {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  padding: 32px;
+  display: flex;
+  align-items: flex-start;
+  gap: 24px;
+  transition: all 0.3s ease;
+}
+
+.performance-card:hover {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: #3b82f6;
+  transform: translateY(-4px);
+}
+
+.performance-card.primary {
+  border-color: #3b82f6;
+  background: rgba(59, 130, 246, 0.05);
+}
+
+.performance-icon {
+  flex-shrink: 0;
+  width: 48px;
+  height: 48px;
+  background: rgba(59, 130, 246, 0.1);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #3b82f6;
+}
+
+.performance-data {
+  flex: 1;
+}
+
+.performance-value {
+  font-size: 36px;
+  font-weight: 800;
+  color: #ffffff;
+  font-family: 'JetBrains Mono', monospace;
+  margin-bottom: 8px;
+}
+
+.performance-label {
+  font-size: 16px;
+  color: #3b82f6;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.performance-desc {
+  font-size: 14px;
+  color: #888888;
+  line-height: 1.5;
+}
+
+/* Tesla Specifications */
+.tesla-specs {
+  padding: 120px 0;
+  background: #0a0a0a;
+}
+
+.specs-header {
+  text-align: center;
+  margin-bottom: 80px;
+}
+
+.specs-header h2 {
+  font-size: 48px;
+  font-weight: 800;
+  color: #ffffff;
+  margin-bottom: 32px;
+}
+
+.tesla-spec-tabs {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  background: rgba(255, 255, 255, 0.05);
+  padding: 8px;
+  border-radius: 8px;
+  display: inline-flex;
+}
+
+.tesla-tab {
+  background: none;
+  border: none;
+  color: #888888;
+  padding: 12px 24px;
+  border-radius: 4px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.tesla-tab.active {
+  background: #3b82f6;
+  color: #ffffff;
+}
+
+.tesla-tab:hover:not(.active) {
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.tesla-specs-content {
+  margin-top: 48px;
+}
+
+.tesla-specs-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  gap: 32px;
+}
+
+.tesla-spec-section {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  padding: 32px;
+}
+
+.spec-section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.spec-section-header h3 {
+  font-size: 20px;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+.nanotech-badge {
+  background: #10b981;
+  color: #ffffff;
+  padding: 4px 12px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.nanotech-badge.expert {
+  background: #3b82f6;
+}
+
+.spec-items {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.tesla-spec-item {
+  display: flex;
+  justify-content: between;
+  align-items: center;
+  padding: 16px;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+  transition: all 0.2s ease;
+}
+
+.tesla-spec-item:hover {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: #3b82f6;
+}
+
+.spec-key {
+  font-size: 14px;
+  color: #888888;
+  flex: 1;
+}
+
+.spec-value {
+  font-size: 14px;
+  color: #ffffff;
+  font-weight: 600;
+  font-family: 'JetBrains Mono', monospace;
+}
+
+/* Equipment Grid */
+.tesla-equipment-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  gap: 32px;
+}
+
+.equipment-category {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  padding: 32px;
+}
+
+.equipment-category h3 {
+  font-size: 20px;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 24px;
+}
+
+.equipment-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.tesla-equipment-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 16px;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+  transition: all 0.2s ease;
+}
+
+.tesla-equipment-item:hover {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: #3b82f6;
+}
+
+.equipment-name {
+  font-size: 14px;
+  color: #ffffff;
+  font-weight: 500;
+}
+
+.equipment-status {
+  font-size: 12px;
+  color: #10b981;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+/* Software Grid */
+.tesla-software-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  gap: 32px;
+}
+
+.software-category {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  padding: 32px;
+}
+
+.software-category h3 {
+  font-size: 20px;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 24px;
+}
+
+.software-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.tesla-software-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 16px;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+  transition: all 0.2s ease;
+}
+
+.tesla-software-item:hover {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: #3b82f6;
+}
+
+.software-name {
+  font-size: 14px;
+  color: #ffffff;
+  font-weight: 500;
+}
+
+.software-level {
+  font-size: 12px;
+  color: #3b82f6;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+/* Nanotech Focus Grid */
+.nanotech-focus-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 32px;
+}
+
+.nanotech-category {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  padding: 32px;
+  transition: all 0.3s ease;
+}
+
+.nanotech-category:hover {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: #3b82f6;
+  transform: translateY(-4px);
+}
+
+.nanotech-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.nanotech-header svg {
+  color: #3b82f6;
+}
+
+.nanotech-header h3 {
+  font-size: 20px;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+.nanotech-specs {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.nano-spec {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px;
+  background: rgba(59, 130, 246, 0.05);
+  border: 1px solid rgba(59, 130, 246, 0.1);
+  border-radius: 4px;
+}
+
+.nano-label {
+  font-size: 14px;
+  color: #888888;
+}
+
+.nano-value {
+  font-size: 14px;
+  color: #3b82f6;
+  font-weight: 600;
+  font-family: 'JetBrains Mono', monospace;
+}
+
+/* Experience Section */
+.tesla-experience {
+  padding: 120px 0;
+  background: #000000;
+}
+
+.tesla-experience h2 {
+  font-size: 48px;
+  font-weight: 800;
+  color: #ffffff;
+  text-align: center;
+  margin-bottom: 80px;
+}
+
+.experience-timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.tesla-experience-card {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  gap: 32px;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  padding: 32px;
+  transition: all 0.3s ease;
+}
+
+.tesla-experience-card:hover {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: #3b82f6;
+  transform: translateY(-4px);
+}
+
+.exp-left {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.exp-period {
+  font-size: 14px;
+  color: #3b82f6;
+  font-weight: 600;
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.exp-category {
+  font-size: 12px;
+  color: #888888;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.exp-right h3 {
+  font-size: 20px;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 4px;
+}
+
+.exp-right h4 {
+  font-size: 16px;
+  color: #3b82f6;
+  margin-bottom: 24px;
+}
+
+.exp-metrics {
+  display: flex;
+  gap: 24px;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+}
+
+.exp-metric {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.exp-metric .metric-value {
+  font-size: 24px;
+  font-weight: 800;
+  color: #3b82f6;
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.exp-metric .metric-desc {
+  font-size: 12px;
+  color: #888888;
+  max-width: 80px;
+}
+
+.exp-achievements {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.achievement-bullet {
+  font-size: 14px;
+  color: #888888;
+  line-height: 1.5;
+}
+
+/* Projects Section */
+.tesla-projects {
+  padding: 120px 0;
+  background: #0a0a0a;
+}
+
+.tesla-projects h2 {
+  font-size: 48px;
+  font-weight: 800;
+  color: #ffffff;
+  text-align: center;
+  margin-bottom: 80px;
+}
+
+.projects-tesla-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  gap: 32px;
+}
+
+.tesla-project-card {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  overflow: hidden;
+  transition: all 0.3s ease;
   position: relative;
+}
+
+.tesla-project-card:hover {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: #3b82f6;
+  transform: translateY(-4px);
+}
+
+.tesla-project-card.featured {
+  border-color: #3b82f6;
+  background: rgba(59, 130, 246, 0.05);
+}
+
+.featured-label {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: #3b82f6;
+  color: #ffffff;
+  padding: 8px 12px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 600;
+  z-index: 2;
+}
+
+.project-visual {
+  position: relative;
+  height: 200px;
   overflow: hidden;
 }
 
-.badge-pulse {
+.project-visual img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(0.7);
+}
+
+.project-overlay {
+  position: absolute;
+  bottom: 16px;
+  left: 16px;
+}
+
+.project-category {
+  background: rgba(0, 0, 0, 0.8);
+  color: #3b82f6;
+  padding: 8px 12px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.project-content {
+  padding: 24px;
+}
+
+.project-content h3 {
+  font-size: 18px;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 12px;
+}
+
+.project-content p {
+  font-size: 14px;
+  color: #888888;
+  line-height: 1.5;
+  margin-bottom: 16px;
+}
+
+.project-specs {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.project-spec {
+  font-size: 12px;
+  color: #888888;
+}
+
+.project-tech {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.tech-pill {
+  background: rgba(59, 130, 246, 0.1);
+  color: #3b82f6;
+  padding: 4px 8px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.project-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: #3b82f6;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+
+.project-cta:hover {
+  transform: translateX(4px);
+}
+
+/* Tesla Footer */
+.tesla-footer {
+  padding: 80px 0 40px 0;
+  background: #0a0a0a;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.footer-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  align-items: center;
+}
+
+.footer-left h3 {
+  font-size: 24px;
+  font-weight: 800;
+  color: #ffffff;
+  font-family: 'JetBrains Mono', monospace;
+  margin-bottom: 8px;
+}
+
+.footer-left p {
+  font-size: 16px;
+  color: #888888;
+  margin-bottom: 16px;
+}
+
+.footer-status {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.status-dot {
   width: 8px;
   height: 8px;
-  background: #667eea;
+  background: #10b981;
   border-radius: 50%;
   animation: pulse 2s infinite;
 }
 
 @keyframes pulse {
-  0% { transform: scale(1); opacity: 1; }
-  50% { transform: scale(1.2); opacity: 0.7; }
-  100% { transform: scale(1); opacity: 1; }
+  0% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7); }
+  70% { box-shadow: 0 0 0 10px rgba(16, 185, 129, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
 }
 
-.hero-title {
-  font-size: 4.5rem;
-  font-weight: 800;
-  line-height: 1.1;
-  color: #1a1a1a;
-  margin-bottom: 2rem;
-  font-family: 'Inter', sans-serif;
-}
-
-.hero-accent {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  background-clip: text;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  display: inline-block;
-}
-
-.hero-description {
-  font-size: 1.35rem;
-  color: #64748b;
-  line-height: 1.7;
-  margin-bottom: 3rem;
-  max-width: 600px;
-  font-weight: 400;
-}
-
-/* Hero Metrics */
-.hero-metrics {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-  gap: 1.5rem;
-  margin-bottom: 3rem;
-}
-
-.metric-card {
-  background: rgba(255, 255, 255, 0.8);
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(0, 0, 0, 0.08);
-  border-radius: 12px;
-  padding: 1.5rem;
-  text-align: center;
-  transition: all 0.3s ease;
-}
-
-.metric-card:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
-  border-color: #667eea;
-}
-
-.metric-value {
-  font-size: 2.25rem;
-  font-weight: 800;
-  color: #1a1a1a;
-  font-family: 'JetBrains Mono', monospace;
-  margin-bottom: 0.5rem;
-}
-
-.metric-label {
-  font-size: 0.9rem;
-  color: #667eea;
-  font-weight: 600;
-  margin-bottom: 0.25rem;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-}
-
-.metric-description {
-  font-size: 0.8rem;
-  color: #64748b;
-  line-height: 1.4;
-}
-
-/* Hero CTA */
-.hero-cta {
-  display: flex;
-  align-items: center;
-  gap: 1.5rem;
-  flex-wrap: wrap;
-}
-
-.cta-primary {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.75rem;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  color: white;
-  padding: 1rem 2rem;
-  border-radius: 10px;
-  text-decoration: none;
-  font-weight: 600;
-  font-size: 1rem;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
-}
-
-.cta-primary:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
-}
-
-.cta-secondary {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  color: #667eea;
-  text-decoration: none;
-  font-weight: 600;
-  font-size: 1rem;
-  padding: 1rem 0;
-  position: relative;
-}
-
-.cta-secondary::after {
-  content: '';
-  position: absolute;
-  bottom: 0.75rem;
-  left: 0;
-  width: 0;
-  height: 2px;
-  background: #667eea;
-  transition: width 0.4s ease;
-}
-
-.cta-secondary:hover::after {
-  width: 100%;
-}
-
-/* Portfolio Carousel Section */
-.portfolio-carousel-section {
-  padding: 8rem 2rem;
-  background: linear-gradient(135deg, #f8fafc 0%, #ffffff 100%);
-}
-
-.carousel-container {
-  max-width: 1400px;
-  margin: 0 auto;
-}
-
-.carousel-header {
-  text-align: center;
-  margin-bottom: 4rem;
-}
-
-.carousel-header h2 {
-  font-size: 3rem;
-  font-weight: 800;
-  color: #1a1a1a;
-  margin-bottom: 1rem;
-}
-
-.carousel-header p {
-  font-size: 1.2rem;
-  color: #64748b;
-  max-width: 600px;
-  margin: 0 auto;
-}
-
-.carousel-wrapper {
-  position: relative;
-  display: flex;
-  align-items: center;
-  gap: 2rem;
-}
-
-.carousel-btn {
-  background: rgba(255, 255, 255, 0.9);
-  border: 1px solid rgba(0, 0, 0, 0.1);
-  border-radius: 50px;
-  width: 60px;
-  height: 60px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  backdrop-filter: blur(10px);
-  z-index: 10;
-}
-
-.carousel-btn:hover {
-  background: #667eea;
-  color: white;
-  transform: scale(1.1);
-  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
-}
-
-.carousel-content {
-  flex: 1;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 3rem;
-  align-items: center;
-}
-
-.carousel-image-container {
-  position: relative;
-  border-radius: 16px;
-  overflow: hidden;
-  aspect-ratio: 16/10;
-}
-
-.carousel-image {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform 0.6s ease;
-}
-
-.carousel-image-container:hover .carousel-image {
-  transform: scale(1.05);
-}
-
-.image-overlay {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
-  padding: 2rem;
-  color: white;
-  transform: translateY(100%);
-  transition: transform 0.4s ease;
-}
-
-.carousel-image-container:hover .image-overlay {
-  transform: translateY(0);
-}
-
-.image-info h3 {
-  font-size: 1.5rem;
-  font-weight: 700;
-  margin-bottom: 0.5rem;
-}
-
-.image-info p {
-  font-size: 0.9rem;
-  opacity: 0.9;
-  margin-bottom: 1rem;
-}
-
-.tech-badges {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-}
-
-.tech-badge {
-  background: rgba(255, 255, 255, 0.2);
-  color: white;
-  padding: 0.25rem 0.75rem;
-  border-radius: 50px;
-  font-size: 0.8rem;
-  font-weight: 500;
-}
-
-.carousel-details {
-  padding: 2rem;
-}
-
-.detail-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  margin-bottom: 1.5rem;
-}
-
-.detail-header h3 {
-  font-size: 1.75rem;
-  font-weight: 700;
-  color: #1a1a1a;
-}
-
-.detail-category {
-  background: #667eea;
-  color: white;
-  padding: 0.5rem 1rem;
-  border-radius: 50px;
-  font-size: 0.8rem;
+.footer-status span {
+  font-size: 14px;
+  color: #10b981;
   font-weight: 600;
 }
 
-.detail-description {
-  font-size: 1.1rem;
-  color: #64748b;
-  line-height: 1.7;
-  margin-bottom: 2rem;
+.footer-right {
+  text-align: right;
 }
 
-.detail-specs h4 {
-  font-size: 1.1rem;
-  font-weight: 600;
-  color: #1a1a1a;
-  margin-bottom: 1rem;
-}
-
-.detail-specs ul {
-  list-style: none;
-  margin-bottom: 2rem;
-}
-
-.detail-specs li {
-  padding: 0.5rem 0;
-  border-bottom: 1px solid #f1f5f9;
-  color: #64748b;
-  position: relative;
-  padding-left: 1.5rem;
-}
-
-.detail-specs li::before {
-  content: '→';
-  position: absolute;
-  left: 0;
-  color: #667eea;
-  font-weight: 600;
-}
-
-.detail-impact h4 {
-  font-size: 1.1rem;
-  font-weight: 600;
-  color: #1a1a1a;
-  margin-bottom: 1rem;
-}
-
-.impact-metrics {
-  display: flex;
-  gap: 1.5rem;
-  flex-wrap: wrap;
-}
-
-.impact-item {
+.footer-specs {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  padding: 1rem;
-  background: #f8fafc;
-  border-radius: 10px;
-  min-width: 100px;
+  gap: 16px;
 }
 
-.impact-value {
-  font-size: 1.5rem;
+.footer-spec {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.footer-spec .spec-value {
+  font-size: 16px;
   font-weight: 700;
-  color: #667eea;
+  color: #ffffff;
   font-family: 'JetBrains Mono', monospace;
 }
 
-.impact-label {
-  font-size: 0.8rem;
-  color: #64748b;
-  text-align: center;
-  font-weight: 500;
+.footer-spec .spec-label {
+  font-size: 12px;
+  color: #888888;
+  text-transform: uppercase;
 }
 
-.carousel-indicators {
-  display: flex;
-  justify-content: center;
-  gap: 0.75rem;
-  margin-top: 3rem;
+/* PRISM Tesla Styles */
+.prism-tesla {
+  min-height: 100vh;
+  background: #000000;
+  color: #ffffff;
+  padding-top: 60px;
 }
 
-.indicator {
-  width: 12px;
-  height: 12px;
-  border-radius: 50%;
-  border: none;
-  background: #e2e8f0;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-.indicator.active {
-  background: #667eea;
-  transform: scale(1.3);
-}
-
-/* Enhanced Specifications Dashboard */
-.specs-dashboard {
-  padding: 8rem 2rem;
-  background: #ffffff;
-}
-
-.specs-container {
-  max-width: 1400px;
-  margin: 0 auto;
-}
-
-.specs-header {
-  text-align: center;
-  margin-bottom: 4rem;
-}
-
-.specs-header h2 {
-  font-size: 3rem;
-  font-weight: 800;
-  color: #1a1a1a;
-  margin-bottom: 1rem;
-}
-
-.specs-header p {
-  font-size: 1.2rem;
-  color: #64748b;
-  max-width: 700px;
-  margin: 0 auto 3rem auto;
-}
-
-.spec-tabs {
-  display: flex;
-  justify-content: center;
-  gap: 1rem;
-  background: #f8fafc;
-  padding: 0.75rem;
-  border-radius: 16px;
-  display: inline-flex;
-  border: 1px solid #e2e8f0;
-}
-
-.spec-tab {
-  padding: 1rem 2rem;
-  background: none;
-  border: none;
-  border-radius: 12px;
-  font-weight: 600;
-  color: #64748b;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  font-size: 0.95rem;
-}
-
-.spec-tab.active {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  color: white;
-  box-shadow: 0 2px 8px rgba(102, 126, 234, 0.3);
-}
-
-.spec-tab:hover:not(.active) {
-  color: #1a1a1a;
-  background: rgba(255, 255, 255, 0.8);
-}
-
-/* Enhanced Spec Grid */
-.spec-grid-enhanced {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-  gap: 2rem;
-  margin-top: 4rem;
-}
-
-.spec-section-card {
-  background: #ffffff;
-  border: 1px solid #e5e7eb;
-  border-radius: 16px;
-  padding: 2rem;
-  transition: all 0.3s ease;
+.prism-tesla-hero {
+  min-height: 100vh;
   position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #000000;
   overflow: hidden;
 }
 
-.spec-section-card::before {
-  content: '';
+.prism-hero-bg {
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
+  bottom: 0;
+  z-index: 1;
+}
+
+/* Nanotech Visualization */
+.nanotech-visualization {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.atom-grid {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+.atom-node {
+  position: absolute;
+  width: 4px;
   height: 4px;
-  background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+  background: #3b82f6;
+  border-radius: 50%;
+  box-shadow: 0 0 10px #3b82f6;
+  animation: atom-pulse 3s infinite ease-in-out;
 }
 
-.spec-section-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+.atom-node:nth-child(1) {
+  top: 20%;
+  left: 15%;
+  animation-delay: 0s;
 }
 
-.spec-section-card.full-width {
-  grid-column: 1 / -1;
+.atom-node:nth-child(2) {
+  top: 30%;
+  left: 85%;
+  animation-delay: 0.6s;
+}
+
+.atom-node:nth-child(3) {
+  top: 70%;
+  left: 20%;
+  animation-delay: 1.2s;
+}
+
+.atom-node:nth-child(4) {
+  top: 80%;
+  left: 75%;
+  animation-delay: 1.8s;
+}
+
+.atom-node:nth-child(5) {
+  top: 50%;
+  left: 50%;
+  animation-delay: 2.4s;
+}
+
+@keyframes atom-pulse {
+  0%, 100% { transform: scale(1); opacity: 0.6; }
+  50% { transform: scale(1.5); opacity: 1; }
+}
+
+.laser-beam {
+  position: absolute;
+  top: 40%;
+  left: 10%;
+  width: 80%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent 0%, #3b82f6 20%, #8b5cf6 80%, transparent 100%);
+  animation: laser-scan 4s infinite ease-in-out;
+}
+
+@keyframes laser-scan {
+  0%, 100% { opacity: 0.3; transform: scaleX(0.5); }
+  50% { opacity: 1; transform: scaleX(1); }
+}
+
+.optical-lens {
+  position: absolute;
+  top: 45%;
+  right: 15%;
+  width: 60px;
+  height: 60px;
+  border: 2px solid #3b82f6;
+  border-radius: 50%;
+  animation: lens-focus 5s infinite ease-in-out;
+}
+
+@keyframes lens-focus {
+  0%, 100% { transform: scale(1); border-width: 2px; }
+  50% { transform: scale(1.2); border-width: 1px; }
+}
+
+.prism-tesla-content {
+  position: relative;
+  z-index: 2;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+  text-align: center;
+}
+
+.prism-tesla-header {
+  margin-bottom: 48px;
+}
+
+.prism-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(59, 130, 246, 0.1);
+  border: 1px solid rgba(59, 130, 246, 0.3);
+  color: #3b82f6;
+  padding: 8px 16px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 32px;
+}
+
+.prism-tesla-title {
+  margin-bottom: 24px;
+}
+
+.prism-acronym {
+  display: block;
+  font-size: clamp(64px, 12vw, 120px);
+  font-weight: 900;
+  color: #ffffff;
+  font-family: 'JetBrains Mono', monospace;
+  letter-spacing: 8px;
+  margin-bottom: 8px;
+  text-shadow: 0 0 20px rgba(59, 130, 246, 0.3);
+}
+
+.prism-subtitle {
+  display: block;
+  font-size: 18px;
+  color: #888888;
+  font-weight: 400;
+  letter-spacing: 2px;
+}
+
+.prism-tesla-desc {
+  font-size: 16px;
+  color: #888888;
+  max-width: 700px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+/* PRISM Performance Grid */
+.prism-performance-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 24px;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.prism-perf-card {
+  text-align: center;
+  padding: 24px;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+.prism-perf-card:hover {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: #3b82f6;
+  transform: translateY(-4px);
+}
+
+.prism-perf-card.primary {
+  border-color: #3b82f6;
+  background: rgba(59, 130, 246, 0.05);
+}
+
+.perf-value {
+  font-size: 28px;
+  font-weight: 800;
+  color: #ffffff;
+  font-family: 'JetBrains Mono', monospace;
+  margin-bottom: 8px;
+}
+
+.perf-label {
+  font-size: 12px;
+  color: #3b82f6;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 4px;
+}
+
+.perf-desc {
+  font-size: 11px;
+  color: #888888;
+}
+
+/* PRISM Architecture Tesla */
+.prism-architecture-tesla {
+  padding: 120px 0;
+  background: #0a0a0a;
+}
+
+.arch-header {
+  text-align: center;
+  margin-bottom: 80px;
+}
+
+.arch-header h2 {
+  font-size: 48px;
+  font-weight: 800;
+  color: #ffffff;
+  margin-bottom: 16px;
+}
+
+.arch-header p {
+  font-size: 18px;
+  color: #888888;
+}
+
+.architecture-tesla-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  align-items: center;
+}
+
+.arch-visual {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  padding: 32px;
+  position: relative;
+  overflow: hidden;
+}
+
+.system-diagram {
+  position: relative;
+  height: 400px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.axis-layer {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+  padding: 16px;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.axis-layer:hover {
+  background: rgba(255, 255, 255, 0.1);
+  transform: translateX(8px);
+}
+
+.z-layer {
+  border-left: 4px solid #ef4444;
+}
+
+.y-layer {
+  border-left: 4px solid #10b981;
+}
+
+.x-layer {
+  border-left: 4px solid #3b82f6;
+}
+
+.axis-info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.axis-name {
+  font-size: 16px;
+  font-weight: 700;
+  color: #ffffff;
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.axis-desc {
+  font-size: 12px;
+  color: #888888;
+}
+
+.optical-path-viz {
+  position: absolute;
+  right: 24px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+.beam-line {
+  width: 40px;
+  height: 2px;
+  background: #3b82f6;
+  border-radius: 1px;
+  animation: beam-flow 2s infinite ease-in-out;
+}
+
+.beam-line.incident {
+  transform: rotate(-30deg);
+}
+
+.beam-line.reflected {
+  transform: rotate(30deg);
+}
+
+.mirror-point,
+.objective-point {
+  width: 12px;
+  height: 12px;
+  background: #8b5cf6;
+  border-radius: 50%;
+  border: 2px solid #ffffff;
+}
+
+.arch-specs {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.arch-spec-group h3 {
+  font-size: 20px;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 16px;
+}
+
+.arch-spec {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 16px;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+  margin-bottom: 8px;
+}
+
+.spec-point {
+  font-size: 14px;
+  color: #ffffff;
+  font-weight: 500;
+}
+
+.spec-detail {
+  font-size: 12px;
+  color: #3b82f6;
+  font-family: 'JetBrains Mono', monospace;
+}
+
+/* PRISM Specs Tesla */
+.prism-specs-tesla {
+  padding: 120px 0;
+  background: #000000;
+}
+
+.specs-tesla-header {
+  text-align: center;
+  margin-bottom: 80px;
+}
+
+.specs-tesla-header h2 {
+  font-size: 48px;
+  font-weight: 800;
+  color: #ffffff;
+  margin-bottom: 32px;
+}
+
+.tesla-spec-nav {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  background: rgba(255, 255, 255, 0.05);
+  padding: 8px;
+  border-radius: 8px;
+  display: inline-flex;
+}
+
+.tesla-spec-tab {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: none;
+  border: none;
+  color: #888888;
+  padding: 12px 20px;
+  border-radius: 4px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.tesla-spec-tab.active {
+  background: #3b82f6;
+  color: #ffffff;
+}
+
+.tesla-spec-tab:hover:not(.active) {
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.tesla-specs-content {
+  margin-top: 48px;
+}
+
+.tesla-spec-section {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.tesla-spec-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 24px;
+}
+
+.tesla-spec-card {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  padding: 24px;
+  transition: all 0.3s ease;
+}
+
+.tesla-spec-card:hover {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: #3b82f6;
+  transform: translateY(-4px);
 }
 
 .spec-card-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 2rem;
+  margin-bottom: 16px;
 }
 
-.spec-card-header h3 {
-  font-size: 1.5rem;
-  font-weight: 700;
-  color: #1a1a1a;
+.spec-label {
+  font-size: 12px;
+  color: #3b82f6;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
 }
 
-.spec-status-badge {
+.spec-status {
   background: #10b981;
-  color: white;
-  padding: 0.4rem 1rem;
-  border-radius: 50px;
-  font-size: 0.8rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-}
-
-.spec-status-badge.expert {
-  background: #667eea;
-}
-
-.spec-items-enhanced {
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
-}
-
-.spec-item-enhanced {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-  padding: 1.5rem;
-  background: #f8fafc;
-  border-radius: 12px;
-  border-left: 4px solid #e2e8f0;
-  transition: all 0.3s ease;
-}
-
-.spec-item-enhanced:hover {
-  border-left-color: #667eea;
-  transform: translateX(5px);
-  background: #f1f5f9;
-}
-
-.spec-label-enhanced {
-  font-size: 0.9rem;
-  font-weight: 600;
-  color: #667eea;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-}
-
-.spec-value-enhanced {
-  font-size: 1.1rem;
-  font-weight: 700;
-  color: #1a1a1a;
-  font-family: 'JetBrains Mono', monospace;
-}
-
-.spec-detail {
-  font-size: 0.9rem;
-  color: #64748b;
-  font-style: italic;
-}
-
-/* Innovation Timeline */
-.innovation-timeline {
-  display: flex;
-  align-items: center;
-  gap: 2rem;
-  position: relative;
-  padding: 2rem 0;
-}
-
-.innovation-timeline::before {
-  content: '';
-  position: absolute;
-  top: 50%;
-  left: 0;
-  right: 0;
-  height: 2px;
-  background: linear-gradient(90deg, #667eea 0%, #764ba2 50%, #e2e8f0 100%);
-  z-index: 1;
-}
-
-.timeline-item {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  flex: 1;
-  position: relative;
-  z-index: 2;
-}
-
-.timeline-marker {
-  width: 20px;
-  height: 20px;
-  border-radius: 50%;
-  background: #e2e8f0;
-  border: 3px solid #ffffff;
-  margin-bottom: 1rem;
-  transition: all 0.3s ease;
-}
-
-.timeline-marker.active {
-  background: #667eea;
-  box-shadow: 0 0 0 4px rgba(102, 126, 234, 0.2);
-}
-
-.timeline-content {
-  background: #ffffff;
-  padding: 1rem;
-  border-radius: 10px;
-  border: 1px solid #e5e7eb;
-  min-width: 150px;
-}
-
-.timeline-date {
-  font-size: 0.8rem;
-  color: #667eea;
-  font-weight: 600;
-  font-family: 'JetBrains Mono', monospace;
-}
-
-.timeline-content h4 {
-  font-size: 0.95rem;
-  font-weight: 600;
-  color: #1a1a1a;
-  margin: 0.5rem 0;
-}
-
-.timeline-content p {
-  font-size: 0.8rem;
-  color: #64748b;
-}
-
-/* Equipment Grid */
-.equipment-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
-  gap: 3rem;
-  margin-top: 4rem;
-}
-
-.equipment-category {
-  background: #ffffff;
-  border-radius: 16px;
-  overflow: hidden;
-  border: 1px solid #e5e7eb;
-  transition: all 0.3s ease;
-}
-
-.equipment-category:hover {
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
-  transform: translateY(-3px);
-}
-
-.category-header {
-  position: relative;
-  height: 200px;
-  overflow: hidden;
-}
-
-.category-image {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  filter: brightness(0.7);
-}
-
-.category-header h3 {
-  position: absolute;
-  bottom: 1.5rem;
-  left: 1.5rem;
-  color: white;
-  font-size: 1.5rem;
-  font-weight: 700;
-  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
-}
-
-.equipment-items {
-  padding: 2rem;
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-}
-
-.equipment-item {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  padding: 1rem;
-  background: #f8fafc;
-  border-radius: 10px;
-  transition: all 0.3s ease;
-}
-
-.equipment-item:hover {
-  background: #f1f5f9;
-  transform: translateX(5px);
-}
-
-.equipment-icon {
-  width: 40px;
-  height: 40px;
-  border-radius: 8px;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: white;
-  font-weight: 600;
-}
-
-.equipment-details {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  gap: 0.25rem;
-}
-
-.equipment-name {
-  font-weight: 600;
-  color: #1a1a1a;
-  font-size: 0.95rem;
-}
-
-.equipment-status {
-  font-size: 0.8rem;
-  color: #667eea;
-  font-weight: 500;
-}
-
-.proficiency-bar {
-  width: 100px;
-  height: 6px;
-  background: #e2e8f0;
-  border-radius: 3px;
-  overflow: hidden;
-}
-
-.proficiency-fill {
-  height: 100%;
-  background: linear-gradient(90deg, #10b981 0%, #059669 100%);
-  border-radius: 3px;
-  transition: width 0.6s ease;
-}
-
-.proficiency-fill.expert {
-  width: 95%;
-}
-
-/* Software Grid */
-.software-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
-  gap: 3rem;
-  margin-top: 4rem;
-}
-
-.software-category {
-  background: #ffffff;
-  border-radius: 16px;
-  overflow: hidden;
-  border: 1px solid #e5e7eb;
-  transition: all 0.3s ease;
-}
-
-.software-category:hover {
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
-  transform: translateY(-3px);
-}
-
-.software-stack {
-  padding: 2rem;
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-}
-
-.software-item {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 1rem;
-  background: #f8fafc;
-  border-radius: 10px;
-  transition: all 0.3s ease;
-}
-
-.software-item:hover {
-  background: #f1f5f9;
-  transform: translateX(5px);
-}
-
-.software-info {
-  display: flex;
-  flex-direction: column;
-  gap: 0.25rem;
-}
-
-.software-name {
-  font-weight: 600;
-  color: #1a1a1a;
-  font-size: 0.95rem;
-}
-
-.version-info {
-  font-size: 0.8rem;
-  color: #10b981;
-  font-weight: 500;
-}
-
-.usage-indicator {
-  width: 80px;
-  height: 6px;
-  background: #e2e8f0;
-  border-radius: 3px;
-  overflow: hidden;
-}
-
-.usage-fill {
-  height: 100%;
-  background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
-  border-radius: 3px;
-  transition: width 0.6s ease;
-}
-
-.usage-fill.high {
-  width: 90%;
-}
-
-/* Research Grid */
-.research-grid {
-  margin-top: 4rem;
-}
-
-.research-focus {
-  background: #ffffff;
-  border-radius: 16px;
-  overflow: hidden;
-  border: 1px solid #e5e7eb;
-}
-
-.research-header {
-  position: relative;
-  height: 300px;
-  overflow: hidden;
-}
-
-.research-image {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  filter: brightness(0.6);
-}
-
-.research-header h3 {
-  position: absolute;
-  bottom: 2rem;
-  left: 2rem;
-  color: white;
-  font-size: 2rem;
-  font-weight: 700;
-  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
-}
-
-.research-areas {
-  padding: 3rem;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 2rem;
-}
-
-.research-area {
-  padding: 2rem;
-  background: #f8fafc;
-  border-radius: 12px;
-  border-left: 4px solid #667eea;
-  transition: all 0.3s ease;
-}
-
-.research-area:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
-}
-
-.research-area h4 {
-  font-size: 1.2rem;
-  font-weight: 700;
-  color: #1a1a1a;
-  margin-bottom: 1rem;
-}
-
-.research-area p {
-  color: #64748b;
-  line-height: 1.6;
-  margin-bottom: 1.5rem;
-}
-
-.research-metrics {
-  display: flex;
-  gap: 1rem;
-  flex-wrap: wrap;
-}
-
-.research-metrics span {
-  background: #667eea;
-  color: white;
-  padding: 0.4rem 0.8rem;
-  border-radius: 50px;
-  font-size: 0.8rem;
-  font-weight: 500;
-  font-family: 'JetBrains Mono', monospace;
-}
-
-/* Enhanced Experience Section */
-.experience-section-enhanced {
-  padding: 8rem 2rem;
-  background: #f8fafc;
-}
-
-.experience-container {
-  max-width: 1400px;
-  margin: 0 auto;
-}
-
-.experience-container h2 {
-  font-size: 3rem;
-  font-weight: 800;
-  color: #1a1a1a;
-  text-align: center;
-  margin-bottom: 1rem;
-}
-
-.section-subtitle {
-  font-size: 1.2rem;
-  color: #64748b;
-  text-align: center;
-  margin-bottom: 4rem;
-}
-
-.experience-timeline-enhanced {
-  display: flex;
-  flex-direction: column;
-  gap: 3rem;
-}
-
-.experience-card-enhanced {
-  background: #ffffff;
-  border-radius: 20px;
-  overflow: hidden;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
-  border: 1px solid #e5e7eb;
-  transition: all 0.4s ease;
-  display: grid;
-  grid-template-columns: 400px 1fr;
-  min-height: 300px;
-}
-
-.experience-card-enhanced:hover {
-  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
-  transform: translateY(-5px);
-}
-
-.exp-visual {
-  position: relative;
-  overflow: hidden;
-}
-
-.exp-image {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  filter: brightness(0.8);
-  transition: transform 0.4s ease;
-}
-
-.experience-card-enhanced:hover .exp-image {
-  transform: scale(1.05);
-}
-
-.exp-overlay {
-  position: absolute;
-  top: 1.5rem;
-  left: 1.5rem;
-}
-
-.exp-category {
-  background: rgba(102, 126, 234, 0.9);
-  color: white;
-  padding: 0.5rem 1rem;
-  border-radius: 50px;
-  font-size: 0.8rem;
-  font-weight: 600;
-  backdrop-filter: blur(10px);
-}
-
-.exp-content {
-  padding: 2.5rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-
-.exp-header-enhanced {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  margin-bottom: 2rem;
-}
-
-.exp-title-group h3 {
-  font-size: 1.5rem;
-  font-weight: 700;
-  color: #1a1a1a;
-  margin-bottom: 0.5rem;
-}
-
-.exp-title-group h4 {
-  font-size: 1.1rem;
-  font-weight: 600;
-  color: #667eea;
-}
-
-.exp-period-enhanced {
-  background: #f1f5f9;
-  color: #475569;
-  padding: 0.6rem 1.2rem;
-  border-radius: 8px;
-  font-size: 0.9rem;
-  font-weight: 600;
-  font-family: 'JetBrains Mono', monospace;
-}
-
-.exp-impact-summary {
-  margin-bottom: 2rem;
-}
-
-.impact-highlights {
-  display: flex;
-  gap: 2rem;
-  flex-wrap: wrap;
-}
-
-.impact-metric {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-}
-
-.impact-metric .metric-value {
-  font-size: 2rem;
-  font-weight: 800;
-  color: #667eea;
-  font-family: 'JetBrains Mono', monospace;
-}
-
-.impact-metric .metric-description {
-  font-size: 0.8rem;
-  color: #64748b;
-  font-weight: 500;
-  max-width: 100px;
-}
-
-.exp-achievements-enhanced {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-}
-
-.achievement-item-enhanced {
-  display: flex;
-  align-items: flex-start;
-  gap: 1rem;
-  padding: 1rem;
-  background: #f8fafc;
-  border-radius: 10px;
-  border-left: 3px solid #e2e8f0;
-  transition: all 0.3s ease;
-}
-
-.achievement-item-enhanced:hover {
-  border-left-color: #667eea;
-  background: #f1f5f9;
-  transform: translateX(5px);
-}
-
-.achievement-icon-enhanced {
-  flex-shrink: 0;
-  width: 36px;
-  height: 36px;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  border-radius: 8px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: white;
-}
-
-/* Enhanced Projects Section */
-.projects-section-enhanced {
-  padding: 8rem 2rem;
-  background: #ffffff;
-}
-
-.projects-container {
-  max-width: 1400px;
-  margin: 0 auto;
-}
-
-.projects-container h2 {
-  font-size: 3rem;
-  font-weight: 800;
-  color: #1a1a1a;
-  text-align: center;
-  margin-bottom: 1rem;
-}
-
-.projects-grid-enhanced {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
-  gap: 3rem;
-  margin-top: 4rem;
-}
-
-.project-card-enhanced {
-  background: #ffffff;
-  border-radius: 20px;
-  overflow: hidden;
-  border: 1px solid #e5e7eb;
-  transition: all 0.4s ease;
-  position: relative;
-}
-
-.project-card-enhanced:hover {
-  box-shadow: 0 15px 50px rgba(0, 0, 0, 0.15);
-  transform: translateY(-8px);
-}
-
-.project-card-enhanced.featured {
-  border: 2px solid #667eea;
-  background: linear-gradient(135deg, #ffffff 0%, #f8faff 100%);
-}
-
-.project-image-container {
-  position: relative;
-  height: 250px;
-  overflow: hidden;
-}
-
-.project-image {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform 0.4s ease;
-  filter: brightness(0.9);
-}
-
-.project-card-enhanced:hover .project-image {
-  transform: scale(1.05);
-}
-
-.featured-badge-overlay {
-  position: absolute;
-  top: 1rem;
-  right: 1rem;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  color: white;
-  padding: 0.5rem 1rem;
-  border-radius: 50px;
-  font-size: 0.8rem;
-  font-weight: 600;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  backdrop-filter: blur(10px);
-}
-
-.project-overlay {
-  position: absolute;
-  bottom: 1rem;
-  left: 1rem;
-}
-
-.project-category-badge {
-  background: rgba(255, 255, 255, 0.9);
-  color: #667eea;
-  padding: 0.5rem 1rem;
-  border-radius: 50px;
-  font-size: 0.8rem;
-  font-weight: 600;
-  backdrop-filter: blur(10px);
-}
-
-.project-content-enhanced {
-  padding: 2.5rem;
-}
-
-.project-header-enhanced {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  margin-bottom: 1.5rem;
-}
-
-.project-header-enhanced h3 {
-  font-size: 1.4rem;
-  font-weight: 700;
-  color: #1a1a1a;
-  line-height: 1.3;
-}
-
-.project-links-enhanced {
-  display: flex;
-  gap: 0.75rem;
-  color: #64748b;
-}
-
-.project-links-enhanced svg {
-  cursor: pointer;
-  transition: all 0.2s ease;
-}
-
-.project-links-enhanced svg:hover {
-  color: #667eea;
-  transform: scale(1.1);
-}
-
-.project-description-enhanced {
-  color: #64748b;
-  line-height: 1.7;
-  margin-bottom: 2rem;
-  font-size: 1rem;
-}
-
-.project-specifications {
-  margin-bottom: 2rem;
-}
-
-.project-specifications h4 {
-  font-size: 1rem;
-  font-weight: 600;
-  color: #1a1a1a;
-  margin-bottom: 1rem;
-}
-
-.project-specifications ul {
-  list-style: none;
-}
-
-.project-specifications li {
-  padding: 0.5rem 0;
-  color: #64748b;
-  position: relative;
-  padding-left: 1.5rem;
-  border-bottom: 1px solid #f1f5f9;
-  font-size: 0.9rem;
-}
-
-.project-specifications li::before {
-  content: '▸';
-  position: absolute;
-  left: 0;
-  color: #667eea;
-  font-weight: 600;
-}
-
-.project-tech-enhanced {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-  margin-bottom: 2rem;
-}
-
-.tech-tag-enhanced {
-  background: #f1f5f9;
-  color: #475569;
-  padding: 0.4rem 0.8rem;
-  border-radius: 50px;
-  font-size: 0.8rem;
-  font-weight: 500;
-  border: 1px solid #e2e8f0;
-  transition: all 0.2s ease;
-}
-
-.tech-tag-enhanced:hover {
-  border-color: #667eea;
-  color: #667eea;
-  background: rgba(102, 126, 234, 0.05);
-}
-
-.project-detail-link-enhanced {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.75rem;
-  color: #667eea;
-  text-decoration: none;
-  font-weight: 600;
-  padding: 1rem 1.5rem;
-  background: rgba(102, 126, 234, 0.05);
-  border-radius: 10px;
-  border: 1px solid rgba(102, 126, 234, 0.2);
-  transition: all 0.3s ease;
-}
-
-.project-detail-link-enhanced:hover {
-  background: #667eea;
-  color: white;
-  transform: translateX(5px);
-  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
-}
-
-/* Enhanced Footer */
-.footer-enhanced {
-  background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
   color: #ffffff;
-  padding: 4rem 2rem 2rem 2rem;
+  padding: 4px 8px;
+  border-radius: 12px;
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
 }
 
-.footer-content-enhanced {
-  max-width: 1400px;
-  margin: 0 auto;
-}
-
-.footer-main {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 4rem;
-  margin-bottom: 3rem;
-}
-
-.footer-info h3 {
-  font-size: 2rem;
+.spec-value {
+  font-size: 18px;
   font-weight: 700;
-  margin-bottom: 0.5rem;
-  font-family: 'JetBrains Mono', monospace;
-}
-
-.footer-info p {
-  color: #94a3b8;
-  margin-bottom: 0.25rem;
-  font-size: 1.1rem;
-}
-
-.footer-specialization {
-  margin-top: 1.5rem;
-  padding: 1rem;
-  background: rgba(102, 126, 234, 0.1);
-  border-radius: 10px;
-  border-left: 4px solid #667eea;
-}
-
-.footer-specialization span {
-  color: #e2e8f0;
-  font-weight: 500;
-  font-style: italic;
-}
-
-.footer-availability {
-  text-align: right;
-}
-
-.availability-status {
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  gap: 0.75rem;
-  margin-bottom: 1rem;
-}
-
-.status-indicator {
-  width: 12px;
-  height: 12px;
-  border-radius: 50%;
-  background: #10b981;
-  animation: pulse-green 2s infinite;
-}
-
-@keyframes pulse-green {
-  0% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7); }
-  70% { box-shadow: 0 0 0 10px rgba(16, 185, 129, 0); }
-  100% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
-}
-
-.availability-status span {
-  font-weight: 600;
-  color: #10b981;
-  font-size: 1.1rem;
-}
-
-.footer-availability p {
-  color: #94a3b8;
-  font-size: 1rem;
-  margin-bottom: 1.5rem;
-}
-
-.contact-preferences {
-  background: rgba(102, 126, 234, 0.1);
-  padding: 1rem;
-  border-radius: 10px;
-  border-left: 4px solid #667eea;
-}
-
-.contact-preferences span {
-  color: #e2e8f0;
-  font-weight: 500;
-  font-style: italic;
-}
-
-.footer-bottom {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding-top: 2rem;
-  border-top: 1px solid #374151;
-  flex-wrap: wrap;
-  gap: 1rem;
-}
-
-.footer-credentials {
-  color: #94a3b8;
-  font-size: 0.9rem;
-}
-
-.footer-links {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-}
-
-.footer-links a {
-  color: #94a3b8;
-  text-decoration: none;
-  transition: color 0.2s ease;
-}
-
-.footer-links a:hover {
-  color: #667eea;
-}
-
-.footer-links span {
-  color: #4b5563;
-}
-
-/* Responsive Design */
-@media (max-width: 1024px) {
-  .carousel-content {
-    grid-template-columns: 1fr;
-    gap: 2rem;
-  }
-  
-  .experience-card-enhanced {
-    grid-template-columns: 1fr;
-  }
-  
-  .exp-visual {
-    height: 200px;
-  }
-  
-  .spec-grid-enhanced {
-    grid-template-columns: 1fr;
-  }
-  
-  .equipment-grid,
-  .software-grid {
-    grid-template-columns: 1fr;
-  }
-  
-  .projects-grid-enhanced {
-    grid-template-columns: 1fr;
-  }
-  
-  .footer-main {
-    grid-template-columns: 1fr;
-    gap: 2rem;
-  }
-  
-  .footer-availability {
-    text-align: left;
-  }
-  
-  .availability-status {
-    justify-content: flex-start;
-  }
-}
-
-@media (max-width: 768px) {
-  .nav-links {
-    display: none;
-  }
-  
-  .hero-title {
-    font-size: 2.5rem;
-  }
-  
-  .hero-metrics {
-    grid-template-columns: repeat(2, 1fr);
-  }
-  
-  .carousel-wrapper {
-    flex-direction: column;
-  }
-  
-  .carousel-btn {
-    display: none;
-  }
-  
-  .spec-tabs {
-    flex-wrap: wrap;
-    justify-content: center;
-  }
-  
-  .spec-tab {
-    padding: 0.75rem 1.5rem;
-    font-size: 0.85rem;
-  }
-  
-  .equipment-grid,
-  .software-grid {
-    grid-template-columns: 1fr;
-  }
-  
-  .impact-highlights {
-    justify-content: center;
-  }
-  
-  .innovation-timeline {
-    flex-direction: column;
-    align-items: stretch;
-  }
-  
-  .innovation-timeline::before {
-    top: 0;
-    bottom: 0;
-    left: 50%;
-    width: 2px;
-    height: auto;
-    background: linear-gradient(180deg, #667eea 0%, #764ba2 50%, #e2e8f0 100%);
-  }
-  
-  .timeline-item {
-    flex-direction: row;
-    text-align: left;
-    align-items: center;
-    gap: 1rem;
-  }
-  
-  .timeline-marker {
-    flex-shrink: 0;
-    margin-bottom: 0;
-  }
-  
-  .footer-bottom {
-    flex-direction: column;
-    text-align: center;
-  }
-}
-
-@media (max-width: 480px) {
-  .hero-metrics {
-    grid-template-columns: 1fr;
-  }
-  
-  .hero-cta {
-    flex-direction: column;
-    align-items: stretch;
-  }
-  
-  .cta-primary,
-  .cta-secondary {
-    text-align: center;
-    justify-content: center;
-  }
-}
-
-/* PRISM Project Styles - Enhanced */
-.prism-container {
-  min-height: 100vh;
-  background: #ffffff;
-  padding-top: 80px;
-}
-
-/* Enhanced PRISM Hero */
-.prism-hero-enhanced {
-  min-height: 90vh;
-  position: relative;
-  display: flex;
-  align-items: center;
-  overflow: hidden;
-}
-
-.prism-hero-backdrop {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  z-index: 1;
-}
-
-.prism-hero-bg {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  filter: brightness(0.4) contrast(1.1);
-}
-
-.prism-hero-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: linear-gradient(
-    135deg,
-    rgba(0, 0, 0, 0.7) 0%,
-    rgba(0, 0, 0, 0.5) 50%,
-    rgba(26, 26, 26, 0.8) 100%
-  );
-}
-
-.prism-hero-content {
-  position: relative;
-  z-index: 2;
-  max-width: 1400px;
-  margin: 0 auto;
-  padding: 0 2rem;
-  color: white;
-}
-
-.prism-header {
-  max-width: 900px;
-  margin-bottom: 4rem;
-}
-
-.prism-badge-enhanced {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.75rem;
-  background: rgba(102, 126, 234, 0.2);
-  color: #90cdf4;
-  padding: 0.75rem 1.5rem;
-  border-radius: 50px;
-  font-size: 0.9rem;
-  font-weight: 600;
-  margin-bottom: 2rem;
-  border: 1px solid rgba(102, 126, 234, 0.3);
-  backdrop-filter: blur(10px);
-}
-
-.prism-title-enhanced {
-  margin-bottom: 2rem;
-}
-
-.prism-acronym {
-  display: block;
-  font-size: 5rem;
-  font-weight: 900;
   color: #ffffff;
   font-family: 'JetBrains Mono', monospace;
-  letter-spacing: 0.1em;
-  margin-bottom: 0.5rem;
-  text-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+  margin-bottom: 8px;
 }
 
-.prism-full-name {
-  display: block;
-  font-size: 1.5rem;
-  font-weight: 300;
-  color: #e2e8f0;
-  font-family: 'Inter', sans-serif;
-  letter-spacing: 0.05em;
+.spec-description {
+  font-size: 12px;
+  color: #888888;
+  line-height: 1.4;
 }
 
-.prism-tagline {
-  font-size: 1.35rem;
-  color: #cbd5e0;
-  line-height: 1.7;
-  max-width: 700px;
+/* PRISM Applications Tesla */
+.prism-applications-tesla {
+  padding: 120px 0;
+  background: #0a0a0a;
 }
 
-/* KPI Grid */
-.prism-kpi-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 2rem;
-  margin-top: 4rem;
+.apps-header {
+  text-align: center;
+  margin-bottom: 80px;
 }
 
-.kpi-card {
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(15px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  border-radius: 16px;
-  padding: 2rem;
-  display: flex;
-  align-items: center;
-  gap: 1.5rem;
-  transition: all 0.3s ease;
-}
-
-.kpi-card:hover {
-  background: rgba(255, 255, 255, 0.15);
-  transform: translateY(-5px);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-}
-
-.kpi-card.primary {
-  border-color: #667eea;
-  background: rgba(102, 126, 234, 0.2);
-}
-
-.kpi-icon {
-  flex-shrink: 0;
-  width: 60px;
-  height: 60px;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  border-radius: 12px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: white;
-}
-
-.kpi-content {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  gap: 0.25rem;
-}
-
-.kpi-value {
-  font-size: 2rem;
+.apps-header h2 {
+  font-size: 48px;
   font-weight: 800;
   color: #ffffff;
-  font-family: 'JetBrains Mono', monospace;
+  margin-bottom: 16px;
 }
 
-.kpi-label {
-  font-size: 1rem;
-  font-weight: 600;
-  color: #90cdf4;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
+.apps-header p {
+  font-size: 18px;
+  color: #888888;
 }
 
-.kpi-description {
-  font-size: 0.85rem;
-  color: #cbd5e0;
-  opacity: 0.8;
-}
-
-/* System Architecture */
-.prism-architecture {
-  padding: 8rem 2rem;
-  background: linear-gradient(135deg, #f8fafc 0%, #ffffff 100%);
-}
-
-.architecture-header {
-  text-align: center;
-  margin-bottom: 4rem;
-}
-
-.architecture-header h2 {
-  font-size: 3rem;
-  font-weight: 800;
-  color: #1a1a1a;
-  margin-bottom: 1rem;
-}
-
-.architecture-header p {
-  font-size: 1.2rem;
-  color: #64748b;
-  max-width: 600px;
-  margin: 0 auto;
-}
-
-.architecture-diagram {
-  background: #ffffff;
-  border-radius: 20px;
-  padding: 4rem;
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
-  border: 1px solid #e5e7eb;
-}
-
-.diagram-container {
+.apps-tesla-grid {
   display: grid;
-  grid-template-columns: 2fr 1fr;
-  gap: 4rem;
-  align-items: center;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 32px;
 }
 
-.axis-visualization {
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
-}
-
-.axis-component {
-  background: #f8fafc;
-  border-radius: 16px;
-  padding: 2rem;
-  position: relative;
-  transition: all 0.3s ease;
-  border-left: 4px solid #e2e8f0;
-}
-
-.axis-component:hover {
-  transform: translateX(10px);
-  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
-}
-
-.axis-component.z-axis {
-  border-left-color: #ef4444;
-}
-
-.axis-component.y-axis {
-  border-left-color: #10b981;
-}
-
-.axis-component.x-axis {
-  border-left-color: #667eea;
-}
-
-.axis-label {
-  font-size: 1.5rem;
-  font-weight: 700;
-  color: #1a1a1a;
-  margin-bottom: 0.5rem;
-  font-family: 'JetBrains Mono', monospace;
-}
-
-.axis-description {
-  font-size: 1rem;
-  color: #667eea;
-  font-weight: 600;
-  margin-bottom: 1rem;
-}
-
-.component-details {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-}
-
-.component-details span {
-  font-size: 0.9rem;
-  color: #64748b;
-  padding: 0.25rem 0;
-  position: relative;
-  padding-left: 1rem;
-}
-
-.component-details span::before {
-  content: '→';
-  position: absolute;
-  left: 0;
-  color: #667eea;
-  font-weight: 600;
-}
-
-.optical-path {
-  background: #1a1a1a;
-  border-radius: 16px;
-  padding: 2rem;
-  color: white;
-  position: relative;
-  overflow: hidden;
-}
-
-.optical-path::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: 
-    radial-gradient(circle at 20% 20%, rgba(102, 126, 234, 0.1) 0%, transparent 50%),
-    radial-gradient(circle at 80% 80%, rgba(118, 75, 162, 0.1) 0%, transparent 50%);
-  pointer-events: none;
-}
-
-.beam-path {
-  position: relative;
-  z-index: 1;
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
-  align-items: center;
-}
-
-.beam-line {
-  width: 100%;
-  height: 3px;
-  background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
-  border-radius: 2px;
-  position: relative;
-  animation: beam-flow 2s infinite;
-}
-
-@keyframes beam-flow {
-  0% { opacity: 0.5; }
-  50% { opacity: 1; box-shadow: 0 0 10px rgba(102, 126, 234, 0.5); }
-  100% { opacity: 0.5; }
-}
-
-.mirror-element,
-.objective-element {
-  background: rgba(255, 255, 255, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  border-radius: 10px;
-  padding: 1rem;
-  text-align: center;
-  backdrop-filter: blur(10px);
-}
-
-.mirror-element span:first-child,
-.objective-element span:first-child {
-  display: block;
-  font-weight: 600;
-  color: #90cdf4;
-  margin-bottom: 0.25rem;
-}
-
-.mirror-element span:last-child,
-.objective-element span:last-child {
-  display: block;
-  font-size: 0.8rem;
-  color: #cbd5e0;
-  font-family: 'JetBrains Mono', monospace;
-}
-
-/* Comprehensive Specifications */
-.prism-specs-comprehensive {
-  padding: 8rem 2rem;
-  background: #ffffff;
-}
-
-.specs-comprehensive-header {
-  text-align: center;
-  margin-bottom: 4rem;
-}
-
-.specs-comprehensive-header h2 {
-  font-size: 3rem;
-  font-weight: 800;
-  color: #1a1a1a;
-  margin-bottom: 1rem;
-}
-
-.specs-comprehensive-header p {
-  font-size: 1.2rem;
-  color: #64748b;
-  max-width: 700px;
-  margin: 0 auto 3rem auto;
-}
-
-.spec-tabs-enhanced {
-  display: flex;
-  justify-content: center;
-  gap: 1rem;
-  flex-wrap: wrap;
-  margin-bottom: 4rem;
-}
-
-.spec-tab-enhanced {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  padding: 1rem 2rem;
-  background: #f8fafc;
-  border: 1px solid #e2e8f0;
-  border-radius: 12px;
-  color: #64748b;
-  font-weight: 600;
-  cursor: pointer;
+.tesla-app-card {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  padding: 24px;
   transition: all 0.3s ease;
 }
 
-.spec-tab-enhanced.active {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  color: white;
-  border-color: transparent;
-  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
-  transform: translateY(-2px);
+.tesla-app-card:hover {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: #3b82f6;
+  transform: translateY(-4px);
 }
 
-.spec-tab-enhanced:hover:not(.active) {
-  background: #f1f5f9;
-  border-color: #667eea;
-  color: #1a1a1a;
-}
-
-.specs-comprehensive-content {
-  max-width: 1400px;
-  margin: 0 auto;
-}
-
-.spec-section-enhanced {
-  display: grid;
-  grid-template-columns: 400px 1fr;
-  gap: 3rem;
-  align-items: start;
-}
-
-.spec-section-visual {
-  position: relative;
-  border-radius: 16px;
-  overflow: hidden;
-  aspect-ratio: 4/3;
-  position: sticky;
-  top: 2rem;
-}
-
-.spec-section-image {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  filter: brightness(0.7);
-}
-
-.spec-section-overlay {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
-  padding: 2rem;
-  color: white;
-}
-
-.spec-section-overlay h3 {
-  font-size: 1.5rem;
-  font-weight: 700;
-  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
-}
-
-.spec-grid-comprehensive {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 1.5rem;
-}
-
-.spec-card-comprehensive {
-  background: #ffffff;
-  border: 1px solid #e5e7eb;
-  border-radius: 12px;
-  padding: 2rem;
-  transition: all 0.3s ease;
-  position: relative;
-}
-
-.spec-card-comprehensive:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
-  border-color: #667eea;
-}
-
-.spec-card-header-comp {
+.app-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 1rem;
-}
-
-.spec-label-comp {
-  font-size: 0.9rem;
-  font-weight: 600;
-  color: #667eea;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-}
-
-.spec-status-comp {
-  background: #10b981;
-  color: white;
-  padding: 0.25rem 0.75rem;
-  border-radius: 50px;
-  font-size: 0.7rem;
-  font-weight: 600;
-}
-
-.spec-value-comp {
-  font-size: 1.25rem;
-  font-weight: 700;
-  color: #1a1a1a;
-  margin-bottom: 0.75rem;
-  font-family: 'JetBrains Mono', monospace;
-}
-
-.spec-description-comp {
-  font-size: 0.9rem;
-  color: #64748b;
-  line-height: 1.6;
-  margin-bottom: 1rem;
-}
-
-.spec-indicator {
-  width: 100%;
-}
-
-.indicator-bar {
-  width: 100%;
-  height: 4px;
-  background: #f1f5f9;
-  border-radius: 2px;
-  overflow: hidden;
-}
-
-.indicator-fill {
-  height: 100%;
-  width: 95%;
-  background: linear-gradient(90deg, #10b981 0%, #059669 100%);
-  border-radius: 2px;
-  animation: fill-bar 2s ease-out;
-}
-
-@keyframes fill-bar {
-  from { width: 0%; }
-  to { width: 95%; }
-}
-
-/* Applications Showcase */
-.prism-applications-showcase {
-  padding: 8rem 2rem;
-  background: #f8fafc;
-}
-
-.applications-header {
-  text-align: center;
-  margin-bottom: 4rem;
-}
-
-.applications-header h2 {
-  font-size: 3rem;
-  font-weight: 800;
-  color: #1a1a1a;
-  margin-bottom: 1rem;
-}
-
-.applications-header p {
-  font-size: 1.2rem;
-  color: #64748b;
-  max-width: 600px;
-  margin: 0 auto;
-}
-
-.applications-grid-enhanced {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-  gap: 2.5rem;
-  max-width: 1400px;
-  margin: 0 auto;
-}
-
-.application-card-enhanced {
-  background: #ffffff;
-  border-radius: 20px;
-  overflow: hidden;
-  border: 1px solid #e5e7eb;
-  transition: all 0.4s ease;
-}
-
-.application-card-enhanced:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
-}
-
-.app-visual-header {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  padding: 2rem;
-  color: white;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.app-category-enhanced {
-  background: rgba(255, 255, 255, 0.2);
-  color: white;
-  padding: 0.5rem 1rem;
-  border-radius: 50px;
-  font-size: 0.8rem;
-  font-weight: 600;
-  backdrop-filter: blur(10px);
+  margin-bottom: 16px;
 }
 
 .app-icon {
-  width: 50px;
-  height: 50px;
-  background: rgba(255, 255, 255, 0.2);
+  width: 40px;
+  height: 40px;
+  background: rgba(59, 130, 246, 0.1);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #3b82f6;
+}
+
+.app-category {
+  background: rgba(59, 130, 246, 0.1);
+  color: #3b82f6;
+  padding: 4px 12px;
   border-radius: 12px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  backdrop-filter: blur(10px);
-}
-
-.app-content-enhanced {
-  padding: 2.5rem;
-}
-
-.app-content-enhanced h3 {
-  font-size: 1.5rem;
-  font-weight: 700;
-  color: #1a1a1a;
-  margin-bottom: 1rem;
-}
-
-.app-description-enhanced {
-  color: #64748b;
-  line-height: 1.7;
-  margin-bottom: 2rem;
-  font-size: 1rem;
-}
-
-.app-benefits-enhanced h4 {
-  font-size: 1.1rem;
+  font-size: 12px;
   font-weight: 600;
-  color: #1a1a1a;
-  margin-bottom: 1rem;
 }
 
-.app-benefits-enhanced ul {
-  list-style: none;
-  margin-bottom: 2rem;
-}
-
-.app-benefits-enhanced li {
-  display: flex;
-  align-items: flex-start;
-  gap: 0.75rem;
-  padding: 0.5rem 0;
-  color: #64748b;
-}
-
-.benefit-check {
-  color: #10b981;
+.app-content h3 {
+  font-size: 18px;
   font-weight: 700;
-  flex-shrink: 0;
+  color: #ffffff;
+  margin-bottom: 12px;
 }
 
-.app-metrics {
-  display: flex;
-  gap: 1rem;
+.app-content p {
+  font-size: 14px;
+  color: #888888;
+  line-height: 1.5;
+  margin-bottom: 16px;
 }
 
-.metric-badge {
-  background: #f1f5f9;
-  border: 1px solid #e2e8f0;
-  border-radius: 10px;
-  padding: 0.75rem;
-  text-align: center;
-  flex: 1;
-}
-
-.metric-label {
-  display: block;
-  font-size: 0.8rem;
-  color: #64748b;
-  font-weight: 500;
-  margin-bottom: 0.25rem;
-}
-
-.metric-value {
-  display: block;
-  font-size: 1.1rem;
-  font-weight: 700;
-  color: #667eea;
-  font-family: 'JetBrains Mono', monospace;
-}
-
-/* Development Timeline Enhanced */
-.prism-development-timeline {
-  padding: 8rem 2rem;
-  background: #ffffff;
-}
-
-.timeline-header {
-  text-align: center;
-  margin-bottom: 4rem;
-}
-
-.timeline-header h2 {
-  font-size: 3rem;
-  font-weight: 800;
-  color: #1a1a1a;
-  margin-bottom: 1rem;
-}
-
-.timeline-header p {
-  font-size: 1.2rem;
-  color: #64748b;
-  max-width: 600px;
-  margin: 0 auto;
-}
-
-.timeline-enhanced {
-  max-width: 1200px;
-  margin: 0 auto;
-  position: relative;
-}
-
-.timeline-track {
-  position: absolute;
-  left: 50%;
-  top: 0;
-  bottom: 0;
-  width: 4px;
-  background: linear-gradient(180deg, #667eea 0%, #764ba2 50%, #e2e8f0 100%);
-  transform: translateX(-50%);
-  border-radius: 2px;
-}
-
-.timeline-milestone {
-  display: grid;
-  grid-template-columns: 1fr 60px 1fr;
-  gap: 2rem;
-  margin-bottom: 4rem;
-  align-items: center;
-}
-
-.timeline-milestone.reverse {
-  grid-template-columns: 1fr 60px 1fr;
-}
-
-.timeline-milestone.reverse .milestone-content {
-  grid-column: 3;
-  text-align: left;
-}
-
-.timeline-milestone.reverse .milestone-visual {
-  grid-column: 1;
-}
-
-.timeline-milestone.current .milestone-content {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  color: white;
-}
-
-.milestone-marker {
-  width: 60px;
-  height: 60px;
-  border-radius: 50%;
-  border: 4px solid #ffffff;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-  z-index: 2;
-  justify-self: center;
-}
-
-.milestone-marker.concept {
-  background: #f59e0b;
-}
-
-.milestone-marker.prototype {
-  background: #10b981;
-}
-
-.milestone-marker.development {
-  background: #3b82f6;
-}
-
-.milestone-marker.branding {
-  background: #8b5cf6;
-}
-
-.milestone-marker.current-active {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  animation: pulse-timeline 2s infinite;
-}
-
-@keyframes pulse-timeline {
-  0% { box-shadow: 0 0 0 0 rgba(102, 126, 234, 0.7); }
-  70% { box-shadow: 0 0 0 15px rgba(102, 126, 234, 0); }
-  100% { box-shadow: 0 0 0 0 rgba(102, 126, 234, 0); }
-}
-
-.milestone-content {
-  background: #ffffff;
-  border: 1px solid #e5e7eb;
-  border-radius: 16px;
-  padding: 2rem;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
-  transition: all 0.3s ease;
-}
-
-.milestone-content:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
-}
-
-.milestone-date {
-  background: #f1f5f9;
-  color: #667eea;
-  padding: 0.5rem 1rem;
-  border-radius: 50px;
-  font-size: 0.8rem;
-  font-weight: 600;
-  display: inline-block;
-  margin-bottom: 1rem;
-  font-family: 'JetBrains Mono', monospace;
-}
-
-.milestone-content h3 {
-  font-size: 1.4rem;
-  font-weight: 700;
-  color: #1a1a1a;
-  margin-bottom: 1rem;
-}
-
-.milestone-content p {
-  color: #64748b;
-  line-height: 1.7;
-  margin-bottom: 1.5rem;
-}
-
-.milestone-achievements {
+.app-capabilities {
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
+  gap: 8px;
 }
 
-.milestone-achievements span {
-  font-size: 0.9rem;
-  color: #10b981;
-  font-weight: 500;
-  position: relative;
-  padding-left: 1.5rem;
+.capability-item {
+  font-size: 12px;
+  color: #888888;
 }
 
-.milestone-achievements span::before {
-  content: '✓';
-  position: absolute;
-  left: 0;
-  color: #10b981;
-  font-weight: 700;
-}
-
-.milestone-visual {
-  border-radius: 16px;
-  overflow: hidden;
-  aspect-ratio: 4/3;
-}
-
-.milestone-visual img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  filter: brightness(0.9);
-  transition: transform 0.3s ease;
-}
-
-.milestone-visual:hover img {
-  transform: scale(1.05);
-}
-
-/* Performance Benchmarks */
-.prism-benchmarks {
-  padding: 8rem 2rem;
-  background: #f8fafc;
+/* PRISM Benchmarks Tesla */
+.prism-benchmarks-tesla {
+  padding: 120px 0;
+  background: #000000;
 }
 
 .benchmarks-header {
   text-align: center;
-  margin-bottom: 4rem;
+  margin-bottom: 80px;
 }
 
 .benchmarks-header h2 {
-  font-size: 3rem;
+  font-size: 48px;
   font-weight: 800;
-  color: #1a1a1a;
-  margin-bottom: 1rem;
+  color: #ffffff;
+  margin-bottom: 16px;
 }
 
 .benchmarks-header p {
-  font-size: 1.2rem;
-  color: #64748b;
-  max-width: 600px;
-  margin: 0 auto;
+  font-size: 18px;
+  color: #888888;
 }
 
-.benchmarks-grid {
+.benchmarks-tesla-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 2rem;
-  max-width: 1200px;
-  margin: 0 auto;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 32px;
 }
 
-.benchmark-card {
-  background: #ffffff;
-  border-radius: 16px;
-  padding: 2rem;
-  border: 1px solid #e5e7eb;
+.benchmark-tesla-card {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  padding: 32px;
   transition: all 0.3s ease;
 }
 
-.benchmark-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+.benchmark-tesla-card:hover {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: #3b82f6;
+  transform: translateY(-4px);
 }
 
 .benchmark-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 2rem;
+  margin-bottom: 24px;
 }
 
 .benchmark-header h3 {
-  font-size: 1.2rem;
-  font-weight: 600;
-  color: #1a1a1a;
-}
-
-.benchmark-status {
-  padding: 0.4rem 1rem;
-  border-radius: 50px;
-  font-size: 0.8rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-}
-
-.benchmark-status.excellent {
-  background: #dcfce7;
-  color: #15803d;
-}
-
-.benchmark-status.outstanding {
-  background: #dbeafe;
-  color: #1d4ed8;
-}
-
-.benchmark-chart {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-bottom: 1.5rem;
-}
-
-.chart-bar {
-  width: 60px;
-  background: linear-gradient(180deg, #667eea 0%, #764ba2 100%);
-  border-radius: 30px;
-  display: flex;
-  align-items: end;
-  justify-content: center;
-  padding: 1rem 0;
-  margin-bottom: 1rem;
-  position: relative;
-  animation: grow-bar 2s ease-out;
-}
-
-@keyframes grow-bar {
-  from { height: 0%; }
-}
-
-.chart-value {
-  color: white;
+  font-size: 18px;
   font-weight: 700;
-  font-size: 0.9rem;
-  font-family: 'JetBrains Mono', monospace;
+  color: #ffffff;
 }
 
-.chart-label {
-  font-size: 0.9rem;
-  color: #64748b;
-  font-weight: 500;
+.benchmark-improvement {
+  background: #10b981;
+  color: #ffffff;
+  padding: 4px 12px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 600;
 }
 
 .benchmark-comparison {
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
-  text-align: center;
+  gap: 16px;
 }
 
-.benchmark-comparison span:first-child {
-  font-size: 0.85rem;
-  color: #64748b;
+.current-performance,
+.baseline-performance {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
 }
 
-.improvement {
-  font-size: 0.85rem;
-  color: #10b981;
-  font-weight: 600;
+.performance-bar {
+  height: 32px;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  font-weight: 700;
+  font-family: 'JetBrains Mono', monospace;
 }
 
-/* PRISM Footer */
-.prism-footer {
-  background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+.performance-bar.prism {
+  background: #3b82f6;
   color: #ffffff;
-  padding: 4rem 2rem 2rem 2rem;
+}
+
+.performance-bar.baseline {
+  background: rgba(255, 255, 255, 0.1);
+  color: #888888;
+}
+
+.performance-label {
+  font-size: 12px;
+  color: #888888;
+}
+
+/* PRISM Tesla Footer */
+.prism-tesla-footer {
+  padding: 80px 0 40px 0;
+  background: #0a0a0a;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .prism-footer-content {
-  max-width: 1400px;
-  margin: 0 auto;
-}
-
-.footer-main-prism {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 3rem;
-  margin-bottom: 3rem;
-}
-
-.footer-project-info h3 {
-  font-size: 2rem;
-  font-weight: 700;
-  margin-bottom: 0.5rem;
-  font-family: 'JetBrains Mono', monospace;
-}
-
-.footer-project-info p {
-  color: #94a3b8;
-  font-size: 1rem;
-  margin-bottom: 1.5rem;
-}
-
-.project-status {
-  display: flex;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
   align-items: center;
-  gap: 0.75rem;
-  margin-bottom: 2rem;
 }
 
-.status-dot {
-  width: 12px;
-  height: 12px;
-  border-radius: 50%;
-  background: #10b981;
-  animation: pulse-green 2s infinite;
+.footer-left h3 {
+  font-size: 24px;
+  font-weight: 800;
+  color: #ffffff;
+  font-family: 'JetBrains Mono', monospace;
+  margin-bottom: 8px;
 }
 
-.project-status span {
-  color: #10b981;
-  font-weight: 600;
+.footer-left p {
+  font-size: 16px;
+  color: #888888;
+  margin-bottom: 16px;
 }
 
-.project-metrics {
-  display: flex;
-  gap: 2rem;
+.status-dot.active {
+  background: #3b82f6;
+  animation: pulse-blue 2s infinite;
 }
 
-.footer-metric {
+@keyframes pulse-blue {
+  0% { box-shadow: 0 0 0 0 rgba(59, 130, 246, 0.7); }
+  70% { box-shadow: 0 0 0 10px rgba(59, 130, 246, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(59, 130, 246, 0); }
+}
+
+.footer-right {
+  text-align: right;
+}
+
+.footer-tesla-specs {
   display: flex;
   flex-direction: column;
-  gap: 0.25rem;
+  gap: 16px;
 }
 
-.footer-metric .metric-value {
-  font-size: 1.5rem;
+.footer-tesla-spec {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.footer-tesla-spec .spec-value {
+  font-size: 16px;
   font-weight: 700;
   color: #ffffff;
   font-family: 'JetBrains Mono', monospace;
 }
 
-.footer-metric .metric-label {
-  font-size: 0.8rem;
-  color: #94a3b8;
+.footer-tesla-spec .spec-label {
+  font-size: 12px;
+  color: #888888;
   text-transform: uppercase;
-  letter-spacing: 0.5px;
 }
 
-.footer-technical-info h4 {
-  font-size: 1.2rem;
-  font-weight: 600;
-  color: #ffffff;
-  margin-bottom: 1.5rem;
-}
-
-.tech-specs-summary {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-}
-
-.spec-item {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0.75rem;
-  background: rgba(102, 126, 234, 0.1);
-  border-radius: 8px;
-  border-left: 3px solid #667eea;
-}
-
-.spec-item .spec-label {
-  color: #94a3b8;
-  font-size: 0.9rem;
-}
-
-.spec-item .spec-value {
-  color: #ffffff;
-  font-weight: 600;
-  font-family: 'JetBrains Mono', monospace;
-}
-
-.footer-contact-prism h4 {
-  font-size: 1.2rem;
-  font-weight: 600;
-  color: #ffffff;
-  margin-bottom: 1rem;
-}
-
-.footer-contact-prism p {
-  color: #94a3b8;
-  font-size: 1rem;
-  margin-bottom: 2rem;
-}
-
-.contact-actions {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-}
-
-.contact-btn {
-  padding: 1rem 1.5rem;
-  border-radius: 8px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  border: none;
-}
-
-.contact-btn.primary {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  color: white;
-}
-
-.contact-btn.primary:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
-}
-
-.contact-btn.secondary {
-  background: transparent;
-  color: #94a3b8;
-  border: 1px solid #374151;
-}
-
-.contact-btn.secondary:hover {
-  border-color: #667eea;
-  color: #667eea;
-}
-
-.footer-bottom-prism {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding-top: 2rem;
-  border-top: 1px solid #374151;
-  flex-wrap: wrap;
-  gap: 1rem;
-}
-
-.footer-credits {
-  color: #94a3b8;
-  font-size: 0.9rem;
-}
-
-.footer-links-prism {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-}
-
-.footer-links-prism a {
-  color: #94a3b8;
-  text-decoration: none;
-  transition: color 0.2s ease;
-}
-
-.footer-links-prism a:hover {
-  color: #667eea;
-}
-
-.footer-links-prism span {
-  color: #4b5563;
-}
-
-/* Responsive Design for PRISM */
+/* Responsive Design */
 @media (max-width: 1024px) {
-  .prism-acronym {
-    font-size: 3.5rem;
-  }
-  
-  .prism-kpi-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-  
-  .diagram-container {
-    grid-template-columns: 1fr;
-    gap: 2rem;
-  }
-  
-  .spec-section-enhanced {
-    grid-template-columns: 1fr;
-    gap: 2rem;
-  }
-  
-  .spec-section-visual {
-    position: relative;
-    aspect-ratio: 16/9;
-  }
-  
-  .timeline-milestone {
-    grid-template-columns: 1fr;
-    gap: 1rem;
-  }
-  
-  .timeline-milestone.reverse {
-    grid-template-columns: 1fr;
-  }
-  
-  .timeline-milestone.reverse .milestone-content,
-  .milestone-content {
-    grid-column: 1;
-    text-align: left;
-  }
-  
-  .timeline-milestone.reverse .milestone-visual,
-  .milestone-visual {
-    grid-column: 1;
-  }
-  
-  .timeline-track {
+  .tesla-nav-links {
     display: none;
   }
   
-  .milestone-marker {
-    justify-self: start;
-    margin-bottom: 1rem;
+  .tesla-title {
+    font-size: clamp(36px, 6vw, 60px);
+  }
+  
+  .tesla-specs-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .prism-acronym {
+    font-size: clamp(48px, 10vw, 80px);
+  }
+  
+  .architecture-tesla-grid {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+  
+  .tesla-experience-card {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  
+  .footer-content,
+  .prism-footer-content {
+    grid-template-columns: 1fr;
+    gap: 32px;
+    text-align: center;
+  }
+  
+  .footer-right {
+    text-align: center;
+  }
+  
+  .footer-tesla-spec {
+    align-items: center;
   }
 }
 
 @media (max-width: 768px) {
-  .prism-acronym {
-    font-size: 2.5rem;
+  .tesla-container {
+    padding: 0 16px;
   }
   
-  .prism-full-name {
-    font-size: 1.2rem;
+  .tesla-nav-content {
+    padding: 0 16px;
   }
   
-  .prism-kpi-grid {
+  .tesla-specs-grid,
+  .prism-performance-grid {
     grid-template-columns: 1fr;
   }
   
-  .kpi-card {
-    padding: 1.5rem;
+  .performance-grid {
+    grid-template-columns: 1fr;
   }
   
-  .spec-tabs-enhanced {
+  .tesla-spec-nav,
+  .tesla-spec-tabs {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  .exp-metrics {
+    justify-content: center;
+  }
+  
+  .projects-tesla-grid,
+  .apps-tesla-grid,
+  .benchmarks-tesla-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .tesla-actions {
     flex-direction: column;
     align-items: stretch;
   }
   
-  .spec-tab-enhanced {
+  .tesla-primary-btn,
+  .tesla-secondary-btn {
+    width: 100%;
     justify-content: center;
   }
-  
-  .benchmarks-grid {
-    grid-template-columns: 1fr;
+}
+
+@media (max-width: 480px) {
+  .tesla-title {
+    font-size: 36px;
   }
   
-  .footer-main-prism {
-    grid-template-columns: 1fr;
+  .prism-acronym {
+    font-size: 48px;
+    letter-spacing: 4px;
   }
   
-  .contact-actions {
-    flex-direction: column;
-  }
-  
-  .footer-bottom-prism {
-    flex-direction: column;
-    text-align: center;
+  .performance-header h2,
+  .arch-header h2,
+  .specs-tesla-header h2,
+  .apps-header h2,
+  .benchmarks-header h2 {
+    font-size: 36px;
   }
 }
