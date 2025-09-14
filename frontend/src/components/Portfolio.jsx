@@ -450,7 +450,7 @@ const Portfolio = () => {
                       <p>Ultra-low temperature optical systems for quantum material characterization</p>
                       <div className="research-metrics">
                         <span>Temperature: 4K-300K</span>
-                        <span>Stability: <0.1% drift</span>
+                        <span>Stability: &lt;0.1% drift</span>
                       </div>
                     </div>
                     <div className="research-area">
