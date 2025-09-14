@@ -1,402 +1,688 @@
-import React, { useState } from 'react';
-import { motion } from 'framer-motion';
-import { ArrowLeft, ChevronDown, ChevronUp, ExternalLink, Download, Zap, Target, Settings, BarChart3, Microscope, Cpu, Activity, Layers } from 'lucide-react';
-import { Link } from 'react-router-dom';
-import mockData from '../data/mock';
+// import React, { useState } from 'react';
+// import { motion } from 'framer-motion';
+// import { ArrowLeft, ChevronDown, ChevronUp, ExternalLink, Download, Zap, Target, Settings, BarChart3, Microscope, Cpu, Activity, Layers } from 'lucide-react';
+// import { Link } from 'react-router-dom';
+// import mockData from '../data/mock';
 
-const PrismProject = () => {
-  const [expandedSection, setExpandedSection] = useState('overview');
-  const [activeSpecTab, setActiveSpecTab] = useState('architecture');
+// const PrismProject = () => {
+//   const [expandedSection, setExpandedSection] = useState('overview');
+//   const [activeSpecTab, setActiveSpecTab] = useState('architecture');
 
-  const toggleSection = (section) => {
-    setExpandedSection(expandedSection === section ? '' : section);
+//   const toggleSection = (section) => {
+//     setExpandedSection(expandedSection === section ? '' : section);
+//   };
+
+//   return (
+//     <div className="prism-tesla">
+//       {/* Tesla Navigation */}
+//       <nav className="tesla-nav">
+//         <div className="tesla-nav-content">
+//           <Link to="/" className="tesla-back">
+//             <ArrowLeft size={20} />
+//             <span>Back</span>
+//           </Link>
+//           <div className="tesla-logo">
+//             <h3>PRISM</h3>
+//             <span>SYSTEM</span>
+//           </div>
+//           <div className="tesla-nav-actions">
+//             <button className="tesla-nav-btn">
+//               <Download size={16} />
+//               <span>Specs</span>
+//             </button>
+//           </div>
+//         </div>
+//       </nav>
+
+//       {/* Tesla Model X Hero Style */}
+//       <section className="prism-tesla-hero">
+//         <div className="prism-hero-bg">
+//           <div className="nanotech-visualization">
+//             <div className="atom-grid">
+//               <div className="atom-node"></div>
+//               <div className="atom-node"></div>
+//               <div className="atom-node"></div>
+//               <div className="atom-node"></div>
+//               <div className="atom-node"></div>
+//             </div>
+//             <div className="laser-beam"></div>
+//             <div className="optical-lens"></div>
+//           </div>
+//         </div>
+        
+//         <motion.div 
+//           className="prism-tesla-content"
+//           initial={{ opacity: 0, y: 20 }}
+//           animate={{ opacity: 1, y: 0 }}
+//           transition={{ duration: 0.8 }}
+//         >
+//           <div className="prism-tesla-header">
+//             <div className="prism-badge">
+//               <Microscope size={16} />
+//               <span>BREAKTHROUGH INNOVATION</span>
+//             </div>
+            
+//             <h1 className="prism-tesla-title">
+//               <span className="prism-acronym">PRISM</span>
+//               <span className="prism-subtitle">Periscopic Relay Imaging Scanning Microscope</span>
+//             </h1>
+            
+//             <p className="prism-tesla-desc">
+//               Revolutionary precision optical instrument. Cost-effective alternative to traditional 3-axis translation stages. 
+//               Engineered for quantum sensing and cryogenic imaging applications.
+//             </p>
+//           </div>
+
+//           {/* Tesla Performance Numbers */}
+//           <div className="prism-performance-grid">
+//             <div className="prism-perf-card primary">
+//               <div className="perf-value">49x</div>
+//               <div className="perf-label">Magnification</div>
+//               <div className="perf-desc">Stable optical system</div>
+//             </div>
+//             <div className="prism-perf-card">
+//               <div className="perf-value">10nm</div>
+//               <div className="perf-label">Resolution</div>
+//               <div className="perf-desc">Piezo precision</div>
+//             </div>
+//             <div className="prism-perf-card">
+//               <div className="perf-value">±12.5mm</div>
+//               <div className="perf-label">Travel Range</div>
+//               <div className="perf-desc">3-axis capability</div>
+//             </div>
+//             <div className="prism-perf-card">
+//               <div className="perf-value">&lt;0.003mm</div>
+//               <div className="perf-label">Flatness</div>
+//               <div className="perf-desc">Bearing precision</div>
+//             </div>
+//           </div>
+//         </motion.div>
+//       </section>
+
+//       {/* System Architecture - Tesla Clean */}
+//       <section className="prism-architecture-tesla">
+//         <div className="tesla-container">
+//           <div className="arch-header">
+//             <h2>System Architecture</h2>
+//             <p>Three-axis nested framework with beam orthogonality preservation</p>
+//           </div>
+          
+//           <div className="architecture-tesla-grid">
+//             <div className="arch-visual">
+//               <div className="system-diagram">
+//                 <div className="axis-layer z-layer">
+//                   <div className="axis-info">
+//                     <span className="axis-name">Z-Axis</span>
+//                     <span className="axis-desc">Vertical Focus</span>
+//                   </div>
+//                 </div>
+//                 <div className="axis-layer y-layer">
+//                   <div className="axis-info">
+//                     <span className="axis-name">Y-Axis</span>
+//                     <span className="axis-desc">Mirror Translation</span>
+//                   </div>
+//                 </div>
+//                 <div className="axis-layer x-layer">
+//                   <div className="axis-info">
+//                     <span className="axis-name">X-Axis</span>
+//                     <span className="axis-desc">Independent Control</span>
+//                   </div>
+//                 </div>
+//                 <div className="optical-path-viz">
+//                   <div className="beam-line incident"></div>
+//                   <div className="mirror-point"></div>
+//                   <div className="beam-line reflected"></div>
+//                   <div className="objective-point"></div>
+//                 </div>
+//               </div>
+//             </div>
+            
+//             <div className="arch-specs">
+//               <div className="arch-spec-group">
+//                 <h3>Key Innovations</h3>
+//                 <div className="arch-spec">
+//                   <span className="spec-point">Hanging Z-axis configuration</span>
+//                   <span className="spec-detail">Reduces moving mass</span>
+//                 </div>
+//                 <div className="arch-spec">
+//                   <span className="spec-point">Beam orthogonality preservation</span>
+//                   <span className="spec-detail">Fixed beam path</span>
+//                 </div>
+//                 <div className="arch-spec">
+//                   <span className="spec-point">Modular retrofittable design</span>
+//                   <span className="spec-detail">Universal compatibility</span>
+//                 </div>
+//               </div>
+              
+//               <div className="arch-spec-group">
+//                 <h3>Performance Characteristics</h3>
+//                 <div className="arch-spec">
+//                   <span className="spec-point">Positioning accuracy</span>
+//                   <span className="spec-detail">10-30nm resolution</span>
+//                 </div>
+//                 <div className="arch-spec">
+//                   <span className="spec-point">Travel range</span>
+//                   <span className="spec-detail">±12.5mm per axis</span>
+//                 </div>
+//                 <div className="arch-spec">
+//                   <span className="spec-point">Temperature range</span>
+//                   <span className="spec-detail">4K to 300K operation</span>
+//                 </div>
+//               </div>
+//             </div>
+//           </div>
+//         </div>
+//       </section>
+
+//       {/* Technical Specifications - Tesla Style */}
+//       <section className="prism-specs-tesla">
+//         <div className="tesla-container">
+//           <div className="specs-tesla-header">
+//             <h2>Technical Specifications</h2>
+//             <div className="tesla-spec-nav">
+//               <button 
+//                 className={`tesla-spec-tab ${activeSpecTab === 'architecture' ? 'active' : ''}`}
+//                 onClick={() => setActiveSpecTab('architecture')}
+//               >
+//                 <Cpu size={16} />
+//                 <span>Architecture</span>
+//               </button>
+//               <button 
+//                 className={`tesla-spec-tab ${activeSpecTab === 'optical' ? 'active' : ''}`}
+//                 onClick={() => setActiveSpecTab('optical')}
+//               >
+//                 <Target size={16} />
+//                 <span>Optical</span>
+//               </button>
+//               <button 
+//                 className={`tesla-spec-tab ${activeSpecTab === 'mechanical' ? 'active' : ''}`}
+//                 onClick={() => setActiveSpecTab('mechanical')}
+//               >
+//                 <Settings size={16} />
+//                 <span>Mechanical</span>
+//               </button>
+//               <button 
+//                 className={`tesla-spec-tab ${activeSpecTab === 'control' ? 'active' : ''}`}
+//                 onClick={() => setActiveSpecTab('control')}
+//               >
+//                 <Zap size={16} />
+//                 <span>Control</span>
+//               </button>
+//             </div>
+//           </div>
+
+//           <div className="tesla-specs-content">
+//             {mockData.prismSpecs.map((section, index) => (
+//               activeSpecTab === section.id && (
+//                 <motion.div 
+//                   key={section.id}
+//                   className="tesla-spec-section"
+//                   initial={{ opacity: 0, y: 20 }}
+//                   animate={{ opacity: 1, y: 0 }}
+//                   transition={{ duration: 0.4 }}
+//                 >
+//                   <div className="tesla-spec-grid">
+//                     {section.specs.map((spec, specIndex) => (
+//                       <div key={specIndex} className="tesla-spec-card">
+//                         <div className="spec-card-header">
+//                           <div className="spec-label">{spec.label}</div>
+//                           <div className="spec-status">Verified</div>
+//                         </div>
+//                         <div className="spec-value">{spec.value}</div>
+//                         <div className="spec-description">{spec.description}</div>
+//                       </div>
+//                     ))}
+//                   </div>
+//                 </motion.div>
+//               )
+//             ))}
+//           </div>
+//         </div>
+//       </section>
+
+//       {/* Applications - Tesla Grid */}
+//       <section className="prism-applications-tesla">
+//         <div className="tesla-container">
+//           <div className="apps-header">
+//             <h2>Applications</h2>
+//             <p>Advanced capabilities for next-generation research</p>
+//           </div>
+          
+//           <div className="apps-tesla-grid">
+//             {mockData.prismApplications.map((app, index) => (
+//               <motion.div 
+//                 key={index}
+//                 className="tesla-app-card"
+//                 initial={{ opacity: 0, y: 20 }}
+//                 whileInView={{ opacity: 1, y: 0 }}
+//                 transition={{ duration: 0.4, delay: index * 0.1 }}
+//                 viewport={{ once: true }}
+//               >
+//                 <div className="app-header">
+//                   <div className="app-icon">
+//                     {app.title.includes('Quantum') && <Target size={24} />}
+//                     {app.title.includes('Cryogenic') && <Zap size={24} />}
+//                     {app.title.includes('Rydberg') && <Cpu size={24} />}
+//                     {app.title.includes('Cold') && <Settings size={24} />}
+//                     {app.title.includes('Photonic') && <Activity size={24} />}
+//                     {app.title.includes('Surface') && <Layers size={24} />}
+//                   </div>
+//                   <div className="app-category">{app.category}</div>
+//                 </div>
+                
+//                 <div className="app-content">
+//                   <h3>{app.title}</h3>
+//                   <p>{app.description}</p>
+                  
+//                   <div className="app-capabilities">
+//                     {app.benefits.slice(0, 3).map((benefit, bIndex) => (
+//                       <div key={bIndex} className="capability-item">
+//                         • {benefit}
+//                       </div>
+//                     ))}
+//                   </div>
+//                 </div>
+//               </motion.div>
+//             ))}
+//           </div>
+//         </div>
+//       </section>
+
+//       {/* Performance Benchmarks - Tesla Numbers */}
+//       <section className="prism-benchmarks-tesla">
+//         <div className="tesla-container">
+//           <div className="benchmarks-header">
+//             <h2>Performance Benchmarks</h2>
+//             <p>Quantified superiority over traditional systems</p>
+//           </div>
+          
+//           <div className="benchmarks-tesla-grid">
+//             <div className="benchmark-tesla-card">
+//               <div className="benchmark-header">
+//                 <h3>Positioning Accuracy</h3>
+//                 <div className="benchmark-improvement">3x Better</div>
+//               </div>
+//               <div className="benchmark-comparison">
+//                 <div className="current-performance">
+//                   <div className="performance-bar prism" style={{ width: '95%' }}>
+//                     <span>10-30nm</span>
+//                   </div>
+//                   <div className="performance-label">PRISM System</div>
+//                 </div>
+//                 <div className="baseline-performance">
+//                   <div className="performance-bar baseline" style={{ width: '30%' }}>
+//                     <span>50-100nm</span>
+//                   </div>
+//                   <div className="performance-label">Traditional Stages</div>
+//                 </div>
+//               </div>
+//             </div>
+            
+//             <div className="benchmark-tesla-card">
+//               <div className="benchmark-header">
+//                 <h3>Travel Range</h3>
+//                 <div className="benchmark-improvement">25% More</div>
+//               </div>
+//               <div className="benchmark-comparison">
+//                 <div className="current-performance">
+//                   <div className="performance-bar prism" style={{ width: '100%' }}>
+//                     <span>±12.5mm</span>
+//                   </div>
+//                   <div className="performance-label">PRISM System</div>
+//                 </div>
+//                 <div className="baseline-performance">
+//                   <div className="performance-bar baseline" style={{ width: '80%' }}>
+//                     <span>±10mm</span>
+//                   </div>
+//                   <div className="performance-label">Standard Systems</div>
+//                 </div>
+//               </div>
+//             </div>
+            
+//             <div className="benchmark-tesla-card">
+//               <div className="benchmark-header">
+//                 <h3>Beam Stability</h3>
+//                 <div className="benchmark-improvement">Perfect</div>
+//               </div>
+//               <div className="benchmark-comparison">
+//                 <div className="current-performance">
+//                   <div className="performance-bar prism" style={{ width: '100%' }}>
+//                     <span>100%</span>
+//                   </div>
+//                   <div className="performance-label">PRISM Orthogonality</div>
+//                 </div>
+//                 <div className="baseline-performance">
+//                   <div className="performance-bar baseline" style={{ width: '95%' }}>
+//                     <span>95-98%</span>
+//                   </div>
+//                   <div className="performance-label">Conventional Systems</div>
+//                 </div>
+//               </div>
+//             </div>
+//           </div>
+//         </div>
+//       </section>
+
+//       {/* Tesla Footer */}
+//       <footer className="prism-tesla-footer">
+//         <div className="tesla-container">
+//           <div className="prism-footer-content">
+//             <div className="footer-left">
+//               <h3>PRISM System</h3>
+//               <p>Periscopic Relay Imaging Scanning Microscope</p>
+//               <div className="footer-status">
+//                 <div className="status-dot active"></div>
+//                 <span>Active Development • Patent Pending</span>
+//               </div>
+//             </div>
+            
+//             <div className="footer-right">
+//               <div className="footer-tesla-specs">
+//                 <div className="footer-tesla-spec">
+//                   <span className="spec-value">Version 5.0</span>
+//                   <span className="spec-label">Current Release</span>
+//                 </div>
+//                 <div className="footer-tesla-spec">
+//                   <span className="spec-value">49x</span>
+//                   <span className="spec-label">Magnification</span>
+//                 </div>
+//                 <div className="footer-tesla-spec">
+//                   <span className="spec-value">10nm</span>
+//                   <span className="spec-label">Resolution</span>
+//                 </div>
+//               </div>
+//             </div>
+//           </div>
+//         </div>
+//       </footer>
+//     </div>
+//   );
+// };
+
+// export default PrismProject;
+
+import React, { useEffect, useMemo, useState } from "react";
+import { motion } from "framer-motion";
+import { ArrowLeft, Download, Gauge, Zap, Move3D, Target, Ruler, Microscope, Cpu, Activity, Settings } from "lucide-react";
+import { Link } from "react-router-dom";
+
+export default function PrismX() {
+  const [solidNav, setSolidNav] = useState(false);
+  const [activeSpecTab, setActiveSpecTab] = useState("architecture");
+  const specTabs = useMemo(
+    () => [
+      { id: "architecture", label: "Architecture", icon: Cpu },
+      { id: "optical", label: "Optical", icon: Target },
+      { id: "mechanical", label: "Mechanical", icon: Settings },
+      { id: "control", label: "Control", icon: Zap },
+    ],
+    []
+  );
+
+  useEffect(() => {
+    const onScroll = () => setSolidNav(window.scrollY > 24);
+    window.addEventListener("scroll", onScroll);
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  const kpis = [
+    { value: "10–30 nm", label: "Positioning Resolution" },
+    { value: "±12.5 mm", label: "Travel Per Axis" },
+    { value: "4 K – 300 K", label: "Operating Range" },
+    { value: "49×", label: "Demonstrated Magnification" },
+  ];
+
+  const specData = {
+    architecture: [
+      { label: "3‑Axis Periscopic Relay", value: "Independent X/Y with hanging Z" },
+      { label: "Beam Orthogonality", value: "Maintained across full travel" },
+      { label: "Retrofit Form Factor", value: "Mounts to existing benches & cryostats" },
+    ],
+    optical: [
+      { label: "Objective Interface", value: "DIN/RMS & M25 modular nosepiece" },
+      { label: "Path Stability", value: "Fixed beam path with relay mirrors" },
+      { label: "Back‑reflection Control", value: "Aperture & baffling geometry" },
+    ],
+    mechanical: [
+      { label: "Mass‑Optimized Frames", value: "Tri‑cut ribs, high stiffness/weight" },
+      { label: "Bearing Precision", value: "< 3 µm flatness components" },
+      { label: "Materials", value: "Aluminum alloy + steel thread inserts where needed" },
+    ],
+    control: [
+      { label: "Actuation", value: "Piezo linear stacks with closed‑loop ready" },
+      { label: "Electronics", value: "Modular KIM‑class controllers or CORE module" },
+      { label: "APIs", value: "Python/LabVIEW bindings; jog, raster, recipes" },
+    ],
   };
 
   return (
-    <div className="prism-tesla">
-      {/* Tesla Navigation */}
-      <nav className="tesla-nav">
-        <div className="tesla-nav-content">
-          <Link to="/" className="tesla-back">
-            <ArrowLeft size={20} />
-            <span>Back</span>
-          </Link>
-          <div className="tesla-logo">
-            <h3>PRISM</h3>
-            <span>SYSTEM</span>
+    <div className="min-h-screen w-full bg-black text-white">
+      <header className={`fixed inset-x-0 top-0 z-50 transition-all ${solidNav ? "backdrop-blur bg-black/70 border-b border-white/10" : "bg-transparent"}`}>
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+          <div className="flex items-center gap-3">
+            <Link to="/" className="inline-flex items-center gap-2 text-sm text-white/80 hover:text-white">
+              <ArrowLeft size={18} />
+              <span>Back</span>
+            </Link>
+            <div className="h-5 w-px bg-white/20" />
+            <div className="font-semibold tracking-widest text-white">PRISM</div>
+            <div className="text-white/40">SYSTEM</div>
           </div>
-          <div className="tesla-nav-actions">
-            <button className="tesla-nav-btn">
-              <Download size={16} />
-              <span>Specs</span>
-            </button>
+          <div className="flex items-center gap-2">
+            <a href="#specs" className="rounded-full bg-white text-black px-4 py-2 text-sm font-medium hover:bg-white/90 active:scale-[0.99]">Specs</a>
           </div>
         </div>
-      </nav>
+      </header>
 
-      {/* Tesla Model X Hero Style */}
-      <section className="prism-tesla-hero">
-        <div className="prism-hero-bg">
-          <div className="nanotech-visualization">
-            <div className="atom-grid">
-              <div className="atom-node"></div>
-              <div className="atom-node"></div>
-              <div className="atom-node"></div>
-              <div className="atom-node"></div>
-              <div className="atom-node"></div>
-            </div>
-            <div className="laser-beam"></div>
-            <div className="optical-lens"></div>
-          </div>
+      <section className="relative h-[92vh] w-full overflow-hidden">
+        <div className="absolute inset-0">
+          <div className="absolute inset-0 bg-gradient-to-b from-black via-black/20 to-black" />
+          <div className="absolute inset-0 [background-image:radial-gradient(60rem_30rem_at_50%_120%,rgba(255,255,255,0.15),transparent_60%),linear-gradient(to_bottom,rgba(0,0,0,0.4),rgba(0,0,0,0.6))]" />
         </div>
-        
-        <motion.div 
-          className="prism-tesla-content"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-        >
-          <div className="prism-tesla-header">
-            <div className="prism-badge">
-              <Microscope size={16} />
-              <span>BREAKTHROUGH INNOVATION</span>
+        <div className="absolute inset-0 grid place-items-center">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className="text-center px-6"
+          >
+            <div className="mx-auto inline-flex items-center gap-2 rounded-full border border-white/20 px-4 py-1 text-xs uppercase tracking-widest text-white/80">
+              <Microscope size={14} /> Breakthrough Instrumentation
             </div>
-            
-            <h1 className="prism-tesla-title">
-              <span className="prism-acronym">PRISM</span>
-              <span className="prism-subtitle">Periscopic Relay Imaging Scanning Microscope</span>
+            <h1 className="mt-4 text-5xl sm:text-6xl md:text-7xl font-semibold tracking-tight">
+              Periscopic Relay Imaging
+              <span className="block text-white/80">Scanning Microscope</span>
             </h1>
-            
-            <p className="prism-tesla-desc">
-              Revolutionary precision optical instrument. Cost-effective alternative to traditional 3-axis translation stages. 
-              Engineered for quantum sensing and cryogenic imaging applications.
+            <p className="mx-auto mt-5 max-w-2xl text-balance text-white/70">
+              A clean‑sheet 3‑axis objective mover that preserves beam orthogonality and eliminates bulky stage stacks. Built for quantum sensing, cryogenic work, and precision photonics.
             </p>
-          </div>
-
-          {/* Tesla Performance Numbers */}
-          <div className="prism-performance-grid">
-            <div className="prism-perf-card primary">
-              <div className="perf-value">49x</div>
-              <div className="perf-label">Magnification</div>
-              <div className="perf-desc">Stable optical system</div>
+            <div className="mt-8 flex items-center justify-center gap-3">
+              <a href="#design" className="rounded-full bg-white text-black px-6 py-3 text-sm font-medium hover:bg-white/90">Explore</a>
+              <a href="#specs" className="rounded-full border border-white/30 px-6 py-3 text-sm font-medium hover:border-white/60">Technical Specs</a>
             </div>
-            <div className="prism-perf-card">
-              <div className="perf-value">10nm</div>
-              <div className="perf-label">Resolution</div>
-              <div className="perf-desc">Piezo precision</div>
-            </div>
-            <div className="prism-perf-card">
-              <div className="perf-value">±12.5mm</div>
-              <div className="perf-label">Travel Range</div>
-              <div className="perf-desc">3-axis capability</div>
-            </div>
-            <div className="prism-perf-card">
-              <div className="perf-value">&lt;0.003mm</div>
-              <div className="perf-label">Flatness</div>
-              <div className="perf-desc">Bearing precision</div>
-            </div>
-          </div>
-        </motion.div>
-      </section>
-
-      {/* System Architecture - Tesla Clean */}
-      <section className="prism-architecture-tesla">
-        <div className="tesla-container">
-          <div className="arch-header">
-            <h2>System Architecture</h2>
-            <p>Three-axis nested framework with beam orthogonality preservation</p>
-          </div>
-          
-          <div className="architecture-tesla-grid">
-            <div className="arch-visual">
-              <div className="system-diagram">
-                <div className="axis-layer z-layer">
-                  <div className="axis-info">
-                    <span className="axis-name">Z-Axis</span>
-                    <span className="axis-desc">Vertical Focus</span>
-                  </div>
-                </div>
-                <div className="axis-layer y-layer">
-                  <div className="axis-info">
-                    <span className="axis-name">Y-Axis</span>
-                    <span className="axis-desc">Mirror Translation</span>
-                  </div>
-                </div>
-                <div className="axis-layer x-layer">
-                  <div className="axis-info">
-                    <span className="axis-name">X-Axis</span>
-                    <span className="axis-desc">Independent Control</span>
-                  </div>
-                </div>
-                <div className="optical-path-viz">
-                  <div className="beam-line incident"></div>
-                  <div className="mirror-point"></div>
-                  <div className="beam-line reflected"></div>
-                  <div className="objective-point"></div>
-                </div>
-              </div>
-            </div>
-            
-            <div className="arch-specs">
-              <div className="arch-spec-group">
-                <h3>Key Innovations</h3>
-                <div className="arch-spec">
-                  <span className="spec-point">Hanging Z-axis configuration</span>
-                  <span className="spec-detail">Reduces moving mass</span>
-                </div>
-                <div className="arch-spec">
-                  <span className="spec-point">Beam orthogonality preservation</span>
-                  <span className="spec-detail">Fixed beam path</span>
-                </div>
-                <div className="arch-spec">
-                  <span className="spec-point">Modular retrofittable design</span>
-                  <span className="spec-detail">Universal compatibility</span>
-                </div>
-              </div>
-              
-              <div className="arch-spec-group">
-                <h3>Performance Characteristics</h3>
-                <div className="arch-spec">
-                  <span className="spec-point">Positioning accuracy</span>
-                  <span className="spec-detail">10-30nm resolution</span>
-                </div>
-                <div className="arch-spec">
-                  <span className="spec-point">Travel range</span>
-                  <span className="spec-detail">±12.5mm per axis</span>
-                </div>
-                <div className="arch-spec">
-                  <span className="spec-point">Temperature range</span>
-                  <span className="spec-detail">4K to 300K operation</span>
-                </div>
-              </div>
-            </div>
-          </div>
+          </motion.div>
         </div>
-      </section>
-
-      {/* Technical Specifications - Tesla Style */}
-      <section className="prism-specs-tesla">
-        <div className="tesla-container">
-          <div className="specs-tesla-header">
-            <h2>Technical Specifications</h2>
-            <div className="tesla-spec-nav">
-              <button 
-                className={`tesla-spec-tab ${activeSpecTab === 'architecture' ? 'active' : ''}`}
-                onClick={() => setActiveSpecTab('architecture')}
-              >
-                <Cpu size={16} />
-                <span>Architecture</span>
-              </button>
-              <button 
-                className={`tesla-spec-tab ${activeSpecTab === 'optical' ? 'active' : ''}`}
-                onClick={() => setActiveSpecTab('optical')}
-              >
-                <Target size={16} />
-                <span>Optical</span>
-              </button>
-              <button 
-                className={`tesla-spec-tab ${activeSpecTab === 'mechanical' ? 'active' : ''}`}
-                onClick={() => setActiveSpecTab('mechanical')}
-              >
-                <Settings size={16} />
-                <span>Mechanical</span>
-              </button>
-              <button 
-                className={`tesla-spec-tab ${activeSpecTab === 'control' ? 'active' : ''}`}
-                onClick={() => setActiveSpecTab('control')}
-              >
-                <Zap size={16} />
-                <span>Control</span>
-              </button>
-            </div>
-          </div>
-
-          <div className="tesla-specs-content">
-            {mockData.prismSpecs.map((section, index) => (
-              activeSpecTab === section.id && (
-                <motion.div 
-                  key={section.id}
-                  className="tesla-spec-section"
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.4 }}
-                >
-                  <div className="tesla-spec-grid">
-                    {section.specs.map((spec, specIndex) => (
-                      <div key={specIndex} className="tesla-spec-card">
-                        <div className="spec-card-header">
-                          <div className="spec-label">{spec.label}</div>
-                          <div className="spec-status">Verified</div>
-                        </div>
-                        <div className="spec-value">{spec.value}</div>
-                        <div className="spec-description">{spec.description}</div>
-                      </div>
-                    ))}
-                  </div>
-                </motion.div>
-              )
+        <div className="absolute bottom-6 inset-x-0">
+          <div className="mx-auto max-w-5xl grid grid-cols-2 md:grid-cols-4 gap-2 px-6">
+            {kpis.map((k) => (
+              <div key={k.label} className="rounded-2xl bg-white/5 backdrop-blur border border-white/10 px-4 py-3 text-center">
+                <div className="text-xl font-semibold">{k.value}</div>
+                <div className="text-xs text-white/60">{k.label}</div>
+              </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Applications - Tesla Grid */}
-      <section className="prism-applications-tesla">
-        <div className="tesla-container">
-          <div className="apps-header">
-            <h2>Applications</h2>
-            <p>Advanced capabilities for next-generation research</p>
+      <section id="design" className="relative w-full bg-black">
+        <div className="mx-auto max-w-7xl px-6 py-24 lg:py-32">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <motion.div initial={{ opacity: 0, x: -20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }} className="order-2 lg:order-1">
+              <h2 className="text-4xl md:text-5xl font-semibold tracking-tight">Designed to move optics, not samples</h2>
+              <p className="mt-5 text-white/70 max-w-xl">PRISM replaces stacked stages with a periscopic relay so your beam stays fixed while the objective navigates X/Y/Z. That means easier cryostat integrations, cleaner alignment, and higher stability at scale.</p>
+              <div className="mt-8 grid grid-cols-1 sm:grid-cols-3 gap-4 max-w-2xl">
+                <div className="rounded-2xl border border-white/10 p-5">
+                  <div className="text-lg font-semibold">Mass‑optimized</div>
+                  <div className="text-sm text-white/60">Hanging Z geometry reduces moving mass for faster, quieter moves.</div>
+                </div>
+                <div className="rounded-2xl border border-white/10 p-5">
+                  <div className="text-lg font-semibold">Retrofit‑ready</div>
+                  <div className="text-sm text-white/60">Drop‑in mounts for existing benches, cryostats and diagnostic stacks.</div>
+                </div>
+                <div className="rounded-2xl border border-white/10 p-5">
+                  <div className="text-lg font-semibold">Orthogonality kept</div>
+                  <div className="text-sm text-white/60">Fixed beam path; objective moves through a stable optical relay.</div>
+                </div>
+              </div>
+            </motion.div>
+            <motion.div initial={{ opacity: 0, x: 20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }} className="order-1 lg:order-2">
+              <div className="relative aspect-[4/3] rounded-3xl overflow-hidden border border-white/10">
+                <div className="absolute inset-0 bg-gradient-to-tr from-white/10 to-white/0" />
+                <div className="absolute inset-0 grid place-items-center text-white/50">
+                  <Microscope size={120} />
+                </div>
+              </div>
+              <div className="mt-4 grid grid-cols-3 gap-3">
+                <div className="h-24 rounded-2xl border border-white/10" />
+                <div className="h-24 rounded-2xl border border-white/10" />
+                <div className="h-24 rounded-2xl border border-white/10" />
+              </div>
+            </motion.div>
           </div>
-          
-          <div className="apps-tesla-grid">
-            {mockData.prismApplications.map((app, index) => (
-              <motion.div 
-                key={index}
-                className="tesla-app-card"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.4, delay: index * 0.1 }}
-                viewport={{ once: true }}
-              >
-                <div className="app-header">
-                  <div className="app-icon">
-                    {app.title.includes('Quantum') && <Target size={24} />}
-                    {app.title.includes('Cryogenic') && <Zap size={24} />}
-                    {app.title.includes('Rydberg') && <Cpu size={24} />}
-                    {app.title.includes('Cold') && <Settings size={24} />}
-                    {app.title.includes('Photonic') && <Activity size={24} />}
-                    {app.title.includes('Surface') && <Layers size={24} />}
-                  </div>
-                  <div className="app-category">{app.category}</div>
+        </div>
+      </section>
+
+      <section className="sticky top-16 z-40 border-y border-white/10 bg-black/60 backdrop-blur">
+        <div className="mx-auto max-w-7xl px-6 py-3 flex items-center justify-between">
+          <div className="flex items-center gap-6 text-sm">
+            <div className="flex items-center gap-2 text-white/80"><Gauge size={16} /> 10–30 nm</div>
+            <div className="flex items-center gap-2 text-white/80"><Ruler size={16} /> ±12.5 mm</div>
+            <div className="flex items-center gap-2 text-white/80"><Move3D size={16} /> 3‑Axis</div>
+            <div className="flex items-center gap-2 text-white/80"><Zap size={16} /> Piezo</div>
+          </div>
+          <a href="#specs" className="inline-flex items-center gap-2 rounded-full bg-white text-black px-4 py-2 text-sm font-medium hover:bg-white/90"><Download size={16} /> Spec Sheet</a>
+        </div>
+      </section>
+
+      <section className="relative w-full bg-black">
+        <div className="mx-auto max-w-7xl px-6 py-24 lg:py-28">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-14 items-center">
+            <motion.div initial={{ opacity: 0, y: 12 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }}>
+              <div className="text-sm uppercase tracking-widest text-white/60">System Architecture</div>
+              <h3 className="mt-2 text-4xl font-semibold tracking-tight">Nested motion with a fixed beam path</h3>
+              <p className="mt-4 text-white/70 max-w-xl">X and Y translate relay mirrors while Z adjusts focal distance. The optical axis remains locked to your diagnostics so alignment is predictable—no zig‑zag beam walks.</p>
+              <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-2xl">
+                <div className="rounded-2xl border border-white/10 p-5">
+                  <div className="text-sm text-white/60">X‑Axis</div>
+                  <div className="text-lg font-semibold">Independent lateral</div>
                 </div>
-                
-                <div className="app-content">
-                  <h3>{app.title}</h3>
-                  <p>{app.description}</p>
-                  
-                  <div className="app-capabilities">
-                    {app.benefits.slice(0, 3).map((benefit, bIndex) => (
-                      <div key={bIndex} className="capability-item">
-                        • {benefit}
-                      </div>
-                    ))}
+                <div className="rounded-2xl border border-white/10 p-5">
+                  <div className="text-sm text-white/60">Y‑Axis</div>
+                  <div className="text-lg font-semibold">Relay mirror translation</div>
+                </div>
+                <div className="rounded-2xl border border-white/10 p-5">
+                  <div className="text-sm text-white/60">Z‑Axis</div>
+                  <div className="text-lg font-semibold">Hanging focus stage</div>
+                </div>
+                <div className="rounded-2xl border border-white/10 p-5">
+                  <div className="text-sm text-white/60">Orthogonality</div>
+                  <div className="text-lg font-semibold">Kept through full range</div>
+                </div>
+              </div>
+            </motion.div>
+            <motion.div initial={{ opacity: 0, scale: 0.98 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} transition={{ duration: 0.6 }}>
+              <div className="relative aspect-[4/3] rounded-3xl overflow-hidden border border-white/10">
+                <div className="absolute inset-0 grid place-items-center">
+                  <div className="w-64 h-64 rounded-full border border-white/20 relative">
+                    <div className="absolute inset-6 rounded-full border border-white/30" />
+                    <div className="absolute left-1/2 top-0 -translate-x-1/2 h-1/2 w-px bg-white/30" />
+                    <div className="absolute right-0 top-1/2 -translate-y-1/2 w-1/2 h-px bg-white/30" />
                   </div>
                 </div>
-              </motion.div>
+              </div>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      <section className="relative w-full bg-gradient-to-b from-black to-white/5">
+        <div className="mx-auto max-w-7xl px-6 py-24 lg:py-28">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+            {["Quantum Sensing", "Cryogenic Imaging", "Rydberg/Cold Atom", "Photonic Testing", "Surface Metrology", "Ion/Trap Systems"].map((t) => (
+              <div key={t} className="rounded-3xl border border-white/10 p-6">
+                <div className="text-sm uppercase tracking-widest text-white/60">Application</div>
+                <div className="mt-2 text-2xl font-semibold">{t}</div>
+                <p className="mt-3 text-white/70">High‑stability objective motion keeps diagnostics fixed while scanning complex samples. Works where racks of stacked stages can’t.</p>
+              </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Performance Benchmarks - Tesla Numbers */}
-      <section className="prism-benchmarks-tesla">
-        <div className="tesla-container">
-          <div className="benchmarks-header">
-            <h2>Performance Benchmarks</h2>
-            <p>Quantified superiority over traditional systems</p>
+      <section id="specs" className="relative w-full bg-black">
+        <div className="mx-auto max-w-7xl px-6 py-24 lg:py-28">
+          <div className="flex items-center justify-between">
+            <h3 className="text-4xl font-semibold tracking-tight">Technical Specifications</h3>
+            <div className="flex items-center gap-2">
+              {specTabs.map((t) => (
+                <button key={t.id} onClick={() => setActiveSpecTab(t.id)} className={`inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm transition ${activeSpecTab === t.id ? "bg-white text-black" : "border border-white/20 text-white/80 hover:text-white"}`}>
+                  <t.icon size={16} /> {t.label}
+                </button>
+              ))}
+            </div>
           </div>
-          
-          <div className="benchmarks-tesla-grid">
-            <div className="benchmark-tesla-card">
-              <div className="benchmark-header">
-                <h3>Positioning Accuracy</h3>
-                <div className="benchmark-improvement">3x Better</div>
+          <div className="mt-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            {specData[activeSpecTab].map((s) => (
+              <div key={s.label} className="rounded-2xl border border-white/10 p-6">
+                <div className="text-sm text-white/60">{s.label}</div>
+                <div className="mt-1 text-lg font-semibold">{s.value}</div>
               </div>
-              <div className="benchmark-comparison">
-                <div className="current-performance">
-                  <div className="performance-bar prism" style={{ width: '95%' }}>
-                    <span>10-30nm</span>
-                  </div>
-                  <div className="performance-label">PRISM System</div>
-                </div>
-                <div className="baseline-performance">
-                  <div className="performance-bar baseline" style={{ width: '30%' }}>
-                    <span>50-100nm</span>
-                  </div>
-                  <div className="performance-label">Traditional Stages</div>
-                </div>
-              </div>
+            ))}
+          </div>
+          <div className="mt-10 grid grid-cols-1 sm:grid-cols-3 gap-4">
+            <div className="rounded-2xl border border-white/10 p-6 text-center">
+              <div className="text-2xl font-semibold">49×</div>
+              <div className="text-sm text-white/60">Demonstrated magnification</div>
             </div>
-            
-            <div className="benchmark-tesla-card">
-              <div className="benchmark-header">
-                <h3>Travel Range</h3>
-                <div className="benchmark-improvement">25% More</div>
-              </div>
-              <div className="benchmark-comparison">
-                <div className="current-performance">
-                  <div className="performance-bar prism" style={{ width: '100%' }}>
-                    <span>±12.5mm</span>
-                  </div>
-                  <div className="performance-label">PRISM System</div>
-                </div>
-                <div className="baseline-performance">
-                  <div className="performance-bar baseline" style={{ width: '80%' }}>
-                    <span>±10mm</span>
-                  </div>
-                  <div className="performance-label">Standard Systems</div>
-                </div>
-              </div>
+            <div className="rounded-2xl border border-white/10 p-6 text-center">
+              <div className="text-2xl font-semibold">10–30 nm</div>
+              <div className="text-sm text-white/60">Resolution</div>
             </div>
-            
-            <div className="benchmark-tesla-card">
-              <div className="benchmark-header">
-                <h3>Beam Stability</h3>
-                <div className="benchmark-improvement">Perfect</div>
-              </div>
-              <div className="benchmark-comparison">
-                <div className="current-performance">
-                  <div className="performance-bar prism" style={{ width: '100%' }}>
-                    <span>100%</span>
-                  </div>
-                  <div className="performance-label">PRISM Orthogonality</div>
-                </div>
-                <div className="baseline-performance">
-                  <div className="performance-bar baseline" style={{ width: '95%' }}>
-                    <span>95-98%</span>
-                  </div>
-                  <div className="performance-label">Conventional Systems</div>
-                </div>
-              </div>
+            <div className="rounded-2xl border border-white/10 p-6 text-center">
+              <div className="text-2xl font-semibold">±12.5 mm</div>
+              <div className="text-sm text-white/60">Travel per axis</div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Tesla Footer */}
-      <footer className="prism-tesla-footer">
-        <div className="tesla-container">
-          <div className="prism-footer-content">
-            <div className="footer-left">
-              <h3>PRISM System</h3>
-              <p>Periscopic Relay Imaging Scanning Microscope</p>
-              <div className="footer-status">
-                <div className="status-dot active"></div>
-                <span>Active Development • Patent Pending</span>
-              </div>
+      <section className="relative w-full bg-black">
+        <div className="mx-auto max-w-7xl px-6 pb-24 lg:pb-32">
+          <div className="rounded-3xl border border-white/10 p-8 flex flex-col md:flex-row items-center gap-8">
+            <div className="flex-1">
+              <div className="text-sm uppercase tracking-widest text-white/60">Status</div>
+              <div className="mt-2 text-3xl font-semibold">Active development • Patent pending</div>
+              <p className="mt-3 text-white/70 max-w-xl">Request the latest spec sheet or schedule a demo. We’ll tailor the configuration to your environment: cryo, vacuum, or ambient benches.</p>
             </div>
-            
-            <div className="footer-right">
-              <div className="footer-tesla-specs">
-                <div className="footer-tesla-spec">
-                  <span className="spec-value">Version 5.0</span>
-                  <span className="spec-label">Current Release</span>
-                </div>
-                <div className="footer-tesla-spec">
-                  <span className="spec-value">49x</span>
-                  <span className="spec-label">Magnification</span>
-                </div>
-                <div className="footer-tesla-spec">
-                  <span className="spec-value">10nm</span>
-                  <span className="spec-label">Resolution</span>
-                </div>
-              </div>
+            <div className="flex items-center gap-3">
+              <a href="#" className="rounded-full bg-white text-black px-6 py-3 text-sm font-medium hover:bg-white/90">Request Specs</a>
+              <a href="#" className="rounded-full border border-white/30 px-6 py-3 text-sm font-medium hover:border-white/60">Book a Demo</a>
             </div>
           </div>
+        </div>
+      </section>
+
+      <footer className="border-t border-white/10 bg-black">
+        <div className="mx-auto max-w-7xl px-6 py-10 flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-white/60">
+          <div>PRISM System</div>
+          <div className="flex items-center gap-3">
+            <span>v5.0</span>
+            <span>49×</span>
+            <span>10–30 nm</span>
+          </div>
+          <div>© {new Date().getFullYear()} Axivion Instruments</div>
         </div>
       </footer>
     </div>
   );
-};
-
-export default PrismProject;
+}
