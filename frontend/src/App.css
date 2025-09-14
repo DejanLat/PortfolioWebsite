@@ -908,17 +908,1181 @@ body {
   font-family: 'JetBrains Mono', monospace;
 }
 
-/* Tesla White Navigation */
+/* Import Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700;800&display=swap');
+
+/* Reset and Base Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  line-height: 1.6;
+  color: #1a1a1a;
+  background-color: #ffffff;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f5f9;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(135deg, #2563eb 0%, #7c3aed 100%);
+}
+
+/* Tesla Model X Navigation - Enhanced */
 .tesla-white-nav {
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
-  background: rgba(255, 255, 255, 0.95);
-  backdrop-filter: blur(20px);
-  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  background: rgba(255, 255, 255, 0.98);
+  backdrop-filter: blur(25px) saturate(180%);
+  border-bottom: 1px solid rgba(59, 130, 246, 0.1);
   z-index: 1000;
   padding: 0;
+  transition: all 0.3s ease;
+}
+
+.tesla-nav-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 70px;
+  padding: 0 32px;
+}
+
+.tesla-white-logo {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  position: relative;
+}
+
+.tesla-white-logo::before {
+  content: '';
+  position: absolute;
+  left: -8px;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  background: linear-gradient(180deg, #3b82f6 0%, #8b5cf6 100%);
+  border-radius: 2px;
+}
+
+.tesla-white-logo h3 {
+  font-size: 20px;
+  font-weight: 800;
+  color: #1a1a1a;
+  font-family: 'JetBrains Mono', monospace;
+  letter-spacing: 2px;
+  line-height: 1;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+}
+
+.tesla-white-logo span {
+  font-size: 11px;
+  color: #3b82f6;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  margin-top: 2px;
+}
+
+.tesla-nav-links {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+}
+
+.tesla-white-link {
+  color: #374151;
+  text-decoration: none;
+  font-size: 15px;
+  font-weight: 500;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  padding: 8px 0;
+}
+
+.tesla-white-link:hover {
+  color: #3b82f6;
+  transform: translateY(-1px);
+}
+
+.tesla-white-link::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, #3b82f6 0%, #8b5cf6 100%);
+  transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  border-radius: 1px;
+}
+
+.tesla-white-link:hover::after {
+  width: 100%;
+}
+
+.tesla-white-cta {
+  background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+  color: #ffffff;
+  padding: 10px 20px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 600;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
+  position: relative;
+  overflow: hidden;
+}
+
+.tesla-white-cta::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.6s;
+}
+
+.tesla-white-cta:hover::before {
+  left: 100%;
+}
+
+.tesla-white-cta:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(59, 130, 246, 0.4);
+}
+
+/* Enhanced Engineering Portfolio */
+.engineering-portfolio {
+  min-height: 100vh;
+  background: #ffffff;
+  color: #1a1a1a;
+  position: relative;
+}
+
+/* Background Animation */
+.engineering-portfolio::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: 
+    radial-gradient(circle at 25% 25%, rgba(59, 130, 246, 0.01) 0%, transparent 50%),
+    radial-gradient(circle at 75% 75%, rgba(139, 92, 246, 0.01) 0%, transparent 50%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Enhanced Hero Section with Premium Carousel */
+.tesla-white-hero-enhanced {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  align-items: center;
+  background: #ffffff;
+  overflow: hidden;
+  padding-top: 70px;
+  position: relative;
+  z-index: 1;
+}
+
+.hero-visual-container {
+  position: relative;
+  height: 100vh;
+  overflow: hidden;
+  border-radius: 0 0 0 40px;
+  box-shadow: -20px 0 60px rgba(0, 0, 0, 0.08);
+}
+
+.hero-image-carousel {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.carousel-image-wrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.hero-carousel-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(0.85) contrast(1.15) saturate(1.1);
+  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  transform: scale(1.05);
+}
+
+.carousel-image-wrapper:hover .hero-carousel-image {
+  transform: scale(1.08);
+  filter: brightness(0.9) contrast(1.2) saturate(1.2);
+}
+
+.hero-image-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(transparent 0%, rgba(0, 0, 0, 0.4) 40%, rgba(0, 0, 0, 0.9) 100%);
+  padding: 3rem;
+  color: white;
+  backdrop-filter: blur(5px);
+}
+
+.hero-image-overlay h4 {
+  font-size: 1.75rem;
+  font-weight: 700;
+  margin-bottom: 0.75rem;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+.hero-image-overlay p {
+  font-size: 1.1rem;
+  opacity: 0.95;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.5);
+  line-height: 1.6;
+}
+
+.carousel-navigation {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 2rem;
+  z-index: 10;
+  transform: translateY(-50%);
+}
+
+.carousel-nav-btn {
+  width: 56px;
+  height: 56px;
+  background: rgba(255, 255, 255, 0.95);
+  border: 1px solid rgba(59, 130, 246, 0.2);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  backdrop-filter: blur(15px) saturate(180%);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.carousel-nav-btn:hover {
+  background: #3b82f6;
+  color: white;
+  transform: scale(1.15);
+  box-shadow: 0 12px 35px rgba(59, 130, 246, 0.4);
+  border-color: #3b82f6;
+}
+
+.carousel-nav-btn:active {
+  transform: scale(1.05);
+}
+
+.carousel-indicators {
+  position: absolute;
+  bottom: 2.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 12px;
+  z-index: 10;
+  background: rgba(0, 0, 0, 0.3);
+  padding: 12px 20px;
+  border-radius: 25px;
+  backdrop-filter: blur(15px);
+}
+
+.indicator {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(255, 255, 255, 0.4);
+  cursor: pointer;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.indicator.active {
+  background: #ffffff;
+  transform: scale(1.4);
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.8);
+}
+
+.indicator:hover:not(.active) {
+  background: rgba(255, 255, 255, 0.7);
+  transform: scale(1.2);
+}
+
+.hero-content-container {
+  padding: 0 3rem;
+}
+
+.engineering-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: rgba(59, 130, 246, 0.06);
+  border: 1px solid rgba(59, 130, 246, 0.2);
+  color: #3b82f6;
+  padding: 12px 20px;
+  border-radius: 25px;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+  margin-bottom: 32px;
+  position: relative;
+  overflow: hidden;
+}
+
+.engineering-badge::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(59, 130, 246, 0.1), transparent);
+  animation: badge-shine 3s infinite;
+}
+
+@keyframes badge-shine {
+  0% { left: -100%; }
+  50% { left: 100%; }
+  100% { left: 100%; }
+}
+
+.tesla-white-title {
+  font-size: clamp(52px, 8vw, 88px);
+  font-weight: 900;
+  line-height: 1.05;
+  color: #1a1a1a;
+  margin-bottom: 20px;
+  position: relative;
+}
+
+.engineering-gradient {
+  background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 50%, #2563eb 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-size: 200% 200%;
+  animation: gradient-shift 4s ease infinite;
+}
+
+@keyframes gradient-shift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.tesla-white-subtitle {
+  font-size: 20px;
+  color: #64748b;
+  max-width: 650px;
+  line-height: 1.7;
+  margin-bottom: 48px;
+  font-weight: 400;
+}
+
+/* Premium Engineering Metrics */
+.engineering-metrics-enhanced {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 24px;
+  margin-bottom: 48px;
+}
+
+.metric-card-enhanced {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  padding: 28px;
+  background: #ffffff;
+  border: 1px solid rgba(59, 130, 246, 0.08);
+  border-radius: 16px;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+  position: relative;
+  overflow: hidden;
+}
+
+.metric-card-enhanced::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(59, 130, 246, 0.03), transparent);
+  transition: left 0.6s;
+}
+
+.metric-card-enhanced:hover::before {
+  left: 100%;
+}
+
+.metric-card-enhanced:hover {
+  border-color: #3b82f6;
+  transform: translateY(-8px) translateX(4px);
+  box-shadow: 0 16px 40px rgba(59, 130, 246, 0.2);
+}
+
+.metric-card-enhanced.featured {
+  border: 2px solid #3b82f6;
+  background: linear-gradient(135deg, #ffffff 0%, rgba(59, 130, 246, 0.02) 100%);
+}
+
+.metric-icon {
+  flex-shrink: 0;
+  width: 56px;
+  height: 56px;
+  background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  box-shadow: 0 8px 25px rgba(59, 130, 246, 0.25);
+  position: relative;
+}
+
+.metric-icon::before {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  background: linear-gradient(135deg, #3b82f6, #8b5cf6, #3b82f6);
+  border-radius: 18px;
+  padding: 2px;
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask-composite: exclude;
+  animation: icon-glow 2s infinite;
+  opacity: 0;
+}
+
+.metric-card-enhanced:hover .metric-icon::before {
+  opacity: 1;
+}
+
+@keyframes icon-glow {
+  0%, 100% { opacity: 0; }
+  50% { opacity: 1; }
+}
+
+.metric-content {
+  flex: 1;
+}
+
+.metric-number {
+  font-size: 32px;
+  font-weight: 900;
+  color: #1a1a1a;
+  font-family: 'JetBrains Mono', monospace;
+  margin-bottom: 6px;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+}
+
+.metric-label {
+  font-size: 13px;
+  color: #3b82f6;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+  margin-bottom: 6px;
+}
+
+.metric-detail {
+  font-size: 14px;
+  color: #64748b;
+  margin-bottom: 16px;
+  line-height: 1.4;
+}
+
+.metric-progress {
+  width: 100%;
+}
+
+.progress-bar {
+  width: 100%;
+  height: 6px;
+  background: linear-gradient(90deg, #f1f5f9 0%, #e2e8f0 100%);
+  border-radius: 3px;
+  overflow: hidden;
+  position: relative;
+}
+
+.progress-bar::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background: linear-gradient(90deg, rgba(59, 130, 246, 0.1) 0%, rgba(139, 92, 246, 0.1) 100%);
+  animation: progress-shimmer 2s infinite;
+}
+
+@keyframes progress-shimmer {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 50%, #2563eb 100%);
+  border-radius: 3px;
+  position: relative;
+  animation: fill-progress 2.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  box-shadow: 0 0 10px rgba(59, 130, 246, 0.3);
+}
+
+.progress-fill::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 30px;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  animation: progress-glow 2s infinite;
+}
+
+@keyframes fill-progress {
+  from { width: 0%; }
+}
+
+@keyframes progress-glow {
+  0% { left: -30px; }
+  100% { left: 100%; }
+}
+
+.tesla-white-actions {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+.tesla-white-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+  color: #ffffff;
+  padding: 18px 32px;
+  border-radius: 12px;
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: 600;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 8px 25px rgba(59, 130, 246, 0.3);
+  position: relative;
+  overflow: hidden;
+}
+
+.tesla-white-primary::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.6s;
+}
+
+.tesla-white-primary:hover::before {
+  left: 100%;
+}
+
+.tesla-white-primary:hover {
+  transform: translateY(-4px) translateX(2px);
+  box-shadow: 0 16px 40px rgba(59, 130, 246, 0.4);
+}
+
+.tesla-white-secondary {
+  color: #374151;
+  text-decoration: none;
+  padding: 18px 32px;
+  border: 2px solid rgba(59, 130, 246, 0.2);
+  border-radius: 12px;
+  font-size: 16px;
+  font-weight: 600;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.tesla-white-secondary::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 100%;
+  background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+  transition: width 0.4s;
+  z-index: -1;
+}
+
+.tesla-white-secondary:hover::before {
+  width: 100%;
+}
+
+.tesla-white-secondary:hover {
+  color: #ffffff;
+  border-color: #3b82f6;
+  transform: translateY(-2px);
+}
+
+/* Premium Visual Statistics */
+.stats-overview {
+  padding: 100px 0;
+  background: linear-gradient(135deg, #f8fafc 0%, #ffffff 100%);
+  position: relative;
+}
+
+.stats-overview::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="1" fill="%233b82f6" opacity="0.02"/></svg>');
+  background-size: 50px 50px;
+  pointer-events: none;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 32px;
+  position: relative;
+  z-index: 1;
+}
+
+.stat-visual-card {
+  background: #ffffff;
+  border: 1px solid rgba(59, 130, 246, 0.08);
+  border-radius: 20px;
+  padding: 40px;
+  text-align: center;
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.06);
+}
+
+.stat-visual-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 6px;
+  background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+  border-radius: 20px 20px 0 0;
+}
+
+.stat-visual-card::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(59, 130, 246, 0.02), transparent);
+  transition: left 0.8s;
+}
+
+.stat-visual-card:hover::after {
+  left: 100%;
+}
+
+.stat-visual-card:hover {
+  transform: translateY(-12px) scale(1.02);
+  box-shadow: 0 20px 60px rgba(59, 130, 246, 0.2);
+  border-color: #3b82f6;
+}
+
+.stat-icon-large {
+  width: 88px;
+  height: 88px;
+  background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+  border-radius: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  margin: 0 auto 28px auto;
+  box-shadow: 0 12px 35px rgba(59, 130, 246, 0.25);
+  position: relative;
+}
+
+.stat-icon-large::before {
+  content: '';
+  position: absolute;
+  inset: -3px;
+  background: linear-gradient(135deg, #3b82f6, #8b5cf6, #3b82f6);
+  border-radius: 25px;
+  padding: 3px;
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask-composite: exclude;
+  animation: icon-pulse 3s infinite;
+  opacity: 0;
+}
+
+.stat-visual-card:hover .stat-icon-large::before {
+  opacity: 1;
+}
+
+@keyframes icon-pulse {
+  0%, 100% { opacity: 0; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.05); }
+}
+
+.stat-data {
+  text-align: center;
+}
+
+.stat-number {
+  font-size: 42px;
+  font-weight: 900;
+  color: #1a1a1a;
+  font-family: 'JetBrains Mono', monospace;
+  margin-bottom: 8px;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.06);
+}
+
+.stat-label {
+  font-size: 16px;
+  color: #3b82f6;
+  font-weight: 700;
+  margin-bottom: 12px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.stat-description {
+  font-size: 14px;
+  color: #64748b;
+  line-height: 1.6;
+}
+
+/* Tesla Container */
+.tesla-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 32px;
+}
+
+/* Premium Specifications Section */
+.tesla-white-specs-enhanced {
+  padding: 140px 0;
+  background: #ffffff;
+  position: relative;
+}
+
+.tesla-white-specs-enhanced::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: 
+    radial-gradient(circle at 20% 80%, rgba(59, 130, 246, 0.02) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(139, 92, 246, 0.02) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+.specs-header-enhanced {
+  text-align: center;
+  margin-bottom: 80px;
+  position: relative;
+  z-index: 1;
+}
+
+.specs-header-enhanced h2 {
+  font-size: 52px;
+  font-weight: 900;
+  color: #1a1a1a;
+  margin-bottom: 20px;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+.specs-header-enhanced p {
+  font-size: 20px;
+  color: #64748b;
+  margin-bottom: 40px;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.6;
+}
+
+.tesla-white-tabs {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+  padding: 12px;
+  border-radius: 20px;
+  display: inline-flex;
+  border: 1px solid rgba(59, 130, 246, 0.1);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.06);
+}
+
+.tesla-white-tab {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: none;
+  border: none;
+  color: #64748b;
+  padding: 14px 24px;
+  border-radius: 12px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.tesla-white-tab::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(59, 130, 246, 0.1), transparent);
+  transition: left 0.6s;
+}
+
+.tesla-white-tab:hover::before:not(.active) {
+  left: 100%;
+}
+
+.tesla-white-tab.active {
+  background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+  color: #ffffff;
+  box-shadow: 0 8px 25px rgba(59, 130, 246, 0.3);
+  transform: translateY(-2px);
+}
+
+.tesla-white-tab:hover:not(.active) {
+  color: #1a1a1a;
+  background: rgba(59, 130, 246, 0.08);
+  transform: translateY(-1px);
+}
+
+.specs-visual-content {
+  margin-top: 64px;
+  position: relative;
+  z-index: 1;
+}
+
+/* Premium Equipment Showcase */
+.equipment-showcase {
+  display: grid;
+  grid-template-columns: 1.3fr 1fr;
+  gap: 64px;
+  align-items: start;
+}
+
+.equipment-carousel-section {
+  position: sticky;
+  top: 140px;
+}
+
+.equipment-carousel {
+  position: relative;
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow: 0 16px 50px rgba(0, 0, 0, 0.15);
+  border: 1px solid rgba(59, 130, 246, 0.1);
+}
+
+.equipment-image-container {
+  position: relative;
+  aspect-ratio: 5/4;
+}
+
+.equipment-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(0.9) contrast(1.1) saturate(1.1);
+  transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  transform: scale(1.02);
+}
+
+.equipment-carousel:hover .equipment-image {
+  transform: scale(1.08);
+  filter: brightness(0.95) contrast(1.15) saturate(1.2);
+}
+
+.equipment-image-info {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(transparent 0%, rgba(0, 0, 0, 0.6) 50%, rgba(0, 0, 0, 0.9) 100%);
+  padding: 3rem;
+  color: white;
+  backdrop-filter: blur(10px);
+}
+
+.equipment-image-info h4 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 0.75rem;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+}
+
+.equipment-image-info p {
+  font-size: 1rem;
+  opacity: 0.95;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.6);
+}
+
+.equipment-carousel-nav {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 1.5rem;
+  z-index: 10;
+}
+
+.equipment-specs-detailed {
+  background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+  border: 1px solid rgba(59, 130, 246, 0.08);
+  border-radius: 24px;
+  padding: 40px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.06);
+}
+
+.equipment-category-enhanced {
+  margin-bottom: 40px;
+}
+
+.category-header-enhanced {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 32px;
+  padding-bottom: 16px;
+  border-bottom: 2px solid rgba(59, 130, 246, 0.1);
+}
+
+.category-header-enhanced h3 {
+  font-size: 24px;
+  font-weight: 700;
+  color: #1a1a1a;
+}
+
+.proficiency-indicator {
+  padding: 8px 20px;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.proficiency-indicator.expert {
+  background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+  color: #ffffff;
+  box-shadow: 0 4px 15px rgba(16, 185, 129, 0.3);
+}
+
+.proficiency-indicator.advanced {
+  background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+  color: #ffffff;
+  box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
+}
+
+.equipment-grid-visual {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.equipment-item-visual {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 20px;
+  background: #ffffff;
+  border: 1px solid rgba(59, 130, 246, 0.08);
+  border-radius: 16px;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04);
+  position: relative;
+  overflow: hidden;
+}
+
+.equipment-item-visual::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(59, 130, 246, 0.03), transparent);
+  transition: left 0.6s;
+}
+
+.equipment-item-visual:hover::before {
+  left: 100%;
+}
+
+.equipment-item-visual:hover {
+  border-color: #3b82f6;
+  transform: translateX(12px) translateY(-2px);
+  box-shadow: 0 12px 35px rgba(59, 130, 246, 0.15);
+}
+
+.equipment-icon-bg {
+  width: 48px;
+  height: 48px;
+  background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  flex-shrink: 0;
+  box-shadow: 0 8px 25px rgba(59, 130, 246, 0.2);
+}
+
+.equipment-details {
+  flex: 1;
+}
+
+.equipment-name {
+  font-size: 15px;
+  font-weight: 600;
+  color: #1a1a1a;
+  margin-bottom: 10px;
+}
+
+.equipment-proficiency {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.proficiency-bar-container {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex: 1;
+}
+
+.proficiency-bar-bg {
+  flex: 1;
+  height: 8px;
+  background: linear-gradient(90deg, #f1f5f9 0%, #e2e8f0 100%);
+  border-radius: 4px;
+  overflow: hidden;
+  position: relative;
+}
+
+.proficiency-bar-bg::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background: linear-gradient(90deg, rgba(59, 130, 246, 0.1) 0%, rgba(139, 92, 246, 0.1) 100%);
+  animation: proficiency-shimmer 2s infinite;
+}
+
+@keyframes proficiency-shimmer {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+.proficiency-bar-fill.expert {
+  background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+  height: 100%;
+  border-radius: 4px;
+  animation: proficiency-fill 2s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  box-shadow: 0 0 12px rgba(16, 185, 129, 0.3);
+  position: relative;
+}
+
+.proficiency-bar-fill.expert::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 40px;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+  animation: proficiency-glow 2.5s infinite;
+}
+
+@keyframes proficiency-fill {
+  from { width: 0%; }
+  to { width: 95%; }
+}
+
+@keyframes proficiency-glow {
+  0% { left: -40px; }
+  100% { left: 100%; }
+}
+
+.proficiency-text {
+  font-size: 13px;
+  color: #10b981;
+  font-weight: 700;
+  min-width: 70px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
 }
 
 .tesla-nav-content {
