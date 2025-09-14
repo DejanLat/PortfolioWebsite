@@ -331,7 +331,7 @@ const PrismProject = () => {
                     </div>
                     <div className="metric-badge">
                       <span className="metric-label">Stability</span>
-                      <span className="metric-value">>99%</span>
+                      <span className="metric-value">&gt;99%</span>
                     </div>
                   </div>
                 </div>
