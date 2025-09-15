@@ -906,7 +906,7 @@ export default function PortfolioWhite() {
   const [currentProjectImage, setCurrentProjectImage] = useState(0);
   const [isPlaying, setIsPlaying] = useState(true);
 
-  const shrekUrl = "https://www.jedishop.eu/_obchody/www.jedishop.cz/prilohy/721/shrek-movie-posed-pvc-soska-shrek-30-cm.jpg.big.jpg";
+  const shrekUrl = "https://image.petmd.com/files/styles/978x550/public/2023-01/budgies.row_.jpg?w=2048&q=75";
 
   const heroImages = useMemo(() => [
   { url: shrekUrl, title: "Advanced Microscopy", description: "Precision at the nanometer scale" },
@@ -945,18 +945,15 @@ export default function PortfolioWhite() {
       <header className="fixed inset-x-0 top-0 z-50 bg-white/80 backdrop-blur border-b border-black/10">
         <div className="mx-auto max-w-7xl h-16 px-4 sm:px-6 lg:px-8 flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <div className="font-semibold tracking-widest">ENGINEERING</div>
-            <div className="text-black/50">PORTFOLIO</div>
+            <div className="font-semibold tracking-widest">DEJAN</div>
+            <div className="text-black/50">LATKOVIC</div>
           </div>
           <nav className="hidden md:flex items-center gap-6 text-sm">
-            <a href="#specifications" className="text-black/70 hover:text-black">Specifications</a>
-            <a href="#performance" className="text-black/70 hover:text-black">Performance</a>
-            <a href="#experience" className="text-black/70 hover:text-black">Experience</a>
-            <a href="#projects" className="text-black/70 hover:text-black">Projects</a>
+            <a href="https://www.linkedin.com" className="text-black/70 hover:text-black">LinkedIn</a>
             <Link to="/prism" className="rounded-full bg-black text-white px-4 py-2 font-medium hover:bg-black/90">PRISM</Link>
-            <button onClick={() => setIsPlaying((s) => !s)} className="rounded-full border border-black/20 px-3 py-2 hover:border-black/40 inline-flex items-center gap-2 text-sm">
+            {/* <button onClick={() => setIsPlaying((s) => !s)} className="rounded-full border border-black/20 px-3 py-2 hover:border-black/40 inline-flex items-center gap-2 text-sm">
               {isPlaying ? <Pause size={14} /> : <Play size={14} />} {isPlaying ? "Pause" : "Play"}
-            </button>
+            </button> */}
           </nav>
         </div>
       </header>
@@ -1147,7 +1144,9 @@ export default function PortfolioWhite() {
               <motion.div key={i} initial={{ opacity:0, y:16 }} whileInView={{ opacity:1, y:0 }} viewport={{ once:true }} transition={{ duration:0.5, delay:i*0.06 }} className="rounded-3xl border border-black/10 p-6">
                 <div className="flex items-start gap-4">
                   <div className="relative h-24 w-32 overflow-hidden rounded-xl border border-black/10">
-                    <img src={exp.image || "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/Engineering_workplace.jpg/400px-Engineering_workplace.jpg"} alt={exp.company} className="h-full w-full object-cover" />
+                    <img     src={process.env.PUBLIC_URL + "/image.jpg"}
+
+ alt={exp.company} className="h-full w-full object-cover" />
                     <div className="absolute bottom-1 right-1 rounded-full bg-white/90 text-[10px] px-2 py-0.5 border border-black/10">{exp.period}</div>
                   </div>
                   <div className="flex-1">
@@ -1257,9 +1256,9 @@ export default function PortfolioWhite() {
           <div className="mx-auto max-w-7xl px-6 py-6 text-sm text-black/60 flex items-center justify-between">
             <div>© {new Date().getFullYear()} Dejan Latkovic</div>
             <div className="flex items-center gap-3">
-              <a href="#specifications" className="hover:text-black">Specs</a>
+              {/* <a href="#specifications" className="hover:text-black">Specs</a>
               <a href="#performance" className="hover:text-black">Performance</a>
-              <a href="#projects" className="hover:text-black">Projects</a>
+              <a href="#projects" className="hover:text-black">Projects</a> */}
             </div>
           </div>
         </div>
