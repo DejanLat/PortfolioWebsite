@@ -908,12 +908,12 @@ export default function PortfolioWhite() {
 
   const shrekUrl = process.env.PUBLIC_URL + "/AxivionPrismBanner.png";
   const longPhotoUrl = process.env.PUBLIC_URL + "/longphoto.png";
+  const imageUrl = process.env.PUBLIC_URL + "/image.jpg";
 
 
   const heroImages = useMemo(() => [
   { url: longPhotoUrl, title: "Advanced Microscopy", description: "Precision at the nanometer scale" },
-  { url: shrekUrl, title: "CNC Manufacturing", description: "Aerospace‑grade tolerances" },
-  { url: shrekUrl, title: "AFM Systems", description: "Surface characterization" },
+  { url: imageUrl, title: "CNC Manufacturing", description: "Aerospace‑grade tolerances" },
   { url: shrekUrl, title: "Instrumentation Lab", description: "Research‑grade setups" }
   ], [shrekUrl]);
   
@@ -928,7 +928,7 @@ export default function PortfolioWhite() {
   const projectImages = useMemo(() => [
   // use your tall portrait here
   { url: longPhotoUrl, title: "Optical Components", description: "PRISM optical path design" },
-  { url: shrekUrl,     title: "Precision Tools",   description: "Process optimization" },
+  { url: imageUrl,     title: "Precision Tools",   description: "Process optimization" },
   { url: shrekUrl,     title: "Data Systems",      description: "Analytics and dashboards" }
 ], [longPhotoUrl, shrekUrl]);
   
@@ -960,8 +960,22 @@ export default function PortfolioWhite() {
           </nav>
         </div>
       </header>
+{/* 🚧 In-progress announcement bar */}
+<div className="sticky top-16 z-40 bg-amber-50/95 backdrop-blur border-y border-amber-200">
+  <div className="mx-auto max-w-7xl px-6 py-2 flex items-center justify-between gap-3">
+    <div className="flex items-center gap-2 text-sm text-amber-900">
+      <span aria-hidden>🚧</span>
+      <span>
+        This site is a live work-in-progress. Some sections are placeholders.
+        <span className="ml-2 font-medium">
+          Last update: {new Date().toLocaleString('en-CA', { dateStyle: 'medium', timeStyle: 'short' })}
+        </span>
+      </span>
+    </div>
+  </div>
+</div>
 
-      <section className="relative h-[88vh] overflow-hidden pt-16">
+      <section className="relative h-[88vh] overflow-hidden pt-14">
         <div className="absolute inset-0 z-10">
           <img src={heroImages[currentHeroImage].url} alt={heroImages[currentHeroImage].title} className="h-full w-full object-cover" />
           <div className="absolute inset-0 pointer-events-none bg-gradient-to-b from-white/60 via-white/50 to-white" />

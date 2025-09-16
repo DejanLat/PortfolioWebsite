@@ -473,6 +473,20 @@ export default function PrismX() {
           </div>
         </div>
       </header>
+{/* 🚧 In-progress announcement bar */}
+<div className="sticky top-16 z-40 bg-amber-50/95 backdrop-blur border-y border-amber-200">
+  <div className="mx-auto max-w-7xl px-6 py-2 flex items-center justify-between gap-3">
+    <div className="flex items-center gap-2 text-sm text-amber-900">
+      <span aria-hidden>🚧</span>
+      <span>
+        This site is a live work-in-progress. Some sections are placeholders.
+        <span className="ml-2 font-medium">
+          Last update: {new Date().toLocaleString('en-CA', { dateStyle: 'medium', timeStyle: 'short' })}
+        </span>
+      </span>
+    </div>
+  </div>
+</div>
 
       <section className="relative h-[92vh] w-full overflow-hidden">
         <div className="absolute inset-0">
@@ -494,7 +508,7 @@ export default function PrismX() {
               <span className="block text-white/80">Scanning Microscope</span>
             </h1>
             <p className="mx-auto mt-5 max-w-2xl text-balance text-white/70">
-              Please Ignore Anything you see here for now. Currently Working on it 3:39 AM 9/16/2025
+              Place Holder
             </p>
             <div className="mt-8 flex items-center justify-center gap-3">
               <a href="#design" className="rounded-full bg-white text-black px-6 py-3 text-sm font-medium hover:bg-white/90">Explore</a>
