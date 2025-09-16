@@ -976,7 +976,7 @@ export default function PortfolioWhite() {
                 Nanotechnology
                 <span className="block text-black/60">Engineer</span>
               </h1>
-              <p className="mt-5 max-w-2xl text-black/70">Quantifiable impact in precision manufacturing, advanced microscopy, and process automation. Specializing in nanometer‑scale solutions that ship.</p>
+              <p className="mt-5 max-w-2xl text-black/70">Please Ignore Anything you see here for now. Currently Working on it 3:39 AM 9/16/2025</p>
               <div className="mt-8 flex items-center gap-3">
                 <Link to="/prism" className="rounded-full bg-black text-white px-6 py-3 text-sm font-medium hover:bg-black/90 inline-flex items-center gap-2">View PRISM <ArrowRight size={18} /></Link>
                 <a href="#specifications" className="rounded-full border border-black/20 px-6 py-3 text-sm font-medium hover:border-black/40">Technical Specs</a>

@@ -494,7 +494,7 @@ export default function PrismX() {
               <span className="block text-white/80">Scanning Microscope</span>
             </h1>
             <p className="mx-auto mt-5 max-w-2xl text-balance text-white/70">
-              A clean‑sheet 3‑axis objective mover that preserves beam orthogonality and eliminates bulky stage stacks. Built for quantum sensing, cryogenic work, and precision photonics.
+              Please Ignore Anything you see here for now. Currently Working on it 3:39 AM 9/16/2025
             </p>
             <div className="mt-8 flex items-center justify-center gap-3">
               <a href="#design" className="rounded-full bg-white text-black px-6 py-3 text-sm font-medium hover:bg-white/90">Explore</a>
