@@ -895,7 +895,7 @@
 
 import React, { useEffect, useState, useMemo } from "react";
 import { motion } from "framer-motion";
-import { ChevronRight, ChevronLeft, Award, Users, BarChart3, Target, Zap, Activity, Settings, ArrowRight, Play, Pause, Cpu, Eye } from "lucide-react";
+import { ChevronRight, ChevronLeft, Award, Users, BarChart3, Target, Zap, Activity, Settings, ArrowRight, Play, Pause, Cpu, Eye, BellDot, ShieldBan, ShieldMinusIcon, AtomIcon, LucideAsterisk, RocketIcon, MicroscopeIcon } from "lucide-react";
 import { Link } from "react-router-dom";
 import mockData from "../data/mock";
 
@@ -906,14 +906,16 @@ export default function PortfolioWhite() {
   const [currentProjectImage, setCurrentProjectImage] = useState(0);
   const [isPlaying, setIsPlaying] = useState(true);
 
-  const shrekUrl = "https://image.petmd.com/files/styles/978x550/public/2023-01/budgies.row_.jpg?w=2048&q=75";
+  const shrekUrl = process.env.PUBLIC_URL + "/AxivionPrismBanner.png";
+  const longPhotoUrl = process.env.PUBLIC_URL + "/longphoto.png";
+
 
   const heroImages = useMemo(() => [
-  { url: shrekUrl, title: "Advanced Microscopy", description: "Precision at the nanometer scale" },
+  { url: longPhotoUrl, title: "Advanced Microscopy", description: "Precision at the nanometer scale" },
   { url: shrekUrl, title: "CNC Manufacturing", description: "Aerospace‑grade tolerances" },
   { url: shrekUrl, title: "AFM Systems", description: "Surface characterization" },
   { url: shrekUrl, title: "Instrumentation Lab", description: "Research‑grade setups" }
-  ], []);
+  ], [shrekUrl]);
   
   const equipmentImages = useMemo(() => [
   { url: shrekUrl, title: "SEM Stage", category: "Electron Microscopy" },
@@ -924,10 +926,11 @@ export default function PortfolioWhite() {
   ], []);
   
   const projectImages = useMemo(() => [
-  { url: shrekUrl, title: "Optical Components", description: "PRISM optical path design" },
-  { url: shrekUrl, title: "Precision Tools", description: "Process optimization" },
-  { url: shrekUrl, title: "Data Systems", description: "Analytics and dashboards" }
-  ], []);
+  // use your tall portrait here
+  { url: longPhotoUrl, title: "Optical Components", description: "PRISM optical path design" },
+  { url: shrekUrl,     title: "Precision Tools",   description: "Process optimization" },
+  { url: shrekUrl,     title: "Data Systems",      description: "Analytics and dashboards" }
+], [longPhotoUrl, shrekUrl]);
   
 
   useEffect(() => {
@@ -959,15 +962,15 @@ export default function PortfolioWhite() {
       </header>
 
       <section className="relative h-[88vh] overflow-hidden pt-16">
-        <div className="absolute inset-0">
+        <div className="absolute inset-0 z-10">
           <img src={heroImages[currentHeroImage].url} alt={heroImages[currentHeroImage].title} className="h-full w-full object-cover" />
-          <div className="absolute inset-0 bg-gradient-to-b from-white/60 via-white/50 to-white" />
+          <div className="absolute inset-0 pointer-events-none bg-gradient-to-b from-white/60 via-white/50 to-white" />
         </div>
-        <div className="relative z-10 h-full flex flex-col justify-center">
-          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }} className="px-6">
+        <div className="relative z-10 h-full flex flex-col justify-between">
+          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }} className="px-6 pt-20 pb-10">
             <div className="mx-auto max-w-7xl">
               <div className="mx-auto inline-flex items-center gap-2 rounded-full border border-black/10 bg-white/70 px-4 py-1 text-xs uppercase tracking-widest text-black/70">
-                <Target size={14} /> Precision Engineering • Nanoscale Systems
+                <MicroscopeIcon size={14} /> Nano Photonics • Nano-Fluidics Engineering
               </div>
               <h1 className="mt-4 text-5xl sm:text-6xl md:text-7xl font-semibold tracking-tight text-balance">
                 Nanotechnology
@@ -980,24 +983,45 @@ export default function PortfolioWhite() {
               </div>
             </div>
           </motion.div>
-          <div className="mt-auto pb-8">
-            <div className="mx-auto max-w-5xl grid grid-cols-2 md:grid-cols-4 gap-2 px-6">
-              {[{v:"20%",l:"Capacity Increase"},{v:"80%",l:"Process Efficiency"},{v:"800+",l:"Units Automated"},{v:"10 nm",l:"Precision Achieved"}].map((k) => (
-                <div key={k.l} className="rounded-2xl bg-white shadow-[0_1px_0_0_rgba(0,0,0,0.04),0_12px_24px_-8px_rgba(0,0,0,0.12)] border border-black/10 px-4 py-3 text-center">
-                  <div className="text-xl font-semibold">{k.v}</div>
-                  <div className="text-xs text-black/60">{k.l}</div>
-                </div>
-              ))}
-            </div>
-          </div>
+          
         </div>
-        <div className="absolute inset-y-0 left-0 flex items-center pl-4">
-          <button onClick={() => setCurrentHeroImage((p) => (p - 1 + heroImages.length) % heroImages.length)} className="rounded-full border border-black/10 bg-white/80 backdrop-blur p-2 hover:bg-white"><ChevronLeft size={18} /></button>
+        <div className="absolute inset-y-0 right-0 z-20 flex items-center pr-4">
+          <button onClick={() => setCurrentHeroImage((p) => (p - 1 + heroImages.length) % heroImages.length)} className="rounded-full border border-black/10 bg-white/80 backdrop-blur p-2 hover:bg-white"><ChevronRight size={18} /></button>
         </div>
         <div className="absolute inset-y-0 right-0 flex items-center pr-4">
-          <button onClick={() => setCurrentHeroImage((p) => (p + 1) % heroImages.length)} className="rounded-full border border-black/10 bg-white/80 backdrop-blur p-2 hover:bg-white"><ChevronRight size={18} /></button>
+          <button onClick={() => setCurrentHeroImage((p) => (p + 1) % heroImages.length)} className="rounded-full border border-black/10 bg-white/80 backdrop-blur p-2 hover:bg-white"><ChevronLeft size={18} /></button>
         </div>
       </section>
+{/* HIGHLIGHTS (glass cards that don’t clip text) */}
+<section aria-labelledby="highlights" className="relative -mt-8 z-20">
+  <div className="mx-auto max-w-7xl px-6">
+    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+      {[
+        { icon: Users,   title: "IQC (University of Waterloo)", label: "Research Experience" },
+        { icon: Target,  title: "PRISM (Axivion Instruments)",  label: "Core Project" },
+        { icon: Settings,title: "Optics • Mechanical • Software", label: "Technical Breadth" },
+        { icon: Award,   title: "Photonics North 2025",         label: "Recognition" },
+      ].map((h) => (
+        <div
+          key={h.title}
+          title={h.title}
+          className="group flex items-center gap-3 rounded-xl border border-black/10
+                     bg-white/60 backdrop-blur-md px-5 py-3 shadow-sm hover:shadow-md transition"
+        >
+          <div className="h-9 w-9 rounded-full border border-black/10 grid place-items-center bg-white/80">
+            {React.createElement(h.icon, { size: 18 })}
+          </div>
+          <div className="min-w-0">
+            <div className="text-sm font-medium leading-tight break-words whitespace-normal">
+              {h.title}
+            </div>
+            <div className="text-[11px] text-black/60">{h.label}</div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
 
       <section id="specifications" className="relative bg-white">
         <div className="mx-auto max-w-7xl px-6 py-20 lg:py-24">
@@ -1013,9 +1037,15 @@ export default function PortfolioWhite() {
           </div>
 
           {activeTab === "equipment" && (
-            <div className="mt-10 grid grid-cols-1 lg:grid-cols-2 gap-8">
+            <div className="mt-10 grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
               <div className="relative rounded-3xl overflow-hidden border border-black/10 bg-white">
-                <img src={equipmentImages[currentEquipmentImage].url} alt={equipmentImages[currentEquipmentImage].title} className="h-80 w-full object-cover" />
+                <div className="relative w-full h-[700px]">
+                  <img
+                    src={equipmentImages[currentEquipmentImage].url}
+                    alt={equipmentImages[currentEquipmentImage].title}
+                    className="absolute inset-0 w-full h-full object-cover object-center"
+                  />
+                </div>
                 <div className="absolute bottom-0 inset-x-0 p-4 bg-gradient-to-t from-white via-white/70 to-transparent">
                   <div className="text-lg font-semibold">{equipmentImages[currentEquipmentImage].title}</div>
                   <div className="text-sm text-black/60">{equipmentImages[currentEquipmentImage].category}</div>
@@ -1178,52 +1208,94 @@ export default function PortfolioWhite() {
         <div className="mx-auto max-w-7xl px-6 py-20 lg:py-24">
           <h2 className="text-4xl font-semibold tracking-tight">Engineering Projects</h2>
           <p className="text-black/60 mt-2">Breakthroughs with visual documentation</p>
-          <div className="mt-10 grid grid-cols-1 lg:grid-cols-2 gap-8">
-            <div className="relative rounded-3xl overflow-hidden border border-black/10 bg-white">
-              <img src={projectImages[currentProjectImage].url} alt={projectImages[currentProjectImage].title} className="h-80 w-full object-cover" />
-              <div className="absolute bottom-0 inset-x-0 p-4 bg-gradient-to-t from-white via-white/80 to-transparent">
-                <div className="text-lg font-semibold">{projectImages[currentProjectImage].title}</div>
-                <div className="text-sm text-black/60">{projectImages[currentProjectImage].description}</div>
-              </div>
-              <div className="absolute inset-y-0 left-0 flex items-center pl-3"><button onClick={() => setCurrentProjectImage((p) => (p - 1 + projectImages.length) % projectImages.length)} className="rounded-full border border-black/10 bg-white/90 p-2"><ChevronLeft size={18}/></button></div>
-              <div className="absolute inset-y-0 right-0 flex items-center pr-3"><button onClick={() => setCurrentProjectImage((p) => (p + 1) % projectImages.length)} className="rounded-full border border-black/10 bg-white/90 p-2"><ChevronRight size={18}/></button></div>
+
+          {/* FULL-WIDTH CAROUSEL */}
+          <div className="mt-10 relative rounded-3xl overflow-hidden border border-black/10 bg-white">
+            <div className="relative w-full h-[560px] md:h-[640px]">
+              <img
+                src={projectImages[currentProjectImage].url}
+                alt={projectImages[currentProjectImage].title}
+                className="absolute inset-0 w-full h-full object-cover object-center"
+              />
             </div>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-              {mockData.projects.map((project, index) => (
-                <motion.div key={index} initial={{ opacity:0, y:12 }} whileInView={{ opacity:1, y:0 }} viewport={{ once:true }} transition={{ duration:0.45, delay:index*0.06 }} className={`rounded-3xl border border-black/10 p-6 ${project.featured?"bg-black text-white":"bg-white"}`}>
-                  {project.featured && (
-                    <div className="inline-flex items-center gap-2 rounded-full border px-3 py-1 text-xs mb-3">
-                      <Award size={14} /> Breakthrough
-                    </div>
-                  )}
-                  <div className="flex items-center justify-between">
-                    <div className="text-sm text-black/60 data-[featured=true]:text-white/70" data-featured={project.featured}>Category</div>
-                    <div className="text-sm font-medium">{project.category}</div>
+
+            {/* caption overlay */}
+            <div className="absolute bottom-0 inset-x-0 p-5 sm:p-6 bg-gradient-to-t from-black/70 via-black/30 to-transparent">
+              <div className="text-white text-lg font-semibold">{projectImages[currentProjectImage].title}</div>
+              <div className="text-white/80 text-sm">{projectImages[currentProjectImage].description}</div>
+            </div>
+
+            {/* arrows */}
+            <button
+              onClick={() => setCurrentProjectImage((p) => (p - 1 + projectImages.length) % projectImages.length)}
+              className="absolute left-3 top-1/2 -translate-y-1/2 rounded-full border border-black/10 bg-white/95 p-2 shadow"
+              aria-label="Previous"
+            >
+              <ChevronLeft size={18} />
+            </button>
+            <button
+              onClick={() => setCurrentProjectImage((p) => (p + 1) % projectImages.length)}
+              className="absolute right-3 top-1/2 -translate-y-1/2 rounded-full border border-black/10 bg-white/95 p-2 shadow"
+              aria-label="Next"
+            >
+              <ChevronRight size={18} />
+            </button>
+          </div>
+
+          {/* BARS / CARDS BELOW */}
+          <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 items-start">
+            {mockData.projects.map((project, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 12 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.45, delay: index * 0.06 }}
+                className={`rounded-3xl border border-black/10 p-6 ${project.featured ? "bg-black text-white" : "bg-white"}`}
+              >
+                {project.featured && (
+                  <div className="inline-flex items-center gap-2 rounded-full border px-3 py-1 text-xs mb-3">
+                    <Award size={14} /> Breakthrough
                   </div>
-                  <div className="mt-2 text-xl font-semibold">{project.title}</div>
-                  <p className={`mt-2 text-sm ${project.featured?"text-white/80":"text-black/70"}`}>{project.description}</p>
-                  <div className="mt-4">
-                    <div className="text-sm font-medium">Technical Specifications</div>
-                    <div className="mt-2 space-y-2">
-                      {project.specifications.slice(0,4).map((s,si)=>(
-                        <div key={si} className="flex items-center gap-2 text-sm"><div className={`size-4 rounded-full grid place-items-center ${project.featured?"bg-white text-black":"bg-black text-white"}`}>✓</div><span>{s}</span></div>
-                      ))}
-                    </div>
-                  </div>
-                  <div className="mt-4 flex flex-wrap gap-2">
-                    {project.technologies.slice(0,5).map((t,ti)=>(
-                      <span key={ti} className={`rounded-full border px-3 py-1 text-xs ${project.featured?"border-white/30 text-white/90":"border-black/20 text-black/80"}`}>{t}</span>
+                )}
+                <div className="flex items-center justify-between">
+                  <div className="text-sm text-black/60 data-[featured=true]:text-white/70" data-featured={project.featured}>Category</div>
+                  <div className="text-sm font-medium">{project.category}</div>
+                </div>
+                <div className="mt-2 text-xl font-semibold">{project.title}</div>
+                <p className={`mt-2 text-sm ${project.featured ? "text-white/80" : "text-black/70"}`}>{project.description}</p>
+                <div className="mt-4">
+                  <div className="text-sm font-medium">Technical Specifications</div>
+                  <div className="mt-2 space-y-2">
+                    {project.specifications.slice(0, 4).map((s, si) => (
+                      <div key={si} className="flex items-center gap-2 text-sm">
+                        <div className={`size-4 rounded-full grid place-items-center ${project.featured ? "bg-white text-black" : "bg-black text-white"}`}>✓</div>
+                        <span>{s}</span>
+                      </div>
                     ))}
                   </div>
-                  {project.featured && (
-                    <Link to="/prism" className="mt-4 inline-flex items-center gap-2 rounded-full bg-white text-black px-4 py-2 text-sm font-medium hover:bg-white/90">View System <ArrowRight size={16} /></Link>
-                  )}
-                </motion.div>
-              ))}
-            </div>
+                </div>
+                <div className="mt-4 flex flex-wrap gap-2">
+                  {project.technologies.slice(0, 5).map((t, ti) => (
+                    <span
+                      key={ti}
+                      className={`rounded-full border px-3 py-1 text-xs ${project.featured ? "border-white/30 text-white/90" : "border-black/20 text-black/80"}`}
+                    >
+                      {t}
+                    </span>
+                  ))}
+                </div>
+                {project.featured && (
+                  <Link to="/prism" className="mt-4 inline-flex items-center gap-2 rounded-full bg-white text-black px-4 py-2 text-sm font-medium hover:bg-white/90">
+                    View System <ArrowRight size={16} />
+                  </Link>
+                )}
+              </motion.div>
+            ))}
           </div>
         </div>
       </section>
+
 
       <footer className="border-t border-black/10 bg-white">
         <div className="mx-auto max-w-7xl px-6 py-12 grid grid-cols-1 lg:grid-cols-2 gap-8">
