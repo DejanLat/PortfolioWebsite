@@ -481,7 +481,7 @@ export default function PrismX() {
       <span>
         This site is a live work-in-progress. Some sections are placeholders.
         <span className="ml-2 font-medium">
-          Last update: {new Date().toLocaleString('en-CA', { dateStyle: 'medium', timeStyle: 'short' })}
+          Last update: Last update: 9/16/2024
         </span>
       </span>
     </div>

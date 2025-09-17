@@ -213,65 +213,81 @@ const mockData = {
         "Selected for exclusive leadership role from competitive pool based on demonstrated leadership capabilities",
         "Developed advanced leadership, crisis management, and interpersonal skills in high-pressure, fast-paced environment"
       ]
+    },
+    {
+      company: "Camp Muskoka",
+      role: "Leadership Coordinator & Program Manager",
+      period: "February 2020",
+      category: "Leadership Development",
+      image: "https://images.unsplash.com/photo-1748261759887-faa2a9d76471",
+      keyMetrics: [
+        { value: "150+", description: "Participants managed" },
+        { value: "5", description: "Days intensive program" },
+        { value: "Elite", description: "Selection status" }
+      ],
+      achievements: [
+        "Organized and led intensive 5-day camp program for over 150 high school students with complex logistics coordination",
+        "Successfully managed multiple groups of 20-30 participants simultaneously with small coordinating team",
+        "Selected for exclusive leadership role from competitive pool based on demonstrated leadership capabilities",
+        "Developed advanced leadership, crisis management, and interpersonal skills in high-pressure, fast-paced environment"
+      ]
     }
   ],
 
-  projects: [
-    {
-      title: "PRISM - Periscopic Relay Imaging Scanning Microscope",
-      description: "Revolutionary precision optical instrument designed as cost-effective alternative to traditional 3-axis translation stages. Engineered for quantum sensing, cryogenic imaging, and advanced microscopy applications with breakthrough beam orthogonality preservation.",
-      image: "https://images.unsplash.com/photo-1579684256060-d5a308109e21",
-      technologies: ["Precision Optics", "Piezo Motors", "Raspberry Pi", "Python", "CNC Machining", "FEA Analysis", "LabVIEW"],
-      specifications: [
-        "49x stable magnification for reflective microscopy",
-        "10-30nm step resolution with piezo actuators",
-        "±12.5mm travel range across three axes",
-        "Beam orthogonality preservation throughout scanning",
-        "Cryogenic environment compatibility",
-        "Remote control via CORE system",
-        "Modular, retrofittable design"
-      ],
-      featured: true,
-      github: true,
-      demo: true,
-      category: "Research & Development"
-    },
-    {
-      title: "Advanced Data Analytics Platform",
-      description: "Comprehensive data analysis system designed to optimize user conversion from casual to premium memberships. Implemented advanced SQL processing, statistical analysis, and interactive visualizations for actionable business intelligence.",
-      image: "https://images.unsplash.com/photo-1631375937044-6dd5beac01d2",
-      technologies: ["Google BigQuery", "SQL", "R", "ggplot2", "Statistical Analysis", "Data Visualization"],
-      specifications: [
-        "Large-scale data processing with BigQuery",
-        "Advanced SQL query optimization",
-        "Statistical modeling in R",
-        "Interactive data visualizations",
-        "Automated reporting systems",
-        "Performance optimization algorithms"
-      ],
-      featured: false,
-      github: true,
-      demo: false,
-      category: "Data Science & Analytics"
-    },
-    {
-      title: "Advanced Python Game Engine",
-      description: "Sophisticated modification of Pygame framework featuring advanced collision detection algorithms, dynamic barrier management systems, and real-time visual enhancement capabilities. Demonstrates expertise in algorithm optimization and system architecture.",
-      image: "https://images.unsplash.com/photo-1748261759887-faa2a9d76471",
-      technologies: ["Python", "Pygame", "Algorithm Design", "System Architecture", "Performance Optimization"],
-      specifications: [
-        "Advanced collision detection algorithms",
-        "Dynamic object management system",
-        "Real-time visual enhancement (66ms cycles)",
-        "Memory-efficient barrier reset system",
-        "Optimized rendering pipeline",
-        "Modular architecture design"
-      ],
-      featured: false,
-      github: true,
-      demo: true,
-      category: "Software Engineering"
-    }
+  projects:[
+   {
+    title: "PRISM - Periscopic Relay Imaging Scanning Microscope",
+  description: "Revolutionary precision optical instrument designed as cost-effective alternative to traditional 3-axis translation stages. Engineered for quantum sensing, cryogenic imaging, and advanced microscopy applications with breakthrough beam orthogonality preservation.",
+  image: "https://images.unsplash.com/photo-1579684256060-d5a308109e21",
+  technologies: ["Precision Optics", "Piezo Motors", "Raspberry Pi", "Python", "CNC Machining", "FEA Analysis", "LabVIEW"],
+  specifications: [
+    "49x stable magnification for reflective microscopy",
+    "10-30nm step resolution with piezo actuators",
+    "±12.5mm travel range across three axes",
+    "Beam orthogonality preservation throughout scanning",
+    "Cryogenic environment compatibility",
+    "Remote control via CORE system",
+    "Modular, retrofittable design"
+  ],
+  featured: true,
+  github: true,
+  demo: true,
+  category: "Research & Development",
+  slug: "prism"              // 👈 add this
+},
+   {
+  title: "Data Analysis Capstone Project",
+  description: "Analyzed customer usage data to identify strategies for increasing annual memberships, using SQL and R for data processing and visualization.",
+  image: "https://images.unsplash.com/photo-1613375973044-6dd5beac01d2",
+  technologies: ["Google BigQuery", "SQL", "R", "ggplot2"],
+  specifications: [
+    "Cleaned and optimized large datasets in BigQuery to improve query performance",
+    "Wrote SQL queries to extract insights from customer usage data",
+    "Created data visualizations in R using ggplot2",
+    "Compiled findings into an R Markdown report with actionable recommendations"
+  ],
+  featured: false,
+  github: "https://github.com/DejanLatkovic/Case-study-Bikes",
+  demo: null,
+  category: "Data Science & Analytics"
+},
+{
+  title: "Python Game Development - Snake Game Enhancement",
+  description: "Classic Snake game built in Python with Pygame, focusing on collision handling, dynamic object resets, and real-time visual feedback.",
+  image: "https://images.unsplash.com/photo-1748261759887-faa2a9d76471",
+  technologies: ["Python", "Pygame"],
+  specifications: [
+    "Implemented grid-based movement and growth mechanics",
+    "Added collision handling for walls and self-intersection",
+    "Developed a reset system for barrier objects using hidden coordinates",
+    "Introduced real-time snake color cycling every 66 ms",
+    "Improved debugging and troubleshooting skills through iterative testing"
+  ],
+  featured: false,
+  github: "https://github.com/DejanLatkovic/Snake-Pygame",
+  demo: null,
+  category: "Game Development"
+}
   ],
 
   certifications: [

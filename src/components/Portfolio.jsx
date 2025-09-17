@@ -892,10 +892,10 @@
 
 // export default Portfolio;
 
-
+import { useNavigate } from "react-router-dom";
 import React, { useEffect, useState, useMemo } from "react";
-import { motion } from "framer-motion";
-import { ChevronRight, ChevronLeft, Award, Users, BarChart3, Target, Zap, Activity, Settings, ArrowRight, Play, Pause, Cpu, Eye, BellDot, ShieldBan, ShieldMinusIcon, AtomIcon, LucideAsterisk, RocketIcon, MicroscopeIcon } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
+import { Award, Users, BarChart3, Target, Zap, Activity, Settings, ArrowRight, Play, Pause, Cpu, Eye, BellDot, ShieldBan, ShieldMinusIcon, AtomIcon, LucideAsterisk, RocketIcon, MicroscopeIcon } from "lucide-react";
 import { Link } from "react-router-dom";
 import mockData from "../data/mock";
 
@@ -909,7 +909,7 @@ export default function PortfolioWhite() {
   const shrekUrl = process.env.PUBLIC_URL + "/AxivionPrismBanner.png";
   const longPhotoUrl = process.env.PUBLIC_URL + "/longphoto.png";
   const imageUrl = process.env.PUBLIC_URL + "/image.jpg";
-
+  const navigate = useNavigate(); 
 
   const heroImages = useMemo(() => [
   { url: longPhotoUrl, title: "Advanced Microscopy", description: "Precision at the nanometer scale" },
@@ -968,44 +968,64 @@ export default function PortfolioWhite() {
       <span>
         This site is a live work-in-progress. Some sections are placeholders.
         <span className="ml-2 font-medium">
-          Last update: {new Date().toLocaleString('en-CA', { dateStyle: 'medium', timeStyle: 'short' })}
+          Last update: 9/16/2024
         </span>
       </span>
     </div>
   </div>
 </div>
+<section className="relative h-[88vh] overflow-hidden pt-14">
+  {/* background image with 0.7s cross-fade */}
+  <div className="absolute inset-0 z-10">
+    <AnimatePresence mode="wait">
+      <motion.img
+        key={currentHeroImage}
+        src={heroImages[currentHeroImage].url}
+        alt={heroImages[currentHeroImage].title}
+        className="h-full w-full object-cover"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: .6 }}
+        exit={{ opacity: 0 }}
+        transition={{ duration: 0.7 }}
+      />
+    </AnimatePresence>
 
-      <section className="relative h-[88vh] overflow-hidden pt-14">
-        <div className="absolute inset-0 z-10">
-          <img src={heroImages[currentHeroImage].url} alt={heroImages[currentHeroImage].title} className="h-full w-full object-cover" />
-          <div className="absolute inset-0 pointer-events-none bg-gradient-to-b from-white/60 via-white/50 to-white" />
+    {/* white gradient overlay */}
+    <div className="absolute inset-0 pointer-events-none bg-gradient-to-b from-white/60 via-white/50 to-white" />
+  </div>
+
+  {/* foreground content */}
+  <div className="relative z-10 h-full flex flex-col justify-between">
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.8 }}
+      className="px-6 pt-20 pb-10"
+    >
+      <div className="mx-auto max-w-7xl">
+        <div className="mx-auto inline-flex items-center gap-2 rounded-full border border-black/10 bg-white/70 px-4 py-1 text-xs uppercase tracking-widest text-black/70">
+          <MicroscopeIcon size={14} /> Nano Photonics • Nano-Fluidics Engineering
         </div>
-        <div className="relative z-10 h-full flex flex-col justify-between">
-          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }} className="px-6 pt-20 pb-10">
-            <div className="mx-auto max-w-7xl">
-              <div className="mx-auto inline-flex items-center gap-2 rounded-full border border-black/10 bg-white/70 px-4 py-1 text-xs uppercase tracking-widest text-black/70">
-                <MicroscopeIcon size={14} /> Nano Photonics • Nano-Fluidics Engineering
-              </div>
-              <h1 className="mt-4 text-5xl sm:text-6xl md:text-7xl font-semibold tracking-tight text-balance">
-                Nanotechnology
-                <span className="block text-black/60">Engineer</span>
-              </h1>
-              <p className="mt-5 max-w-2xl text-black/70">Please Ignore Anything you see here for now. Currently Working on it 3:39 AM 9/16/2025</p>
-              <div className="mt-8 flex items-center gap-3">
-                <Link to="/prism" className="rounded-full bg-black text-white px-6 py-3 text-sm font-medium hover:bg-black/90 inline-flex items-center gap-2">View PRISM <ArrowRight size={18} /></Link>
-                <a href="#specifications" className="rounded-full border border-black/20 px-6 py-3 text-sm font-medium hover:border-black/40">Technical Specs</a>
-              </div>
-            </div>
-          </motion.div>
-          
+        <h1 className="mt-4 text-5xl sm:text-6xl md:text-7xl font-semibold tracking-tight text-balance">
+          Nanotechnology
+          <span className="block text-black/60">Engineer</span>
+        </h1>
+        <p className="mt-5 max-w-2xl text-black/70">
+          Please Ignore Anything you see here for now. Currently Working on it 3:39 AM 9/16/2025
+        </p>
+        <div className="mt-8 flex items-center gap-3">
+          <Link to="/prism" className="rounded-full bg-black text-white px-6 py-3 text-sm font-medium hover:bg-black/90 inline-flex items-center gap-2">
+            View PRISM <ArrowRight size={18} />
+          </Link>
+          <a href="#specifications" className="rounded-full border border-black/20 px-6 py-3 text-sm font-medium hover:border-black/40">
+            Technical Specs
+          </a>
         </div>
-        <div className="absolute inset-y-0 right-0 z-20 flex items-center pr-4">
-          <button onClick={() => setCurrentHeroImage((p) => (p - 1 + heroImages.length) % heroImages.length)} className="rounded-full border border-black/10 bg-white/80 backdrop-blur p-2 hover:bg-white"><ChevronRight size={18} /></button>
-        </div>
-        <div className="absolute inset-y-0 right-0 flex items-center pr-4">
-          <button onClick={() => setCurrentHeroImage((p) => (p + 1) % heroImages.length)} className="rounded-full border border-black/10 bg-white/80 backdrop-blur p-2 hover:bg-white"><ChevronLeft size={18} /></button>
-        </div>
-      </section>
+      </div>
+    </motion.div>
+  </div>
+</section>
+
 {/* HIGHLIGHTS (glass cards that don’t clip text) */}
 <section aria-labelledby="highlights" className="relative -mt-8 z-20">
   <div className="mx-auto max-w-7xl px-6">
@@ -1054,21 +1074,22 @@ export default function PortfolioWhite() {
             <div className="mt-10 grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
               <div className="relative rounded-3xl overflow-hidden border border-black/10 bg-white">
                 <div className="relative w-full h-[700px]">
-                  <img
-                    src={equipmentImages[currentEquipmentImage].url}
-                    alt={equipmentImages[currentEquipmentImage].title}
-                    className="absolute inset-0 w-full h-full object-cover object-center"
-                  />
+                  <AnimatePresence mode="wait">
+                      <motion.img
+                          key={currentEquipmentImage}
+                          src={equipmentImages[currentEquipmentImage].url}
+                          alt={equipmentImages[currentEquipmentImage].title}
+                          className="absolute inset-0 w-full h-full object-cover object-center"
+                              initial={{ opacity: 0 }}
+                              animate={{ opacity: 1 }}
+                              exit={{ opacity: 0 }}
+                          transition={{ duration:.4 }}
+                        />
+                    </AnimatePresence>
                 </div>
                 <div className="absolute bottom-0 inset-x-0 p-4 bg-gradient-to-t from-white via-white/70 to-transparent">
                   <div className="text-lg font-semibold">{equipmentImages[currentEquipmentImage].title}</div>
                   <div className="text-sm text-black/60">{equipmentImages[currentEquipmentImage].category}</div>
-                </div>
-                <div className="absolute inset-y-0 left-0 flex items-center pl-3">
-                  <button onClick={() => setCurrentEquipmentImage((p) => (p - 1 + equipmentImages.length) % equipmentImages.length)} className="rounded-full border border-black/10 bg-white/90 p-2"><ChevronLeft size={18} /></button>
-                </div>
-                <div className="absolute inset-y-0 right-0 flex items-center pr-3">
-                  <button onClick={() => setCurrentEquipmentImage((p) => (p + 1) % equipmentImages.length)} className="rounded-full border border-black/10 bg-white/90 p-2"><ChevronRight size={18} /></button>
                 </div>
               </div>
               <div className="rounded-3xl border border-black/10 p-6">
@@ -1225,88 +1246,98 @@ export default function PortfolioWhite() {
 
           {/* FULL-WIDTH CAROUSEL */}
           <div className="mt-10 relative rounded-3xl overflow-hidden border border-black/10 bg-white">
-            <div className="relative w-full h-[560px] md:h-[640px]">
-              <img
-                src={projectImages[currentProjectImage].url}
-                alt={projectImages[currentProjectImage].title}
-                className="absolute inset-0 w-full h-full object-cover object-center"
-              />
+  <div className="relative w-full h-[560px] md:h-[640px]">
+    <AnimatePresence mode="wait">
+      <motion.img
+        key={currentProjectImage}
+        src={projectImages[currentProjectImage].url}
+        alt={projectImages[currentProjectImage].title}
+        className="absolute inset-0 w-full h-full object-cover object-center"
+        initial={{ opacity: 0.3 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        transition={{ duration: 0.8 }}
+      />
+    </AnimatePresence>
+  </div>
+
+  {/* caption overlay */}
+  <div className="absolute bottom-0 inset-x-0 p-5 sm:p-6 bg-gradient-to-t from-black/70 via-black/30 to-transparent">
+    <div className="text-white text-lg font-semibold">{projectImages[currentProjectImage].title}</div>
+    <div className="text-white/80 text-sm">{projectImages[currentProjectImage].description}</div>
+  </div>
+</div>
+
+{/* BARS / CARDS BELOW */}
+<div className="mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 items-start">
+  {mockData.projects.map((project, index) => (
+    <motion.button
+      key={project.id ?? index}
+      type="button"
+      initial={{ opacity: 0, y: 12 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.45, delay: index * 0.06 }}
+      onClick={() => {
+        if (project.slug === "prism") {
+          navigate("/prism");                              // route to PrismProject.jsx
+        } else if (project.demo) {
+          window.open(project.demo, "_blank", "noopener,noreferrer");   // open demo first
+        } else if (project.github) {
+          window.open(project.github, "_blank", "noopener,noreferrer"); // fallback to GitHub
+        }
+      }}
+      aria-label={`Open project: ${project.title}`}
+      className={`w-full text-left cursor-pointer rounded-3xl border border-black/10 p-6 transition
+                  focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black/50
+                  ${project.featured ? "bg-black text-white hover:shadow-xl" : "bg-white hover:shadow-md"}`}
+    >
+      {project.featured && (
+        <div className="inline-flex items-center gap-2 rounded-full border px-3 py-1 text-xs mb-3">
+          <Award size={14} /> Breakthrough
+        </div>
+      )}
+
+      <div className="flex items-center justify-between">
+        <div
+          className="text-sm text-black/60 data-[featured=true]:text-white/70"
+          data-featured={project.featured}
+        >
+          Category
+        </div>
+        <div className="text-sm font-medium">{project.category}</div>
+      </div>
+
+      <div className="mt-2 text-xl font-semibold">{project.title}</div>
+      <p className={`mt-2 text-sm ${project.featured ? "text-white/80" : "text-black/70"}`}>
+        {project.description}
+      </p>
+
+      <div className="mt-4">
+        <div className="text-sm font-medium">Technical Specifications</div>
+        <div className="mt-2 space-y-2">
+          {project.specifications.slice(0, 4).map((s, si) => (
+            <div key={si} className="flex items-center gap-2 text-sm">
+              <div className={`size-4 rounded-full grid place-items-center ${project.featured ? "bg-white text-black" : "bg-black text-white"}`}>✓</div>
+              <span>{s}</span>
             </div>
+          ))}
+        </div>
+      </div>
 
-            {/* caption overlay */}
-            <div className="absolute bottom-0 inset-x-0 p-5 sm:p-6 bg-gradient-to-t from-black/70 via-black/30 to-transparent">
-              <div className="text-white text-lg font-semibold">{projectImages[currentProjectImage].title}</div>
-              <div className="text-white/80 text-sm">{projectImages[currentProjectImage].description}</div>
-            </div>
-
-            {/* arrows */}
-            <button
-              onClick={() => setCurrentProjectImage((p) => (p - 1 + projectImages.length) % projectImages.length)}
-              className="absolute left-3 top-1/2 -translate-y-1/2 rounded-full border border-black/10 bg-white/95 p-2 shadow"
-              aria-label="Previous"
-            >
-              <ChevronLeft size={18} />
-            </button>
-            <button
-              onClick={() => setCurrentProjectImage((p) => (p + 1) % projectImages.length)}
-              className="absolute right-3 top-1/2 -translate-y-1/2 rounded-full border border-black/10 bg-white/95 p-2 shadow"
-              aria-label="Next"
-            >
-              <ChevronRight size={18} />
-            </button>
-          </div>
-
-          {/* BARS / CARDS BELOW */}
-          <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 items-start">
-            {mockData.projects.map((project, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 12 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.45, delay: index * 0.06 }}
-                className={`rounded-3xl border border-black/10 p-6 ${project.featured ? "bg-black text-white" : "bg-white"}`}
-              >
-                {project.featured && (
-                  <div className="inline-flex items-center gap-2 rounded-full border px-3 py-1 text-xs mb-3">
-                    <Award size={14} /> Breakthrough
-                  </div>
-                )}
-                <div className="flex items-center justify-between">
-                  <div className="text-sm text-black/60 data-[featured=true]:text-white/70" data-featured={project.featured}>Category</div>
-                  <div className="text-sm font-medium">{project.category}</div>
-                </div>
-                <div className="mt-2 text-xl font-semibold">{project.title}</div>
-                <p className={`mt-2 text-sm ${project.featured ? "text-white/80" : "text-black/70"}`}>{project.description}</p>
-                <div className="mt-4">
-                  <div className="text-sm font-medium">Technical Specifications</div>
-                  <div className="mt-2 space-y-2">
-                    {project.specifications.slice(0, 4).map((s, si) => (
-                      <div key={si} className="flex items-center gap-2 text-sm">
-                        <div className={`size-4 rounded-full grid place-items-center ${project.featured ? "bg-white text-black" : "bg-black text-white"}`}>✓</div>
-                        <span>{s}</span>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-                <div className="mt-4 flex flex-wrap gap-2">
-                  {project.technologies.slice(0, 5).map((t, ti) => (
-                    <span
-                      key={ti}
-                      className={`rounded-full border px-3 py-1 text-xs ${project.featured ? "border-white/30 text-white/90" : "border-black/20 text-black/80"}`}
-                    >
-                      {t}
-                    </span>
-                  ))}
-                </div>
-                {project.featured && (
-                  <Link to="/prism" className="mt-4 inline-flex items-center gap-2 rounded-full bg-white text-black px-4 py-2 text-sm font-medium hover:bg-white/90">
-                    View System <ArrowRight size={16} />
-                  </Link>
-                )}
-              </motion.div>
-            ))}
-          </div>
+      <div className="mt-4 flex flex-wrap gap-2">
+        {project.technologies.slice(0, 5).map((t, ti) => (
+          <span
+            key={ti}
+            className={`rounded-full border px-3 py-1 text-xs ${project.featured ? "border-white/30 text-white/90" : "border-black/20 text-black/80"}`}
+          >
+            {t}
+          </span>
+        ))}
+      </div>
+    </motion.button>
+  ))}
+</div>
         </div>
       </section>
 
