@@ -1,3 +1,5 @@
+// src/data/mock.js
+
 const mockData = {
   personalInfo: {
     name: "Your Name",
@@ -107,62 +109,58 @@ const mockData = {
   ],
 
   skills: {
-    machines: [
-      "TGA (Thermogravimetric Analysis)",
-      "DSC (Differential Scanning Calorimetry)",
-      "AFM (Atomic Force Microscopy)",
-      "Tensile/Impact Testing Equipment",
-      "CNC Machining Centers",
-      "Digital Multimeters",
-      "Oscilloscopes",
-      "Function Generators"
-    ],
-    frameworks: [
-      "SOLIDWORKS (Advanced)",
-      "Fusion 360 (FEA Analysis)",
-      "Wing Personal IDE",
-      "Google BigQuery",
-      "Microsoft Office Suite",
-      "React Framework",
-      "Microsoft PowerBI",
-      "LabVIEW"
-    ],
-    languages: [
-      "Python (Advanced)",
-      "MATLAB (Expert)",
-      "SQL (Database Management)",
-      "R (Statistical Analysis)",
-      "HTML/CSS",
-      "JavaScript",
-      "C++ (Embedded Systems)",
-      "LabVIEW G"
-    ],
-    soft: [
-      "Macro Atomization",
-      "Time Efficient Execution",
-      "Highly Adaptable",
-      "Creative Problem Solving",
-      "Team Cooperation",
-      "Strong Work Ethic",
-      "Effective Leadership"
-    ],
-    engineering: [
-      "Mechanical Drafting & Design",
-      "Electronic Circuit Design",
-      "Toxicology Analysis",
-      "Advanced Research Methodology",
-      "Optical System Design",
-      "Quantum Sensing Systems",
-      "Cryogenic System Design",
-      "Process Optimization"
-    ]
-  },
+  machines: [
+    "Optical Microscopes & Imaging Systems",
+    "Laser Alignment (coherent & incoherent sources)",
+    "Optical Fiber Coupling & Test Stations",
+    "Beam Splitters, Mirrors, and Optical Benches",
+    "Cryostat Integration for Quantum/Low-T Experiments",
+    "Oscilloscopes & Function Generators",
+    "Digital Multimeters & Electronics Benchtop Tools",
+    "Manual & CNC Machining Tools"
+  ],
+  frameworks: [
+    "Fusion 360 (CAD & FEA Simulation)",
+    "SOLIDWORKS (Mechanical Drafting)",
+    "Blender (Scientific Rendering & Publication Graphics)",
+    "LabVIEW (Control Software & Automation)",
+    "Python (Instrumentation APIs & Data Analysis)",
+    "React (Portfolio & UI Development)",
+    "SQL / BigQuery (Data Handling & Processing)",
+    "Microsoft PowerBI (Visualization & Reporting)"
+  ],
+  languages: [
+    "Python (Instrumentation Control & Data Processing)",
+    "MATLAB (Simulation & Modeling)",
+    "C++ (Embedded & Hardware Interfaces)",
+    "JavaScript / React (Web Development)",
+    "R (Statistical Analysis)",
+    "SQL (Database Management)",
+    "LabVIEW G (Graphical Programming)"
+  ],
+  soft: [
+    "Cross-disciplinary Collaboration",
+    "Creative Problem Solving",
+    "Rapid Prototyping & Adaptability",
+    "Technical Communication",
+    "Leadership in Small Teams",
+    "Strong Work Ethic"
+  ],
+  engineering: [
+    "Optical System Design & Alignment",
+    "Cryogenic & Quantum Sensing Setups",
+    "Mechanical Design & Precision Machining",
+    "Electronic Circuit Assembly & Debugging",
+    "Process Optimization & Workflow Automation",
+    "Scientific Visualization & Rendering (Blender)"
+  ]
+},
 
 experience: [
   {
     company: "Axivion Instruments",
     role: "CTO & Founder",
-    period: "September 2025 – Present",
+    period: "Sept 2025 – Present",
     category: "Startup • Scientific Instruments",
     image: "https://images.unsplash.com/photo-1520607162513-77705c0f0d4a", // clean optics lab
     keyMetrics: [
@@ -179,8 +177,9 @@ experience: [
   },
   {
     company: "Institute for Quantum Computing (IQC), University of Waterloo",
-    role: "Research Engineer — Prototyping & Instrumentation",
-    period: "January 2025 – September 2025",
+    role: "Research Engineer: Prototyping & Instrumentation",
+    affiliationNote: "Continuing affiliation with IQC; part-time collaboration alongside studies until graduation.",
+    period: "Jan – Sept 2025",
     category: "Quantum Optics & Instrumentation",
     image: "https://images.unsplash.com/photo-1559757175-08b3a9be11c6", // precision mechanics
     keyMetrics: [
@@ -193,12 +192,13 @@ experience: [
       "Improved stiffness via modal/FEA iterations; reduced bending and increased natural frequency",
       "Integrated raster-scanning software in LabVIEW with piezo control and imaging feedback",
       "Oversaw alignment, documentation, and full-time lab deployment/usage"
+
     ]
   },
   {
     company: "Institute for Quantum Computing (IQC), University of Waterloo",
-    role: "Research Assistant — Optical Systems & Machining",
-    period: "January 2024 – December 2024",
+    role: "Research Assistant: Optical Systems & Machining",
+    period: "Jan – Dec 2024",
     category: "Research • Quantum Optics",
     image: "https://images.unsplash.com/photo-1518779578993-ec3579fee39f", // lab instrumentation
     keyMetrics: [
@@ -216,7 +216,7 @@ experience: [
   {
     company: "Pirlitor Machine and Tool Ltd",
     role: "Manufacturing Engineering Co-op",
-    period: "May – August 2023",
+    period: "May – Aug 2023",
     category: "Aerospace & Defense",
     image: "https://images.unsplash.com/photo-1581091870622-7b1c1dfdfd07", // machining/CNC
     keyMetrics: [

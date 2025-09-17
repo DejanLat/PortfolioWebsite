@@ -3,8 +3,9 @@ import "./App.css";
 import { HashRouter as Router, Routes, Route, useLocation } from "react-router-dom";
 import Portfolio from "./components/Portfolio";
 import PrismProject from "./components/PrismProject";
+import Contact from "./components/Contact";
+import Models from "./components/Models";
 
-// 👇 Utility component to reset scroll on route change
 function ScrollToTop() {
   const { pathname } = useLocation();
 
@@ -23,6 +24,8 @@ function App() {
         <Routes>
           <Route path="/" element={<Portfolio />} />
           <Route path="/prism" element={<PrismProject />} />
+          <Route path="/contact" element={<Contact contactEmail="axivioninstruments@gmail.com" />} />
+          <Route path="/models" element={<Models />} />
         </Routes>
       </Router>
     </div>

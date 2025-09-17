@@ -84,3 +84,6 @@ code {
     @apply bg-background text-foreground;
     }
 }
+/* Hide scrollbars but keep scroll behavior */
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
