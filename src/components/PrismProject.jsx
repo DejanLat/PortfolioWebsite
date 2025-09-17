@@ -400,15 +400,33 @@
 // };
 
 // export default PrismProject;
+// export default PrismProject;
 
 import React, { useEffect, useMemo, useState } from "react";
 import { motion } from "framer-motion";
-import { ArrowLeft, Download, Gauge, Zap, Move3D, Target, Ruler, Microscope, Cpu, Activity, Settings } from "lucide-react";
+import {
+  ArrowLeft,
+  Download,
+  Gauge,
+  Zap,
+  Move3D,
+  Target,
+  Ruler,
+  Microscope,
+  Cpu,
+  Settings,
+} from "lucide-react";
 import { Link } from "react-router-dom";
 
 export default function PrismX() {
+  // --- simple privacy switch (set to false if you ever want to show details) ---
+  const PRIVACY_MODE = true;
+  const safe = (text, placeholder = "Available on request") =>
+    PRIVACY_MODE ? placeholder : text;
+
   const [solidNav, setSolidNav] = useState(false);
   const [activeSpecTab, setActiveSpecTab] = useState("architecture");
+
   const specTabs = useMemo(
     () => [
       { id: "architecture", label: "Architecture", icon: Cpu },
@@ -425,69 +443,127 @@ export default function PrismX() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  const kpis = [
-    { value: "10–30 nm", label: "Positioning Resolution" },
-    { value: "±12.5 mm", label: "Travel Per Axis" },
-    { value: "4 K – 300 K", label: "Operating Range" },
-    { value: "49×", label: "Demonstrated Magnification" },
-  ];
+  // KPIs (hero badges) — fully neutral
+  const kpis = PRIVACY_MODE
+    ? [
+        { value: "TBD", label: "Performance Class" },
+        { value: "TBD", label: "Motion Range" },
+        { value: "TBD", label: "Operating Mode" },
+        { value: "TBD", label: "Validation Status" },
+      ]
+    : [
+        { value: "10–30 nm", label: "Positioning Resolution" },
+        { value: "±12.5 mm", label: "Travel Per Axis" },
+        { value: "4 K – 300 K", label: "Operating Range" },
+        { value: "49×", label: "Demonstrated Magnification" },
+      ];
 
+  // Spec tabs — neutral placeholders (no mirror/Z-axis/geometry details)
   const specData = {
-    architecture: [
-      { label: "3‑Axis Periscopic Relay", value: "Independent X/Y with hanging Z" },
-      { label: "Beam Orthogonality", value: "Maintained across full travel" },
-      { label: "Retrofit Form Factor", value: "Mounts to existing benches & cryostats" },
-    ],
-    optical: [
-      { label: "Objective Interface", value: "DIN/RMS & M25 modular nosepiece" },
-      { label: "Path Stability", value: "Fixed beam path with relay mirrors" },
-      { label: "Back‑reflection Control", value: "Aperture & baffling geometry" },
-    ],
-    mechanical: [
-      { label: "Mass‑Optimized Frames", value: "Tri‑cut ribs, high stiffness/weight" },
-      { label: "Bearing Precision", value: "< 3 µm flatness components" },
-      { label: "Materials", value: "Aluminum alloy + steel thread inserts where needed" },
-    ],
-    control: [
-      { label: "Actuation", value: "Piezo linear stacks with closed‑loop ready" },
-      { label: "Electronics", value: "Modular KIM‑class controllers or CORE module" },
-      { label: "APIs", value: "Python/LabVIEW bindings; jog, raster, recipes" },
-    ],
+    architecture: PRIVACY_MODE
+      ? [
+          { label: "System Topology", value: "Confidential overview" },
+          { label: "Alignment Strategy", value: "Summary available on request" },
+          { label: "Form Factor", value: "Retrofittable (details withheld)" },
+        ]
+      : [
+          { label: "3-Axis Periscopic Relay", value: "Independent X/Y with hanging Z" },
+          { label: "Beam Orthogonality", value: "Maintained across full travel" },
+          { label: "Retrofit Form Factor", value: "Mounts to existing benches & cryostats" },
+        ],
+    optical: PRIVACY_MODE
+      ? [
+          { label: "Optical Path", value: "Confidential" },
+          { label: "Stability", value: "Lab-validated summary" },
+          { label: "Interfaces", value: "Options available" },
+        ]
+      : [
+          { label: "Objective Interface", value: "DIN/RMS & M25 modular nosepiece" },
+          { label: "Path Stability", value: "Fixed beam path with relay mirrors" },
+          { label: "Back-reflection Control", value: "Aperture & baffling geometry" },
+        ],
+    mechanical: PRIVACY_MODE
+      ? [
+          { label: "Frame Strategy", value: "Optimized for stability" },
+          { label: "Precision Class", value: "Characterized (values withheld)" },
+          { label: "Materials", value: "Engineering alloys (summary)" },
+        ]
+      : [
+          { label: "Mass-Optimized Frames", value: "Tri-cut ribs, high stiffness/weight" },
+          { label: "Bearing Precision", value: "< 3 µm flatness components" },
+          { label: "Materials", value: "Aluminum alloy + steel thread inserts where needed" },
+        ],
+    control: PRIVACY_MODE
+      ? [
+          { label: "Actuation", value: "Precision motion (model withheld)" },
+          { label: "Electronics", value: "Modular controller / embedded hub" },
+          { label: "APIs", value: "Python / LabVIEW (overview)" },
+        ]
+      : [
+          { label: "Actuation", value: "Piezo linear stacks with closed-loop ready" },
+          { label: "Electronics", value: "Modular KIM-class controllers or CORE module" },
+          { label: "APIs", value: "Python/LabVIEW bindings; jog, raster, recipes" },
+        ],
   };
 
   return (
     <div className="min-h-screen w-full bg-black text-white">
-      <header className={`fixed inset-x-0 top-0 z-50 transition-all ${solidNav ? "backdrop-blur bg-black/70 border-b border-white/10" : "bg-transparent"}`}>
+      <header
+        className={`fixed inset-x-0 top-0 z-50 transition-all ${
+          solidNav ? "backdrop-blur bg-black/70 border-b border-white/10" : "bg-transparent"
+        }`}
+      >
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <Link to="/" className="inline-flex items-center gap-2 text-sm text-white/80 hover:text-white">
+            <Link
+              to="/"
+              className="inline-flex items-center gap-2 text-sm text-white/80 hover:text-white"
+            >
               <ArrowLeft size={18} />
               <span>Back</span>
             </Link>
             <div className="h-5 w-px bg-white/20" />
-            <div className="font-semibold tracking-widest text-white">PRISM</div>
-            <div className="text-white/40">SYSTEM</div>
+            <div className="font-semibold tracking-widest text-white">FLAGSHIP</div>
+            <div className="text-white/40">INSTRUMENT</div>
           </div>
           <div className="flex items-center gap-2">
-            <a href="#specs" className="rounded-full bg-white text-black px-4 py-2 text-sm font-medium hover:bg-white/90 active:scale-[0.99]">Specs</a>
+            <a
+              href="#specs"
+              className="rounded-full bg-white text-black px-4 py-2 text-sm font-medium hover:bg-white/90 active:scale-[0.99]"
+            >
+              Specs
+            </a>
           </div>
         </div>
       </header>
-{/* 🚧 In-progress announcement bar */}
-<div className="sticky top-16 z-40 bg-amber-50/95 backdrop-blur border-y border-amber-200">
-  <div className="mx-auto max-w-7xl px-6 py-2 flex items-center justify-between gap-3">
-    <div className="flex items-center gap-2 text-sm text-amber-900">
-      <span aria-hidden>🚧</span>
-      <span>
-        This site is a live work-in-progress. Some sections are placeholders.
-        <span className="ml-2 font-medium">
-          Last update: Last update: 9/16/2024
-        </span>
-      </span>
-    </div>
-  </div>
-</div>
 
+      {/* In-progress banner */}
+      <div className="sticky top-16 z-40 bg-amber-50/95 backdrop-blur border-y border-amber-200">
+        <div className="mx-auto max-w-7xl px-6 py-2 flex items-center justify-between gap-3">
+          <div className="flex items-center gap-2 text-sm text-amber-900">
+            <span aria-hidden>🚧</span>
+            <span>
+              This site is a live work-in-progress. Some sections are placeholders.
+              <span className="ml-2 font-medium">Last update: 9/16/2024</span>
+            </span>
+          </div>
+        </div>
+      </div>
+
+      {/* NDA banner */}
+      <div className="sticky top-32 z-40 bg-amber-50/95 backdrop-blur border-y border-amber-200">
+        <div className="mx-auto max-w-7xl px-6 py-2 flex items-center justify-between gap-3">
+          <div className="flex items-center gap-2 text-sm text-amber-900">
+            <span aria-hidden>⚠️</span>
+            <span>
+              Certain technical details are withheld for confidentiality. Please contact for
+              information under NDA.
+            </span>
+          </div>
+        </div>
+      </div>
+
+      {/* Hero */}
       <section className="relative h-[92vh] w-full overflow-hidden">
         <div className="absolute inset-0">
           <div className="absolute inset-0 bg-gradient-to-b from-black via-black/20 to-black" />
@@ -501,25 +577,42 @@ export default function PrismX() {
             className="text-center px-6"
           >
             <div className="mx-auto inline-flex items-center gap-2 rounded-full border border-white/20 px-4 py-1 text-xs uppercase tracking-widest text-white/80">
-              <Microscope size={14} /> Breakthrough Instrumentation
+              <Microscope size={14} /> Instrumentation Preview
             </div>
             <h1 className="mt-4 text-5xl sm:text-6xl md:text-7xl font-semibold tracking-tight">
-              Periscopic Relay Imaging
-              <span className="block text-white/80">Scanning Microscope</span>
+              Flagship Optical
+              <span className="block text-white/80">Precision System</span>
             </h1>
             <p className="mx-auto mt-5 max-w-2xl text-balance text-white/70">
-              Place Holder
+              {safe(
+                "High-level preview of an advanced optical instrument. Detailed specifications are shared directly upon request.",
+                "High-level preview • details under NDA."
+              )}
             </p>
             <div className="mt-8 flex items-center justify-center gap-3">
-              <a href="#design" className="rounded-full bg-white text-black px-6 py-3 text-sm font-medium hover:bg-white/90">Explore</a>
-              <a href="#specs" className="rounded-full border border-white/30 px-6 py-3 text-sm font-medium hover:border-white/60">Technical Specs</a>
+              <a
+                href="#design"
+                className="rounded-full bg-white text-black px-6 py-3 text-sm font-medium hover:bg-white/90"
+              >
+                Explore
+              </a>
+              <a
+                href="#specs"
+                className="rounded-full border border-white/30 px-6 py-3 text-sm font-medium hover:border-white/60"
+              >
+                Technical Specs
+              </a>
             </div>
           </motion.div>
         </div>
+
         <div className="absolute bottom-6 inset-x-0">
           <div className="mx-auto max-w-5xl grid grid-cols-2 md:grid-cols-4 gap-2 px-6">
             {kpis.map((k) => (
-              <div key={k.label} className="rounded-2xl bg-white/5 backdrop-blur border border-white/10 px-4 py-3 text-center">
+              <div
+                key={k.label}
+                className="rounded-2xl bg-white/5 backdrop-blur border border-white/10 px-4 py-3 text-center"
+              >
                 <div className="text-xl font-semibold">{k.value}</div>
                 <div className="text-xs text-white/60">{k.label}</div>
               </div>
@@ -528,28 +621,56 @@ export default function PrismX() {
         </div>
       </section>
 
+      {/* Design section (generic copy; no mirrors/Z-axis/etc.) */}
       <section id="design" className="relative w-full bg-black">
         <div className="mx-auto max-w-7xl px-6 py-24 lg:py-32">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <motion.div initial={{ opacity: 0, x: -20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }} className="order-2 lg:order-1">
-              <h2 className="text-4xl md:text-5xl font-semibold tracking-tight">Designed to move optics, not samples</h2>
-              <p className="mt-5 text-white/70 max-w-xl">PRISM replaces stacked stages with a periscopic relay so your beam stays fixed while the objective navigates X/Y/Z. That means easier cryostat integrations, cleaner alignment, and higher stability at scale.</p>
+            <motion.div
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className="order-2 lg:order-1"
+            >
+              <h2 className="text-4xl md:text-5xl font-semibold tracking-tight">
+                Designed for stable, precise motion
+              </h2>
+              <p className="mt-5 text-white/70 max-w-xl">
+                {safe(
+                  "A configurable platform focused on repeatable positioning and clean integration with standard lab workflows.",
+                  "Configurable platform • integration-friendly."
+                )}
+              </p>
+
               <div className="mt-8 grid grid-cols-1 sm:grid-cols-3 gap-4 max-w-2xl">
                 <div className="rounded-2xl border border-white/10 p-5">
-                  <div className="text-lg font-semibold">Mass‑optimized</div>
-                  <div className="text-sm text-white/60">Hanging Z geometry reduces moving mass for faster, quieter moves.</div>
+                  <div className="text-lg font-semibold">Modular</div>
+                  <div className="text-sm text-white/60">
+                    Components and interfaces adapt to varied environments.
+                  </div>
                 </div>
                 <div className="rounded-2xl border border-white/10 p-5">
-                  <div className="text-lg font-semibold">Retrofit‑ready</div>
-                  <div className="text-sm text-white/60">Drop‑in mounts for existing benches, cryostats and diagnostic stacks.</div>
+                  <div className="text-lg font-semibold">Retrofit-friendly</div>
+                  <div className="text-sm text-white/60">
+                    Drop-in mounting and common accessory support.
+                  </div>
                 </div>
                 <div className="rounded-2xl border border-white/10 p-5">
-                  <div className="text-lg font-semibold">Orthogonality kept</div>
-                  <div className="text-sm text-white/60">Fixed beam path; objective moves through a stable optical relay.</div>
+                  <div className="text-lg font-semibold">Stable</div>
+                  <div className="text-sm text-white/60">
+                    Emphasis on predictable motion and consistent alignment.
+                  </div>
                 </div>
               </div>
             </motion.div>
-            <motion.div initial={{ opacity: 0, x: 20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }} className="order-1 lg:order-2">
+
+            <motion.div
+              initial={{ opacity: 0, x: 20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className="order-1 lg:order-2"
+            >
               <div className="relative aspect-[4/3] rounded-3xl overflow-hidden border border-white/10">
                 <div className="absolute inset-0 bg-gradient-to-tr from-white/10 to-white/0" />
                 <div className="absolute inset-0 grid place-items-center text-white/50">
@@ -566,45 +687,72 @@ export default function PrismX() {
         </div>
       </section>
 
+      {/* Sticky chips — neutralized */}
       <section className="sticky top-16 z-40 border-y border-white/10 bg-black/60 backdrop-blur">
         <div className="mx-auto max-w-7xl px-6 py-3 flex items-center justify-between">
           <div className="flex items-center gap-6 text-sm">
-            <div className="flex items-center gap-2 text-white/80"><Gauge size={16} /> 10–30 nm</div>
-            <div className="flex items-center gap-2 text-white/80"><Ruler size={16} /> ±12.5 mm</div>
-            <div className="flex items-center gap-2 text-white/80"><Move3D size={16} /> 3‑Axis</div>
-            <div className="flex items-center gap-2 text-white/80"><Zap size={16} /> Piezo</div>
+            <div className="flex items-center gap-2 text-white/80">
+              <Gauge size={16} /> Specs available on request
+            </div>
           </div>
-          <a href="#specs" className="inline-flex items-center gap-2 rounded-full bg-white text-black px-4 py-2 text-sm font-medium hover:bg-white/90"><Download size={16} /> Spec Sheet</a>
+          <a
+            href="#specs"
+            className="inline-flex items-center gap-2 rounded-full bg-white text-black px-4 py-2 text-sm font-medium hover:bg-white/90"
+          >
+            <Download size={16} /> Request Spec Overview
+          </a>
         </div>
       </section>
 
+      {/* “System Architecture” — generic, no mirror/Z-axis terms */}
       <section className="relative w-full bg-black">
         <div className="mx-auto max-w-7xl px-6 py-24 lg:py-28">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-14 items-center">
-            <motion.div initial={{ opacity: 0, y: 12 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }}>
-              <div className="text-sm uppercase tracking-widest text-white/60">System Architecture</div>
-              <h3 className="mt-2 text-4xl font-semibold tracking-tight">Nested motion with a fixed beam path</h3>
-              <p className="mt-4 text-white/70 max-w-xl">X and Y translate relay mirrors while Z adjusts focal distance. The optical axis remains locked to your diagnostics so alignment is predictable—no zig‑zag beam walks.</p>
+            <motion.div
+              initial={{ opacity: 0, y: 12 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+            >
+              <div className="text-sm uppercase tracking-widest text-white/60">
+                System Overview
+              </div>
+              <h3 className="mt-2 text-4xl font-semibold tracking-tight">
+                Coordinated motion with a stable optical path
+              </h3>
+              <p className="mt-4 text-white/70 max-w-xl">
+                {safe(
+                  "High-level description of the system’s motion strategy and alignment goals. Specific mechanisms are intentionally omitted.",
+                  "High-level description • mechanisms omitted."
+                )}
+              </p>
+
               <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-2xl">
                 <div className="rounded-2xl border border-white/10 p-5">
-                  <div className="text-sm text-white/60">X‑Axis</div>
-                  <div className="text-lg font-semibold">Independent lateral</div>
+                  <div className="text-sm text-white/60">Motion</div>
+                  <div className="text-lg font-semibold">Coordinated axes</div>
                 </div>
                 <div className="rounded-2xl border border-white/10 p-5">
-                  <div className="text-sm text-white/60">Y‑Axis</div>
-                  <div className="text-lg font-semibold">Relay mirror translation</div>
+                  <div className="text-sm text-white/60">Alignment</div>
+                  <div className="text-lg font-semibold">Consistent reference</div>
                 </div>
                 <div className="rounded-2xl border border-white/10 p-5">
-                  <div className="text-sm text-white/60">Z‑Axis</div>
-                  <div className="text-lg font-semibold">Hanging focus stage</div>
+                  <div className="text-sm text-white/60">Integration</div>
+                  <div className="text-lg font-semibold">Drop-in adapters</div>
                 </div>
                 <div className="rounded-2xl border border-white/10 p-5">
-                  <div className="text-sm text-white/60">Orthogonality</div>
-                  <div className="text-lg font-semibold">Kept through full range</div>
+                  <div className="text-sm text-white/60">Operation</div>
+                  <div className="text-lg font-semibold">Predictable behavior</div>
                 </div>
               </div>
             </motion.div>
-            <motion.div initial={{ opacity: 0, scale: 0.98 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} transition={{ duration: 0.6 }}>
+
+            <motion.div
+              initial={{ opacity: 0, scale: 0.98 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+            >
               <div className="relative aspect-[4/3] rounded-3xl overflow-hidden border border-white/10">
                 <div className="absolute inset-0 grid place-items-center">
                   <div className="w-64 h-64 rounded-full border border-white/20 relative">
@@ -619,32 +767,57 @@ export default function PrismX() {
         </div>
       </section>
 
+      {/* Applications (kept generic) */}
       <section className="relative w-full bg-gradient-to-b from-black to-white/5">
         <div className="mx-auto max-w-7xl px-6 py-24 lg:py-28">
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-            {["Quantum Sensing", "Cryogenic Imaging", "Rydberg/Cold Atom", "Photonic Testing", "Surface Metrology", "Ion/Trap Systems"].map((t) => (
+            {[
+              "Advanced Research",
+              "Specialized Environments",
+              "Device Characterization",
+              "Precision Mapping",
+              "Surface Analysis",
+              "Automation Workflows",
+            ].map((t) => (
               <div key={t} className="rounded-3xl border border-white/10 p-6">
-                <div className="text-sm uppercase tracking-widest text-white/60">Application</div>
+                <div className="text-sm uppercase tracking-widest text-white/60">
+                  Application
+                </div>
                 <div className="mt-2 text-2xl font-semibold">{t}</div>
-                <p className="mt-3 text-white/70">High‑stability objective motion keeps diagnostics fixed while scanning complex samples. Works where racks of stacked stages can’t.</p>
+                <p className="mt-3 text-white/70">
+                  {safe(
+                    "General application description with specifics available on request.",
+                    "General application • details on request."
+                  )}
+                </p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
+      {/* Specs */}
       <section id="specs" className="relative w-full bg-black">
         <div className="mx-auto max-w-7xl px-6 py-24 lg:py-28">
           <div className="flex items-center justify-between">
             <h3 className="text-4xl font-semibold tracking-tight">Technical Specifications</h3>
             <div className="flex items-center gap-2">
               {specTabs.map((t) => (
-                <button key={t.id} onClick={() => setActiveSpecTab(t.id)} className={`inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm transition ${activeSpecTab === t.id ? "bg-white text-black" : "border border-white/20 text-white/80 hover:text-white"}`}>
+                <button
+                  key={t.id}
+                  onClick={() => setActiveSpecTab(t.id)}
+                  className={`inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm transition ${
+                    activeSpecTab === t.id
+                      ? "bg-white text-black"
+                      : "border border-white/20 text-white/80 hover:text-white"
+                  }`}
+                >
                   <t.icon size={16} /> {t.label}
                 </button>
               ))}
             </div>
           </div>
+
           <div className="mt-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
             {specData[activeSpecTab].map((s) => (
               <div key={s.label} className="rounded-2xl border border-white/10 p-6">
@@ -653,46 +826,85 @@ export default function PrismX() {
               </div>
             ))}
           </div>
+
+          {/* Big tiles — neutral when privacy is on */}
           <div className="mt-10 grid grid-cols-1 sm:grid-cols-3 gap-4">
-            <div className="rounded-2xl border border-white/10 p-6 text-center">
-              <div className="text-2xl font-semibold">49×</div>
-              <div className="text-sm text-white/60">Demonstrated magnification</div>
-            </div>
-            <div className="rounded-2xl border border-white/10 p-6 text-center">
-              <div className="text-2xl font-semibold">10–30 nm</div>
-              <div className="text-sm text-white/60">Resolution</div>
-            </div>
-            <div className="rounded-2xl border border-white/10 p-6 text-center">
-              <div className="text-2xl font-semibold">±12.5 mm</div>
-              <div className="text-sm text-white/60">Travel per axis</div>
-            </div>
+            {PRIVACY_MODE ? (
+              <>
+                <div className="rounded-2xl border border-white/10 p-6 text-center">
+                  <div className="text-2xl font-semibold">TBD</div>
+                  <div className="text-sm text-white/60">Performance Class</div>
+                </div>
+                <div className="rounded-2xl border border-white/10 p-6 text-center">
+                  <div className="text-2xl font-semibold">TBD</div>
+                  <div className="text-sm text-white/60">Resolution</div>
+                </div>
+                <div className="rounded-2xl border border-white/10 p-6 text-center">
+                  <div className="text-2xl font-semibold">TBD</div>
+                  <div className="text-sm text-white/60">Motion Range</div>
+                </div>
+              </>
+            ) : (
+              <>
+                <div className="rounded-2xl border border-white/10 p-6 text-center">
+                  <div className="text-2xl font-semibold">49×</div>
+                  <div className="text-sm text-white/60">Demonstrated magnification</div>
+                </div>
+                <div className="rounded-2xl border border-white/10 p-6 text-center">
+                  <div className="text-2xl font-semibold">10–30 nm</div>
+                  <div className="text-sm text-white/60">Resolution</div>
+                </div>
+                <div className="rounded-2xl border border-white/10 p-6 text-center">
+                  <div className="text-2xl font-semibold">±12.5 mm</div>
+                  <div className="text-sm text-white/60">Travel per axis</div>
+                </div>
+              </>
+            )}
           </div>
         </div>
       </section>
 
+      {/* CTA */}
       <section className="relative w-full bg-black">
         <div className="mx-auto max-w-7xl px-6 pb-24 lg:pb-32">
           <div className="rounded-3xl border border-white/10 p-8 flex flex-col md:flex-row items-center gap-8">
             <div className="flex-1">
               <div className="text-sm uppercase tracking-widest text-white/60">Status</div>
-              <div className="mt-2 text-3xl font-semibold">Active development • Patent pending</div>
-              <p className="mt-3 text-white/70 max-w-xl">Request the latest spec sheet or schedule a demo. We’ll tailor the configuration to your environment: cryo, vacuum, or ambient benches.</p>
+              <div className="mt-2 text-3xl font-semibold">
+                {safe("Active development • Patent pending", "Active development • Details on request")}
+              </div>
+              <p className="mt-3 text-white/70 max-w-xl">
+                {safe(
+                  "Request the latest spec overview or schedule a conversation. Configuration options available for varied environments.",
+                  "Request a spec overview • schedule a conversation."
+                )}
+              </p>
             </div>
             <div className="flex items-center gap-3">
-              <a href="#" className="rounded-full bg-white text-black px-6 py-3 text-sm font-medium hover:bg-white/90">Request Specs</a>
-              <a href="#" className="rounded-full border border-white/30 px-6 py-3 text-sm font-medium hover:border-white/60">Book a Demo</a>
+              <a
+                href="#"
+                className="rounded-full bg-white text-black px-6 py-3 text-sm font-medium hover:bg-white/90"
+              >
+                Request Specs
+              </a>
+              <a
+                href="#"
+                className="rounded-full border border-white/30 px-6 py-3 text-sm font-medium hover:border-white/60"
+              >
+                Book a Demo
+              </a>
             </div>
           </div>
         </div>
       </section>
 
+      {/* Footer badges — neutral */}
       <footer className="border-t border-white/10 bg-black">
         <div className="mx-auto max-w-7xl px-6 py-10 flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-white/60">
-          <div>PRISM System</div>
+          <div>Flagship Instrument</div>
           <div className="flex items-center gap-3">
-            <span>v5.0</span>
-            <span>49×</span>
-            <span>10–30 nm</span>
+            <span>Preview</span>
+            <span>Specs on request</span>
           </div>
           <div>© {new Date().getFullYear()} Axivion Instruments</div>
         </div>

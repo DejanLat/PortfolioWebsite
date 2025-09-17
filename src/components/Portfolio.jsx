@@ -910,6 +910,10 @@ export default function PortfolioWhite() {
   const longPhotoUrl = process.env.PUBLIC_URL + "/longphoto.png";
   const imageUrl = process.env.PUBLIC_URL + "/image.jpg";
   const navigate = useNavigate(); 
+// simple strength -> dot count (1–5)
+const dots = (n) => Array.from({ length: 5 }, (_, i) =>
+  <div key={i} className={`size-2 rounded-full ${i < n ? 'bg-black' : 'bg-black/20'}`} />
+);
 
   const heroImages = useMemo(() => [
   { url: longPhotoUrl, title: "Advanced Microscopy", description: "Precision at the nanometer scale" },
@@ -1115,33 +1119,75 @@ export default function PortfolioWhite() {
           )}
 
           {activeTab === "performance" && (
-            <div className="mt-10 grid grid-cols-1 lg:grid-cols-2 gap-8">
-              <div className="rounded-3xl border border-black/10 p-6">
-                <h3 className="text-xl font-semibold">Academic Performance</h3>
-                <div className="mt-6 space-y-4">
-                  {[{l:"Institution Ranking",v:"Top 50 Global",p:95},{l:"Program Specialization",v:"Nanotechnology Engineering",p:100},{l:"Co‑op Program",v:"Advanced Track",p:90}].map((r) => (
-                    <div key={r.l}>
-                      <div className="flex items-center justify-between text-sm"><span className="text-black/60">{r.l}</span><span className="font-medium">{r.v}</span></div>
-                      <div className="mt-2 h-1.5 w-full rounded bg-black/10"><div className="h-1.5 rounded bg-black" style={{ width: `${r.p}%` }} /></div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-              <div className="rounded-3xl border border-black/10 p-6">
-                <h3 className="text-xl font-semibold">Industrial Impact</h3>
-                <div className="mt-6 grid grid-cols-3 gap-4">
-                  {[{v:"20%",l:"Capacity"},{v:"80%",l:"Efficiency"},{v:"800+",l:"Units"}].map((c) => (
-                    <div key={c.l} className="aspect-square rounded-2xl border border-black/10 grid place-items-center">
-                      <div className="text-center">
-                        <div className="text-2xl font-semibold">{c.v}</div>
-                        <div className="text-xs text-black/60">{c.l}</div>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </div>
-          )}
+  <section className="mt-10">
+    <div className="rounded-3xl border border-black/10 p-6">
+      <div className="flex items-center justify-between flex-wrap gap-3">
+        <div>
+          <h3 className="text-xl font-semibold">Recent, Attributed Impact</h3>
+          <p className="text-sm text-black/60">
+            Highlights with context (project/site) so the numbers actually mean something.
+          </p>
+        </div>
+        {/* optional filter or export button could go here */}
+      </div>
+
+      {/* data source */}
+      {/*
+        Edit these objects anytime — the UI renders them automatically.
+        'metric' is the bold number, 'label' is what it is, 'context' shows where it came from.
+      */}
+      <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        {[
+          {
+            metric: "PRISM v5",
+            label: "Instrumentation Deployment",
+            context: "IQC (Waterloo) — details under NDA",
+          },
+          {
+            metric: "3 Assisted Papers",
+            label: "Figure/Render support",
+            context: "Blender technical visuals for manuscripts (NDA)",
+          },
+          {
+            metric: "5+ Fixtures",
+            label: "Custom tooling fabricated",
+            context: "Hand-machined/CNC-ready jigs & alignment tools",
+          },
+          {
+            metric: "20%",
+            label: "Capacity increase",
+            context: "Pirlitor — production routing & customer-intake redesign",
+          },
+          {
+            metric: "69 s/unit",
+            label: "Cycle-time saved",
+            context: "Pirlitor — Excel/VBA automation of shipping paperwork",
+          },
+          {
+            metric: "800+",
+            label: "Tasks automated",
+            context: "Pirlitor — 3-day surge window, shipping cards",
+          }
+        ].map((item, i) => (
+          <div
+            key={i}
+            className="rounded-2xl border border-black/10 p-5 bg-white hover:shadow-sm transition"
+          >
+            <div className="text-2xl font-semibold">{item.metric}</div>
+            <div className="mt-1 text-sm font-medium">{item.label}</div>
+            <div className="mt-1 text-xs text-black/60">{item.context}</div>
+          </div>
+        ))}
+      </div>
+
+      {/* small note for confidentiality */}
+      <div className="mt-4 text-[11px] text-black/50">
+        Some metrics are summarized to respect confidentiality agreements (NDA).
+      </div>
+    </div>
+  </section>
+)}
+
 
           {activeTab === "software" && (
             <div className="mt-10 grid grid-cols-1 lg:grid-cols-2 gap-8">
@@ -1206,34 +1252,61 @@ export default function PortfolioWhite() {
           <p className="text-black/60 mt-2">Quantified impact and technical achievements across roles</p>
           <div className="mt-10 grid grid-cols-1 md:grid-cols-2 gap-6">
             {mockData.experience.map((exp, i) => (
-              <motion.div key={i} initial={{ opacity:0, y:16 }} whileInView={{ opacity:1, y:0 }} viewport={{ once:true }} transition={{ duration:0.5, delay:i*0.06 }} className="rounded-3xl border border-black/10 p-6">
-                <div className="flex items-start gap-4">
-                  <div className="relative h-24 w-32 overflow-hidden rounded-xl border border-black/10">
-                    <img     src={process.env.PUBLIC_URL + "/image.jpg"}
+              <motion.div
+  key={i}
+  initial={{ opacity: 0, y: 16 }}
+  whileInView={{ opacity: 1, y: 0 }}
+  viewport={{ once: true }}
+  transition={{ duration: 0.5, delay: i * 0.06 }}
+  className="rounded-3xl border border-black/10 overflow-hidden"
+>
+  <div className="flex flex-col md:flex-row h-full">
+    {/* Vertical image column */}
+    <div className="w-full md:w-1/3 md:min-h-[220px] lg:min-h-[260px]">
+      <img
+        src={(exp.image ?? (process.env.PUBLIC_URL + "/image.jpg"))}
+        alt={exp.company}
+        className="h-full w-full object-cover"
+      />
+    </div>
 
- alt={exp.company} className="h-full w-full object-cover" />
-                    <div className="absolute bottom-1 right-1 rounded-full bg-white/90 text-[10px] px-2 py-0.5 border border-black/10">{exp.period}</div>
-                  </div>
-                  <div className="flex-1">
-                    <div className="text-sm text-black/60">{exp.category}</div>
-                    <div className="text-xl font-semibold">{exp.role}</div>
-                    <div className="text-sm">{exp.company}</div>
-                    <div className="mt-4 grid grid-cols-3 gap-2">
-                      {exp.keyMetrics.slice(0,3).map((m, j) => (
-                        <div key={j} className="rounded-xl border border-black/10 p-3">
-                          <div className="text-lg font-semibold leading-none">{m.value}</div>
-                          <div className="text-[11px] text-black/60 mt-1">{m.description}</div>
-                        </div>
-                      ))}
-                    </div>
-                    <div className="mt-4 space-y-2">
-                      {exp.achievements.slice(0,3).map((a,k)=>(
-                        <div key={k} className="flex items-start gap-2 text-sm"><div className="mt-1 size-1.5 rounded-full bg-black"/><span>{a}</span></div>
-                      ))}
-                    </div>
-                  </div>
-                </div>
-              </motion.div>
+    {/* Content column */}
+    <div className="flex-1 p-6">
+      {/* Top row: category + period badge */}
+      <div className="flex items-center justify-between">
+        <div className="text-sm text-black/60">{exp.category}</div>
+        <span className="text-[11px] px-2 py-1 rounded-full border border-black/10 bg-white/90">
+          {exp.period}
+        </span>
+      </div>
+
+      {/* Titles */}
+      <div className="mt-1 text-xl font-semibold">{exp.role}</div>
+      <div className="text-sm">{exp.company}</div>
+
+      {/* Metrics */}
+      <div className="mt-4 grid grid-cols-3 gap-2">
+        {exp.keyMetrics.slice(0, 3).map((m, j) => (
+          <div key={j} className="rounded-xl border border-black/10 p-3">
+            <div className="text-lg font-semibold leading-none">{m.value}</div>
+            <div className="text-[11px] text-black/60 mt-1">{m.description}</div>
+          </div>
+        ))}
+      </div>
+
+      {/* Achievements */}
+      <div className="mt-4 space-y-2">
+        {exp.achievements.slice(0, 3).map((a, k) => (
+          <div key={k} className="flex items-start gap-2 text-sm">
+            <div className="mt-1 size-1.5 rounded-full bg-black" />
+            <span>{a}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</motion.div>
+
             ))}
           </div>
         </div>
@@ -1350,24 +1423,34 @@ export default function PortfolioWhite() {
             <div className="mt-2 flex flex-wrap gap-3 text-sm text-black/70">
               <div className="inline-flex items-center gap-2"><Award size={14}/> University of Waterloo</div>
               <div className="inline-flex items-center gap-2"><Users size={14}/> Co‑operative Education</div>
-              <div className="inline-flex items-center gap-2"><Eye size={14}/> Graduation 2026</div>
+              <div className="inline-flex items-center gap-2"><Eye size={14}/> Graduation 2027</div>
             </div>
             <div className="mt-4 inline-flex items-center gap-3 rounded-full border border-black/20 px-4 py-2 text-sm">
               <div className="relative size-2 rounded-full bg-emerald-500"><span className="absolute inset-0 animate-ping rounded-full bg-emerald-400/60"/></div>
-              Available for final co‑op • Seeking advanced engineering roles
+              Available for final 8 month co‑op • Seeking advanced engineering roles
             </div>
           </div>
           <div>
-            <div className="text-sm font-medium">Core Competencies</div>
-            <div className="mt-3 grid grid-cols-1 sm:grid-cols-2 gap-3">
-              {[{i:Target,n:"Precision Engineering",d:"Nanometer‑scale expertise"},{i:Zap,n:"Process Optimization",d:"80% improvement achieved"},{i:Settings,n:"Advanced Microscopy",d:"PRISM development"},{i:Activity,n:"Industrial Automation",d:"Manufacturing optimization"}].map((c)=> (
-                <div key={c.n} className="rounded-2xl border border-black/10 p-4 flex items-center gap-3">
-                  <div className="h-9 w-9 rounded-full border border-black/10 grid place-items-center">{React.createElement(c.i,{size:18})}</div>
-                  <div><div className="font-medium">{c.n}</div><div className="text-sm text-black/60">{c.d}</div></div>
-                </div>
-              ))}
-            </div>
-          </div>
+  <div className="text-sm font-medium">Core Competencies</div>
+  <div className="mt-3 grid grid-cols-1 sm:grid-cols-2 gap-3">
+    {[ 
+      { i: Target,   n: "Precision Engineering", d: "High-accuracy mechanical & optical design" },
+      { i: Zap,      n: "Process Optimization",  d: "Streamlined workflows & efficiency gains" },
+      { i: Settings, n: "Advanced Instrumentation", d: "Development of custom scientific tools" },
+      { i: Activity, n: "Automation & Control",  d: "Python/LabVIEW integration for complex systems" }
+    ].map((c)=> (
+      <div key={c.n} className="rounded-2xl border border-black/10 p-4 flex items-center gap-3">
+        <div className="h-9 w-9 rounded-full border border-black/10 grid place-items-center">
+          {React.createElement(c.i, { size: 18 })}
+        </div>
+        <div>
+          <div className="font-medium">{c.n}</div>
+          <div className="text-sm text-black/60">{c.d}</div>
+        </div>
+      </div>
+    ))}
+  </div>
+</div>
         </div>
         <div className="border-t border-black/10">
           <div className="mx-auto max-w-7xl px-6 py-6 text-sm text-black/60 flex items-center justify-between">

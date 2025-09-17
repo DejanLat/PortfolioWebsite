@@ -8,25 +8,26 @@ const mockData = {
   },
 
   portfolioImages: [
-    {
-      url: "https://images.unsplash.com/photo-1579684256060-d5a308109e21",
-      title: "PRISM Microscopy System",
-      description: "Revolutionary periscopic relay imaging system with nanometer precision positioning and 49x stable magnification for quantum sensing applications.",
-      category: "Precision Optics",
-      technologies: ["Piezo Motors", "Optical Systems", "Python", "Raspberry Pi"],
-      specifications: [
-        "49x stable magnification achieved",
-        "10-30nm step resolution",
-        "±12.5mm travel range",
-        "Beam orthogonality preservation",
-        "Cryogenic environment compatible"
-      ],
-      impact: [
-        { value: "49x", label: "Magnification" },
-        { value: "10nm", label: "Precision" },
-        { value: "5.0", label: "Version" }
-      ]
-    },
+  {
+    url: "https://images.unsplash.com/photo-1579684256060-d5a308109e21",
+    title: "Flagship Optical Instrument (Confidential)",
+    description:
+      "High-level concept preview of a next-generation optical instrument. Technical specifics are available on request.",
+    category: "Precision Instruments",
+    technologies: ["Optomechanics", "Embedded Control", "Python", "Raspberry Pi"],
+    specifications: [
+      "Key specifications withheld",
+      "Performance details available under NDA",
+      "Environmental compatibility on request",
+      "Integration options available",
+      "Configurable modules"
+    ],
+    impact: [
+      { value: "TBD", label: "Performance" },
+      { value: "TBD", label: "Resolution" },
+      { value: "vNext", label: "Version" }
+    ]
+  },
     {
       url: "https://images.unsplash.com/photo-1614308460927-5024ba2e1dcb",
       title: "Advanced Characterization Systems",
@@ -157,104 +158,108 @@ const mockData = {
     ]
   },
 
-  experience: [
-    {
-      company: "Pirlitor Machine and Tool Ltd",
-      role: "Manufacturing Engineering Co-op",
-      period: "May - August 2023",
-      category: "Aerospace & Defense",
-      image: "https://images.unsplash.com/photo-1747999918007-e3442cabb23a",
-      keyMetrics: [
-        { value: "20%", description: "Order intake capacity increase" },
-        { value: "80%", description: "Process efficiency improvement" },
-        { value: "800+", description: "Shipping cards automated" }
-      ],
-      achievements: [
-        "Built comprehensive production processes for aerospace parts from VIKING AIR, advanced drone components (APS), and precision IMAX parts",
-        "Increased order intake capacity by 20% through systematic optimization of process planning between company and customers",
-        "Accelerated shipping overhaul by developing custom macros to automate 800+ shipping cards in critical 3-day timeframe (69s/card reduction)",
-        "Optimized critical industrial process by 80% efficiency through advanced macro implementation and workflow redesign",
-        "Created standardized, scalable process framework for current and future employees to follow"
-      ]
-    },
-    {
-      company: "UWaterloo Rocketry Design Team",
-      role: "Framework Design Engineer",
-      period: "January - December 2023",
-      category: "Aerospace Engineering",
-      image: "https://images.unsplash.com/photo-1614308460927-5024ba2e1dcb",
-      keyMetrics: [
-        { value: "100%", description: "Test success rate" },
-        { value: "5+", description: "Live fire tests" },
-        { value: "Advanced", description: "Safety protocols" }
-      ],
-      achievements: [
-        "Core member of framework design subsection responsible for comprehensive testing of structural integrity for all rocket components",
-        "Successfully assisted in complex dry run procedures for liquid fuel tank plumbing systems and pressure testing",
-        "Participated in multiple live fire engine testing operations with perfect safety record",
-        "Performed critical decontamination protocols for all test components following safety regulations",
-        "Contributed to advanced safety validation and quality assurance processes for high-risk testing environments"
-      ]
-    },
-    {
-      company: "Camp Muskoka",
-      role: "Leadership Coordinator & Program Manager",
-      period: "February 2020",
-      category: "Leadership Development",
-      image: "https://images.unsplash.com/photo-1748261759887-faa2a9d76471",
-      keyMetrics: [
-        { value: "150+", description: "Participants managed" },
-        { value: "5", description: "Days intensive program" },
-        { value: "Elite", description: "Selection status" }
-      ],
-      achievements: [
-        "Organized and led intensive 5-day camp program for over 150 high school students with complex logistics coordination",
-        "Successfully managed multiple groups of 20-30 participants simultaneously with small coordinating team",
-        "Selected for exclusive leadership role from competitive pool based on demonstrated leadership capabilities",
-        "Developed advanced leadership, crisis management, and interpersonal skills in high-pressure, fast-paced environment"
-      ]
-    },
-    {
-      company: "Camp Muskoka",
-      role: "Leadership Coordinator & Program Manager",
-      period: "February 2020",
-      category: "Leadership Development",
-      image: "https://images.unsplash.com/photo-1748261759887-faa2a9d76471",
-      keyMetrics: [
-        { value: "150+", description: "Participants managed" },
-        { value: "5", description: "Days intensive program" },
-        { value: "Elite", description: "Selection status" }
-      ],
-      achievements: [
-        "Organized and led intensive 5-day camp program for over 150 high school students with complex logistics coordination",
-        "Successfully managed multiple groups of 20-30 participants simultaneously with small coordinating team",
-        "Selected for exclusive leadership role from competitive pool based on demonstrated leadership capabilities",
-        "Developed advanced leadership, crisis management, and interpersonal skills in high-pressure, fast-paced environment"
-      ]
-    }
-  ],
+experience: [
+  {
+    company: "Axivion Instruments",
+    role: "CTO & Founder",
+    period: "September 2025 – Present",
+    category: "Startup • Scientific Instruments",
+    image: "https://images.unsplash.com/photo-1520607162513-77705c0f0d4a", // clean optics lab
+    keyMetrics: [
+      { value: "PRISM", description: "Provisional Patent" },
+      { value: "1 lab", description: "Deployed in active use (IQC)" },
+      { value: "Pitch", description: "Photonics North 2025" }
+    ],
+    achievements: [
+      "Founded Axivion to commercialize PRISM (Periscopic Relay Imaging Scanning Microscope) with executive advisory support from faculty partners",
+      "Drafted a provisional patent for PRISM; filing and IP strategy in progress",
+      "Defined productization roadmap (PRISM hardware + CORE Python control platform) and brand presence for early customers",
+      "Led technical specs, supplier engagement, and manufacturing readiness for first machined version"
+    ]
+  },
+  {
+    company: "Institute for Quantum Computing (IQC), University of Waterloo",
+    role: "Research Engineer — Prototyping & Instrumentation",
+    period: "January 2025 – September 2025",
+    category: "Quantum Optics & Instrumentation",
+    image: "https://images.unsplash.com/photo-1559757175-08b3a9be11c6", // precision mechanics
+    keyMetrics: [
+      { value: "50×", description: "Real magnification imaging validated" },
+      { value: "3-axis", description: "Objective-scanning architecture" },
+      { value: "Raster", description: "LabVIEW control integrated" }
+    ],
+    achievements: [
+      "Advanced PRISM from handmade V4.5 to CNC-ready V5; produced professional drawings and tolerance stack-ups",
+      "Improved stiffness via modal/FEA iterations; reduced bending and increased natural frequency",
+      "Integrated raster-scanning software in LabVIEW with piezo control and imaging feedback",
+      "Oversaw alignment, documentation, and full-time lab deployment/usage"
+    ]
+  },
+  {
+    company: "Institute for Quantum Computing (IQC), University of Waterloo",
+    role: "Research Assistant — Optical Systems & Machining",
+    period: "January 2024 – December 2024",
+    category: "Research • Quantum Optics",
+    image: "https://images.unsplash.com/photo-1518779578993-ec3579fee39f", // lab instrumentation
+    keyMetrics: [
+      { value: "51 h", description: "Hand-machining V4.5 build" },
+      { value: "FEA", description: "Stiffness & modal optimization" },
+      { value: "5+", description: "Custom fixtures & tools built" }
+    ],
+    achievements: [
+      "Originated PRISM concept and designed first prototype in Fusion 360; built and validated the handmade V4.5",
+      "Developed LabVIEW raster-scan software and experimental procedures for reflective imaging",
+      "Created Blender renders and technical visuals for presentations/publications",
+      "Refurbished a spectrometer (electronics + 3D-printed housings) and fabricated custom hardware (diamond mounts, fiber couplers, optical filtering modules)"
+    ]
+  },
+  {
+    company: "Pirlitor Machine and Tool Ltd",
+    role: "Manufacturing Engineering Co-op",
+    period: "May – August 2023",
+    category: "Aerospace & Defense",
+    image: "https://images.unsplash.com/photo-1581091870622-7b1c1dfdfd07", // machining/CNC
+    keyMetrics: [
+      { value: "20%", description: "Order-intake capacity increase" },
+      { value: "80%", description: "Process efficiency improvement" },
+      { value: "800+", description: "Shipping cards automated" }
+    ],
+    achievements: [
+      "Built comprehensive production processes for aerospace parts (Viking Air), advanced drone components (APS), and precision IMAX parts",
+      "Increased order-intake capacity by 20% via better customer planning interfaces and internal routing",
+      "Automated 800+ shipping cards in a critical 3-day window using custom Excel/VBA macros (≈69 s/card saved)",
+      "Standardized scalable process documentation and workflows adopted by current/future staff"
+    ]
+  }
+],
 
-  projects:[
-   {
-    title: "PRISM - Periscopic Relay Imaging Scanning Microscope",
-  description: "Revolutionary precision optical instrument designed as cost-effective alternative to traditional 3-axis translation stages. Engineered for quantum sensing, cryogenic imaging, and advanced microscopy applications with breakthrough beam orthogonality preservation.",
-  image: "https://images.unsplash.com/photo-1579684256060-d5a308109e21",
-  technologies: ["Precision Optics", "Piezo Motors", "Raspberry Pi", "Python", "CNC Machining", "FEA Analysis", "LabVIEW"],
-  specifications: [
-    "49x stable magnification for reflective microscopy",
-    "10-30nm step resolution with piezo actuators",
-    "±12.5mm travel range across three axes",
-    "Beam orthogonality preservation throughout scanning",
-    "Cryogenic environment compatibility",
-    "Remote control via CORE system",
-    "Modular, retrofittable design"
-  ],
-  featured: true,
-  github: true,
-  demo: true,
-  category: "Research & Development",
-  slug: "prism"              // 👈 add this
-},
+
+projects: [
+  {
+    title: "Flagship Optical Instrument (Working Title)",
+    description:
+      "Concept-stage optical/precision system. This page shows a functional preview while detailed specs remain confidential.",
+    image: "https://images.unsplash.com/photo-1579684256060-d5a308109e21",
+    technologies: [
+      "Optomechanics",
+      "Embedded Control",
+      "Python",
+      "Modular Design",
+      "System Integration"
+    ],
+    specifications: [
+      "Architecture & performance details withheld",
+      "Compatibility and interfaces available on request",
+      "Environmental configuration options available",
+      "Control software roadmap in progress",
+      "Datasheet available under NDA"
+    ],
+    featured: true,
+    github: false,
+    demo: false,
+    category: "Research & Development",
+    slug: "prism"
+  },
    {
   title: "Data Analysis Capstone Project",
   description: "Analyzed customer usage data to identify strategies for increasing annual memberships, using SQL and R for data processing and visualization.",
@@ -306,262 +311,229 @@ const mockData = {
   ],
 
   prismSpecs: [
-    {
-      id: "overview",
-      title: "System Architecture Overview",
-      specs: [
-        {
-          label: "System Designation",
-          value: "PRISM (Periscopic Relay Imaging Scanning Microscope)",
-          description: "Evolution from PrecisionArc Microscope (PAM) - Version 5.0"
-        },
-        {
-          label: "Core Innovation",
-          value: "Beam Orthogonality Preservation",
-          description: "Fixed beam path maintained throughout entire scanning range"
-        },
-        {
-          label: "Primary Applications",
-          value: "Quantum Sensing & Cryogenic Imaging",
-          description: "Specialized for isolated sample environments and extreme conditions"
-        },
-        {
-          label: "Magnification System",
-          value: "49x Stable Optical Magnification",
-          description: "Consistent performance across full scanning range"
-        },
-        {
-          label: "Control Architecture",
-          value: "CORE (Centralized Operator for Relay Execution)",
-          description: "Raspberry Pi-based control system with internet connectivity"
-        }
-      ]
-    },
-    {
-      id: "optical",
-      title: "Optical Performance Specifications",
-      specs: [
-        {
-          label: "Magnification Factor",
-          value: "49x Overall Magnification",
-          description: "Stable magnification for reflective microscopy applications"
-        },
-        {
-          label: "Beam Stability",
-          value: "Fixed Incoming/Outgoing Direction",
-          description: "Maintained throughout entire scanning range and focus adjustments"
-        },
-        {
-          label: "Mirror System",
-          value: "Interchangeable Dielectric Mirrors (MRA25)",
-          description: "Thorlabs specification with kinematic mounting constraints"
-        },
-        {
-          label: "Optical Access",
-          value: "External Mounting Compatible",
-          description: "Cryostat window compatible with minimal beam deviation"
-        },
-        {
-          label: "Angular Stability",
-          value: "Orthogonal Beam Preservation",
-          description: "No angular deviation from sample normal during scanning"
-        },
-        {
-          label: "Focus Range",
-          value: "Continuous Focus Adjustment",
-          description: "Z-axis focus control with nanometer precision"
-        }
-      ]
-    },
-    {
-      id: "mechanical",
-      title: "Mechanical Engineering Specifications",
-      specs: [
-        {
-          label: "Translation Stage Model",
-          value: "T60X-25L Precision Stages",
-          description: "±12.5mm travel range, 60x60mm platform, modular design"
-        },
-        {
-          label: "Platform Dimensions",
-          value: "60mm × 60mm × 18mm",
-          description: "Standard mounting interface with universal compatibility"
-        },
-        {
-          label: "Moving Flatness",
-          value: "<0.003mm Precision",
-          description: "Achieved through precision crossed-roller bearings"
-        },
-        {
-          label: "Load Capacity",
-          value: "5.0kg Maximum Load",
-          description: "Per stage with maintained precision specifications"
-        },
-        {
-          label: "Stage Weight",
-          value: "0.30kg Per Stage",
-          description: "Lightweight aluminum construction for minimal inertia"
-        },
-        {
-          label: "Micrometer Drive",
-          value: "0.50mm Pitch Precision",
-          description: "High-resolution manual adjustment capability"
-        }
-      ]
-    },
-    {
-      id: "control",
-      title: "Control Systems & Electronics",
-      specs: [
-        {
-          label: "Primary Controller (Open Loop)",
-          value: "Thorlabs KIM101",
-          description: "4-channel piezo inertia motor controller with USB interface"
-        },
-        {
-          label: "Piezo Actuators",
-          value: "Thorlabs PIA25",
-          description: "25mm travel piezo inertia actuators, Ø3/8\" mounting barrel"
-        },
-        {
-          label: "Step Resolution",
-          value: "10-30nm Typical",
-          description: "±20% variation depending on load conditions"
-        },
-        {
-          label: "Control Interface",
-          value: "USB + Manual Joystick",
-          description: "Remote and local control with external trigger support"
-        },
-        {
-          label: "CORE Control System",
-          value: "Raspberry Pi 4 Based",
-          description: "Centralized Operator for Relay Execution with BNC/USB ports"
-        },
-        {
-          label: "Connectivity",
-          value: "Internet-Enabled Remote Control",
-          description: "Computer and mobile device control capabilities"
-        },
-        {
-          label: "Software Features",
-          value: "Mapping, Raster Scanning, Calibration",
-          description: "Built-in functions with Python API for custom development"
-        }
-      ]
-    },
-    {
-      id: "performance",
-      title: "Performance Characteristics",
-      specs: [
-        {
-          label: "Scanning Accuracy",
-          value: "Nanometer-Level Precision",
-          description: "Consistent across full ±12.5mm range in all three axes"
-        },
-        {
-          label: "Thermal Stability",
-          value: "Cryogenic Compatible",
-          description: "Stable operation from 4K to 300K temperature range"
-        },
-        {
-          label: "Vibration Isolation",
-          value: "Passive Isolation Design",
-          description: "Minimized coupling to external vibrations"
-        },
-        {
-          label: "Speed Performance",
-          value: "Variable Scan Rates",
-          description: "Optimized for both high-speed and high-precision applications"
-        },
-        {
-          label: "Repeatability",
-          value: "<0.1% Position Drift",
-          description: "Long-term stability for extended measurement sessions"
-        },
-        {
-          label: "Operating Environment",
-          value: "UHV to Atmospheric",
-          description: "Compatible with ultra-high vacuum to standard atmospheric conditions"
-        }
-      ]
-    }
-  ],
+  {
+    id: "overview",
+    title: "System Architecture Overview",
+    specs: [
+      {
+        label: "System Designation",
+        value: "Confidential",
+        description: "Working title in use; final naming to be announced."
+      },
+      {
+        label: "Core Innovation",
+        value: "Under NDA",
+        description: "High-level principle available upon request."
+      },
+      {
+        label: "Primary Applications",
+        value: "Research & Industrial",
+        description: "Suitable for advanced microscopy/optics environments."
+      },
+      {
+        label: "Performance Class",
+        value: "Lab-validated (details withheld)",
+        description: "Quantitative metrics available under NDA."
+      },
+      {
+        label: "Control Architecture",
+        value: "Modular, software-defined",
+        description: "API and UI overview on request."
+      }
+    ]
+  },
+  {
+    id: "optical",
+    title: "Optical Performance Specifications",
+    specs: [
+      {
+        label: "Optical Path",
+        value: "Confidential",
+        description: "System topology withheld; overview under NDA."
+      },
+      {
+        label: "Beam Stability",
+        value: "Lab-validated (summary only)",
+        description: "Detailed tolerances provided in datasheet."
+      },
+      {
+        label: "Mirror/Relay Strategy",
+        value: "Configurable",
+        description: "Component choices and constraints available on request."
+      },
+      {
+        label: "Optical Access",
+        value: "Retrofittable",
+        description: "Integration options for standard lab setups."
+      },
+      {
+        label: "Angular Stability",
+        value: "Quantified (withheld)",
+        description: "Numerical specs available under NDA."
+      },
+      {
+        label: "Focus & Range",
+        value: "Software-controlled",
+        description: "Control modes and limits in datasheet."
+      }
+    ]
+  },
+  {
+    id: "mechanical",
+    title: "Mechanical Engineering Specifications",
+    specs: [
+      {
+        label: "Translation Architecture",
+        value: "Modular stages",
+        description: "Platform details available on request."
+      },
+      {
+        label: "Form Factor",
+        value: "Bench/retrofit compatible",
+        description: "Mounting patterns and adapters on request."
+      },
+      {
+        label: "Precision",
+        value: "Lab-characterized",
+        description: "Flatness, load, and repeatability under NDA."
+      },
+      {
+        label: "Materials",
+        value: "Engineering-grade alloys",
+        description: "Exact stackup and treatments withheld."
+      },
+      {
+        label: "Mass & Inertia",
+        value: "Optimized for stability",
+        description: "Modal/FEA results available under NDA."
+      },
+      {
+        label: "Adjustment",
+        value: "Manual & automated options",
+        description: "Drive options and pitches on request."
+      }
+    ]
+  },
+  {
+    id: "control",
+    title: "Control Systems & Electronics",
+    specs: [
+      {
+        label: "Primary Controller",
+        value: "USB/Ethernet options",
+        description: "Channel count and topology under NDA."
+      },
+      {
+        label: "Actuation",
+        value: "Precision motion",
+        description: "Actuator model specifics withheld."
+      },
+      {
+        label: "Step Characteristics",
+        value: "Lab-validated",
+        description: "Resolution and variance tables in datasheet."
+      },
+      {
+        label: "Interfaces",
+        value: "API + UI",
+        description: "External trigger and scripting support."
+      },
+      {
+        label: "Modular Hub",
+        value: "Edge device compatible",
+        description: "Embedded control roadmap available on request."
+      },
+      {
+        label: "Connectivity",
+        value: "Local & remote options",
+        description: "Security and access models under NDA."
+      },
+      {
+        label: "Software Features",
+        value: "Scanning • Mapping • Calibration",
+        description: "Feature matrices available on request."
+      }
+    ]
+  },
+  {
+    id: "performance",
+    title: "Performance Characteristics",
+    specs: [
+      {
+        label: "Accuracy",
+        value: "High precision",
+        description: "Quantitative data withheld."
+      },
+      {
+        label: "Thermal Stability",
+        value: "Configurable",
+        description: "Supported environments on request."
+      },
+      {
+        label: "Vibration",
+        value: "Passive/active options",
+        description: "Isolation strategy available under NDA."
+      },
+      {
+        label: "Speed",
+        value: "Application-dependent",
+        description: "Scan rates and modes on request."
+      },
+      {
+        label: "Repeatability",
+        value: "Lab-validated",
+        description: "Long-term drift data under NDA."
+      },
+      {
+        label: "Operating Environment",
+        value: "From controlled lab to specialized setups",
+        description: "UHV/cryo specifics withheld."
+      }
+    ]
+  }
+],
 
   prismApplications: [
-    {
-      title: "Quantum Sensing & NV Centers",
-      category: "Quantum Physics",
-      description: "Precision optical readout and scanning of nitrogen-vacancy (NV) centers in diamond for ultra-sensitive magnetic and electric field measurements in quantum sensing applications.",
-      benefits: [
-        "nT-level magnetic field sensitivity",
-        "Sub-micron spatial resolution for NV center mapping",
-        "Stable beam orthogonality for consistent spin-state readout",
-        "Compatible with magnetic field gradient mapping",
-        "Integrated with quantum control systems"
-      ]
-    },
-    {
-      title: "Cryogenic Imaging Systems",
-      category: "Low-Temperature Physics",
-      description: "Revolutionary approach positioning microscope head outside cryostat to eliminate thermal load while maintaining precise optical access through specialized windows.",
-      benefits: [
-        "Zero thermal impact on sample environment",
-        "Stable operation across 4K-300K temperature range",
-        "Compatible with dilution refrigerator systems",
-        "Maintains optical performance in extreme conditions",
-        "Reduces cryogenic system complexity"
-      ]
-    },
-    {
-      title: "Rydberg Atom Arrays & Ion Traps",
-      category: "Quantum Computing",
-      description: "Non-invasive remote focusing and scanning capabilities for trapped atom/ion arrays without disturbing ultra-high vacuum or electromagnetic trap structures.",
-      benefits: [
-        "Non-invasive optical access to quantum systems",
-        "Precise positioning for quantum state manipulation",
-        "UHV compatibility without compromising beam quality",
-        "Remote adjustment eliminates manual intervention",
-        "Compatible with ion trap and neutral atom platforms"
-      ]
-    },
-    {
-      title: "Cold Atom Quantum Systems",
-      category: "Atomic Physics",
-      description: "Advanced fiber placement and mode overlap control in cold atom experimental setups for quantum simulation and atomic clock applications.",
-      benefits: [
-        "Precise optical element alignment in vacuum",
-        "Remote adjustment of optical paths",
-        "No requirement for vacuum chamber access",
-        "Compatible with MOT and optical lattice systems",
-        "Integrated with atomic physics control systems"
-      ]
-    },
-    {
-      title: "Photonic Device Characterization",
-      category: "Photonics Industry",
-      description: "High-resolution confocal mapping of photonic integrated circuits, silicon waveguides, and grating couplers for next-generation optical communication systems.",
-      benefits: [
-        "Fixed beam geometry ensures consistent coupling efficiency",
-        "Automated scanning protocols for device mapping",
-        "Compatible with near-infrared and visible wavelengths",
-        "Precision alignment for single-mode fiber coupling",
-        "Integrated spectroscopic capabilities"
-      ]
-    },
-    {
-      title: "Advanced Surface Metrology",
-      category: "Materials Science",
-      description: "Comprehensive analysis of grain boundaries, surface defects, and nanoscale topology in advanced semiconductor and quantum materials.",
-      benefits: [
-        "Nanoscale surface profiling with interferometric capability",
-        "Automated defect detection and classification",
-        "Compatible with white light interferometry integration",
-        "High-throughput mapping for quality control",
-        "Advanced materials characterization protocols"
-      ]
-    }
-  ]
+  {
+    title: "Quantum & Advanced Research",
+    category: "Research",
+    description:
+      "Applicable to advanced measurement and imaging workflows in precision labs.",
+    benefits: [
+      "High-level compatibility with common research setups",
+      "Stable operation in controlled environments",
+      "Flexible integration with existing instrumentation",
+      "Non-disruptive upgrade path",
+      "API access for custom workflows"
+    ]
+  },
+  {
+    title: "Low-Temperature / Specialized Environments",
+    category: "Specialized Systems",
+    description:
+      "Designed to interface with specialized environments; specifics available on request.",
+    benefits: [
+      "Minimal environmental impact configuration",
+      "Integration options documented in datasheet",
+      "Serviceable without exposing sensitive hardware",
+      "Supports automated procedures",
+      "Roadmap available under NDA"
+    ]
+  },
+  {
+    title: "Photonics & Device Characterization",
+    category: "Industry",
+    description:
+      "Suitable for device mapping and characterization at a high level.",
+    benefits: [
+      "Consistent alignment strategies",
+      "Automatable scanning sequences",
+      "Broad wavelength compatibility options",
+      "Precision positioning workflows",
+      "Reporting/export options"
+    ]
+  }
+]
 };
 
 export default mockData;
