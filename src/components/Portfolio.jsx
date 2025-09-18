@@ -801,9 +801,9 @@ const equipmentSlides = [
 ];
 // --- engineering project slides (put both .webp and .png in /public) ---
 const engProjectSlides = [  
-  { base: "image1Engprojectcarosel", title: "PRISM", description: "Documentation" },
-  { base: "image2Engprojectcarosel", title: "Pygame", description: "Screenshot" },
-  { base: "image3Engprojectcarosel", title: "Maintenance", description: "Rear Shocks Replacement" },
+  { base: "image1Engproject", title: "PRISM", description: "Documentation" },
+  { base: "image3Engprojectcarosel", title: "Pygame", description: "Screenshot" },
+  { base: "image4Engprojectcarosel", title: "Maintenance", description: "Rear Shocks Replacement" },
 
 ];
 
