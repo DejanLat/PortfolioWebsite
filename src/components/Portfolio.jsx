@@ -8,6 +8,23 @@ import { Link } from "react-router-dom";
 import mockData from "../data/mock";
 import { Check } from "lucide-react";
 
+// --- Add this near the top of the file (after imports) ---
+const WebpImg = ({ webp, fallback, alt, className }) => {
+  // Robust: try WebP first; if it 404s or the browser can't decode it,
+  // fall back to PNG automatically.
+  const [src, setSrc] = React.useState(webp || fallback);
+  return (
+    <img
+      src={src}
+      alt={alt}
+      className={className}
+      loading="lazy"
+      onError={() => {
+        if (src !== fallback) setSrc(fallback);
+      }}
+    />
+  );
+};
 
 export default function PortfolioWhite() {
   const [activeTab, setActiveTab] = useState("performance");
@@ -17,7 +34,10 @@ export default function PortfolioWhite() {
   const [isPlaying, setIsPlaying] = useState(true);
 
 
-  const companiesBarUrl = process.env.PUBLIC_URL + "/CompaniesBar.png";
+// ✅ PNG + WebP paths (keep both in /public)
+const companiesBarPng  = `${process.env.PUBLIC_URL}/CompaniesBar.png`;
+const companiesBarWebp = `${process.env.PUBLIC_URL}/CompaniesBar.webp`; // add this file to /public
+
 
   const shrekUrl = process.env.PUBLIC_URL + "/AxivionPrismBanner.png";
   const longPhotoUrl = process.env.PUBLIC_URL + "/longphoto.png";
@@ -644,11 +664,13 @@ const equipmentSkills = [
       </div>
 
       {/* Logos image directly under the header */}
-      <img
-        src={`${process.env.PUBLIC_URL}/CompaniesBar.png`}
-        alt="University of Waterloo • IQC • Axivion Instruments"
-        className="h-14 sm:h-16 lg:h-20 w-auto object-contain rounded-xl border border-black/10"
-      />
+      <WebpImg
+  webp={companiesBarWebp}
+  fallback={companiesBarPng}
+  alt="University of Waterloo • IQC • Axivion Instruments"
+  className="h-14 sm:h-16 lg:h-20 w-auto object-contain rounded-xl border border-black/10"
+/>
+
     </div>
 
     {/* RIGHT: Core Competencies */}

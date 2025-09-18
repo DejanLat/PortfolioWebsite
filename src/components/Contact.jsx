@@ -395,9 +395,9 @@ export default function Contact({ contactEmail = CONTACT_EMAIL }) {
   const subjectMap = useMemo(
     () => ({
       "General Inquiry": "General inquiry about PRISM",
-      "Request Specs": "Requesting PRISM spec overview",
+      "Request Detailed Specs": "Requesting PRISM spec overview",
       "Schedule a Meeting": "Meeting request about PRISM",
-      "Partnerships / Pilot": "Partnership or pilot discussion",
+      "Partnerships": "Partnership or pilot discussion",
     }),
     []
   );
@@ -408,11 +408,11 @@ export default function Contact({ contactEmail = CONTACT_EMAIL }) {
 
   const quickLinks = [
     {
-      title: "Request Specs",
+      title: "Request Detailed Specs",
       label: "Overview PDF / capabilities",
       icon: FileText,
       href: buildMailto(
-        subjectMap["Request Specs"],
+        subjectMap["Request Detailed Specs"],
         `Hi,\n\nI’d like the latest spec overview for PRISM.\n\nName: \nOrganization: \nUse case: \n\nThanks!`
       ),
       primary: true,
@@ -427,12 +427,12 @@ export default function Contact({ contactEmail = CONTACT_EMAIL }) {
       ),
     },
     {
-      title: "Partnerships / Pilot",
+      title: "Partnerships",
       label: "Evaluation & early access",
       icon: Shield,
       href: buildMailto(
-        subjectMap["Partnerships / Pilot"],
-        `Hi,\n\nWe’re interested in a partnership/pilot.\n\nOrganization: \nEnvironment (e.g., cryo/vacuum): \nTarget timeline: \n\nThanks!`
+        subjectMap["Partnerships"],
+        `Hi,\n\nWe’re interested in a partnership.\n\nOrganization: \nEnvironment (e.g., cryo/vacuum): \nTarget timeline: \n\nThanks!`
       ),
     },
   ];
