@@ -3737,6 +3737,7 @@ export default function PrismX() {
     setMy(e.clientY);
   };
   const rootStyle = { "--mx": `${mx}px`, "--my": `${my}px` };
+const SPEC_PDF = encodeURI(`${process.env.PUBLIC_URL}/PRISM Infodoc.pdf`);
 
   // --- Hero-local cursor coords (keep hero halo glued during scroll)
   const heroRef = useRef(null);
@@ -4085,15 +4086,19 @@ export default function PrismX() {
                 <Zap size={16} style={{ color: ACCENT }} /> Piezo Actuation
               </div>
             </div>
-            <a
-              href="/contact"
-              className="inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm font-medium"
-              style={{ backgroundColor: ACCENT, color: "#000" }}
-              onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = ACCENT_HOVER)}
-              onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = ACCENT)}
-            >
-              <Download size={16} /> Prototyping Station Lab Tour
-            </a>
+                <a
+                  href={SPEC_PDF}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  download
+                  className="inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm font-medium"
+                  style={{ backgroundColor: ACCENT, color: "#000" }}
+                  onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = ACCENT_HOVER)}
+                  onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = ACCENT)}
+                >
+                  <Download size={16} /> Download Spec Sheet
+                </a>
+
           </div>
         </section>
         {/* Design */}

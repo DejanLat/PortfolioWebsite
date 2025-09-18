@@ -3,9 +3,11 @@
 import { useNavigate } from "react-router-dom";
 import React, { useEffect, useState, useMemo } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Award, Users, BarChart3, Target, Zap, Activity, Settings, ArrowRight, Play, Pause, Cpu, Eye, BellDot, ShieldBan, ShieldMinusIcon, AtomIcon, LucideAsterisk, RocketIcon, MicroscopeIcon, GraduationCapIcon, } from "lucide-react";
+import { Award, Shield, Users, BarChart3, Target, Zap, Activity, Settings, ArrowRight, Play, Pause, Cpu, Eye, BellDot, ShieldBan, ShieldMinusIcon, AtomIcon, LucideAsterisk, RocketIcon, MicroscopeIcon, GraduationCapIcon, } from "lucide-react";
 import { Link } from "react-router-dom";
 import mockData from "../data/mock";
+import { Check } from "lucide-react";
+
 
 export default function PortfolioWhite() {
   const [activeTab, setActiveTab] = useState("performance");
@@ -13,6 +15,9 @@ export default function PortfolioWhite() {
   const [currentEquipmentImage, setCurrentEquipmentImage] = useState(0);
   const [currentProjectImage, setCurrentProjectImage] = useState(0);
   const [isPlaying, setIsPlaying] = useState(true);
+
+
+  const companiesBarUrl = process.env.PUBLIC_URL + "/CompaniesBar.png";
 
   const shrekUrl = process.env.PUBLIC_URL + "/AxivionPrismBanner.png";
   const longPhotoUrl = process.env.PUBLIC_URL + "/longphoto.png";
@@ -355,43 +360,43 @@ const equipmentSkills = [
 
 
           {activeTab === "software" && (
-            <div className="mt-10 grid grid-cols-1 lg:grid-cols-2 gap-8">
-              <div className="rounded-3xl border border-black/10 p-6">
-                <div className="flex items-center justify-between"><div className="flex items-center gap-2"><Cpu size={18} /><h3 className="text-xl font-semibold">Engineering Software</h3></div><div className="text-sm">95%</div></div>
-                <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-3">
-                  {mockData.skills.frameworks.map((f,i)=> (
-                    <div key={i} className="rounded-2xl border border-black/10 p-4 flex items-center justify-between">
-                      <div>{f}</div>
-                      <div className="flex items-center gap-1">
-                        <div className="size-2 rounded-full bg-black"></div>
-                        <div className="size-2 rounded-full bg-black"></div>
-                        <div className="size-2 rounded-full bg-black"></div>
-                        <div className="size-2 rounded-full bg-black"></div>
-                        <div className="size-2 rounded-full bg-black/20"></div>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-              <div className="rounded-3xl border border-black/10 p-6">
-                <div className="flex items-center justify-between"><div className="flex items-center gap-2"><Activity size={18} /><h3 className="text-xl font-semibold">Programming Languages</h3></div><div className="text-sm">92%</div></div>
-                <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-3">
-                  {mockData.skills.languages.map((l,i)=> (
-                    <div key={i} className="rounded-2xl border border-black/10 p-4 flex items-center justify-between">
-                      <div>{l}</div>
-                      <div className="flex items-center gap-1">
-                        <div className="size-2 rounded-full bg-black"></div>
-                        <div className="size-2 rounded-full bg-black"></div>
-                        <div className="size-2 rounded-full bg-black"></div>
-                        <div className="size-2 rounded-full bg-black"></div>
-                        <div className="size-2 rounded-full bg-black"></div>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </div>
-          )}
+  <div className="mt-10 grid grid-cols-1 lg:grid-cols-2 gap-8">
+    {/* Engineering Software */}
+    <div className="rounded-3xl border border-black/10 p-6 bg-white">
+      <div className="flex items-center gap-2">
+        <Cpu size={18} />
+        <h3 className="text-xl font-semibold">Engineering Software</h3>
+      </div>
+
+      <ul className="mt-5 space-y-2">
+        {mockData.skills.frameworks.map((name) => (
+          <li key={name} className="flex items-center gap-3">
+            <Check size={16} className="text-black/70" />
+            <span className="text-black/90">{name}</span>
+          </li>
+        ))}
+      </ul>
+    </div>
+
+    {/* Programming Languages */}
+    <div className="rounded-3xl border border-black/10 p-6 bg-white">
+      <div className="flex items-center gap-2">
+        <Activity size={18} />
+        <h3 className="text-xl font-semibold">Programming Languages</h3>
+      </div>
+
+      <ul className="mt-5 space-y-2">
+        {mockData.skills.languages.map((name) => (
+          <li key={name} className="flex items-center gap-3">
+            <Check size={16} className="text-black/70" />
+            <span className="text-black/90">{name}</span>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </div>
+)}
+
 
           
         </div>
@@ -503,126 +508,202 @@ const equipmentSkills = [
 
 {/* BARS / CARDS BELOW */}
 <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 items-start">
-  {mockData.projects.map((project, index) => (
-    <motion.button
-      key={project.id ?? index}
-      type="button"
-      initial={{ opacity: 0, y: 12 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.45, delay: index * 0.06 }}
-      onClick={() => {
-        if (project.slug === "prism") {
-          navigate("/prism");                              // route to PrismProject.jsx
-        } else if (project.demo) {
-          window.open(project.demo, "_blank", "noopener,noreferrer");   // open demo first
-        } else if (project.github) {
-          window.open(project.github, "_blank", "noopener,noreferrer"); // fallback to GitHub
-        }
-      }}
-      aria-label={`Open project: ${project.title}`}
-      className={`w-full text-left cursor-pointer rounded-3xl border border-black/10 p-6 transition
-                  focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black/50
-                  ${project.featured ? "bg-black text-white hover:shadow-xl" : "bg-white hover:shadow-md"}`}
-    >
-      {project.featured && (
-        <div className="inline-flex items-center gap-2 rounded-full border px-3 py-1 text-xs mb-3">
-          <Award size={14} /> Breakthrough
-        </div>
-      )}
+  {mockData.projects.map((project, index) => {
+    const isFeatured = !!project.featured;
+    const techs = Array.isArray(project.technologies) ? project.technologies : [];
 
-      <div className="flex items-center justify-between">
-        <div
-          className="text-sm text-black/60 data-[featured=true]:text-white/70"
-          data-featured={project.featured}
-        >
-          Category
-        </div>
-        <div className="text-sm font-medium">{project.category}</div>
-      </div>
+    return (
+      <motion.button
+        key={project.id ?? index}
+        type="button"
+        initial={{ opacity: 0, y: 12 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.45, delay: index * 0.06 }}
+        onClick={() => {
+          if (project.slug === "prism") {
+            navigate("/prism"); // route to PrismProject.jsx
+          } else if (project.demo) {
+            window.open(project.demo, "_blank", "noopener,noreferrer"); // open demo first
+          } else if (project.github) {
+            window.open(project.github, "_blank", "noopener,noreferrer"); // fallback to GitHub
+          }
+        }}
+        aria-label={`Open project: ${project.title}`}
+        className={`w-full text-left cursor-pointer rounded-3xl border border-black/10 p-6 transition
+                    focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black/50
+                    ${isFeatured ? "bg-black text-white hover:shadow-xl" : "bg-white hover:shadow-md"}`}
+      >
+        {isFeatured && (
+          <div className="inline-flex items-center gap-2 rounded-full border px-3 py-1 text-xs mb-3">
+            <Award size={14} /> Breakthrough
+          </div>
+        )}
 
-      <div className="mt-2 text-xl font-semibold">{project.title}</div>
-      <p className={`mt-2 text-sm ${project.featured ? "text-white/80" : "text-black/70"}`}>
-        {project.description}
-      </p>
-
-      <div className="mt-4">
-        <div className="text-sm font-medium">Technical Specifications</div>
-        <div className="mt-2 space-y-2">
-          {project.specifications.slice(0, 4).map((s, si) => (
-            <div key={si} className="flex items-center gap-2 text-sm">
-              <div className={`size-4 rounded-full grid place-items-center ${project.featured ? "bg-white text-black" : "bg-black text-white"}`}>✓</div>
-              <span>{s}</span>
-            </div>
-          ))}
-        </div>
-      </div>
-
-      <div className="mt-4 flex flex-wrap gap-2">
-        {project.technologies.slice(0, 5).map((t, ti) => (
-          <span
-            key={ti}
-            className={`rounded-full border px-3 py-1 text-xs ${project.featured ? "border-white/30 text-white/90" : "border-black/20 text-black/80"}`}
+        {/* Category header */}
+        <div className="flex items-center justify-between">
+          <div
+            className="text-sm text-black/60 data-[featured=true]:text-white/70"
+            data-featured={isFeatured}
           >
-            {t}
-          </span>
-        ))}
-      </div>
-    </motion.button>
-  ))}
+            Category
+          </div>
+          <div className="text-sm font-medium">{project.category}</div>
+        </div>
+
+        {/* Title + description */}
+        <div className="mt-2 text-xl font-semibold">{project.title}</div>
+        <p className={`mt-2 text-sm ${isFeatured ? "text-white/80" : "text-black/70"}`}>
+          {project.description}
+        </p>
+
+        {/* Patent status badge (PRISM etc.) */}
+        {project.patentStatus && (
+          <div
+            className={`mt-3 inline-flex items-center gap-2 rounded-full px-3 py-1 text-xs
+                        ${isFeatured ? "bg-white/10 border border-white/20 text-white" : "bg-black/5 border border-black/10 text-black/80"}`}
+            aria-label="Patent status"
+            title={project.patentStatus}
+          >
+            <Shield size={14} />
+            <span>{project.patentStatus}</span>
+          </div>
+        )}
+
+        {/* Technical specifications */}
+        <div className="mt-4">
+          <div className="text-sm font-medium">Technical Specifications</div>
+          <div className="mt-2 space-y-2">
+            {(project.specifications ?? []).slice(0, 4).map((s, si) => (
+              <div key={si} className="flex items-center gap-2 text-sm">
+                <div
+                  className={`size-4 rounded-full grid place-items-center
+                              ${isFeatured ? "bg-white text-black" : "bg-black text-white"}`}
+                >
+                  ✓
+                </div>
+                <span>{s}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Technologies chips */}
+        {techs.length > 0 && (
+          <div className="mt-4">
+            <div className="text-sm font-medium">Technologies</div>
+            <div className="mt-2 flex flex-wrap gap-2">
+              {techs.slice(0, 5).map((t, ti) => (
+                <span
+                  key={ti}
+                  className={`rounded-full border px-3 py-1 text-xs
+                              ${isFeatured ? "border-white/30 text-white/90" : "border-black/20 text-black/80"}`}
+                >
+                  {t}
+                </span>
+              ))}
+            </div>
+          </div>
+        )}
+      </motion.button>
+    );
+  })}
 </div>
+
         </div>
       </section>
 
 
       <footer className="border-t border-black/10 bg-white">
-        <div className="mx-auto max-w-7xl px-6 py-12 grid grid-cols-1 lg:grid-cols-2 gap-8">
-          <div>
-            <div className="text-sm tracking-widest text-black/60">ENGINEERING PORTFOLIO</div>
-            <div className="mt-1 text-2xl font-semibold">Dejan Latkovic</div>
-            <div className="mt-2 flex flex-wrap gap-3 text-sm text-black/70">
-              <div className="inline-flex items-center gap-2"><GraduationCapIcon size={14}/> University of Waterloo</div>
-              <div className="inline-flex items-center gap-2"><Users size={14}/> Co‑operative Education</div>
-              <div className="inline-flex items-center gap-2"><Award size={14}/> Graduation 2027</div>
-            </div>
-            <div className="mt-4 inline-flex items-center gap-3 rounded-full border border-black/20 px-4 py-2 text-sm">
-              <div className="relative size-2 rounded-full bg-emerald-500"><span className="absolute inset-0 animate-ping rounded-full bg-emerald-400/60"/></div>
-              Available for final 8 month co‑op • Seeking Optical and Biomed Engineering Roles
-            </div>
+  <div className="mx-auto max-w-7xl px-6 py-12 grid grid-cols-1 lg:grid-cols-2 gap-10 items-start">
+    {/* LEFT: Engineering Portfolio area + logos image */}
+    <div className="space-y-6">
+      {/* Engineering Portfolio header */}
+      <div>
+        <div className="text-sm tracking-widest text-black/60">ENGINEERING PORTFOLIO</div>
+        <div className="mt-1 text-2xl font-semibold">Dejan Latkovic</div>
+
+        <div className="mt-2 flex flex-wrap gap-3 text-sm text-black/70">
+          <div className="inline-flex items-center gap-2">
+            <GraduationCapIcon size={14} /> University of Waterloo
           </div>
-          <div>
-  <div className="text-sm font-medium">Core Competencies</div>
-  <div className="mt-3 grid grid-cols-1 sm:grid-cols-2 gap-3">
-    {[ 
-      { i: Target,   n: "Precision Engineering", d: "High-accuracy mechanical & optical design" },
-      { i: Zap,      n: "Process Optimization",  d: "Streamlined workflows & efficiency gains" },
-      { i: Settings, n: "Advanced Instrumentation", d: "Development of custom scientific tools" },
-      { i: Activity, n: "Automation & Control",  d: "Python/LabVIEW integration for complex systems" }
-    ].map((c)=> (
-      <div key={c.n} className="rounded-2xl border border-black/10 p-4 flex items-center gap-3">
-        <div className="h-9 w-9 rounded-full border border-black/10 grid place-items-center">
-          {React.createElement(c.i, { size: 18 })}
+          <div className="inline-flex items-center gap-2">
+            <Users size={14} /> Co-operative Education
+          </div>
+          <div className="inline-flex items-center gap-2">
+            <Award size={14} /> Graduation 2027
+          </div>
         </div>
-        <div>
-          <div className="font-medium">{c.n}</div>
-          <div className="text-sm text-black/60">{c.d}</div>
+
+        <div className="mt-4 inline-flex items-center gap-3 rounded-full border border-black/20 px-4 py-2 text-sm">
+          <div className="relative size-2 rounded-full bg-emerald-500">
+            <span className="absolute inset-0 animate-ping rounded-full bg-emerald-400/60" />
+          </div>
+          Available for final 8 month co-op • Seeking Optical & Biomed Engineering roles
         </div>
       </div>
-    ))}
-  </div>
-</div>
-        </div>
-        <div className="border-t border-black/10">
-          <div className="mx-auto max-w-7xl px-6 py-6 text-sm text-black/60 flex items-center justify-between">
-            <div>© {new Date().getFullYear()} Dejan Latkovic</div>
-            <div className="flex items-center gap-3">
-              {/* <a href="#specifications" className="hover:text-black">Specs</a>
-              <a href="#performance" className="hover:text-black">Performance</a>
-              <a href="#projects" className="hover:text-black">Projects</a> */}
+
+      {/* Logos image directly under the header */}
+      <img
+        src={`${process.env.PUBLIC_URL}/CompaniesBar.png`}
+        alt="University of Waterloo • IQC • Axivion Instruments"
+        className="h-14 sm:h-16 lg:h-20 w-auto object-contain rounded-xl border border-black/10"
+      />
+    </div>
+
+    {/* RIGHT: Core Competencies */}
+    <div>
+      <div className="text-sm font-medium">Core Competencies</div>
+      <div className="mt-3 grid grid-cols-1 sm:grid-cols-2 gap-3">
+        {[
+          {
+            n: "Precision Engineering",
+            d: "High-accuracy mechanical & optical design",
+            i: Target,
+          },
+          {
+            n: "Process Optimization",
+            d: "Streamlined workflows & efficiency gains",
+            i: Zap,
+          },
+          {
+            n: "Advanced Instrumentation",
+            d: "Development of custom scientific tools",
+            i: Settings,
+          },
+          {
+            n: "Automation & Control",
+            d: "Python/LabVIEW integration for complex systems",
+            i: Activity,
+          },
+        ].map((c) => (
+          <div
+            key={c.n}
+            className="rounded-2xl border border-black/10 p-4 flex items-center gap-3 bg-white"
+          >
+            <div className="h-9 w-9 rounded-full border border-black/10 grid place-items-center">
+              {React.createElement(c.i, { size: 18 })}
+            </div>
+            <div>
+              <div className="font-medium">{c.n}</div>
+              <div className="text-sm text-black/60">{c.d}</div>
             </div>
           </div>
-        </div>
-      </footer>
+        ))}
+      </div>
+    </div>
+  </div>
+
+  {/* keep your existing bottom bar unchanged */}
+  <div className="border-t border-black/10">
+    <div className="mx-auto max-w-7xl px-6 py-6 text-sm text-black/60 flex items-center justify-between">
+      <div>© {new Date().getFullYear()} Dejan Latkovic</div>
+      <div className="flex items-center gap-3" />
+    </div>
+  </div>
+</footer>
+
+
     </div>
   );
 }

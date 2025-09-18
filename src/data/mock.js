@@ -236,64 +236,71 @@ experience: [
 
 projects: [
   {
-    title: "Flagship Optical Instrument (Working Title)",
+    title: "PRISM (Axivion Instruments)",
     description:
-      "Concept-stage optical/precision system. This page shows a functional preview while detailed specs remain confidential.",
+      "Configurable periscope-relay scanning microscope (objective-scanning). Designed for stable, precise motion with clean integration into standard lab workflows. Click to view details and a live preview; full specifications are shared directly.",
     image: "https://images.unsplash.com/photo-1579684256060-d5a308109e21",
     technologies: [
       "Optomechanics",
-      "Embedded Control",
+      "Piezo Actuation",
       "Python",
-      "Modular Design",
+      "LabVIEW",
       "System Integration"
     ],
     specifications: [
-      "Architecture & performance details withheld",
-      "Compatibility and interfaces available on request",
-      "Environmental configuration options available",
-      "Control software roadmap in progress",
-      "Datasheet available under NDA"
+      "3-axis coordinated motion",
+      "≈13± mm range per axis",
+      "< 50 nm typical step",
+      "Piezo-driven actuation",
+      "Modular interfaces; retrofit-friendly",
+      "Predictable alignment across travel",
+      "APIs: Python / LabVIEW"
     ],
+    patentStatus: "Provisional patent filing underway",
     featured: true,
-    github: false,
-    demo: false,
+    github: null,
+    demo: null,
     category: "Research & Development",
     slug: "prism"
   },
-   {
-  title: "Data Analysis Capstone Project",
-  description: "Analyzed customer usage data to identify strategies for increasing annual memberships, using SQL and R for data processing and visualization.",
-  image: "https://images.unsplash.com/photo-1613375973044-6dd5beac01d2",
-  technologies: ["Google BigQuery", "SQL", "R", "ggplot2"],
-  specifications: [
-    "Cleaned and optimized large datasets in BigQuery to improve query performance",
-    "Wrote SQL queries to extract insights from customer usage data",
-    "Created data visualizations in R using ggplot2",
-    "Compiled findings into an R Markdown report with actionable recommendations"
-  ],
-  featured: false,
-  github: "https://github.com/DejanLatkovic/Case-study-Bikes",
-  demo: null,
-  category: "Data Science & Analytics"
-},
-{
-  title: "Python Game Development - Snake Game Enhancement",
-  description: "Classic Snake game built in Python with Pygame, focusing on collision handling, dynamic object resets, and real-time visual feedback.",
-  image: "https://images.unsplash.com/photo-1748261759887-faa2a9d76471",
-  technologies: ["Python", "Pygame"],
-  specifications: [
-    "Implemented grid-based movement and growth mechanics",
-    "Added collision handling for walls and self-intersection",
-    "Developed a reset system for barrier objects using hidden coordinates",
-    "Introduced real-time snake color cycling every 66 ms",
-    "Improved debugging and troubleshooting skills through iterative testing"
-  ],
-  featured: false,
-  github: "https://github.com/DejanLatkovic/Snake-Pygame",
-  demo: null,
-  category: "Game Development"
-}
-  ],
+
+  {
+    title: "Customer Analytics Pipeline",
+    description:
+      "GB-scale SQL/BigQuery with R visualizations. Built a lean pipeline for membership insights and reporting.",
+    image: "https://images.unsplash.com/photo-1613375973044-6dd5beac01d2",
+    technologies: ["Google BigQuery", "SQL", "R", "ggplot2"],
+    specifications: [
+      "Optimized large BigQuery datasets for faster queries",
+      "SQL extraction for usage and membership insights",
+      "R/ggplot2 dashboards and visual summaries",
+      "Actionable recommendations in R Markdown"
+    ],
+    featured: false,
+    github: "https://github.com/DejanLatkovic/Case-study-Bikes",
+    demo: null,
+    category: "Data Science & Analytics"
+  },
+
+  {
+    title: "Snake Mechanics & Profiling",
+    description:
+      "Core game mechanics, collision handling, barrier reset system, and a simple profiling pass.",
+    image: "https://images.unsplash.com/photo-1748261759887-faa2a9d76471",
+    technologies: ["Python", "Pygame"],
+    specifications: [
+      "Grid-based movement and growth",
+      "Wall and self-collision handling",
+      "Hidden-coordinate barrier reset system",
+      "Color-cycling at ~66 ms per frame"
+    ],
+    featured: false,
+    github: "https://github.com/DejanLatkovic/Snake-Pygame",
+    demo: null,
+    category: "Game Development"
+  }
+],
+
 
   certifications: [
     {
