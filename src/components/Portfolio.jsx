@@ -786,7 +786,7 @@ const srcFor = (base) => ({
 // --- slide lists (put files in /public with these names) ---
 const topSlides = [
   { base: "Prism", title: "", description: "" },
-  { base: "image2experience", title: "", description: "" },
+  { base: "presenting", title: "", description: "" },
   { base: "carmod_bg", title: "", description: "" },
 ];
 // --- equipment slides (put both .webp and .png in /public) ---
