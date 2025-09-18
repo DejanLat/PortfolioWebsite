@@ -3881,23 +3881,21 @@ const scrollToIdWithOffset = useCallback((id) => {
   const models = useMemo(
     () => ({
       horizontal: {
-        name: "PRISM — Horizontal Scanning",
+        name: "PRISM - Horizontal Scanning",
         blurb:
-          "Optimized for benches and cryostats with lateral travel demands. Emphasizes orthogonal beam geometry across scan range.",
+          "Optimized for benches with lateral travel demands.",
         features: [
-          "Low profile; retrofit-friendly to crowded benches",
-          "High stiffness for fast raster patterns",
-          "Modular interfaces for objectives & detectors",
+          "Low profile; perfect for crowded benches",
+          "Stable platform for through-axis precision",
         ],
       },
       vertical: {
-        name: "PRISM — Vertical Scanning",
+        name: "PRISM - Vertical Scanning",
         blurb:
-          "Designed for through-axis precision with gravity-friendly Z motion. Suited to tall setups and extended vertical reach.",
+          "Designed for through-axis precision with gravity-friendly Z motion.",
         features: [
-          "Hanging Z architecture for stable vertical moves",
-          "Predictable alignment across long Z travel",
-          "Drop-in adapters for varied environments",
+          "Architecture designed for stable vertical objective moves",
+          "Predictable alignment across optical axis",
         ],
       },
     }),
@@ -3939,7 +3937,7 @@ const scrollToIdWithOffset = useCallback((id) => {
       { feature: "Operating mode", H: tierNotes[tier].operation, V: tierNotes[tier].operation },
       { feature: "Integration", H: tierNotes[tier].integration, V: tierNotes[tier].integration },
       { feature: "Interfaces", H: "Modular optics & detectors", V: "Modular optics & detectors" },
-      { feature: "Use cases", H: "Benches • Cryostats • Rasters", V: "Tall stacks • Long Z • Rasters" },
+      { feature: "Use cases", H: "Benches • Magnetic Env • Rasters", V: "Cryostats • Magnetic Env • Rasters" },
     ],
     [tier]
   );

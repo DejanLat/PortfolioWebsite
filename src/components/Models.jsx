@@ -31,7 +31,6 @@ export default function Models() {
         blurb:
           "Designed for through-axis precision with gravity-friendly Z motion. Suited to tall setups and extended vertical reach.",
         features: [
-          "Hanging Z architecture for stable vertical moves",
           "Predictable alignment across long Z travel",
           "Drop-in adapters for varied environments",
         ],
