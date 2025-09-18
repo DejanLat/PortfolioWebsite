@@ -163,8 +163,8 @@ experience: [
     engagement: "Self-employed / Startup",
     period: "Sept 2025 – Present",
     category: "Startup • Scientific Instruments",
-    // imageBase: "image1experience", // <- add this
-    image: "https://images.unsplash.com/photo-1520607162513-77705c0f0d4a", // clean optics lab
+    imageBase: "image1experience", // <- add this
+    //image: "https://images.unsplash.com/photo-1520607162513-77705c0f0d4a", // clean optics lab
     keyMetrics: [
       { value: "PRISM", description: "Provisional Patent" },
       { value: "1 lab", description: "Deployed in active use (IQC)" },
