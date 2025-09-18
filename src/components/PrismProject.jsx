@@ -3817,6 +3817,26 @@ const SPEC_PDF = encodeURI(`${process.env.PUBLIC_URL}/PRISM Infodoc.pdf`);
     ],
     []
   );
+// put this inside PrismX()
+const scrollToIdWithOffset = useCallback((id) => {
+  const el = document.getElementById(id);
+  if (!el) return;
+
+  // Measure fixed header + sticky chips (if present)
+  const header = document.querySelector("header.fixed, header[style*='position: fixed']") || document.querySelector("header");
+  const chips  = document.querySelector("section.sticky");
+
+  let offset = 0;
+  if (header) offset += header.getBoundingClientRect().height;
+  if (chips)  offset += chips.getBoundingClientRect().height;
+
+  // small breathing room
+  offset += 8;
+
+  const top = el.getBoundingClientRect().top + window.scrollY - offset;
+  window.scrollTo({ top, behavior: "smooth" });
+}, []);
+
 
   // KPI badges
   const kpis = [
@@ -3951,52 +3971,63 @@ const SPEC_PDF = encodeURI(`${process.env.PUBLIC_URL}/PRISM Infodoc.pdf`);
       </div>
 
       {/* CONTENT WRAPPER */}
-      <div className="relative z-10">
-        {/* Header */}
+<div className="relative z-10 pt-16 pb-14 md:pb-0">
         <header
-          className={`fixed inset-x-0 top-0 z-50 transition-all ${
-            solidNav
-              ? "backdrop-blur bg-black/70 border-b border-white/10"
-              : "bg-transparent"
-          }`}
-        >
-          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
-            <div className="flex items-center gap-3">
-              <Link
-                to="/"
-                className="inline-flex items-center gap-2 text-sm text-white/80 hover:text-white"
-              >
-                <ArrowLeft size={18} />
-                <span>Back</span>
-              </Link>
-              <div className="h-5 w-px bg-white/20" />
-              <div className="font-semibold tracking-widest text-white">FLAGSHIP</div>
-              <div className="text-white/40">INSTRUMENT</div>
-            </div>
-            <div className="flex items-center gap-2">
-              <Link
-                to="/contact"
-                className="rounded-full px-4 py-2 text-sm font-medium"
-                style={{ backgroundColor: ACCENT, color: "#000" }}
-                onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = ACCENT_HOVER)}
-                onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = ACCENT)}
-              >
-                Contact
-              </Link>
-            </div>
-          </div>
-        </header>
- {/* In-progress bar */}
-<div className="fixed bottom-0 z-40 w-full bg-amber-50/95 backdrop-blur border-t border-amber-200">
-  <div className="mx-auto max-w-7xl px-6 py-2 flex items-center justify-between gap-3">
-    <div className="flex items-center gap-2 text-sm text-amber-900">
+  className={`fixed inset-x-0 top-0 z-50 transition-all ${
+    solidNav ? "backdrop-blur bg-black/70 border-b border-white/10" : "bg-transparent"
+  }`}
+>
+  <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 h-16 flex items-center">
+    {/* LEFT: title cluster can shrink */}
+    <div className="flex-1 min-w-0 flex items-center gap-2 sm:gap-3">
+      <Link
+        to="/"
+        className="inline-flex items-center gap-1.5 sm:gap-2 text-xs sm:text-sm text-white/80 hover:text-white shrink-0"
+      >
+        <ArrowLeft size={16} className="sm:hidden" />
+        <ArrowLeft size={18} className="hidden sm:block" />
+        <span>Back</span>
+      </Link>
+      <div className="h-4 sm:h-5 w-px bg-white/20 shrink-0" />
+      <div className="font-semibold tracking-widest text-white text-xs sm:text-sm truncate">
+        FLAGSHIP
+      </div>
+      <div className="text-white/40 text-xs sm:text-sm hidden xs:block">
+        {/* hide this word on the very smallest screens */}
+        INSTRUMENT
+      </div>
+    </div>
+
+    {/* RIGHT: CTA never grows beyond content */}
+    <div className="shrink-0">
+      <Link
+        to="/contact"
+        className="rounded-full text-xs sm:text-sm px-3 py-1.5 sm:px-4 sm:py-2 font-medium"
+        style={{ backgroundColor: ACCENT, color: "#000" }}
+        onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = ACCENT_HOVER)}
+        onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = ACCENT)}
+      >
+        Contact
+      </Link>
+    </div>
+  </div>
+</header>
+
+
+
+{/* In-progress bar */}
+<div className="fixed left-0 right-0 bottom-0 z-40 bg-amber-50/95 backdrop-blur border-t border-amber-200">
+  <div className="mx-auto max-w-7xl px-4 sm:px-6 py-2 flex items-center justify-between gap-3">
+    <div className="flex items-center gap-2 text-xs sm:text-sm text-amber-900">
       <span aria-hidden>🚧</span>
-      <span>
+      <span className="leading-tight">
         This site is a live work-in-progress.
         <span className="ml-2 font-medium">Last update: 9/18/2024</span>
       </span>
     </div>
   </div>
+  {/* iOS safe-area pad */}
+  <div style={{ paddingBottom: "env(safe-area-inset-bottom)" }} />
 </div>
         {/* Hero with Axivion-teal glow + hero-local cursor glow */}
         <section
@@ -4054,15 +4085,19 @@ const SPEC_PDF = encodeURI(`${process.env.PUBLIC_URL}/PRISM Infodoc.pdf`);
                 shared directly upon request.
               </p>
               <div className="mt-8 flex items-center justify-center gap-3">
-                <a
-                  href="#models"
-                  className="rounded-full px-6 py-3 text-sm font-medium"
-                  style={{ backgroundColor: ACCENT, color: "#000" }}
-                  onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = ACCENT_HOVER)}
-                  onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = ACCENT)}
-                >
-                  Explore
-                </a>
+<div className="mt-8 flex items-center justify-center gap-3">
+  <button
+    onClick={() => scrollToIdWithOffset("models")}
+    className="rounded-full px-6 py-3 text-sm font-medium"
+    style={{ backgroundColor: ACCENT, color: "#000" }}
+    onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = ACCENT_HOVER)}
+    onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = ACCENT)}
+  >
+    Explore
+  </button>
+</div>
+
+
               </div>
             </motion.div>
           </div>
@@ -4087,31 +4122,68 @@ const SPEC_PDF = encodeURI(`${process.env.PUBLIC_URL}/PRISM Infodoc.pdf`);
           </div>
         </section>
 {/* Sticky chips */}
-        <section className="sticky top-16 z-40 border-y border-white/10 bg-black">
-          <div className="mx-auto max-w-7xl px-6 py-3 flex items-center justify-between">
-            <div className="flex items-center gap-6 text-sm text-white">
-              <div className="flex items-center gap-2">
-                <Move3DIcon size={16} style={{ color: ACCENT }} /> Full 3-axis motion
-                <Ruler size={16} style={{ color: ACCENT }} /> 13± mm Range
-                <Gauge size={16} style={{ color: ACCENT }} /> ~50 nm Stepping
-                <Zap size={16} style={{ color: ACCENT }} /> Piezo Actuation
-              </div>
-            </div>
-                <a
-                  href={SPEC_PDF}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  download
-                  className="inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm font-medium"
-                  style={{ backgroundColor: ACCENT, color: "#000" }}
-                  onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = ACCENT_HOVER)}
-                  onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = ACCENT)}
-                >
-                  <Download size={16} /> Download Spec Sheet
-                </a>
+<section className="sticky top-16 z-40 border-y border-white/10 bg-black/80 backdrop-blur">
+  <div className="mx-auto max-w-7xl px-4 sm:px-6 py-2">
+    <div className="flex flex-wrap items-center gap-x-4 gap-y-2 text-sm text-white w-full">
+      <span className="inline-flex items-center gap-1.5">
+        <Move3DIcon size={16} style={{ color: ACCENT }} />
+        <span>Full 3-axis motion</span>
+      </span>
+      <span className="inline-flex items-center gap-1.5">
+        <Ruler size={16} style={{ color: ACCENT }} />
+        <span>13± mm Range</span>
+      </span>
+      <span className="inline-flex items-center gap-1.5">
+        <Gauge size={16} style={{ color: ACCENT }} />
+        <span>~50 nm Stepping</span>
+      </span>
+      <span className="inline-flex items-center gap-1.5">
+        <Zap size={16} style={{ color: ACCENT }} />
+        <span>Piezo Actuation</span>
+      </span>
 
-          </div>
-        </section>
+      {/* RIGHT CTA(s) */}
+      <span className="ml-auto flex items-center gap-2">
+        {/* Mobile: icon-only */}
+        <a
+          href={SPEC_PDF}
+          target="_blank"
+          rel="noopener noreferrer"
+          download
+          className="sm:hidden inline-flex items-center justify-center rounded-full px-2.5 py-1.5"
+          style={{ backgroundColor: ACCENT, color: "#000" }}
+          aria-label="Download spec sheet"
+          onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = ACCENT_HOVER)}
+          onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = ACCENT)}
+        >
+          <Download size={16} />
+        </a>
+
+        {/* ≥sm: full pill */}
+        <a
+          href={SPEC_PDF}
+          target="_blank"
+          rel="noopener noreferrer"
+          download
+          className="hidden sm:inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm font-medium"
+          style={{ backgroundColor: ACCENT, color: "#000" }}
+          onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = ACCENT_HOVER)}
+          onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = ACCENT)}
+        >
+          <Download size={16} /> Download Spec Sheet
+        </a>
+      </span>
+    </div>
+  </div>
+</section>
+{/* Bottom bleed ... */}
+<div
+  className="pointer-events-none absolute -bottom-10 left-0 right-0 h-10 z-[11]"
+  style={{ background: "linear-gradient(...)" }}
+  aria-hidden
+/>
+
+
         {/* Design */}
         <section id="design" className="relative w-full">
           <div className="mx-auto max-w-7xl px-6 py-24 lg:py-32">
@@ -4302,30 +4374,45 @@ const SPEC_PDF = encodeURI(`${process.env.PUBLIC_URL}/PRISM Infodoc.pdf`);
           </div>
         </section>
 
-        {/* Specs */}
-        <section id="specs" className="relative w-full">
-          <div className="mx-auto max-w-7xl px-6 py-24 lg:py-28">
-            <div className="flex items-center justify-between">
-              <h3 className="text-4xl font-semibold tracking-tight text-white">
-                Technical Specifications
-              </h3>
-              <div className="flex items-center gap-2">
-                {specTabs.map((t) => (
-                  <button
-                    key={t.id}
-                    onClick={() => setActiveSpecTab(t.id)}
-                    className="inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm transition border"
-                    style={{
-                      backgroundColor: activeSpecTab === t.id ? ACCENT : "transparent",
-                      color: activeSpecTab === t.id ? "#000" : "rgba(255,255,255,0.9)",
-                      borderColor: "rgba(255,255,255,0.2)",
-                    }}
-                  >
-                    <t.icon size={16} /> {t.label}
-                  </button>
-                ))}
-              </div>
-            </div>
+       {/* Specs */}
+<section id="specs" className="relative w-full">
+  <div className="mx-auto max-w-7xl px-6 py-24 lg:py-28">
+    <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+      <h3 className="text-3xl sm:text-4xl font-semibold tracking-tight text-white">
+        Technical Specifications
+      </h3>
+      <div className="flex flex-wrap items-center gap-2">
+        {specTabs.map((t) => (
+          <button
+            key={t.id}
+            onClick={() => setActiveSpecTab(t.id)}
+            className="inline-flex items-center gap-2 rounded-full px-3 sm:px-4 py-1.5 sm:py-2 text-sm transition border"
+            style={{
+              backgroundColor: activeSpecTab === t.id ? ACCENT : "transparent",
+              color: activeSpecTab === t.id ? "#000" : "rgba(255,255,255,0.9)",
+              borderColor: "rgba(255,255,255,0.2)",
+            }}
+          >
+            <t.icon size={16} /> {t.label}
+          </button>
+        ))}
+      </div>
+    </div>
+
+    <div className="mt-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+      {specData[activeSpecTab].map((s) => (
+        <div
+          key={s.label}
+          className="rounded-2xl border border-white/15 p-6 bg-black/50"
+        >
+          <div className="text-sm text-white/80">{s.label}</div>
+          <div className="mt-1 text-lg font-semibold text-white">{s.value}</div>
+        </div>
+      ))}
+    </div>
+
+
+
 
             <div className="mt-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
               {specData[activeSpecTab].map((s) => (

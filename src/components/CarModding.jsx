@@ -229,9 +229,9 @@ const SECTIONS = [
     hours: "Varied",
     img: srcFor("carmod_mechanical"),
     bullets: [
-      "Replaced engine air filter, control arms, and rear shocks.",
+      "Replaced engine brake calipers, rear shocks, engine components, filters.",
       "Retrofitted new headlight assemblies with correct alignment.",
-      "Documented torque specs; verified ride and NVH improvements.",
+      "Maintained detailed records of all work performed on the vehicle.",
     ],
   },
 ];
@@ -328,7 +328,7 @@ export default function CarModding() {
             </div>
             <h1 className="mt-4 text-5xl md:text-6xl font-semibold tracking-tight">Car Modding</h1>
             <p className="mt-4 text-white/80 max-w-2xl">
-              Audio on fiber, hidden interior lighting, anti-theft integration, and key mechanical upgrades—planned
+              Audio on fiber, hidden interior lighting, anti-theft integration, and key mechanical upgrades. Referenced
               with BMW schematics and executed with clean wiring and custom 3D-printed hardware.
             </p>
           </motion.div>
@@ -379,7 +379,7 @@ export default function CarModding() {
           </div>
 
           <div className="mt-5 text-[11px] text-white/60">
-            Safety first: all wiring fused appropriately, OEM documentation consulted, and work verified post-install.
+            Safety first: all wiring fused appropriately, OEM documentation consulted, and professionally verified post-install.
           </div>
         </div>
       </section>

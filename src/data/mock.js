@@ -182,18 +182,18 @@ experience: [
     role: "Nano Photonics & Quantum Optics Lab Member",
     engagement: "Casual / On-call",
     period: "May 2025 – Present",
-    category: "Spin-out Support • IP & Commercialization",
+    category: "Spin-out • IP & Commercialization",
     imageBase: "image2experience", // <- add this
     // image: "...",               // (optional)
     keyMetrics: [
       { value: "PN 2025", description: "Presented PRISM at Photonics North" },
-      { value: "IP docs", description: "Supported patent prep & records" },
-      { value: "Spin-out", description: "Assisted transition to market" }
+      { value: "IP docs", description: "Initiated patent prep & records" },
+      { value: "Spin-out", description: "Lead transition to market" }
     ],
     achievements: [
       "Presented PRISM at Photonics North 2025 Startup Competition (Ottawa)",
-      "Assisted with IP documentation and commercialization planning",
-      "Supported lab → product transition for early spin-out work"
+      "Initiated the IP documentation and commercialization planning",
+      "Lead lab → product transition for early spin-out work"
     ],
     affiliationNote: "Continuing part-time affiliation alongside studies."
   },
@@ -250,7 +250,7 @@ experience: [
       { value: "Hands-on", description: "Machining, soldering, microscopy" }
     ],
     achievements: [
-      "Contributed to early concept exploration for a low-cost precision imaging system (became PRISM)",
+      "Realized the early concept exploration for a low-cost precision imaging system (became PRISM)",
       "Modeled waveguides in Ansys Lumerical; supported photonics experiments",
       "Built foundational skills in machining, soldering, and laser/optical alignment"
     ]
@@ -297,7 +297,8 @@ projects: [
       "< 50 nm typical step",
       "Piezo-driven actuation",
       "Modular interfaces; retrofit-friendly",
-      "Predictable alignment across travel",
+      "Predictable optical path",
+      "Orthogonal to sample plane",
       "APIs: Python / LabVIEW"
     ],
     patentStatus: "Provisional patent filing underway",
@@ -307,7 +308,24 @@ projects: [
     category: "Research & Development",
     slug: "prism"
   },
-
+   {
+  title: "Car Modding",
+  description:
+    "OEM-grade retrofits: 13-speaker/480W MOST-fiber audio, full interior lighting with hidden controllers, OEM anti-theft integration, and major service upgrades. Click to view build page.",
+  image: "https://images.unsplash.com/photo-1511919884226-fd3cad34687c", // placeholder
+  technologies: ["3D Printing", "Automotive Wiring", "Fiber Optics (MOST)", "CAD/Fusion 360", "Soldering"],
+  specifications: [
+    "MOST fiber audio retrofit: 13 speakers / 480 W amp",
+    "Custom 3D-printed door brackets + trimmed panels",
+    "Interior RGB lighting (seats, doors, trims) w/ controllers",
+    "OEM anti-theft retrofit using BMW wiring schematics"
+  ],
+  featured: false,
+  github: null,
+  demo: null,
+  category: "Automotive Engineering",
+  slug: "car-modding"
+},
   {
     title: "Customer Analytics Pipeline",
     description:
@@ -342,25 +360,7 @@ projects: [
     github: "https://github.com/DejanLatkovic/Snake-Pygame",
     demo: null,
     category: "Game Development"
-  },
-   {
-  title: "Car Modding",
-  description:
-    "OEM-grade retrofits: 13-speaker/480W MOST-fiber audio, full interior lighting with hidden controllers, OEM anti-theft integration, and major service upgrades. Click to view build page.",
-  image: "https://images.unsplash.com/photo-1511919884226-fd3cad34687c", // placeholder
-  technologies: ["3D Printing", "Automotive Wiring", "Fiber Optics (MOST)", "CAD/Fusion 360", "Soldering"],
-  specifications: [
-    "MOST fiber audio retrofit: 13 speakers / 480 W amp",
-    "Custom 3D-printed door brackets + trimmed panels",
-    "Interior RGB lighting (seats, doors, trims) w/ controllers",
-    "OEM anti-theft retrofit using BMW wiring schematics"
-  ],
-  featured: false,
-  github: null,
-  demo: null,
-  category: "Automotive Engineering",
-  slug: "car-modding"
-}
+  }
 ],
 
 
