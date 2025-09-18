@@ -3986,7 +3986,18 @@ const SPEC_PDF = encodeURI(`${process.env.PUBLIC_URL}/PRISM Infodoc.pdf`);
             </div>
           </div>
         </header>
- 
+ {/* In-progress bar */}
+<div className="fixed bottom-0 z-40 w-full bg-amber-50/95 backdrop-blur border-t border-amber-200">
+  <div className="mx-auto max-w-7xl px-6 py-2 flex items-center justify-between gap-3">
+    <div className="flex items-center gap-2 text-sm text-amber-900">
+      <span aria-hidden>🚧</span>
+      <span>
+        This site is a live work-in-progress.
+        <span className="ml-2 font-medium">Last update: 9/18/2024</span>
+      </span>
+    </div>
+  </div>
+</div>
         {/* Hero with Axivion-teal glow + hero-local cursor glow */}
         <section
           ref={heroRef}

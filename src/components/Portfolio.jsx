@@ -898,19 +898,7 @@ const equipmentImages = useMemo(() => equipmentSlides, []);
         </div>
       </header>
 
-      {/* In-progress bar */}
-      <div className="sticky top-16 z-40 bg-amber-50/95 backdrop-blur border-y border-amber-200">
-        <div className="mx-auto max-w-7xl px-6 py-2 flex items-center justify-between gap-3">
-          <div className="flex items-center gap-2 text-sm text-amber-900">
-            <span aria-hidden>🚧</span>
-            <span>
-              This site is a live work-in-progress.
-              <span className="ml-2 font-medium">Last update: 9/16/2024</span>
-            </span>
-          </div>
-        </div>
-      </div>
-
+      
       {/* TOP HERO */}
       <section className="relative h-[88vh] overflow-hidden pt-14">
         {/* background image with 0.7s cross-fade */}
