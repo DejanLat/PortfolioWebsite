@@ -5,6 +5,8 @@ import Portfolio from "./components/Portfolio";
 import PrismProject from "./components/PrismProject";
 import Contact from "./components/Contact";
 import Models from "./components/Models";
+import CarModding from "./components/CarModding";
+
 
 function ScrollToTop() {
   const { pathname } = useLocation();
@@ -26,6 +28,7 @@ function App() {
           <Route path="/prism" element={<PrismProject />} />
           <Route path="/contact" element={<Contact contactEmail="axivioninstruments@gmail.com" />} />
           <Route path="/models" element={<Models />} />
+          <Route path="/car-modding" element={<CarModding />} />
         </Routes>
       </Router>
     </div>

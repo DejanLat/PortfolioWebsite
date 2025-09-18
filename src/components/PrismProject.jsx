@@ -3986,7 +3986,7 @@ const SPEC_PDF = encodeURI(`${process.env.PUBLIC_URL}/PRISM Infodoc.pdf`);
             </div>
           </div>
         </header>
-
+ 
         {/* Hero with Axivion-teal glow + hero-local cursor glow */}
         <section
           ref={heroRef}

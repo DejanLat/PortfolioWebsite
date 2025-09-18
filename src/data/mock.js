@@ -160,65 +160,109 @@ experience: [
   {
     company: "Axivion Instruments",
     role: "CTO & Founder",
+    engagement: "Self-employed / Startup",
     period: "Sept 2025 – Present",
     category: "Startup • Scientific Instruments",
+    // imageBase: "image1experience", // <- add this
     image: "https://images.unsplash.com/photo-1520607162513-77705c0f0d4a", // clean optics lab
     keyMetrics: [
       { value: "PRISM", description: "Provisional Patent" },
       { value: "1 lab", description: "Deployed in active use (IQC)" },
-      { value: "Pitch", description: "Photonics North 2025" }
+      { value: "Pitched", description: "Photonics North Ottawa 2025" }
     ],
     achievements: [
-      "Founded Axivion to commercialize PRISM (Periscopic Relay Imaging Scanning Microscope) with executive advisory support from faculty partners",
+      "Launched Axivion to commercialize PRISM, backed by faculty shareholders providing executive advisory guidance",
       "Drafted a provisional patent for PRISM; filing and IP strategy in progress",
       "Defined productization roadmap (PRISM hardware + CORE Python control platform) and brand presence for early customers",
       "Led technical specs, supplier engagement, and manufacturing readiness for first machined version"
     ]
   },
-  {
-    company: "Institute for Quantum Computing (IQC), University of Waterloo",
-    role: "Research Engineer: Prototyping & Instrumentation",
-    affiliationNote: "Continuing affiliation with IQC; part-time collaboration alongside studies until graduation.",
-    period: "Jan – Sept 2025",
-    category: "Quantum Optics & Instrumentation",
-    image: "https://images.unsplash.com/photo-1559757175-08b3a9be11c6", // precision mechanics
+{
+    company: "Institute for Quantum Computing (IQC)",
+    role: "Nano Photonics & Quantum Optics Lab Member",
+    engagement: "Casual / On-call",
+    period: "May 2025 – Present",
+    category: "Spin-out Support • IP & Commercialization",
+    imageBase: "image2experience", // <- add this
+    // image: "...",               // (optional)
     keyMetrics: [
-      { value: "50×", description: "Real magnification imaging validated" },
-      { value: "3-axis", description: "Objective-scanning architecture" },
+      { value: "PN 2025", description: "Presented PRISM at Photonics North" },
+      { value: "IP docs", description: "Supported patent prep & records" },
+      { value: "Spin-out", description: "Assisted transition to market" }
+    ],
+    achievements: [
+      "Presented PRISM at Photonics North 2025 Startup Competition (Ottawa)",
+      "Assisted with IP documentation and commercialization planning",
+      "Supported lab → product transition for early spin-out work"
+    ],
+    affiliationNote: "Continuing part-time affiliation alongside studies."
+  },
+  {
+    company: "Institute for Quantum Computing (IQC)",
+    role: "Research Engineer: Prototyping & Instrumentation",
+        engagement: "Co-op",
+    period: "Sep 2024 – Apr 2025",
+    category: "Quantum Optics & Instrumentation",
+    imageBase: "image3experience", // <- add this
+    // image: "...",               // (optional)
+    keyMetrics: [
+      { value: "V5", description: "CNC-ready, lab-reliable PRISM build" },
+      { value: "FEA", description: "Stiffness & modal validation" },
       { value: "Raster", description: "LabVIEW control integrated" }
     ],
     achievements: [
-      "Advanced PRISM from handmade V4.5 to CNC-ready V5; produced professional drawings and tolerance stack-ups",
-      "Improved stiffness via modal/FEA iterations; reduced bending and increased natural frequency",
-      "Integrated raster-scanning software in LabVIEW with piezo control and imaging feedback",
-      "Oversaw alignment, documentation, and full-time lab deployment/usage"
-
+      "Advanced PRISM from concept to a reliable research system used in-lab",
+      "Produced CNC-ready drawings; coordinated machining and tolerance stack-ups",
+      "Implemented LabVIEW raster-scan control with piezo and imaging feedback",
+      "Created publication-ready renders (Blender); refurbished spectrometer (Arduino + 3D prints)"
     ]
   },
   {
-    company: "Institute for Quantum Computing (IQC), University of Waterloo",
+    company: "Institute for Quantum Computing (IQC)",
     role: "Research Assistant: Optical Systems & Machining",
-    period: "Jan – Dec 2024",
+    engagement: "Casual / On-call",
+    period: "May – Aug 2024",
     category: "Research • Quantum Optics",
-    image: "https://images.unsplash.com/photo-1518779578993-ec3579fee39f", // lab instrumentation
+  imageBase: "image4experience", // <- add this
+    // image: "...",               // (optional)
     keyMetrics: [
-      { value: "51 h", description: "Hand-machining V4.5 build" },
-      { value: "FEA", description: "Stiffness & modal optimization" },
-      { value: "5+", description: "Custom fixtures & tools built" }
+      { value: "5+", description: "Custom fixtures & tools built" },
+      { value: "Alignment", description: "Optical bring-up & test" },
+      { value: "3D Printing", description: "Custom Parts" }
     ],
     achievements: [
-      "Originated PRISM concept and designed first prototype in Fusion 360; built and validated the handmade V4.5",
-      "Developed LabVIEW raster-scan software and experimental procedures for reflective imaging",
-      "Created Blender renders and technical visuals for presentations/publications",
-      "Refurbished a spectrometer (electronics + 3D-printed housings) and fabricated custom hardware (diamond mounts, fiber couplers, optical filtering modules)"
+      "Built custom lab hardware; performed optical alignment for experiments",
+      "Refined early components (fiber couplers, camera rings) feeding into PRISM’s first working version",
+      "Supported daily lab workflows with rapid prototyping and documentation"
+    ]
+  },
+  {
+    company: "Institute for Quantum Computing (IQC)",
+    role: "Research Assistant",
+        engagement: "Co-op",
+    period: "Jan – Apr 2024",
+    category: "Foundations • Photonics",
+    imageBase: "image5experience", // <- add this
+    // image: "...",               // (optional)
+    keyMetrics: [
+      { value: "Concept", description: "Seeded PRISM feasibility" },
+      { value: "Lumerical", description: "Waveguide simulations" },
+      { value: "Hands-on", description: "Machining, soldering, microscopy" }
+    ],
+    achievements: [
+      "Contributed to early concept exploration for a low-cost precision imaging system (became PRISM)",
+      "Modeled waveguides in Ansys Lumerical; supported photonics experiments",
+      "Built foundational skills in machining, soldering, and laser/optical alignment"
     ]
   },
   {
     company: "Pirlitor Machine and Tool Ltd",
     role: "Manufacturing Engineering Co-op",
+        engagement: "Co-op",
     period: "May – Aug 2023",
     category: "Aerospace & Defense",
-    image: "https://images.unsplash.com/photo-1581091870622-7b1c1dfdfd07", // machining/CNC
+    imageBase: "image6experience", // <- add this
+    // image: "...",               // (optional) // machining/CNC
     keyMetrics: [
       { value: "20%", description: "Order-intake capacity increase" },
       { value: "80%", description: "Process efficiency improvement" },
@@ -238,7 +282,7 @@ projects: [
   {
     title: "PRISM (Axivion Instruments)",
     description:
-      "Configurable periscope-relay scanning microscope (objective-scanning). Designed for stable, precise motion with clean integration into standard lab workflows. Click to view details and a live preview; full specifications are shared directly.",
+      "Configurable periscope-relay scanning microscope (objective-scanning). Designed for stable, precise motion with clean integration into standard lab workflows. Click to view details; full specifications are shared directly.",
     image: "https://images.unsplash.com/photo-1579684256060-d5a308109e21",
     technologies: [
       "Optomechanics",
@@ -298,7 +342,25 @@ projects: [
     github: "https://github.com/DejanLatkovic/Snake-Pygame",
     demo: null,
     category: "Game Development"
-  }
+  },
+   {
+  title: "Car Modding",
+  description:
+    "OEM-grade retrofits: 13-speaker/480W MOST-fiber audio, full interior lighting with hidden controllers, OEM anti-theft integration, and major service upgrades. Click to view build page.",
+  image: "https://images.unsplash.com/photo-1511919884226-fd3cad34687c", // placeholder
+  technologies: ["3D Printing", "Automotive Wiring", "Fiber Optics (MOST)", "CAD/Fusion 360", "Soldering"],
+  specifications: [
+    "MOST fiber audio retrofit: 13 speakers / 480 W amp",
+    "Custom 3D-printed door brackets + trimmed panels",
+    "Interior RGB lighting (seats, doors, trims) w/ controllers",
+    "OEM anti-theft retrofit using BMW wiring schematics"
+  ],
+  featured: false,
+  github: null,
+  demo: null,
+  category: "Automotive Engineering",
+  slug: "car-modding"
+}
 ],
 
 
