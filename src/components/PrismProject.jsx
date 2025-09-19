@@ -4387,8 +4387,7 @@ const rowsToRender = showAll ? allRows : diffRows;
     Choose your PRISM
   </motion.h2>
   <p className="mt-3 text-white/80 max-w-2xl">
-    Two scanning orientations with three control options. Get full specifications from
-    engineering on request.
+    Two scanning orientations with three control options.
   </p>
 
   {/* Control tier picker */}
