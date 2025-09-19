@@ -801,11 +801,11 @@ const srcFor = (base) => ({
 
 // --- slide lists (put files in /public with these names) ---
 const topSlides = [
-  { base: "Prism", title: "", description: "" },
   { base: "presenting", title: "", description: "" },
-  { base: "carmod_bg", title: "", description: "" },
+  // { base: "carmod_bg", title: "", description: "" },
   { base: "image2Engproject", title: "", description: "" },
-  { base: "carhorizon", title: "", description: "" },
+  // { base: "carhorizon", title: "", description: "" },
+    { base: "Prism", title: "", description: "" },
   
 ];
 // --- equipment slides (put both .webp and .png in /public) ---
@@ -814,7 +814,7 @@ const equipmentSlides = [
   { base: "image2equipment", title: "Imaging 100x Objective (0.01mm Calibration slide)",       category: "Microscope Imaging" },
   { base: "image3equipment", title: "Fiber Coupling",             category: "Laser Alignment | Fiber Coupling" },
   { base: "image4equipment", title: "Manual Mill",       category: "Manufacturing | CNC Prep" },
-  { base: "image4equipment", title: "Photon Detector Scanning",       category: "Raster Scanning" },
+  { base: "rasterscan", title: "Photon Detector Scanning",       category: "Raster Scanning" },
 
    { base: "setup2", title: "Optical Station Setup",             category: "Laser Alignment | Fiber Coupling" },
   // { base: "image5equipment", title: "Diamond Mount",       category: "Manual & CNC Machining" },

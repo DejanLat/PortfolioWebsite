@@ -3741,9 +3741,9 @@ export default function PrismX() {
 const galleryImages = useMemo(
   () => [
     `${process.env.PUBLIC_URL}/setup2.png`,
-    `${process.env.PUBLIC_URL}/setup3.png`,
+    `${process.env.PUBLIC_URL}/diamond1.png`,
     `${process.env.PUBLIC_URL}/setup4.png`,
-    `${process.env.PUBLIC_URL}/setup5.png`,
+    `${process.env.PUBLIC_URL}/diamond2.png`,
     `${process.env.PUBLIC_URL}/setup6.png`,
   ],
   []
