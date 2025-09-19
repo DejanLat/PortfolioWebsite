@@ -67,7 +67,7 @@
 //   const handleSubmit = (e) => {
 //     e.preventDefault();
 //     const s = subjectMap[topic] || "Inquiry";
-//     const body = `Hi,\n\n${message || "(message)"}\n\n— ${name || "(name)"}${
+//     const body = `Hi,\n\n${message || "(message)"}\n\n; ${name || "(name)"}${
 //       org ? `, ${org}` : ""
 //     }`;
 //     window.location.href = buildMailto(s, body);
@@ -440,7 +440,7 @@ export default function Contact({ contactEmail = CONTACT_EMAIL }) {
   const handleSubmit = (e) => {
     e.preventDefault();
     const s = subjectMap[topic] || "Inquiry";
-    const body = `Hi,\n\n${message || "(message)"}\n\n— ${name || "(name)"}${
+    const body = `Hi,\n\n${message || "(message)"}\n\n ${name || "(name)"}${
       org ? `, ${org}` : ""
     }`;
     window.location.href = buildMailto(s, body);
@@ -452,7 +452,7 @@ export default function Contact({ contactEmail = CONTACT_EMAIL }) {
       onMouseMove={onMove}
       style={rootStyle}
     >
-      {/* BACKGROUND LAYER (fixed) — above pure black, below content */}
+      {/* BACKGROUND LAYER (fixed) ; above pure black, below content */}
       <div className="pointer-events-none fixed inset-0 z-0" aria-hidden>
         {/* Global cursor halo */}
         <div

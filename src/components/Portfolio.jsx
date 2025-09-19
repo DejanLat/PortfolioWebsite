@@ -321,7 +321,7 @@
 
 //       {/* data source */}
 //       {/*
-//         Edit these objects anytime — the UI renders them automatically.
+//         Edit these objects anytime ; the UI renders them automatically.
 //         'metric' is the bold number, 'label' is what it is, 'context' shows where it came from.
 //       */}
 //       <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -480,7 +480,7 @@
 //   </div>
 // )}
 
-//               {/* Metrics — show ALL */}
+//               {/* Metrics ; show ALL */}
 //               {Array.isArray(exp.keyMetrics) && exp.keyMetrics.length > 0 && (
 //                 <div className="mt-4 grid grid-cols-2 md:grid-cols-3 gap-2">
 //                   {exp.keyMetrics.map((m, j) => (
@@ -492,7 +492,7 @@
 //                 </div>
 //               )}
 
-//               {/* Achievements — show ALL */}
+//               {/* Achievements ; show ALL */}
 //               {Array.isArray(exp.achievements) && exp.achievements.length > 0 && (
 //                 <div className="mt-4 space-y-2">
 //                   {exp.achievements.map((a, k) => (
@@ -770,12 +770,28 @@ import mockData from "../data/mock";
 import { Check } from "lucide-react";
 import {
   Award, Shield, Users, BarChart3, Target, Zap, Activity, Settings,
-  ArrowRight, Cpu, MicroscopeIcon, GraduationCapIcon
+  ArrowRight, Cpu, MicroscopeIcon, GraduationCapIcon, Microscope,
+  Crosshair,
+  ScanLine,
+  Hammer,
+  FlaskConical,
 } from "lucide-react";
 
 // --- helpers ---
 const MotionWebpImg = motion(WebpImg);
 const PUBLIC = process.env.PUBLIC_URL || "";
+const skillIconFor = (title) => {
+  const t = title.toLowerCase();
+
+  if (t.includes("microscope")) return Microscope;                        // Microscope Imaging
+  if (t.includes("laser") || t.includes("fiber")) return Crosshair;       // Laser Alignment | Fiber Coupling
+  if (t.includes("raster")) return ScanLine;                              // Raster Scanning
+  if (t.includes("manufacturing") || t.includes("cnc")) return Hammer;    // Manufacturing | CNC Prep
+  if (t.includes("wet lab") || t.includes("cleanroom")) return FlaskConical; // Wet Lab | Cleanroom Familiarity
+
+  // fallback
+  return Microscope;
+};
 
 // Build /public paths for a base filename (without extension)
 const srcFor = (base) => ({
@@ -791,9 +807,9 @@ const topSlides = [
 ];
 // --- equipment slides (put both .webp and .png in /public) ---
 const equipmentSlides = [
-  { base: "image1equipment", title: "Imaging 50x Objective",       category: "Optical Microscopes & Imaging" },
-  { base: "image2equipment", title: "Imaging 100x Objective",       category: "Optical Microscopes & Imaging" },
-  { base: "image3equipment", title: "Coupling",             category: "Laser Alignment & Fiber Coupling" },
+  { base: "image1equipment", title: "Imaging 50x Objective (0.01mm Calibration slide)",       category: "Microscopes Imaging" },
+  { base: "image2equipment", title: "Imaging 100x Objective (0.01mm Calibration slide)",       category: "Microscopes Imaging" },
+  { base: "image3equipment", title: "Fiber Coupling",             category: "Laser Alignment | Fiber Coupling" },
   { base: "image4equipment", title: "Manual Mill",       category: "Manual & CNC Machining" },
   // { base: "image5equipment", title: "Diamond Mount",       category: "Manual & CNC Machining" },
 ];
@@ -829,40 +845,52 @@ export default function PortfolioWhite() {
 const equipmentImages = useMemo(() => equipmentSlides, []);
 
 
-  const equipmentSkills = [
-    {
-      title: "Optical Microscopes & Imaging",
-      subtitle: "Brightfield • epi • relay imaging",
-      points: [
-        "Objective changes & parfocal check",
-        "Tube lens & relay alignment",
-        "Camera calibration / FOV & pixel scale",
-      ],
-    },
-    {
-      title: "Laser Alignment & Fiber Coupling",
-      subtitle: "Coherent & Incoherent sources",
-      points: [
-        "Free-space alignment on bench",
-        "Beam splitters / mirrors / irises",
-        "Active fiber coupling to sources",
-      ],
-    },
-    {
-      title: "Oscilloscopes & Generators",
-      subtitle: "signal bring-up & test",
-      points: ["Signal chain sanity tests", "Triggering & timing checks"],
-    },
-    {
-      title: "Manual & CNC Machining",
-      subtitle: "fixtures • adapters • jigs",
-      points: [
-        "Simple turning/milling for jigs",
-        "Tolerancing for alignment parts",
-        "Vendor-ready drawings when needed",
-      ],
-    },
-  ];
+ const equipmentSkills = [
+  {
+    title: "Microscope Imaging",
+    subtitle: "Beam and Camera calibration",
+    points: [
+      "Tube-lens alignment for stable imaging paths",
+      "Camera calibration (FOV & pixel size) for true magnification",
+      "Objective interchange without re-alignment (by design in PRISM)",
+    ],
+  },
+  {
+    title: "Laser Alignment | Fiber Coupling",
+    subtitle: "Bench setup • Optical path",
+    points: [
+      "Free-space alignment with mirrors/irises",
+      "Active fiber coupling into photon detector",
+      "Built PRISM bench/test station with clean routing and quick-swap modules",
+    ],
+  },
+  {
+    title: "Raster Scanning",
+    subtitle: "LabVIEW control",
+    points: [
+      "Built LabVIEW raster control and integrated detector readout",
+      "Used oscilloscope for coupling checks, triggering, and timing",
+    ],
+  },
+  {
+    title: "Manufacturing | CNC Prep",
+    subtitle: "Manual mill • Engineering drawings",
+    points: [
+      "Machined copper diamond cryostat mount (±0.1 mm) and optics-table parts",
+      "Design for manufacturability: what can / can’t be CNC’d",
+      "Produce proper engineering drawings to CNC-shop standards",
+    ],
+  },
+  {
+    title: "Wet Lab | Cleanroom Familiarity",
+    subtitle: "Organic chem basics • PV/cleanroom etiquette",
+    points: [
+      "Comfortable with solution prep, PPE, and fume-hood use",
+      "Basic cleanroom/PV device fabrication steps",
+      "Good lab hygiene and procedure follow-through",
+    ],
+  },
+];
 
   // autoplay
   useEffect(() => {
@@ -876,6 +904,7 @@ const equipmentImages = useMemo(() => equipmentSlides, []);
   }, [isPlaying, heroImages.length, equipmentImages.length, projectCarouselImages.length]);
 
   return (
+    
     <div className="min-h-screen w-full bg-white text-black">
       {/* Header */}
       <header className="fixed inset-x-0 top-0 z-50 bg-white/80 backdrop-blur border-b border-black/10">
@@ -896,8 +925,22 @@ const equipmentImages = useMemo(() => equipmentSlides, []);
             </Link>
           </nav>
         </div>
+        
       </header>
-
+{/* In-progress bar */}
+<div className="fixed left-0 right-0 top-16 z-40 bg-amber-50/95 backdrop-blur border-t border-amber-200">
+  <div className="mx-auto max-w-7xl px-4 sm:px-6 py-2 flex items-center justify-between gap-3">
+    <div className="flex items-center gap-2 text-xs sm:text-sm text-amber-900">
+      <span aria-hidden>🚧</span>
+      <span className="leading-tight">
+        This site is a live work-in-progress.
+        <span className="ml-2 font-medium">Last update: 9/19/2024</span>
+      </span>
+    </div>
+  </div>
+  {/* iOS safe-area pad */}
+  <div style={{ paddingTop: "env(safe-area-inset-top)" }} />
+</div>
       
       {/* TOP HERO */}
       <section className="relative h-[88vh] overflow-hidden pt-14">
@@ -1001,7 +1044,7 @@ const equipmentImages = useMemo(() => equipmentSlides, []);
           <div className="flex flex-wrap items-center justify-between gap-4">
             <h2 className="text-4xl font-semibold tracking-tight">Engineering Specifications</h2>
             <div className="mt-3 flex flex-wrap items-center gap-2">
-              {["performance", "equipment", "software"].map((t) => (
+              {["performance", "applied Skills", "software"].map((t) => (
                 <button
                   key={t}
                   onClick={() => setActiveTab(t)}
@@ -1012,7 +1055,7 @@ const equipmentImages = useMemo(() => equipmentSlides, []);
                   }`}
                 >
                   {t === "performance" && <BarChart3 size={16} />}
-                  {t === "equipment" && <Settings size={16} />}
+                  {t === "applied Skills" && <Settings size={16} />}
                   {t === "software" && <Cpu size={16} />}
                   {t.charAt(0).toUpperCase() + t.slice(1)}
                 </button>
@@ -1020,84 +1063,86 @@ const equipmentImages = useMemo(() => equipmentSlides, []);
             </div>
           </div>
 
-          {/* Equipment tab */}
-          {activeTab === "equipment" && (
-            <div className="mt-10 grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
-              <div className="relative rounded-3xl overflow-hidden border border-black/10 bg-white">
-                <div className="relative w-full h-[520px]">
-  <AnimatePresence mode="wait">
-    {(() => {
-      const e = equipmentImages[currentEquipmentImage];
-      const s = srcFor(e.base); // uses your existing helper
+{/* Equipment tab */}
+{activeTab === "applied Skills" && (
+  <div className="mt-10 grid grid-cols-1 lg:grid-cols-2 gap-8 items-stretch">
+    {/* LEFT: image card (stretches to row height) */}
+    <div className="relative rounded-3xl overflow-hidden border border-black/10 bg-white h-full">
+      <div className="relative w-full min-h-[420px] lg:h-full">
+        <AnimatePresence mode="wait">
+          {(() => {
+            const e = equipmentImages[currentEquipmentImage];
+            const s = srcFor(e.base);
+            return (
+              <MotionWebpImg
+                key={currentEquipmentImage}
+                webp={s.webp}
+                fallback={s.png}
+                alt={e.title}
+                className="absolute inset-0 w-full h-full object-cover object-center"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.4 }}
+              />
+            );
+          })()}
+        </AnimatePresence>
+      </div>
+
+      {/* single caption overlay */}
+      <div className="absolute bottom-0 inset-x-0 p-4 bg-gradient-to-t from-white via-white/70 to-transparent">
+        <div className="text-lg font-semibold">
+          {equipmentImages[currentEquipmentImage].title}
+        </div>
+        <div className="text-sm text-black/60">
+          {equipmentImages[currentEquipmentImage].category}
+        </div>
+      </div>
+    </div>
+
+{/* RIGHT: skills panel */}
+<div className="flex flex-col">
+  <div className="mt-0 grid grid-cols-1 sm:grid-cols-2 gap-3">
+    {equipmentSkills.map((item, i) => {
+      // choose icon by title
+      let Icon = Settings;
+      if (item.title.includes("Microscope")) Icon = Microscope;
+      else if (item.title.includes("Laser")) Icon = Crosshair;
+      else if (item.title.includes("Raster")) Icon = ScanLine;
+      else if (item.title.includes("Manufacturing")) Icon = Hammer;
+      else if (item.title.includes("Wet Lab")) Icon = FlaskConical;
+
       return (
-        <MotionWebpImg
-          key={currentEquipmentImage}
-          webp={s.webp}
-          fallback={s.png}
-          alt={e.title}
-          className="absolute inset-0 w-full h-full object-cover object-center"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          transition={{ duration: 0.4 }}
-        />
-      );
-    })()}
-  </AnimatePresence>
-</div>
-
-{/* caption (unchanged, now reads from equipmentImages) */}
-<div className="absolute bottom-0 inset-x-0 p-4 bg-gradient-to-t from-white via-white/70 to-transparent">
-  <div className="text-lg font-semibold">{equipmentImages[currentEquipmentImage].title}</div>
-  <div className="text-sm text-black/60">{equipmentImages[currentEquipmentImage].category}</div>
-</div>
-
-
-                <div className="absolute bottom-0 inset-x-0 p-4 bg-gradient-to-t from-white via-white/70 to-transparent">
-                  <div className="text-lg font-semibold">
-                    {equipmentImages[currentEquipmentImage].title}
-                  </div>
-                  <div className="text-sm text-black/60">
-                    {equipmentImages[currentEquipmentImage].category}
-                  </div>
-                </div>
-              </div>
-
-              <div className="rounded-3xl border border-black/10 p-6">
-                <div className="flex items-center justify-between">
-                  <h3 className="text-xl font-semibold">Analysis & Characterization</h3>
-                  <span className="rounded-full border border-black/10 px-3 py-1 text-xs bg-white/80">
-                    Field-tested
-                  </span>
-                </div>
-
-                <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-3">
-                  {equipmentSkills.map((item, i) => (
-                    <div key={i} className="rounded-2xl border border-black/10 p-4 bg-white">
-                      <div className="flex items-start gap-3">
-                        <div className="h-9 w-9 rounded-full border border-black/10 grid place-items-center">
-                          <Settings size={18} />
-                        </div>
-                        <div className="min-w-0">
-                          <div className="font-medium leading-tight">{item.title}</div>
-                          <div className="text-xs text-black/60">{item.subtitle}</div>
-                        </div>
-                      </div>
-
-                      <ul className="mt-3 space-y-1.5 text-sm">
-                        {item.points.map((p, j) => (
-                          <li key={j} className="flex items-start gap-2">
-                            <span className="mt-1 inline-block size-1.5 rounded-full bg-black/70" />
-                            <span className="text-black/80">{p}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  ))}
-                </div>
-              </div>
+        <div
+          key={i}
+          className="rounded-2xl border border-black/10 p-4 bg-white overflow-visible"
+        >
+          <div className="flex items-start gap-3">
+            <div className="h-9 w-9 rounded-full border border-black/10 grid place-items-center">
+              <Icon size={18} />
             </div>
-          )}
+            <div className="min-w-0">
+              <div className="font-medium leading-tight">{item.title}</div>
+              <div className="text-xs text-black/60">{item.subtitle}</div>
+            </div>
+          </div>
+          <ul className="mt-3 space-y-1.5 text-sm">
+            {item.points.map((p, j) => (
+              <li key={j} className="flex items-start gap-2">
+                <span className="mt-1 inline-block h-1.5 w-1.5 rounded-full bg-black/70" />
+                <span className="text-black/80">{p}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      );
+    })}
+  </div>
+</div>
+  </div>
+)}
+
 
           {/* Performance tab (small KPI tiles) */}
           {activeTab === "performance" && (
@@ -1176,8 +1221,7 @@ const equipmentImages = useMemo(() => equipmentSlides, []);
       {/* Professional Performance (experience cards) */}
       <section id="performance" className="relative bg-white">
         <div className="mx-auto max-w-7xl px-6 py-20 lg:py-24">
-          <h2 className="text-4xl font-semibold tracking-tight">Professional Performance</h2>
-          <p className="text-black/60 mt-2">Quantified impact and technical achievements across roles</p>
+          <h2 className="text-4xl font-semibold tracking-tight">Professional Experience</h2>
 
           <div className="mt-10 grid grid-cols-1 md:grid-cols-2 gap-6">
             {mockData.experience.map((exp, i) => (

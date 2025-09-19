@@ -94,7 +94,7 @@
 //             </h1>
 //             <p className="mt-3 max-w-2xl text-black/70">
 //               Audio on fiber, hidden interior lighting, anti-theft integration, and key
-//               mechanical upgrades—planned with BMW schematics and executed with clean
+//               mechanical upgrades;planned with BMW schematics and executed with clean
 //               wiring and custom 3D-printed hardware.
 //             </p>
 //             <div className="mt-6">
@@ -194,7 +194,7 @@ const SECTIONS = [
     img: srcFor("carmod_audio"),
     bullets: [
       "Upgraded from base system to OEM-grade 13-speaker / 480 W amp on MOST fiber.",
-      "3D-printed door brackets; trimmed panels; full wiring & power distribution.",
+      "3D-printed door brackets; trimmed panels; full wiring and power distribution.",
       "Used official BMW schematics for correct pinouts, routing, and integration.",
     ],
   },
@@ -306,7 +306,7 @@ export default function CarModding() {
           {/* Deep pink/indigo base */}
           <div className="absolute inset-0 bg-gradient-to-b from-[#2a001f] via-[#160012] to-black" />
           <div className="absolute inset-0 [background-image:radial-gradient(60rem_30rem_at_50%_120%,rgba(255,42,160,0.18),transparent_60%),linear-gradient(to_bottom,rgba(0,0,0,0.25),rgba(0,0,0,0.6))]" />
-          {/* Background image — faint & blended */}
+          {/* Background image ; faint & blended */}
           <WebpImg
             webp={bg.webp}
             fallback={bg.png}

@@ -162,7 +162,7 @@ experience: [
     role: "CTO & Founder",
     engagement: "Self-employed / Startup",
     period: "Sept 2025 – Present",
-    category: "Startup • Scientific Instruments",
+    category: "Euntrepreneurship",
     imageBase: "image1experience", // <- add this
     //image: "https://images.unsplash.com/photo-1520607162513-77705c0f0d4a", // clean optics lab
     keyMetrics: [
@@ -173,7 +173,7 @@ experience: [
     achievements: [
       "Launched Axivion to commercialize PRISM, backed by faculty shareholders providing executive advisory guidance",
       "Drafted a provisional patent for PRISM; filing and IP strategy in progress",
-      "Defined productization roadmap (PRISM hardware + CORE Python control platform) and brand presence for early customers",
+      "Defined productization roadmap and brand presence for early customers",
       "Led technical specs, supplier engagement, and manufacturing readiness for first machined version"
     ]
   },
@@ -182,18 +182,18 @@ experience: [
     role: "Nano Photonics & Quantum Optics Lab Member",
     engagement: "Casual / On-call",
     period: "May 2025 – Present",
-    category: "Spin-out • IP & Commercialization",
+    category: "IP • Commercialization",
     imageBase: "image2experience", // <- add this
     // image: "...",               // (optional)
     keyMetrics: [
       { value: "PN 2025", description: "Presented PRISM at Photonics North" },
       { value: "IP docs", description: "Initiated patent prep & records" },
-      { value: "Spin-out", description: "Lead transition to market" }
+      { value: "Spin-out", description: "Directed transition to market" }
     ],
     achievements: [
       "Presented PRISM at Photonics North 2025 Startup Competition (Ottawa)",
       "Initiated the IP documentation and commercialization planning",
-      "Lead lab → product transition for early spin-out work"
+      "Coordinated lab → product transition for early spin-out work"
     ],
     affiliationNote: "Continuing part-time affiliation alongside studies."
   },
@@ -202,7 +202,7 @@ experience: [
     role: "Research Engineer: Prototyping & Instrumentation",
         engagement: "Co-op",
     period: "Sep 2024 – Apr 2025",
-    category: "Quantum Optics & Instrumentation",
+    category: "Prototyping  Instrumentation",
     imageBase: "image3experience", // <- add this
     // image: "...",               // (optional)
     keyMetrics: [
@@ -212,7 +212,7 @@ experience: [
     ],
     achievements: [
       "Advanced PRISM from concept to a reliable research system used in-lab",
-      "Produced CNC-ready drawings; coordinated machining and tolerance stack-ups",
+      "Produced CNC-ready drawings; coordinated machining and tolerance specs",
       "Implemented LabVIEW raster-scan control with piezo and imaging feedback",
       "Created publication-ready renders (Blender); refurbished spectrometer (Arduino + 3D prints)"
     ]
@@ -222,12 +222,12 @@ experience: [
     role: "Research Assistant: Optical Systems & Machining",
     engagement: "Casual / On-call",
     period: "May – Aug 2024",
-    category: "Research • Quantum Optics",
+    category: "Development",
   imageBase: "image4experience", // <- add this
     // image: "...",               // (optional)
     keyMetrics: [
       { value: "5+", description: "Custom fixtures & tools built" },
-      { value: "Alignment", description: "Optical bring-up & test" },
+      { value: "Alignment", description: "Optical setup" },
       { value: "3D Printing", description: "Custom Parts" }
     ],
     achievements: [
@@ -241,7 +241,7 @@ experience: [
     role: "Research Assistant",
         engagement: "Co-op",
     period: "Jan – Apr 2024",
-    category: "Foundations • Photonics",
+    category: "Foundations",
     imageBase: "image5experience", // <- add this
     // image: "...",               // (optional)
     keyMetrics: [
@@ -257,10 +257,10 @@ experience: [
   },
   {
     company: "Pirlitor Machine and Tool Ltd",
-    role: "Manufacturing Engineering Co-op",
+    role: "Process Planning",
         engagement: "Co-op",
     period: "May – Aug 2023",
-    category: "Aerospace & Defense",
+    category: "Manufacturing Engineering",
     imageBase: "image6experience", // <- add this
     // image: "...",               // (optional) // machining/CNC
     keyMetrics: [
@@ -269,7 +269,7 @@ experience: [
       { value: "800+", description: "Shipping cards automated" }
     ],
     achievements: [
-      "Built comprehensive production processes for aerospace parts (Viking Air), advanced drone components (APS), and precision IMAX parts",
+      "Developed routings, work instructions, tooling requirements, and inspection plans for Viking Air, APS (advanced drones), and IMAX precision components",
       "Increased order-intake capacity by 20% via better customer planning interfaces and internal routing",
       "Automated 800+ shipping cards in a critical 3-day window using custom Excel/VBA macros (≈69 s/card saved)",
       "Standardized scalable process documentation and workflows adopted by current/future staff"
@@ -293,7 +293,7 @@ projects: [
     ],
     specifications: [
       "3-axis coordinated motion",
-      "≈13± mm range per axis",
+      "13 mm³ range per axis",
       "< 50 nm typical step",
       "Piezo-driven actuation",
       "Modular interfaces; retrofit-friendly",

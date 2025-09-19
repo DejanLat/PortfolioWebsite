@@ -17,7 +17,7 @@ export default function Models() {
   const models = useMemo(
     () => ({
       horizontal: {
-        name: "PRISM — Horizontal Scanning",
+        name: "PRISM ; Horizontal Scanning",
         blurb:
           "Optimized for benches and cryostats with lateral travel demands. Emphasizes orthogonal beam geometry across scan range.",
         features: [
@@ -27,7 +27,7 @@ export default function Models() {
         ],
       },
       vertical: {
-        name: "PRISM — Vertical Scanning",
+        name: "PRISM ; Vertical Scanning",
         blurb:
           "Designed for through-axis precision with gravity-friendly Z motion. Suited to tall setups and extended vertical reach.",
         features: [
@@ -44,21 +44,21 @@ export default function Models() {
     "cl-manual": {
       tagline: "Dial-in positioning with readback. Ideal for setup, tuning, and teaching labs.",
       posClass: "Fine, loop-stabilized",
-      travel: "≈13± mm / axis",
+      travel: "13.5 mm / axis",
       operation: "Manual jog, loop hold",
       integration: "Basic I/O, USB",
     },
     "ol-auto": {
       tagline: "Programmatic motion without feedback. Best for scripted scans where repeatability is set by process.",
       posClass: "Fine, open-loop",
-      travel: "≈13± mm / axis",
+      travel: "13.5 mm / axis",
       operation: "Scripted jog & raster",
       integration: "Python/LabVIEW APIs",
     },
     "cl-auto": {
       tagline: "Programmatic motion with feedback for accuracy. Best for repeatable automated experiments.",
       posClass: "Precision, loop-stabilized",
-      travel: "≈13± mm / axis",
+      travel: "13.5 mm / axis",
       operation: "Scripted raster + closed-loop hold",
       integration: "Advanced API + triggers",
     },

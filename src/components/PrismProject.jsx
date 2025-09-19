@@ -515,7 +515,7 @@
 //   const models = useMemo(
 //     () => ({
 //       horizontal: {
-//         name: "PRISM — Horizontal Scanning",
+//         name: "PRISM ; Horizontal Scanning",
 //         blurb:
 //           "Optimized for benches and cryostats with lateral travel demands. Emphasizes orthogonal beam geometry across scan range.",
 //         features: [
@@ -525,7 +525,7 @@
 //         ],
 //       },
 //       vertical: {
-//         name: "PRISM — Vertical Scanning",
+//         name: "PRISM ; Vertical Scanning",
 //         blurb:
 //           "Designed for through-axis precision with gravity-friendly Z motion. Suited to tall setups and extended vertical reach.",
 //         features: [
@@ -1092,7 +1092,7 @@
 //   const models = useMemo(
 //     () => ({
 //       horizontal: {
-//         name: "PRISM — Horizontal Scanning",
+//         name: "PRISM ; Horizontal Scanning",
 //         blurb:
 //           "Optimized for benches and cryostats with lateral travel demands. Emphasizes orthogonal beam geometry across scan range.",
 //         features: [
@@ -1102,7 +1102,7 @@
 //         ],
 //       },
 //       vertical: {
-//         name: "PRISM — Vertical Scanning",
+//         name: "PRISM ; Vertical Scanning",
 //         blurb:
 //           "Designed for through-axis precision with gravity-friendly Z motion. Suited to tall setups and extended vertical reach.",
 //         features: [
@@ -1558,7 +1558,7 @@
 //         {/* Removed the "Get Full Specs" and "Schedule a Call" button row */}
 //       </section>
 
-//       {/* CTA — single button, renamed */}
+//       {/* CTA ; single button, renamed */}
 //       <section className="relative w-full bg-black">
 //         <div className="mx-auto max-w-7xl px-6 pb-24 lg:pb-32">
 //           <div className="rounded-3xl p-8 flex flex-col md:flex-row items-center gap-8 border"
@@ -1715,7 +1715,7 @@
 //   const models = useMemo(
 //     () => ({
 //       horizontal: {
-//         name: "PRISM — Horizontal Scanning",
+//         name: "PRISM ; Horizontal Scanning",
 //         blurb:
 //           "Optimized for benches and cryostats with lateral travel demands. Emphasizes orthogonal beam geometry across scan range.",
 //         features: [
@@ -1725,7 +1725,7 @@
 //         ],
 //       },
 //       vertical: {
-//         name: "PRISM — Vertical Scanning",
+//         name: "PRISM ; Vertical Scanning",
 //         blurb:
 //           "Designed for through-axis precision with gravity-friendly Z motion. Suited to tall setups and extended vertical reach.",
 //         features: [
@@ -2213,7 +2213,7 @@
 //           </div>
 //         </section>
 
-//         {/* CTA — single button, renamed */}
+//         {/* CTA ; single button, renamed */}
 //         <section className="relative w-full bg-black">
 //           <div className="mx-auto max-w-7xl px-6 pb-24 lg:pb-32">
 //             <div className="rounded-3xl p-8 flex flex-col md:flex-row items-center gap-8 border border-white/15 bg-black">
@@ -2365,7 +2365,7 @@
 //   const models = useMemo(
 //     () => ({
 //       horizontal: {
-//         name: "PRISM — Horizontal Scanning",
+//         name: "PRISM ; Horizontal Scanning",
 //         blurb:
 //           "Optimized for benches and cryostats with lateral travel demands. Emphasizes orthogonal beam geometry across scan range.",
 //         features: [
@@ -2375,7 +2375,7 @@
 //         ],
 //       },
 //       vertical: {
-//         name: "PRISM — Vertical Scanning",
+//         name: "PRISM ; Vertical Scanning",
 //         blurb:
 //           "Designed for through-axis precision with gravity-friendly Z motion. Suited to tall setups and extended vertical reach.",
 //         features: [
@@ -2431,7 +2431,7 @@
 //       onMouseMove={onMove}
 //       style={rootStyle}
 //     >
-//       {/* BACKGROUND LAYER (fixed) — sits above black page bg, below all content */}
+//       {/* BACKGROUND LAYER (fixed) ; sits above black page bg, below all content */}
 //       <div className="pointer-events-none fixed inset-0 z-0" aria-hidden>
 //         {/* Cursor glow */}
 //         <div
@@ -3087,7 +3087,7 @@
 //   const models = useMemo(
 //     () => ({
 //       horizontal: {
-//         name: "PRISM — Horizontal Scanning",
+//         name: "PRISM ; Horizontal Scanning",
 //         blurb:
 //           "Optimized for benches and cryostats with lateral travel demands. Emphasizes orthogonal beam geometry across scan range.",
 //         features: [
@@ -3097,7 +3097,7 @@
 //         ],
 //       },
 //       vertical: {
-//         name: "PRISM — Vertical Scanning",
+//         name: "PRISM ; Vertical Scanning",
 //         blurb:
 //           "Designed for through-axis precision with gravity-friendly Z motion. Suited to tall setups and extended vertical reach.",
 //         features: [
@@ -3156,7 +3156,7 @@
 //       onMouseMove={onMove}
 //       style={rootStyle}
 //     >
-//       {/* BACKGROUND LAYER (fixed) — above black page bg, below all content */}
+//       {/* BACKGROUND LAYER (fixed) ; above black page bg, below all content */}
 //       <div className="pointer-events-none fixed inset-0 z-0" aria-hidden>
 //         {/* Global cursor glow */}
 //         <div
@@ -3738,7 +3738,8 @@ export default function PrismX() {
   };
   const rootStyle = { "--mx": `${mx}px`, "--my": `${my}px` };
 const SPEC_PDF = encodeURI(`${process.env.PUBLIC_URL}/PRISM Infodoc.pdf`);
-
+// Toggles whether the comparison table shows identical rows too
+const [showAllRows, setShowAllRows] = useState(false);
   // --- Hero-local cursor coords (keep hero halo glued during scroll)
   const heroRef = useRef(null);
   const onHeroMove = (e) => {
@@ -3841,7 +3842,7 @@ const scrollToIdWithOffset = useCallback((id) => {
   // KPI badges
   const kpis = [
     { value: "3-axis", label: "Coordinated Motion" },
-    { value: "≈13± mm", label: "Range per Axis" },
+    { value: "13.5 mm³", label: "Range per Axis" },
     { value: "< 50 nm", label: "Step Size (typ.)" },
     { value: "Piezo", label: "Actuation" },
   ];
@@ -3849,9 +3850,9 @@ const scrollToIdWithOffset = useCallback((id) => {
   // Spec data
   const specData = {
     architecture: [
-      { label: "System Topology", value: "Objective-scanning periscope (overview)" },
+      { label: "Optical System", value: "Objective-scanning periscope" },
       { label: "Alignment Strategy", value: "Maintains beam orthogonality across travel" },
-      { label: "Form Factor", value: "Retrofit-friendly to standard lab setups" },
+      { label: "Form Factor", value: "Retrofit friendly to standard lab setups" },
     ],
     optical: [
       { label: "Optical Path", value: "Relay imaging with coaxial illumination" },
@@ -3883,19 +3884,22 @@ const scrollToIdWithOffset = useCallback((id) => {
       horizontal: {
         name: "PRISM - Horizontal Scanning",
         blurb:
-          "Optimized for benches with lateral travel demands.",
+          "Optimized for benches with lateral travel/scanning demands.",
         features: [
-          "Low profile; perfect for crowded benches",
-          "Stable platform for through-axis precision",
+          "Small Footprint; perfect for crowded benches",
+          "Stable platform; easy modifications",
+          "Non-Magnetic option available",
         ],
       },
       vertical: {
         name: "PRISM - Vertical Scanning",
         blurb:
-          "Designed for through-axis precision with gravity-friendly Z motion.",
+          "Designed to reach narrow vertical openings above sample housing.",
         features: [
-          "Architecture designed for stable vertical objective moves",
-          "Predictable alignment across optical axis",
+          "Resonances are pushed out of band, so the image stays steady during fine steps and rasters",
+          "Architecture designed to mount above sample housing",
+          "Modifiable mounting points near objective for custom setups",
+          
         ],
       },
     }),
@@ -3905,29 +3909,43 @@ const scrollToIdWithOffset = useCallback((id) => {
   const tierNotes = {
     "cl-manual": {
       tagline:
-        "Dial-in positioning with readback. Ideal for setup, tuning, and teaching labs.",
+        "Provides manual precision control with real-time feedback. Ideal for alignment, setup, and teaching labs.",
       posClass: "Fine, loop-stabilized",
-      travel: "≈13± mm / axis",
+      travel: "13.5 mm / axis",
       operation: "Manual jog, loop hold",
       integration: "Basic I/O, USB",
     },
     "ol-auto": {
       tagline:
-        "Programmatic motion without feedback. Best for scripted scans where repeatability is set by process.",
+        "Runs scripted motion without feedback. The stage must be manually locked after moves.",
       posClass: "Fine, open-loop",
-      travel: "≈13± mm / axis",
+      travel: "13.5 mm / axis",
       operation: "Scripted jog & raster",
       integration: "Python/LabVIEW APIs",
     },
     "cl-auto": {
       tagline:
-        "Programmatic motion with feedback for accuracy. Best for repeatable automated experiments.",
+        "Executes scripted motion with feedback for accuracy. The stage auto-locks for repeatable experiments.",
       posClass: "Precision, loop-stabilized",
-      travel: "≈13± mm / axis",
+      travel: "13.5 mm / axis",
       operation: "Scripted raster + closed-loop hold",
       integration: "Advanced API + triggers",
     },
   };
+// inside your component
+const allRows = [
+  { feature: "Orientation", H: "Horizontal scanning", V: "Vertical scanning" },
+  { feature: "Positioning class", H: "Precision, loop-stabilized", V: "Precision, loop-stabilized" },
+  { feature: "Travel per axis", H: "13.5 mm / axis", V: "13.5 mm / axis" },
+  { feature: "Operating mode", H: "Scripted raster + closed-loop hold", V: "Scripted raster + closed-loop hold" },
+  { feature: "Integration", H: "Advanced API + triggers", V: "Advanced API + triggers" },
+  { feature: "Interfaces", H: "Modular optics & detectors", V: "Modular optics & detectors" },
+  { feature: "Use cases", H: "Benches • Magnetic Env • Rasters", V: "Cryostats • Magnetic Env • Rasters" },
+];
+
+const diffRows = allRows.filter(r => (r.H || "").trim() !== (r.V || "").trim());
+const [showAll, setShowAll] = useState(false);
+const rowsToRender = showAll ? allRows : diffRows;
 
   const rows = useMemo(
     () => [
@@ -3948,7 +3966,7 @@ const scrollToIdWithOffset = useCallback((id) => {
       onMouseMove={onMove}
       style={rootStyle}
     >
-      {/* BACKGROUND LAYER (fixed) — above black page bg, below all content */}
+      {/* BACKGROUND LAYER (fixed) ; above black page bg, below all content */}
       <div className="pointer-events-none fixed inset-0 z-0" aria-hidden>
         {/* Global cursor glow */}
         <div
@@ -3988,11 +4006,10 @@ const scrollToIdWithOffset = useCallback((id) => {
       </Link>
       <div className="h-4 sm:h-5 w-px bg-white/20 shrink-0" />
       <div className="font-semibold tracking-widest text-white text-xs sm:text-sm truncate">
-        FLAGSHIP
+        AXVIVION
       </div>
-      <div className="text-white/40 text-xs sm:text-sm hidden xs:block">
-        {/* hide this word on the very smallest screens */}
-        INSTRUMENT
+      <div className="text-white/50 text-xs sm:text-sm xs:block">
+        INSTRUMENTS
       </div>
     </div>
 
@@ -4013,20 +4030,7 @@ const scrollToIdWithOffset = useCallback((id) => {
 
 
 
-{/* In-progress bar */}
-<div className="fixed left-0 right-0 bottom-0 z-40 bg-amber-50/95 backdrop-blur border-t border-amber-200">
-  <div className="mx-auto max-w-7xl px-4 sm:px-6 py-2 flex items-center justify-between gap-3">
-    <div className="flex items-center gap-2 text-xs sm:text-sm text-amber-900">
-      <span aria-hidden>🚧</span>
-      <span className="leading-tight">
-        This site is a live work-in-progress.
-        <span className="ml-2 font-medium">Last update: 9/18/2024</span>
-      </span>
-    </div>
-  </div>
-  {/* iOS safe-area pad */}
-  <div style={{ paddingBottom: "env(safe-area-inset-bottom)" }} />
-</div>
+
         {/* Hero with Axivion-teal glow + hero-local cursor glow */}
         <section
           ref={heroRef}
@@ -4127,10 +4131,13 @@ const scrollToIdWithOffset = useCallback((id) => {
         <Move3DIcon size={16} style={{ color: ACCENT }} />
         <span>Full 3-axis motion</span>
       </span>
-      <span className="inline-flex items-center gap-1.5">
-        <Ruler size={16} style={{ color: ACCENT }} />
-        <span>13± mm Range</span>
-      </span>
+<span className="inline-flex items-center gap-1.5">
+  <Ruler size={16} style={{ color: ACCENT }} />
+  <span className="whitespace-nowrap">
+    13.5&nbsp;mm<sup className="text-[0.8em] leading-none">3</sup>&nbsp;Range
+  </span>
+</span>
+
       <span className="inline-flex items-center gap-1.5">
         <Gauge size={16} style={{ color: ACCENT }} />
         <span>~50 nm Stepping</span>
@@ -4174,12 +4181,7 @@ const scrollToIdWithOffset = useCallback((id) => {
     </div>
   </div>
 </section>
-{/* Bottom bleed ... */}
-<div
-  className="pointer-events-none absolute -bottom-10 left-0 right-0 h-10 z-[11]"
-  style={{ background: "linear-gradient(...)" }}
-  aria-hidden
-/>
+
 
 
         {/* Design */}
@@ -4203,8 +4205,8 @@ const scrollToIdWithOffset = useCallback((id) => {
 
                 <div className="mt-8 grid grid-cols-1 sm:grid-cols-3 gap-4 max-w-2xl">
                   {[
-                    { h: "Modular", p: "Components and interfaces adapt to varied environments." },
-                    { h: "Retrofit-friendly", p: "Drop-in mounting and common accessory support." },
+                    { h: "Power", p: "Retain the beam path and power conditions." },
+                    { h: "Retrofit", p: "Drop-in mounting and common accessory support." },
                     { h: "Stable", p: "Predictable motion and consistent alignment." },
                   ].map((c) => (
                     <div key={c.h} className="rounded-2xl p-5 border border-white/15 bg-black/50">
@@ -4316,255 +4318,265 @@ const scrollToIdWithOffset = useCallback((id) => {
           </div>
         </section> */}
 
-        {/* System Overview */}
-        <section className="relative w-full">
-          <div className="mx-auto max-w-7xl px-6 py-24 lg:py-28">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-14 items-center">
-              <motion.div
-                initial={{ opacity: 0, y: 12 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6 }}
-              >
-                <div className="text-sm uppercase tracking-widest text-white/80">
-                  System Overview
-                </div>
-                <h3 className="mt-2 text-4xl font-semibold tracking-tight text-white">
-                  Coordinated motion with a stable optical path
-                </h3>
-                <p className="mt-4 text-white/80 max-w-xl">
-                  High-level description of the system’s motion strategy and alignment goals.
-                  Specific mechanisms are intentionally not detailed on this page.
-                </p>
-
-                <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-2xl">
-                  {["Coordinated axes", "Consistent reference", "Drop-in adapters", "Predictable behavior"].map(
-                    (t) => (
-                      <div
-                        key={t}
-                        className="rounded-2xl p-5 border border-white/15 bg-black/50"
-                      >
-                        <div className="text-sm text-white/70">Feature</div>
-                        <div className="text-lg font-semibold text-white">{t}</div>
-                      </div>
-                    )
-                  )}
-                </div>
-              </motion.div>
-
-              <motion.div
-                initial={{ opacity: 0, scale: 0.98 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6 }}
-              >
-                <div className="relative aspect-[4/3] rounded-3xl overflow-hidden border border-white/15 bg-black/50">
-                  <div className="absolute inset-0 grid place-items-center">
-                    <div className="w-64 h-64 rounded-full border border-white/20 relative">
-                      <div className="absolute inset-6 rounded-full border border-white/30" />
-                      <div className="absolute left-1/2 top-0 -translate-x-1/2 h-1/2 w-px bg-white/30" />
-                      <div className="absolute right-0 top-1/2 -translate-y-1/2 w-1/2 h-px bg-white/30" />
-                    </div>
-                  </div>
-                </div>
-              </motion.div>
-            </div>
-          </div>
-        </section>
-
-       {/* Specs */}
-<section id="specs" className="relative w-full">
+{/* System Overview */}
+<section className="relative w-full">
   <div className="mx-auto max-w-7xl px-6 py-24 lg:py-28">
-    <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
-      <h3 className="text-3xl sm:text-4xl font-semibold tracking-tight text-white">
-        Technical Specifications
-      </h3>
-      <div className="flex flex-wrap items-center gap-2">
-        {specTabs.map((t) => (
-          <button
-            key={t.id}
-            onClick={() => setActiveSpecTab(t.id)}
-            className="inline-flex items-center gap-2 rounded-full px-3 sm:px-4 py-1.5 sm:py-2 text-sm transition border"
-            style={{
-              backgroundColor: activeSpecTab === t.id ? ACCENT : "transparent",
-              color: activeSpecTab === t.id ? "#000" : "rgba(255,255,255,0.9)",
-              borderColor: "rgba(255,255,255,0.2)",
-            }}
-          >
-            <t.icon size={16} /> {t.label}
-          </button>
-        ))}
-      </div>
-    </div>
-
-    <div className="mt-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-      {specData[activeSpecTab].map((s) => (
-        <div
-          key={s.label}
-          className="rounded-2xl border border-white/15 p-6 bg-black/50"
-        >
-          <div className="text-sm text-white/80">{s.label}</div>
-          <div className="mt-1 text-lg font-semibold text-white">{s.value}</div>
+    <div className="grid grid-cols-1 lg:grid-cols-2 gap-14 items-center">
+      <motion.div
+        initial={{ opacity: 0, y: 12 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.6 }}
+      >
+        <div className="text-sm uppercase tracking-widest text-white/80">
+          System Overview
         </div>
-      ))}
-    </div>
-
-
-
-
-            <div className="mt-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-              {specData[activeSpecTab].map((s) => (
-                <div key={s.label} className="rounded-2xl border border-white/15 p-6 bg-black/50">
-                  <div className="text-sm text-white/80">{s.label}</div>
-                  <div className="mt-1 text-lg font-semibold text-white">{s.value}</div>
-                </div>
-              ))}
+        <h3 className="mt-2 text-4xl font-semibold tracking-tight text-white">
+          Coordinated motion • Stable path
+        </h3>
+        <p className="mt-4 text-white/80 max-w-xl">
+          A concise overview of PRISM’s motion strategy and optical stability. Designed for reliability across demanding lab environments
+        </p>
+        <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-2xl">
+          {[
+            "3-axis Coordination",
+            "Stable Optical Path",
+            "Ease of integration",
+            "Predictable movement",
+          ].map((t) => (
+            <div
+              key={t}
+              className="rounded-2xl p-5 border border-white/15 bg-black/50"
+            >
+              <div className="text-lg font-semibold text-white">{t}</div>
             </div>
+          ))}
+        </div>
+      </motion.div>
 
-            {/* Neutral tiles */}
-            <div className="mt-10 grid grid-cols-1 sm:grid-cols-3 gap-4">
-              {[
-                { v: "3-axis", l: "Coordinated motion" },
-                { v: "≈13± mm", l: "Range per axis" },
-                { v: "< 50 nm", l: "Typical stepping" },
-              ].map((t) => (
-                <div
-                  key={t.v}
-                  className="rounded-2xl border border-white/15 p-6 text-center bg-black/50"
-                >
-                  <div className="text-2xl font-semibold text-white">{t.v}</div>
-                  <div className="text-sm text-white/70">{t.l}</div>
-                </div>
-              ))}
+      <motion.div
+        initial={{ opacity: 0, scale: 0.98 }}
+        whileInView={{ opacity: 1, scale: 1 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.6 }}
+      >
+        <div className="relative aspect-[4/3] rounded-3xl overflow-hidden border border-white/15 bg-black/50">
+          <div className="absolute inset-0 grid place-items-center">
+            <div className="w-64 h-64 rounded-full border border-white/20 relative">
+              <div className="absolute inset-6 rounded-full border border-white/30" />
+              <div className="absolute left-1/2 top-0 -translate-x-1/2 h-1/2 w-px bg-white/30" />
+              <div className="absolute right-0 top-1/2 -translate-y-1/2 w-1/2 h-px bg-white/30" />
             </div>
           </div>
-        </section>
+        </div>
+      </motion.div>
+    </div>
+  </div>
+</section>
 
-        {/* MODELS (anchor target) */}
-        <section id="models" className="mx-auto max-w-7xl px-6 pb-24 lg:pb-28 scroll-mt-20">
-          <motion.h2
-            initial={{ opacity: 0, y: 12 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-            className="text-4xl md:text-5xl font-semibold tracking-tight text-white"
+
+{/* MODELS (anchor target) */}
+<section id="models" className="mx-auto max-w-7xl px-6 pb-24 lg:pb-28 scroll-mt-20">
+  <motion.h2
+    initial={{ opacity: 0, y: 12 }}
+    whileInView={{ opacity: 1, y: 0 }}
+    viewport={{ once: true }}
+    transition={{ duration: 0.5 }}
+    className="text-4xl md:text-5xl font-semibold tracking-tight text-white"
+  >
+    Choose your PRISM
+  </motion.h2>
+  <p className="mt-3 text-white/80 max-w-2xl">
+    Two scanning orientations with three control options. Get full specifications from
+    engineering on request.
+  </p>
+
+  {/* Control tier picker */}
+  <div className="mt-4 flex flex-wrap items-center gap-2">
+    {["cl-manual", "ol-auto", "cl-auto"].map((id) => (
+      <button
+        key={id}
+        onClick={() => setTier(id)}
+        className="rounded-full px-4 py-2 text-sm transition border"
+        style={{
+          backgroundColor: tier === id ? ACCENT : "transparent",
+          color: tier === id ? "#000" : "rgba(255,255,255,0.9)",
+          borderColor: "rgba(255,255,255,0.25)",
+        }}
+      >
+        {id === "cl-manual"
+          ? "Closed-Loop Manual"
+          : id === "ol-auto"
+          ? "Open-Loop Auto"
+          : "Closed-Loop Auto"}
+      </button>
+    ))}
+  </div>
+  <div className="mt-2 text-sm text-white/70">{tierNotes[tier].tagline}</div>
+
+ {/* Beam-power / clipping callout */}
+<div className="mt-4 rounded-2xl border border-white/15 bg-black/50 p-4">
+  <div className="flex items-stretch gap-3">
+    {/* teal bar (full height) */}
+    <span
+      aria-hidden
+      className="w-1.5 self-stretch rounded-full"
+      style={{ backgroundColor: ACCENT }}
+    />
+    <div className="text-sm text-white/85">
+      <span className="font-medium">Constant delivered power.</span> PRISM’s relay ensures the beam
+      reaches the objective without loss or angular deviation. Orthogonal to the sample plane and
+      stable throughout motion. The optical path remains rigid, with static components engineered
+      through FEA and modal analysis to resist motor-induced vibrations. Even at 50× true
+      magnification with a heavy 100× objective, motion is smooth and power at the sample is
+      preserved. Critical for laser writing and power-sensitive measurements.
+    </div>
+  </div>
+</div>
+
+{/* Two model cards */}
+<div className="mt-6 grid grid-cols-1 md:grid-cols-2 gap-6">
+  {/* Horizontal */}
+  <div className="rounded-3xl p-6 border border-white/15 bg-black/50">
+    <div className="text-sm uppercase tracking-widest text-white/80">Model</div>
+    <h3 className="mt-1 text-2xl font-semibold text-white">{models.horizontal.name}</h3>
+    <div className="mt-3 aspect-[3/4] rounded-2xl border border-white/15 overflow-hidden bg-black/50">
+      <img
+        src={`${process.env.PUBLIC_URL}/prismH.png`}
+        alt="Horizontal PRISM"
+        className="h-full w-full object-cover"
+      />
+    </div>
+    <p className="mt-3 text-white/80">{models.horizontal.blurb}</p>
+    <ul className="mt-4 space-y-2 text-sm text-white/85">
+      {[
+        "Absorption / PL measurements in cryostats via side ports",
+        "Mini-LED / µLED screen research and lateral access benches",
+        "Side-access enclosures where vertical clearance is limited",
+      ].map((f) => (
+        <li key={f} className="flex items-start gap-2">
+          <span className="mt-1 size-1.5 rounded-full" style={{ backgroundColor: ACCENT }} />
+          <span>{f}</span>
+        </li>
+      ))}
+    </ul>
+    <div className="mt-6">
+      <Link
+        to="/contact"
+        className="rounded-full px-5 py-2.5 text-sm font-medium"
+        style={{ backgroundColor: ACCENT, color: "#000" }}
+        onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = ACCENT_HOVER)}
+        onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = ACCENT)}
+      >
+        Request Details
+      </Link>
+    </div>
+  </div>
+
+  {/* Vertical */}
+  <div className="rounded-3xl p-6 border border-white/15 bg-black/50">
+    <div className="text-sm uppercase tracking-widest text-white/80">Model</div>
+    <h3 className="mt-1 text-2xl font-semibold text-white">{models.vertical.name}</h3>
+    <div className="mt-3 aspect-[3/4] rounded-2xl border border-white/15 overflow-hidden bg-black/50">
+      <img
+        src={`${process.env.PUBLIC_URL}/prismV.png`}
+        alt="Vertical PRISM"
+        className="h-full w-full object-cover"
+      />
+    </div>
+    <p className="mt-3 text-white/80">{models.vertical.blurb}</p>
+    <ul className="mt-4 space-y-2 text-sm text-white/85">
+      {[
+        "Reflective experiments (MOKE / interferometry / reflective microscopy)",
+        "Cryostats with top windows; quantum-dot chips in cryo; magnetic environments",
+        "Ion traps with fiber delivery; multi-experiment viewing; Rydberg setups",
+      ].map((f) => (
+        <li key={f} className="flex items-start gap-2">
+          <span className="mt-1 size-1.5 rounded-full" style={{ backgroundColor: ACCENT }} />
+          <span>{f}</span>
+        </li>
+      ))}
+    </ul>
+    <div className="mt-6">
+      <Link
+        to="/contact"
+        className="rounded-full px-5 py-2.5 text-sm font-medium"
+        style={{ backgroundColor: ACCENT, color: "#000" }}
+        onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = ACCENT_HOVER)}
+        onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = ACCENT)}
+      >
+        Request Details
+      </Link>
+    </div>
+  </div>
+</div>
+
+
+  {/* Comparison: header with toggle */}
+  {(() => {
+    const comparisonRows = [
+      { feature: "Positioning class", H: tierNotes[tier].posClass, V: tierNotes[tier].posClass },
+      { feature: "Travel per axis",   H: tierNotes[tier].travel,   V: tierNotes[tier].travel },
+      { feature: "Operating mode",    H: tierNotes[tier].operation, V: tierNotes[tier].operation },
+      { feature: "Integration",       H: tierNotes[tier].integration, V: tierNotes[tier].integration },
+      { feature: "Interfaces",        H: "Modular optics & detectors", V: "Modular optics & detectors" },
+      {
+        feature: "Use cases",
+        H: "Cryostat side-ports • µLED research • Side-access benches",
+        V: "Reflective experiments • Cryo top-windows • Ion traps / Rydberg",
+      },
+      {
+        feature: "Beam power consistency",
+        H: "Maintains pupil clipping/orthogonality ; constant delivered power",
+        V: "Maintains pupil clipping/orthogonality ; constant delivered power",
+      },
+    ];
+    const diffOnly = comparisonRows.filter(r => (r.H ?? "").trim() !== (r.V ?? "").trim());
+    const rowsToShow = showAllRows ? comparisonRows : diffOnly;
+
+    return (
+      <>
+        <div className="mt-10 mb-3 flex items-center gap-3">
+          <h4 className="text-white/90 font-semibold">Horizontal vs Vertical</h4>
+          {diffOnly.length !== comparisonRows.length && (
+            <button
+              onClick={() => setShowAllRows(s => !s)}
+              className="text-xs rounded-full border border-white/20 px-3 py-1 text-white/80 hover:text-white"
+            >
+              {showAllRows ? "Hide common rows" : "Show all rows"}
+            </button>
+          )}
+          <a
+            href={SPEC_PDF}
+            target="_blank"
+            rel="noopener noreferrer"
+            download
+            className="ml-auto inline-flex items-center gap-2 rounded-full px-3 py-1.5 text-xs font-medium"
+            style={{ backgroundColor: ACCENT, color: "#000" }}
           >
-            Choose your PRISM
-          </motion.h2>
-          <p className="mt-3 text-white/80 max-w-2xl">
-            Two scanning orientations with three control options. Get full specifications from
-            engineering on request.
-          </p>
+            Download full spec sheet
+          </a>
+        </div>
 
-          {/* Control tier picker */}
-          <div className="mt-4 flex flex-wrap items-center gap-2">
-            {["cl-manual", "ol-auto", "cl-auto"].map((id) => (
-              <button
-                key={id}
-                onClick={() => setTier(id)}
-                className="rounded-full px-4 py-2 text-sm transition border"
-                style={{
-                  backgroundColor: tier === id ? ACCENT : "transparent",
-                  color: tier === id ? "#000" : "rgba(255,255,255,0.9)",
-                  borderColor: "rgba(255,255,255,0.25)",
-                }}
-              >
-                {id === "cl-manual"
-                  ? "Closed-Loop Manual"
-                  : id === "ol-auto"
-                  ? "Open-Loop Auto"
-                  : "Closed-Loop Auto"}
-              </button>
+        <div className="rounded-3xl overflow-hidden border border-white/15">
+          <div className="grid grid-cols-3 text-sm">
+            <div className="px-4 py-3 bg-black/60 text-white/80">Key Feature</div>
+            <div className="px-4 py-3 bg-black/60 text-white/80">Horizontal PRISM</div>
+            <div className="px-4 py-3 bg-black/60 text-white/80">Vertical PRISM</div>
+
+            {rowsToShow.map((row) => (
+              <React.Fragment key={row.feature}>
+                <div className="px-4 py-3 border-t border-white/15 text-white/75">{row.feature}</div>
+                <div className="px-4 py-3 border-t border-white/15">{row.H}</div>
+                <div className="px-4 py-3 border-t border-white/15">{row.V}</div>
+              </React.Fragment>
             ))}
           </div>
-          <div className="mt-2 text-sm text-white/70">{tierNotes[tier].tagline}</div>
-
-          {/* Two model cards */}
-          <div className="mt-6 grid grid-cols-1 md:grid-cols-2 gap-6">
-            {/* Horizontal */}
-            <div className="rounded-3xl p-6 border border-white/15 bg-black/50">
-              <div className="text-sm uppercase tracking-widest text-white/80">Model</div>
-              <h3 className="mt-1 text-2xl font-semibold text-white">{models.horizontal.name}</h3>
-              <div className="mt-3 h-44 rounded-2xl border border-white/15 bg-black/50 grid place-items-center text-white/60">
-                Image Placeholder
-              </div>
-              <p className="mt-3 text-white/80">{models.horizontal.blurb}</p>
-              <ul className="mt-4 space-y-2 text-sm text-white/85">
-                {models.horizontal.features.map((f) => (
-                  <li key={f} className="flex items-start gap-2">
-                    <span
-                      className="mt-1 size-1.5 rounded-full"
-                      style={{ backgroundColor: ACCENT }}
-                    />
-                    <span>{f}</span>
-                  </li>
-                ))}
-              </ul>
-              <div className="mt-6">
-                <Link
-                  to="/contact"
-                  className="rounded-full px-5 py-2.5 text-sm font-medium"
-                  style={{ backgroundColor: ACCENT, color: "#000" }}
-                  onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = ACCENT_HOVER)}
-                  onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = ACCENT)}
-                >
-                  Request Details
-                </Link>
-              </div>
-            </div>
-
-            {/* Vertical */}
-            <div className="rounded-3xl p-6 border border-white/15 bg-black/50">
-              <div className="text-sm uppercase tracking-widest text-white/80">Model</div>
-              <h3 className="mt-1 text-2xl font-semibold text-white">{models.vertical.name}</h3>
-              <div className="mt-3 h-44 rounded-2xl border border-white/15 bg-black/50 grid place-items-center text-white/60">
-                Image Placeholder
-              </div>
-              <p className="mt-3 text-white/80">{models.vertical.blurb}</p>
-              <ul className="mt-4 space-y-2 text-sm text-white/85">
-                {models.vertical.features.map((f) => (
-                  <li key={f} className="flex items-start gap-2">
-                    <span
-                      className="mt-1 size-1.5 rounded-full"
-                      style={{ backgroundColor: ACCENT }}
-                    />
-                    <span>{f}</span>
-                  </li>
-                ))}
-              </ul>
-              <div className="mt-6">
-                <Link
-                  to="/contact"
-                  className="rounded-full px-5 py-2.5 text-sm font-medium"
-                  style={{ backgroundColor: ACCENT, color: "#000" }}
-                  onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = ACCENT_HOVER)}
-                  onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = ACCENT)}
-                >
-                  Request Details
-                </Link>
-              </div>
-            </div>
-          </div>
-
-          {/* Comparison table */}
-          <div className="mt-10 rounded-3xl overflow-hidden border border-white/15">
-            <div className="grid grid-cols-3 text-sm">
-              <div className="px-4 py-3 bg-black/60 text-white/80">Key Feature</div>
-              <div className="px-4 py-3 bg-black/60 text-white/80">Horizontal PRISM</div>
-              <div className="px-4 py-3 bg-black/60 text-white/80">Vertical PRISM</div>
-
-              {rows.map((row) => (
-                <React.Fragment key={row.feature}>
-                  <div className="px-4 py-3 border-t border-white/15 text-white/75">
-                    {row.feature}
-                  </div>
-                  <div className="px-4 py-3 border-t border-white/15">{row.H}</div>
-                  <div className="px-4 py-3 border-t border-white/15">{row.V}</div>
-                </React.Fragment>
-              ))}
-            </div>
-          </div>
-        </section>
+        </div>
+      </>
+    );
+  })()}
+</section>
 
         {/* CTA */}
         <section className="relative w-full">
