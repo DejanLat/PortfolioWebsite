@@ -3736,6 +3736,19 @@ export default function PrismX() {
     setMx(e.clientX);
     setMy(e.clientY);
   };
+
+    // --- Gallery images ---
+const galleryImages = useMemo(
+  () => [
+    `${process.env.PUBLIC_URL}/setup2.png`,
+    `${process.env.PUBLIC_URL}/setup3.png`,
+    `${process.env.PUBLIC_URL}/setup4.png`,
+    `${process.env.PUBLIC_URL}/setup5.png`,
+    `${process.env.PUBLIC_URL}/setup6.png`,
+  ],
+  []
+);
+
   const rootStyle = { "--mx": `${mx}px`, "--my": `${my}px` };
 const SPEC_PDF = encodeURI(`${process.env.PUBLIC_URL}/PRISM Infodoc.pdf`);
 // Toggles whether the comparison table shows identical rows too
@@ -3780,11 +3793,7 @@ const [showAllRows, setShowAllRows] = useState(false);
     };
   }, [updateHeroGlowFromViewport]);
 
-  // --- Gallery images ---
-  const galleryImages = useMemo(
-    () => (mockData?.portfolioImages || []).map((p) => p.url).filter(Boolean),
-    []
-  );
+
   const [imgIndex, setImgIndex] = useState(0);
   const nextImg = () =>
     galleryImages.length && setImgIndex((i) => (i + 1) % galleryImages.length);
@@ -3905,7 +3914,7 @@ const scrollToIdWithOffset = useCallback((id) => {
     }),
     []
   );
-
+  
   const tierNotes = {
     "cl-manual": {
       tagline:
@@ -3932,6 +3941,8 @@ const scrollToIdWithOffset = useCallback((id) => {
       integration: "Advanced API + triggers",
     },
   };
+
+
 // inside your component
 const allRows = [
   { feature: "Orientation", H: "Horizontal scanning", V: "Vertical scanning" },
@@ -4360,15 +4371,16 @@ const rowsToRender = showAll ? allRows : diffRows;
         viewport={{ once: true }}
         transition={{ duration: 0.6 }}
       >
-        <div className="relative aspect-[4/3] rounded-3xl overflow-hidden border border-white/15 bg-black/50">
-          <div className="absolute inset-0 grid place-items-center">
-            <div className="w-64 h-64 rounded-full border border-white/20 relative">
-              <div className="absolute inset-6 rounded-full border border-white/30" />
-              <div className="absolute left-1/2 top-0 -translate-x-1/2 h-1/2 w-px bg-white/30" />
-              <div className="absolute right-0 top-1/2 -translate-y-1/2 w-1/2 h-px bg-white/30" />
-            </div>
-          </div>
-        </div>
+<div className="relative aspect-video rounded-3xl overflow-hidden border border-white/15 bg-black/50">
+  <div className="absolute inset-0 grid place-items-center">
+    <div className="mx-6 w-full h-auto aspect-video rounded-2xl border-2 border-dashed border-white/25 bg-black/40 flex items-center justify-center">
+      <span className="text-white/70 text-sm sm:text-base">
+        Video demo placeholder
+      </span>
+    </div>
+  </div>
+</div>
+
       </motion.div>
     </div>
   </div>

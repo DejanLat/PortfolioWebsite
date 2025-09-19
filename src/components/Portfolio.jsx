@@ -811,9 +811,12 @@ const topSlides = [
 // --- equipment slides (put both .webp and .png in /public) ---
 const equipmentSlides = [
   { base: "image1equipment", title: "Imaging 50x Objective (0.01mm Calibration slide)",       category: "Microscopes Imaging" },
-  { base: "image2equipment", title: "Imaging 100x Objective (0.01mm Calibration slide)",       category: "Microscopes Imaging" },
+  { base: "image2equipment", title: "Imaging 100x Objective (0.01mm Calibration slide)",       category: "Microscope Imaging" },
   { base: "image3equipment", title: "Fiber Coupling",             category: "Laser Alignment | Fiber Coupling" },
-  { base: "image4equipment", title: "Manual Mill",       category: "Manual & CNC Machining" },
+  { base: "image4equipment", title: "Manual Mill",       category: "Manufacturing | CNC Prep" },
+  { base: "image4equipment", title: "Photon Detector Scanning",       category: "Raster Scanning" },
+
+   { base: "setup2", title: "Optical Station Setup",             category: "Laser Alignment | Fiber Coupling" },
   // { base: "image5equipment", title: "Diamond Mount",       category: "Manual & CNC Machining" },
 ];
 // --- engineering project slides (put both .webp and .png in /public) ---
