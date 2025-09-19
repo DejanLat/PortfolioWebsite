@@ -3724,6 +3724,7 @@ import {
   Settings,
 } from "lucide-react";
 import { Link } from "react-router-dom";
+import { Shield } from "lucide-react";
 
 export default function PrismX() {
   const ACCENT = "#13c2b3";
@@ -3748,6 +3749,13 @@ const galleryImages = useMemo(
   ],
   []
 );
+const captions = [
+  "PRISM setup with vertical orientation",
+  "Diamond sample under fluorescent excitation",
+  "PRISM above cryostat",
+  "NV centre emission",
+  "PRISM experimental setup",
+];
 
   const rootStyle = { "--mx": `${mx}px`, "--my": `${my}px` };
 const SPEC_PDF = encodeURI(`${process.env.PUBLIC_URL}/PRISM Infodoc.pdf`);
@@ -4238,36 +4246,55 @@ const rowsToRender = showAll ? allRows : diffRows;
                 {/* Main image */}
                 <div className="relative aspect-[4/3] rounded-3xl overflow-hidden border border-white/15 bg-black/50">
                   {galleryImages.length > 0 ? (
-                    <>
-                      <img
-                        src={galleryImages[imgIndex]}
-                        alt={`PRISM preview ${imgIndex + 1}`}
-                        className="absolute inset-0 h-full w-full object-cover"
-                        draggable={false}
-                      />
-                      <button
-                        onClick={prevImg}
-                        aria-label="Previous image"
-                        className="absolute left-3 top-1/2 -translate-y-1/2 rounded-full px-3 py-2 text-sm backdrop-blur border border-white/15 bg-black/60"
-                      >
-                        ‹
-                      </button>
-                      <button
-                        onClick={nextImg}
-                        aria-label="Next image"
-                        className="absolute right-3 top-1/2 -translate-y-1/2 rounded-full px-3 py-2 text-sm backdrop-blur border border-white/15 bg-black/60"
-                      >
-                        ›
-                      </button>
-                      <div className="absolute bottom-3 right-3 text-xs text-white/80 rounded-full px-2 py-1 border border-white/15 bg-black/60">
-                        {imgIndex + 1}/{galleryImages.length}
-                      </div>
-                    </>
-                  ) : (
-                    <div className="absolute inset-0 grid place-items-center text-white/60">
-                      <Microscope size={120} />
-                    </div>
-                  )}
+  <>
+    <img
+      src={galleryImages[imgIndex]}
+      alt={`PRISM preview ${imgIndex + 1}`}
+      className="absolute inset-0 h-full w-full object-cover"
+      draggable={false}
+    />
+
+    {/* Prev/Next arrows */}
+    <button
+      onClick={prevImg}
+      aria-label="Previous image"
+      className="absolute left-3 top-1/2 -translate-y-1/2 rounded-full px-3 py-2 text-sm backdrop-blur border border-white/15 bg-black/60"
+    >
+      ‹
+    </button>
+    <button
+      onClick={nextImg}
+      aria-label="Next image"
+      className="absolute right-3 top-1/2 -translate-y-1/2 rounded-full px-3 py-2 text-sm backdrop-blur border border-white/15 bg-black/60"
+    >
+      ›
+    </button>
+
+{/* Caption + page indicator with strong fade */}
+<div className="absolute bottom-0 inset-x-0">
+  <div className="relative h-12 flex items-center justify-between px-4 text-xs sm:text-sm">
+    {/* Fade background */}
+    <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-black/30" />
+    {/* Caption text */}
+    <span className="relative z-10 text-white/90 font-medium">
+      {captions[imgIndex]}
+    </span>
+    {/* Page indicator */}
+    <span className="relative z-10 text-white/80">
+      {imgIndex + 1}/{galleryImages.length}
+    </span>
+  </div>
+</div>
+
+
+
+  </>
+) : (
+  <div className="absolute inset-0 grid place-items-center text-white/60">
+    <Microscope size={120} />
+  </div>
+)}
+
                 </div>
 
                 {/* Thumbnails */}
@@ -4452,11 +4479,18 @@ const rowsToRender = showAll ? allRows : diffRows;
     <div className="text-sm uppercase tracking-widest text-white/80">Model</div>
     <h3 className="mt-1 text-2xl font-semibold text-white">{models.horizontal.name}</h3>
     <div className="mt-3 aspect-[3/4] rounded-2xl border border-white/15 overflow-hidden bg-black/50">
-      <img
+      {/* <img
         src={`${process.env.PUBLIC_URL}/prismH.png`}
         alt="Horizontal PRISM"
         className="h-full w-full object-cover"
-      />
+      /> */}
+      <div className="h-full w-full flex flex-col items-center justify-center text-center p-6 bg-black/40">
+  <Shield size={32} className="text-white/60 mb-2" />
+  <span className="text-white/70 text-sm font-medium">
+    Revealed upon submission of provisional patent
+  </span>
+</div>
+
     </div>
     <p className="mt-3 text-white/80">{models.horizontal.blurb}</p>
     <ul className="mt-4 space-y-2 text-sm text-white/85">
@@ -4489,11 +4523,18 @@ const rowsToRender = showAll ? allRows : diffRows;
     <div className="text-sm uppercase tracking-widest text-white/80">Model</div>
     <h3 className="mt-1 text-2xl font-semibold text-white">{models.vertical.name}</h3>
     <div className="mt-3 aspect-[3/4] rounded-2xl border border-white/15 overflow-hidden bg-black/50">
-      <img
+      {/* <img
         src={`${process.env.PUBLIC_URL}/prismV.png`}
         alt="Vertical PRISM"
         className="h-full w-full object-cover"
-      />
+      /> */}
+      <div className="h-full w-full flex flex-col items-center justify-center text-center p-6 bg-black/40">
+  <Shield size={32} className="text-white/60 mb-2" />
+  <span className="text-white/70 text-sm font-medium">
+    Revealed upon submission of provisional patent
+  </span>
+</div>
+
     </div>
     <p className="mt-3 text-white/80">{models.vertical.blurb}</p>
     <ul className="mt-4 space-y-2 text-sm text-white/85">

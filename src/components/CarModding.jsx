@@ -271,8 +271,8 @@ export default function CarModding() {
     return () => { cancelAnimationFrame(raf); window.removeEventListener("scroll", schedule); window.removeEventListener("resize", schedule); };
   }, [updateHeroGlowFromViewport]);
 
-  // // === Background image for hero (place carmod_bg.webp/png in /public)
-  // const bg = srcFor("carmod_bg");
+  // === Background image for hero (place carmod_bg.webp/png in /public)
+  const bg = srcFor("carmod_bg");
 
   return (
     <div className="min-h-screen w-full bg-black text-white" onMouseMove={onMove} style={rootStyle}>

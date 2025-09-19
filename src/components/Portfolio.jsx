@@ -936,20 +936,7 @@ const equipmentImages = useMemo(() => equipmentSlides, []);
         </div>
         
       </header>
-{/* In-progress bar */}
-<div className="fixed left-0 right-0 top-16 z-40 bg-amber-50/95 backdrop-blur border-t border-amber-200">
-  <div className="mx-auto max-w-7xl px-4 sm:px-6 py-2 flex items-center justify-between gap-3">
-    <div className="flex items-center gap-2 text-xs sm:text-sm text-amber-900">
-      <span aria-hidden>🚧</span>
-      <span className="leading-tight">
-        This site is a live work-in-progress.
-        <span className="ml-2 font-medium">Last update: 9/19/2024</span>
-      </span>
-    </div>
-  </div>
-  {/* iOS safe-area pad */}
-  <div style={{ paddingTop: "env(safe-area-inset-top)" }} />
-</div>
+
       
       {/* TOP HERO */}
       <section className="relative h-[88vh] overflow-hidden pt-14">
