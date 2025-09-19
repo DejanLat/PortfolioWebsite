@@ -804,6 +804,9 @@ const topSlides = [
   { base: "Prism", title: "", description: "" },
   { base: "presenting", title: "", description: "" },
   { base: "carmod_bg", title: "", description: "" },
+  { base: "image2Engproject", title: "", description: "" },
+  { base: "carhorizon", title: "", description: "" },
+  
 ];
 // --- equipment slides (put both .webp and .png in /public) ---
 const equipmentSlides = [
@@ -815,9 +818,12 @@ const equipmentSlides = [
 ];
 // --- engineering project slides (put both .webp and .png in /public) ---
 const engProjectSlides = [  
-  { base: "image1Engproject", title: "PRISM", description: "Documentation" },
-  { base: "image3Engprojectcarosel", title: "Pygame", description: "Screenshot" },
+  { base: "image1Engproject", title: "PRISM", description: "Test Bench" },
   { base: "image4Engprojectcarosel", title: "Maintenance", description: "Rear Shocks Replacement" },
+  { base: "image5Engprojectcarosel", title: "Spectrometer", description: "Reviving old spectrometer" },
+  { base: "image3Engprojectcarosel", title: "Pygame", description: "Screenshot" },
+
+  
 
 ];
 
@@ -1017,7 +1023,7 @@ const equipmentImages = useMemo(() => equipmentSlides, []);
               { icon: Users, title: "Institute for Quantum Computing (UWaterloo)", label: "Research Experience" },
               { icon: Target, title: "PRISM (Axivion Instruments)", label: "Core Project" },
               { icon: Settings, title: "Optics • Mechanical • Bio • Software", label: "Technical Fields" },
-              { icon: Award, title: "Photonics North Ottawa 2025", label: "Presented Start-up" },
+              { icon: Award, title: "Photonics North 2025", label: "Presented Start-up" },
             ].map((h) => (
               <div
                 key={h.title}
@@ -1317,155 +1323,135 @@ const equipmentImages = useMemo(() => equipmentSlides, []);
           </div>
         </div>
       </section>
+{/* Projects + full-width carousel */}
+<section id="projects" className="relative bg-gradient-to-b from-white to-black/[0.02]">
+  <div className="mx-auto max-w-7xl px-6 py-20 lg:py-24">
+    <h2 className="text-4xl font-semibold tracking-tight">Engineering Projects</h2>
+    <p className="text-black/60 mt-2">Breakthroughs with visual documentation</p>
 
-      {/* Projects + full-width carousel */}
-      <section id="projects" className="relative bg-gradient-to-b from-white to-black/[0.02]">
-        <div className="mx-auto max-w-7xl px-6 py-20 lg:py-24">
-          <h2 className="text-4xl font-semibold tracking-tight">Engineering Projects</h2>
-          <p className="text-black/60 mt-2">Breakthroughs with visual documentation</p>
+    {/* FULL-WIDTH CAROUSEL */}
+    <div className="mt-10 relative rounded-3xl overflow-hidden border border-black/10 bg-white">
+      <div className="relative w-full h-[560px] md:h-[640px]">
+        <AnimatePresence mode="wait">
+          {(() => {
+            const p = projectCarouselImages[currentProjectImage];
+            const s = srcFor(p.base);
+            return (
+              <MotionWebpImg
+                key={currentProjectImage}
+                webp={s.webp}
+                fallback={s.png}
+                alt={p.title}
+                className="absolute inset-0 w-full h-full object-cover object-center"
+                initial={{ opacity: 0.3 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.8 }}
+              />
+            );
+          })()}
+        </AnimatePresence>
+      </div>
 
-          {/* FULL-WIDTH CAROUSEL */}
-          <div className="mt-10 relative rounded-3xl overflow-hidden border border-black/10 bg-white">
-            <div className="relative w-full h-[560px] md:h-[640px]">
-              <AnimatePresence mode="wait">
-                {(() => {
-                  const p = projectCarouselImages[currentProjectImage];
-                  const s = srcFor(p.base);
-                  return (
-                    <MotionWebpImg
-                      key={currentProjectImage}
-                      webp={s.webp}
-                      fallback={s.png}
-                      alt={p.title}
-                      className="absolute inset-0 w-full h-full object-cover object-center"
-                      initial={{ opacity: 0.3 }}
-                      animate={{ opacity: 1 }}
-                      exit={{ opacity: 0 }}
-                      transition={{ duration: 0.8 }}
-                    />
-                  );
-                })()}
-              </AnimatePresence>
-            </div>
-
-            {/* caption overlay */}
-            <div className="absolute bottom-0 inset-x-0 p-5 sm:p-6 bg-gradient-to-t from-black/70 via-black/30 to-transparent">
-              <div className="text-white text-lg font-semibold">
-                {projectCarouselImages[currentProjectImage].title}
-              </div>
-              <div className="text-white/80 text-sm">
-                {projectCarouselImages[currentProjectImage].description}
-              </div>
-            </div>
-          </div>
-
-          {/* BARS / CARDS BELOW */}
-          <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 items-start">
-            {mockData.projects.map((project, index) => {
-              const isFeatured = !!project.featured;
-              const techs = Array.isArray(project.technologies) ? project.technologies : [];
-
-              return (
-                <motion.button
-                  key={project.id ?? index}
-                  type="button"
-                  initial={{ opacity: 0, y: 12 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.45, delay: index * 0.06 }}
-                  onClick={() => {
-                   if (project.slug === "prism") {
-                        navigate("/prism");
-                      } else if (project.slug === "car-modding") {
-                        navigate("/car-modding");
-                      } else if (project.demo) {
-                        window.open(project.demo, "_blank", "noopener,noreferrer");
-                      } else if (project.github) {
-                        window.open(project.github, "_blank", "noopener,noreferrer");
-                      }
-                  }}
-                  aria-label={`Open project: ${project.title}`}
-                  className={`w-full text-left cursor-pointer rounded-3xl border border-black/10 p-6 transition
-                              focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black/50
-                              ${isFeatured ? "bg-black text-white hover:shadow-xl" : "bg-white hover:shadow-md"}`}
-                >
-                  {isFeatured && (
-                    <div className="inline-flex items-center gap-2 rounded-full border px-3 py-1 text-xs mb-3">
-                      <Award size={14} /> Breakthrough
-                    </div>
-                  )}
-
-                  {/* Category header */}
-                  <div className="flex items-center justify-between">
-                    <div
-                      className="text-sm text-black/60 data-[featured=true]:text-white/70"
-                      data-featured={isFeatured}
-                    >
-                      Category
-                    </div>
-                    <div className="text-sm font-medium">{project.category}</div>
-                  </div>
-
-                  {/* Title + description */}
-                  <div className="mt-2 text-xl font-semibold">{project.title}</div>
-                  <p className={`mt-2 text-sm ${isFeatured ? "text-white/80" : "text-black/70"}`}>
-                    {project.description}
-                  </p>
-
-                  {/* Patent status */}
-                  {project.patentStatus && (
-                    <div
-                      className={`mt-3 inline-flex items-center gap-2 rounded-full px-3 py-1 text-xs
-                                  ${isFeatured ? "bg-white/10 border border-white/20 text-white" : "bg-black/5 border border-black/10 text-black/80"}`}
-                      aria-label="Patent status"
-                      title={project.patentStatus}
-                    >
-                      <Shield size={14} />
-                      <span>{project.patentStatus}</span>
-                    </div>
-                  )}
-
-                  {/* Technical specifications */}
-                  <div className="mt-4">
-                    <div className="text-sm font-medium">Technical Specifications</div>
-                    <div className="mt-2 space-y-2">
-                      {(project.specifications ?? []).slice(0, 4).map((s, si) => (
-                        <div key={si} className="flex items-center gap-2 text-sm">
-                          <div
-                            className={`size-4 rounded-full grid place-items-center
-                                        ${isFeatured ? "bg-white text-black" : "bg-black text-white"}`}
-                          >
-                            ✓
-                          </div>
-                          <span>{s}</span>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-
-                  {/* Technologies chips */}
-                  {techs.length > 0 && (
-                    <div className="mt-4">
-                      <div className="text-sm font-medium">Technologies</div>
-                      <div className="mt-2 flex flex-wrap gap-2">
-                        {techs.slice(0, 5).map((t, ti) => (
-                          <span
-                            key={ti}
-                            className={`rounded-full border px-3 py-1 text-xs
-                                        ${isFeatured ? "border-white/30 text-white/90" : "border-black/20 text-black/80"}`}
-                          >
-                            {t}
-                          </span>
-                        ))}
-                      </div>
-                    </div>
-                  )}
-                </motion.button>
-              );
-            })}
-          </div>
+      {/* caption overlay */}
+      <div className="absolute bottom-0 inset-x-0 p-5 sm:p-6 bg-gradient-to-t from-black/70 via-black/30 to-transparent">
+        <div className="text-white text-lg font-semibold">
+          {projectCarouselImages[currentProjectImage].title}
         </div>
-      </section>
+        <div className="text-white/80 text-sm">
+          {projectCarouselImages[currentProjectImage].description}
+        </div>
+      </div>
+    </div>
+
+    {/* BARS / CARDS BELOW */}
+    <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 items-start">
+      {mockData.projects.map((project, index) => {
+        const isFeatured = !!project.featured;
+        const techs = Array.isArray(project.technologies) ? project.technologies : [];
+
+        return (
+<motion.button
+  key={project.id ?? index}
+  type="button"
+  initial={{ opacity: 0, y: 12 }}
+  whileInView={{ opacity: 1, y: 0 }}
+  viewport={{ once: true }}
+  transition={{ duration: 0.45, delay: index * 0.06 }}
+  whileHover={{ scale: 1.03 }}
+  onClick={() => {
+    if (project.slug === "prism") {
+      navigate("/prism");
+    } else if (project.slug === "car-modding") {
+      navigate("/car-modding");
+    } else if (project.demo) {
+      window.open(project.demo, "_blank", "noopener,noreferrer");
+    } else if (project.github) {
+      window.open(project.github, "_blank", "noopener,noreferrer");
+    }
+  }}
+  aria-label={`Open project: ${project.title}`}
+  className={`w-full text-left cursor-pointer rounded-3xl border p-6 transition-all duration-200 ease-out
+              focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black/50
+              ${isFeatured ? "bg-black text-white hover:shadow-xl" : "bg-white hover:shadow-md"}
+              ${project.slug === "prism" ? "prism-card" : ""}`}
+>
+  {isFeatured && (
+    <div className="inline-flex items-center gap-2 rounded-full border px-3 py-1 text-xs mb-3 accent">
+      <Award size={14} className="accent" /> Breakthrough
+    </div>
+  )}
+
+  {/* Category header */}
+  <div className="flex items-center justify-between">
+    <div className="text-sm text-black/60 data-[featured=true]:text-white/70">Category</div>
+    <div className="text-sm font-medium accent">{project.category}</div>
+  </div>
+
+  {/* Title + description */}
+  <div className="mt-2 text-xl font-semibold accent">{project.title}</div>
+  <p className={`mt-2 text-sm ${isFeatured ? "text-white/80" : "text-black/70"}`}>
+    {project.description}
+  </p>
+
+  {/* Technical specifications */}
+  <div className="mt-4">
+    <div className="text-sm font-medium">Technical Specifications</div>
+    <div className="mt-2 space-y-2">
+      {(project.specifications ?? []).slice(0, 4).map((s, si) => (
+        <div key={si} className="flex items-center gap-2 text-sm accent">
+          <div className="size-4 rounded-full grid place-items-center accent">✓</div>
+          <span>{s}</span>
+        </div>
+      ))}
+    </div>
+  </div>
+
+  {/* Technologies chips */}
+  {techs.length > 0 && (
+    <div className="mt-4">
+      <div className="text-sm font-medium">Technologies</div>
+      <div className="mt-2 flex flex-wrap gap-2">
+        {techs.slice(0, 5).map((t, ti) => (
+          <span
+            key={ti}
+            className={`rounded-full border px-3 py-1 text-xs accent
+                        ${isFeatured ? "border-white/30 text-white/90" : "border-black/20 text-black/80"}`}
+          >
+            {t}
+          </span>
+        ))}
+      </div>
+    </div>
+  )}
+</motion.button>
+
+        );
+      })}
+    </div>
+  </div>
+</section>
+
 
       {/* Footer */}
       <footer className="border-t border-black/10 bg-white">

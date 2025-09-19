@@ -326,6 +326,25 @@ projects: [
   category: "Automotive Engineering",
   slug: "car-modding"
 },
+{
+  title: "Spectrometer Motor Controller Rebuild",
+  description:
+    "Built a simple control system for a lab spectrometer, combining Arduino and MATLAB to test and rotate the internal mirror.",
+  image: "https://images.unsplash.com/photo-1581092160562-40aa08e78837", // placeholder electronics photo
+  technologies: ["Arduino", "MATLAB", "3D Modeling", "Soldering"],
+  specifications: [
+    "Wrote Arduino code to drive the spectrometer’s mirror motor",
+    "Started MATLAB–Arduino interface for basic motor control",
+    "3D modeled and printed a case for the controller",
+    "Soldered and connected motor wiring",
+    "Verified correct mirror rotation and basic functionality"
+  ],
+  featured: false,
+  github: false,
+  demo: null,
+  category: "Optics & Instrumentation"
+},
+
   {
     title: "Customer Analytics Pipeline",
     description:

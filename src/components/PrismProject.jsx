@@ -3842,7 +3842,7 @@ const scrollToIdWithOffset = useCallback((id) => {
   // KPI badges
   const kpis = [
     { value: "3-axis", label: "Coordinated Motion" },
-    { value: "13.5 mm³", label: "Range per Axis" },
+    { value: "13.5 mm³", label: "Scanning Range" },
     { value: "< 50 nm", label: "Step Size (typ.)" },
     { value: "Piezo", label: "Actuation" },
   ];

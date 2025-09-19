@@ -49,6 +49,74 @@ body {
   cursor: pointer;
   transition: all 0.2s ease;
 }
+/* -------------------------------------- */
+/* PRISM Card Effects */
+/* -------------------------------------- */
+
+/* Inward breathing effect for PRISM border */
+@keyframes prism-breathe-in {
+  0%, 100% {
+    box-shadow: inset 0 0 6px rgba(19,194,179,0.4),
+                inset 0 0 10px rgba(19,194,179,0.2);
+  }
+  50% {
+    box-shadow: inset 0 0 12px rgba(19,194,179,0.7),
+                inset 0 0 20px rgba(19,194,179,0.4);
+  }
+}
+
+.prism-card {
+  position: relative;
+  transition: all 0.2s ease-out;
+}
+
+/* The subtle teal ring */
+.prism-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 1.5rem; /* match rounded-3xl */
+  border: 2px solid rgba(19,194,179,0.6);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease-out;
+}
+
+.prism-card:hover::after {
+  opacity: 1;
+  animation: prism-breathe-in 2s ease-in-out infinite;
+}
+
+/* -------------------------------------- */
+/* Accent Elements (Checkmarks, Pills) */
+/* -------------------------------------- */
+
+/* Base transition for all accents */
+.accent {
+  transition: all 0.3s ease;
+}
+
+/* Checkmarks turn teal on hover */
+.prism-card:hover .checkmark {
+  color: #13c2b3 !important;
+}
+
+/* Technology pills border + text turn teal */
+.prism-card:hover .tech-pill {
+  border-color: #13c2b3 !important;
+  color: #13c2b3 !important;
+}
+
+/* Breakthrough pill turns teal (icon + text + border) */
+.prism-card:hover .breakthrough-pill {
+  border-color: #13c2b3 !important;
+  color: #13c2b3 !important;
+}
+
+.prism-card:hover .breakthrough-pill svg {
+  stroke: #13c2b3 !important;
+}
+
 
 .carousel-play-btn:hover {
   background: #3b82f6;
