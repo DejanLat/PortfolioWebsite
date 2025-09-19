@@ -1364,91 +1364,110 @@ const equipmentImages = useMemo(() => equipmentSlides, []);
       </div>
     </div>
 
-    {/* BARS / CARDS BELOW */}
-    <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 items-start">
-      {mockData.projects.map((project, index) => {
-        const isFeatured = !!project.featured;
-        const techs = Array.isArray(project.technologies) ? project.technologies : [];
+{/* BARS / CARDS BELOW */}
+<div className="mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 items-start">
+  {mockData.projects.map((project, index) => {
+    const isFeatured = !!project.featured;
+    const techs = Array.isArray(project.technologies) ? project.technologies : [];
 
-        return (
-<motion.button
-  key={project.id ?? index}
-  type="button"
-  initial={{ opacity: 0, y: 12 }}
-  whileInView={{ opacity: 1, y: 0 }}
-  viewport={{ once: true }}
-  transition={{ duration: 0.45, delay: index * 0.06 }}
-  whileHover={{ scale: 1.03 }}
-  onClick={() => {
-    if (project.slug === "prism") {
-      navigate("/prism");
-    } else if (project.slug === "car-modding") {
-      navigate("/car-modding");
-    } else if (project.demo) {
-      window.open(project.demo, "_blank", "noopener,noreferrer");
-    } else if (project.github) {
-      window.open(project.github, "_blank", "noopener,noreferrer");
-    }
-  }}
-  aria-label={`Open project: ${project.title}`}
-  className={`w-full text-left cursor-pointer rounded-3xl border p-6 transition-all duration-200 ease-out
-              focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black/50
-              ${isFeatured ? "bg-black text-white hover:shadow-xl" : "bg-white hover:shadow-md"}
-              ${project.slug === "prism" ? "prism-card" : ""}`}
->
-  {isFeatured && (
-    <div className="inline-flex items-center gap-2 rounded-full border px-3 py-1 text-xs mb-3 accent">
-      <Award size={14} className="accent" /> Breakthrough
-    </div>
-  )}
+    return (
+      <motion.button
+        key={project.id ?? index}
+        type="button"
+        initial={{ opacity: 0, y: 12 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.45, delay: index * 0.06 }}
+        whileHover={{ scale: 1.03 }}
+        onClick={() => {
+          if (project.slug === "prism") {
+            navigate("/prism");
+          } else if (project.slug === "car-modding") {
+            navigate("/car-modding");
+          } else if (project.demo) {
+            window.open(project.demo, "_blank", "noopener,noreferrer");
+          } else if (project.github) {
+            window.open(project.github, "_blank", "noopener,noreferrer");
+          }
+        }}
+        aria-label={`Open project: ${project.title}`}
+        className={`w-full text-left cursor-pointer rounded-3xl border p-6 transition-all duration-200 ease-out
+                    focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black/50
+                    ${isFeatured ? "bg-black text-white hover:shadow-xl" : "bg-white hover:shadow-md"}
+                    ${project.slug === "prism" ? "prism-card" : ""}
+                    ${project.slug === "car-modding" ? "car-card" : ""}`}
+      >
+        {/* Breakthrough pill (accent color on hover via CSS) */}
+        {isFeatured && (
+          <div className="inline-flex items-center gap-2 rounded-full border px-3 py-1 text-xs mb-3 breakthrough-pill accent">
+            <Award size={14} /> Breakthrough
+          </div>
+        )}
 
-  {/* Category header */}
-  <div className="flex items-center justify-between">
-    <div className="text-sm text-black/60 data-[featured=true]:text-white/70">Category</div>
-    <div className="text-sm font-medium accent">{project.category}</div>
-  </div>
-
-  {/* Title + description */}
-  <div className="mt-2 text-xl font-semibold accent">{project.title}</div>
-  <p className={`mt-2 text-sm ${isFeatured ? "text-white/80" : "text-black/70"}`}>
-    {project.description}
-  </p>
-
-  {/* Technical specifications */}
-  <div className="mt-4">
-    <div className="text-sm font-medium">Technical Specifications</div>
-    <div className="mt-2 space-y-2">
-      {(project.specifications ?? []).slice(0, 4).map((s, si) => (
-        <div key={si} className="flex items-center gap-2 text-sm accent">
-          <div className="size-4 rounded-full grid place-items-center accent">✓</div>
-          <span>{s}</span>
-        </div>
-      ))}
-    </div>
-  </div>
-
-  {/* Technologies chips */}
-  {techs.length > 0 && (
-    <div className="mt-4">
-      <div className="text-sm font-medium">Technologies</div>
-      <div className="mt-2 flex flex-wrap gap-2">
-        {techs.slice(0, 5).map((t, ti) => (
-          <span
-            key={ti}
-            className={`rounded-full border px-3 py-1 text-xs accent
-                        ${isFeatured ? "border-white/30 text-white/90" : "border-black/20 text-black/80"}`}
+        {/* Category header */}
+        <div className="flex items-center justify-between">
+          <div
+            className="text-sm text-black/60 data-[featured=true]:text-white/70"
+            data-featured={isFeatured}
           >
-            {t}
-          </span>
-        ))}
-      </div>
-    </div>
-  )}
-</motion.button>
+            Category
+          </div>
+          <div className="text-sm font-medium">{project.category}</div>
+        </div>
 
-        );
-      })}
-    </div>
+        {/* Title + description */}
+        <div className="mt-2 text-xl font-semibold">{project.title}</div>
+        <p className={`mt-2 text-sm ${isFeatured ? "text-white/80" : "text-black/70"}`}>
+          {project.description}
+        </p>
+
+        {/* Patent status — outlined pill (color comes from CSS .patent-pill for PRISM) */}
+        {project.patentStatus && (
+          <div
+            className="mt-3 inline-flex items-center gap-2 rounded-full px-3 py-1 text-xs patent-pill"
+            aria-label="Patent status"
+            title={project.patentStatus}
+          >
+            <Shield size={14} />
+            <span>{project.patentStatus}</span>
+          </div>
+        )}
+
+        {/* Technical specifications */}
+        <div className="mt-4">
+          <div className="text-sm font-medium">Technical Specifications</div>
+          <div className="mt-2 space-y-2">
+            {(project.specifications ?? []).slice(0, 4).map((s, si) => (
+              <div key={si} className="flex items-center gap-2 text-sm">
+                <div className="size-4 rounded-full grid place-items-center checkmark accent">✓</div>
+                <span>{s}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Technologies chips — only BORDER changes color on hover */}
+        {techs.length > 0 && (
+          <div className="mt-4">
+            <div className="text-sm font-medium">Technologies</div>
+            <div className="mt-2 flex flex-wrap gap-2">
+              {techs.slice(0, 5).map((t, ti) => (
+                <span
+                  key={ti}
+                  className={`rounded-full border px-3 py-1 text-xs tech-pill accent
+                              ${isFeatured ? "border-white/30 text-white/90" : "border-black/20 text-black/80"}`}
+                >
+                  {t}
+                </span>
+              ))}
+            </div>
+          </div>
+        )}
+      </motion.button>
+    );
+  })}
+</div>
+
   </div>
 </section>
 

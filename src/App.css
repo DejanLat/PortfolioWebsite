@@ -49,11 +49,11 @@ body {
   cursor: pointer;
   transition: all 0.2s ease;
 }
-/* -------------------------------------- */
-/* PRISM Card Effects */
-/* -------------------------------------- */
 
-/* Inward breathing effect for PRISM border */
+
+/* -------------------------------------- */
+/* PRISM Card (teal) */
+/* -------------------------------------- */
 @keyframes prism-breathe-in {
   0%, 100% {
     box-shadow: inset 0 0 6px rgba(19,194,179,0.4),
@@ -70,12 +70,11 @@ body {
   transition: all 0.2s ease-out;
 }
 
-/* The subtle teal ring */
 .prism-card::after {
   content: "";
   position: absolute;
   inset: 0;
-  border-radius: 1.5rem; /* match rounded-3xl */
+  border-radius: 1.5rem;
   border: 2px solid rgba(19,194,179,0.6);
   opacity: 0;
   pointer-events: none;
@@ -87,35 +86,93 @@ body {
   animation: prism-breathe-in 2s ease-in-out infinite;
 }
 
-/* -------------------------------------- */
-/* Accent Elements (Checkmarks, Pills) */
-/* -------------------------------------- */
-
-/* Base transition for all accents */
-.accent {
-  transition: all 0.3s ease;
-}
-
-/* Checkmarks turn teal on hover */
+/* Checkmarks teal */
 .prism-card:hover .checkmark {
   color: #13c2b3 !important;
 }
 
-/* Technology pills border + text turn teal */
+/* Technology pills: only border teal */
 .prism-card:hover .tech-pill {
   border-color: #13c2b3 !important;
-  color: #13c2b3 !important;
 }
 
-/* Breakthrough pill turns teal (icon + text + border) */
+/* Breakthrough pill: full teal */
 .prism-card:hover .breakthrough-pill {
   border-color: #13c2b3 !important;
   color: #13c2b3 !important;
 }
-
 .prism-card:hover .breakthrough-pill svg {
   stroke: #13c2b3 !important;
 }
+
+/* Patent pill: outlined */
+.prism-card .patent-pill {
+  border: 1px solid #13c2b3 !important;
+  background: transparent !important;
+  color: #13c2b3 !important;
+}
+
+
+/* -------------------------------------- */
+/* Car Modding Card (hot pink) */
+/* -------------------------------------- */
+@keyframes car-breathe-in {
+  0%, 100% {
+    box-shadow: inset 0 0 6px rgba(255,20,147,0.4),
+                inset 0 0 10px rgba(255,20,147,0.2);
+  }
+  50% {
+    box-shadow: inset 0 0 12px rgba(255,20,147,0.7),
+                inset 0 0 20px rgba(255,20,147,0.4);
+  }
+}
+
+.car-card {
+  position: relative;
+  transition: all 0.2s ease-out;
+}
+
+.car-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 1.5rem;
+  border: 2px solid rgba(255,20,147,0.6);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease-out;
+}
+
+.car-card:hover::after {
+  opacity: 1;
+  animation: car-breathe-in 2s ease-in-out infinite;
+}
+
+/* Checkmarks hot pink */
+.car-card:hover .checkmark {
+  color: #ff1493 !important;
+}
+
+/* Technology pills: only border pink */
+.car-card:hover .tech-pill {
+  border-color: #ff1493 !important;
+}
+
+/* Breakthrough pill: full pink */
+.car-card:hover .breakthrough-pill {
+  border-color: #ff1493 !important;
+  color: #ff1493 !important;
+}
+.car-card:hover .breakthrough-pill svg {
+  stroke: #ff1493 !important;
+}
+
+
+
+
+
+
+
 
 
 .carousel-play-btn:hover {

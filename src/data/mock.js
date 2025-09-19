@@ -293,7 +293,7 @@ projects: [
     ],
     specifications: [
       "3-axis coordinated motion",
-      "13 mm³ range per axis",
+      "13 mm³ scanning range",
       "< 50 nm typical step",
       "Piezo-driven actuation",
       "Modular interfaces; retrofit-friendly",
