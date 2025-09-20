@@ -4025,7 +4025,7 @@ const rowsToRender = showAll ? allRows : diffRows;
       </Link>
       <div className="h-4 sm:h-5 w-px bg-white/20 shrink-0" />
       <div className="font-semibold tracking-widest text-white text-xs sm:text-sm truncate">
-        AXVIVION
+        AXIVION
       </div>
       <div className="text-white/50 text-xs sm:text-sm xs:block">
         INSTRUMENTS
