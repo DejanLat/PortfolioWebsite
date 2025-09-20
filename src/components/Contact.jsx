@@ -472,38 +472,46 @@ export default function Contact({ contactEmail = CONTACT_EMAIL }) {
         />
       </div>
 
-      {/* Top bar */}
-      <header className="fixed inset-x-0 top-0 z-50 backdrop-blur bg-black/70 border-b border-white/10">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-20 h-16 flex items-center justify-between">
-          <div className="flex items-center gap-3">
-            <Link
-              to="/prism"
-              className="inline-flex items-center gap-2 text-sm text-white/80 hover:text-white"
-            >
-              <ArrowLeft size={18} />
-              <span>Back</span>
-            </Link>
-            <div className="h-5 w-px bg-white/20" />
-            <div className="font-semibold tracking-widest text-white">AXIVION</div>
-            <div className="text-white/40">CONTACT</div>
-          </div>
+{/* Top bar (mobile-tight, truncation-safe, safe blur) */}
+<header className="fixed inset-x-0 top-0 z-50 supports-[backdrop-filter:blur(0px)]:backdrop-blur bg-black/70 border-b border-white/10">
+  <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-20 h-16 flex items-center justify-between">
+    {/* LEFT: crumb cluster */}
+    <div className="min-w-0 flex items-center gap-2 sm:gap-3">
+      <Link
+        to="/prism"
+        className="inline-flex items-center gap-1.5 sm:gap-2 text-xs sm:text-sm text-white/80 hover:text-white shrink-0"
+      >
+        <ArrowLeft size={16} className="sm:hidden" />
+        <span>Back</span>
+      </Link>
 
-          <a
-            href={buildMailto("Direct email", "Hi,")}
-            className="rounded-full px-4 py-2 text-sm font-medium"
-            style={{ backgroundColor: ACCENT, color: "#000" }}
-            onMouseEnter={(e) =>
-              (e.currentTarget.style.backgroundColor = ACCENT_HOVER)
-            }
-            onMouseLeave={(e) =>
-              (e.currentTarget.style.backgroundColor = ACCENT)
-            }
-          >
-            <Mail size={16} className="inline mr-1" />
-            Email
-          </a>
-        </div>
-      </header>
+      <div className="h-4 sm:h-5 w-px bg-white/20 shrink-0" />
+
+      {/* Brand + section, ellipsis if narrow */}
+      <div className="min-w-0 flex items-baseline gap-2">
+        <span className="font-semibold tracking-widest text-white text-xs sm:text-sm truncate">
+          AXIVION
+        </span>
+        <span className="text-white/50 text-xs sm:text-sm truncate">
+          CONTACT
+        </span>
+      </div>
+    </div>
+
+    {/* RIGHT: CTA (scaled for phone) */}
+    <a
+      href={buildMailto("Direct email", "Hi,")}
+      className="rounded-full px-3.5 sm:px-4 py-1.5 sm:py-2 text-sm font-medium"
+      style={{ backgroundColor: ACCENT, color: "#000" }}
+      onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = ACCENT_HOVER)}
+      onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = ACCENT)}
+    >
+      <Mail size={16} className="inline mr-1" />
+      Email
+    </a>
+  </div>
+</header>
+
 
       {/* Hero */}
       <section

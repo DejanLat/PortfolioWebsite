@@ -4007,142 +4007,142 @@ const rowsToRender = showAll ? allRows : diffRows;
 
 {/* CONTENT WRAPPER */}
 <div className="relative z-10 pt-16 pb-14 md:pb-0">
-  <header
-    className={`fixed inset-x-0 top-0 z-50 transition-all ${
-      solidNav ? "backdrop-blur bg-black/70 border-b border-white/10" : "bg-transparent"
-    }`}
-  >
-    <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-20 h-16 flex items-center justify-between">
-      {/* LEFT: title cluster */}
-      <div className="flex-1 min-w-0 flex items-center gap-3">
-        <Link
-          to="/"
-          className="inline-flex items-center gap-2 text-base text-white/80 hover:text-white shrink-0"
-        >
-          <ArrowLeft size={18} />
-          <span>Back</span>
-        </Link>
-        <div className="h-5 w-px bg-white/20 shrink-0" />
-        <div className="font-semibold tracking-widest text-white text-base truncate">
-          AXIVION
-        </div>
-        <div className="text-white/50 text-base">
-          INSTRUMENTS
-        </div>
+  {/* ====== HEADER (drop-in) ====== */}
+<header
+  className={`fixed inset-x-0 top-0 z-50 transition-all ${
+    solidNav ? "backdrop-blur bg-black/70 border-b border-white/10" : "bg-transparent"
+  }`}
+>
+  <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-20 h-16 flex items-center justify-between">
+    {/* LEFT: title cluster (tight on mobile) */}
+    <div className="flex-1 min-w-0 flex items-center gap-2 sm:gap-3">
+      <Link
+        to="/"
+        className="inline-flex items-center gap-1.5 sm:gap-2 text-xs sm:text-sm text-white/80 hover:text-white shrink-0"
+      >
+        <ArrowLeft size={16} className="sm:hidden" />
+        <span>Back</span>
+      </Link>
+      <div className="h-4 sm:h-5 w-px bg-white/20 shrink-0" />
+      <div className="font-semibold tracking-widest text-white text-xs sm:text-sm truncate">
+        AXIVION
+      </div>
+      <div className="text-white/50 text-xs sm:text-sm hidden xs:block">
+        INSTRUMENTS
+      </div>
+    </div>
+
+    {/* RIGHT: CTA */}
+    <div className="shrink-0">
+      <Link
+        to="/contact"
+        className="rounded-full px-3.5 sm:px-4 py-1.5 sm:py-2 text-sm font-medium"
+        style={{ backgroundColor: ACCENT, color: "#000" }}
+        onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = ACCENT_HOVER)}
+        onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = ACCENT)}
+      >
+        Contact
+      </Link>
+    </div>
+  </div>
+</header>
+
+{/* ====== HERO (drop-in) ====== */}
+<section
+  ref={heroRef}
+  onMouseMove={onHeroMove}
+  className="relative h-[88vh] sm:h-[92vh] w-full"
+>
+  {/* background */}
+  <div className="absolute inset-0 z-0">
+    <div className="absolute inset-0 bg-gradient-to-b from-[#062a2e] via-[#052024] to-black" />
+    <div className="absolute inset-0 [background-image:radial-gradient(60rem_30rem_at_50%_120%,rgba(19,194,179,0.18),transparent_60%),linear-gradient(to_bottom,rgba(0,0,0,0.25),rgba(0,0,0,0.55))]" />
+  </div>
+
+  {/* hero-local cursor halo */}
+  <div
+    className="pointer-events-none absolute inset-0 z-10"
+    style={{
+      background:
+        "radial-gradient(700px at var(--hx) var(--hy), rgba(19, 194, 179, 0.18), transparent 60%)",
+    }}
+  />
+
+  {/* Bottom bleed */}
+  {/* Bottom bleed to avoid any seam between sections */}
+  <div
+    className="pointer-events-none absolute -bottom-10 left-0 right-0 h-10 z-[11]"
+    style={{
+      background:
+        "linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 100%)",
+    }}
+    aria-hidden
+  />
+
+  {/* content */}
+  <div className="absolute inset-0 grid place-items-center z-20">
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.8 }}
+      className="text-center px-6"
+    >
+      <div
+        className="mx-auto inline-flex items-center gap-2 rounded-full px-3 py-1 text-[11px] sm:text-xs uppercase tracking-[0.18em] text-white/90 border"
+        style={{ borderColor: "rgba(19,194,179,0.45)" }}
+      >
+        <Microscope size={14} /> Instrumentation Preview
       </div>
 
-      {/* RIGHT: CTA */}
-      <div className="shrink-0">
-        <Link
-          to="/contact"
-          className="rounded-full px-4 py-2 text-base font-medium"
+      {/* FLUID H1 */}
+      <h1
+        className="mt-4 font-semibold tracking-[-0.02em] leading-[1.05] text-[clamp(2.1rem,8vw,4.5rem)] text-balance break-words hyphens-auto"
+      >
+        <span className="text-white block">Periscope Relay Imaging</span>
+        <span className="block" style={{ color: ACCENT }}>
+          Scanning Microscope
+        </span>
+      </h1>
+
+      <p className="mx-auto mt-5 max-w-2xl text-balance text-white/80">
+        High-level preview of an advanced optical instrument. Detailed specifications are
+        shared directly upon request.
+      </p>
+
+      <div className="mt-8 flex items-center justify-center gap-3">
+        <button
+          onClick={() => scrollToIdWithOffset("models")}
+          className="rounded-full px-6 py-3 text-sm font-medium"
           style={{ backgroundColor: ACCENT, color: "#000" }}
           onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = ACCENT_HOVER)}
           onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = ACCENT)}
         >
-          Contact
-        </Link>
+          Explore
+        </button>
       </div>
-    </div>
-  </header>
+    </motion.div>
+  </div>
 
-
-
-
-
-
-        {/* Hero with Axivion-teal glow + hero-local cursor glow */}
-        <section
-          ref={heroRef}
-          onMouseMove={onHeroMove}
-          className="relative h-[92vh] w-full"  // <-- no overflow-hidden (lets bg bleed)
+  {/* KPI badges */}
+  <div className="absolute bottom-6 inset-x-0 z-20">
+    <div className="mx-auto max-w-5xl grid grid-cols-2 md:grid-cols-4 gap-2 px-6">
+      {kpis.map((k) => (
+        <div
+          key={k.label}
+          className="rounded-2xl backdrop-blur px-4 py-3 text-center border"
+          style={{
+            background: "rgba(19,194,179,0.06)",
+            borderColor: "rgba(19,194,179,0.18)",
+          }}
         >
-          {/* Hero background teal gradient */}
-          <div className="absolute inset-0 z-0">
-            <div className="absolute inset-0 bg-gradient-to-b from-[#062a2e] via-[#052024] to-black" />
-            <div className="absolute inset-0 [background-image:radial-gradient(60rem_30rem_at_50%_120%,rgba(19,194,179,0.18),transparent_60%),linear-gradient(to_bottom,rgba(0,0,0,0.25),rgba(0,0,0,0.55))]" />
-          </div>
+          <div className="text-lg sm:text-xl font-semibold">{k.value}</div>
+          <div className="text-[11px] sm:text-xs text-white/70">{k.label}</div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
 
-          {/* Hero-local cursor halo (above hero bg, below content) */}
-          <div
-            className="pointer-events-none absolute inset-0 z-10"
-            style={{
-              background:
-                "radial-gradient(700px at var(--hx) var(--hy), rgba(19, 194, 179, 0.18), transparent 60%)",
-            }}
-          />
-
-          Bottom bleed to avoid any seam between sections
-          <div
-            className="pointer-events-none absolute -bottom-10 left-0 right-0 h-10 z-[11]"
-            style={{
-              background:
-                "linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 100%)",
-            }}
-            aria-hidden
-          />
-
-          {/* Content */}
-          <div className="absolute inset-0 grid place-items-center z-20">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
-              className="text-center px-6"
-            >
-              <div
-                className="mx-auto inline-flex items-center gap-2 rounded-full px-4 py-1 text-xs uppercase tracking-widest text-white/90 border"
-                style={{ borderColor: "rgba(19,194,179,0.45)" }}
-              >
-                <Microscope size={14} /> Instrumentation Preview
-              </div>
-              <h1 className="mt-4 text-5xl sm:text-6xl md:text-7xl font-semibold tracking-tight">
-                <span className="text-white">Periscope Relay Imaging</span>
-                <span className="block" style={{ color: ACCENT }}>
-                  Scanning Microscope
-                </span>
-              </h1>
-              <p className="mx-auto mt-5 max-w-2xl text-balance text-white/80">
-                High-level preview of an advanced optical instrument. Detailed specifications are
-                shared directly upon request.
-              </p>
-              <div className="mt-8 flex items-center justify-center gap-3">
-<div className="mt-8 flex items-center justify-center gap-3">
-  <button
-    onClick={() => scrollToIdWithOffset("models")}
-    className="rounded-full px-6 py-3 text-sm font-medium"
-    style={{ backgroundColor: ACCENT, color: "#000" }}
-    onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = ACCENT_HOVER)}
-    onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = ACCENT)}
-  >
-    Explore
-  </button>
-</div>
-
-
-              </div>
-            </motion.div>
-          </div>
-
-          {/* KPI badges */}
-          <div className="absolute bottom-6 inset-x-0 z-20">
-            <div className="mx-auto max-w-5xl grid grid-cols-2 md:grid-cols-4 gap-2 px-6">
-              {kpis.map((k) => (
-                <div
-                  key={k.label}
-                  className="rounded-2xl backdrop-blur px-4 py-3 text-center border"
-                  style={{
-                    background: "rgba(19,194,179,0.06)",
-                    borderColor: "rgba(19,194,179,0.18)",
-                  }}
-                >
-                  <div className="text-xl font-semibold">{k.value}</div>
-                  <div className="text-xs text-white/70">{k.label}</div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
 {/* Sticky chips */}
 <section className="sticky top-16 z-40 border-y border-white/10 bg-black/80 backdrop-blur">
   <div className="mx-auto max-w-7xl px-4 sm:px-6 py-2">
