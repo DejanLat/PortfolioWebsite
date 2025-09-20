@@ -938,72 +938,83 @@ const equipmentImages = useMemo(() => equipmentSlides, []);
       </header>
 
       
-      {/* TOP HERO */}
-      <section className="relative h-[88vh] overflow-hidden pt-14">
-        {/* background image with 0.7s cross-fade */}
-        <div className="absolute inset-0 z-10">
-          <AnimatePresence mode="wait">
-            {(() => {
-              const h = heroImages[currentHeroImage];
-              const s = srcFor(h.base);
-              return (
-                <MotionWebpImg
-                  key={currentHeroImage}
-                  webp={s.webp}
-                  fallback={s.png}
-                  alt={h.title}
-                  className="h-full w-full object-cover"
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 0.6 }}
-                  exit={{ opacity: 0 }}
-                  transition={{ duration: 0.7 }}
-                />
-              );
-            })()}
-          </AnimatePresence>
+     {/* TOP HERO */}
+<section className="relative h-[88vh] overflow-clip md:overflow-hidden pt-14">
+  {/* background image with 0.7s cross-fade */}
+  <div className="absolute inset-0 z-0">
+    <AnimatePresence mode="wait">
+      {(() => {
+        const h = heroImages[currentHeroImage];
+        const s = srcFor(h.base);
+        return (
+          <MotionWebpImg
+            key={currentHeroImage}
+            webp={s.webp}
+            fallback={s.png}
+            alt={h.title}
+            className="h-full w-full object-cover"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 0.6 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.7 }}
+          />
+        );
+      })()}
+    </AnimatePresence>
 
-          {/* white gradient overlay */}
-          <div className="absolute inset-0 pointer-events-none bg-gradient-to-b from-white/60 via-white/50 to-white" />
+    {/* white gradient overlay */}
+    <div className="absolute inset-0 pointer-events-none bg-gradient-to-b from-white/60 via-white/50 to-white" />
+  </div>
+
+  {/* foreground content */}
+  <div className="relative z-10 h-full flex flex-col justify-between">
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.8 }}
+      className="px-4 sm:px-6 pt-20 pb-10"
+    >
+      <div className="mx-auto max-w-7xl">
+        <div className="mx-auto inline-flex items-center gap-2 rounded-full border border-black/10 bg-white/70 px-4 py-1 text-[10px] sm:text-xs uppercase tracking-widest text-black/70">
+          <MicroscopeIcon size={14} /> Nano Photonics • Nano-Fluidics Engineering
         </div>
 
-        {/* foreground content */}
-        <div className="relative z-10 h-full flex flex-col justify-between">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="px-6 pt-20 pb-10"
+        {/* Title: responsive, won’t clip */}
+        <h1
+          className="
+            mt-4 font-semibold tracking-tight text-balance leading-[0.95]
+            break-words hyphens-auto
+            text-[clamp(2.25rem,8vw,4.5rem)] md:text-[clamp(3rem,7vw,5.5rem)]
+          "
+        >
+          Nanotechnology
+          <span className="block text-black/60">Engineer</span>
+        </h1>
+
+        <p className="mt-5 max-w-2xl text-black/70">
+          Nanotechnology engineer focused on high-accuracy motion and optical systems. Axivion Instruments is
+          developing PRISM, our flagship research-grade microscope platform.
+        </p>
+
+        <div className="mt-8 flex items-center gap-3">
+          <Link
+            to="/prism"
+            className="rounded-full bg-black text-white px-6 py-3 text-sm font-medium hover:bg-black/90 inline-flex items-center gap-2"
           >
-            <div className="mx-auto max-w-7xl">
-              <div className="mx-auto inline-flex items-center gap-2 rounded-full border border-black/10 bg-white/70 px-4 py-1 text-xs uppercase tracking-widest text-black/70">
-                <MicroscopeIcon size={14} /> Nano Photonics • Nano-Fluidics Engineering
-              </div>
-              <h1 className="mt-4 text-5xl sm:text-6xl md:text-7xl font-semibold tracking-tight text-balance">
-                Nanotechnology
-                <span className="block text-black/60">Engineer</span>
-              </h1>
-              <p className="mt-5 max-w-2xl text-black/70">
-                Nanotechnology engineer focused on high-accuracy motion and optical systems. Axivion Instruments is
-                developing PRISM, our flagship research-grade microscope platform.
-              </p>
-              <div className="mt-8 flex items-center gap-3">
-                <Link
-                  to="/prism"
-                  className="rounded-full bg-black text-white px-6 py-3 text-sm font-medium hover:bg-black/90 inline-flex items-center gap-2"
-                >
-                  Axivion Instruments <ArrowRight size={18} />
-                </Link>
-                <Link
-                  to="/contact"
-                  className="rounded-full border border-black/20 px-6 py-3 text-sm font-medium hover:border-black/40"
-                >
-                  Contact
-                </Link>
-              </div>
-            </div>
-          </motion.div>
+            Axivion Instruments <ArrowRight size={18} />
+          </Link>
+          <Link
+            to="/contact"
+            className="rounded-full border border-black/20 px-6 py-3 text-sm font-medium hover:border-black/40"
+          >
+            Contact
+          </Link>
         </div>
-      </section>
+      </div>
+    </motion.div>
+  </div>
+</section>
+
 
       {/* Highlights */}
       <section aria-labelledby="highlights" className="relative -mt-8 z-20">
