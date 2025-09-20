@@ -834,7 +834,7 @@ export default function PortfolioWhite() {
   const navigate = useNavigate();
 
   // tabs + carousels
-  const [activeTab, setActiveTab] = useState("performance");
+  const [activeTab, setActiveTab] = useState("applied Skills");
   const [currentHeroImage, setCurrentHeroImage] = useState(0);
   const [currentEquipmentImage, setCurrentEquipmentImage] = useState(0);
   const [currentProjectImage, setCurrentProjectImage] = useState(0);
