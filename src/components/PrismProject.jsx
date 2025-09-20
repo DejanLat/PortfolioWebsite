@@ -4005,47 +4005,48 @@ const rowsToRender = showAll ? allRows : diffRows;
         />
       </div>
 
-      {/* CONTENT WRAPPER */}
+{/* CONTENT WRAPPER */}
 <div className="relative z-10 pt-16 pb-14 md:pb-0">
-        <header
-  className={`fixed inset-x-0 top-0 z-50 transition-all ${
-    solidNav ? "backdrop-blur bg-black/70 border-b border-white/10" : "bg-transparent"
-  }`}
->
-  <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 h-16 flex items-center">
-    {/* LEFT: title cluster can shrink */}
-    <div className="flex-1 min-w-0 flex items-center gap-2 sm:gap-3">
-      <Link
-        to="/"
-        className="inline-flex items-center gap-1.5 sm:gap-2 text-xs sm:text-sm text-white/80 hover:text-white shrink-0"
-      >
-        <ArrowLeft size={16} className="sm:hidden" />
-        <ArrowLeft size={18} className="hidden sm:block" />
-        <span>Back</span>
-      </Link>
-      <div className="h-4 sm:h-5 w-px bg-white/20 shrink-0" />
-      <div className="font-semibold tracking-widest text-white text-xs sm:text-sm truncate">
-        AXIVION
+  <header
+    className={`fixed inset-x-0 top-0 z-50 transition-all ${
+      solidNav ? "backdrop-blur bg-black/70 border-b border-white/10" : "bg-transparent"
+    }`}
+  >
+    <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-20 h-16 flex items-center justify-between">
+      {/* LEFT: title cluster */}
+      <div className="flex-1 min-w-0 flex items-center gap-3">
+        <Link
+          to="/"
+          className="inline-flex items-center gap-2 text-base text-white/80 hover:text-white shrink-0"
+        >
+          <ArrowLeft size={18} />
+          <span>Back</span>
+        </Link>
+        <div className="h-5 w-px bg-white/20 shrink-0" />
+        <div className="font-semibold tracking-widest text-white text-base truncate">
+          AXIVION
+        </div>
+        <div className="text-white/50 text-base">
+          INSTRUMENTS
+        </div>
       </div>
-      <div className="text-white/50 text-xs sm:text-sm xs:block">
-        INSTRUMENTS
-      </div>
-    </div>
 
-    {/* RIGHT: CTA never grows beyond content */}
-    <div className="shrink-0">
-      <Link
-        to="/contact"
-        className="rounded-full text-xs sm:text-sm px-3 py-1.5 sm:px-4 sm:py-2 font-medium"
-        style={{ backgroundColor: ACCENT, color: "#000" }}
-        onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = ACCENT_HOVER)}
-        onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = ACCENT)}
-      >
-        Contact
-      </Link>
+      {/* RIGHT: CTA */}
+      <div className="shrink-0">
+        <Link
+          to="/contact"
+          className="rounded-full px-4 py-2 text-base font-medium"
+          style={{ backgroundColor: ACCENT, color: "#000" }}
+          onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = ACCENT_HOVER)}
+          onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = ACCENT)}
+        >
+          Contact
+        </Link>
+      </div>
     </div>
-  </div>
-</header>
+  </header>
+
+
 
 
 
