@@ -1317,7 +1317,6 @@ const equipmentImages = useMemo(() => equipmentSlides, []);
 <section id="projects" className="relative bg-gradient-to-b from-white to-black/[0.02]">
   <div className="mx-auto max-w-7xl px-6 py-20 lg:py-24">
     <h2 className="text-4xl font-semibold tracking-tight">Engineering Projects</h2>
-    <p className="text-black/60 mt-2">Breakthroughs with visual documentation</p>
 
     {/* FULL-WIDTH CAROUSEL */}
     <div className="mt-10 relative rounded-3xl overflow-hidden border border-black/10 bg-white">
