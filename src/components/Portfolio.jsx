@@ -1040,7 +1040,7 @@ const equipmentImages = useMemo(() => equipmentSlides, []);
           <div className="flex flex-wrap items-center justify-between gap-4">
             <h2 className="text-4xl font-semibold tracking-tight">Engineering Specifications</h2>
             <div className="mt-3 flex flex-wrap items-center gap-2">
-              {["performance", "applied Skills", "software"].map((t) => (
+              {["applied Skills", "performance", "software"].map((t) => (
                 <button
                   key={t}
                   onClick={() => setActiveTab(t)}
@@ -1050,8 +1050,8 @@ const equipmentImages = useMemo(() => equipmentSlides, []);
                       : "border border-black/20 text-black/80 hover:text-black"
                   }`}
                 >
-                  {t === "performance" && <BarChart3 size={16} />}
                   {t === "applied Skills" && <Settings size={16} />}
+                  {t === "performance" && <BarChart3 size={16} />}
                   {t === "software" && <Cpu size={16} />}
                   {t.charAt(0).toUpperCase() + t.slice(1)}
                 </button>
