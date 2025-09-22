@@ -824,6 +824,7 @@ const engProjectSlides = [
   { base: "image1Engproject", title: "PRISM", description: "Test Bench" },
   { base: "image4Engprojectcarosel", title: "Maintenance", description: "Rear Shocks Replacement" },
   { base: "image5Engprojectcarosel", title: "Spectrometer", description: "Reviving old spectrometer" },
+  { base: "metasurface", title: "Blender Render", description: "Metasurface Render for paper" },
   { base: "image3Engprojectcarosel", title: "Pygame", description: "Screenshot" },
 
   
@@ -1395,7 +1396,8 @@ const equipmentImages = useMemo(() => equipmentSlides, []);
                     focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black/50
                     ${isFeatured ? "bg-black text-white hover:shadow-xl" : "bg-white hover:shadow-md"}
                     ${project.slug === "prism" ? "prism-card" : ""}
-                    ${project.slug === "car-modding" ? "car-card" : ""}`}
+                    ${project.slug === "car-modding" ? "car-card" : ""}
+                    ${project.slug === "blender-visualizatio"}`}
       >
         {/* Breakthrough pill (accent color on hover via CSS) */}
         {isFeatured && (
