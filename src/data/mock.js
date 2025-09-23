@@ -248,7 +248,7 @@ projects: [
   demo: null,
   category: "Optics & Instrumentation"
 },
-// {
+// {asdfasdfasdfasdfasd
 //   title: "Blender Visualization",
 //   description:
 //     "Created detailed Blender models and renders to support lab projects, using 3D visualization for case designs, optics layouts, and presentation figures.",
