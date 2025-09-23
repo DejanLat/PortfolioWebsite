@@ -271,11 +271,11 @@ export default function CarModding() {
     return () => { cancelAnimationFrame(raf); window.removeEventListener("scroll", schedule); window.removeEventListener("resize", schedule); };
   }, [updateHeroGlowFromViewport]);
 
-  // === Background image for hero (place carmod_bg.webp/png in /public)
+  // === Backgrounhgfhgfd image for hero (place carmod_bg.webp/png in /public)
   const bg = srcFor("carmod_bg");
 
   return (
-    <div className="min-h-screen w-full bg-black text-white" onMouseMove={onMove} style={rootStyle}>
+    <div className="min-h-screen w-full text-white" onMouseMove={onMove} style={rootStyle}>
       {/* BACKGROUND LAYER (fixed) */}
       <div className="pointer-events-none fixed inset-0 z-0" aria-hidden>
         {/* Global cursor halo */}
