@@ -62,9 +62,10 @@
   "start": "craco start",
   "build": "craco build",
   "test": "craco test",
-  "predeploy": "npm run build && shx cp build/index.html build/404.html",
+  "predeploy": "npm run build && copy build\\index.html build\\404.html",
+
   "deploy": "gh-pages -d build",
-  "postbuild": "shx cp build/index.html build/404.html"
+"postbuild": "copy build\\index.html build\\404.html"
 },
 
   "browserslist": {

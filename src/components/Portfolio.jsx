@@ -989,11 +989,11 @@ const equipmentImages = useMemo(() => equipmentSlides, []);
           "
         >
           Nanotechnology
-          <span className="block text-black/60">Engineer</span>
+          <span className="block text-black/60">Engineering Student</span>
         </h1>
 
         <p className="mt-5 max-w-2xl text-black/70">
-          Nanotechnology engineer focused on high-accuracy motion and optical systems. Axivion Instruments is
+          Nanotechnology engineering student focused on high-accuracy motion and optical systems. Axivion Instruments is
           developing PRISM, our flagship research-grade microscope platform.
         </p>
 
