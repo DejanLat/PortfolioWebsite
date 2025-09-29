@@ -229,7 +229,7 @@ const SECTIONS = [
     hours: "Varied",
     img: srcFor("carmod_mechanical"),
     bullets: [
-      "Replaced engine brake calipers, rear shocks, engine components, filters.",
+      "Replaced brake calipers, rear shocks, engine components, filters.",
       "Retrofitted new headlight assemblies with correct alignment.",
       "Maintained detailed records of all work performed on the vehicle.",
     ],
@@ -275,7 +275,8 @@ export default function CarModding() {
   const bg = srcFor("carmod_bg");
 
   return (
-    <div className="min-h-screen w-full text-white" onMouseMove={onMove} style={rootStyle}>
+    <div className="min-h-screen w-full text-white bg-black" onMouseMove={onMove} style={rootStyle}>
+
       {/* BACKGROUND LAYER */}
       <div className="pointer-events-none fixed inset-0 z-0" aria-hidden>
         {/* Global cursor halo */}
@@ -301,20 +302,30 @@ export default function CarModding() {
 
       {/* HERO */}
       <section ref={heroRef} onMouseMove={onHeroMove} className="relative pt-36 pb-16">
-        {/* Pink gradient base + your photo blended on top */}
-        <div className="absolute inset-0 -z-10">
-          {/* Deep pink/indigo base */}
-          <div className="absolute inset-0 bg-gradient-to-b from-[#2a001f] via-[#160012] to-black" />
-          <div className="absolute inset-0 [background-image:radial-gradient(60rem_30rem_at_50%_120%,rgba(255,42,160,0.18),transparent_60%),linear-gradient(to_bottom,rgba(0,0,0,0.25),rgba(0,0,0,0.6))]" />
-          {/* Background image ; faint & blended */}
-          <WebpImg
-            webp={bg.webp}
-            fallback={bg.png}
-            alt="Car Modding Background"
-            className="absolute inset-0 h-full w-full object-cover"
-            style={{ opacity: 0.28, mixBlendMode: "screen" }}
-          />
-        </div>
+        {/* Darkened gradient base + faded background image */}
+{/* Background image first, then dark overlays on top */}
+<div className="absolute inset-0 -z-10">
+  {/* Background image (no screen blend) */}
+  <WebpImg
+    webp={bg.webp}
+    fallback={bg.png}
+    alt="Car Modding Background"
+    className="absolute inset-0 h-full w-full object-cover"
+    style={{
+      opacity: 0.22,                 // you can lower to 0.15 if needed
+      mixBlendMode: "normal",        // IMPORTANT: remove "screen"
+      filter: "grayscale(15%) brightness(0.8) contrast(0.9)",
+    }}
+  />
+
+  {/* Heavy black fade */}
+  <div className="absolute inset-0 bg-gradient-to-b from-black/90 via-black/80 to-black" />
+
+  {/* Subtle pink halo (kept soft) */}
+  <div className="absolute inset-0 [background-image:radial-gradient(60rem_30rem_at_50%_20%,rgba(255,42,160,0.10),transparent_60%)]" />
+</div>
+
+
 
         {/* Hero-local cursor halo */}
         <div className="pointer-events-none absolute inset-0 -z-[5]"

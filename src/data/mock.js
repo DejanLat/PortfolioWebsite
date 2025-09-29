@@ -24,22 +24,21 @@ const mockData = {
   ],
   frameworks: [
     "Fusion 360 (CAD & FEA Simulation)",
-    "SOLIDWORKS (Mechanical Drafting)",
     "Blender (Scientific Rendering & Publication Graphics)",
     "LabVIEW (Control Software & Automation)",
     "Python (Instrumentation APIs & Data Analysis)",
     "React (Portfolio & UI Development)",
-    "SQL / BigQuery (Data Handling & Processing)",
+    "BigQuery (Data Handling & Processing)",
     "Microsoft PowerBI (Visualization & Reporting)"
   ],
   languages: [
     "Python (Instrumentation Control & Data Processing)",
     "MATLAB (Simulation & Modeling)",
-    "C++ (Embedded & Hardware Interfaces)",
+    "LabVIEW (Graphical Programming)",
     "JavaScript / React (Web Development)",
     "R (Statistical Analysis)",
-    "SQL (Database Management)",
-    "LabVIEW G (Graphical Programming)"
+    "SQL (Database Management)"
+
   ],
   soft: [
     "Cross-disciplinary Collaboration",

@@ -787,7 +787,8 @@ const skillIconFor = (title) => {
   if (t.includes("laser") || t.includes("fiber")) return Crosshair;       // Laser Alignment | Fiber Coupling
   if (t.includes("raster")) return ScanLine;                              // Raster Scanning
   if (t.includes("manufacturing") || t.includes("cnc")) return Hammer;    // Manufacturing | CNC Prep
-  if (t.includes("wet lab") || t.includes("cleanroom")) return FlaskConical; // Wet Lab | Cleanroom Familiarity
+
+  if (t.includes("Wet Lab") || t.includes("organic")) return FlaskConical; // Wet Lab | Cleanroom Familiarity
 
   // fallback
   return Microscope;
@@ -891,15 +892,27 @@ const equipmentImages = useMemo(() => equipmentSlides, []);
       "Produce proper engineering drawings to CNC-shop standards",
     ],
   },
-  {
-    title: "Wet Lab | Cleanroom Familiarity",
-    subtitle: "Organic chem basics • PV/cleanroom etiquette",
-    points: [
-      "Comfortable with solution prep, PPE, and fume-hood use",
-      "Basic cleanroom/PV device fabrication steps",
-      "Good lab hygiene and procedure follow-through",
-    ],
-  },
+{
+  title: "Cleanroom & Microfabrication",
+  subtitle: "Thin films • Photolithography • Device characterization",
+  points: [
+    "PECVD/PVD deposition, photolithography, dry & wet etching",
+    "Film thickness and sheet resistance measurements (profilometer, ellipsometer, 4-point probe)",
+    "C–V and I–V analysis of MIS devices",
+    "Trained in cleanroom safety and contamination control",
+  ],
+},
+{
+  title: "Organic & Wet Lab",
+  subtitle: "Solution prep • Enzyme kinetics • Bacterial transformations",
+  points: [
+    "Comfortable with solution prep, titration, and buffer systems",
+    "Enzyme kinetics experiments (Km, kcat) using spectrophotometry",
+    "Bacterial transformations and GFP expression analysis",
+    "Strong sterile technique, lab hygiene, and experimental troubleshooting",
+  ],
+},
+
 ];
 
   // autoplay
@@ -977,7 +990,7 @@ const equipmentImages = useMemo(() => equipmentSlides, []);
     >
       <div className="mx-auto max-w-7xl">
         <div className="mx-auto inline-flex items-center gap-2 rounded-full border border-black/10 bg-white/70 px-4 py-1 text-[10px] sm:text-xs uppercase tracking-widest text-black/70">
-          <MicroscopeIcon size={14} /> Nano Photonics • Nano-Fluidics Engineering
+          <MicroscopeIcon size={14} /> Photonics • Prototyping • Bio-Nano
         </div>
 
         {/* Title: responsive, won’t clip */}
@@ -989,12 +1002,12 @@ const equipmentImages = useMemo(() => equipmentSlides, []);
           "
         >
           Nanotechnology
-          <span className="block text-black/60">Engineering Student</span>
+          <span className="block text-black/60"> Student Portfolio</span>
         </h1>
 
         <p className="mt-5 max-w-2xl text-black/70">
-          Nanotechnology engineering student focused on high-accuracy motion and optical systems. Axivion Instruments is
-          developing PRISM, our flagship research-grade microscope platform.
+          This is my portfolio, highlighting projects and skills from my studies in Nanotechnology Engineering. 
+          My current focus is PRISM, a precision objective-scanning microscope developed at Axivion Instruments, designed for research in optics, quantum, and possible bio-applications.
         </p>
 
         <div className="mt-8 flex items-center gap-3">
@@ -1024,7 +1037,7 @@ const equipmentImages = useMemo(() => equipmentSlides, []);
             {[
               { icon: Users, title: "Institute for Quantum Computing (UWaterloo)", label: "Research Experience" },
               { icon: Target, title: "PRISM (Axivion Instruments)", label: "Core Project" },
-              { icon: Settings, title: "Optics • Mechanical • Bio • Software", label: "Technical Fields" },
+              { icon: Settings, title: "Optics • Mechanical • Bio ", label: "Technical fields & lab skills" },
               { icon: Award, title: "Photonics North 2025", label: "Presented Start-up" },
             ].map((h) => (
               <div
@@ -1119,7 +1132,8 @@ const equipmentImages = useMemo(() => equipmentSlides, []);
       else if (item.title.includes("Laser")) Icon = Crosshair;
       else if (item.title.includes("Raster")) Icon = ScanLine;
       else if (item.title.includes("Manufacturing")) Icon = Hammer;
-      else if (item.title.includes("Wet Lab")) Icon = FlaskConical;
+else if (item.title.includes("Wet Lab") || item.title.includes("Organic")) Icon = FlaskConical;
+else if (item.title.includes("Cleanroom") || item.title.includes("Microfabrication")) Icon = Cpu;
 
       return (
         <div
