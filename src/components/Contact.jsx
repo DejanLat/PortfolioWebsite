@@ -408,11 +408,11 @@ export default function Contact({ contactEmail = CONTACT_EMAIL }) {
 
   const quickLinks = [
     {
-      title: "Request Detailed Specs",
+      title: "Request Detailed Specifications",
       label: "Overview PDF / capabilities",
       icon: FileText,
       href: buildMailto(
-        subjectMap["Request Detailed Specs"],
+        subjectMap["Request Detailed Specifications"],
         `Hi,\n\nI’d like the latest spec overview for PRISM.\n\nName: \nOrganization: \nUse case: \n\nThanks!`
       ),
       primary: true,
