@@ -276,7 +276,7 @@ export default function CarModding() {
 
   return (
     <div className="min-h-screen w-full text-white" onMouseMove={onMove} style={rootStyle}>
-      {/* BACKGROUND LAYER (fixed) */}
+      {/* BACKGROUND LAYER */}
       <div className="pointer-events-none fixed inset-0 z-0" aria-hidden>
         {/* Global cursor halo */}
         <div className="absolute inset-0"
