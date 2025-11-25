@@ -1173,9 +1173,6 @@ else if (item.title.includes("Cleanroom") || item.title.includes("Microfabricati
                 <div className="flex items-center justify-between flex-wrap gap-3">
                   <div>
                     <h3 className="text-xl font-semibold">Recent, Attributed Impact</h3>
-                    <p className="text-sm text-black/60">
-                      Highlights with context (project/site) so the numbers actually mean something.
-                    </p>
                   </div>
                 </div>
 
