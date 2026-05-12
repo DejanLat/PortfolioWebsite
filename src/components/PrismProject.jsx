@@ -3825,6 +3825,11 @@ const [showAllRows, setShowAllRows] = useState(false);
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  useEffect(() => {
+    document.documentElement.classList.add("scrollbar-teal");
+    return () => document.documentElement.classList.remove("scrollbar-teal");
+  }, []);
+
   const [activeSpecTab, setActiveSpecTab] = useState("architecture");
   const specTabs = useMemo(
     () => [
@@ -4088,8 +4093,8 @@ const rowsToRender = showAll ? allRows : diffRows;
       className="text-center px-6"
     >
       <div
-        className="mx-auto inline-flex items-center gap-2 rounded-full px-3 py-1 text-[11px] sm:text-xs uppercase tracking-[0.18em] text-white/90 border"
-        style={{ borderColor: "rgba(19,194,179,0.45)" }}
+        className="mx-auto inline-flex items-center gap-2 rounded-full px-3 py-1 text-[11px] sm:text-xs uppercase tracking-[0.18em] text-white/90 border backdrop-blur-sm"
+        style={{ borderColor: "rgba(19,194,179,0.45)", background: "rgba(19,194,179,0.06)" }}
       >
         <Microscope size={14} /> Instrumentation Preview
       </div>
@@ -4105,8 +4110,7 @@ const rowsToRender = showAll ? allRows : diffRows;
       </h1>
 
       <p className="mx-auto mt-5 max-w-2xl text-balance text-white/80">
-        High-level preview of an advanced optical instrument. Detailed specifications are
-        shared directly upon request.
+        In active use at IQC's NPQO Lab for Diamond NV center quantum sensing research. Built from scratch through multiple iterations. Detailed specifications shared on request.
       </p>
 
       <div className="mt-8 flex items-center justify-center gap-3">
@@ -4219,8 +4223,7 @@ const rowsToRender = showAll ? allRows : diffRows;
                   Designed for stable, precise motion
                 </h2>
                 <p className="mt-5 text-white/80 max-w-xl">
-                  A configurable platform focused on repeatable positioning and clean integration
-                  with standard lab workflows.
+                  Objective-scanning confocal microscope designed for quantum optics and precision lab environments. Currently the working instrument at IQC's NPQO Lab - not a prototype.
                 </p>
 
                 <div className="mt-8 grid grid-cols-1 sm:grid-cols-3 gap-4 max-w-2xl">

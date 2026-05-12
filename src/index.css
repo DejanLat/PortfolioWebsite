@@ -87,3 +87,22 @@ code {
 /* Hide scrollbars but keep scroll behavior */
 .no-scrollbar::-webkit-scrollbar { display: none; }
 .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+/* Per-page scrollbar themes */
+.scrollbar-orange::-webkit-scrollbar { width: 5px; }
+.scrollbar-orange::-webkit-scrollbar-track { background: transparent; }
+.scrollbar-orange::-webkit-scrollbar-thumb { background: rgba(249,115,22,0.45); border-radius: 4px; }
+.scrollbar-orange::-webkit-scrollbar-thumb:hover { background: rgba(249,115,22,0.75); }
+.scrollbar-orange { scrollbar-width: thin; scrollbar-color: rgba(249,115,22,0.45) transparent; }
+
+.scrollbar-teal::-webkit-scrollbar { width: 5px; }
+.scrollbar-teal::-webkit-scrollbar-track { background: transparent; }
+.scrollbar-teal::-webkit-scrollbar-thumb { background: rgba(19,194,179,0.45); border-radius: 4px; }
+.scrollbar-teal::-webkit-scrollbar-thumb:hover { background: rgba(19,194,179,0.75); }
+.scrollbar-teal { scrollbar-width: thin; scrollbar-color: rgba(19,194,179,0.45) transparent; }
+
+.scrollbar-pink::-webkit-scrollbar { width: 5px; }
+.scrollbar-pink::-webkit-scrollbar-track { background: transparent; }
+.scrollbar-pink::-webkit-scrollbar-thumb { background: rgba(255,42,160,0.45); border-radius: 4px; }
+.scrollbar-pink::-webkit-scrollbar-thumb:hover { background: rgba(255,42,160,0.75); }
+.scrollbar-pink { scrollbar-width: thin; scrollbar-color: rgba(255,42,160,0.45) transparent; }

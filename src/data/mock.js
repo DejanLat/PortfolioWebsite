@@ -2,11 +2,11 @@
 
 const mockData = {
   personalInfo: {
-    name: "Your Name",
+    name: "Dejan Latkovic",
     title: "Nanotechnology Engineering Student",
     university: "University of Waterloo",
     program: "BE Nanotechnology Engineering, Co-op",
-    expectedGraduation: "2026"
+    expectedGraduation: "2027"
   },
 
   
@@ -60,23 +60,42 @@ const mockData = {
 
 experience: [
   {
+    company: "Atomic Semi",
+    role: "Mechanical Engineering Intern",
+    engagement: "Co-op",
+    period: "Jan - Apr 2026",
+    category: "Precision Engineering",
+    image: "AtomicSemiPhoto.jpeg",
+    imagePosition: "left",
+    keyMetrics: [
+      { value: "x4", description: "Systems owned end-to-end" },
+      { value: "Docs", description: "Set as intern benchmark" },
+      { value: "Impact", description: "Work still in use" }
+    ],
+    achievements: [
+      "End-to-end owner of four hardware systems: laser optics module, cost-optimized automated XY stage, custom microscope camera, and automated substrate loader",
+      "Technical documentation set as a positive benchmark for future interns by staff engineer (Daniel LaCroix, Precision Engineering Team)",
+      "Contributions confirmed to have lasting impact on the Precision Engineering team"
+    ]
+  },
+  {
     company: "Axivion Instruments",
     role: "CTO & Founder",
     engagement: "Self-employed / Startup",
-    period: "Sept 2025 – Present",
-    category: "Euntrepreneurship",
+    period: "May 2025 - Present",
+    category: "Entrepreneurship",
     imageBase: "image1experience", // <- add this
     //image: "https://images.unsplash.com/photo-1520607162513-77705c0f0d4a", // clean optics lab
     keyMetrics: [
-      { value: "PRISM", description: "Provisional Patent" },
-      { value: "1 lab", description: "Deployed in active use (IQC)" },
-      { value: "Pitched", description: "Photonics North Ottawa 2025" }
+      { value: "IQC", description: "PRISM deployed at NPQO Lab" },
+      { value: "Patent", description: "Provisional filing underway" },
+      { value: "Cover", description: "Science Advances candidate (May 2026)" }
     ],
     achievements: [
-      "Launched Axivion to commercialize PRISM, backed by faculty shareholders providing executive advisory guidance",
+      "Founder and CTO of Axivion Instruments, building PRISM - a precision scanning microscope now in active use at IQC's NPQO Lab for Diamond NV center research",
       "Drafted a provisional patent for PRISM; filing and IP strategy in progress",
-      "Defined productization roadmap and brand presence for early customers",
-      "Led technical specs, supplier engagement, and manufacturing readiness for first machined version"
+      "Built CORE - a modular instrument control platform as part of the Axivion software stack",
+      "Led technical specs, supplier engagement, and V6 printability-optimized design (PPS-CF10 structural parts)"
     ]
   },
 {
@@ -184,7 +203,7 @@ projects: [
   {
     title: "PRISM (Axivion Instruments)",
     description:
-      "Configurable periscope-relay scanning microscope (objective-scanning). Designed for stable, precise motion with clean integration into standard lab workflows. Click to view details; full specifications are shared directly.",
+      "Periscopic Relay Imaging Scanning Microscope. In active use at IQC's NPQO Lab for Diamond NV center research. Built from scratch, iterated through multiple versions, and deployed as a working research instrument. Comparable commercial systems cost ~$70k.",
     image: "https://images.unsplash.com/photo-1579684256060-d5a308109e21",
     technologies: [
       "Optomechanics",

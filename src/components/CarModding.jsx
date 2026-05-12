@@ -271,6 +271,11 @@ export default function CarModding() {
     return () => { cancelAnimationFrame(raf); window.removeEventListener("scroll", schedule); window.removeEventListener("resize", schedule); };
   }, [updateHeroGlowFromViewport]);
 
+  useEffect(() => {
+    document.documentElement.classList.add("scrollbar-pink");
+    return () => document.documentElement.classList.remove("scrollbar-pink");
+  }, []);
+
   // === Backgrounhgfhgfd image for hero (place carmod_bg.webp/png in /public)
   const bg = srcFor("carmod_bg");
 
@@ -333,8 +338,8 @@ export default function CarModding() {
 
         <div className="mx-auto max-w-7xl px-6">
           <motion.div initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }} className="max-w-3xl">
-            <div className="inline-flex items-center gap-2 rounded-full px-4 py-1 text-xs uppercase tracking-widest text-white/90 border"
-                 style={{ borderColor: "rgba(255,42,160,0.35)" }}>
+            <div className="inline-flex items-center gap-2 rounded-full px-4 py-1 text-xs uppercase tracking-widest text-white/90 border backdrop-blur-sm"
+                 style={{ borderColor: "rgba(255,42,160,0.35)", background: "rgba(255,42,160,0.06)" }}>
               Automotive Engineering
             </div>
             <h1 className="mt-4 text-5xl md:text-6xl font-semibold tracking-tight">Car Modding</h1>

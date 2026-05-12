@@ -377,7 +377,7 @@
 // )}
 
 
-//           {activeTab === "software" && (
+//           {activeTab === "Software" && (
 //   <div className="mt-10 grid grid-cols-1 lg:grid-cols-2 gap-8">
 //     {/* Engineering Software */}
 //     <div className="rounded-3xl border border-black/10 p-6 bg-white">
@@ -621,7 +621,7 @@
 
 //         {/* Technical specifications */}
 //         <div className="mt-4">
-//           <div className="text-sm font-medium">Technical Specifications</div>
+//           <div className="text-sm font-medium text-white/80">Technical Specifications</div>
 //           <div className="mt-2 space-y-2">
 //             {(project.specifications ?? []).slice(0, 4).map((s, si) => (
 //               <div key={si} className="flex items-center gap-2 text-sm">
@@ -640,13 +640,13 @@
 //         {/* Technologies chips */}
 //         {techs.length > 0 && (
 //           <div className="mt-4">
-//             <div className="text-sm font-medium">Technologies</div>
+//             <div className="text-sm font-medium text-white/80">Technologies</div>
 //             <div className="mt-2 flex flex-wrap gap-2">
 //               {techs.slice(0, 5).map((t, ti) => (
 //                 <span
 //                   key={ti}
 //                   className={`rounded-full border px-3 py-1 text-xs
-//                               ${isFeatured ? "border-white/30 text-white/90" : "border-black/20 text-black/80"}`}
+//                               border-white/20 text-white/75`}
 //                 >
 //                   {t}
 //                 </span>
@@ -771,28 +771,12 @@ import { Check } from "lucide-react";
 import {
   Award, Shield, Users, BarChart3, Target, Zap, Activity, Settings,
   ArrowRight, Cpu, MicroscopeIcon, GraduationCapIcon, Microscope,
-  Crosshair,
-  ScanLine,
-  Hammer,
-  FlaskConical,
+  Crosshair, ScanLine, Hammer,
 } from "lucide-react";
 
 // --- helpers ---
 const MotionWebpImg = motion(WebpImg);
 const PUBLIC = process.env.PUBLIC_URL || "";
-const skillIconFor = (title) => {
-  const t = title.toLowerCase();
-
-  if (t.includes("microscope")) return Microscope;                        // Microscope Imaging
-  if (t.includes("laser") || t.includes("fiber")) return Crosshair;       // Laser Alignment | Fiber Coupling
-  if (t.includes("raster")) return ScanLine;                              // Raster Scanning
-  if (t.includes("manufacturing") || t.includes("cnc")) return Hammer;    // Manufacturing | CNC Prep
-
-  if (t.includes("Wet Lab") || t.includes("organic")) return FlaskConical; // Wet Lab | Cleanroom Familiarity
-
-  // fallback
-  return Microscope;
-};
 
 // Build /public paths for a base filename (without extension)
 const srcFor = (base) => ({
@@ -836,11 +820,29 @@ export default function PortfolioWhite() {
   const navigate = useNavigate();
 
   // tabs + carousels
-  const [activeTab, setActiveTab] = useState("applied Skills");
+  const [activeTab, setActiveTab] = useState("Applied Skills");
+  const ACCENT       = "#f97316";
+  const ACCENT_SOFT  = "rgba(249, 115, 22, 0.13)";
+  const PAGE_BG      = "#080e14";
+
+  const [mx, setMx] = useState(-9999);
+  const [my, setMy] = useState(-9999);
+  const [solidNav, setSolidNav] = useState(false);
   const [currentHeroImage, setCurrentHeroImage] = useState(0);
   const [currentEquipmentImage, setCurrentEquipmentImage] = useState(0);
   const [currentProjectImage, setCurrentProjectImage] = useState(0);
   const [isPlaying, setIsPlaying] = useState(true);
+
+  useEffect(() => {
+    const onScroll = () => setSolidNav(window.scrollY > 40);
+    window.addEventListener("scroll", onScroll);
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  useEffect(() => {
+    document.documentElement.classList.add("scrollbar-orange");
+    return () => document.documentElement.classList.remove("scrollbar-orange");
+  }, []);
 
   // logos bar (png/webp handled via WebpImg)
   const companiesBarPng  = `${PUBLIC}/CompaniesBar.png`;
@@ -850,10 +852,7 @@ export default function PortfolioWhite() {
   const heroImages = useMemo(() => topSlides, []);
   const projectCarouselImages = useMemo(() => engProjectSlides, []);
 
-  // equipment carousel (unchanged shape)
-  const shrekUrl = `${PUBLIC}/AxivionPrismBanner.png`;
-  // use the 4 equipment placeholders (WebP + PNG)
-const equipmentImages = useMemo(() => equipmentSlides, []);
+  const equipmentImages = useMemo(() => equipmentSlides, []);
 
 
  const equipmentSkills = [
@@ -876,11 +875,12 @@ const equipmentImages = useMemo(() => equipmentSlides, []);
     ],
   },
   {
-    title: "Raster Scanning",
-    subtitle: "LabVIEW control",
+    title: "Instrument Control",
+    subtitle: "LabVIEW • Python • Automated scanning",
     points: [
-      "Built LabVIEW raster control and integrated detector readout",
-      "Used oscilloscope for coupling checks, triggering, and timing",
+      "Built LabVIEW raster-scan control with piezo stage and photon detector readout",
+      "Python APIs for instrument control, data acquisition, and post-processing",
+      "Oscilloscope for signal chain checks, triggering, and timing verification",
     ],
   },
   {
@@ -903,13 +903,13 @@ const equipmentImages = useMemo(() => equipmentSlides, []);
   ],
 },
 {
-  title: "Organic & Wet Lab",
-  subtitle: "Solution prep • Enzyme kinetics • Bacterial transformations",
+  title: "Precision Mechanical Design",
+  subtitle: "Fusion 360 • FEA • Tolerance engineering",
   points: [
-    "Comfortable with solution prep, titration, and buffer systems",
-    "Enzyme kinetics experiments (Km, kcat) using spectrophotometry",
-    "Bacterial transformations and GFP expression analysis",
-    "Strong sterile technique, lab hygiene, and experimental troubleshooting",
+    "Full system design in Fusion 360 from concept through CNC-ready drawings",
+    "FEA for stiffness and modal validation of mechanical assemblies",
+    "Tolerance stack-up and design for manufacturability for machined and 3D-printed parts",
+    "End-to-end hardware ownership: spec, design, fabrication, integration, and deployment",
   ],
 },
 
@@ -928,33 +928,47 @@ const equipmentImages = useMemo(() => equipmentSlides, []);
 
   return (
     
-    <div className="min-h-screen w-full bg-white text-black">
+    <div
+      className="min-h-screen w-full text-white"
+      style={{ backgroundColor: PAGE_BG, "--mx": `${mx}px`, "--my": `${my}px` }}
+      onMouseMove={(e) => { setMx(e.clientX); setMy(e.clientY); }}
+    >
+      {/* Global cursor glow */}
+      <div className="pointer-events-none fixed inset-0 z-0" aria-hidden>
+        <div className="absolute inset-0" style={{
+          background: `radial-gradient(700px at var(--mx) var(--my), ${ACCENT_SOFT}, transparent 60%)`,
+        }} />
+      </div>
+
+      {/* All page content sits above the glow layer */}
+      <div className="relative z-10">
+
       {/* Header */}
-      <header className="fixed inset-x-0 top-0 z-50 bg-white/80 backdrop-blur border-b border-black/10">
+      <header className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${solidNav ? "bg-[#080e14]/85 backdrop-blur border-b border-white/10" : "bg-transparent"}`}>
         <div className="mx-auto max-w-7xl h-16 px-4 sm:px-6 lg:px-8 flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <div className="font-semibold tracking-widest">DEJAN</div>
-            <div className="text-black/50">LATKOVIC</div>
+            <div className="font-semibold tracking-widest text-white">DEJAN</div>
+            <div className="text-white/50">LATKOVIC</div>
           </div>
           <nav className="flex items-center gap-3 text-sm overflow-x-auto no-scrollbar" aria-label="Primary">
-            <a href="https://www.linkedin.com" className="whitespace-nowrap text-black/70 hover:text-black">
+            <a href="https://www.linkedin.com" className="whitespace-nowrap text-white/70 hover:text-white transition-colors">
               LinkedIn
             </a>
             <Link
               to="/prism"
-              className="whitespace-nowrap rounded-full bg-black text-white px-4 py-2 font-medium hover:bg-black/90"
+              className="whitespace-nowrap rounded-full px-4 py-2 font-medium text-black"
+              style={{ backgroundColor: "#13c2b3" }}
             >
               PRISM
             </Link>
           </nav>
         </div>
-        
       </header>
 
       
      {/* TOP HERO */}
-<section className="relative h-[88vh] overflow-clip md:overflow-hidden pt-14">
-  {/* background image with 0.7s cross-fade */}
+<section className="relative h-[88vh] overflow-clip md:overflow-hidden" style={{ backgroundColor: PAGE_BG }}>
+  {/* background image with cross-fade */}
   <div className="absolute inset-0 z-0">
     <AnimatePresence mode="wait">
       {(() => {
@@ -968,7 +982,7 @@ const equipmentImages = useMemo(() => equipmentSlides, []);
             alt={h.title}
             className="h-full w-full object-cover"
             initial={{ opacity: 0 }}
-            animate={{ opacity: 0.6 }}
+            animate={{ opacity: 0.35 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.7 }}
           />
@@ -976,50 +990,58 @@ const equipmentImages = useMemo(() => equipmentSlides, []);
       })()}
     </AnimatePresence>
 
-    {/* white gradient overlay */}
-    <div className="absolute inset-0 pointer-events-none bg-gradient-to-b from-white/60 via-white/50 to-white" />
+    <div className="absolute inset-0 pointer-events-none" style={{
+      background: `linear-gradient(to bottom, rgba(8,14,20,0.65) 0%, rgba(8,14,20,0.25) 60%, rgba(8,14,20,0.85) 100%)`
+    }} />
+
+    {/* cursor glow */}
+    <div className="absolute inset-0 pointer-events-none" style={{
+      background: `radial-gradient(700px at 50% 40%, ${ACCENT_SOFT}, transparent 60%)`
+    }} />
   </div>
 
   {/* foreground content */}
-  <div className="relative z-10 h-full flex flex-col justify-between">
+  <div className="relative z-10 h-full flex flex-col justify-center">
     <motion.div
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.8 }}
-      className="px-4 sm:px-6 pt-20 pb-10"
+      className="px-4 sm:px-6 pt-16"
     >
       <div className="mx-auto max-w-7xl">
-        <div className="mx-auto inline-flex items-center gap-2 rounded-full border border-black/10 bg-white/70 px-4 py-1 text-[10px] sm:text-xs uppercase tracking-widest text-black/70">
-          <MicroscopeIcon size={14} /> Photonics • Prototyping • Bio-Nano
+        <div
+          className="inline-flex items-center gap-2 rounded-full px-4 py-1 text-[10px] sm:text-xs uppercase tracking-widest border"
+          style={{ borderColor: `rgba(249,115,22,0.4)`, color: ACCENT }}
+        >
+          <MicroscopeIcon size={14} /> Instruments • Photonics • Precision Engineering
         </div>
 
-        {/* Title: responsive, won’t clip */}
         <h1
           className="
             mt-4 font-semibold tracking-tight text-balance leading-[0.95]
-            break-words hyphens-auto
+            break-words hyphens-auto text-white
             text-[clamp(2.25rem,8vw,4.5rem)] md:text-[clamp(3rem,7vw,5.5rem)]
           "
         >
-          Nanotechnology
-          <span className="block text-black/60"> Student Portfolio</span>
+          Dejan Latkovic
+          <span className="block" style={{ color: "rgba(255,255,255,0.55)" }}>Engineering Portfolio</span>
         </h1>
 
-        <p className="mt-5 max-w-2xl text-black/70">
-          This is my portfolio, highlighting projects and skills from my studies in Nanotechnology Engineering. 
-          My current focus is PRISM, a precision objective-scanning microscope developed at Axivion Instruments, designed for research in optics, quantum, and possible bio-applications.
+        <p className="mt-5 max-w-2xl text-white/70">
+          Nanotechnology Engineering student at Waterloo. Founder of Axivion Instruments. Most recently on the Precision Engineering team at Atomic Semi in San Francisco. My main project is PRISM - a precision objective-scanning microscope now in active use at IQC’s NPQO Lab for Diamond NV center research.
         </p>
 
         <div className="mt-8 flex items-center gap-3">
           <Link
             to="/prism"
-            className="rounded-full bg-black text-white px-6 py-3 text-sm font-medium hover:bg-black/90 inline-flex items-center gap-2"
+            className="rounded-full px-6 py-3 text-sm font-medium text-black inline-flex items-center gap-2"
+            style={{ backgroundColor: ACCENT }}
           >
             Axivion Instruments <ArrowRight size={18} />
           </Link>
           <Link
             to="/contact"
-            className="rounded-full border border-black/20 px-6 py-3 text-sm font-medium hover:border-black/40"
+            className="rounded-full border border-white/25 px-6 py-3 text-sm font-medium text-white hover:border-white/50 transition-colors"
           >
             Contact
           </Link>
@@ -1036,22 +1058,22 @@ const equipmentImages = useMemo(() => equipmentSlides, []);
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
             {[
               { icon: Users, title: "Institute for Quantum Computing (UWaterloo)", label: "Research Experience" },
-              { icon: Target, title: "PRISM (Axivion Instruments)", label: "Core Project" },
-              { icon: Settings, title: "Optics • Mechanical • Bio ", label: "Technical fields & lab skills" },
-              { icon: Award, title: "Photonics North 2025", label: "Presented Start-up" },
+              { icon: Target, title: "PRISM (Axivion Instruments)", label: "Deployed at IQC - NPQO Lab" },
+              { icon: Cpu, title: "Atomic Semi, San Francisco", label: "Precision Engineering Internship" },
+              { icon: Award, title: "Photonics North 2025", label: "Startup Pitch Competition" },
             ].map((h) => (
               <div
                 key={h.title}
                 title={h.title}
-                className="group flex items-center gap-3 rounded-xl border border-black/10
-                           bg-white/60 backdrop-blur-md px-5 py-3 shadow-sm hover:shadow-md transition"
+                className="group flex items-center gap-3 rounded-xl border border-white/10
+                           bg-white/5 backdrop-blur-md px-5 py-3 hover:bg-white/10 transition"
               >
-                <div className="h-9 w-9 rounded-full border border-black/10 grid place-items-center bg-white/80">
+                <div className="h-9 w-9 rounded-full border border-white/15 grid place-items-center bg-white/5 shrink-0">
                   {React.createElement(h.icon, { size: 18 })}
                 </div>
                 <div className="min-w-0">
-                  <div className="text-sm font-medium leading-tight break-words whitespace-normal">{h.title}</div>
-                  <div className="text-[11px] text-black/60">{h.label}</div>
+                  <div className="text-sm font-medium leading-tight break-words whitespace-normal text-white">{h.title}</div>
+                  <div className="text-[11px] text-white/50">{h.label}</div>
                 </div>
               </div>
             ))}
@@ -1060,24 +1082,25 @@ const equipmentImages = useMemo(() => equipmentSlides, []);
       </section>
 
       {/* Specifications (tabs) */}
-      <section id="specifications" className="relative bg-white">
+      <section id="specifications" className="relative">
         <div className="mx-auto max-w-7xl px-6 py-20 lg:py-24">
           <div className="flex flex-wrap items-center justify-between gap-4">
-            <h2 className="text-4xl font-semibold tracking-tight">Engineering Specifications</h2>
+            <h2 className="text-4xl font-semibold tracking-tight text-white">Skills & Impact</h2>
             <div className="mt-3 flex flex-wrap items-center gap-2">
-              {["applied Skills", "performance", "software"].map((t) => (
+              {["Applied Skills", "Performance", "Software"].map((t) => (
                 <button
                   key={t}
                   onClick={() => setActiveTab(t)}
                   className={`inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm transition ${
                     activeTab === t
-                      ? "bg-black text-white"
-                      : "border border-black/20 text-black/80 hover:text-black"
+                      ? "text-black"
+                      : "border border-white/20 text-white/70 hover:text-white"
                   }`}
+                  style={activeTab === t ? { backgroundColor: ACCENT } : {}}
                 >
-                  {t === "applied Skills" && <Settings size={16} />}
-                  {t === "performance" && <BarChart3 size={16} />}
-                  {t === "software" && <Cpu size={16} />}
+                  {t === "Applied Skills" && <Settings size={16} />}
+                  {t === "Performance" && <BarChart3 size={16} />}
+                  {t === "Software" && <Cpu size={16} />}
                   {t.charAt(0).toUpperCase() + t.slice(1)}
                 </button>
               ))}
@@ -1085,10 +1108,10 @@ const equipmentImages = useMemo(() => equipmentSlides, []);
           </div>
 
 {/* Equipment tab */}
-{activeTab === "applied Skills" && (
+{activeTab === "Applied Skills" && (
   <div className="mt-10 grid grid-cols-1 lg:grid-cols-2 gap-8 items-stretch">
     {/* LEFT: image card (stretches to row height) */}
-    <div className="relative rounded-3xl overflow-hidden border border-black/10 bg-white h-full">
+    <div className="relative rounded-3xl overflow-hidden border border-white/10 bg-white/5 h-full">
       <div className="relative w-full min-h-[420px] lg:h-full">
         <AnimatePresence mode="wait">
           {(() => {
@@ -1112,11 +1135,11 @@ const equipmentImages = useMemo(() => equipmentSlides, []);
       </div>
 
       {/* single caption overlay */}
-      <div className="absolute bottom-0 inset-x-0 p-4 bg-gradient-to-t from-white via-white/70 to-transparent">
-        <div className="text-lg font-semibold">
+      <div className="absolute bottom-0 inset-x-0 p-4 bg-gradient-to-t from-black/80 via-black/40 to-transparent">
+        <div className="text-lg font-semibold text-white">
           {equipmentImages[currentEquipmentImage].title}
         </div>
-        <div className="text-sm text-black/60">
+        <div className="text-sm text-white/60">
           {equipmentImages[currentEquipmentImage].category}
         </div>
       </div>
@@ -1130,30 +1153,30 @@ const equipmentImages = useMemo(() => equipmentSlides, []);
       let Icon = Settings;
       if (item.title.includes("Microscope")) Icon = Microscope;
       else if (item.title.includes("Laser")) Icon = Crosshair;
-      else if (item.title.includes("Raster")) Icon = ScanLine;
+      else if (item.title.includes("Instrument")) Icon = ScanLine;
       else if (item.title.includes("Manufacturing")) Icon = Hammer;
-else if (item.title.includes("Wet Lab") || item.title.includes("Organic")) Icon = FlaskConical;
-else if (item.title.includes("Cleanroom") || item.title.includes("Microfabrication")) Icon = Cpu;
+      else if (item.title.includes("Precision")) Icon = Target;
+      else if (item.title.includes("Cleanroom") || item.title.includes("Microfabrication")) Icon = Cpu;
 
       return (
         <div
           key={i}
-          className="rounded-2xl border border-black/10 p-4 bg-white overflow-visible"
+          className="rounded-2xl border border-white/10 p-4 bg-white/5 overflow-visible"
         >
           <div className="flex items-start gap-3">
-            <div className="h-9 w-9 rounded-full border border-black/10 grid place-items-center">
+            <div className="h-9 w-9 rounded-full border border-white/15 grid place-items-center shrink-0">
               <Icon size={18} />
             </div>
             <div className="min-w-0">
-              <div className="font-medium leading-tight">{item.title}</div>
-              <div className="text-xs text-black/60">{item.subtitle}</div>
+              <div className="font-medium leading-tight text-white">{item.title}</div>
+              <div className="text-xs text-white/50">{item.subtitle}</div>
             </div>
           </div>
           <ul className="mt-3 space-y-1.5 text-sm">
             {item.points.map((p, j) => (
               <li key={j} className="flex items-start gap-2">
-                <span className="mt-1 inline-block h-1.5 w-1.5 rounded-full bg-black/70" />
-                <span className="text-black/80">{p}</span>
+                <span className="mt-1 inline-block h-1.5 w-1.5 rounded-full shrink-0" style={{ backgroundColor: ACCENT }} />
+                <span className="text-white/75">{p}</span>
               </li>
             ))}
           </ul>
@@ -1167,33 +1190,29 @@ else if (item.title.includes("Cleanroom") || item.title.includes("Microfabricati
 
 
           {/* Performance tab (small KPI tiles) */}
-          {activeTab === "performance" && (
+          {activeTab === "Performance" && (
             <section className="mt-10">
-              <div className="rounded-3xl border border-black/10 p-6">
-                <div className="flex items-center justify-between flex-wrap gap-3">
-                  <div>
-                    <h3 className="text-xl font-semibold">Recent, Attributed Impact</h3>
-                  </div>
-                </div>
+              <div className="rounded-3xl border border-white/10 p-6">
+                <h3 className="text-xl font-semibold text-white">Recent, Attributed Impact</h3>
 
                 <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
                   {[
-                    { metric: "PRISM v5", label: "Instrumentation Deployment", context: "Institute for Quantum Computing (UWaterloo)" },
-                    { metric: "3 Assisted Papers", label: "Figure/Render support", context: "Blender technical visuals for manuscripts (under review)" },
+                    { metric: "4 systems", label: "End-to-end owner", context: "Laser optics, XY stage, microscope camera, substrate loader - Atomic Semi" },
+                    { metric: "PRISM v5", label: "Deployed instrument", context: "In active use at IQC's NPQO Lab for Diamond NV center research" },
+                    { metric: "3 papers", label: "Figure/Render support", context: "Blender technical visuals for manuscripts (under review)" },
                     { metric: "5+ Fixtures", label: "Custom tooling fabricated", context: "Hand-machined/CNC-ready jigs & alignment tools" },
-                    { metric: "20%", label: "Capacity increase", context: "Production routing & customer-intake redesign" },
-                    { metric: "69s/unit", label: "Cycle-time saved", context: "Excel/VBA automation of shipping paperwork" },
-                    { metric: "800+", label: "Tasks automated", context: "3-day surge window, shipping cards" },
+                    { metric: "20%", label: "Capacity increase", context: "Production routing & customer-intake redesign - Pirlitor" },
+                    { metric: "800+", label: "Tasks automated", context: "Excel/VBA shipping cards - 3-day surge window" },
                   ].map((item, i) => (
-                    <div key={i} className="rounded-2xl border border-black/10 p-5 bg-white hover:shadow-sm transition">
-                      <div className="text-2xl font-semibold">{item.metric}</div>
-                      <div className="mt-1 text-sm font-medium">{item.label}</div>
-                      <div className="mt-1 text-xs text-black/60">{item.context}</div>
+                    <div key={i} className="rounded-2xl border border-white/10 p-5 bg-white/5 hover:bg-white/10 transition">
+                      <div className="text-2xl font-semibold text-white">{item.metric}</div>
+                      <div className="mt-1 text-sm font-medium text-white/90">{item.label}</div>
+                      <div className="mt-1 text-xs text-white/50">{item.context}</div>
                     </div>
                   ))}
                 </div>
 
-                <div className="mt-4 text-[11px] text-black/50">
+                <div className="mt-4 text-[11px] text-white/35">
                   Some metrics are summarized to respect confidentiality agreements (NDA).
                 </div>
               </div>
@@ -1201,33 +1220,33 @@ else if (item.title.includes("Cleanroom") || item.title.includes("Microfabricati
           )}
 
           {/* Software tab */}
-          {activeTab === "software" && (
+          {activeTab === "Software" && (
             <div className="mt-10 grid grid-cols-1 lg:grid-cols-2 gap-8">
-              <div className="rounded-3xl border border-black/10 p-6 bg-white">
-                <div className="flex items-center gap-2">
+              <div className="rounded-3xl border border-white/10 p-6 bg-white/5">
+                <div className="flex items-center gap-2 text-white">
                   <Cpu size={18} />
                   <h3 className="text-xl font-semibold">Engineering Software</h3>
                 </div>
                 <ul className="mt-5 space-y-2">
                   {mockData.skills.frameworks.map((name) => (
                     <li key={name} className="flex items-center gap-3">
-                      <Check size={16} className="text-black/70" />
-                      <span className="text-black/90">{name}</span>
+                      <Check size={16} style={{ color: ACCENT }} />
+                      <span className="text-white/80">{name}</span>
                     </li>
                   ))}
                 </ul>
               </div>
 
-              <div className="rounded-3xl border border-black/10 p-6 bg-white">
-                <div className="flex items-center gap-2">
+              <div className="rounded-3xl border border-white/10 p-6 bg-white/5">
+                <div className="flex items-center gap-2 text-white">
                   <Activity size={18} />
                   <h3 className="text-xl font-semibold">Programming Languages</h3>
                 </div>
                 <ul className="mt-5 space-y-2">
                   {mockData.skills.languages.map((name) => (
                     <li key={name} className="flex items-center gap-3">
-                      <Check size={16} className="text-black/70" />
-                      <span className="text-black/90">{name}</span>
+                      <Check size={16} style={{ color: ACCENT }} />
+                      <span className="text-white/80">{name}</span>
                     </li>
                   ))}
                 </ul>
@@ -1238,9 +1257,9 @@ else if (item.title.includes("Cleanroom") || item.title.includes("Microfabricati
       </section>
 
       {/* Professional Performance (experience cards) */}
-      <section id="performance" className="relative bg-white">
+      <section id="performance" className="relative">
         <div className="mx-auto max-w-7xl px-6 py-20 lg:py-24">
-          <h2 className="text-4xl font-semibold tracking-tight">Professional Experience</h2>
+          <h2 className="text-4xl font-semibold tracking-tight text-white">Professional Experience</h2>
 
           <div className="mt-10 grid grid-cols-1 md:grid-cols-2 gap-6">
             {mockData.experience.map((exp, i) => (
@@ -1250,7 +1269,7 @@ else if (item.title.includes("Cleanroom") || item.title.includes("Microfabricati
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: i * 0.06 }}
-                className="rounded-3xl border border-black/10 overflow-hidden"
+                className="rounded-3xl border border-white/10 overflow-hidden bg-white/5"
               >
                 <div className="flex flex-col md:flex-row h-full">
                   {/* image */}
@@ -1265,9 +1284,11 @@ else if (item.title.includes("Cleanroom") || item.title.includes("Microfabricati
     />
   ) : (
     <img
-      src={exp.image ?? `${process.env.PUBLIC_URL}/image.jpg`}
+      src={exp.image
+        ? (exp.image.startsWith("http") ? exp.image : `${process.env.PUBLIC_URL}/${exp.image}`)
+        : `${process.env.PUBLIC_URL}/image.jpg`}
       alt={exp.company}
-      className="h-full w-full object-cover"
+      className={`h-full w-full object-cover ${exp.imagePosition === "left" ? "object-left" : ""}`}
       loading="lazy"
     />
   )}
@@ -1278,41 +1299,32 @@ else if (item.title.includes("Cleanroom") || item.title.includes("Microfabricati
                   <div className="flex-1 p-6">
                     {/* top row */}
                     <div className="flex items-center justify-between">
-                      <div className="text-sm text-black/60">{exp.category}</div>
-                      <span
-                        className="
-                          inline-flex items-center justify-center
-                          rounded-full border border-black/10 bg-white/95
-                          text-[12px] font-medium tracking-wide
-                          px-4 py-1.5
-                          min-w-[11rem] whitespace-nowrap
-                          shadow-sm
-                        "
-                      >
+                      <div className="text-sm text-white/50">{exp.category}</div>
+                      <span className="inline-flex items-center justify-center rounded-full border border-white/15 bg-white/5 text-[12px] font-medium tracking-wide px-4 py-1.5 min-w-[11rem] whitespace-nowrap text-white/80">
                         {exp.period}
                       </span>
                     </div>
 
-                    <div className="mt-1 text-xl font-semibold">{exp.role}</div>
-                    <div className="text-sm">{exp.company}</div>
+                    <div className="mt-1 text-xl font-semibold text-white">{exp.role}</div>
+                    <div className="text-sm text-white/70">{exp.company}</div>
 
                     {exp.engagement && (
-                      <span className="mt-1 inline-block text-[11px] px-2 py-1 rounded-full border border-black/10 bg-black/5">
+                      <span className="mt-1 inline-block text-[11px] px-2 py-1 rounded-full border border-white/10 bg-white/5 text-white/60">
                         {exp.engagement}
                       </span>
                     )}
 
                     {exp.affiliationNote && (
-                      <div className="mt-1 text-xs text-black/60">{exp.affiliationNote}</div>
+                      <div className="mt-1 text-xs text-white/50">{exp.affiliationNote}</div>
                     )}
 
                     {/* metrics */}
                     {Array.isArray(exp.keyMetrics) && exp.keyMetrics.length > 0 && (
                       <div className="mt-4 grid grid-cols-2 md:grid-cols-3 gap-2">
                         {exp.keyMetrics.map((m, j) => (
-                          <div key={j} className="rounded-xl border border-black/10 p-3">
-                            <div className="text-lg font-semibold leading-none">{m.value}</div>
-                            <div className="text-[11px] text-black/60 mt-1">{m.description}</div>
+                          <div key={j} className="rounded-xl border border-white/10 p-2 overflow-hidden min-w-0 bg-white/5">
+                            <div className="text-sm font-semibold leading-tight text-white">{m.value}</div>
+                            <div className="text-[10px] text-white/50 mt-0.5 leading-snug">{m.description}</div>
                           </div>
                         ))}
                       </div>
@@ -1322,8 +1334,8 @@ else if (item.title.includes("Cleanroom") || item.title.includes("Microfabricati
                     {Array.isArray(exp.achievements) && exp.achievements.length > 0 && (
                       <div className="mt-4 space-y-2">
                         {exp.achievements.map((a, k) => (
-                          <div key={k} className="flex items-start gap-2 text-sm">
-                            <span className="mt-1 inline-block h-2 w-2 rounded-full bg-black shrink-0" />
+                          <div key={k} className="flex items-start gap-2 text-sm text-white/75">
+                            <span className="mt-1 inline-block h-2 w-2 rounded-full shrink-0" style={{ backgroundColor: ACCENT }} />
                             <span>{a}</span>
                           </div>
                         ))}
@@ -1337,12 +1349,12 @@ else if (item.title.includes("Cleanroom") || item.title.includes("Microfabricati
         </div>
       </section>
 {/* Projects + full-width carousel */}
-<section id="projects" className="relative bg-gradient-to-b from-white to-black/[0.02]">
+<section id="projects" className="relative">
   <div className="mx-auto max-w-7xl px-6 py-20 lg:py-24">
-    <h2 className="text-4xl font-semibold tracking-tight">Engineering Projects</h2>
+    <h2 className="text-4xl font-semibold tracking-tight text-white">Engineering Projects</h2>
 
     {/* FULL-WIDTH CAROUSEL */}
-    <div className="mt-10 relative rounded-3xl overflow-hidden border border-black/10 bg-white">
+    <div className="mt-10 relative rounded-3xl overflow-hidden border border-white/10 bg-white/5">
       <div className="relative w-full h-[560px] md:h-[640px]">
         <AnimatePresence mode="wait">
           {(() => {
@@ -1404,8 +1416,8 @@ else if (item.title.includes("Cleanroom") || item.title.includes("Microfabricati
         }}
         aria-label={`Open project: ${project.title}`}
         className={`w-full text-left cursor-pointer rounded-3xl border p-6 transition-all duration-200 ease-out
-                    focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black/50
-                    ${isFeatured ? "bg-black text-white hover:shadow-xl" : "bg-white hover:shadow-md"}
+                    focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/20
+                    ${isFeatured ? "bg-white/10 border-white/20 hover:bg-white/15" : "bg-white/5 border-white/10 hover:bg-white/10"}
                     ${project.slug === "prism" ? "prism-card" : ""}
                     ${project.slug === "car-modding" ? "car-card" : ""}
                     ${project.slug === "blender-visualizatio"}`}
@@ -1419,18 +1431,13 @@ else if (item.title.includes("Cleanroom") || item.title.includes("Microfabricati
 
         {/* Category header */}
         <div className="flex items-center justify-between">
-          <div
-            className="text-sm text-black/60 data-[featured=true]:text-white/70"
-            data-featured={isFeatured}
-          >
-            Category
-          </div>
-          <div className="text-sm font-medium">{project.category}</div>
+          <div className="text-sm text-white/50">Category</div>
+          <div className="text-sm font-medium text-white/80">{project.category}</div>
         </div>
 
         {/* Title + description */}
-        <div className="mt-2 text-xl font-semibold">{project.title}</div>
-        <p className={`mt-2 text-sm ${isFeatured ? "text-white/80" : "text-black/70"}`}>
+        <div className="mt-2 text-xl font-semibold text-white">{project.title}</div>
+        <p className="mt-2 text-sm text-white/65">
           {project.description}
         </p>
 
@@ -1448,7 +1455,7 @@ else if (item.title.includes("Cleanroom") || item.title.includes("Microfabricati
 
         {/* Technical specifications */}
         <div className="mt-4">
-          <div className="text-sm font-medium">Technical Specifications</div>
+          <div className="text-sm font-medium text-white/80">Technical Specifications</div>
           <div className="mt-2 space-y-2">
             {(project.specifications ?? []).slice(0, 4).map((s, si) => (
               <div key={si} className="flex items-center gap-2 text-sm">
@@ -1462,13 +1469,13 @@ else if (item.title.includes("Cleanroom") || item.title.includes("Microfabricati
         {/* Technologies chips — only BORDER changes color on hover */}
         {techs.length > 0 && (
           <div className="mt-4">
-            <div className="text-sm font-medium">Technologies</div>
+            <div className="text-sm font-medium text-white/80">Technologies</div>
             <div className="mt-2 flex flex-wrap gap-2">
               {techs.slice(0, 5).map((t, ti) => (
                 <span
                   key={ti}
                   className={`rounded-full border px-3 py-1 text-xs tech-pill accent
-                              ${isFeatured ? "border-white/30 text-white/90" : "border-black/20 text-black/80"}`}
+                              border-white/20 text-white/75`}
                 >
                   {t}
                 </span>
@@ -1486,15 +1493,14 @@ else if (item.title.includes("Cleanroom") || item.title.includes("Microfabricati
 
 
       {/* Footer */}
-      <footer className="border-t border-black/10 bg-white">
+      <footer className="border-t border-white/10">
         <div className="mx-auto max-w-7xl px-6 py-12 grid grid-cols-1 lg:grid-cols-2 gap-10 items-start">
-          {/* LEFT: Engineering Portfolio area + logos image */}
           <div className="space-y-6">
             <div>
-              <div className="text-sm tracking-widest text-black/60">ENGINEERING PORTFOLIO</div>
-              <div className="mt-1 text-2xl font-semibold">Dejan Latkovic</div>
+              <div className="text-sm tracking-widest text-white/40">ENGINEERING PORTFOLIO</div>
+              <div className="mt-1 text-2xl font-semibold text-white">Dejan Latkovic</div>
 
-              <div className="mt-2 flex flex-wrap gap-3 text-sm text-black/70">
+              <div className="mt-2 flex flex-wrap gap-3 text-sm text-white/60">
                 <div className="inline-flex items-center gap-2">
                   <GraduationCapIcon size={14} /> University of Waterloo
                 </div>
@@ -1506,11 +1512,11 @@ else if (item.title.includes("Cleanroom") || item.title.includes("Microfabricati
                 </div>
               </div>
 
-              <div className="mt-4 inline-flex items-center gap-3 rounded-full border border-black/20 px-4 py-2 text-sm">
-                <div className="relative size-2 rounded-full bg-emerald-500">
-                  <span className="absolute inset-0 animate-ping rounded-full bg-emerald-400/60" />
+              <div className="mt-4 inline-flex items-center gap-3 rounded-full border border-white/15 px-4 py-2 text-sm text-white/75">
+                <div className="relative size-2 rounded-full" style={{ backgroundColor: ACCENT }}>
+                  <span className="absolute inset-0 animate-ping rounded-full" style={{ backgroundColor: ACCENT, opacity: 0.6 }} />
                 </div>
-                Available for final 8 month co-op • Seeking Optical & Biomed Engineering roles
+                Open to co-op and research opportunities • Precision instruments, photonics, deep-tech
               </div>
             </div>
 
@@ -1519,13 +1525,13 @@ else if (item.title.includes("Cleanroom") || item.title.includes("Microfabricati
               webp={companiesBarWebp}
               fallback={companiesBarPng}
               alt="University of Waterloo • IQC • Axivion Instruments"
-              className="h-14 sm:h-16 lg:h-20 w-auto object-contain rounded-xl border border-black/10"
+              className="h-14 sm:h-16 lg:h-20 w-auto object-contain rounded-xl border border-white/10 opacity-70"
             />
           </div>
 
           {/* RIGHT: Core Competencies */}
           <div>
-            <div className="text-sm font-medium">Core Competencies</div>
+            <div className="text-sm font-medium text-white/60">Core Competencies</div>
             <div className="mt-3 grid grid-cols-1 sm:grid-cols-2 gap-3">
               {[
                 { n: "Precision Engineering", d: "High-accuracy mechanical & optical design", i: Target },
@@ -1533,13 +1539,13 @@ else if (item.title.includes("Cleanroom") || item.title.includes("Microfabricati
                 { n: "Advanced Instrumentation", d: "Development of custom scientific tools", i: Settings },
                 { n: "Automation & Control", d: "Python/LabVIEW integration for complex systems", i: Activity },
               ].map((c) => (
-                <div key={c.n} className="rounded-2xl border border-black/10 p-4 flex items-center gap-3 bg-white">
-                  <div className="h-9 w-9 rounded-full border border-black/10 grid place-items-center">
+                <div key={c.n} className="rounded-2xl border border-white/10 p-4 flex items-center gap-3 bg-white/5">
+                  <div className="h-9 w-9 rounded-full border border-white/15 grid place-items-center shrink-0">
                     {React.createElement(c.i, { size: 18 })}
                   </div>
                   <div>
-                    <div className="font-medium">{c.n}</div>
-                    <div className="text-sm text-black/60">{c.d}</div>
+                    <div className="font-medium text-white">{c.n}</div>
+                    <div className="text-sm text-white/50">{c.d}</div>
                   </div>
                 </div>
               ))}
@@ -1547,13 +1553,14 @@ else if (item.title.includes("Cleanroom") || item.title.includes("Microfabricati
           </div>
         </div>
 
-        <div className="border-t border-black/10">
-          <div className="mx-auto max-w-7xl px-6 py-6 text-sm text-black/60 flex items-center justify-between">
+        <div className="border-t border-white/10">
+          <div className="mx-auto max-w-7xl px-6 py-6 text-sm text-white/40 flex items-center justify-between">
             <div>© {new Date().getFullYear()} Dejan Latkovic</div>
             <div className="flex items-center gap-3" />
           </div>
         </div>
       </footer>
+      </div>{/* end relative z-10 */}
     </div>
   );
 }
