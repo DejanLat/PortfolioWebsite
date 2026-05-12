@@ -954,10 +954,23 @@ export default function PortfolioWhite() {
             <a href="https://www.linkedin.com" className="whitespace-nowrap text-white/70 hover:text-white transition-colors">
               LinkedIn
             </a>
+            <a
+              href="https://uwaterloo.ca/institute-for-quantum-computing/contacts/dejan-latkovic-0"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="whitespace-nowrap rounded-full px-4 py-2 font-medium text-white"
+              style={{ border: "1.5px solid rgba(255,255,255,0.2)", transition: "border-color 0.25s ease, color 0.25s ease" }}
+              onMouseEnter={e => { e.currentTarget.style.borderColor = "#A40C34"; e.currentTarget.style.color = "#A40C34"; }}
+              onMouseLeave={e => { e.currentTarget.style.borderColor = "rgba(255,255,255,0.2)"; e.currentTarget.style.color = "white"; }}
+            >
+              IQC
+            </a>
             <Link
               to="/prism"
-              className="whitespace-nowrap rounded-full px-4 py-2 font-medium text-black"
-              style={{ backgroundColor: "#13c2b3" }}
+              className="whitespace-nowrap rounded-full px-4 py-2 font-medium text-white"
+              style={{ border: "1.5px solid rgba(255,255,255,0.2)", transition: "border-color 0.25s ease, color 0.25s ease" }}
+              onMouseEnter={e => { e.currentTarget.style.borderColor = "#13c2b3"; e.currentTarget.style.color = "#13c2b3"; }}
+              onMouseLeave={e => { e.currentTarget.style.borderColor = "rgba(255,255,255,0.2)"; e.currentTarget.style.color = "white"; }}
             >
               PRISM
             </Link>
@@ -1034,8 +1047,10 @@ export default function PortfolioWhite() {
         <div className="mt-8 flex items-center gap-3">
           <Link
             to="/prism"
-            className="rounded-full px-6 py-3 text-sm font-medium text-black inline-flex items-center gap-2"
-            style={{ backgroundColor: ACCENT }}
+            className="rounded-full px-6 py-3 text-sm font-medium text-white inline-flex items-center gap-2"
+            style={{ border: "1.5px solid rgba(255,255,255,0.2)", transition: "border-color 0.25s ease, color 0.25s ease" }}
+            onMouseEnter={e => { e.currentTarget.style.borderColor = "#13c2b3"; e.currentTarget.style.color = "#13c2b3"; }}
+            onMouseLeave={e => { e.currentTarget.style.borderColor = "rgba(255,255,255,0.2)"; e.currentTarget.style.color = "white"; }}
           >
             Axivion Instruments <ArrowRight size={18} />
           </Link>
