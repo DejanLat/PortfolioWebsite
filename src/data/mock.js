@@ -98,14 +98,13 @@ experience: [
       "Led technical specs, supplier engagement, and V6 printability-optimized design (PPS-CF10 structural parts)"
     ]
   },
-{
+  {
     company: "Institute for Quantum Computing (IQC)",
-    role: "Nano Photonics & Quantum Optics Lab Member",
+    role: "Research Affiliate",
     engagement: "Casual / On-call",
     period: "May 2025 – Present",
     category: "IP • Commercialization",
-    imageBase: "image2experience", // <- add this
-    // image: "...",               // (optional)
+    imageBase: "image2experience",
     keyMetrics: [
       { value: "PN 2025", description: "Presented PRISM at Photonics North" },
       { value: "IP docs", description: "Initiated patent prep & records" },
@@ -115,12 +114,11 @@ experience: [
       "Presented PRISM at Photonics North 2025 Startup Competition (Ottawa)",
       "Initiated the IP documentation and commercialization planning",
       "Coordinated lab → product transition for early spin-out work"
-    ],
-    affiliationNote: "Continuing part-time affiliation alongside studies."
+    ]
   },
   {
     company: "Institute for Quantum Computing (IQC)",
-    role: "Research Engineer: Prototyping & Instrumentation",
+    role: "Research Assistant: Prototyping & Instrumentation",
         engagement: "Co-op",
     period: "Sep 2024 – Apr 2025",
     category: "Prototyping  Instrumentation",
@@ -140,7 +138,7 @@ experience: [
   },
   {
     company: "Institute for Quantum Computing (IQC)",
-    role: "Research Assistant: Optical Systems & Machining",
+    role: "Research Affiliate - Nano Photonics and Quantum Optics Lab",
     engagement: "Casual / On-call",
     period: "May – Aug 2024",
     category: "Development",
