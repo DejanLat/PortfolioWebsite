@@ -75,7 +75,7 @@ experience: [
     achievements: [
       "End-to-end owner of four hardware systems: laser optics module, cost-optimized automated XY stage, custom microscope camera, and automated substrate loader",
       "Technical documentation set as a positive benchmark for future interns by staff engineer (Daniel LaCroix, Precision Engineering Team)",
-      "Contributions confirmed to have lasting impact on the Precision Engineering team"
+      "Full project impact documented in a letter of recommendation; reach out to me directly for a copy"
     ]
   },
   {
@@ -94,8 +94,7 @@ experience: [
     achievements: [
       "Founder and CTO of Axivion Instruments, building PRISM - a precision scanning microscope now in active use at IQC's NPQO Lab for Diamond NV center research",
       "Drafted a provisional patent for PRISM; filing and IP strategy in progress",
-      "Built CORE - a modular instrument control platform as part of the Axivion software stack",
-      "Led technical specs, supplier engagement, and V6 printability-optimized design (PPS-CF10 structural parts)"
+      "Built CORE - a modular instrument control platform as part of the Axivion software stack"
     ]
   },
   {
@@ -138,7 +137,7 @@ experience: [
   },
   {
     company: "Institute for Quantum Computing (IQC)",
-    role: "Research Affiliate - Nano Photonics and Quantum Optics Lab",
+    role: "Research Affiliate - Lab Support",
     engagement: "Casual / On-call",
     period: "May – Aug 2024",
     category: "Development",

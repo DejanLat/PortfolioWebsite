@@ -1037,7 +1037,7 @@ export default function PortfolioWhite() {
           "
         >
           Dejan Latkovic
-          <span className="block" style={{ color: "rgba(255,255,255,0.55)" }}>Engineering Portfolio</span>
+          <span className="block" style={{ color: "rgba(255,255,255,0.55)", letterSpacing: "0.04em" }}>Engineering Portfolio</span>
         </h1>
 
         <p className="mt-5 max-w-2xl text-white/70">
