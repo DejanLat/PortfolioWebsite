@@ -1,664 +1,230 @@
-// // Contact.jsx
-// import React, { useMemo, useState } from "react";
-// import { motion } from "framer-motion";
-// import {
-//   ArrowLeft,
-//   Mail,
-//   Phone,
-//   Calendar,
-//   FileText,
-//   Shield,
-//   SendHorizonal,
-// } from "lucide-react";
-// import { Link } from "react-router-dom";
-
-// const CONTACT_EMAIL = "axivioninstruments@gmail.com"; // Default contact email
-// export default function Contact({ contactEmail = CONTACT_EMAIL }) {
-//   const [topic, setTopic] = useState("General Inquiry");
-//   const [name, setName] = useState("");
-//   const [org, setOrg] = useState("");
-//   const [message, setMessage] = useState("");
-
-//   const subjectMap = useMemo(
-//     () => ({
-//       "General Inquiry": "General inquiry about PRISM",
-//       "Request Specs": "Requesting PRISM spec overview",
-//       "Schedule a Meeting": "Meeting request about PRISM",
-//       "Partnerships / Pilot": "Partnership or pilot discussion",
-//     }),
-//     []
-//   );
-
-//   const encoded = (s) => encodeURIComponent(s || "");
-//   const buildMailto = (s, b) =>
-//     `mailto:${contactEmail}?subject=${encoded(s)}&body=${encoded(b)}`;
-
-//   const quickLinks = [
-//     {
-//       title: "Request Specs",
-//       label: "Overview PDF / capabilities",
-//       icon: FileText,
-//       href: buildMailto(
-//         subjectMap["Request Specs"],
-//         `Hi,\n\nI’d like the latest spec overview for PRISM.\n\nName: \nOrganization: \nUse case: \n\nThanks!`
-//       ),
-//       primary: true,
-//     },
-//     {
-//       title: "Schedule a Meeting",
-//       label: "30–45 min conversation",
-//       icon: Calendar,
-//       href: buildMailto(
-//         subjectMap["Schedule a Meeting"],
-//         `Hi,\n\nI’d like to schedule a meeting to discuss PRISM.\n\nMy availability: \nTopics of interest: \n\nThanks!`
-//       ),
-//     },
-//     {
-//       title: "Partnerships / Pilot",
-//       label: "Evaluation & early access",
-//       icon: Shield,
-//       href: buildMailto(
-//         subjectMap["Partnerships / Pilot"],
-//         `Hi,\n\nWe’re interested in a partnership/pilot.\n\nOrganization: \nEnvironment (e.g., cryo/vacuum): \nTarget timeline: \n\nThanks!`
-//       ),
-//     },
-//   ];
-
-//   const handleSubmit = (e) => {
-//     e.preventDefault();
-//     const s = subjectMap[topic] || "Inquiry";
-//     const body = `Hi,\n\n${message || "(message)"}\n\n; ${name || "(name)"}${
-//       org ? `, ${org}` : ""
-//     }`;
-//     window.location.href = buildMailto(s, body);
-//   };
-
-//   return (
-//     <div className="min-h-screen w-full bg-black text-white">
-//       {/* Top bar */}
-//       <header className="fixed inset-x-0 top-0 z-50 backdrop-blur bg-black/70 border-b border-white/10">
-//         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
-//           <div className="flex items-center gap-3">
-//             <Link
-//               to="/prism"
-//               className="inline-flex items-center gap-2 text-sm text-white/80 hover:text-white"
-//             >
-//               <ArrowLeft size={18} />
-//               <span>Back</span>
-//             </Link>
-//             <div className="h-5 w-px bg-white/20" />
-//             <div className="font-semibold tracking-widest text-white">AXIVION</div>
-//             <div className="text-white/40">CONTACT</div>
-//           </div>
-
-//           <a
-//             href={buildMailto("Direct email", "Hi,")}
-//             className="rounded-full bg-white text-black px-4 py-2 text-sm font-medium hover:bg-white/90"
-//           >
-//             <Mail size={16} className="inline mr-1" />
-//             Email
-//           </a>
-//         </div>
-//       </header>
-
-//       {/* Hero */}
-//       <section className="relative pt-36 pb-16">
-//         <div className="absolute inset-0 -z-10">
-//           <div className="absolute inset-0 [background-image:radial-gradient(60rem_30rem_at_50%_120%,rgba(255,255,255,0.12),transparent_60%)]" />
-//         </div>
-//         <div className="mx-auto max-w-7xl px-6">
-//           <motion.div
-//             initial={{ opacity: 0, y: 12 }}
-//             animate={{ opacity: 1, y: 0 }}
-//             transition={{ duration: 0.6 }}
-//             className="max-w-3xl"
-//           >
-//             <div className="inline-flex items-center gap-2 rounded-full border border-white/20 px-4 py-1 text-xs uppercase tracking-widest text-white/80">
-//               Contact
-//             </div>
-//             <h1 className="mt-4 text-5xl md:text-6xl font-semibold tracking-tight">
-//               Connect with the Team
-//             </h1>
-//             <p className="mt-4 text-white/70 max-w-2xl">
-//               Active development • Patent pending. Request a spec overview, propose a collaboration, or
-//               schedule a conversation. We’ll reply promptly.
-//             </p>
-
-//             <div className="mt-6 flex flex-wrap items-center gap-3">
-//               <a
-//                 href={buildMailto("General inquiry about PRISM", "Hi,")}
-//                 className="rounded-full bg-white text-black px-6 py-3 text-sm font-medium hover:bg-white/90"
-//               >
-//                 <SendHorizonal size={16} className="inline mr-2" />
-//                 Email Us
-//               </a>
-//               <a
-//                 href={buildMailto(
-//                   subjectMap["Schedule a Meeting"],
-//                   "Hi,\n\nMy availability:\n- \n- \n\nThanks!"
-//                 )}
-//                 className="rounded-full border border-white/30 px-6 py-3 text-sm font-medium hover:border-white/60"
-//               >
-//                 <Calendar size={16} className="inline mr-2" />
-//                 Schedule a Meeting
-//               </a>
-//             </div>
-//           </motion.div>
-//         </div>
-//       </section>
-
-//       {/* Quick cards */}
-//       <section className="relative w-full">
-//         <div className="mx-auto max-w-7xl px-6 pb-10">
-//           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-//             {quickLinks.map((q) => (
-//               <a
-//                 key={q.title}
-//                 href={q.href}
-//                 className={`rounded-3xl border border-white/10 p-6 hover:border-white/30 transition group ${
-//                   q.primary ? "bg-white/5" : ""
-//                 }`}
-//               >
-//                 <q.icon size={20} className="text-white/80" />
-//                 <div className="mt-3 text-xl font-semibold">{q.title}</div>
-//                 <div className="text-sm text-white/60">{q.label}</div>
-//                 <div className="mt-4 text-xs text-white/40 group-hover:text-white/60">
-//                   Opens email composer →
-//                 </div>
-//               </a>
-//             ))}
-//           </div>
-//         </div>
-//       </section>
-
-//       {/* Email compose (mailto) */}
-//       <section className="relative w-full">
-//         <div className="mx-auto max-w-7xl px-6 py-10 lg:py-14">
-//           <div className="rounded-3xl border border-white/10 p-6 lg:p-8 grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
-//             <div>
-//               <div className="text-sm uppercase tracking-widest text-white/60">Direct</div>
-//               <h2 className="mt-2 text-3xl font-semibold">Write to us</h2>
-//               <p className="mt-3 text-white/70">
-//                 Prefer a quick note? Use the form to pre-fill an email with your details, or write us
-//                 directly at{" "}
-//                 <a
-//                   href={buildMailto("Direct email", "Hi,")}
-//                   className="underline hover:opacity-80"
-//                 >
-//                   {contactEmail}
-//                 </a>
-//                 .
-//               </p>
-
-//               <div className="mt-6 space-y-3 text-sm text-white/60">
-//                 <div className="flex items-center gap-2">
-//                   <Mail size={16} /> {contactEmail}
-//                 </div>
-//                 <div className="flex items-center gap-2">
-//                   <Phone size={16} /> By appointment
-//                 </div>
-//                 <div className="flex items-center gap-2">
-//                   <Shield size={16} /> Technical details available on request
-//                 </div>
-//               </div>
-//             </div>
-
-//             <form onSubmit={handleSubmit} className="space-y-4">
-//               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-//                 <div>
-//                   <label className="block text-sm text-white/70 mb-1">Your Name</label>
-//                   <input
-//                     value={name}
-//                     onChange={(e) => setName(e.target.value)}
-//                     className="w-full rounded-xl bg-black border border-white/15 px-3 py-2 outline-none focus:border-white/40"
-//                     placeholder="Ada Lovelace"
-//                     autoComplete="name"
-//                   />
-//                 </div>
-//                 <div>
-//                   <label className="block text-sm text-white/70 mb-1">Organization</label>
-//                   <input
-//                     value={org}
-//                     onChange={(e) => setOrg(e.target.value)}
-//                     className="w-full rounded-xl bg-black border border-white/15 px-3 py-2 outline-none focus:border-white/40"
-//                     placeholder="Institute / Company"
-//                     autoComplete="organization"
-//                   />
-//                 </div>
-//               </div>
-
-//               <div>
-//                 <label className="block text-sm text-white/70 mb-1">Topic</label>
-//                 <select
-//                   value={topic}
-//                   onChange={(e) => setTopic(e.target.value)}
-//                   className="w-full rounded-xl bg-black border border-white/15 px-3 py-2 outline-none focus:border-white/40"
-//                 >
-//                   {Object.keys(subjectMap).map((k) => (
-//                     <option key={k}>{k}</option>
-//                   ))}
-//                 </select>
-//               </div>
-
-//               <div>
-//                 <label className="block text-sm text-white/70 mb-1">Message</label>
-//                 <textarea
-//                   value={message}
-//                   onChange={(e) => setMessage(e.target.value)}
-//                   rows={6}
-//                   className="w-full rounded-xl bg-black border border-white/15 px-3 py-2 outline-none focus:border-white/40"
-//                   placeholder="A brief description of your request, environment, and timeline…"
-//                 />
-//               </div>
-
-//               <div className="flex items-center gap-3">
-//                 <button
-//                   type="submit"
-//                   className="rounded-full bg-white text-black px-6 py-3 text-sm font-medium hover:bg-white/90"
-//                 >
-//                   <SendHorizonal size={16} className="inline mr-2" />
-//                   Open Email
-//                 </button>
-//                 <a
-//                   href={buildMailto("General inquiry about PRISM", "Hi,")}
-//                   className="rounded-full border border-white/30 px-6 py-3 text-sm font-medium hover:border-white/60"
-//                 >
-//                   Or email manually
-//                 </a>
-//               </div>
-//             </form>
-//           </div>
-//         </div>
-//       </section>
-
-//       {/* Footer */}
-//       <footer className="prism-tesla-footer border-t border-white/10 bg-black">
-//         <div className="tesla-container mx-auto max-w-7xl px-6">
-//           <div className="prism-footer-content flex items-center justify-between py-8 gap-6 flex-col sm:flex-row">
-//             <div className="footer-left">
-//               <h3 className="text-xl font-semibold">PRISM System</h3>
-//               <p className="text-white/70">Periscopic Relay Imaging Scanning Microscope</p>
-//               <div className="footer-status mt-3 flex items-center gap-2 text-sm text-white/70">
-//                 <span className="status-dot active inline-block h-2 w-2 rounded-full bg-emerald-400" />
-//                 <span>Active Development • Patent Pending</span>
-//               </div>
-//             </div>
-
-//             <div className="footer-right">
-//               <div className="footer-tesla-specs grid grid-cols-3 gap-4 text-center">
-//                 <div className="footer-tesla-spec rounded-2xl border border-white/10 px-4 py-3">
-//                   <span className="spec-value block text-lg font-semibold">V5.0</span>
-//                   <span className="spec-label block text-xs text-white/60">Current Release</span>
-//                 </div>
-//                 <div className="footer-tesla-spec rounded-2xl border border-white/10 px-4 py-3">
-//                   <span className="spec-value block text-lg font-semibold">50×</span>
-//                   <span className="spec-label block text-xs text-white/60">Tested Stable Total Magnification</span>
-//                 </div>
-//                 <div className="footer-tesla-spec rounded-2xl border border-white/10 px-4 py-3">
-//                   <span className="spec-value block text-lg font-semibold">50 nm</span>
-//                   <span className="spec-label block text-xs text-white/60">Smooth Stepping Resolution</span>
-//                 </div>
-//               </div>
-//             </div>
-//           </div>
-
-//           <div className="py-6 text-sm text-white/60 flex items-center justify-between border-t border-white/10">
-//             <div>PRISM</div>
-//             <div>© {new Date().getFullYear()} Axivion Instruments</div>
-//           </div>
-//         </div>
-//       </footer>
-//     </div>
-//   );
-// }
-
-
-// src/components/Contact.jsx
-import React, {
-  useMemo,
-  useState,
-  useEffect,
-  useRef,
-  useCallback,
-} from "react";
+import React, { useMemo, useState } from "react";
 import { motion } from "framer-motion";
 import {
   ArrowLeft,
-  Mail,
-  Phone,
+  Briefcase,
   Calendar,
   FileText,
-  Shield,
+  Image as ImageIcon,
+  Mail,
+  Microscope,
+  Phone,
   SendHorizonal,
 } from "lucide-react";
 import { Link } from "react-router-dom";
 
-const CONTACT_EMAIL = "axivioninstruments@gmail.com"; // Default contact email
+const CONTACT_EMAIL = "axivioninstruments@gmail.com";
+const ACCENT = "#f59e0b";
+const ACCENT_SOFT = "rgba(245, 158, 11, 0.15)";
+const PUBLIC = process.env.PUBLIC_URL || "";
 
 export default function Contact({ contactEmail = CONTACT_EMAIL }) {
-  const ACCENT = "#13c2b3";
-  const ACCENT_HOVER = "#0fb3a5";
-
-  // ---- Cursor-follow glow (global; background only)
   const [mx, setMx] = useState(-9999);
   const [my, setMy] = useState(-9999);
-  const onMove = (e) => {
-    setMx(e.clientX);
-    setMy(e.clientY);
-  };
-  const rootStyle = { "--mx": `${mx}px`, "--my": `${my}px` };
-
-  // ---- Hero-local halo so it stays glued while scrolling
-  const heroRef = useRef(null);
-  const onHeroMove = (e) => {
-    const el = heroRef.current;
-    if (!el) return;
-    const r = el.getBoundingClientRect();
-    el.style.setProperty("--hx", `${e.clientX - r.left}px`);
-    el.style.setProperty("--hy", `${e.clientY - r.top}px`);
-  };
-
-  const updateHeroGlowFromViewport = useCallback(() => {
-    const el = heroRef.current;
-    if (!el) return;
-    const r = el.getBoundingClientRect();
-    el.style.setProperty("--hx", `${mx - r.left}px`);
-    el.style.setProperty("--hy", `${my - r.top}px`);
-  }, [mx, my]);
-
-  useEffect(() => {
-    updateHeroGlowFromViewport();
-  }, [updateHeroGlowFromViewport]);
-
-  useEffect(() => {
-    let raf = 0;
-    const schedule = () => {
-      cancelAnimationFrame(raf);
-      raf = requestAnimationFrame(updateHeroGlowFromViewport);
-    };
-    schedule();
-    window.addEventListener("scroll", schedule, { passive: true });
-    window.addEventListener("resize", schedule, { passive: true });
-    return () => {
-      cancelAnimationFrame(raf);
-      window.removeEventListener("scroll", schedule);
-      window.removeEventListener("resize", schedule);
-    };
-  }, [updateHeroGlowFromViewport]);
-
-  // ---- Mail helpers (unchanged)
-  const [topic, setTopic] = useState("General Inquiry");
+  const [topic, setTopic] = useState("Axivion Instruments");
   const [name, setName] = useState("");
   const [org, setOrg] = useState("");
   const [message, setMessage] = useState("");
 
+  const rootStyle = { "--mx": `${mx}px`, "--my": `${my}px` };
+
   const subjectMap = useMemo(
     () => ({
-      "General Inquiry": "General inquiry about PRISM",
-      "Request Detailed Specs": "Requesting PRISM spec overview",
-      "Schedule a Meeting": "Meeting request about PRISM",
-      "Partnerships": "Partnership or pilot discussion",
+      "Render Service": "Scientific render / visualization request",
+      "Axivion Instruments": "Axivion Instruments / PRISM inquiry",
+      "Research Collaboration": "Research collaboration inquiry",
+      "Co-op / Work": "Co-op or work opportunity",
+      "Schedule a Meeting": "Meeting request",
+      "General Inquiry": "General inquiry - Dejan Latkovic portfolio",
     }),
     []
   );
 
-  const encoded = (s) => encodeURIComponent(s || "");
-  const buildMailto = (s, b) =>
-    `mailto:${contactEmail}?subject=${encoded(s)}&body=${encoded(b)}`;
+  const encoded = (value) => encodeURIComponent(value || "");
+  const buildMailto = (subject, body) =>
+    `mailto:${contactEmail}?subject=${encoded(subject)}&body=${encoded(body)}`;
 
-  const quickLinks = [
+  const primaryPaths = [
     {
-      title: "Request Detailed Specifications",
-      label: "Overview PDF / capabilities",
-      icon: FileText,
-      href: buildMailto(
-        subjectMap["Request Detailed Specifications"],
-        `Hi,\n\nI’d like the latest spec overview for PRISM.\n\nName: \nOrganization: \nUse case: \n\nThanks!`
-      ),
-      primary: true,
+      title: "Axivion Instruments",
+      label: "PRISM instrument inquiries, specs, partnerships",
+      icon: Microscope,
+      topic: "Axivion Instruments",
+      body:
+        "Hi,\n\nI'd like to discuss Axivion Instruments / PRISM.\n\nOrganization:\nUse case:\nTimeline:\n\nThanks!",
     },
     {
-      title: "Schedule a Meeting",
-      label: "30–45 min conversation",
-      icon: Calendar,
-      href: buildMailto(
-        subjectMap["Schedule a Meeting"],
-        `Hi,\n\nI’d like to schedule a meeting to discuss PRISM.\n\nMy availability: \nTopics of interest: \n\nThanks!`
-      ),
-    },
-    {
-      title: "Partnerships",
-      label: "Evaluation & early access",
-      icon: Shield,
-      href: buildMailto(
-        subjectMap["Partnerships"],
-        `Hi,\n\nWe’re interested in a partnership.\n\nOrganization: \nEnvironment (e.g., cryo/vacuum): \nTarget timeline: \n\nThanks!`
-      ),
+      title: "Scientific Render Services",
+      label: "Blender scientific visualization for papers, posters, web, and grants",
+      icon: ImageIcon,
+      topic: "Render Service",
+      body:
+        "Hi,\n\nI'm interested in scientific visualization / render support.\n\nProject or structure:\nUse case (paper, poster, web, grant, presentation):\nTimeline:\nReference material available:\n\nThanks!",
     },
   ];
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    const s = subjectMap[topic] || "Inquiry";
-    const body = `Hi,\n\n${message || "(message)"}\n\n ${name || "(name)"}${
-      org ? `, ${org}` : ""
+  const secondaryPaths = [
+    {
+      title: "Research Collaboration",
+      label: "Photonics, instrumentation, visualization",
+      icon: FileText,
+      topic: "Research Collaboration",
+      body:
+        "Hi,\n\nI'd like to discuss a research collaboration.\n\nTopic:\nOrganization:\nTimeline:\n\nThanks!",
+    },
+    {
+      title: "Co-op / Work",
+      label: "Precision engineering, optics, hardware",
+      icon: Briefcase,
+      topic: "Co-op / Work",
+      body:
+        "Hi,\n\nI'm reaching out about a co-op / work opportunity.\n\nRole or team:\nLocation:\nTimeline:\n\nThanks!",
+    },
+    {
+      title: "Schedule a Meeting",
+      label: "Short technical conversation",
+      icon: Calendar,
+      topic: "Schedule a Meeting",
+      body:
+        "Hi,\n\nI'd like to schedule a meeting.\n\nMy availability:\nTopics of interest:\n\nThanks!",
+    },
+  ];
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    const subject = subjectMap[topic] || subjectMap["General Inquiry"];
+    const body = `Hi,\n\n${message || "(message)"}\n\nName: ${name || ""}${
+      org ? `\nOrganization: ${org}` : ""
     }`;
-    window.location.href = buildMailto(s, body);
+    window.location.href = buildMailto(subject, body);
   };
 
   return (
     <div
       className="min-h-screen w-full bg-black text-white"
-      onMouseMove={onMove}
       style={rootStyle}
+      onMouseMove={(event) => {
+        setMx(event.clientX);
+        setMy(event.clientY);
+      }}
     >
-      {/* BACKGROUND LAYER (fixed) ; above pure black, below content */}
       <div className="pointer-events-none fixed inset-0 z-0" aria-hidden>
-        {/* Global cursor halo */}
-        <div
-          className="absolute inset-0"
-          style={{
-            background:
-              "radial-gradient(700px at var(--mx) var(--my), rgba(19, 194, 179, 0.14), transparent 60%)",
-          }}
-        />
+{/* Global cursor halo */}
+        <div className="absolute inset-0"
+             style={{ background: `radial-gradient(700px at var(--mx) var(--my), ${ACCENT_SOFT}, transparent 60%)` }} />
         {/* Static top glow */}
-        <div
-          className="absolute inset-x-0 top-0 h-[70vh]"
-          style={{
-            background:
-              "radial-gradient(60rem 30rem at 50% -10%, rgba(19, 194, 179, 0.18), transparent 60%)",
-          }}
-        />
+        <div className="absolute inset-x-0 top-0 h-[90vh]"
+             style={{ background: "radial-gradient(600rem 26rem at 50% -10%,rgba(245,158,11,0.42), transparent 60%)" }} />
       </div>
 
-{/* Top bar (mobile-tight, truncation-safe, safe blur) */}
-<header className="fixed inset-x-0 top-0 z-50 supports-[backdrop-filter:blur(0px)]:backdrop-blur bg-black/70 border-b border-white/10">
-  <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-20 h-16 flex items-center justify-between">
-    {/* LEFT: crumb cluster */}
-    <div className="min-w-0 flex items-center gap-2 sm:gap-3">
-      <Link
-        to="/prism"
-        className="inline-flex items-center gap-1.5 sm:gap-2 text-xs sm:text-sm text-white/80 hover:text-white shrink-0"
-      >
-        <ArrowLeft size={16} className="sm:hidden" />
-        <span>Back</span>
-      </Link>
 
-      <div className="h-4 sm:h-5 w-px bg-white/20 shrink-0" />
+        <header className="fixed inset-x-0 top-0 z-50 backdrop-blur bg-black/70 border-b border-white/10">
+          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 h-16 flex items-center gap-3">
+            <Link to="/" className="inline-flex items-center gap-2 text-sm text-white/80 hover:text-white">
+              <ArrowLeft size={18} />
+              Back
+            </Link>
+            <div className="h-5 w-px bg-white/20" />
+            <div className="font-semibold tracking-widest">CONTACT</div>
+            <div className="hidden sm:block text-white/40">DEJAN LATKOVIC</div>
+          </div>
+        </header>
 
-      {/* Brand + section, ellipsis if narrow */}
-      <div className="min-w-0 flex items-baseline gap-2">
-        <span className="font-semibold tracking-widest text-white text-xs sm:text-sm truncate">
-          AXIVION
-        </span>
-        <span className="text-white/50 text-xs sm:text-sm truncate">
-          CONTACT
-        </span>
-      </div>
-    </div>
+        <section className="relative pt-36 pb-16">
+          <div className="absolute inset-0 -z-10">
+            <img
+              src={`${PUBLIC}/office.webp`}
+              alt="Workspace background"
+              className="absolute inset-0 h-full w-full object-cover"
+              style={{
+                opacity: 0.22,
+                filter: "brightness(0.78) contrast(1.02)",
+              }}
+            />
+            <div className="absolute inset-0 bg-gradient-to-b from-black/90 via-black/78 to-black" />
+          </div>
 
-    {/* RIGHT: CTA (scaled for phone) */}
-    <a
-      href={buildMailto("Direct email", "Hi,")}
-      className="rounded-full px-3.5 sm:px-4 py-1.5 sm:py-2 text-sm font-medium"
-      style={{ backgroundColor: ACCENT, color: "#000" }}
-      onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = ACCENT_HOVER)}
-      onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = ACCENT)}
-    >
-      <Mail size={16} className="inline mr-1" />
-      Email
-    </a>
-  </div>
-</header>
-
-
-      {/* Hero */}
-      <section
-        ref={heroRef}
-        onMouseMove={onHeroMove}
-        className="relative pt-36 pb-16"
-      >
-        {/* Teal hero background + overlays */}
-        <div className="absolute inset-0 -z-10">
-          <div className="absolute inset-0 bg-gradient-to-b from-[#062a2e] via-[#052024] to-black" />
-          <div className="absolute inset-0 [background-image:radial-gradient(60rem_30rem_at_50%_120%,rgba(19,194,179,0.18),transparent_60%),linear-gradient(to_bottom,rgba(0,0,0,0.20),rgba(0,0,0,0.55))]" />
-        </div>
-
-        {/* Hero-local cursor halo (doesn't obstruct content) */}
-        <div
-          className="pointer-events-none absolute inset-0 -z-[5]"
-          style={{
-            background:
-              "radial-gradient(700px at var(--hx) var(--hy), rgba(19, 194, 179, 0.18), transparent 60%)",
-          }}
-        />
-        {/* Bottom bleed to prevent visible seam to next section */}
-        <div
-          className="pointer-events-none absolute -bottom-10 left-0 right-0 h-10 -z-[4]"
-          style={{
-            background:
-              "linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 100%)",
-          }}
-          aria-hidden
-        />
-
-        <div className="mx-auto max-w-7xl px-6">
-          <motion.div
-            initial={{ opacity: 0, y: 12 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="max-w-3xl"
-          >
-            <div
-              className="inline-flex items-center gap-2 rounded-full px-4 py-1 text-xs uppercase tracking-widest text-white/90 border"
-              style={{ borderColor: "rgba(19,194,179,0.35)" }}
+          <div className="mx-auto max-w-7xl px-6">
+            <motion.div
+              initial={{ opacity: 0, y: 12 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              className="max-w-3xl"
             >
-              Contact
-            </div>
-            <h1 className="mt-4 text-5xl md:text-6xl font-semibold tracking-tight">
-              Connect with the Team
-            </h1>
-            <p className="mt-4 text-white/80 max-w-2xl">
-              Active development • Patent pending. Request a spec overview,
-              propose a collaboration, or schedule a conversation. We’ll reply
-              promptly.
-            </p>
+              <div
+                className="inline-flex items-center gap-2 rounded-full border px-4 py-1 text-xs uppercase tracking-widest text-white/90 backdrop-blur-sm"
+                style={{ borderColor: "rgba(245,158,11,0.42)", background: "rgba(255,255,255,0.07)" }}
+              >
+                Contact
+              </div>
+              <h1 className="mt-4 text-5xl md:text-6xl font-semibold tracking-tight">
+                Let’s Talk
+              </h1>
+              <p className="mt-4 max-w-2xl text-white/78">
+                Send a note about Axivion Instruments, the PRISM instrument, scientific render work,
+                research collaboration, or engineering opportunities.
+              </p>
+            </motion.div>
+          </div>
+        </section>
 
-            <div className="mt-6 flex flex-wrap items-center gap-3">
+        <section className="relative w-full">
+          <div className="mx-auto max-w-7xl px-6 pb-12">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+            {primaryPaths.map((path) => (
               <a
-                href={buildMailto("General inquiry about PRISM", "Hi,")}
-                className="rounded-full px-6 py-3 text-sm font-medium"
-                style={{ backgroundColor: ACCENT, color: "#000" }}
-                onMouseEnter={(e) =>
-                  (e.currentTarget.style.backgroundColor = ACCENT_HOVER)
-                }
-                onMouseLeave={(e) =>
-                  (e.currentTarget.style.backgroundColor = ACCENT)
-                }
+                key={path.title}
+                href={buildMailto(subjectMap[path.topic], path.body)}
+                className="rounded-3xl border p-7 transition hover:bg-white/10"
+                style={{ borderColor: "rgba(245,158,11,0.26)", background: "rgba(245,158,11,0.07)" }}
               >
-                <SendHorizonal size={16} className="inline mr-2" />
-                Email Us
-              </a>
-              <a
-                href={buildMailto(
-                  subjectMap["Schedule a Meeting"],
-                  "Hi,\n\nMy availability:\n- \n- \n\nThanks!"
-                )}
-                className="rounded-full border px-6 py-3 text-sm font-medium hover:border-white/60"
-                style={{ borderColor: "rgba(255,255,255,0.35)" }}
-              >
-                <Calendar size={16} className="inline mr-2" />
-                Schedule a Meeting
-              </a>
-            </div>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Quick cards */}
-      <section className="relative w-full">
-        <div className="mx-auto max-w-7xl px-6 pb-10">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-            {quickLinks.map((q) => (
-              <a
-                key={q.title}
-                href={q.href}
-                className="rounded-3xl p-6 transition group"
-                style={{
-                  border: q.primary
-                    ? "1px solid rgba(19,194,179,0.25)"
-                    : "1px solid rgba(255,255,255,0.15)",
-                  background: q.primary
-                    ? "rgba(19,194,179,0.06)"
-                    : "rgba(0,0,0,0.5)",
-                }}
-              >
-                <q.icon size={20} className="text-white/85" />
-                <div className="mt-3 text-xl font-semibold">{q.title}</div>
-                <div className="text-sm text-white/70">{q.label}</div>
-                <div className="mt-4 text-xs text-white/50 group-hover:text-white/70">
-                  Opens email composer →
+                <path.icon size={24} style={{ color: ACCENT }} />
+                <h2 className="mt-4 text-2xl font-semibold">{path.title}</h2>
+                <p className="mt-2 text-sm leading-6 text-white/68">{path.label}</p>
+                <div className="mt-5 text-sm font-medium" style={{ color: ACCENT }}>
+                  Start email
                 </div>
               </a>
             ))}
           </div>
-        </div>
-      </section>
 
-      {/* Email compose (mailto) */}
-      <section className="relative w-full">
-        <div className="mx-auto max-w-7xl px-6 py-10 lg:py-14">
-          <div
-            className="rounded-3xl p-6 lg:p-8 grid grid-cols-1 lg:grid-cols-2 gap-8 items-start"
-            style={{ border: "1px solid rgba(255,255,255,0.15)", background: "rgba(0,0,0,0.5)" }}
-          >
+          <div className="mt-5 grid grid-cols-1 md:grid-cols-3 gap-4">
+            {secondaryPaths.map((path) => (
+              <a
+                key={path.title}
+                href={buildMailto(subjectMap[path.topic], path.body)}
+                className="rounded-3xl border border-white/10 bg-white/5 p-5 transition hover:bg-white/10"
+              >
+                <path.icon size={20} className="text-white/80" />
+                <h3 className="mt-3 text-lg font-semibold">{path.title}</h3>
+                <p className="mt-1 text-sm leading-6 text-white/62">{path.label}</p>
+              </a>
+            ))}
+          </div>
+          </div>
+        </section>
+
+        <section className="mx-auto max-w-7xl px-6 py-10 lg:py-14">
+          <div className="rounded-3xl border border-white/10 bg-white/5 p-6 lg:p-8 grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
             <div>
-              <div className="text-sm uppercase tracking-widest text-white/70">
+              <div className="text-sm uppercase tracking-widest" style={{ color: ACCENT }}>
                 Direct
               </div>
-              <h2 className="mt-2 text-3xl font-semibold">Write to us</h2>
-              <p className="mt-3 text-white/80">
-                Prefer a quick note? Use the form to pre-fill an email with your
-                details, or write us directly at{" "}
-                <a
-                  href={buildMailto("Direct email", "Hi,")}
-                  className="underline hover:opacity-80"
-                >
+              <h2 className="mt-2 text-3xl font-semibold">Write a note</h2>
+              <p className="mt-3 text-white/75">
+                Use this form to pre-fill an email, or write directly to me at {" "}
+                <a href={buildMailto("Direct email", "Hi,")} className="underline hover:opacity-80">
                   {contactEmail}
                 </a>
                 .
               </p>
 
-              <div className="mt-6 space-y-3 text-sm text-white/75">
+              <div className="mt-6 space-y-3 text-sm text-white/68">
                 <div className="flex items-center gap-2">
                   <Mail size={16} /> {contactEmail}
                 </div>
                 <div className="flex items-center gap-2">
                   <Phone size={16} /> By appointment
-                </div>
-                <div className="flex items-center gap-2">
-                  <Shield size={16} /> Technical details available on request
                 </div>
               </div>
             </div>
@@ -666,137 +232,76 @@ export default function Contact({ contactEmail = CONTACT_EMAIL }) {
             <form onSubmit={handleSubmit} className="space-y-4">
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-sm text-white/75 mb-1">
-                    Your Name
-                  </label>
+                  <label className="block text-sm text-white/72 mb-1">Your Name</label>
                   <input
                     value={name}
-                    onChange={(e) => setName(e.target.value)}
-                    className="w-full rounded-xl bg-black border px-3 py-2 outline-none focus:border-white/40"
-                    style={{ borderColor: "rgba(255,255,255,0.15)" }}
-                    placeholder="Ada Lovelace"
+                    onChange={(event) => setName(event.target.value)}
+                    className="w-full rounded-xl bg-black/60 border border-white/15 px-3 py-2 outline-none focus:border-white/40"
+                    placeholder="Your name"
                     autoComplete="name"
                   />
                 </div>
                 <div>
-                  <label className="block text-sm text-white/75 mb-1">
-                    Organization
-                  </label>
+                  <label className="block text-sm text-white/72 mb-1">Organization</label>
                   <input
                     value={org}
-                    onChange={(e) => setOrg(e.target.value)}
-                    className="w-full rounded-xl bg-black border px-3 py-2 outline-none focus:border-white/40"
-                    style={{ borderColor: "rgba(255,255,255,0.15)" }}
-                    placeholder="Institute / Company"
+                    onChange={(event) => setOrg(event.target.value)}
+                    className="w-full rounded-xl bg-black/60 border border-white/15 px-3 py-2 outline-none focus:border-white/40"
+                    placeholder="Lab / company / team"
                     autoComplete="organization"
                   />
                 </div>
               </div>
 
               <div>
-                <label className="block text-sm text-white/75 mb-1">Topic</label>
+                <label className="block text-sm text-white/72 mb-1">Topic</label>
                 <select
                   value={topic}
-                  onChange={(e) => setTopic(e.target.value)}
-                  className="w-full rounded-xl bg-black border px-3 py-2 outline-none focus:border-white/40"
-                  style={{ borderColor: "rgba(255,255,255,0.15)" }}
+                  onChange={(event) => setTopic(event.target.value)}
+                  className="w-full rounded-xl bg-black/60 border border-white/15 px-3 py-2 outline-none focus:border-white/40"
                 >
-                  {Object.keys(subjectMap).map((k) => (
-                    <option key={k}>{k}</option>
+                  {Object.keys(subjectMap).map((key) => (
+                    <option key={key}>{key}</option>
                   ))}
                 </select>
               </div>
 
               <div>
-                <label className="block text-sm text-white/75 mb-1">
-                  Message
-                </label>
+                <label className="block text-sm text-white/72 mb-1">Message</label>
                 <textarea
                   value={message}
-                  onChange={(e) => setMessage(e.target.value)}
+                  onChange={(event) => setMessage(event.target.value)}
                   rows={6}
-                  className="w-full rounded-xl bg-black border px-3 py-2 outline-none focus:border-white/40"
-                  style={{ borderColor: "rgba(255,255,255,0.15)" }}
-                  placeholder="A brief description of your request, environment, and timeline…"
+                  className="w-full rounded-xl bg-black/60 border border-white/15 px-3 py-2 outline-none focus:border-white/40"
+                  placeholder="A brief description of your request, timeline, and relevant context..."
                 />
               </div>
 
-              <div className="flex items-center gap-3">
+              <div className="flex flex-col sm:flex-row gap-3">
                 <button
                   type="submit"
-                  className="rounded-full px-6 py-3 text-sm font-medium"
-                  style={{ backgroundColor: ACCENT, color: "#000" }}
-                  onMouseEnter={(e) =>
-                    (e.currentTarget.style.backgroundColor = ACCENT_HOVER)
-                  }
-                  onMouseLeave={(e) =>
-                    (e.currentTarget.style.backgroundColor = ACCENT)
-                  }
+                  className="inline-flex items-center justify-center gap-2 rounded-full border px-6 py-3 text-sm font-medium text-white"
+                  style={{ borderColor: "rgba(245,158,11,0.48)", background: "rgba(245,158,11,0.16)" }}
                 >
-                  <SendHorizonal size={16} className="inline mr-2" />
-                  Open Email
+                  Open Email <SendHorizonal size={16} />
                 </button>
                 <a
-                  href={buildMailto("General inquiry about PRISM", "Hi,")}
-                  className="rounded-full border px-6 py-3 text-sm font-medium hover:border-white/60"
-                  style={{ borderColor: "rgba(255,255,255,0.35)" }}
+                  href={buildMailto(subjectMap["General Inquiry"], "Hi,")}
+                  className="inline-flex items-center justify-center rounded-full border border-white/20 px-6 py-3 text-sm font-medium text-white/82 hover:text-white"
                 >
-                  Or email manually
+                  Email manually
                 </a>
               </div>
             </form>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* Footer */}
-      <footer className="border-t border-white/10 bg-black">
-        <div className="mx-auto max-w-7xl px-6">
-          <div className="flex items-center justify-between py-8 gap-6 flex-col sm:flex-row">
-            <div>
-              <h3 className="text-xl font-semibold">PRISM System</h3>
-              <p className="text-white/70">
-                Periscopic Relay Imaging Scanning Microscope
-              </p>
-              <div className="mt-3 flex items-center gap-2 text-sm text-white/70">
-                <span
-                  className="inline-block h-2 w-2 rounded-full"
-                  style={{ backgroundColor: ACCENT }}
-                />
-                <span>Active Development • Patent Pending</span>
-              </div>
-            </div>
-
-            <div>
-              <div className="grid grid-cols-3 gap-4 text-center">
-                <div className="rounded-2xl border border-white/10 px-4 py-3">
-                  <span className="block text-lg font-semibold">V5.0</span>
-                  <span className="block text-xs text-white/60">
-                    Current Release
-                  </span>
-                </div>
-                <div className="rounded-2xl border border-white/10 px-4 py-3">
-                  <span className="block text-lg font-semibold">50×</span>
-                  <span className="block text-xs text-white/60">
-                    Tested Stable Total Magnification
-                  </span>
-                </div>
-                <div className="rounded-2xl border border-white/10 px-4 py-3">
-                  <span className="block text-lg font-semibold">50 nm</span>
-                  <span className="block text-xs text-white/60">
-                    Smooth Stepping Resolution
-                  </span>
-                </div>
-              </div>
-            </div>
+        <footer className="border-t border-white/10">
+          <div className="mx-auto max-w-7xl px-6 py-8 flex flex-col sm:flex-row items-center justify-between gap-3 text-sm text-white/55">
+            <div>Dejan Latkovic</div>
+            <div>Axivion Instruments • PRISM • Scientific Render Services • Engineering</div>
           </div>
-
-          <div className="py-6 text-sm text-white/60 flex items-center justify-between border-t border-white/10">
-            <div>PRISM</div>
-            <div>© {new Date().getFullYear()} Axivion Instruments</div>
-          </div>
-        </div>
-      </footer>
+        </footer>
     </div>
   );
 }

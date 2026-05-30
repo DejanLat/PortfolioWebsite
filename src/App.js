@@ -6,6 +6,7 @@ import PrismProject from "./components/PrismProject";
 import Contact from "./components/Contact";
 import Models from "./components/Models";
 import CarModding from "./components/CarModding";
+import Renders from "./components/Renders";
 
 
 function ScrollToTop() {
@@ -29,6 +30,7 @@ function App() {
           <Route path="/contact" element={<Contact contactEmail="axivioninstruments@gmail.com" />} />
           <Route path="/models" element={<Models />} />
           <Route path="/car-modding" element={<CarModding />} />
+          <Route path="/renders" element={<Renders />} />
         </Routes>
       </Router>
     </div>

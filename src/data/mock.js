@@ -24,6 +24,7 @@ const mockData = {
   ],
   frameworks: [
     "Fusion 360 (CAD & FEA Simulation)",
+    "Onshape (Cloud CAD Collaboration)",
     "Blender (Scientific Rendering & Publication Graphics)",
     "LabVIEW (Control Software & Automation)",
     "Python (Instrumentation APIs & Data Analysis)",
@@ -89,7 +90,7 @@ experience: [
     keyMetrics: [
       { value: "IQC", description: "PRISM deployed at NPQO Lab" },
       { value: "Patent", description: "Provisional filing underway" },
-      { value: "Cover", description: "Science Advances candidate (May 2026)" }
+      { value: "AAAS", description: "Science Advances cover art credit" }
     ],
     achievements: [
       "Founder and CTO of Axivion Instruments, building PRISM - a precision scanning microscope now in active use at IQC's NPQO Lab for Diamond NV center research",
@@ -101,6 +102,7 @@ experience: [
     company: "Institute for Quantum Computing (IQC)",
     role: "Research Affiliate",
     engagement: "Casual / On-call",
+    affiliationNote: "Nano Photonics and Quantum Optics Lab, IQC",
     period: "May 2025 – Present",
     category: "IP • Commercialization",
     imageBase: "image2experience",
@@ -137,8 +139,9 @@ experience: [
   },
   {
     company: "Institute for Quantum Computing (IQC)",
-    role: "Research Affiliate - Lab Support",
+    role: "Research Affiliate",
     engagement: "Casual / On-call",
+    affiliationNote: "Nano Photonics and Quantum Optics Lab, IQC",
     period: "May – Aug 2024",
     category: "Development",
   imageBase: "image4experience", // <- add this
@@ -196,6 +199,38 @@ experience: [
 ],
 
 
+publications: [
+  {
+    category: "Credits",
+    title: "Towards Cryogenic Studies of Inverse-Designed Nanostructures in Diamond",
+    type: "Poster Presentation",
+    date: "June 2026",
+    venue: "Photonics North 2026",
+    authors:
+      "Nicholas Low, Dejan Latkovic, Pratik Adhikary, Behrooz Semnani, Mohammad Soltani, Michal Bajcsy",
+    credit:
+      "Accepted poster presentation, scheduled for June 3, 2026.",
+    affiliations: "University of Waterloo / imec",
+    link: "https://event.fourwaves.com/photonicsnorth/abstracts/6f5d9dcd-956c-4e4a-bb53-b52649a40f1d"
+  },
+  {
+    category: "Credits",
+    title: "Science Advances Cover Art Credit",
+    type: "Cover art / scientific visualization credit",
+    date: "May 22, 2026",
+    venue: "Science Advances, Vol. 12, Issue 21 - AAAS",
+    credit:
+      "Credited for cover art accompanying the issue featuring \"Probing individual quantum emitters in bulk semiconductors via photonic nanojets\". Credit: Dejan Latkovic.",
+    link: "https://www.science.org/toc/sciadv/12/21",
+    links: [
+      { label: "Issue", href: "https://www.science.org/toc/sciadv/12/21" },
+      { label: "Paper", href: "https://www.science.org/doi/10.1126/sciadv.aea5936" }
+    ],
+    image: "sciadv.2026.12.issue-21.largecover.jpg"
+  }
+],
+
+
 projects: [
   {
     title: "PRISM (Axivion Instruments)",
@@ -226,7 +261,7 @@ projects: [
     category: "Research & Development",
     slug: "prism"
   },
-   {
+{
   title: "Car Modding",
   description:
     "OEM-grade retrofits: 13-speaker/480W MOST-fiber audio, full interior lighting with hidden controllers, OEM anti-theft integration, and major service upgrades. Click to view build page.",
@@ -243,6 +278,25 @@ projects: [
   demo: null,
   category: "Automotive Engineering",
   slug: "car-modding"
+},
+
+{
+  title: "Scientific Visualization & Renders",
+  description:
+    "Blender-based publication graphics, cover art, and technical renders for photonics, nanostructures, and instrumentation.",
+  image: "metasurface.png",
+  technologies: ["Blender", "Python-generated Geometry", "Scientific Visualization", "Optics", "Publication Graphics"],
+  specifications: [
+    "Science Advances cover art / visualization credit",
+    "Nanophotonics and metasurface render workflows",
+    "PRISM and instrument visualization assets",
+    "Material, lighting, and camera setup for technical communication"
+  ],
+  featured: false,
+  github: null,
+  demo: null,
+  category: "Scientific Communication",
+  slug: "renders"
 },
 
 {

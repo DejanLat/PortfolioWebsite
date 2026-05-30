@@ -289,7 +289,7 @@ export default function CarModding() {
              style={{ background: `radial-gradient(700px at var(--mx) var(--my), ${ACCENT_SOFT}, transparent 60%)` }} />
         {/* Static top glow */}
         <div className="absolute inset-x-0 top-0 h-[70vh]"
-             style={{ background: "radial-gradient(60rem 30rem at 50% -10%, rgba(255,42,160,0.18), transparent 60%)" }} />
+             style={{ background: "radial-gradient(600rem 30rem at 50% -10%, rgba(255,42,160,0.18), transparent 60%)" }} />
       </div>
 
       {/* Top bar */}
@@ -339,7 +339,7 @@ export default function CarModding() {
         <div className="mx-auto max-w-7xl px-6">
           <motion.div initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }} className="max-w-3xl">
             <div className="inline-flex items-center gap-2 rounded-full px-4 py-1 text-xs uppercase tracking-widest text-white/90 border backdrop-blur-sm"
-                 style={{ borderColor: "rgba(255,42,160,0.35)", background: "rgba(255,42,160,0.06)" }}>
+                 style={{ borderColor: "rgba(255,42,160,0.35)", background: "rgba(255,255,255,0.07)" }}>
               Automotive Engineering
             </div>
             <h1 className="mt-4 text-5xl md:text-6xl font-semibold tracking-tight">Car Modding</h1>
@@ -365,12 +365,12 @@ export default function CarModding() {
                   <div className="flex-1 p-6">
                     <div className="flex items-center justify-between">
                       <div className="inline-flex items-center gap-2 text-xs rounded-full border px-2.5 py-1 text-white/80"
-                           style={{ borderColor: "rgba(255,255,255,0.18)" }}>
+                           style={{ borderColor: "rgba(255,255,255,0.18)", background: "rgba(255,255,255,0.06)" }}>
                         <span className="inline-block h-1.5 w-1.5 rounded-full" style={{ backgroundColor: ACCENT }} />
                         Project Work
                       </div>
                       <span className="inline-flex items-center gap-1.5 text-[11px] px-2 py-1 rounded-full border bg-white/5 text-white/85"
-                            style={{ borderColor: "rgba(255,255,255,0.14)" }}>
+                            style={{ borderColor: "rgba(255,255,255,0.14)", background: "rgba(255,255,255,0.06)" }}>
                         <Clock size={12} /> {s.hours}
                       </span>
                     </div>

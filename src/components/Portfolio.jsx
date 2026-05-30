@@ -771,7 +771,7 @@ import { Check } from "lucide-react";
 import {
   Award, Shield, Users, BarChart3, Target, Zap, Activity, Settings,
   ArrowRight, Cpu, MicroscopeIcon, GraduationCapIcon, Microscope,
-  Crosshair, ScanLine, Hammer,
+  Crosshair, ScanLine, Hammer, Menu, X,
 } from "lucide-react";
 
 // --- helpers ---
@@ -806,10 +806,12 @@ const equipmentSlides = [
 ];
 // --- engineering project slides (put both .webp and .png in /public) ---
 const engProjectSlides = [  
-  { base: "image1Engproject", title: "PRISM", description: "Test Bench" },
-  { base: "image4Engprojectcarosel", title: "Maintenance", description: "Rear Shocks Replacement" },
+  { base: "image1Engproject", title: "PRISM", description: "Test bench" },
+  { base: "image4Engprojectcarosel", title: "Car Modding", description: "Rear shocks replacement" },
+  { base: "metasurface", title: "Scientific Visualization", description: "Metasurface render" },
+  { image: "InsidePhoenix.jpg", title: "Scientific Visualization", description: "Inside Phoenix render" },
+  { image: "OutsidePhoenix.jpg", title: "Scientific Visualization", description: "Outside Phoenix render" },
   { base: "image5Engprojectcarosel", title: "Spectrometer", description: "Reviving old spectrometer" },
-  { base: "metasurface", title: "Blender Render", description: "Metasurface Render for paper" },
   { base: "image3Engprojectcarosel", title: "Pygame", description: "Screenshot" },
 
   
@@ -828,6 +830,7 @@ export default function PortfolioWhite() {
   const [mx, setMx] = useState(-9999);
   const [my, setMy] = useState(-9999);
   const [solidNav, setSolidNav] = useState(false);
+  const [navOpen, setNavOpen] = useState(false);
   const [currentHeroImage, setCurrentHeroImage] = useState(0);
   const [currentEquipmentImage, setCurrentEquipmentImage] = useState(0);
   const [currentProjectImage, setCurrentProjectImage] = useState(0);
@@ -853,6 +856,30 @@ export default function PortfolioWhite() {
   const projectCarouselImages = useMemo(() => engProjectSlides, []);
 
   const equipmentImages = useMemo(() => equipmentSlides, []);
+
+  const scrollToSection = (id) => {
+    setNavOpen(false);
+    document.getElementById(id)?.scrollIntoView({ behavior: "smooth", block: "start" });
+  };
+
+  const pageLinks = [
+    { label: "Experience", action: () => scrollToSection("experience") },
+    { label: "Credits", action: () => scrollToSection("publications") },
+    { label: "Projects", action: () => scrollToSection("projects") },
+    { label: "PRISM", to: "/prism" },
+    { label: "Renders", to: "/renders" },
+    { label: "Contact", to: "/contact" },
+  ];
+
+  const showPreviousProjectImage = () => {
+    setCurrentProjectImage((current) =>
+      (current - 1 + projectCarouselImages.length) % projectCarouselImages.length
+    );
+  };
+
+  const showNextProjectImage = () => {
+    setCurrentProjectImage((current) => (current + 1) % projectCarouselImages.length);
+  };
 
 
  const equipmentSkills = [
@@ -929,7 +956,7 @@ export default function PortfolioWhite() {
   return (
     
     <div
-      className="min-h-screen w-full text-white"
+      className="g21 min-h-screen w-full text-white"
       style={{ backgroundColor: PAGE_BG, "--mx": `${mx}px`, "--my": `${my}px` }}
       onMouseMove={(e) => { setMx(e.clientX); setMy(e.clientY); }}
     >
@@ -944,13 +971,22 @@ export default function PortfolioWhite() {
       <div className="relative z-10">
 
       {/* Header */}
-      <header className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${solidNav ? "bg-[#080e14]/85 backdrop-blur border-b border-white/10" : "bg-transparent"}`}>
+      <header className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${solidNav || navOpen ? "bg-[#080e14]/90 backdrop-blur border-b border-white/10" : "bg-transparent"}`}>
         <div className="mx-auto max-w-7xl h-16 px-4 sm:px-6 lg:px-8 flex items-center justify-between">
-          <div className="flex items-center gap-3">
-            <div className="font-semibold tracking-widest text-white">DEJAN</div>
-            <div className="text-white/50">LATKOVIC</div>
+          <div className="min-w-0 flex items-center gap-2 sm:gap-3">
+            <div className="font-semibold tracking-widest text-white text-sm sm:text-base">DEJAN</div>
+            <div className="text-white/50 text-sm sm:text-base">LATKOVIC</div>
           </div>
-          <nav className="flex items-center gap-3 text-sm overflow-x-auto no-scrollbar" aria-label="Primary">
+          <nav className="hidden md:flex items-center gap-3 text-sm overflow-x-auto no-scrollbar" aria-label="Primary">
+            <button onClick={() => scrollToSection("experience")} className="whitespace-nowrap text-white/70 hover:text-white transition-colors">
+              Experience
+            </button>
+            <button onClick={() => scrollToSection("publications")} className="whitespace-nowrap text-white/70 hover:text-white transition-colors">
+              Credits
+            </button>
+            <button onClick={() => scrollToSection("projects")} className="whitespace-nowrap text-white/70 hover:text-white transition-colors">
+              Projects
+            </button>
             <a href="https://www.linkedin.com" className="whitespace-nowrap text-white/70 hover:text-white transition-colors">
               LinkedIn
             </a>
@@ -974,8 +1010,81 @@ export default function PortfolioWhite() {
             >
               PRISM
             </Link>
+            <Link
+              to="/contact"
+              className="whitespace-nowrap rounded-full px-4 py-2 font-medium text-white"
+              style={{
+                border: "1.5px solid rgba(255,255,255,0.2)",
+                transition: "border-color 0.25s ease, color 0.25s ease, box-shadow 0.25s ease",
+              }}
+              onMouseEnter={e => {
+                e.currentTarget.style.borderColor = "#f97316";
+                e.currentTarget.style.color = "#f97316";
+                e.currentTarget.style.boxShadow = "inset 0 0 12px rgba(249,115,22,0.35)";
+              }}
+              onMouseLeave={e => {
+                e.currentTarget.style.borderColor = "rgba(255,255,255,0.2)";
+                e.currentTarget.style.color = "white";
+                e.currentTarget.style.boxShadow = "none";
+              }}
+            >
+              Contact
+            </Link>
           </nav>
+          <button
+            type="button"
+            onClick={() => setNavOpen((open) => !open)}
+            className="md:hidden inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-3 py-2 text-sm text-white"
+            aria-expanded={navOpen}
+            aria-controls="mobile-page-menu"
+          >
+            {navOpen ? <X size={18} /> : <Menu size={18} />}
+            Pages
+          </button>
         </div>
+        {navOpen && (
+          <div id="mobile-page-menu" className="md:hidden border-t border-white/10 bg-[#080e14]/95 backdrop-blur">
+            <div className="mx-auto max-w-7xl px-4 py-3 grid gap-2">
+              {pageLinks.map((item) =>
+                item.to ? (
+                  <Link
+                    key={item.label}
+                    to={item.to}
+                    onClick={() => setNavOpen(false)}
+                    className="rounded-2xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-white/85"
+                  >
+                    {item.label}
+                  </Link>
+                ) : (
+                  <button
+                    key={item.label}
+                    type="button"
+                    onClick={item.action}
+                    className="rounded-2xl border border-white/10 bg-white/5 px-4 py-3 text-left text-sm text-white/85"
+                  >
+                    {item.label}
+                  </button>
+                )
+              )}
+              <a
+                href="https://www.linkedin.com"
+                onClick={() => setNavOpen(false)}
+                className="rounded-2xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-white/85"
+              >
+                LinkedIn
+              </a>
+              <a
+                href="https://uwaterloo.ca/institute-for-quantum-computing/contacts/dejan-latkovic-0"
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={() => setNavOpen(false)}
+                className="rounded-2xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-white/85"
+              >
+                IQC
+              </a>
+            </div>
+          </div>
+        )}
       </header>
 
       
@@ -1044,7 +1153,7 @@ export default function PortfolioWhite() {
           Nanotechnology Engineering student at Waterloo. Founder of Axivion Instruments. Most recently on the Precision Engineering team at Atomic Semi in San Francisco. My main project is PRISM - a precision objective-scanning microscope now in active use at IQC’s NPQO Lab for Diamond NV center research.
         </p>
 
-        <div className="mt-8 flex items-center gap-3">
+        <div className="mt-8 flex flex-col sm:flex-row sm:items-center gap-3">
           <Link
             to="/prism"
             className="rounded-full px-6 py-3 text-sm font-medium text-white inline-flex items-center gap-2"
@@ -1208,21 +1317,44 @@ export default function PortfolioWhite() {
           {activeTab === "Performance" && (
             <section className="mt-10">
               <div className="rounded-3xl border border-white/10 p-6">
-                <h3 className="text-xl font-semibold text-white">Recent, Attributed Impact</h3>
+                <h3 className="text-xl font-semibold text-white">Selected Impact</h3>
 
-                <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                <div className="mt-6 grid grid-cols-1 lg:grid-cols-3 gap-4">
                   {[
-                    { metric: "4 systems", label: "End-to-end owner", context: "Laser optics, XY stage, microscope camera, substrate loader - Atomic Semi" },
-                    { metric: "PRISM v5", label: "Deployed instrument", context: "In active use at IQC's NPQO Lab for Diamond NV center research" },
-                    { metric: "3 papers", label: "Figure/Render support", context: "Blender technical visuals for manuscripts (under review)" },
-                    { metric: "5+ Fixtures", label: "Custom tooling fabricated", context: "Hand-machined/CNC-ready jigs & alignment tools" },
-                    { metric: "20%", label: "Capacity increase", context: "Production routing & customer-intake redesign - Pirlitor" },
-                    { metric: "800+", label: "Tasks automated", context: "Excel/VBA shipping cards - 3-day surge window" },
-                  ].map((item, i) => (
-                    <div key={i} className="rounded-2xl border border-white/10 p-5 bg-white/5 hover:bg-white/10 transition">
-                      <div className="text-2xl font-semibold text-white">{item.metric}</div>
-                      <div className="mt-1 text-sm font-medium text-white/90">{item.label}</div>
-                      <div className="mt-1 text-xs text-white/50">{item.context}</div>
+                    {
+                      group: "Research Outputs",
+                      items: [
+                        { metric: "AAAS Cover", label: "Scientific visualization credit", context: "Science Advances cover art credit - Vol. 12, Issue 21" },
+                        { metric: "PN 2026", label: "Co-authored accepted poster", context: "Inverse-designed nanostructures in diamond - Photonics North" },
+                      ],
+                    },
+                    {
+                      group: "Instrument Engineering",
+                      items: [
+                        { metric: "PRISM v5", label: "Deployed instrument", context: "In active use at IQC's NPQO Lab for Diamond NV center research" },
+                        { metric: "5+ Fixtures", label: "Custom tooling fabricated", context: "Hand-machined/CNC-ready jigs and alignment tools" },
+                      ],
+                    },
+                    {
+                      group: "Industry Impact",
+                      items: [
+                        { metric: "4 systems", label: "End-to-end owner", context: "Laser optics, XY stage, microscope camera, substrate loader - Atomic Semi" },
+                        { metric: "20%", label: "Capacity increase", context: "Production routing and customer-intake redesign - Pirlitor" },
+                        { metric: "800+", label: "Tasks automated", context: "Excel/VBA shipping cards - 3-day surge window" },
+                      ],
+                    },
+                  ].map((group) => (
+                    <div key={group.group} className="rounded-3xl border border-white/10 bg-white/5 p-5">
+                      <div className="text-sm font-medium text-white/60">{group.group}</div>
+                      <div className="mt-4 space-y-3">
+                        {group.items.map((item) => (
+                          <div key={item.metric} className="rounded-2xl border border-white/10 bg-black/20 p-4 hover:bg-white/5 transition">
+                            <div className="text-2xl font-semibold text-white">{item.metric}</div>
+                            <div className="mt-1 text-sm font-medium text-white/90">{item.label}</div>
+                            <div className="mt-1 text-xs leading-5 text-white/50">{item.context}</div>
+                          </div>
+                        ))}
+                      </div>
                     </div>
                   ))}
                 </div>
@@ -1236,8 +1368,12 @@ export default function PortfolioWhite() {
 
           {/* Software tab */}
           {activeTab === "Software" && (
-            <div className="mt-10 grid grid-cols-1 lg:grid-cols-2 gap-8">
-              <div className="rounded-3xl border border-white/10 p-6 bg-white/5">
+            <div className="mt-10">
+              <div className="mb-4 rounded-2xl border border-white/10 bg-white/5 px-5 py-4 text-sm leading-6 text-white/65">
+                Practical working exposure across these tools; not all are expert-level specializations.
+              </div>
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <div className="rounded-3xl border border-white/10 p-6 bg-white/5">
                 <div className="flex items-center gap-2 text-white">
                   <Cpu size={18} />
                   <h3 className="text-xl font-semibold">Engineering Software</h3>
@@ -1266,13 +1402,14 @@ export default function PortfolioWhite() {
                   ))}
                 </ul>
               </div>
+              </div>
             </div>
           )}
         </div>
       </section>
 
       {/* Professional Performance (experience cards) */}
-      <section id="performance" className="relative">
+      <section id="experience" className="relative scroll-mt-20">
         <div className="mx-auto max-w-7xl px-6 py-20 lg:py-24">
           <h2 className="text-4xl font-semibold tracking-tight text-white">Professional Experience</h2>
 
@@ -1363,8 +1500,116 @@ export default function PortfolioWhite() {
           </div>
         </div>
       </section>
+<section id="publications" className="relative scroll-mt-20">
+  <div className="mx-auto max-w-7xl px-6 py-20 lg:py-24">
+    <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
+      <div>
+        <h2 className="text-4xl font-semibold tracking-tight text-white">Credits</h2>
+        <p className="mt-2 max-w-2xl text-sm text-white/55">
+          Research, presentation, and scientific visualization credits with clear attribution context.
+        </p>
+      </div>
+    </div>
+
+    <div className="mt-10 space-y-10">
+      {["Credits"].map((category) => {
+        const items = (mockData.publications ?? []).filter((item) => item.category === category);
+        if (items.length === 0) return null;
+
+        return (
+          <div key={category}>
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+              {items.map((item, i) => {
+                const hasMultipleLinks = Array.isArray(item.links) && item.links.length > 0;
+                const CardTag = item.link && !hasMultipleLinks ? "a" : "div";
+                const cardProps = item.link && !hasMultipleLinks
+                  ? { href: item.link, target: "_blank", rel: "noopener noreferrer" }
+                  : {};
+
+                return (
+                  <motion.div
+                    key={item.title}
+                    initial={{ opacity: 0, y: 16 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.5, delay: i * 0.08 }}
+                  >
+                    <CardTag
+                      {...cardProps}
+                      className={`block h-full rounded-3xl border border-white/10 overflow-hidden bg-white/5 transition ${
+                        item.link && !hasMultipleLinks ? "hover:bg-white/10 hover:border-white/20" : ""
+                      }`}
+                    >
+                      {item.image && (
+                        <div className="h-64 sm:h-80 overflow-hidden bg-black/30">
+                          <img
+                            src={`${process.env.PUBLIC_URL}/${item.image}`}
+                            alt={item.title}
+                            className="h-full w-full object-cover object-top"
+                            loading="lazy"
+                          />
+                        </div>
+                      )}
+
+                      <div className="p-6">
+                        <div className="flex flex-wrap items-center justify-between gap-3">
+                          <span className="inline-flex rounded-full border border-white/15 bg-white/5 px-3 py-1 text-xs text-white/70">
+                            {item.type}
+                          </span>
+                          <span className="text-sm text-white/45">{item.date}</span>
+                        </div>
+
+                        <h4 className="mt-4 text-xl font-semibold leading-tight text-white">{item.title}</h4>
+                        <div className="mt-2 text-sm text-white/60">{item.venue}</div>
+                        {item.authors && (
+                          <div className="mt-3 text-sm leading-6 text-white/75">
+                            <span className="text-white/45">Authors: </span>
+                            {item.authors}
+                          </div>
+                        )}
+                        {item.affiliations && (
+                          <div className="mt-2 text-sm leading-6 text-white/70">
+                            <span className="text-white/45">Affiliations: </span>
+                            {item.affiliations}
+                          </div>
+                        )}
+                        <p className="mt-4 text-sm leading-6 text-white/70">{item.credit}</p>
+
+                        {hasMultipleLinks ? (
+                          <div className="mt-5 flex flex-wrap gap-3">
+                            {item.links.map((link) => (
+                              <a
+                                key={link.href}
+                                href={link.href}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                onClick={(event) => event.stopPropagation()}
+                                className="text-sm font-medium"
+                                style={{ color: ACCENT }}
+                              >
+                                {link.label}
+                              </a>
+                            ))}
+                          </div>
+                        ) : (
+                          <div className="mt-5 text-sm font-medium" style={{ color: ACCENT }}>
+                            {item.link ? "Open link" : "Link pending"}
+                          </div>
+                        )}
+                      </div>
+                    </CardTag>
+                  </motion.div>
+                );
+              })}
+            </div>
+          </div>
+        );
+      })}
+    </div>
+  </div>
+</section>
 {/* Projects + full-width carousel */}
-<section id="projects" className="relative">
+<section id="projects" className="relative scroll-mt-20">
   <div className="mx-auto max-w-7xl px-6 py-20 lg:py-24">
     <h2 className="text-4xl font-semibold tracking-tight text-white">Engineering Projects</h2>
 
@@ -1374,6 +1619,21 @@ export default function PortfolioWhite() {
         <AnimatePresence mode="wait">
           {(() => {
             const p = projectCarouselImages[currentProjectImage];
+            if (p.image) {
+              return (
+                <motion.img
+                  key={currentProjectImage}
+                  src={`${process.env.PUBLIC_URL}/${p.image}`}
+                  alt={p.title}
+                  className="absolute inset-0 w-full h-full object-cover object-center"
+                  initial={{ opacity: 0.3 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 0.8 }}
+                  loading="lazy"
+                />
+              );
+            }
             const s = srcFor(p.base);
             return (
               <MotionWebpImg
@@ -1391,6 +1651,23 @@ export default function PortfolioWhite() {
           })()}
         </AnimatePresence>
       </div>
+
+      <button
+        type="button"
+        onClick={showPreviousProjectImage}
+        aria-label="Previous project image"
+        className="absolute left-3 sm:left-5 top-1/2 -translate-y-1/2 grid h-11 w-11 place-items-center rounded-full border border-white/15 bg-black/55 text-2xl leading-none text-white/90 backdrop-blur transition hover:bg-black/75 hover:text-white"
+      >
+        ‹
+      </button>
+      <button
+        type="button"
+        onClick={showNextProjectImage}
+        aria-label="Next project image"
+        className="absolute right-3 sm:right-5 top-1/2 -translate-y-1/2 grid h-11 w-11 place-items-center rounded-full border border-white/15 bg-black/55 text-2xl leading-none text-white/90 backdrop-blur transition hover:bg-black/75 hover:text-white"
+      >
+        ›
+      </button>
 
       {/* caption overlay */}
       <div className="absolute bottom-0 inset-x-0 p-5 sm:p-6 bg-gradient-to-t from-black/70 via-black/30 to-transparent">
@@ -1423,6 +1700,8 @@ export default function PortfolioWhite() {
             navigate("/prism");
           } else if (project.slug === "car-modding") {
             navigate("/car-modding");
+          } else if (project.slug === "renders") {
+            navigate("/renders");
           } else if (project.demo) {
             window.open(project.demo, "_blank", "noopener,noreferrer");
           } else if (project.github) {
@@ -1435,7 +1714,7 @@ export default function PortfolioWhite() {
                     ${isFeatured ? "bg-white/10 border-white/20 hover:bg-white/15" : "bg-white/5 border-white/10 hover:bg-white/10"}
                     ${project.slug === "prism" ? "prism-card" : ""}
                     ${project.slug === "car-modding" ? "car-card" : ""}
-                    ${project.slug === "blender-visualizatio"}`}
+                    ${project.slug === "renders" ? "renders-card" : ""}`}
       >
         {/* Breakthrough pill (accent color on hover via CSS) */}
         {isFeatured && (

@@ -106,3 +106,50 @@ code {
 .scrollbar-pink::-webkit-scrollbar-thumb { background: rgba(255,42,160,0.45); border-radius: 4px; }
 .scrollbar-pink::-webkit-scrollbar-thumb:hover { background: rgba(255,42,160,0.75); }
 .scrollbar-pink { scrollbar-width: thin; scrollbar-color: rgba(255,42,160,0.45) transparent; }
+
+/* G2.1 corner language: superellipse-inspired radii without copying a platform implementation. */
+.g21 {
+  --g21-xs: 0.625rem;
+  --g21-sm: 0.875rem;
+  --g21-md: 1.125rem;
+  --g21-lg: 1.625rem;
+  --g21-xl: 2rem;
+}
+
+.g21 :is(.rounded-xl) {
+  border-radius: var(--g21-md);
+}
+
+.g21 :is(.rounded-2xl) {
+  border-radius: var(--g21-lg);
+}
+
+.g21 :is(.rounded-3xl) {
+  border-radius: var(--g21-xl);
+}
+
+.g21 :is(.rounded-full) {
+  border-radius: 999px;
+}
+
+.g21 :is(button, a, input, select, textarea, [class*="rounded-"]) {
+  outline-offset: 3px;
+}
+
+@media (max-width: 640px) {
+  .g21 {
+    --g21-md: 1rem;
+    --g21-lg: 1.25rem;
+    --g21-xl: 1.5rem;
+  }
+
+  .g21 h2 {
+    font-size: clamp(2rem, 9vw, 2.75rem);
+    line-height: 1.05;
+  }
+
+  .g21 p,
+  .g21 li {
+    overflow-wrap: anywhere;
+  }
+}

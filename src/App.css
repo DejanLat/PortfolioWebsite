@@ -167,6 +167,58 @@ body {
   stroke: #ff1493 !important;
 }
 
+/* -------------------------------------- */
+/* Scientific Visualization Card (emerald) */
+/* -------------------------------------- */
+@keyframes renders-breathe-in {
+  0%, 100% {
+    box-shadow: inset 0 0 6px rgba(52,211,153,0.38),
+                inset 0 0 10px rgba(52,211,153,0.18);
+  }
+  50% {
+    box-shadow: inset 0 0 12px rgba(52,211,153,0.68),
+                inset 0 0 20px rgba(52,211,153,0.34);
+  }
+}
+
+.renders-card {
+  position: relative;
+  transition: all 0.2s ease-out;
+}
+
+.renders-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 1.5rem;
+  border: 2px solid rgba(52,211,153,0.62);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease-out;
+}
+
+.renders-card:hover::after {
+  opacity: 1;
+  animation: renders-breathe-in 2s ease-in-out infinite;
+}
+
+.renders-card:hover .checkmark {
+  color: #34d399 !important;
+}
+
+.renders-card:hover .tech-pill {
+  border-color: #34d399 !important;
+}
+
+.renders-card:hover .breakthrough-pill {
+  border-color: #34d399 !important;
+  color: #34d399 !important;
+}
+
+.renders-card:hover .breakthrough-pill svg {
+  stroke: #34d399 !important;
+}
+
 
 
 
