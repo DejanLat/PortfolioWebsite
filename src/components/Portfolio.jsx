@@ -987,7 +987,7 @@ export default function PortfolioWhite() {
             <button onClick={() => scrollToSection("projects")} className="whitespace-nowrap text-white/70 hover:text-white transition-colors">
               Projects
             </button>
-            <a href="https://www.linkedin.com" className="whitespace-nowrap text-white/70 hover:text-white transition-colors">
+            <a href="https://www.linkedin.com/in/dejanlatkovic/" className="whitespace-nowrap text-white/70 hover:text-white transition-colors">
               LinkedIn
             </a>
             <a
@@ -1067,7 +1067,7 @@ export default function PortfolioWhite() {
                 )
               )}
               <a
-                href="https://www.linkedin.com"
+                href="https://www.linkedin.com/in/dejanlatkovic/"
                 onClick={() => setNavOpen(false)}
                 className="rounded-2xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-white/85"
               >

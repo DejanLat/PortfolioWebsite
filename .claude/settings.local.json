@@ -1,0 +1,15 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm start *)",
+      "Bash(timeout 15)",
+      "Bash(mkdir -p .claude/skills/stitch-loop)",
+      "Bash(curl -L -o skill.zip \"https://mcp.directory/api/skills/download/3808\")",
+      "Bash(unzip -o skill.zip -d .claude/skills/stitch-loop)",
+      "Bash(git add *)",
+      "Bash(git commit -m ' *)",
+      "Bash(git push *)",
+      "Bash(npm run *)"
+    ]
+  }
+}
