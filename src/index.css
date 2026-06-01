@@ -91,9 +91,9 @@ code {
 /* Per-page scrollbar themes */
 .scrollbar-orange::-webkit-scrollbar { width: 5px; }
 .scrollbar-orange::-webkit-scrollbar-track { background: transparent; }
-.scrollbar-orange::-webkit-scrollbar-thumb { background: rgba(249,115,22,0.45); border-radius: 4px; }
-.scrollbar-orange::-webkit-scrollbar-thumb:hover { background: rgba(249,115,22,0.75); }
-.scrollbar-orange { scrollbar-width: thin; scrollbar-color: rgba(249,115,22,0.45) transparent; }
+.scrollbar-orange::-webkit-scrollbar-thumb { background: rgba(201,122,58,0.45); border-radius: 4px; }
+.scrollbar-orange::-webkit-scrollbar-thumb:hover { background: rgba(201,122,58,0.75); }
+.scrollbar-orange { scrollbar-width: thin; scrollbar-color: rgba(201,122,58,0.45) transparent; }
 
 .scrollbar-teal::-webkit-scrollbar { width: 5px; }
 .scrollbar-teal::-webkit-scrollbar-track { background: transparent; }

@@ -809,8 +809,8 @@ const engProjectSlides = [
   { base: "image1Engproject", title: "PRISM", description: "Test bench" },
   { base: "image4Engprojectcarosel", title: "Car Modding", description: "Rear shocks replacement" },
   { base: "metasurface", title: "Scientific Visualization", description: "Metasurface render" },
-  { image: "InsidePhoenix.jpg", title: "Scientific Visualization", description: "Inside Phoenix render" },
-  { image: "OutsidePhoenix.jpg", title: "Scientific Visualization", description: "Outside Phoenix render" },
+  { image: "InsidePhoenix2k.jpg", title: "Scientific Visualization", description: "Inside Phoenix render" },
+  { image: "OutsidePhoenix2k.jpg", title: "Scientific Visualization", description: "Outside Phoenix render" },
   { base: "image5Engprojectcarosel", title: "Spectrometer", description: "Reviving old spectrometer" },
   { base: "image3Engprojectcarosel", title: "Pygame", description: "Screenshot" },
 
@@ -823,8 +823,8 @@ export default function PortfolioWhite() {
 
   // tabs + carousels
   const [activeTab, setActiveTab] = useState("Applied Skills");
-  const ACCENT       = "#f97316";
-  const ACCENT_SOFT  = "rgba(249, 115, 22, 0.13)";
+  const ACCENT       = "#C97A3A";
+  const ACCENT_SOFT  = "rgba(201, 122, 58, 0.13)";
   const PAGE_BG      = "#080e14";
 
   const [mx, setMx] = useState(-9999);
@@ -1018,9 +1018,9 @@ export default function PortfolioWhite() {
                 transition: "border-color 0.25s ease, color 0.25s ease, box-shadow 0.25s ease",
               }}
               onMouseEnter={e => {
-                e.currentTarget.style.borderColor = "#f97316";
-                e.currentTarget.style.color = "#f97316";
-                e.currentTarget.style.boxShadow = "inset 0 0 12px rgba(249,115,22,0.35)";
+                e.currentTarget.style.borderColor = ACCENT;
+                e.currentTarget.style.color = ACCENT;
+                e.currentTarget.style.boxShadow = "inset 0 0 12px rgba(201,122,58,0.35)";
               }}
               onMouseLeave={e => {
                 e.currentTarget.style.borderColor = "rgba(255,255,255,0.2)";
@@ -1133,7 +1133,7 @@ export default function PortfolioWhite() {
       <div className="mx-auto max-w-7xl">
         <div
           className="inline-flex items-center gap-2 rounded-full px-4 py-1 text-[10px] sm:text-xs uppercase tracking-widest border"
-          style={{ borderColor: `rgba(249,115,22,0.4)`, color: ACCENT }}
+          style={{ borderColor: `rgba(201,122,58,0.4)`, color: ACCENT }}
         >
           <MicroscopeIcon size={14} /> Instruments • Photonics • Precision Engineering
         </div>

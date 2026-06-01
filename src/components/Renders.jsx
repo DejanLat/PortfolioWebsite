@@ -3,8 +3,8 @@ import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import {
   ArrowLeft,
-  Clock,
   ExternalLink,
+  FileText,
   Image as ImageIcon,
   Layers3,
   SendHorizonal,
@@ -23,7 +23,7 @@ const SECTIONS = [
     icon: ImageIcon,
     title: "Inside Phoenix Figure Visual",
     tag: "Science Advances Cover",
-    image: renderImg("InsidePhoenix.jpg"),
+    image: renderImg("InsidePhoenix2k.jpg"),
     bullets: [
       "Cover render for Science Advances Vol. 12 Issue 21, May 22 2026.",
       "Depicts a photon extractor in bulk diamond, visualizing photonic nanojet behavior around NV centers.",
@@ -39,7 +39,7 @@ const SECTIONS = [
     icon: ImageIcon,
     title: "Outside Phoenix Figure Visual",
     tag: "Science Advances Cover",
-    image: renderImg("OutsidePhoenix.jpg"),
+    image: renderImg("OutsidePhoenix2k.jpg"),
     bullets: [
       "Companion render to the Science Advances cover submission.",
       "Visualizes the exterior optical structure of the inverse-designed diamond nanostructure.",
@@ -207,7 +207,7 @@ export default function Renders() {
                         className="inline-flex items-center gap-1.5 text-[11px] px-2 py-1 rounded-full border bg-white/5 text-white/85"
                         style={{ borderColor: "rgba(255,255,255,0.14)", background: "rgba(255,255,255,0.06)" }}
                       >
-                        <Clock size={12} /> {section.tag}
+                        <FileText size={12} /> {section.tag}
                       </span>
                     </div>
 
