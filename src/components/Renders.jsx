@@ -48,6 +48,10 @@ const SECTIONS = [
     links: [
       { label: "Issue", href: "https://www.science.org/toc/sciadv/12/21" },
       { label: "Paper", href: "https://www.science.org/doi/10.1126/sciadv.aea5936" },
+      {
+        label: "IQC Feature",
+        href: "https://uwaterloo.ca/institute-for-quantum-computing/news/new-nanoscale-diamond-structure-better-collects-and-controls",
+      },
     ],
   },
   {
