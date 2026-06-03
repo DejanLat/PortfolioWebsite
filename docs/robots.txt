@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://dejanlat.github.io/PortfolioWebsite/sitemap.xml
