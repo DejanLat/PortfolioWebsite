@@ -10,6 +10,8 @@ import Models from "./components/Models";
 import CarModding from "./components/CarModding";
 import Renders from "./components/Renders";
 
+const PUBLIC_URL = process.env.PUBLIC_URL || "";
+
 const META = {
   studio: {
     title: "Axivion Studio | Scientific Visualization",
@@ -53,6 +55,28 @@ const META = {
   },
 };
 
+function setFavicons(type) {
+  const icons = type === "studio"
+    ? [
+        { rel: "icon", type: "image/svg+xml", href: `${PUBLIC_URL}/axivion-studio-favicon.svg` },
+        { rel: "icon", type: "image/x-icon", href: `${PUBLIC_URL}/axivion-studio-favicon.ico` },
+      ]
+    : [
+        { rel: "icon", type: "image/x-icon", href: `${PUBLIC_URL}/axivion-favicon.ico` },
+        { rel: "icon", type: "image/webp", href: `${PUBLIC_URL}/axivion-favicon-32.webp`, sizes: "32x32" },
+        { rel: "icon", type: "image/png", href: `${PUBLIC_URL}/axivion-favicon-32.png`, sizes: "32x32" },
+      ];
+
+  document.head.querySelectorAll('link[rel="icon"], link[rel="shortcut icon"]').forEach((element) => element.remove());
+  icons.forEach((icon) => {
+    const link = document.createElement("link");
+    link.setAttribute("rel", icon.rel);
+    link.setAttribute("type", icon.type);
+    link.setAttribute("href", icon.href);
+    if (icon.sizes) link.setAttribute("sizes", icon.sizes);
+    document.head.appendChild(link);
+  });
+}
 function upsertMeta(selector, attrs) {
   let element = document.head.querySelector(selector);
   if (!element) {
@@ -99,6 +123,7 @@ function MetadataManager() {
     upsertMeta('meta[name="twitter:description"]', { name: "twitter:description", content: meta.ogDescription });
     upsertMeta('meta[name="twitter:image"]', { name: "twitter:image", content: meta.image });
     setCanonical(meta.canonical);
+    setFavicons(type === "studio" || type === "person" ? "studio" : "portfolio");
   }, [pathname]);
 
   return null;
