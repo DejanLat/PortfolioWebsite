@@ -281,11 +281,11 @@ projects: [
 },
 
 {
-  title: "Scientific Visualization & Renders",
+  title: "Axivion Studio",
   description:
-    "Blender-based publication graphics, cover art, and technical renders for photonics, nanostructures, and instrumentation.",
+    "Publication-ready scientific and technical visuals for papers, posters, grants, websites, presentations, and journal cover submissions.",
   image: "metasurface.png",
-  technologies: ["Blender", "Python-generated Geometry", "Scientific Visualization", "Optics", "Publication Graphics"],
+  technologies: ["Blender", "Scientific Visualization", "Technical Renders", "Optics", "Publication Graphics"],
   specifications: [
     "Science Advances cover art / visualization credit",
     "Nanophotonics and metasurface render workflows",
@@ -322,13 +322,12 @@ projects: [
 //   description:
 //     "Created detailed Blender models and renders to support lab projects, using 3D visualization for case designs, optics layouts, and presentation figures.",
 //   image: "https://images.unsplash.com/photo-1605647533135-5b1b7d4aa9b6", // placeholder Blender-style render
-//   technologies: ["Blender", "3D Modeling", "Rendering", "Animation"],
+//   technologies: ["Blender", "3D Modeling", "Rendering"],
 //   specifications: [
 //     "Modeled custom microscope and spectrometer components in Blender",
 //     "Produced high-quality renders for presentations, reports, and papers",
 //     "Designed and visualized instrument cases and mechanical assemblies",
-//     "Created exploded views and animations to explain complex setups",
-//     "Used Blender as a rapid prototyping tool to refine lab designs"
+// //     "Used Blender as a rapid prototyping tool to refine lab designs"
 //   ],
 //   featured: false,
 //   github: false,

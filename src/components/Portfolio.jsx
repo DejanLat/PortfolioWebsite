@@ -867,7 +867,7 @@ export default function PortfolioWhite() {
     { label: "Credits", action: () => scrollToSection("publications") },
     { label: "Projects", action: () => scrollToSection("projects") },
     { label: "PRISM", to: "/prism" },
-    { label: "Renders", to: "/renders" },
+    { label: "Axivion Studio", to: "/studio" },
     { label: "Contact", to: "/contact" },
   ];
 
@@ -1701,7 +1701,7 @@ export default function PortfolioWhite() {
           } else if (project.slug === "car-modding") {
             navigate("/car-modding");
           } else if (project.slug === "renders") {
-            navigate("/renders");
+            navigate("/studio");
           } else if (project.demo) {
             window.open(project.demo, "_blank", "noopener,noreferrer");
           } else if (project.github) {
