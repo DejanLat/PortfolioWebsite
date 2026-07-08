@@ -4,6 +4,8 @@ import { BrowserRouter as Router, Routes, Route, useLocation } from "react-route
 import Portfolio from "./components/Portfolio";
 import PrismProject from "./components/PrismProject";
 import Contact from "./components/Contact";
+import StudioContact from "./components/StudioContact";
+import DejanLatkovic from "./components/DejanLatkovic";
 import Models from "./components/Models";
 import CarModding from "./components/CarModding";
 import Renders from "./components/Renders";
@@ -28,6 +30,16 @@ const META = {
     siteName: "Dejan Latkovic Portfolio",
     canonical: "https://dejanlat.github.io/PortfolioWebsite/",
     image: "https://dejanlat.github.io/PortfolioWebsite/AxivionPrismBanner.png",
+  },
+  person: {
+    title: "Dejan Latkovic | Axivion Studio",
+    description:
+      "Dejan Latkovic is the founder of Axivion Studio, creating scientific visualization for researchers, labs, papers, proposals, covers, and advanced hardware teams.",
+    ogDescription:
+      "Founder of Axivion Studio, creating scientific visualization for researchers, labs, papers, proposals, covers, and advanced hardware teams.",
+    siteName: "Axivion Studio",
+    canonical: "https://axivionstudio.com/dejan-latkovic",
+    image: "https://axivionstudio.com/metasurface.png",
   },
   prism: {
     title: "Axivion Instruments | Precision Scientific Instrumentation",
@@ -67,9 +79,11 @@ function MetadataManager() {
   React.useEffect(() => {
     const type = pathname.startsWith("/portfolio")
       ? "portfolio"
-      : pathname.startsWith("/prism")
-        ? "prism"
-        : "studio";
+      : pathname.startsWith("/dejan-latkovic")
+        ? "person"
+        : pathname.startsWith("/prism")
+          ? "prism"
+          : "studio";
     const meta = META[type];
 
     document.title = meta.title;
@@ -113,7 +127,9 @@ function App() {
           <Route path="/renders" element={<Renders />} />
           <Route path="/portfolio" element={<Portfolio />} />
           <Route path="/prism" element={<PrismProject />} />
-          <Route path="/contact" element={<Contact contactEmail="axivioninstruments@gmail.com" />} />
+          <Route path="/contact" element={<StudioContact contactEmail="axivioninstruments@gmail.com" />} />
+          <Route path="/dejan-latkovic" element={<DejanLatkovic />} />
+          <Route path="/portfolio/contact" element={<Contact contactEmail="axivioninstruments@gmail.com" />} />
           <Route path="/models" element={<Models />} />
           <Route path="/car-modding" element={<CarModding />} />
         </Routes>

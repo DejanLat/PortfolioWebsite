@@ -2,6 +2,11 @@
 @tailwind components;
 @tailwind utilities;
 
+html,
+body {
+  overflow-x: hidden;
+}
+
 body {
     margin: 0;
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto",
@@ -106,6 +111,11 @@ code {
 .scrollbar-pink::-webkit-scrollbar-thumb { background: rgba(255,42,160,0.45); border-radius: 4px; }
 .scrollbar-pink::-webkit-scrollbar-thumb:hover { background: rgba(255,42,160,0.75); }
 .scrollbar-pink { scrollbar-width: thin; scrollbar-color: rgba(255,42,160,0.45) transparent; }
+.scrollbar-studio::-webkit-scrollbar { width: 10px; }
+.scrollbar-studio::-webkit-scrollbar-track { background: #050706; }
+.scrollbar-studio::-webkit-scrollbar-thumb { background: rgba(52,211,153,0.35); border-radius: 999px; border: 2px solid #050706; }
+.scrollbar-studio::-webkit-scrollbar-thumb:hover { background: rgba(52,211,153,0.55); }
+.scrollbar-studio { scrollbar-width: thin; scrollbar-color: rgba(52,211,153,0.35) #050706; }
 
 /* G2.1 corner language: superellipse-inspired radii without copying a platform implementation. */
 .g21 {

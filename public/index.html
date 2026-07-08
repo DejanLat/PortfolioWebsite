@@ -44,20 +44,47 @@
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
-        "@type": "ProfessionalService",
-        "name": "Axivion Studio",
-        "url": "https://axivionstudio.com/",
-        "description": "Scientific and technical visualization for researchers, labs, papers, proposals, covers, and advanced hardware teams.",
-        "founder": {
-          "@type": "Person",
-          "name": "Dejan Latkovic"
-        },
-        "areaServed": "Worldwide",
-        "serviceType": [
-          "Scientific visualization",
-          "Technical rendering",
-          "Publication graphics",
-          "Research communication visuals"
+        "@graph": [
+          {
+            "@type": "Organization",
+            "name": "Axivion Studio",
+            "url": "https://axivionstudio.com/",
+            "description": "Scientific visualization for researchers, labs, papers, proposals, covers, and advanced hardware teams.",
+            "founder": {
+              "@type": "Person",
+              "name": "Dejan Latkovic",
+              "url": "https://axivionstudio.com/dejan-latkovic"
+            }
+          },
+          {
+            "@type": "Person",
+            "name": "Dejan Latkovic",
+            "url": "https://axivionstudio.com/dejan-latkovic",
+            "jobTitle": "Founder",
+            "affiliation": {
+              "@type": "Organization",
+              "name": "Axivion Studio",
+              "url": "https://axivionstudio.com/"
+            },
+            "sameAs": [
+              "https://dejanlat.github.io/PortfolioWebsite/",
+              "https://www.linkedin.com/in/dejanlatkovic/",
+              "https://github.com/DejanLat"
+            ]
+          },
+          {
+            "@type": "ProfessionalService",
+            "name": "Axivion Studio",
+            "url": "https://axivionstudio.com/",
+            "description": "Scientific and technical visualization for researchers, labs, papers, proposals, covers, and advanced hardware teams.",
+            "areaServed": "Worldwide",
+            "serviceType": [
+              "Scientific visualization",
+              "Technical rendering",
+              "Publication graphics",
+              "Research communication visuals"
+            ]
+          }
         ]
       }
     </script>

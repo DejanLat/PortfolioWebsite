@@ -95,7 +95,7 @@
 //       >
 //         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
 //           <div className="flex items-center gap-3">
-//             <Link to="/" className="inline-flex items-center gap-2 text-sm text-white/80 hover:text-white">
+//             <Link to="/portfolio" className="inline-flex items-center gap-2 text-sm text-white/80 hover:text-white">
 //               <ArrowLeft size={18} />
 //               <span>Back</span>
 //             </Link>
@@ -105,7 +105,7 @@
 //           </div>
 //           <div className="flex items-center gap-2">
 //             <Link
-//               to="/contact"
+//               to="/portfolio/contact"
 //               className="rounded-full bg-white text-black px-4 py-2 text-sm font-medium hover:bg-white/90 active:scale-[0.99]"
 //             >
 //               Contact
@@ -162,7 +162,7 @@
 //               <Link to="/models" className="rounded-full bg-white text-black px-6 py-3 text-sm font-medium hover:bg-white/90">
 //                 Explore
 //               </Link>
-//               <Link to="/contact" className="rounded-full border border-white/30 px-6 py-3 text-sm font-medium hover:border-white/60">
+//               <Link to="/portfolio/contact" className="rounded-full border border-white/30 px-6 py-3 text-sm font-medium hover:border-white/60">
 //                 Technical Specs
 //               </Link>
 //             </div>
@@ -280,7 +280,7 @@
 //               <Zap size={16} /> Piezo Actuation
 //             </div>
 //           </div>
-//           <Link to="/contact" className="inline-flex items-center gap-2 rounded-full bg-white text-black px-4 py-2 text-sm font-medium hover:bg-white/90">
+//           <Link to="/portfolio/contact" className="inline-flex items-center gap-2 rounded-full bg-white text-black px-4 py-2 text-sm font-medium hover:bg-white/90">
 //             <Download size={16} /> Request Spec Overview
 //           </Link>
 //         </div>
@@ -389,10 +389,10 @@
 //               </p>
 //             </div>
 //             <div className="flex items-center gap-3">
-//               <Link to="/contact" className="rounded-full bg-white text-black px-6 py-3 text-sm font-medium hover:bg-white/90">
+//               <Link to="/portfolio/contact" className="rounded-full bg-white text-black px-6 py-3 text-sm font-medium hover:bg-white/90">
 //                 Request Specs
 //               </Link>
-//               <Link to="/contact" className="rounded-full border border-white/30 px-6 py-3 text-sm font-medium hover:border-white/60">
+//               <Link to="/portfolio/contact" className="rounded-full border border-white/30 px-6 py-3 text-sm font-medium hover:border-white/60">
 //                 Observe a Live Demo
 //               </Link>
 //             </div>
@@ -584,7 +584,7 @@
 //       >
 //         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
 //           <div className="flex items-center gap-3">
-//             <Link to="/" className="inline-flex items-center gap-2 text-sm text-white/80 hover:text-white">
+//             <Link to="/portfolio" className="inline-flex items-center gap-2 text-sm text-white/80 hover:text-white">
 //               <ArrowLeft size={18} />
 //               <span>Back</span>
 //             </Link>
@@ -594,7 +594,7 @@
 //           </div>
 //           <div className="flex items-center gap-2">
 //             <Link
-//               to="/contact"
+//               to="/portfolio/contact"
 //               className="rounded-full bg-white text-black px-4 py-2 text-sm font-medium hover:bg-white/90 active:scale-[0.99]"
 //             >
 //               Contact
@@ -741,7 +741,7 @@
 //               <Zap size={16} /> Piezo Actuation
 //             </div>
 //           </div>
-//           <Link to="/contact" className="inline-flex items-center gap-2 rounded-full bg-white text-black px-4 py-2 text-sm font-medium hover:bg-white/90">
+//           <Link to="/portfolio/contact" className="inline-flex items-center gap-2 rounded-full bg-white text-black px-4 py-2 text-sm font-medium hover:bg-white/90">
 //             <Download size={16} /> Request Spec Overview
 //           </Link>
 //         </div>
@@ -888,10 +888,10 @@
 //               ))}
 //             </ul>
 //             <div className="mt-6 flex items-center gap-3">
-//               <Link to="/contact" className="rounded-full bg-white text-black px-5 py-2.5 text-sm font-medium hover:bg-white/90">
+//               <Link to="/portfolio/contact" className="rounded-full bg-white text-black px-5 py-2.5 text-sm font-medium hover:bg-white/90">
 //                 Request Details
 //               </Link>
-//               <Link to="/contact" className="rounded-full border border-white/30 px-5 py-2.5 text-sm font-medium hover:border-white/60">
+//               <Link to="/portfolio/contact" className="rounded-full border border-white/30 px-5 py-2.5 text-sm font-medium hover:border-white/60">
 //                 Talk to Engineering
 //               </Link>
 //             </div>
@@ -914,10 +914,10 @@
 //               ))}
 //             </ul>
 //             <div className="mt-6 flex items-center gap-3">
-//               <Link to="/contact" className="rounded-full bg-white text-black px-5 py-2.5 text-sm font-medium hover:bg-white/90">
+//               <Link to="/portfolio/contact" className="rounded-full bg-white text-black px-5 py-2.5 text-sm font-medium hover:bg-white/90">
 //                 Request Details
 //               </Link>
-//               <Link to="/contact" className="rounded-full border border-white/30 px-5 py-2.5 text-sm font-medium hover:border-white/60">
+//               <Link to="/portfolio/contact" className="rounded-full border border-white/30 px-5 py-2.5 text-sm font-medium hover:border-white/60">
 //                 Talk to Engineering
 //               </Link>
 //             </div>
@@ -942,10 +942,10 @@
 //         </div>
 
 //         <div className="mt-8 flex items-center gap-3">
-//           <Link to="/contact" className="rounded-full bg-white text-black px-6 py-3 text-sm font-medium hover:bg-white/90">
+//           <Link to="/portfolio/contact" className="rounded-full bg-white text-black px-6 py-3 text-sm font-medium hover:bg-white/90">
 //             Get Full Specs
 //           </Link>
-//           <Link to="/contact" className="rounded-full border border-white/30 px-6 py-3 text-sm font-medium hover:border-white/60">
+//           <Link to="/portfolio/contact" className="rounded-full border border-white/30 px-6 py-3 text-sm font-medium hover:border-white/60">
 //             Schedule a Call
 //           </Link>
 //         </div>
@@ -963,10 +963,10 @@
 //               </p>
 //             </div>
 //             <div className="flex items-center gap-3">
-//               <Link to="/contact" className="rounded-full bg-white text-black px-6 py-3 text-sm font-medium hover:bg-white/90">
+//               <Link to="/portfolio/contact" className="rounded-full bg-white text-black px-6 py-3 text-sm font-medium hover:bg-white/90">
 //                 Request Specs
 //               </Link>
-//               <Link to="/contact" className="rounded-full border border-white/30 px-6 py-3 text-sm font-medium hover:border-white/60">
+//               <Link to="/portfolio/contact" className="rounded-full border border-white/30 px-6 py-3 text-sm font-medium hover:border-white/60">
 //                 Observe a Live Demo
 //               </Link>
 //             </div>
@@ -1161,7 +1161,7 @@
 //       >
 //         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
 //           <div className="flex items-center gap-3">
-//             <Link to="/" className="inline-flex items-center gap-2 text-sm text-white/80 hover:text-white">
+//             <Link to="/portfolio" className="inline-flex items-center gap-2 text-sm text-white/80 hover:text-white">
 //               <ArrowLeft size={18} />
 //               <span>Back</span>
 //             </Link>
@@ -1171,7 +1171,7 @@
 //           </div>
 //           <div className="flex items-center gap-2">
 //             <Link
-//               to="/contact"
+//               to="/portfolio/contact"
 //               className="rounded-full px-4 py-2 text-sm font-medium"
 //               style={{ backgroundColor: ACCENT, color: "#000" }}
 //               onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = ACCENT_HOVER)}
@@ -1495,7 +1495,7 @@
 //             {/* Removed "Talk to Engineering" button (kept single CTA minimal) */}
 //             <div className="mt-6">
 //               <Link
-//                 to="/contact"
+//                 to="/portfolio/contact"
 //                 className="rounded-full px-5 py-2.5 text-sm font-medium"
 //                 style={{ backgroundColor: ACCENT, color: "#000" }}
 //                 onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = ACCENT_HOVER)}
@@ -1526,7 +1526,7 @@
 //             {/* Removed "Talk to Engineering" */}
 //             <div className="mt-6">
 //               <Link
-//                 to="/contact"
+//                 to="/portfolio/contact"
 //                 className="rounded-full px-5 py-2.5 text-sm font-medium"
 //                 style={{ backgroundColor: ACCENT, color: "#000" }}
 //                 onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = ACCENT_HOVER)}
@@ -1572,7 +1572,7 @@
 //             </div>
 //             <div className="flex items-center gap-3">
 //               <Link
-//                 to="/contact"
+//                 to="/portfolio/contact"
 //                 className="rounded-full px-6 py-3 text-sm font-medium"
 //                 style={{ backgroundColor: ACCENT, color: "#000" }}
 //                 onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = ACCENT_HOVER)}
@@ -1802,7 +1802,7 @@
 //         >
 //           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
 //             <div className="flex items-center gap-3">
-//               <Link to="/" className="inline-flex items-center gap-2 text-sm text-white/80 hover:text-white">
+//               <Link to="/portfolio" className="inline-flex items-center gap-2 text-sm text-white/80 hover:text-white">
 //                 <ArrowLeft size={18} />
 //                 <span>Back</span>
 //               </Link>
@@ -1812,7 +1812,7 @@
 //             </div>
 //             <div className="flex items-center gap-2">
 //               <Link
-//                 to="/contact"
+//                 to="/portfolio/contact"
 //                 className="rounded-full px-4 py-2 text-sm font-medium"
 //                 style={{ backgroundColor: ACCENT, color: "#000" }}
 //                 onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = ACCENT_HOVER)}
@@ -2154,7 +2154,7 @@
 //               </ul>
 //               <div className="mt-6">
 //                 <Link
-//                   to="/contact"
+//                   to="/portfolio/contact"
 //                   className="rounded-full px-5 py-2.5 text-sm font-medium"
 //                   style={{ backgroundColor: ACCENT, color: "#000" }}
 //                   onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = ACCENT_HOVER)}
@@ -2183,7 +2183,7 @@
 //               </ul>
 //               <div className="mt-6">
 //                 <Link
-//                   to="/contact"
+//                   to="/portfolio/contact"
 //                   className="rounded-full px-5 py-2.5 text-sm font-medium"
 //                   style={{ backgroundColor: ACCENT, color: "#000" }}
 //                   onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = ACCENT_HOVER)}
@@ -2226,7 +2226,7 @@
 //               </div>
 //               <div className="flex items-center gap-3">
 //                 <Link
-//                   to="/contact"
+//                   to="/portfolio/contact"
 //                   className="rounded-full px-6 py-3 text-sm font-medium"
 //                   style={{ backgroundColor: ACCENT, color: "#000" }}
 //                   onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = ACCENT_HOVER)}
@@ -2461,7 +2461,7 @@
 //         >
 //           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
 //             <div className="flex items-center gap-3">
-//               <Link to="/" className="inline-flex items-center gap-2 text-sm text-white/80 hover:text-white">
+//               <Link to="/portfolio" className="inline-flex items-center gap-2 text-sm text-white/80 hover:text-white">
 //                 <ArrowLeft size={18} />
 //                 <span>Back</span>
 //               </Link>
@@ -2471,7 +2471,7 @@
 //             </div>
 //             <div className="flex items-center gap-2">
 //               <Link
-//                 to="/contact"
+//                 to="/portfolio/contact"
 //                 className="rounded-full px-4 py-2 text-sm font-medium"
 //                 style={{ backgroundColor: ACCENT, color: "#000" }}
 //                 onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = ACCENT_HOVER)}
@@ -2831,7 +2831,7 @@
 //               </ul>
 //               <div className="mt-6">
 //                 <Link
-//                   to="/contact"
+//                   to="/portfolio/contact"
 //                   className="rounded-full px-5 py-2.5 text-sm font-medium"
 //                   style={{ backgroundColor: ACCENT, color: "#000" }}
 //                   onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = ACCENT_HOVER)}
@@ -2860,7 +2860,7 @@
 //               </ul>
 //               <div className="mt-6">
 //                 <Link
-//                   to="/contact"
+//                   to="/portfolio/contact"
 //                   className="rounded-full px-5 py-2.5 text-sm font-medium"
 //                   style={{ backgroundColor: ACCENT, color: "#000" }}
 //                   onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = ACCENT_HOVER)}
@@ -2903,7 +2903,7 @@
 //               </div>
 //               <div className="flex items-center gap-3">
 //                 <Link
-//                   to="/contact"
+//                   to="/portfolio/contact"
 //                   className="rounded-full px-6 py-3 text-sm font-medium"
 //                   style={{ backgroundColor: ACCENT, color: "#000" }}
 //                   onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = ACCENT_HOVER)}
@@ -3189,7 +3189,7 @@
 //           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
 //             <div className="flex items-center gap-3">
 //               <Link
-//                 to="/"
+//                 to="/portfolio"
 //                 className="inline-flex items-center gap-2 text-sm text-white/80 hover:text-white"
 //               >
 //                 <ArrowLeft size={18} />
@@ -3201,7 +3201,7 @@
 //             </div>
 //             <div className="flex items-center gap-2">
 //               <Link
-//                 to="/contact"
+//                 to="/portfolio/contact"
 //                 className="rounded-full px-4 py-2 text-sm font-medium"
 //                 style={{ backgroundColor: ACCENT, color: "#000" }}
 //                 onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = ACCENT_HOVER)}
@@ -3597,7 +3597,7 @@
 //               </ul>
 //               <div className="mt-6">
 //                 <Link
-//                   to="/contact"
+//                   to="/portfolio/contact"
 //                   className="rounded-full px-5 py-2.5 text-sm font-medium"
 //                   style={{ backgroundColor: ACCENT, color: "#000" }}
 //                   onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = ACCENT_HOVER)}
@@ -3629,7 +3629,7 @@
 //               </ul>
 //               <div className="mt-6">
 //                 <Link
-//                   to="/contact"
+//                   to="/portfolio/contact"
 //                   className="rounded-full px-5 py-2.5 text-sm font-medium"
 //                   style={{ backgroundColor: ACCENT, color: "#000" }}
 //                   onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = ACCENT_HOVER)}
@@ -3677,7 +3677,7 @@
 //               </div>
 //               <div className="flex items-center gap-3">
 //                 <Link
-//                   to="/contact"
+//                   to="/portfolio/contact"
 //                   className="rounded-full px-6 py-3 text-sm font-medium"
 //                   style={{ backgroundColor: ACCENT, color: "#000" }}
 //                   onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = ACCENT_HOVER)}
@@ -4022,7 +4022,7 @@ const rowsToRender = showAll ? allRows : diffRows;
     {/* LEFT: title cluster (tight on mobile) */}
     <div className="flex-1 min-w-0 flex items-center gap-2 sm:gap-3">
       <Link
-        to="/"
+        to="/portfolio"
         className="inline-flex items-center gap-1.5 sm:gap-2 text-xs sm:text-sm text-white/80 hover:text-white shrink-0"
       >
         <ArrowLeft size={16} className="sm:hidden" />
@@ -4040,7 +4040,7 @@ const rowsToRender = showAll ? allRows : diffRows;
     {/* RIGHT: CTA */}
     <div className="shrink-0">
       <Link
-        to="/contact"
+        to="/portfolio/contact"
         className="rounded-full px-3.5 sm:px-4 py-1.5 sm:py-2 text-sm font-medium"
         style={{ backgroundColor: ACCENT, color: "#000" }}
         onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = ACCENT_HOVER)}
@@ -4511,7 +4511,7 @@ const rowsToRender = showAll ? allRows : diffRows;
     </ul>
     <div className="mt-6">
       <Link
-        to="/contact"
+        to="/portfolio/contact"
         className="rounded-full px-5 py-2.5 text-sm font-medium"
         style={{ backgroundColor: ACCENT, color: "#000" }}
         onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = ACCENT_HOVER)}
@@ -4555,7 +4555,7 @@ const rowsToRender = showAll ? allRows : diffRows;
     </ul>
     <div className="mt-6">
       <Link
-        to="/contact"
+        to="/portfolio/contact"
         className="rounded-full px-5 py-2.5 text-sm font-medium"
         style={{ backgroundColor: ACCENT, color: "#000" }}
         onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = ACCENT_HOVER)}
@@ -4650,7 +4650,7 @@ const rowsToRender = showAll ? allRows : diffRows;
               </div>
               <div className="flex items-center gap-3">
                 <Link
-                  to="/contact"
+                  to="/portfolio/contact"
                   className="rounded-full px-6 py-3 text-sm font-medium"
                   style={{ backgroundColor: ACCENT, color: "#000" }}
                   onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = ACCENT_HOVER)}

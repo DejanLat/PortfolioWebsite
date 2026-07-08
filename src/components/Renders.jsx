@@ -15,8 +15,10 @@ import {
 
 const ACCENT = "#34d399";
 const ACCENT_SOFT = "rgba(52, 211, 153, 0.18)";
-const CONTACT_ACCENT = "#f59e0b";
+const CONTACT_ACCENT = ACCENT;
 const IQC_ACCENT = "#A40C34";
+const PORTFOLIO_ACCENT = "#C97A3A";
+const AAAS_ACCENT = "#273591";
 const PUBLIC = process.env.PUBLIC_URL || "";
 
 const renderImg = (file) => `${PUBLIC}/${file}`;
@@ -79,73 +81,83 @@ const PACKAGES = [
     price: "$650+ USD",
     bestFor: "Posters, slides, simple apparatus visuals",
     timeline: "1-2 weeks",
-    description: "A focused still render for a single concept, apparatus, structure, or presentation figure.",
-    includes: ["One final still image", "One intake call or written project brief", "Up to two revision rounds", "PNG or JPEG delivery"],
+    description: "A focused render for a single concept, apparatus, structure, or presentation figure.",
+    includes: ["One final image", "One intake call or written project brief", "Up to two revision rounds", "PNG or JPEG delivery"],
   },
   {
     label: "Most requested",
-    name: "Publication / Research Visual",
+    name: "Publication Visual",
     price: "$1,450+ USD",
-    bestFor: "Paper figures, proposals, lab communication",
+    bestFor: "Paper figures, proposals, lab docs",
     timeline: "2-4 weeks",
     description: "The core Studio package for visuals that need technical discussion and accurate scientific representation.",
-    includes: ["Technical discussion", "Reference review", "Concept direction", "One high-resolution still", "Up to three revision rounds"],
+    includes: ["Technical discussion", "Reference review", "Concept direction", "One high-resolution image", "Up to three revision rounds"],
   },
   {
     label: "Cover-ready",
-    name: "Cover Candidate / Hero Render",
+    name: "Cover Candidate",
     price: "$2,950+ USD",
-    bestFor: "Journal cover candidates, major announcements, grant hero visuals",
+    bestFor: "Journal covers, major events, grant hero visuals",
     timeline: "3-5 weeks",
-    description: "A more developed hero visual for public-facing research communication and cover candidate submissions.",
+    description: "A developed hero visual for public-facing research communication and cover candidate submissions.",
     includes: ["Deeper concept development", "Technical discussion", "One final hero render", "Alternate crops", "Up to three revision rounds"],
   },
   {
     label: "Best value",
-    name: "Figure Set / Visual Package",
+    name: "Master Figure Package",
     price: "$4,950+ USD",
     bestFor: "Full paper, grant, website, or group visual package",
     timeline: "4-8 weeks",
-    description: "A coherent set of related still visuals with a shared visual language across the project.",
-    includes: ["Three to five related still visuals", "Consistent visual style", "Technical alignment across panels", "Up to three revision rounds across the package"],
+    description: "A coherent set of related visuals with a shared visual language across the project.",
+    includes: ["Three to five related visuals", "Consistent visual style", "Technical alignment across panels", "Up to three revision rounds across the package"],
   },
 ];
 
 const TERMS_GROUPS = [
   {
-    title: "Payment and milestones",
+    title: "Project scope and payment",
     items: [
-      "A written scope summary and invoice or payment link are sent by email before payment is collected.",
-      "Projects usually begin with a 50% deposit; larger projects may use milestone payments tied to concept, draft, and final delivery.",
-      "Payment becomes final once progress has started. Final high-resolution files are released only after the remaining balance is paid.",
-      "Rush fees, started milestones, and completed work are non-refundable. Partial refunds may be considered only for unstarted work.",
+      "Each project begins with a written quote before payment is collected.",
+      "Most projects start with a 50% deposit, while larger projects may be split into milestones such as concept, draft, and final delivery.",
+      "Final high-resolution files are delivered once the remaining balance is paid.",
     ],
   },
   {
-    title: "Use rights",
+    title: "Included use rights",
     items: [
-      "Personal / academic internal use is included for drafts, lab review, posters, slides, and non-commercial research communication.",
-      "Commercial license covers company websites, pitch decks, grant material, product pages, press releases, and normal business communication.",
-      "Commercial merchandising, paid ads, packaging, resale, or broad campaign usage requires written approval and a separate license fee.",
-      "Buyout or transfer of ownership is not included by default and is only considered by separate written agreement.",
+      "Standard licenses include personal, academic, lab, and internal research communication use.",
+      "Commercial licenses can include websites, pitch decks, grant material, product pages, press releases, and normal business communication.",
+      "Broader use such as paid ads, merchandise, packaging, resale, or campaign usage can be added by written agreement.",
     ],
   },
   {
-    title: "Protection and restrictions",
+    title: "What is delivered",
     items: [
-      "Source files, scene files, materials, geometry, and working files are not included unless explicitly stated in writing.",
-      "Final work may not be used for AI training, model generation, dataset creation, NFTs, token projects, blockchain assets, or derivative automation systems.",
-      "Non-payment, chargeback abuse, unauthorized use, license violation, or harassment may terminate the license and block future service.",
-      "Unauthorized publication or resale may be enforced through takedown notices, DMCA-style claims, platform reports, and client blacklisting.",
+      "Final deliverables are provided as agreed in the project scope.",
+      "Working files, source scenes, geometry, materials, and editable scene files are not included unless added to the quote.",
+      "Additional formats, source files, or extended usage rights can be discussed before the project begins.",
     ],
   },
   {
-    title: "Client accountability",
+    title: "Review process",
     items: [
-      "Clients are responsible for confirming the final scientific accuracy of the approved visual before public use.",
-      "Progress previews can be requested during active milestones; revision rounds are fixed by package and extra revisions are billed separately.",
-      "Confidential, embargoed, unpublished, or sensitive work should be disclosed before work begins so portfolio use and handling can be agreed in writing.",
-      "A full terms of service can be sent with the quote before payment, so expectations are clear before the project starts.",
+      "Review rounds are included based on the selected package.",
+      "Clients can request progress previews during active milestones, and extra revisions can be added if the project needs more development.",
+      "For scientific or technical visuals, the client is responsible for confirming the final accuracy of the approved visual before public release.",
+    ],
+  },
+  {
+    title: "Confidential work",
+    items: [
+      "Confidential, embargoed, unpublished, or sensitive work can be handled privately.",
+      "Portfolio use, public sharing, and file handling can be agreed in writing before the project starts.",
+    ],
+  },
+  {
+    title: "Fair use and protection",
+    items: [
+      "To protect both sides, the final license depends on completed payment and agreed use.",
+      "Unauthorized resale, unpaid use, AI training, dataset creation, or use outside the approved license is not permitted without written approval.",
     ],
   },
 ];
@@ -242,7 +254,7 @@ export default function Renders() {
               </button>
             ))}
             <a
-              href="https://uwaterloo.ca/institute-for-quantum-computing/news/new-nanoscale-diamond-structure-better-collects-and-controls"
+              href="https://uwaterloo.ca/institute-for-quantum-computing/contacts/dejan-latkovic-0"
               target="_blank"
               rel="noopener noreferrer"
               className="whitespace-nowrap rounded-full px-4 py-2 font-medium text-white"
@@ -258,11 +270,20 @@ export default function Renders() {
               rel="noopener noreferrer"
               className="whitespace-nowrap rounded-full px-4 py-2 font-medium text-white"
               style={{ border: "1.5px solid rgba(255,255,255,0.2)", transition: "border-color 0.25s ease, color 0.25s ease" }}
-              onMouseEnter={(event) => { event.currentTarget.style.borderColor = ACCENT; event.currentTarget.style.color = ACCENT; }}
+              onMouseEnter={(event) => { event.currentTarget.style.borderColor = AAAS_ACCENT; event.currentTarget.style.color = AAAS_ACCENT; }}
               onMouseLeave={(event) => { event.currentTarget.style.borderColor = "rgba(255,255,255,0.2)"; event.currentTarget.style.color = "white"; }}
             >
               AAAS
             </a>
+            <Link
+              to="/portfolio"
+              className="whitespace-nowrap rounded-full px-4 py-2 font-medium text-white"
+              style={{ border: "1.5px solid rgba(255,255,255,0.2)", transition: "border-color 0.25s ease, color 0.25s ease" }}
+              onMouseEnter={(event) => { event.currentTarget.style.borderColor = PORTFOLIO_ACCENT; event.currentTarget.style.color = PORTFOLIO_ACCENT; }}
+              onMouseLeave={(event) => { event.currentTarget.style.borderColor = "rgba(255,255,255,0.2)"; event.currentTarget.style.color = "white"; }}
+            >
+              Portfolio
+            </Link>
             <Link
               to="/contact"
               className="whitespace-nowrap rounded-full px-4 py-2 font-medium text-white"
@@ -299,7 +320,7 @@ export default function Renders() {
                 </button>
               ))}
               <a
-                href="https://uwaterloo.ca/institute-for-quantum-computing/news/new-nanoscale-diamond-structure-better-collects-and-controls"
+                href="https://uwaterloo.ca/institute-for-quantum-computing/contacts/dejan-latkovic-0"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="rounded-xl px-3 py-3 text-white/80 transition hover:bg-white/10 hover:text-white"
@@ -316,6 +337,16 @@ export default function Renders() {
               >
                 AAAS
               </a>
+              <Link
+                to="/portfolio"
+                className="mt-1 rounded-xl border px-3 py-3 font-medium text-white transition hover:bg-white/10"
+                style={{ borderColor: "rgba(255,255,255,0.15)" }}
+                onMouseEnter={(event) => { event.currentTarget.style.borderColor = PORTFOLIO_ACCENT; event.currentTarget.style.color = PORTFOLIO_ACCENT; }}
+                onMouseLeave={(event) => { event.currentTarget.style.borderColor = "rgba(255,255,255,0.15)"; event.currentTarget.style.color = "white"; }}
+                onClick={() => setNavOpen(false)}
+              >
+                Portfolio
+              </Link>
               <Link
                 to="/contact"
                 className="mt-1 rounded-xl border border-white/15 px-3 py-3 font-medium text-white transition hover:border-white/30"
@@ -483,7 +514,7 @@ export default function Renders() {
               <h2 className="mt-2 text-3xl md:text-4xl font-semibold tracking-tight">Project Packages</h2>
             </div>
             <p className="max-w-xl text-sm leading-6 text-white/60">
-              Straightforward starting budgets for still-image scientific visuals. Prices are listed in USD; Canadian-dollar invoices are available for Canadian clients.
+              Straightforward starting budgets for scientific visualization projects. Prices are listed in USD; Canadian-dollar invoices are available for Canadian clients. Final quotes depend on scientific complexity, reference quality, usage rights, and timeline.
             </p>
           </div>
 
@@ -551,11 +582,11 @@ export default function Renders() {
           <div className="grid grid-cols-1 lg:grid-cols-[0.8fr_1.2fr] gap-6">
             <div>
               <div className="text-sm uppercase tracking-widest" style={{ color: ACCENT }}>
-                Terms of Service
+                Project Terms
               </div>
-              <h2 className="mt-2 text-3xl font-semibold tracking-tight">Payment, rights, and protection are agreed before work starts.</h2>
+              <h2 className="mt-2 text-3xl font-semibold tracking-tight">Clear terms before we begin.</h2>
               <p className="mt-4 text-sm leading-7 text-white/65">
-                The final quote should include a written scope, invoice/payment process, license level, included revisions, and delivery conditions. This preview is written for clarity; a full terms document can be sent by email before payment.
+                Every project starts with a written scope, timeline, license, and payment structure so both sides know exactly what is included before work begins.
               </p>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -594,7 +625,7 @@ export default function Renders() {
             <Link
               to="/contact"
               className="inline-flex items-center justify-center gap-2 rounded-full border px-5 py-3 text-sm font-medium text-white"
-              style={{ borderColor: "rgba(19,194,179,0.55)", background: "rgba(19,194,179,0.18)" }}
+              style={{ borderColor: "rgba(52,211,153,0.55)", background: "rgba(52,211,153,0.18)" }}
             >
               Request a Project <SendHorizonal size={16} />
             </Link>
@@ -604,7 +635,7 @@ export default function Renders() {
 
       <footer className="border-t border-white/10 bg-black">
         <div className="mx-auto max-w-7xl px-6 py-6 text-sm text-white/60 flex flex-col sm:flex-row gap-2 sm:items-center sm:justify-between">
-          <div>Axivion Studio</div>
+          <div>Axivion Studio is the scientific visualization practice of Dejan Latkovic.</div>
           <div>&copy; {new Date().getFullYear()} Dejan Latkovic / Axivion Studio</div>
         </div>
       </footer>

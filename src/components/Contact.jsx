@@ -120,7 +120,7 @@ export default function Contact({ contactEmail = CONTACT_EMAIL }) {
 
         <header className="fixed inset-x-0 top-0 z-50 backdrop-blur bg-black/70 border-b border-white/10">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 h-16 flex items-center gap-3">
-            <Link to="/" className="inline-flex items-center gap-2 text-sm text-white/80 hover:text-white">
+            <Link to="/portfolio" className="inline-flex items-center gap-2 text-sm text-white/80 hover:text-white">
               <ArrowLeft size={18} />
               Back
             </Link>
@@ -158,7 +158,7 @@ export default function Contact({ contactEmail = CONTACT_EMAIL }) {
                 Contact
               </div>
               <h1 className="mt-4 text-5xl md:text-6xl font-semibold tracking-tight">
-                Letâ€™s Talk
+                Let's Talk
               </h1>
               <p className="mt-4 max-w-2xl text-white/78">
                 Send a note about Axivion Instruments, the PRISM instrument, scientific render work,
@@ -299,7 +299,7 @@ export default function Contact({ contactEmail = CONTACT_EMAIL }) {
         <footer className="border-t border-white/10">
           <div className="mx-auto max-w-7xl px-6 py-8 flex flex-col sm:flex-row items-center justify-between gap-3 text-sm text-white/55">
             <div>Dejan Latkovic</div>
-            <div>Axivion Instruments â€¢ PRISM â€¢ Scientific Render Services â€¢ Engineering</div>
+            <div>Axivion Instruments • PRISM • Scientific Render Services • Engineering</div>
           </div>
         </footer>
     </div>

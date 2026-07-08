@@ -185,7 +185,7 @@
 //   <Link to="/prism" className="rounded-full bg-black text-white px-6 py-3 text-sm font-medium hover:bg-black/90 inline-flex items-center gap-2">
 //     Axivion Instruments <ArrowRight size={18} />
 //   </Link>
-//   <Link to="/contact" className="rounded-full border border-black/20 px-6 py-3 text-sm font-medium hover:border-black/40">
+//   <Link to="/portfolio/contact" className="rounded-full border border-black/20 px-6 py-3 text-sm font-medium hover:border-black/40">
 //     Contact
 //   </Link>
 // </div>
@@ -868,7 +868,7 @@ export default function PortfolioWhite() {
     { label: "Projects", action: () => scrollToSection("projects") },
     { label: "PRISM", to: "/prism" },
     { label: "Axivion Studio", to: "/studio" },
-    { label: "Contact", to: "/contact" },
+    { label: "Contact", to: "/portfolio/contact" },
   ];
 
   const showPreviousProjectImage = () => {
@@ -1011,7 +1011,7 @@ export default function PortfolioWhite() {
               PRISM
             </Link>
             <Link
-              to="/contact"
+              to="/portfolio/contact"
               className="whitespace-nowrap rounded-full px-4 py-2 font-medium text-white"
               style={{
                 border: "1.5px solid rgba(255,255,255,0.2)",
@@ -1164,7 +1164,7 @@ export default function PortfolioWhite() {
             Axivion Instruments <ArrowRight size={18} />
           </Link>
           <Link
-            to="/contact"
+            to="/portfolio/contact"
             className="rounded-full border border-white/25 px-6 py-3 text-sm font-medium text-white hover:border-white/50 transition-colors"
           >
             Contact
