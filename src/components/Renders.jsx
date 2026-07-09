@@ -84,7 +84,7 @@ const PACKAGES = [
     bestFor: "Posters, slides, simple apparatus visuals",
     timeline: "1-2 weeks",
     description: "A focused render for a single concept, apparatus, structure, or presentation figure.",
-    includes: ["One final image", "One intake call or written project brief", "Up to two revision rounds", "PNG or JPEG delivery"],
+    includes: ["One final image", "One intake call or written project brief", "Progress check-ins plus 2 revision rounds", "PNG or JPEG delivery"],
   },
   {
     label: "Most requested",
@@ -94,7 +94,7 @@ const PACKAGES = [
     bestFor: "Paper figures, proposals, lab docs",
     timeline: "2-4 weeks",
     description: "The core Studio package for visuals that need technical discussion and accurate scientific representation.",
-    includes: ["Technical discussion", "Reference review", "Concept direction", "One high-resolution image", "Up to three revision rounds"],
+    includes: ["Technical discussion", "Reference review", "Concept direction", "One high-resolution image", "Progress check-ins plus 3 revision rounds"],
   },
   {
     label: "Cover-ready",
@@ -104,7 +104,7 @@ const PACKAGES = [
     bestFor: "Journal covers, major events, grant hero visuals",
     timeline: "3-5 weeks",
     description: "A developed hero visual that accounts for modeling, concept direction, render setup, revisions, and cover candidate presentation.",
-    includes: ["Deeper concept development", "Technical discussion", "Modeling and scene setup", "One final hero render", "Alternate crops", "Up to three revision rounds"],
+    includes: ["Deeper concept development", "Technical discussion", "Modeling and scene setup", "One final hero render", "Alternate crops", "Progress check-ins plus 3 revision rounds"],
   },
   {
     label: "Best value",
@@ -114,7 +114,7 @@ const PACKAGES = [
     bestFor: "Full paper, grant, website, or group visual package",
     timeline: "4-8 weeks",
     description: "A coherent set of related visuals with a shared visual language across the project.",
-    includes: ["Three to five related visuals", "Consistent visual style", "Technical alignment across panels", "Up to three revision rounds across the package"],
+    includes: ["Three to five related visuals", "Consistent visual style", "Technical alignment across panels", "Milestone check-ins plus 3 revision rounds across the package"],
   },
 ];
 
@@ -172,8 +172,9 @@ const TERMS_GROUPS = [
   {
     title: "Review process",
     items: [
-      "Review rounds are included based on the selected package.",
-      "Clients can request progress previews during active milestones, and extra revisions can be added if the project needs more development.",
+      "Progress check-ins are part of the working process so the visual stays aligned with the project direction.",
+      "Included revision rounds are used for consolidated feedback after a draft or milestone.",
+      "Small refinements can usually be handled during normal check-ins, while larger direction changes, new deliverables, or expanded scope can be added to the quote.",
       "For scientific or technical visuals, the client is responsible for confirming the final accuracy of the approved visual before public release.",
     ],
   },
@@ -196,7 +197,7 @@ const PROCESS = [
   ["Consult", "Discuss the scientific idea, target audience, use case, references, and technical constraints."],
   ["Concept", "Translate the core scientific message into a visual direction that is accurate and readable."],
   ["Render", "Build the scene, lighting, materials, camera framing, and visual hierarchy."],
-  ["Revise", "Review feedback with the researcher or team and correct technical or visual details."],
+  ["Revise", "Share progress, review feedback with the researcher or team, and use included revision rounds for consolidated visual or technical adjustments."],
   ["Deliver", "Provide final agreed export files for publication, presentation, web, or proposal use."],
 ];
 
