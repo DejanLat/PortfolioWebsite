@@ -79,7 +79,8 @@ const PACKAGES = [
   {
     label: "Entry point",
     name: "Technical Figure Render",
-    price: "$650+ USD",
+    price: "$750+ CAD",
+    usd: "Approx. $550 USD",
     bestFor: "Posters, slides, simple apparatus visuals",
     timeline: "1-2 weeks",
     description: "A focused render for a single concept, apparatus, structure, or presentation figure.",
@@ -88,7 +89,8 @@ const PACKAGES = [
   {
     label: "Most requested",
     name: "Publication Visual",
-    price: "$1,450+ USD",
+    price: "$1,125+ CAD",
+    usd: "Approx. $825 USD",
     bestFor: "Paper figures, proposals, lab docs",
     timeline: "2-4 weeks",
     description: "The core Studio package for visuals that need technical discussion and accurate scientific representation.",
@@ -97,16 +99,18 @@ const PACKAGES = [
   {
     label: "Cover-ready",
     name: "Cover Candidate",
-    price: "$2,950+ USD",
+    price: "$1,500+ CAD",
+    usd: "Approx. $1,100 USD",
     bestFor: "Journal covers, major events, grant hero visuals",
     timeline: "3-5 weeks",
-    description: "A developed hero visual for public-facing research communication and cover candidate submissions.",
-    includes: ["Deeper concept development", "Technical discussion", "One final hero render", "Alternate crops", "Up to three revision rounds"],
+    description: "A developed hero visual that accounts for modeling, concept direction, render setup, revisions, and cover candidate presentation.",
+    includes: ["Deeper concept development", "Technical discussion", "Modeling and scene setup", "One final hero render", "Alternate crops", "Up to three revision rounds"],
   },
   {
     label: "Best value",
     name: "Master Figure Package",
-    price: "$4,950+ USD",
+    price: "$3,000+ CAD",
+    usd: "Approx. $2,200 USD",
     bestFor: "Full paper, grant, website, or group visual package",
     timeline: "4-8 weeks",
     description: "A coherent set of related visuals with a shared visual language across the project.",
@@ -115,10 +119,10 @@ const PACKAGES = [
 ];
 
 const QUOTE_PACKAGES = [
-  { key: "technical", label: "Technical Figure Render", base: 650 },
-  { key: "publication", label: "Publication Visual", base: 1450 },
-  { key: "cover", label: "Cover Candidate", base: 2950 },
-  { key: "package", label: "Master Figure Package", base: 4950 },
+  { key: "technical", label: "Technical Figure Render", base: 750 },
+  { key: "publication", label: "Publication Visual", base: 1125 },
+  { key: "cover", label: "Cover Candidate", base: 1500 },
+  { key: "package", label: "Master Figure Package", base: 3000 },
 ];
 
 const QUOTE_COMPLEXITY = [
@@ -129,9 +133,11 @@ const QUOTE_COMPLEXITY = [
 
 const QUOTE_USAGE = [
   { key: "academic", label: "Academic / lab / internal", add: 0 },
-  { key: "commercial", label: "Commercial communication", add: 450 },
-  { key: "extended", label: "Extended campaign / broad use", add: 1200 },
+  { key: "commercial", label: "Commercial communication", add: 500 },
+  { key: "extended", label: "Extended campaign / broad use", add: 1250 },
 ];
+
+const CAD_TO_USD_ESTIMATE = 0.73;
 
 const QUOTE_TIMELINE = [
   { key: "standard", label: "Standard timeline", factor: 1 },
@@ -216,10 +222,14 @@ export default function Renders() {
     const timeline = QUOTE_TIMELINE.find((item) => item.key === quoteTimeline) || QUOTE_TIMELINE[0];
     const low = Math.round(((selectedPackage.base * complexity.factor + usage.add) * timeline.factor) / 50) * 50;
     const high = Math.round((low * 1.35) / 50) * 50;
+    const usdLow = Math.round((low * CAD_TO_USD_ESTIMATE) / 25) * 25;
+    const usdHigh = Math.round((high * CAD_TO_USD_ESTIMATE) / 25) * 25;
 
     return {
       low,
       high,
+      usdLow,
+      usdHigh,
       label: selectedPackage.label,
       timeline: timeline.label,
     };
@@ -559,7 +569,7 @@ export default function Renders() {
               <h2 className="mt-2 text-3xl md:text-4xl font-semibold tracking-tight">Project Packages</h2>
             </div>
             <p className="max-w-xl text-sm leading-6 text-white/60">
-              Straightforward starting budgets for scientific visualization projects. Prices are listed in USD; Canadian-dollar invoices are available for Canadian clients. Final quotes depend on scientific complexity, reference quality, usage rights, and timeline.
+              Straightforward starting budgets for scientific visualization projects. Prices are listed in CAD, with approximate USD guidance for international clients. Final quotes depend on scientific complexity, reference quality, usage rights, and timeline.
             </p>
           </div>
 
@@ -580,6 +590,7 @@ export default function Renders() {
                   </span>
                 </div>
                 <div className="mt-4 text-3xl font-semibold tracking-tight">{pkg.price}</div>
+                <div className="mt-1 text-sm text-white/50">{pkg.usd}</div>
                 <p className="mt-3 text-sm leading-6 text-white/70">{pkg.description}</p>
                 <div className="mt-5 grid grid-cols-1 sm:grid-cols-2 gap-3 text-sm">
                   <div className="rounded-2xl border border-white/10 bg-black/25 p-3">
@@ -622,10 +633,13 @@ export default function Renders() {
                     <Calculator size={16} /> Estimated range
                   </div>
                   <div className="mt-3 text-4xl font-semibold tracking-tight">
-                    ${quoteEstimate.low.toLocaleString()}-${quoteEstimate.high.toLocaleString()} USD
+                    ${quoteEstimate.low.toLocaleString()}-${quoteEstimate.high.toLocaleString()} CAD
                   </div>
                   <p className="mt-3 text-sm leading-6 text-white/68">
-                    Based on {quoteEstimate.label} with {quoteEstimate.timeline.toLowerCase()}. This is not a final quote.
+                    Approx. ${quoteEstimate.usdLow.toLocaleString()}-${quoteEstimate.usdHigh.toLocaleString()} USD. Based on {quoteEstimate.label} with {quoteEstimate.timeline.toLowerCase()}.
+                  </p>
+                  <p className="mt-2 text-xs leading-5 text-white/52">
+                    This is a planning estimate. Final pricing depends on source material, scientific complexity, usage rights, and revision scope.
                   </p>
                   <Link
                     to="/contact"
