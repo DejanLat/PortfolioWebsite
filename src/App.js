@@ -58,8 +58,8 @@ const META = {
 function setFavicons(type) {
   const icons = type === "studio"
     ? [
-        { rel: "icon", type: "image/svg+xml", href: `${PUBLIC_URL}/axivion-studio-favicon.svg` },
-        { rel: "icon", type: "image/x-icon", href: `${PUBLIC_URL}/axivion-studio-favicon.ico` },
+        { rel: "icon", type: "image/svg+xml", href: `${PUBLIC_URL}/axivion-studio-favicon.svg?v=studio-2` },
+        { rel: "icon", type: "image/x-icon", href: `${PUBLIC_URL}/axivion-studio-favicon.ico?v=studio-2` },
       ]
     : [
         { rel: "icon", type: "image/x-icon", href: `${PUBLIC_URL}/axivion-favicon.ico` },

@@ -2,6 +2,7 @@ import React, { useEffect, useMemo, useRef, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { motion } from "framer-motion";
 import {
+  Calculator,
   CheckCircle2,
   Clock,
   ExternalLink,
@@ -113,6 +114,30 @@ const PACKAGES = [
   },
 ];
 
+const QUOTE_PACKAGES = [
+  { key: "technical", label: "Technical Figure Render", base: 650 },
+  { key: "publication", label: "Publication Visual", base: 1450 },
+  { key: "cover", label: "Cover Candidate", base: 2950 },
+  { key: "package", label: "Master Figure Package", base: 4950 },
+];
+
+const QUOTE_COMPLEXITY = [
+  { key: "simple", label: "Simple / well-defined", factor: 1 },
+  { key: "technical", label: "Technical / moderate detail", factor: 1.35 },
+  { key: "advanced", label: "Advanced / high concept", factor: 1.8 },
+];
+
+const QUOTE_USAGE = [
+  { key: "academic", label: "Academic / lab / internal", add: 0 },
+  { key: "commercial", label: "Commercial communication", add: 450 },
+  { key: "extended", label: "Extended campaign / broad use", add: 1200 },
+];
+
+const QUOTE_TIMELINE = [
+  { key: "standard", label: "Standard timeline", factor: 1 },
+  { key: "priority", label: "Priority review", factor: 1.2 },
+  { key: "rush", label: "Rush timeline", factor: 1.45 },
+];
 const TERMS_GROUPS = [
   {
     title: "Project scope and payment",
@@ -178,8 +203,27 @@ export default function Renders() {
   const [navOpen, setNavOpen] = useState(false);
   const heroRef = useRef(null);
   const rootStyle = { "--mx": `${mx}px`, "--my": `${my}px`, "--hx": `${hx}px`, "--hy": `${hy}px` };
+  const [quotePackage, setQuotePackage] = useState("publication");
+  const [quoteComplexity, setQuoteComplexity] = useState("technical");
+  const [quoteUsage, setQuoteUsage] = useState("academic");
+  const [quoteTimeline, setQuoteTimeline] = useState("standard");
 
   const heroImage = useMemo(() => renderImg("metasurface.png"), []);
+  const quoteEstimate = useMemo(() => {
+    const selectedPackage = QUOTE_PACKAGES.find((item) => item.key === quotePackage) || QUOTE_PACKAGES[1];
+    const complexity = QUOTE_COMPLEXITY.find((item) => item.key === quoteComplexity) || QUOTE_COMPLEXITY[1];
+    const usage = QUOTE_USAGE.find((item) => item.key === quoteUsage) || QUOTE_USAGE[0];
+    const timeline = QUOTE_TIMELINE.find((item) => item.key === quoteTimeline) || QUOTE_TIMELINE[0];
+    const low = Math.round(((selectedPackage.base * complexity.factor + usage.add) * timeline.factor) / 50) * 50;
+    const high = Math.round((low * 1.35) / 50) * 50;
+
+    return {
+      low,
+      high,
+      label: selectedPackage.label,
+      timeline: timeline.label,
+    };
+  }, [quotePackage, quoteComplexity, quoteUsage, quoteTimeline]);
 
   const scrollToId = (id) => {
     document.getElementById(id)?.scrollIntoView({ behavior: "smooth", block: "start" });
@@ -194,6 +238,7 @@ export default function Renders() {
   const navItems = [
     { label: "Work", action: () => scrollToId("work") },
     { label: "Pricing", action: () => scrollToId("pricing") },
+    { label: "Quote", action: () => scrollToId("quote") },
     { label: "Process", action: () => scrollToId("process") },
     { label: "Terms", action: () => scrollToId("terms") },
   ];
@@ -561,6 +606,61 @@ export default function Renders() {
           </div>
         </section>
 
+        <section id="quote" className="mx-auto max-w-7xl px-6 py-12">
+          <div className="rounded-3xl border border-white/10 bg-white/5 p-6 md:p-8">
+            <div className="grid grid-cols-1 gap-8 lg:grid-cols-[0.85fr_1.15fr] lg:items-start">
+              <div>
+                <div className="text-sm uppercase tracking-widest" style={{ color: ACCENT }}>
+                  Quote Calculator
+                </div>
+                <h2 className="mt-2 text-3xl font-semibold tracking-tight">Estimate a starting range.</h2>
+                <p className="mt-4 text-sm leading-7 text-white/65">
+                  Use this as a planning tool before reaching out. Final quotes depend on reference quality, scientific complexity, usage rights, and timeline.
+                </p>
+                <div className="mt-6 rounded-3xl border border-emerald-300/20 bg-emerald-300/10 p-5">
+                  <div className="flex items-center gap-2 text-sm uppercase tracking-widest text-emerald-100">
+                    <Calculator size={16} /> Estimated range
+                  </div>
+                  <div className="mt-3 text-4xl font-semibold tracking-tight">
+                    ${quoteEstimate.low.toLocaleString()}-${quoteEstimate.high.toLocaleString()} USD
+                  </div>
+                  <p className="mt-3 text-sm leading-6 text-white/68">
+                    Based on {quoteEstimate.label} with {quoteEstimate.timeline.toLowerCase()}. This is not a final quote.
+                  </p>
+                  <Link
+                    to="/contact"
+                    className="mt-5 inline-flex items-center justify-center gap-2 rounded-full border px-5 py-3 text-sm font-medium text-white"
+                    style={{ borderColor: "rgba(52,211,153,0.55)", background: "rgba(52,211,153,0.16)" }}
+                  >
+                    Request a Project <SendHorizonal size={16} />
+                  </Link>
+                </div>
+              </div>
+
+              <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+                {[
+                  ["Project type", quotePackage, setQuotePackage, QUOTE_PACKAGES],
+                  ["Scientific complexity", quoteComplexity, setQuoteComplexity, QUOTE_COMPLEXITY],
+                  ["Use rights", quoteUsage, setQuoteUsage, QUOTE_USAGE],
+                  ["Timeline", quoteTimeline, setQuoteTimeline, QUOTE_TIMELINE],
+                ].map(([label, value, setter, options]) => (
+                  <label key={label} className="block rounded-2xl border border-white/10 bg-black/25 p-4">
+                    <span className="block text-sm text-white/58">{label}</span>
+                    <select
+                      value={value}
+                      onChange={(event) => setter(event.target.value)}
+                      className="mt-3 w-full rounded-xl border border-white/15 bg-black/70 px-3 py-3 text-sm text-white outline-none focus:border-emerald-300/60"
+                    >
+                      {options.map((option) => (
+                        <option key={option.key} value={option.key}>{option.label}</option>
+                      ))}
+                    </select>
+                  </label>
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
         <section id="process" className="mx-auto max-w-7xl px-6 py-12">
           <div className="rounded-3xl border border-white/10 bg-white/5 p-6 md:p-8">
             <div className="text-sm uppercase tracking-widest" style={{ color: ACCENT }}>
