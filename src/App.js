@@ -12,6 +12,8 @@ import Renders from "./components/Renders";
 import StudioTerms from "./components/StudioTerms";
 
 const PUBLIC_URL = process.env.PUBLIC_URL || "";
+const IS_PORTFOLIO_BUILD = PUBLIC_URL === "/PortfolioWebsite";
+const ROUTER_BASENAME = PUBLIC_URL.startsWith("/") ? PUBLIC_URL : undefined;
 
 const META = {
   studio: {
@@ -139,17 +141,25 @@ function ScrollToTop() {
   return null;
 }
 
+function ExternalRedirect({ to }) {
+  React.useEffect(() => {
+    window.location.replace(to);
+  }, [to]);
+
+  return null;
+}
+
 function App() {
   return (
     <div className="App">
-      <Router>
+      <Router basename={ROUTER_BASENAME}>
         <MetadataManager />
         <ScrollToTop />
         <Routes>
-          <Route path="/" element={<Renders />} />
-          <Route path="/studio" element={<Renders />} />
-          <Route path="/terms" element={<StudioTerms />} />
-          <Route path="/renders" element={<Renders />} />
+          <Route path="/" element={IS_PORTFOLIO_BUILD ? <Portfolio /> : <Renders />} />
+          <Route path="/studio" element={IS_PORTFOLIO_BUILD ? <ExternalRedirect to="https://axivionstudio.com/" /> : <Renders />} />
+          <Route path="/terms" element={IS_PORTFOLIO_BUILD ? <ExternalRedirect to="https://axivionstudio.com/terms" /> : <StudioTerms />} />
+          <Route path="/renders" element={IS_PORTFOLIO_BUILD ? <ExternalRedirect to="https://axivionstudio.com/" /> : <Renders />} />
           <Route path="/portfolio" element={<Portfolio />} />
           <Route path="/prism" element={<PrismProject />} />
           <Route path="/contact" element={<StudioContact contactEmail="axivioninstruments@gmail.com" />} />
