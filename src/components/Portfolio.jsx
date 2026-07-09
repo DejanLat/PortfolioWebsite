@@ -867,7 +867,7 @@ export default function PortfolioWhite() {
     { label: "Credits", action: () => scrollToSection("publications") },
     { label: "Projects", action: () => scrollToSection("projects") },
     { label: "PRISM", to: "/prism" },
-    { label: "Axivion Studio", to: "/studio" },
+    { label: "Axivion Studio - Scientific Visualization", href: "https://axivionstudio.com/" },
     { label: "Contact", to: "/portfolio/contact" },
   ];
 
@@ -1010,6 +1010,15 @@ export default function PortfolioWhite() {
             >
               PRISM
             </Link>
+            <a
+              href="https://axivionstudio.com/"
+              className="whitespace-nowrap rounded-full px-4 py-2 font-medium text-white"
+              style={{ border: "1.5px solid rgba(255,255,255,0.2)", transition: "border-color 0.25s ease, color 0.25s ease" }}
+              onMouseEnter={e => { e.currentTarget.style.borderColor = "#34d399"; e.currentTarget.style.color = "#34d399"; }}
+              onMouseLeave={e => { e.currentTarget.style.borderColor = "rgba(255,255,255,0.2)"; e.currentTarget.style.color = "white"; }}
+            >
+              Axivion Studio - Scientific Visualization
+            </a>
             <Link
               to="/portfolio/contact"
               className="whitespace-nowrap rounded-full px-4 py-2 font-medium text-white"
@@ -1046,7 +1055,16 @@ export default function PortfolioWhite() {
           <div id="mobile-page-menu" className="md:hidden border-t border-white/10 bg-[#080e14]/95 backdrop-blur">
             <div className="mx-auto max-w-7xl px-4 py-3 grid gap-2">
               {pageLinks.map((item) =>
-                item.to ? (
+                item.href ? (
+                  <a
+                    key={item.label}
+                    href={item.href}
+                    onClick={() => setNavOpen(false)}
+                    className="rounded-2xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-white/85"
+                  >
+                    {item.label}
+                  </a>
+                ) : item.to ? (
                   <Link
                     key={item.label}
                     to={item.to}

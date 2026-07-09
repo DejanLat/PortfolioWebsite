@@ -17,19 +17,19 @@ const META = {
   studio: {
     title: "Axivion Studio | Scientific Visualization",
     description:
-      "Scientific and technical visualization for researchers, labs, papers, proposals, covers, and advanced hardware teams.",
+      "Axivion Studio creates scientific visualization, technical renders, journal cover artwork, proposal graphics, optics diagrams, engineering visuals, and publication-ready figures for researchers, labs, and hardware teams.",
     ogDescription:
-      "Publication-ready scientific and technical visuals built through direct collaboration with researchers.",
+      "Scientific and technical visualization for researchers, labs, papers, proposals, covers, and advanced hardware teams.",
     siteName: "Axivion Studio",
     canonical: "https://axivionstudio.com/",
-    image: "https://axivionstudio.com/metasurface.png",
+    image: "https://axivionstudio.com/axivion-studio-weblink-photo.png",
   },
   portfolio: {
-    title: "Dejan Latkovic | Optomechanical Engineer",
+    title: "Dejan Latkovic | Engineering Portfolio",
     description:
-      "Dejan Latkovic is a Nanotechnology Engineering student working in optomechanical design, quantum optics instrumentation, PRISM microscopy, Atomic Semi precision engineering, IQC research, and scientific visualization.",
+      "Portfolio of Dejan Latkovic, nanotechnology engineering student and optomechanical developer focused on scientific instrumentation, cryogenic microscopy, technical visualization, precision motion systems, optics, and hardware prototyping.",
     ogDescription:
-      "Optomechanical engineering portfolio covering PRISM instrumentation, IQC research, Atomic Semi precision engineering, and scientific visualization.",
+      "Nanotechnology engineering portfolio featuring PRISM microscopy, optomechanical systems, scientific visualization, precision motion, optics, and hardware prototyping.",
     siteName: "Dejan Latkovic Portfolio",
     canonical: "https://dejanlat.github.io/PortfolioWebsite/",
     image: "https://dejanlat.github.io/PortfolioWebsite/AxivionPrismBanner.png",
@@ -42,7 +42,7 @@ const META = {
       "Founder of Axivion Studio, creating scientific visualization for researchers, labs, papers, proposals, covers, and advanced hardware teams.",
     siteName: "Axivion Studio",
     canonical: "https://axivionstudio.com/dejan-latkovic",
-    image: "https://axivionstudio.com/metasurface.png",
+    image: "https://axivionstudio.com/axivion-studio-weblink-photo.png",
   },
   prism: {
     title: "Axivion Instruments | Precision Scientific Instrumentation",

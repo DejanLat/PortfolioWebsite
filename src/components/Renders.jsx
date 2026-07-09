@@ -356,15 +356,18 @@ export default function Renders() {
             >
               AAAS
             </a>
-            <Link
-              to="/portfolio"
+
+            <a
+              href="https://dejanlat.github.io/PortfolioWebsite/"
+              target="_blank"
+              rel="noopener noreferrer"
               className="whitespace-nowrap rounded-full px-4 py-2 font-medium text-white"
               style={{ border: "1.5px solid rgba(255,255,255,0.2)", transition: "border-color 0.25s ease, color 0.25s ease" }}
               onMouseEnter={(event) => { event.currentTarget.style.borderColor = PORTFOLIO_ACCENT; event.currentTarget.style.color = PORTFOLIO_ACCENT; }}
               onMouseLeave={(event) => { event.currentTarget.style.borderColor = "rgba(255,255,255,0.2)"; event.currentTarget.style.color = "white"; }}
             >
-              Portfolio
-            </Link>
+              Founder Portfolio
+            </a>
             <Link
               to="/contact"
               className="whitespace-nowrap rounded-full px-4 py-2 font-medium text-white"
@@ -418,16 +421,19 @@ export default function Renders() {
               >
                 AAAS
               </a>
-              <Link
-                to="/portfolio"
+              <a
+                href="https://dejanlat.github.io/PortfolioWebsite/"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="mt-1 rounded-xl border px-3 py-3 font-medium text-white transition hover:bg-white/10"
                 style={{ borderColor: "rgba(255,255,255,0.15)" }}
                 onMouseEnter={(event) => { event.currentTarget.style.borderColor = PORTFOLIO_ACCENT; event.currentTarget.style.color = PORTFOLIO_ACCENT; }}
                 onMouseLeave={(event) => { event.currentTarget.style.borderColor = "rgba(255,255,255,0.15)"; event.currentTarget.style.color = "white"; }}
                 onClick={() => setNavOpen(false)}
               >
-                Portfolio
-              </Link>
+                Founder Portfolio
+              </a>
+
               <Link
                 to="/contact"
                 className="mt-1 rounded-xl border border-white/15 px-3 py-3 font-medium text-white transition hover:border-white/30"
@@ -880,7 +886,7 @@ export default function Renders() {
 
       <footer className="border-t border-white/10 bg-black">
         <div className="mx-auto max-w-7xl px-6 py-6 text-sm text-white/60 flex flex-col sm:flex-row gap-2 sm:items-center sm:justify-between">
-          <div>Axivion Studio is the scientific visualization practice of Dejan Latkovic.</div>
+          <div>Axivion Studio is the scientific visualization practice of Dejan Latkovic. <a href="https://dejanlat.github.io/PortfolioWebsite/" className="font-medium text-white/80 underline decoration-white/30 underline-offset-4 hover:text-white">Dejan Latkovic Engineering Portfolio</a></div>
           <div>&copy; {new Date().getFullYear()} Dejan Latkovic / Axivion Studio</div>
         </div>
       </footer>

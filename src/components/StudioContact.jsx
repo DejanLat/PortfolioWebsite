@@ -5,7 +5,6 @@ import {
   FileText,
   Image as ImageIcon,
   Layers3,
-  Link as LinkIcon,
   Mail,
   PackageCheck,
   Phone,
@@ -20,15 +19,21 @@ const STUDIO_ACCENT_SOFT = "rgba(52, 211, 153, 0.16)";
 const PUBLIC = process.env.PUBLIC_URL || "";
 
 const studioTopics = [
+  "Technical Figure Render",
   "Publication / Research Visual",
   "Cover Candidate / Hero Render",
   "Figure Set / Visual Package",
-  "Technical Figure Render",
   "Animation / Custom Scope",
   "General Studio Inquiry",
 ];
 
 const studioCards = [
+  {
+    title: "Technical Figure Render",
+    label: "Focused visuals for posters, slides, apparatus, or single scientific concepts.",
+    icon: PackageCheck,
+    topic: "Technical Figure Render",
+  },
   {
     title: "Publication / Research Visual",
     label: "Paper figures, proposals, lab communication, and technical explainers.",
@@ -46,12 +51,6 @@ const studioCards = [
     label: "Three to five related visuals with a consistent style across a paper, grant, website, or project.",
     icon: Layers3,
     topic: "Figure Set / Visual Package",
-  },
-  {
-    title: "Technical Figure Render",
-    label: "Focused visuals for posters, slides, apparatus, or single scientific concepts.",
-    icon: PackageCheck,
-    topic: "Technical Figure Render",
   },
   {
     title: "Animation / Custom Scope",
@@ -195,7 +194,7 @@ export default function StudioContact({ contactEmail = CONTACT_EMAIL }) {
             </div>
             <h2 className="mt-2 text-3xl font-semibold">Request a project</h2>
             <p className="mt-3 text-white/74">
-              Use this form to pre-fill an email for a Studio project request. The current address for Studio inquiries is temporary until a domain email is active.
+              Use this form to pre-fill an email for a Studio project request. Please include the project context, intended use, timeline, and reference material.
             </p>
 
             <div className="mt-6 space-y-3 text-sm text-white/68">
@@ -211,10 +210,7 @@ export default function StudioContact({ contactEmail = CONTACT_EMAIL }) {
               <div className="flex items-center gap-2">
                 <Phone size={16} /> By appointment after scope review
               </div>
-              <div className="flex items-center gap-2">
-                <LinkIcon size={16} /> Future email: studio@axivionstudio.com or contact@axivionstudio.com
-              </div>
-            </div>
+</div>
           </div>
 
           <form onSubmit={handleSubmit} className="space-y-4">
