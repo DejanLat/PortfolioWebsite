@@ -9,6 +9,7 @@ import DejanLatkovic from "./components/DejanLatkovic";
 import Models from "./components/Models";
 import CarModding from "./components/CarModding";
 import Renders from "./components/Renders";
+import StudioTerms from "./components/StudioTerms";
 
 const PUBLIC_URL = process.env.PUBLIC_URL || "";
 
@@ -58,8 +59,7 @@ const META = {
 function setFavicons(type) {
   const icons = type === "studio"
     ? [
-        { rel: "icon", type: "image/svg+xml", href: `${PUBLIC_URL}/axivion-studio-favicon.svg?v=studio-2` },
-        { rel: "icon", type: "image/x-icon", href: `${PUBLIC_URL}/axivion-studio-favicon.ico?v=studio-2` },
+        { rel: "icon", type: "image/x-icon", href: `${PUBLIC_URL}/AxivionStudioFavicon.ico?v=studio-3` },
       ]
     : [
         { rel: "icon", type: "image/x-icon", href: `${PUBLIC_URL}/axivion-favicon.ico` },
@@ -148,7 +148,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Renders />} />
           <Route path="/studio" element={<Renders />} />
-          <Route path="/terms" element={<Renders />} />
+          <Route path="/terms" element={<StudioTerms />} />
           <Route path="/renders" element={<Renders />} />
           <Route path="/portfolio" element={<Portfolio />} />
           <Route path="/prism" element={<PrismProject />} />

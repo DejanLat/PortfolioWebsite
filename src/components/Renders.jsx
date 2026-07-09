@@ -1,5 +1,5 @@
 import React, { useEffect, useMemo, useRef, useState } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import {
   Calculator,
@@ -10,6 +10,7 @@ import {
   Image as ImageIcon,
   Layers3,
   Menu,
+  Quote,
   SendHorizonal,
   X,
 } from "lucide-react";
@@ -144,7 +145,7 @@ const QUOTE_TIMELINE = [
   { key: "priority", label: "Priority review", factor: 1.2 },
   { key: "rush", label: "Rush timeline", factor: 1.45 },
 ];
-const TERMS_GROUPS = [
+export const TERMS_GROUPS = [
   {
     title: "Project scope and payment",
     items: [
@@ -194,15 +195,39 @@ const TERMS_GROUPS = [
   },
 ];
 const PROCESS = [
-  ["Consult", "Discuss the scientific idea, target audience, use case, references, and technical constraints."],
-  ["Concept", "Translate the core scientific message into a visual direction that is accurate and readable."],
-  ["Render", "Build the scene, lighting, materials, camera framing, and visual hierarchy."],
-  ["Revise", "Share progress, review feedback with the researcher or team, and use included revision rounds for consolidated visual or technical adjustments."],
-  ["Deliver", "Provide final agreed export files for publication, presentation, web, or proposal use."],
+  ["Scope", "Define the scientific concept, audience, references, deliverables, use rights, timeline, and payment structure."],
+  ["Direction", "Translate the core technical message into a visual approach that is accurate, readable, and polished."],
+  ["Build", "Model, compose, light, render, and refine the scene around the agreed scientific or technical focus."],
+  ["Check-ins", "Share progress during active work so the visual stays aligned before major time is spent in the wrong direction."],
+  ["Revisions", "Use included revision rounds for consolidated feedback after a draft or milestone."],
+  ["Delivery", "Provide final agreed export files for publication, presentation, web, or proposal use."],
 ];
+
+const TESTIMONIAL = {
+  label: "Client perspective",
+  name: "Behrooz Semnani, PhD",
+  role: "Scientific visualization client",
+  organization: "Photonics research project",
+  initials: "BS",
+  image: `${renderImg("behrooz-semnani.avif")}?v=2`,
+  linkedin: "https://www.linkedin.com/in/behrooz-semnani-phd-9a84b931/",
+  quote:
+    "Approved client quote pending.",
+  note: "Use only after Behrooz approves the exact quote, photo, title, and link.",
+};
+
+const ARTIST_QUOTE = {
+  label: "Artist perspective",
+  name: "Dejan Latkovic",
+  role: "Scientific Visual Artist",
+  image: renderImg("Dejan_Lat_Quotepicture.jpg"),
+  quote:
+    "Scientific visualization sits between technical accuracy and visual clarity. My background in optics, instrumentation, and nanotechnology helps me understand complex systems quickly, communicate with researchers directly, and turn technical ideas into visuals that are accurate, polished, and publication-ready.",
+};
 
 export default function Renders() {
   const { pathname } = useLocation();
+  const navigate = useNavigate();
   const [mx, setMx] = useState(-9999);
   const [my, setMy] = useState(-9999);
   const [hx, setHx] = useState(-9999);
@@ -251,7 +276,7 @@ export default function Renders() {
     { label: "Pricing", action: () => scrollToId("pricing") },
     { label: "Quote", action: () => scrollToId("quote") },
     { label: "Process", action: () => scrollToId("process") },
-    { label: "Terms", action: () => scrollToId("terms") },
+    { label: "Terms", action: () => navigate("/terms") },
   ];
 
   const handleNavAction = (action) => {
@@ -676,12 +701,111 @@ export default function Renders() {
             </div>
           </div>
         </section>
+        <section id="trust" className="mx-auto max-w-7xl px-6 py-12">
+          <div className="mb-6 flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
+            <div className="text-sm uppercase tracking-widest" style={{ color: ACCENT }}>
+              Trust and Perspective
+            </div>
+            <div className="max-w-xl text-sm leading-6 text-white/50">
+              Client and artist perspectives on translating technical work into clear scientific visuals.
+            </div>
+          </div>
+
+          <div className="space-y-6">
+            {/* Pending permission: keep Behrooz testimonial code disabled until quote/photo/link approval is confirmed.
+            <article
+              className="relative overflow-hidden rounded-[2rem] border border-emerald-300/35 bg-[#06110d] p-6 shadow-2xl shadow-emerald-950/30 md:p-8 lg:p-10"
+              aria-label="Client testimonial placeholder"
+            >
+              <div
+                className="pointer-events-none absolute inset-0 opacity-80"
+                style={{ background: "radial-gradient(58rem 26rem at 16% 0%, rgba(52,211,153,0.22), transparent 58%)" }}
+              />
+              <div className="relative grid grid-cols-1 gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(300px,380px)] lg:items-center">
+                <div className="min-w-0">
+                  <div className="text-xs uppercase tracking-[0.24em] text-emerald-200/75">
+                    {TESTIMONIAL.label}
+                  </div>
+                  <Quote size={48} className="mt-6 text-emerald-300/65" />
+                  <blockquote className="mt-5 max-w-4xl text-xl font-medium leading-9 text-white md:text-2xl md:leading-10 lg:text-[1.7rem] lg:leading-[2.8rem]">
+                    {TESTIMONIAL.quote}
+                  </blockquote>
+                  <p className="mt-5 max-w-2xl text-xs leading-5 text-white/40">
+                    {TESTIMONIAL.note}
+                  </p>
+                </div>
+
+                <aside className="border-t border-white/10 pt-6 lg:border-l lg:border-t-0 lg:pl-8 lg:pt-0">
+                  <div
+                    className="aspect-square w-[min(100%,360px)] overflow-hidden rounded-[2rem] border shadow-2xl shadow-black/35 lg:w-[min(100%,360px)]"
+                    style={{ borderColor: "rgba(52,211,153,0.48)", background: "linear-gradient(135deg, rgba(52,211,153,0.22), rgba(255,255,255,0.06))" }}
+                  >
+                    <img
+                      src={TESTIMONIAL.image}
+                      alt={`${TESTIMONIAL.name} profile`}
+                      className="h-full w-full object-cover"
+                      loading="eager"
+                      decoding="async"
+                    />
+                  </div>
+                  <div className="mt-5">
+                    <div className="text-lg font-semibold text-white">{TESTIMONIAL.name}</div>
+                    <div className="mt-1 text-sm text-white/60">{TESTIMONIAL.role}</div>
+                    <div className="mt-1 text-xs uppercase tracking-widest text-white/38">{TESTIMONIAL.organization}</div>
+                    <a
+                      href={TESTIMONIAL.linkedin}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="mt-4 inline-flex items-center justify-center gap-1.5 text-xs font-medium text-emerald-100/80 transition hover:text-emerald-200"
+                    >
+                      LinkedIn <ExternalLink size={12} />
+                    </a>
+                  </div>
+                </aside>
+              </div>
+            </article>
+
+            */}
+
+            <article className="relative overflow-hidden rounded-[2rem] border border-white/10 bg-white/[0.035] p-6 shadow-2xl shadow-black/20 md:p-8 lg:p-8">
+              <div className="grid grid-cols-1 gap-8 lg:grid-cols-[minmax(240px,320px)_minmax(0,1fr)] lg:items-center">
+                <aside className="order-2 border-t border-white/10 pt-6 lg:order-1 lg:border-r lg:border-t-0 lg:pr-8 lg:pt-0">
+                  <div
+                    className="aspect-square w-[min(100%,360px)] overflow-hidden rounded-[2rem] border shadow-2xl shadow-black/25 lg:w-[min(100%,300px)]"
+                    style={{ borderColor: "rgba(255,255,255,0.14)", background: "rgba(255,255,255,0.06)" }}
+                  >
+                    <img
+                      src={ARTIST_QUOTE.image}
+                      alt={`${ARTIST_QUOTE.name} portrait`}
+                      className="h-full w-full object-cover"
+                      loading="lazy"
+                    />
+                  </div>
+                  <div className="mt-5">
+                    <div className="text-lg font-semibold text-white">{ARTIST_QUOTE.name}</div>
+                    <div className="mt-1 text-xs uppercase tracking-widest text-white/38">{ARTIST_QUOTE.role}</div>
+                  </div>
+                </aside>
+
+                <div className="order-1 min-w-0 lg:order-2">
+                  <div className="text-xs uppercase tracking-[0.22em]" style={{ color: ACCENT }}>
+                    {ARTIST_QUOTE.label}
+                  </div>
+                  <Quote size={42} className="mt-6 text-emerald-300/45" />
+                  <p className="mt-5 max-w-4xl text-lg leading-8 text-white/76 md:text-xl md:leading-9">
+                    {ARTIST_QUOTE.quote}
+                  </p>
+                </div>
+              </div>
+            </article>
+          </div>
+        </section>
         <section id="process" className="mx-auto max-w-7xl px-6 py-12">
           <div className="rounded-3xl border border-white/10 bg-white/5 p-6 md:p-8">
             <div className="text-sm uppercase tracking-widest" style={{ color: ACCENT }}>
               Process
             </div>
-            <div className="mt-6 grid grid-cols-1 md:grid-cols-5 gap-4">
+            <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-4">
               {PROCESS.map(([title, body], index) => (
                 <div key={title} className="rounded-2xl border border-white/10 bg-black/25 p-4">
                   <div className="text-sm text-white/45">{String(index + 1).padStart(2, "0")}</div>
@@ -692,8 +816,7 @@ export default function Renders() {
             </div>
           </div>
         </section>
-
-                <section id="terms" className="mx-auto max-w-7xl px-6 py-12">
+        <section id="terms" className="mx-auto max-w-7xl px-6 py-12">
           <div className="grid grid-cols-1 lg:grid-cols-[0.8fr_1.2fr] gap-6">
             <div>
               <div className="text-sm uppercase tracking-widest" style={{ color: ACCENT }}>
@@ -703,6 +826,13 @@ export default function Renders() {
               <p className="mt-4 text-sm leading-7 text-white/65">
                 Every project starts with a written scope, timeline, license, and payment structure so both sides know exactly what is included before work begins.
               </p>
+              <Link
+                to="/terms"
+                className="mt-5 inline-flex items-center justify-center gap-2 rounded-full border px-4 py-2 text-sm font-medium text-white"
+                style={{ borderColor: "rgba(52,211,153,0.45)", background: "rgba(52,211,153,0.12)" }}
+              >
+                View full terms <FileText size={15} />
+              </Link>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               {TERMS_GROUPS.map((group) => (
