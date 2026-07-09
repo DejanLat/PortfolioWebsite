@@ -678,7 +678,7 @@ Sitemap: https://axivionstudio.com/sitemap.xml
 The old portfolio render route:
 
 ```text
-https://dejanlat.github.io/PortfolioWebsite/#/renders
+https://axivionstudio.com/
 ```
 
 should no longer behave like the primary render services page.
@@ -966,7 +966,7 @@ Check:
 ### Old renders route
 
 ```text
-https://dejanlat.github.io/PortfolioWebsite/#/renders
+https://axivionstudio.com/
 ```
 
 Check:

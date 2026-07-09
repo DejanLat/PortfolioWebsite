@@ -1719,7 +1719,7 @@ export default function PortfolioWhite() {
           } else if (project.slug === "car-modding") {
             navigate("/car-modding");
           } else if (project.slug === "renders") {
-            navigate("/studio");
+            window.open("https://axivionstudio.com/", "_blank", "noopener,noreferrer");
           } else if (project.demo) {
             window.open(project.demo, "_blank", "noopener,noreferrer");
           } else if (project.github) {
