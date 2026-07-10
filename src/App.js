@@ -61,7 +61,10 @@ const META = {
 function setFavicons(type) {
   const icons = type === "studio"
     ? [
-        { rel: "icon", type: "image/x-icon", href: `${PUBLIC_URL}/AxivionStudioFavicon.ico?v=studio-3` },
+        { rel: "icon", href: `${PUBLIC_URL}/axivion-studio-favicon.ico?v=studio-3`, sizes: "any" },
+        { rel: "icon", type: "image/svg+xml", href: `${PUBLIC_URL}/axivion-studio-favicon.svg?v=studio-3` },
+        { rel: "shortcut icon", href: `${PUBLIC_URL}/axivion-studio-favicon.ico?v=studio-3` },
+        { rel: "apple-touch-icon", href: `${PUBLIC_URL}/axivion-studio-weblink-photo.png?v=studio-3` },
       ]
     : [
         { rel: "icon", type: "image/x-icon", href: `${PUBLIC_URL}/axivion-favicon.ico` },
@@ -73,7 +76,7 @@ function setFavicons(type) {
   icons.forEach((icon) => {
     const link = document.createElement("link");
     link.setAttribute("rel", icon.rel);
-    link.setAttribute("type", icon.type);
+    if (icon.type) link.setAttribute("type", icon.type);
     link.setAttribute("href", icon.href);
     if (icon.sizes) link.setAttribute("sizes", icon.sizes);
     document.head.appendChild(link);
