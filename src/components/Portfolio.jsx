@@ -1008,7 +1008,7 @@ export default function PortfolioWhite() {
               onMouseEnter={e => { e.currentTarget.style.borderColor = "#13c2b3"; e.currentTarget.style.color = "#13c2b3"; }}
               onMouseLeave={e => { e.currentTarget.style.borderColor = "rgba(255,255,255,0.2)"; e.currentTarget.style.color = "white"; }}
             >
-              PRISM
+              Precision Instrumentation
             </Link>
             <a
               href="https://axivionstudio.com/"
