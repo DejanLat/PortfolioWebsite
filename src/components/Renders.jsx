@@ -82,40 +82,71 @@ const PACKAGES = [
     name: "Technical Figure Render",
     price: "$650+ CAD",
     usd: "Approx. $475 USD",
-    bestFor: "Posters, slides, simple apparatus visuals",
+    bestFor: "Posters, presentations, apparatus visuals, and simple concepts",
     timeline: "1-2 weeks",
-    description: "A focused render for a single concept, apparatus, structure, or presentation figure.",
-    includes: ["One final image", "One intake call or written project brief", "Progress check-ins plus 2 revision rounds", "PNG or JPEG delivery"],
+    description:
+      "A focused visual for a clearly defined scientific or technical concept.",
+    includes: [
+      "One final visual",
+      "One clearly defined concept or subject",
+      "Up to 2 revision rounds",
+      "High-resolution PNG or JPEG",
+    ],
   },
   {
     label: "Most requested",
     name: "Publication Visual",
     price: "$1,025+ CAD",
     usd: "Approx. $750 USD",
-    bestFor: "Paper figures, proposals, lab docs",
+    bestFor:
+      "Research papers, proposals, lab communications, and technical features",
     timeline: "2-4 weeks",
-    description: "The core Studio package for visuals that need technical discussion and accurate scientific representation.",
-    includes: ["Technical discussion", "Reference review", "Concept direction", "One high-resolution image", "Progress check-ins plus 3 revision rounds"],
+    description:
+      "A publication-quality visual developed through technical discussion and reference review.",
+    includes: [
+      "Technical consultation",
+      "Reference and source-material review",
+      "Concept development",
+      "One publication-quality visual",
+      "Up to 3 revision rounds",
+    ],
   },
   {
-    label: "Cover-ready",
+    label: "Cover candidate",
     name: "Cover Candidate",
     price: "$1,600+ CAD",
     usd: "Approx. $1,170 USD",
-    bestFor: "Journal covers, major events, grant hero visuals",
+    bestFor:
+      "Journal covers, major announcements, grant features, and hero visuals",
     timeline: "3-5 weeks",
-    description: "A developed hero visual that accounts for modeling, concept direction, render setup, revisions, and cover candidate presentation.",
-    includes: ["Deeper concept development", "Technical discussion", "Modeling and scene setup", "One final hero render", "Alternate crops", "Progress check-ins plus 3 revision rounds"],
+    description:
+      "A polished hero visual designed for cover consideration or high-profile scientific communication.",
+    includes: [
+      "Deeper concept development",
+      "Technical consultation",
+      "Custom modeling and scene creation",
+      "One polished hero visual",
+      "Alternate crops for common layouts",
+      "Up to 3 revision rounds",
+    ],
   },
   {
     label: "Best value",
     name: "Master Figure Package",
     price: "$3,000+ CAD",
     usd: "Approx. $2,200 USD",
-    bestFor: "Full paper, grant, website, or group visual package",
+    bestFor:
+      "Full papers, grant packages, websites, lab groups, and product launches",
     timeline: "4-8 weeks",
-    description: "A coherent set of related visuals with a shared visual language across the project.",
-    includes: ["Three to five related visuals", "Consistent visual style", "Technical alignment across panels", "Milestone check-ins plus 3 revision rounds across the package"],
+    description:
+      "A coordinated set of related visuals developed with a consistent technical and visual direction.",
+    includes: [
+      "Three to five related visuals",
+      "Shared visual direction across the set",
+      "Technical consistency between figures",
+      "Coordinated review milestones",
+      "Up to 3 revision rounds per project stage",
+    ],
   },
 ];
 
