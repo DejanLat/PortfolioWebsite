@@ -977,7 +977,7 @@ export default function PortfolioWhite() {
             <div className="font-semibold tracking-widest text-white text-sm sm:text-base">DEJAN</div>
             <div className="text-white/50 text-sm sm:text-base">LATKOVIC</div>
           </div>
-          <nav className="hidden md:flex items-center gap-3 text-sm overflow-x-auto no-scrollbar" aria-label="Primary">
+          <nav className="hidden min-[1100px]:flex items-center gap-3 text-sm overflow-x-auto no-scrollbar" aria-label="Primary">
             <button onClick={() => scrollToSection("experience")} className="whitespace-nowrap text-white/70 hover:text-white transition-colors">
               Experience
             </button>
@@ -1043,7 +1043,7 @@ export default function PortfolioWhite() {
           <button
             type="button"
             onClick={() => setNavOpen((open) => !open)}
-            className="md:hidden inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-3 py-2 text-sm text-white"
+            className="min-[1100px]:hidden inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-3 py-2 text-sm text-white"
             aria-expanded={navOpen}
             aria-controls="mobile-page-menu"
           >
@@ -1052,7 +1052,7 @@ export default function PortfolioWhite() {
           </button>
         </div>
         {navOpen && (
-          <div id="mobile-page-menu" className="md:hidden border-t border-white/10 bg-[#080e14]/95 backdrop-blur">
+          <div id="mobile-page-menu" className="min-[1100px]:hidden border-t border-white/10 bg-[#080e14]/95 backdrop-blur">
             <div className="mx-auto max-w-7xl px-4 py-3 grid gap-2">
               {pageLinks.map((item) =>
                 item.href ? (
