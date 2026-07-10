@@ -2,7 +2,6 @@ import React, { useEffect, useMemo, useState } from "react";
 import { motion } from "framer-motion";
 import {
   ArrowLeft,
-  FileText,
   Image as ImageIcon,
   Layers3,
   Mail,
@@ -20,9 +19,8 @@ const PUBLIC = process.env.PUBLIC_URL || "";
 
 const studioTopics = [
   "Technical Figure Render",
-  "Publication / Research Visual",
-  "Cover Candidate / Hero Render",
-  "Figure Set / Visual Package",
+  "Publication & Hero Visual",
+  "Scientific Visual Package",
   "Animation / Custom Scope",
   "General Studio Inquiry",
 ];
@@ -30,31 +28,25 @@ const studioTopics = [
 const studioCards = [
   {
     title: "Technical Figure Render",
-    label: "Focused visuals for posters, slides, apparatus, or single scientific concepts.",
+    label: "Focused visuals for posters, presentations, apparatus visuals, and clearly defined technical concepts.",
     icon: PackageCheck,
     topic: "Technical Figure Render",
   },
   {
-    title: "Publication / Research Visual",
-    label: "Paper figures, proposals, lab communication, and technical explainers.",
-    icon: FileText,
-    topic: "Publication / Research Visual",
-  },
-  {
-    title: "Cover Candidate / Hero Render",
-    label: "Journal cover candidates, announcements, grant hero visuals, and website visuals.",
+    title: "Publication & Hero Visual",
+    label: "Publication-quality visuals for papers, cover candidates, proposals, grants, and major announcements.",
     icon: ImageIcon,
-    topic: "Cover Candidate / Hero Render",
+    topic: "Publication & Hero Visual",
   },
   {
-    title: "Figure Set / Visual Package",
-    label: "Three to five related visuals with a consistent style across a paper, grant, website, or project.",
+    title: "Scientific Visual Package",
+    label: "Coordinated sets of related visuals for papers, grants, websites, lab groups, and launches.",
     icon: Layers3,
-    topic: "Figure Set / Visual Package",
+    topic: "Scientific Visual Package",
   },
   {
     title: "Animation / Custom Scope",
-    label: "Larger visual packages, motion, or unusual scientific visualization needs.",
+    label: "Motion, unusual scientific visualization needs, or custom scopes beyond the standard packages.",
     icon: Sparkles,
     topic: "Animation / Custom Scope",
   },
@@ -100,7 +92,7 @@ export default function StudioContact({ contactEmail = CONTACT_EMAIL }) {
 
   return (
     <div
-      className="min-h-screen w-full overflow-x-hidden bg-black text-white"
+      className="studio-page min-h-screen w-full overflow-x-hidden bg-black text-white"
       style={{ "--mx": `${mx}px`, "--my": `${my}px` }}
       onMouseMove={(event) => {
         setMx(event.clientX);
@@ -210,27 +202,32 @@ export default function StudioContact({ contactEmail = CONTACT_EMAIL }) {
               <div className="flex items-center gap-2">
                 <Phone size={16} /> By appointment after scope review
               </div>
-</div>
+              <p className="text-sm leading-6 text-white/58">
+                Privacy note: this request opens your email application. The website does not collect payment information directly. Please avoid sending highly sensitive or confidential project files before confidentiality arrangements are confirmed.
+              </p>
+            </div>
           </div>
 
           <form onSubmit={handleSubmit} className="space-y-4">
             <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
               <div>
-                <label className="mb-1 block text-sm text-white/72">Your Name</label>
+                <label htmlFor="studio-name" className="mb-1 block text-sm text-white/72">Your Name</label>
                 <input
+                  id="studio-name"
                   value={name}
                   onChange={(event) => setName(event.target.value)}
-                  className="w-full rounded-xl border border-white/15 bg-black/60 px-3 py-2 outline-none focus:border-white/40"
+                  className="w-full rounded-xl border border-white/15 bg-black/60 px-3 py-2 outline-none focus:border-emerald-300/60"
                   placeholder="Your name"
                   autoComplete="name"
                 />
               </div>
               <div>
-                <label className="mb-1 block text-sm text-white/72">Organization</label>
+                <label htmlFor="studio-organization" className="mb-1 block text-sm text-white/72">Organization</label>
                 <input
+                  id="studio-organization"
                   value={org}
                   onChange={(event) => setOrg(event.target.value)}
-                  className="w-full rounded-xl border border-white/15 bg-black/60 px-3 py-2 outline-none focus:border-white/40"
+                  className="w-full rounded-xl border border-white/15 bg-black/60 px-3 py-2 outline-none focus:border-emerald-300/60"
                   placeholder="Lab / company / team"
                   autoComplete="organization"
                 />
@@ -238,11 +235,12 @@ export default function StudioContact({ contactEmail = CONTACT_EMAIL }) {
             </div>
 
             <div>
-              <label className="mb-1 block text-sm text-white/72">Topic</label>
+              <label htmlFor="studio-topic" className="mb-1 block text-sm text-white/72">Topic</label>
               <select
+                id="studio-topic"
                 value={topic}
                 onChange={(event) => setTopic(event.target.value)}
-                className="w-full rounded-xl border border-white/15 bg-black/60 px-3 py-2 outline-none focus:border-white/40"
+                className="w-full rounded-xl border border-white/15 bg-black/60 px-3 py-2 outline-none focus:border-emerald-300/60"
               >
                 {topics.map((item) => (
                   <option key={item}>{item}</option>
@@ -252,29 +250,32 @@ export default function StudioContact({ contactEmail = CONTACT_EMAIL }) {
 
             <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
               <div>
-                <label className="mb-1 block text-sm text-white/72">Timeline / Deadline</label>
+                <label htmlFor="studio-timeline" className="mb-1 block text-sm text-white/72">Timeline / Deadline</label>
                 <input
+                  id="studio-timeline"
                   value={timeline}
                   onChange={(event) => setTimeline(event.target.value)}
-                  className="w-full rounded-xl border border-white/15 bg-black/60 px-3 py-2 outline-none focus:border-white/40"
+                  className="w-full rounded-xl border border-white/15 bg-black/60 px-3 py-2 outline-none focus:border-emerald-300/60"
                   placeholder="Target date"
                 />
               </div>
               <div>
-                <label className="mb-1 block text-sm text-white/72">Intended Use</label>
+                <label htmlFor="studio-intended-use" className="mb-1 block text-sm text-white/72">Intended Use</label>
                 <input
+                  id="studio-intended-use"
                   value={intendedUse}
                   onChange={(event) => setIntendedUse(event.target.value)}
-                  className="w-full rounded-xl border border-white/15 bg-black/60 px-3 py-2 outline-none focus:border-white/40"
+                  className="w-full rounded-xl border border-white/15 bg-black/60 px-3 py-2 outline-none focus:border-emerald-300/60"
                   placeholder="Paper / cover / web"
                 />
               </div>
               <div>
-                <label className="mb-1 block text-sm text-white/72">Reference Link</label>
+                <label htmlFor="studio-reference-link" className="mb-1 block text-sm text-white/72">Reference Link</label>
                 <input
+                  id="studio-reference-link"
                   value={referenceLink}
                   onChange={(event) => setReferenceLink(event.target.value)}
-                  className="w-full rounded-xl border border-white/15 bg-black/60 px-3 py-2 outline-none focus:border-white/40"
+                  className="w-full rounded-xl border border-white/15 bg-black/60 px-3 py-2 outline-none focus:border-emerald-300/60"
                   placeholder="Drive / paper / folder"
                   type="url"
                 />
@@ -282,12 +283,13 @@ export default function StudioContact({ contactEmail = CONTACT_EMAIL }) {
             </div>
 
             <div>
-              <label className="mb-1 block text-sm text-white/72">Message</label>
+              <label htmlFor="studio-message" className="mb-1 block text-sm text-white/72">Message</label>
               <textarea
+                id="studio-message"
                 value={message}
                 onChange={(event) => setMessage(event.target.value)}
                 rows={6}
-                className="w-full rounded-xl border border-white/15 bg-black/60 px-3 py-2 outline-none focus:border-white/40"
+                className="w-full rounded-xl border border-white/15 bg-black/60 px-3 py-2 outline-none focus:border-emerald-300/60"
                 placeholder="Briefly describe the scientific concept, intended use, deadline, reference material, and what the visual needs to communicate."
               />
             </div>
@@ -314,9 +316,10 @@ export default function StudioContact({ contactEmail = CONTACT_EMAIL }) {
       <footer className="border-t border-white/10">
         <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-3 px-6 py-8 text-sm text-white/55 sm:flex-row">
           <div>&copy; {new Date().getFullYear()} Dejan Latkovic / Axivion Studio</div>
-          <div>Scientific Visualization</div>
+          <div className="flex flex-wrap items-center justify-center gap-3 sm:justify-end"><Link to="/terms" className="underline decoration-white/30 underline-offset-4 hover:text-white">Terms of Service</Link><Link to="/terms#privacy-and-website-contact" className="underline decoration-white/30 underline-offset-4 hover:text-white">Privacy</Link><span>Scientific Visualization</span></div>
         </div>
       </footer>
     </div>
   );
 }
+

@@ -859,7 +859,13 @@ export default function PortfolioWhite() {
 
   const scrollToSection = (id) => {
     setNavOpen(false);
-    document.getElementById(id)?.scrollIntoView({ behavior: "smooth", block: "start" });
+    const section = document.getElementById(id);
+    if (!section) return;
+
+    const headerHeight = document.querySelector("header")?.offsetHeight || 0;
+    const top = section.getBoundingClientRect().top + window.scrollY - headerHeight - 16;
+
+    window.scrollTo({ top, behavior: "smooth" });
   };
 
   const pageLinks = [

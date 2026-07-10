@@ -82,69 +82,58 @@ const PACKAGES = [
     name: "Technical Figure Render",
     price: "$650+ CAD",
     usd: "Approx. $475 USD",
-    bestFor: "Posters, presentations, apparatus visuals, and simple concepts",
+    bestFor:
+      "Posters, presentations, apparatus visuals, and clearly defined technical concepts",
     timeline: "1-2 weeks",
     description:
-      "A focused visual for a clearly defined scientific or technical concept.",
+      "A focused visual for a project with a clear concept and established direction.",
     includes: [
       "One final visual",
-      "One clearly defined concept or subject",
-      "Up to 2 revision rounds",
+      "Client-provided references and direction",
+      "Basic modeling and scene preparation",
       "High-resolution PNG or JPEG",
+      "Up to 2 revision rounds",
     ],
   },
   {
     label: "Most requested",
-    name: "Publication Visual",
-    price: "$1,025+ CAD",
-    usd: "Approx. $750 USD",
+    name: "Publication & Hero Visual",
+    price: "$1,350+ CAD",
+    usd: "Approx. $990 USD",
     bestFor:
-      "Research papers, proposals, lab communications, and technical features",
-    timeline: "2-4 weeks",
+      "Research papers, journal cover candidates, proposals, grants, and major scientific announcements",
+    timeline: "2-5 weeks",
     description:
-      "A publication-quality visual developed through technical discussion and reference review.",
+      "A polished scientific visual developed collaboratively through technical discussion and concept development.",
     includes: [
+      "Everything in Technical Figure Render",
       "Technical consultation",
       "Reference and source-material review",
-      "Concept development",
-      "One publication-quality visual",
-      "Up to 3 revision rounds",
-    ],
-  },
-  {
-    label: "Cover candidate",
-    name: "Cover Candidate",
-    price: "$1,600+ CAD",
-    usd: "Approx. $1,170 USD",
-    bestFor:
-      "Journal covers, major announcements, grant features, and hero visuals",
-    timeline: "3-5 weeks",
-    description:
-      "A polished hero visual designed for cover consideration or high-profile scientific communication.",
-    includes: [
-      "Deeper concept development",
-      "Technical consultation",
+      "Concept and visual-direction development",
       "Custom modeling and scene creation",
-      "One polished hero visual",
+      "One publication-quality hero visual",
       "Alternate crops for common layouts",
       "Up to 3 revision rounds",
     ],
   },
   {
-    label: "Best value",
-    name: "Master Figure Package",
+    label: "Complete package",
+    name: "Scientific Visual Package",
     price: "$3,000+ CAD",
     usd: "Approx. $2,200 USD",
     bestFor:
-      "Full papers, grant packages, websites, lab groups, and product launches",
+      "Full papers, grant packages, websites, lab groups, and technical product launches",
     timeline: "4-8 weeks",
     description:
-      "A coordinated set of related visuals developed with a consistent technical and visual direction.",
+      "A coordinated set of related visuals with a consistent technical and visual direction.",
     includes: [
-      "Three to five related visuals",
+      "Everything in Publication & Hero Visual",
+      "Three to five related final visuals",
       "Shared visual direction across the set",
       "Technical consistency between figures",
+      "Reusable scene assets across the project",
       "Coordinated review milestones",
+      "Alternate crops for selected visuals",
       "Up to 3 revision rounds per project stage",
     ],
   },
@@ -152,9 +141,8 @@ const PACKAGES = [
 
 const QUOTE_PACKAGES = [
   { key: "technical", label: "Technical Figure Render", base: 650 },
-  { key: "publication", label: "Publication Visual", base: 1025 },
-  { key: "cover", label: "Cover Candidate", base: 1600 },
-  { key: "package", label: "Master Figure Package", base: 3000 },
+  { key: "hero", label: "Publication & Hero Visual", base: 1350 },
+  { key: "package", label: "Scientific Visual Package", base: 3000 },
 ];
 
 const QUOTE_COMPLEXITY = [
@@ -178,51 +166,99 @@ const QUOTE_TIMELINE = [
 ];
 export const TERMS_GROUPS = [
   {
-    title: "Project scope and payment",
+    title: "Scope and payment",
     items: [
-      "Each project begins with a written quote before payment is collected.",
-      "Most projects start with a 50% deposit, while larger projects may be split into milestones such as concept, draft, and final delivery.",
-      "Final high-resolution files are delivered once the remaining balance is paid.",
+      "You receive a written quote before work begins.",
+      "Most projects begin with a 50% deposit.",
+      "Final high-resolution files are delivered after full payment.",
     ],
   },
   {
-    title: "Included use rights",
+    title: "Deliverables and revisions",
     items: [
-      "Standard licenses include personal, academic, lab, and internal research communication use.",
-      "Commercial licenses can include websites, pitch decks, grant material, product pages, press releases, and normal business communication.",
-      "Broader use such as paid ads, merchandise, packaging, resale, or campaign usage can be added by written agreement.",
+      "Your quote lists exactly what files and revision rounds are included.",
+      "Feedback should be provided as one consolidated set per revision round.",
+      "New concepts, additional visuals, or major direction changes may require a revised quote.",
     ],
   },
   {
-    title: "What is delivered",
+    title: "Usage and ownership",
     items: [
-      "Final deliverables are provided as agreed in the project scope.",
-      "Working files, source scenes, geometry, materials, and editable scene files are not included unless added to the quote.",
-      "Additional formats, source files, or extended usage rights can be discussed before the project begins.",
+      "Final usage rights are confirmed in the project quote.",
+      "Working files, source scenes, models, and editable assets are not included unless stated.",
+      "Expanded commercial use, source files, or additional formats can be added before the project begins.",
     ],
   },
   {
-    title: "Review process",
+    title: "Accuracy and confidentiality",
     items: [
-      "Progress check-ins are part of the working process so the visual stays aligned with the project direction.",
-      "Included revision rounds are used for consolidated feedback after a draft or milestone.",
-      "Small refinements can usually be handled during normal check-ins, while larger direction changes, new deliverables, or expanded scope can be added to the quote.",
-      "For scientific or technical visuals, the client is responsible for confirming the final accuracy of the approved visual before public release.",
+      "Confidential and unpublished work can be handled privately.",
+      "Portfolio and public-sharing permissions are agreed on in writing.",
+      "The client confirms the final scientific or technical accuracy before publication.",
     ],
   },
+];
+
+const FAQ_ITEMS = [
   {
-    title: "Confidential work",
-    items: [
-      "Confidential, embargoed, unpublished, or sensitive work can be handled privately.",
-      "Portfolio use, public sharing, and file handling can be agreed in writing before the project starts.",
-    ],
+    question: "What files will I receive?",
+    answer:
+      "Your quote lists the final export files included. Typical deliveries are high-resolution PNG or JPEG files, with other formats added when agreed before work begins.",
   },
   {
-    title: "Fair use and protection",
-    items: [
-      "To protect both sides, the final license depends on completed payment and agreed use.",
-      "Unauthorized resale, unpaid use, AI training, dataset creation, or use outside the approved license is not permitted without written approval.",
-    ],
+    question: "Are Blender, CAD, or source files included?",
+    answer:
+      "No. Working files, source scenes, models, textures, project folders, and editable assets are excluded unless they are specifically included in the written quote.",
+  },
+  {
+    question: "What information do you need to begin?",
+    answer:
+      "Please share the project context, intended use, timeline, reference material, technical constraints, and any journal, proposal, web, or presentation requirements.",
+  },
+  {
+    question: "How do revision rounds work?",
+    answer:
+      "Each revision round should be one consolidated set of feedback. Your quote states how many rounds are included for the project.",
+  },
+  {
+    question: "Can confidential or embargoed projects be handled?",
+    answer:
+      "Yes. Confidential or unpublished work can be handled privately when confidentiality, embargo, and portfolio-sharing expectations are agreed in writing before work begins.",
+  },
+  {
+    question: "How are usage rights selected?",
+    answer:
+      "Usage rights are selected during quoting based on whether the visual is for academic, internal, commercial, promotional, publication, or broader campaign use.",
+  },
+  {
+    question: "Can usage rights be expanded later?",
+    answer:
+      "Usually, yes. Expanded use after approval may require an updated licence and an additional licensing fee under the Terms of Service.",
+  },
+  {
+    question: "Do you guarantee journal or cover acceptance?",
+    answer:
+      "No. Axivion Studio creates polished scientific visuals, but publication, journal, cover, funding, and business outcomes are never guaranteed.",
+  },
+  {
+    question: "What currencies and payment schedules are available?",
+    answer:
+      "Prices are quoted in CAD with approximate USD guidance when useful. Most projects use a 50% deposit and 50% before final delivery; larger projects may use milestones.",
+  },
+  {
+    question: "What happens if the project scope changes?",
+    answer:
+      "New concepts, additional visuals, new formats, major direction changes, or expanded usage may require a revised quote and timeline.",
+  },
+  {
+    question: "Can journal-specific dimensions or submission requirements be accommodated?",
+    answer:
+      "Yes. Include the target dimensions, format, resolution, colour, and submission requirements during scoping so they can be included in the quote.",
+  },
+  {
+    question: "Is rush work available?",
+    answer:
+      "Rush work may be available depending on scope and schedule. Priority or rush timelines can carry an additional fee.",
   },
 ];
 const PROCESS = [
@@ -266,7 +302,7 @@ export default function Renders() {
   const [navOpen, setNavOpen] = useState(false);
   const heroRef = useRef(null);
   const rootStyle = { "--mx": `${mx}px`, "--my": `${my}px`, "--hx": `${hx}px`, "--hy": `${hy}px` };
-  const [quotePackage, setQuotePackage] = useState("publication");
+  const [quotePackage, setQuotePackage] = useState("hero");
   const [quoteComplexity, setQuoteComplexity] = useState("technical");
   const [quoteUsage, setQuoteUsage] = useState("academic");
   const [quoteTimeline, setQuoteTimeline] = useState("standard");
@@ -293,7 +329,13 @@ export default function Renders() {
   }, [quotePackage, quoteComplexity, quoteUsage, quoteTimeline]);
 
   const scrollToId = (id) => {
-    document.getElementById(id)?.scrollIntoView({ behavior: "smooth", block: "start" });
+    const section = document.getElementById(id);
+    if (!section) return;
+
+    const headerHeight = document.querySelector("header")?.offsetHeight || 0;
+    const top = section.getBoundingClientRect().top + window.scrollY - headerHeight - 16;
+
+    window.scrollTo({ top, behavior: "smooth" });
   };
 
   const updateHeroMouse = (event) => {
@@ -303,15 +345,17 @@ export default function Renders() {
     setHy(event.clientY - bounds.top);
   };
   const navItems = [
-    { label: "Work", action: () => scrollToId("work") },
-    { label: "Pricing", action: () => scrollToId("pricing") },
-    { label: "Quote", action: () => scrollToId("quote") },
-    { label: "Process", action: () => scrollToId("process") },
-    { label: "Terms", action: () => navigate("/terms") },
+    { label: "Work", href: "#work", sectionId: "work" },
+    { label: "Pricing", href: "#pricing", sectionId: "pricing" },
+    { label: "Quote", href: "#quote", sectionId: "quote" },
+    { label: "Process", href: "#process", sectionId: "process" },
+    { label: "Terms", to: "/terms" },
   ];
 
-  const handleNavAction = (action) => {
-    action();
+  const handleSectionNav = (event, id) => {
+    event.preventDefault();
+    scrollToId(id);
+    window.history.replaceState(null, "", `#${id}`);
     setNavOpen(false);
   };
 
@@ -322,7 +366,7 @@ export default function Renders() {
 
   return (
     <div
-      className="min-h-screen w-full bg-black text-white"
+      className="studio-page min-h-screen w-full bg-black text-white"
       onMouseMove={(event) => {
         setMx(event.clientX);
         setMy(event.clientY);
@@ -355,15 +399,23 @@ export default function Renders() {
           </Link>
 
           <nav className="hidden items-center gap-4 text-sm min-[1100px]:flex" aria-label="Axivion Studio navigation">
-            {navItems.map((item) => (
-              <button
+            {navItems.map((item) => item.to ? (
+              <Link
                 key={item.label}
-                type="button"
-                onClick={() => handleNavAction(item.action)}
+                to={item.to}
                 className="whitespace-nowrap text-white/70 hover:text-white transition-colors"
               >
                 {item.label}
-              </button>
+              </Link>
+            ) : (
+              <a
+                key={item.label}
+                href={item.href}
+                onClick={(event) => handleSectionNav(event, item.sectionId)}
+                className="whitespace-nowrap text-white/70 hover:text-white transition-colors"
+              >
+                {item.label}
+              </a>
             ))}
             <a
               href="https://uwaterloo.ca/institute-for-quantum-computing/contacts/dejan-latkovic-0"
@@ -424,15 +476,24 @@ export default function Renders() {
         {navOpen && (
           <div className="border-t border-white/10 bg-black/95 px-4 py-3 shadow-2xl min-[1100px]:hidden">
             <div className="mx-auto grid max-w-7xl gap-1 text-sm">
-              {navItems.map((item) => (
-                <button
+              {navItems.map((item) => item.to ? (
+                <Link
                   key={item.label}
-                  type="button"
-                  onClick={() => handleNavAction(item.action)}
+                  to={item.to}
+                  className="rounded-xl px-3 py-3 text-left text-white/80 transition hover:bg-white/10 hover:text-white"
+                  onClick={() => setNavOpen(false)}
+                >
+                  {item.label}
+                </Link>
+              ) : (
+                <a
+                  key={item.label}
+                  href={item.href}
+                  onClick={(event) => handleSectionNav(event, item.sectionId)}
                   className="rounded-xl px-3 py-3 text-left text-white/80 transition hover:bg-white/10 hover:text-white"
                 >
                   {item.label}
-                </button>
+                </a>
               ))}
               <a
                 href="https://uwaterloo.ca/institute-for-quantum-computing/contacts/dejan-latkovic-0"
@@ -509,7 +570,7 @@ export default function Renders() {
               className="inline-flex items-center gap-2 rounded-full px-4 py-1 text-xs uppercase tracking-widest text-white/90 border backdrop-blur-sm"
               style={{ borderColor: "rgba(52,211,153,0.35)", background: "rgba(255,255,255,0.07)" }}
             >
-              Scientific Visualization / Technical Renders / Publication Visuals
+              Scientific Visualization / Technical Renders / Hero Visuals
             </div>
             <h1 className="mt-4 text-5xl md:text-6xl font-semibold tracking-tight">Axivion <span style={{ color: ACCENT }}>Studio</span></h1>
             <p className="mt-4 text-white/80 max-w-2xl">
@@ -636,7 +697,7 @@ export default function Renders() {
             </p>
           </div>
 
-          <div className="mt-8 grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-4 gap-4">
+          <div className="mt-8 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
             {PACKAGES.map((pkg) => (
               <motion.article
                 key={pkg.name}
@@ -644,7 +705,7 @@ export default function Renders() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-80px" }}
                 transition={{ duration: 0.45 }}
-                className="rounded-3xl border border-white/10 bg-white/5 p-6"
+                className={`flex h-full flex-col rounded-3xl border p-6 ${pkg.label === "Most requested" ? "border-emerald-300/35 bg-emerald-300/[0.08] shadow-2xl shadow-emerald-950/20" : "border-white/10 bg-white/5"}`}
               >
                 <div className="flex items-start justify-between gap-3">
                   <h3 className="text-xl font-semibold leading-tight">{pkg.name}</h3>
@@ -667,13 +728,26 @@ export default function Renders() {
                     <div className="mt-1 text-white/85">{pkg.timeline}</div>
                   </div>
                 </div>
-                <ul className="mt-5 space-y-2 text-sm text-white/75">
-                  {pkg.includes.map((item) => (
-                    <li key={item} className="flex items-start gap-2">
-                      <CheckCircle2 size={16} className="mt-0.5 shrink-0" style={{ color: ACCENT }} />
-                      <span>{item}</span>
-                    </li>
-                  ))}
+                <ul className="mt-5 flex-1 space-y-2.5 text-sm text-white/75">
+                  {pkg.includes.map((item) => {
+                    const inherited = item.startsWith("Everything in ");
+                    const finalVisual = /final visual|hero visual|related final visuals/i.test(item);
+                    return (
+                      <li
+                        key={item}
+                        className={`flex items-start gap-2 rounded-xl ${inherited ? "border border-emerald-300/20 bg-emerald-300/10 px-3 py-2 text-emerald-50" : ""}`}
+                      >
+                        <CheckCircle2
+                          size={16}
+                          className="mt-0.5 shrink-0"
+                          style={{ color: inherited ? "#a7f3d0" : ACCENT }}
+                        />
+                        <span className={inherited ? "font-medium" : finalVisual ? "font-medium text-white" : ""}>
+                          {item}
+                        </span>
+                      </li>
+                    );
+                  })}
                 </ul>
               </motion.article>
             ))}
@@ -689,7 +763,7 @@ export default function Renders() {
                 </div>
                 <h2 className="mt-2 text-3xl font-semibold tracking-tight">Estimate a starting range.</h2>
                 <p className="mt-4 text-sm leading-7 text-white/65">
-                  Use this as a planning tool before reaching out. Final quotes depend on reference quality, scientific complexity, usage rights, and timeline.
+                  Calculator results are planning estimates. Final pricing is confirmed in the written project quote.
                 </p>
                 <div className="mt-6 rounded-3xl border border-emerald-300/20 bg-emerald-300/10 p-5">
                   <div className="flex items-center gap-2 text-sm uppercase tracking-widest text-emerald-100">
@@ -702,7 +776,7 @@ export default function Renders() {
                     Approx. ${quoteEstimate.usdLow.toLocaleString()}-${quoteEstimate.usdHigh.toLocaleString()} USD. Based on {quoteEstimate.label} with {quoteEstimate.timeline.toLowerCase()}.
                   </p>
                   <p className="mt-2 text-xs leading-5 text-white/52">
-                    This is a planning estimate. Final pricing depends on source material, scientific complexity, usage rights, and revision scope.
+                    Estimates include the usage selected when the project is quoted. Expanding usage after approval may require an additional licensing fee under the Terms of Service.
                   </p>
                   <Link
                     to="/contact"
@@ -854,41 +928,94 @@ export default function Renders() {
           </div>
         </section>
         <section id="terms" className="mx-auto max-w-7xl px-6 py-12">
-          <div className="grid grid-cols-1 lg:grid-cols-[0.8fr_1.2fr] gap-6">
-            <div>
-              <div className="text-sm uppercase tracking-widest" style={{ color: ACCENT }}>
-                Project Terms
+          <div className="rounded-3xl border border-white/10 bg-white/[0.04] p-6 md:p-8">
+            <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
+              <div className="max-w-2xl">
+                <div className="text-sm uppercase tracking-widest" style={{ color: ACCENT }}>
+                  Project Terms
+                </div>
+                <h2 className="mt-2 text-3xl font-semibold tracking-tight">Clear terms before we begin.</h2>
+                <p className="mt-4 text-sm leading-7 text-white/65">
+                  A short summary of how Axivion Studio projects are scoped, reviewed, licensed, and delivered.
+                </p>
               </div>
-              <h2 className="mt-2 text-3xl font-semibold tracking-tight">Clear terms before we begin.</h2>
-              <p className="mt-4 text-sm leading-7 text-white/65">
-                Every project starts with a written scope, timeline, license, and payment structure so both sides know exactly what is included before work begins.
-              </p>
-              <Link
-                to="/terms"
-                className="mt-5 inline-flex items-center justify-center gap-2 rounded-full border px-4 py-2 text-sm font-medium text-white"
-                style={{ borderColor: "rgba(52,211,153,0.45)", background: "rgba(52,211,153,0.12)" }}
-              >
-                View full terms <FileText size={15} />
-              </Link>
             </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+
+            <div className="mt-7 grid grid-cols-1 gap-4 md:grid-cols-2">
               {TERMS_GROUPS.map((group) => (
-                <div key={group.title} className="rounded-3xl border border-white/10 bg-white/5 p-5">
+                <motion.article
+                  key={group.title}
+                  initial={{ opacity: 0, y: 16 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: "-80px" }}
+                  transition={{ duration: 0.4 }}
+                  className="flex h-full flex-col rounded-3xl border border-white/10 bg-black/25 p-5 md:p-6"
+                >
                   <h3 className="text-lg font-semibold">{group.title}</h3>
-                  <ul className="mt-4 space-y-3 text-sm leading-6 text-white/70">
+                  <ul className="mt-4 space-y-3 text-sm leading-7 text-white/70">
                     {group.items.map((item) => (
-                      <li key={item} className="flex items-start gap-2">
+                      <li key={item} className="flex items-start gap-2.5">
                         <CheckCircle2 size={16} className="mt-1 shrink-0" style={{ color: ACCENT }} />
                         <span>{item}</span>
                       </li>
                     ))}
                   </ul>
-                </div>
+                </motion.article>
               ))}
+            </div>
+
+            <p className="mt-7 max-w-3xl text-sm leading-7 text-white/68">
+              Every project is governed by a written quote, project scope, and the full Axivion Studio Terms of Service.
+            </p>
+
+            <div className="mt-5 flex flex-col gap-3 sm:flex-row">
+              <Link
+                to="/terms"
+                className="inline-flex items-center justify-center gap-2 rounded-full border px-5 py-3 text-sm font-medium text-white"
+                style={{ borderColor: "rgba(52,211,153,0.48)", background: "rgba(52,211,153,0.14)" }}
+              >
+                Read full terms <FileText size={15} />
+              </Link>
+              <Link
+                to="/contact"
+                className="inline-flex items-center justify-center gap-2 rounded-full border border-white/15 bg-white/[0.04] px-5 py-3 text-sm font-medium text-white transition hover:border-emerald-300/45 hover:bg-emerald-300/10"
+              >
+                Request a project quote <SendHorizonal size={15} />
+              </Link>
             </div>
           </div>
         </section>
 
+        <section id="faq" className="mx-auto max-w-7xl px-6 py-12">
+          <div className="rounded-3xl border border-white/10 bg-white/[0.04] p-6 md:p-8">
+            <div className="max-w-2xl">
+              <div className="text-sm uppercase tracking-widest" style={{ color: ACCENT }}>
+                FAQ
+              </div>
+              <h2 className="mt-2 text-3xl font-semibold tracking-tight">Common project questions.</h2>
+              <p className="mt-4 text-sm leading-7 text-white/65">
+                Short answers for scoping, deliverables, revisions, confidentiality, and usage rights.
+              </p>
+            </div>
+
+            <div className="mt-7 grid grid-cols-1 gap-3 lg:grid-cols-2">
+              {FAQ_ITEMS.map((item) => (
+                <details
+                  key={item.question}
+                  className="group rounded-2xl border border-white/10 bg-black/25 p-4 transition hover:border-emerald-300/25 hover:bg-white/[0.06]"
+                >
+                  <summary className="cursor-pointer list-none text-base font-medium text-white marker:hidden focus-visible:outline-none">
+                    <span className="flex items-start justify-between gap-4">
+                      <span>{item.question}</span>
+                      <span className="mt-1 text-emerald-300 transition group-open:rotate-45" aria-hidden>+</span>
+                    </span>
+                  </summary>
+                  <p className="mt-3 text-sm leading-7 text-white/68">{item.answer}</p>
+                </details>
+              ))}
+            </div>
+          </div>
+        </section>
         <section className="mx-auto max-w-7xl px-6 pt-8 pb-14">
           <div className="rounded-3xl border border-white/10 bg-white/5 p-6 md:p-8 flex flex-col md:flex-row md:items-center gap-5">
             <div className="flex-1">
@@ -917,10 +1044,16 @@ export default function Renders() {
 
       <footer className="border-t border-white/10 bg-black">
         <div className="mx-auto max-w-7xl px-6 py-6 text-sm text-white/60 flex flex-col sm:flex-row gap-2 sm:items-center sm:justify-between">
-          <div>Axivion Studio is the scientific visualization practice of Dejan Latkovic. <a href="https://dejanlat.github.io/PortfolioWebsite/" className="font-medium text-white/80 underline decoration-white/30 underline-offset-4 hover:text-white">Dejan Latkovic Engineering Portfolio</a></div>
+          <div>Axivion Studio is the scientific visualization practice of Dejan Latkovic. <a href="https://dejanlat.github.io/PortfolioWebsite/" className="font-medium text-white/80 underline decoration-white/30 underline-offset-4 hover:text-white">Dejan Latkovic Engineering Portfolio</a> <span className="text-white/25">/</span> <Link to="/terms" className="font-medium text-white/80 underline decoration-white/30 underline-offset-4 hover:text-white">Terms of Service</Link> <span className="text-white/25">/</span> <Link to="/terms#privacy-and-website-contact" className="font-medium text-white/80 underline decoration-white/30 underline-offset-4 hover:text-white">Privacy</Link></div>
           <div>&copy; {new Date().getFullYear()} Dejan Latkovic / Axivion Studio</div>
         </div>
       </footer>
     </div>
   );
 }
+
+
+
+
+
+

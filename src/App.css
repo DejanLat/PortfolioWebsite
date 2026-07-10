@@ -5116,3 +5116,56 @@ body {
     font-size: 36px;
   }
 }
+
+/* Axivion Studio Terms print layout */
+@media print {
+  body {
+    background: #ffffff !important;
+    color: #111827 !important;
+  }
+
+  .studio-terms-page {
+    background: #ffffff !important;
+    color: #111827 !important;
+  }
+
+  .studio-terms-page main {
+    max-width: 100% !important;
+  }
+
+  .studio-terms-page section {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+  .studio-terms-page a {
+    color: #111827 !important;
+    text-decoration: underline;
+  }
+
+  .studio-terms-page h1,
+  .studio-terms-page h2,
+  .studio-terms-page p,
+  .studio-terms-page div {
+    color: #111827 !important;
+  }
+}
+
+.studio-page a:focus-visible,
+.studio-page button:focus-visible,
+.studio-page input:focus-visible,
+.studio-page select:focus-visible,
+.studio-page textarea:focus-visible,
+.studio-page summary:focus-visible,
+.studio-terms-page a:focus-visible,
+.studio-terms-page button:focus-visible,
+.studio-terms-page summary:focus-visible {
+  outline: 2px solid #34d399;
+  outline-offset: 4px;
+  box-shadow: 0 0 0 4px rgba(52, 211, 153, 0.18);
+}
+
+.studio-page section[id],
+.studio-terms-page section[id] {
+  scroll-margin-top: 96px;
+}

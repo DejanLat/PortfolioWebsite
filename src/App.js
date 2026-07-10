@@ -26,6 +26,36 @@ const META = {
     canonical: "https://axivionstudio.com/",
     image: "https://axivionstudio.com/axivion-studio-weblink-photo.png",
   },
+  studioRoute: {
+    title: "Axivion Studio | Scientific Visualization",
+    description:
+      "Axivion Studio creates scientific visualization, technical renders, journal cover artwork, proposal graphics, optics diagrams, engineering visuals, and publication-ready figures for researchers, labs, and hardware teams.",
+    ogDescription:
+      "Scientific and technical visualization for researchers, labs, papers, proposals, covers, and advanced hardware teams.",
+    siteName: "Axivion Studio",
+    canonical: "https://axivionstudio.com/studio",
+    image: "https://axivionstudio.com/axivion-studio-weblink-photo.png",
+  },
+  contact: {
+    title: "Contact Axivion Studio | Project Quote",
+    description:
+      "Contact Axivion Studio to request a scientific visualization, technical render, publication figure, proposal graphic, or scientific visual package.",
+    ogDescription:
+      "Request a project quote for scientific visualization, technical renders, publication figures, proposal graphics, and scientific visual packages.",
+    siteName: "Axivion Studio",
+    canonical: "https://axivionstudio.com/contact",
+    image: "https://axivionstudio.com/axivion-studio-weblink-photo.png",
+  },
+  terms: {
+    title: "Axivion Studio Terms of Service",
+    description:
+      "Terms of Service for Axivion Studio scientific visualization, technical rendering, modeling, figure packages, animations, consulting, and related creative services.",
+    ogDescription:
+      "Project terms for Axivion Studio scientific visualization, technical rendering, figure packages, animations, consulting, usage rights, revisions, and delivery.",
+    siteName: "Axivion Studio",
+    canonical: "https://axivionstudio.com/terms",
+    image: "https://axivionstudio.com/axivion-studio-weblink-photo.png",
+  },
   portfolio: {
     title: "Dejan Latkovic | Engineering Portfolio",
     description:
@@ -108,7 +138,13 @@ function MetadataManager() {
   React.useEffect(() => {
     const type = IS_PORTFOLIO_BUILD && pathname === "/"
       ? "portfolio"
-      : pathname.startsWith("/portfolio")
+      : pathname.startsWith("/terms")
+        ? "terms"
+        : pathname.startsWith("/contact")
+        ? "contact"
+        : pathname.startsWith("/studio")
+        ? "studioRoute"
+        : pathname.startsWith("/portfolio")
         ? "portfolio"
         : pathname.startsWith("/dejan-latkovic")
           ? "person"
@@ -130,7 +166,7 @@ function MetadataManager() {
     upsertMeta('meta[name="twitter:description"]', { name: "twitter:description", content: meta.ogDescription });
     upsertMeta('meta[name="twitter:image"]', { name: "twitter:image", content: meta.image });
     setCanonical(meta.canonical);
-    setFavicons(type === "studio" || type === "person" ? "studio" : "portfolio");
+    setFavicons(type === "studio" || type === "studioRoute" || type === "contact" || type === "terms" || type === "person" ? "studio" : "portfolio");
   }, [pathname]);
 
   return null;
@@ -179,3 +215,5 @@ function App() {
 }
 
 export default App;
+
+
