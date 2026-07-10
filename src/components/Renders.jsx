@@ -80,8 +80,8 @@ const PACKAGES = [
   {
     label: "Entry point",
     name: "Technical Figure Render",
-    price: "$750+ CAD",
-    usd: "Approx. $550 USD",
+    price: "$650+ CAD",
+    usd: "Approx. $475 USD",
     bestFor: "Posters, slides, simple apparatus visuals",
     timeline: "1-2 weeks",
     description: "A focused render for a single concept, apparatus, structure, or presentation figure.",
@@ -90,8 +90,8 @@ const PACKAGES = [
   {
     label: "Most requested",
     name: "Publication Visual",
-    price: "$1,125+ CAD",
-    usd: "Approx. $825 USD",
+    price: "$1,025+ CAD",
+    usd: "Approx. $750 USD",
     bestFor: "Paper figures, proposals, lab docs",
     timeline: "2-4 weeks",
     description: "The core Studio package for visuals that need technical discussion and accurate scientific representation.",
@@ -100,8 +100,8 @@ const PACKAGES = [
   {
     label: "Cover-ready",
     name: "Cover Candidate",
-    price: "$1,500+ CAD",
-    usd: "Approx. $1,100 USD",
+    price: "$1,600+ CAD",
+    usd: "Approx. $1,170 USD",
     bestFor: "Journal covers, major events, grant hero visuals",
     timeline: "3-5 weeks",
     description: "A developed hero visual that accounts for modeling, concept direction, render setup, revisions, and cover candidate presentation.",
@@ -120,9 +120,9 @@ const PACKAGES = [
 ];
 
 const QUOTE_PACKAGES = [
-  { key: "technical", label: "Technical Figure Render", base: 750 },
-  { key: "publication", label: "Publication Visual", base: 1125 },
-  { key: "cover", label: "Cover Candidate", base: 1500 },
+  { key: "technical", label: "Technical Figure Render", base: 650 },
+  { key: "publication", label: "Publication Visual", base: 1025 },
+  { key: "cover", label: "Cover Candidate", base: 1600 },
   { key: "package", label: "Master Figure Package", base: 3000 },
 ];
 
