@@ -85,7 +85,7 @@ export default function StudioTerms() {
 
       <footer className="border-t border-white/10 bg-black">
         <div className="mx-auto flex max-w-7xl flex-col gap-2 px-6 py-6 text-sm text-white/60 sm:flex-row sm:items-center sm:justify-between">
-          <div>Axivion Studio - Scientific Visualization</div>
+          <div>Scientific Visualization</div>
           <div>&copy; {new Date().getFullYear()} Dejan Latkovic / Axivion Studio</div>
         </div>
       </footer>

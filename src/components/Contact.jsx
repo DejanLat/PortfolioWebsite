@@ -30,7 +30,7 @@ export default function Contact({ contactEmail = CONTACT_EMAIL }) {
 
   const subjectMap = useMemo(
     () => ({
-      "Render Service": "Scientific render / visualization request",
+      "Axivion Studio": "Axivion Studio visualization request",
       "Axivion Instruments": "Axivion Instruments / PRISM inquiry",
       "Research Collaboration": "Research collaboration inquiry",
       "Co-op / Work": "Co-op or work opportunity",
@@ -54,12 +54,12 @@ export default function Contact({ contactEmail = CONTACT_EMAIL }) {
         "Hi,\n\nI'd like to discuss Axivion Instruments / PRISM.\n\nOrganization:\nUse case:\nTimeline:\n\nThanks!",
     },
     {
-      title: "Scientific Render Services",
-      label: "Blender scientific visualization for papers, posters, web, and grants",
+      title: "Axivion Studio",
+      label: "Scientific visualization and technical rendering for papers, proposals, covers, and hardware teams",
       icon: ImageIcon,
-      topic: "Render Service",
-      body:
-        "Hi,\n\nI'm interested in scientific visualization / render support.\n\nProject or structure:\nUse case (paper, poster, web, grant, presentation):\nTimeline:\nReference material available:\n\nThanks!",
+      topic: "Axivion Studio",
+      href: "https://axivionstudio.com/",
+      cta: "Visit studio",
     },
   ];
 
@@ -161,7 +161,7 @@ export default function Contact({ contactEmail = CONTACT_EMAIL }) {
                 Let's Talk
               </h1>
               <p className="mt-4 max-w-2xl text-white/78">
-                Send a note about Axivion Instruments, the PRISM instrument, scientific render work,
+                Send a note about Axivion Instruments, the PRISM instrument, Axivion Studio visualization work,
                 research collaboration, or engineering opportunities.
               </p>
             </motion.div>
@@ -174,7 +174,7 @@ export default function Contact({ contactEmail = CONTACT_EMAIL }) {
             {primaryPaths.map((path) => (
               <a
                 key={path.title}
-                href={buildMailto(subjectMap[path.topic], path.body)}
+                href={path.href || buildMailto(subjectMap[path.topic], path.body)}
                 className="rounded-3xl border p-7 transition hover:bg-white/10"
                 style={{ borderColor: "rgba(245,158,11,0.26)", background: "rgba(245,158,11,0.07)" }}
               >
@@ -182,7 +182,7 @@ export default function Contact({ contactEmail = CONTACT_EMAIL }) {
                 <h2 className="mt-4 text-2xl font-semibold">{path.title}</h2>
                 <p className="mt-2 text-sm leading-6 text-white/68">{path.label}</p>
                 <div className="mt-5 text-sm font-medium" style={{ color: ACCENT }}>
-                  Start email
+                  {path.cta || "Start email"}
                 </div>
               </a>
             ))}
@@ -192,7 +192,7 @@ export default function Contact({ contactEmail = CONTACT_EMAIL }) {
             {secondaryPaths.map((path) => (
               <a
                 key={path.title}
-                href={buildMailto(subjectMap[path.topic], path.body)}
+                href={path.href || buildMailto(subjectMap[path.topic], path.body)}
                 className="rounded-3xl border border-white/10 bg-white/5 p-5 transition hover:bg-white/10"
               >
                 <path.icon size={20} className="text-white/80" />
@@ -299,7 +299,7 @@ export default function Contact({ contactEmail = CONTACT_EMAIL }) {
         <footer className="border-t border-white/10">
           <div className="mx-auto max-w-7xl px-6 py-8 flex flex-col sm:flex-row items-center justify-between gap-3 text-sm text-white/55">
             <div>Dejan Latkovic</div>
-            <div>Axivion Instruments • PRISM • Scientific Render Services • Engineering</div>
+            <div>Axivion Instruments / Instrumentation / Scientific Visualization / Engineering</div>
           </div>
         </footer>
     </div>

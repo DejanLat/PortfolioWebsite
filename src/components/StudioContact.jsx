@@ -314,7 +314,7 @@ export default function StudioContact({ contactEmail = CONTACT_EMAIL }) {
       <footer className="border-t border-white/10">
         <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-3 px-6 py-8 text-sm text-white/55 sm:flex-row">
           <div>&copy; {new Date().getFullYear()} Dejan Latkovic / Axivion Studio</div>
-          <div>Axivion Studio - Scientific Visualization</div>
+          <div>Scientific Visualization</div>
         </div>
       </footer>
     </div>

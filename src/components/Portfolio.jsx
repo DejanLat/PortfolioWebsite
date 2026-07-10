@@ -866,8 +866,8 @@ export default function PortfolioWhite() {
     { label: "Experience", action: () => scrollToSection("experience") },
     { label: "Credits", action: () => scrollToSection("publications") },
     { label: "Projects", action: () => scrollToSection("projects") },
-    { label: "PRISM", to: "/prism" },
-    { label: "Axivion Studio - Scientific Visualization", href: "https://axivionstudio.com/" },
+    { label: "Precision Instrumentation", to: "/prism" },
+    { label: "Scientific Visualization", href: "https://axivionstudio.com/" },
     { label: "Contact", to: "/portfolio/contact" },
   ];
 
@@ -1017,7 +1017,7 @@ export default function PortfolioWhite() {
               onMouseEnter={e => { e.currentTarget.style.borderColor = "#34d399"; e.currentTarget.style.color = "#34d399"; }}
               onMouseLeave={e => { e.currentTarget.style.borderColor = "rgba(255,255,255,0.2)"; e.currentTarget.style.color = "white"; }}
             >
-              Axivion Studio - Scientific Visualization
+              Scientific Visualization
             </a>
             <Link
               to="/portfolio/contact"

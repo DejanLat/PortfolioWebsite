@@ -323,7 +323,7 @@ export default function Renders() {
             </div>
           </Link>
 
-          <nav className="hidden items-center gap-4 text-sm lg:flex" aria-label="Axivion Studio navigation">
+          <nav className="hidden items-center gap-4 text-sm 2xl:flex" aria-label="Axivion Studio navigation">
             {navItems.map((item) => (
               <button
                 key={item.label}
@@ -381,7 +381,7 @@ export default function Renders() {
 
           <button
             type="button"
-            className="grid h-10 w-10 shrink-0 place-items-center rounded-full border border-white/15 text-white/85 transition hover:border-white/30 hover:text-white lg:hidden"
+            className="grid h-10 w-10 shrink-0 place-items-center rounded-full border border-white/15 text-white/85 transition hover:border-white/30 hover:text-white 2xl:hidden"
             onClick={() => setNavOpen((open) => !open)}
             aria-label={navOpen ? "Close navigation" : "Open navigation"}
             aria-expanded={navOpen}
@@ -391,7 +391,7 @@ export default function Renders() {
         </div>
 
         {navOpen && (
-          <div className="border-t border-white/10 bg-black/95 px-4 py-3 shadow-2xl lg:hidden">
+          <div className="border-t border-white/10 bg-black/95 px-4 py-3 shadow-2xl 2xl:hidden">
             <div className="mx-auto grid max-w-7xl gap-1 text-sm">
               {navItems.map((item) => (
                 <button
