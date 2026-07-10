@@ -29,9 +29,9 @@ const META = {
   portfolio: {
     title: "Dejan Latkovic | Engineering Portfolio",
     description:
-      "Portfolio of Dejan Latkovic, nanotechnology engineering student and optomechanical developer focused on scientific instrumentation, cryogenic microscopy, technical visualization, precision motion systems, optics, and hardware prototyping.",
+      "Nanotechnology Engineering student at the University of Waterloo focused on optomechanical design, quantum optics instrumentation, precision engineering, and PRISM.",
     ogDescription:
-      "Nanotechnology engineering portfolio featuring PRISM microscopy, optomechanical systems, scientific visualization, precision motion, optics, and hardware prototyping.",
+      "Nanotechnology Engineering student at the University of Waterloo focused on optomechanical design, quantum optics instrumentation, precision engineering, and PRISM.",
     siteName: "Dejan Latkovic Portfolio",
     canonical: "https://dejanlat.github.io/PortfolioWebsite/",
     image: "https://dejanlat.github.io/PortfolioWebsite/AxivionPrismBanner.png",
@@ -106,13 +106,15 @@ function MetadataManager() {
   const { pathname } = useLocation();
 
   React.useEffect(() => {
-    const type = pathname.startsWith("/portfolio")
+    const type = IS_PORTFOLIO_BUILD && pathname === "/"
       ? "portfolio"
-      : pathname.startsWith("/dejan-latkovic")
-        ? "person"
-        : pathname.startsWith("/prism")
-          ? "prism"
-          : "studio";
+      : pathname.startsWith("/portfolio")
+        ? "portfolio"
+        : pathname.startsWith("/dejan-latkovic")
+          ? "person"
+          : pathname.startsWith("/prism")
+            ? "prism"
+            : "studio";
     const meta = META[type];
 
     document.title = meta.title;
