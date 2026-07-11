@@ -5412,3 +5412,74 @@ html.scrollbar-studio *::-webkit-scrollbar-thumb:hover {
   background: #050a0d;
   color: #f8fafc;
 }
+
+/* Studio Work metadata pills */
+.studio-page .studio-work-pill {
+  white-space: nowrap;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.035);
+}
+
+.studio-page .studio-work-pill-service {
+  border-color: rgba(52, 211, 153, 0.32);
+  background: rgba(52, 211, 153, 0.105);
+  color: rgba(209, 250, 229, 0.94);
+}
+
+.studio-page .studio-work-pill-neutral {
+  border-color: rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.052);
+  color: rgba(255, 255, 255, 0.72);
+}
+
+.studio-page .studio-work-pill-usage {
+  border-color: rgba(94, 234, 212, 0.22);
+  background: rgba(45, 212, 191, 0.07);
+  color: rgba(204, 251, 241, 0.82);
+}
+
+.studio-page .studio-work-pill-delivery {
+  border-color: rgba(255, 255, 255, 0.105);
+  background: rgba(0, 0, 0, 0.18);
+  color: rgba(255, 255, 255, 0.58);
+}
+
+.studio-page .studio-work-pill-priority {
+  border-color: rgba(52, 211, 153, 0.25);
+  background: rgba(52, 211, 153, 0.075);
+  color: rgba(209, 250, 229, 0.84);
+}
+/* Studio licence explanation dialog */
+.studio-page .studio-info-button {
+  border-color: rgba(255, 255, 255, 0.14);
+  background: rgba(255, 255, 255, 0.055);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.055);
+}
+
+.studio-page .studio-info-button:hover {
+  border-color: rgba(52, 211, 153, 0.42);
+  background: rgba(52, 211, 153, 0.11);
+}
+
+.studio-page .studio-license-dialog-backdrop {
+  background: rgba(0, 0, 0, 0.72);
+  backdrop-filter: blur(14px);
+}
+
+.studio-page .studio-license-dialog {
+  border-color: rgba(255, 255, 255, 0.13);
+  background:
+    linear-gradient(145deg, rgba(255, 255, 255, 0.07), rgba(255, 255, 255, 0.032)),
+    #050a0d;
+  box-shadow: 0 24px 90px rgba(0, 0, 0, 0.46);
+}
+
+.studio-page .studio-license-category-card {
+  border-color: rgba(255, 255, 255, 0.11);
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.052), rgba(255, 255, 255, 0.026));
+}
+
+@media (max-width: 640px) {
+  .studio-page .studio-license-dialog {
+    border-radius: 24px;
+  }
+}

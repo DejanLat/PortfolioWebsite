@@ -114,18 +114,41 @@ const TERMS_SECTIONS = [
   {
     title: "Client licence and permitted use",
     body: [
-      "After full cleared payment, the client receives the licence identified in the quote for the final deliverables. The licence may cover academic or research use, internal use, website use, publication use, promotional use, commercial campaign use, paid advertising, packaging, merchandise, resale, sublicensing, geographic scope, duration, exclusivity, or non-exclusivity as applicable.",
-      "Not every project needs a complex licence. The quote may use sensible licence categories, such as academic/research, internal/lab, publication/editorial, commercial communication, or extended campaign use, and may state exceptions or special restrictions.",
+      "After full cleared payment, the client receives the licence identified in the quote for the final Axivion Studio deliverables. The licence may cover Academic and Editorial Use, Organizational and Promotional Use, Campaign, Fundraising, and Large-Scale Use, paid advertising, packaging, merchandise, resale, sublicensing, geographic scope, duration, exclusivity, or non-exclusivity as applicable.",
+      "Not every project needs a complex licence. The project-specific quote controls if it contains different or more specific terms, and may state exceptions or special restrictions for the intended use.",
       "Use outside the approved licence requires written approval. Unless the quote states otherwise, a later licence expansion may be priced at the current applicable usage rate plus an additional $250 CAD update fee. This is a later-use pricing rule, not a penalty or fine.",
-      "No licence is granted for unpaid work, drafts, previews, source files, or working materials unless the quote states otherwise.",
+      "No licence is granted for unpaid work, drafts, previews, source files, working materials, publisher-owned cover layouts, publisher branding, third-party logos, or other third-party material unless the quote states otherwise.",
+    ],
+  },
+  {
+    title: "Licence categories and examples",
+    numberLabel: "11.1",
+    anchorId: "licence-categories-and-examples",
+    body: [
+      "The licence category identified in the quote determines how the final deliverables may be used. The following descriptions are provided as practical guidance. The project-specific quote controls if it contains different or more specific terms.",
+      "Academic and Editorial Use means use in research papers, scientific journals, journal cover submissions, selected journal covers, theses, dissertations, academic grant applications, conference materials, and similar non-promotional scientific or editorial communication. Ordinary promotion by a journal, publisher, researcher, or institution that directly relates to the applicable paper, issue, cover, conference, or research output is included unless the quote states otherwise.",
+      "Organizational and Promotional Use means unpaid communication that promotes or represents a company, institution, product, service, technology, research group, or employer. Examples include organizational websites, organic social-media posts, press releases, product pages, brochures, newsletters, recruitment materials, and ordinary public-relations communication.",
+      "Campaign, Fundraising, and Large-Scale Use means paid, sponsored, investor-facing, fundraising, large-format, or coordinated campaign use. Examples include paid advertisements, sponsored posts, investor or fundraising presentations, product-launch campaigns, trade-show booths, keynote displays, billboards, out-of-home advertising, and coordinated multi-channel campaigns.",
+      "Where the intended use falls into more than one category, the broader applicable licence applies unless otherwise confirmed in writing. The client must disclose the intended use before work begins. Additional uses may be approved later through a written licence expansion and additional fee.",
+    ],
+  },
+  {
+    title: "Publication-related sharing and publisher material",
+    numberLabel: "11.2",
+    anchorId: "publication-sharing-and-publisher-material",
+    body: [
+      "Academic and Editorial Use includes reasonable sharing of a published journal cover, article page, publisher-provided promotional graphic, or the licensed artwork when the use directly announces, discusses, documents, or celebrates the applicable publication, journal issue, conference presentation, or research result. This may include sharing through personal, laboratory, institutional, university, or company communication channels.",
+      "The platform used for sharing does not by itself determine the licence category. For example, an organic LinkedIn post directly announcing a journal publication may fall within Academic and Editorial Use, while an unrelated product-marketing post using the same artwork may require Organizational and Promotional Use.",
+      "Axivion Studio grants rights only to the final deliverables identified in the quote. A complete journal cover or publisher-created promotional graphic may contain third-party logos, mastheads, typography, text, layouts, branding, or other material controlled by the publisher or another rights holder. The Axivion Studio licence does not grant rights to that third-party material. The client remains responsible for following applicable publisher sharing rules, permissions, attribution requirements, and platform restrictions.",
+      "Separate reuse of the underlying Axivion Studio artwork as a general company, product, technology, recruitment, public-relations, or marketing asset requires the applicable Organizational and Promotional Use licence unless otherwise confirmed in writing.",
     ],
   },
   {
     title: "Restricted use and practical sharing",
     body: [
       "Unless the quote allows it, the client may not resell, sublicense, redistribute as a reusable asset, upload to a stock library, resell as a template, use for AI training, fine-tune models, create datasets, generate synthetic data, or use deliverables outside the agreed licence.",
-      "Ordinary project sharing is allowed where needed to support the licensed use. This may include sharing final deliverables with journal publishers, printers, co-authors, collaborators, institutional communications teams, web developers, approved contractors, or similar service providers. Those third parties receive only what they need to support the client's licensed use and do not receive independent reuse rights.",
-      "If the client wants AI-training, dataset, sublicensing, corporate-partner reuse, resale, merchandise, packaging, paid advertising, or unusually broad campaign rights, those rights should be requested before work begins or handled through a written licence expansion.",
+      "Ordinary project sharing is allowed where needed to support the licensed use. This may include sharing final Axivion Studio deliverables with journal publishers, printers, co-authors, collaborators, institutional communications teams, web developers, approved contractors, or similar service providers. Those third parties receive only what they need to support the client's licensed use and do not receive independent reuse rights.",
+      "If the client wants AI-training, dataset, sublicensing, corporate-partner reuse, resale, merchandise, packaging, paid advertising, publisher-material reuse beyond applicable publisher permissions, or unusually broad campaign rights, those rights should be requested before work begins or handled through a written licence expansion.",
     ],
   },
   {
@@ -379,24 +402,31 @@ const StudioTerms = () => {
           <nav aria-label="Terms table of contents" className="studio-terms-toc sticky top-24 rounded-[28px] border p-5">
             <p className="mb-4 text-xs font-semibold uppercase tracking-[0.24em] text-white/45">Contents</p>
             <ol className="space-y-2 text-sm text-white/66">
-              {TERMS_SECTIONS.map((section, index) => (
-                <li key={section.title}>
-                  <a
-                    href={`#${slugify(section.title)}`}
-                    className="block rounded-xl px-3 py-2 transition hover:bg-white/[0.055] hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-300"
-                  >
-                    <span className="mr-2 text-white/35">{String(index + 1).padStart(2, "0")}</span>
-                    {section.title}
-                  </a>
-                </li>
-              ))}
+              {TERMS_SECTIONS.map((section, index) => {
+                const displayNumber = section.numberLabel || String(TERMS_SECTIONS.slice(0, index + 1).filter((item) => !item.numberLabel).length).padStart(2, "0");
+                const id = section.anchorId || slugify(section.title);
+
+                return (
+                  <li key={section.title}>
+                    <a
+                      href={`#${id}`}
+                      className="block rounded-xl px-3 py-2 transition hover:bg-white/[0.055] hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-300"
+                    >
+                      <span className="mr-2 text-white/35">{displayNumber}</span>
+                      {section.title}
+                    </a>
+                  </li>
+                );
+              })}
             </ol>
           </nav>
         </aside>
 
         <article className="space-y-5 print:space-y-4">
           {TERMS_SECTIONS.map((section, index) => {
-            const id = slugify(section.title);
+            const id = section.anchorId || slugify(section.title);
+            const displayNumber = section.numberLabel || String(TERMS_SECTIONS.slice(0, index + 1).filter((item) => !item.numberLabel).length);
+
             return (
               <section
                 key={section.title}
@@ -404,8 +434,8 @@ const StudioTerms = () => {
                 className="studio-terms-section scroll-mt-28 rounded-[28px] border p-6 sm:p-8 print:break-inside-avoid print:rounded-none print:border-0 print:border-t print:border-black/20 print:bg-white print:p-0 print:pt-4 print:shadow-none"
               >
                 <div className="mb-5 flex items-start gap-4">
-                  <span className="flex h-9 w-9 flex-none items-center justify-center rounded-full border border-emerald-300/30 bg-emerald-300/10 text-sm font-semibold text-emerald-100 print:border-black print:bg-white print:text-black">
-                    {index + 1}
+                  <span className="flex h-9 min-w-9 flex-none items-center justify-center rounded-full border border-emerald-300/30 bg-emerald-300/10 px-2 text-sm font-semibold text-emerald-100 print:border-black print:bg-white print:text-black">
+                    {displayNumber}
                   </span>
                   <h2 className="text-2xl font-semibold tracking-tight text-white print:text-xl print:text-black">{section.title}</h2>
                 </div>

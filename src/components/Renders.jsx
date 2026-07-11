@@ -9,6 +9,7 @@ import {
   ExternalLink,
   FileText,
   Image as ImageIcon,
+  Info,
   Layers3,
   Menu,
   Quote,
@@ -32,6 +33,12 @@ const WORK_EXAMPLES = [
     title: "Inside Phoenix Figure Visual",
     tag: "Science Advances Cover",
     image: renderImg("InsidePhoenix2k.jpg"),
+    metadata: [
+      { category: "Service", label: "Scientific Visual Package" },
+      { category: "Complexity", label: "Technical" },
+      { category: "Usage", label: "Academic" },
+      { category: "Delivery", label: "Standard" },
+    ],
     bullets: [
       "Scientific visualization by Dejan Latkovic / Axivion Studio. Cover art credit: Science Advances, Vol. 12, Issue 21, May 22, 2026.",
       "Depicts a photon extractor in bulk diamond, visualizing photonic nanojet behavior around NV centers.",
@@ -48,6 +55,12 @@ const WORK_EXAMPLES = [
     title: "Outside Phoenix Figure Visual",
     tag: "Science Advances Cover",
     image: renderImg("OutsidePhoenix2k.jpg"),
+    metadata: [
+      { category: "Service", label: "Scientific Visual Package" },
+      { category: "Complexity", label: "Technical" },
+      { category: "Usage", label: "Academic" },
+      { category: "Delivery", label: "Standard" },
+    ],
     bullets: [
       "Companion visual for the Science Advances cover submission.",
       "Visualizes the exterior optical structure of the inverse-designed diamond nanostructure.",
@@ -68,6 +81,12 @@ const WORK_EXAMPLES = [
     title: "Metasurface Visualization",
     tag: "Nanophotonics",
     image: renderImg("metasurface.png"),
+    metadata: [
+      { category: "Service", label: "Technical Figure Render" },
+      { category: "Complexity", label: "Simple" },
+      { category: "Usage", label: "Academic" },
+      { category: "Delivery", label: "Priority" },
+    ],
     bullets: [
       "Blender render of a nanophotonic metasurface structure.",
       "Communicates nanoscale geometry, material contrast, and photonic structure layout for research use.",
@@ -76,6 +95,42 @@ const WORK_EXAMPLES = [
   },
 ];
 
+const getWorkPillClassName = ({ category, label }) => {
+  const base = "studio-work-pill inline-flex items-center rounded-full border px-2.5 py-1 text-[11px] font-medium leading-none";
+
+  if (category === "Service") {
+    return `${base} studio-work-pill-service`;
+  }
+
+  if (category === "Usage") {
+    return `${base} studio-work-pill-usage`;
+  }
+
+  if (category === "Delivery" && label === "Priority") {
+    return `${base} studio-work-pill-priority`;
+  }
+
+  if (category === "Delivery") {
+    return `${base} studio-work-pill-delivery`;
+  }
+
+  return `${base} studio-work-pill-neutral`;
+};
+
+const WorkMetadataPills = ({ metadata }) => {
+  if (!Array.isArray(metadata) || metadata.length === 0) return null;
+
+  return (
+    <div className="mt-3 flex flex-wrap gap-2" aria-label="Project metadata">
+      {metadata.map((item) => (
+        <span key={`${item.category}-${item.label}`} className={getWorkPillClassName(item)}>
+          <span className="sr-only">{item.category}: </span>
+          {item.label}
+        </span>
+      ))}
+    </div>
+  );
+};
 const PACKAGES = [
   {
     label: "Entry point",
@@ -151,10 +206,104 @@ const QUOTE_COMPLEXITY = [
   { key: "advanced", label: "Advanced / high concept", factor: 1.8 },
 ];
 
+const COMPLEXITY_GUIDE = [
+  {
+    key: "simple",
+    title: "Simple / well-defined",
+    summary:
+      "Best for projects where the visual direction is already clear and the main job is to produce a polished final render.",
+    items: [
+      "Clear concept, sketch, CAD, or approved composition is already available",
+      "References closely match the intended final visual",
+      "Limited new modeling, composition, or material exploration",
+      "Few interacting parts, mechanisms, or visual layers",
+    ],
+  },
+  {
+    key: "technical",
+    title: "Technical / moderate detail",
+    summary:
+      "Best for projects where the science is clear, but the final visual direction still needs technical interpretation and development.",
+    items: [
+      "Several components, scales, layers, or relationships need to be organized",
+      "Technical material needs to be translated into a clear visual scene",
+      "Custom modeling, materials, lighting, or diagram-like structure is expected",
+      "Some visual decisions will be resolved through discussion and review",
+    ],
+  },
+  {
+    key: "advanced",
+    title: "Advanced / high concept",
+    summary:
+      "Best for projects where the core visual approach is not yet obvious and significant concept development is needed.",
+    items: [
+      "Complex optics, nanotechnology, engineering, or hardware systems must be simplified visually",
+      "Multiple visual directions are possible and need to be explored",
+      "Significant custom modeling, technical abstraction, or scene construction is likely",
+      "More review is needed to balance accuracy, clarity, and visual impact",
+    ],
+  },
+];
+
 const QUOTE_USAGE = [
-  { key: "academic", label: "Academic / lab / internal", add: 0 },
-  { key: "commercial", label: "Commercial communication", add: 500 },
-  { key: "extended", label: "Extended campaign / broad use", add: 1250 },
+  { key: "academic", label: "Academic & Editorial", add: 0 },
+  { key: "commercial", label: "Organizational & Promotional", add: 500 },
+  { key: "extended", label: "Campaign, Fundraising & Large-Scale", add: 1250 },
+];
+
+const LICENSE_GUIDE = [
+  {
+    key: "academic",
+    title: "Academic & Editorial",
+    summary:
+      "For scientific and editorial publication, including reasonable sharing directly connected to a specific paper, issue, cover, conference, or research result.",
+    includes: [
+      "Research papers and journal articles",
+      "Journal cover submissions and selected covers",
+      "Theses and dissertations",
+      "Academic grants",
+      "Conference posters and presentations",
+      "Ordinary promotion directly connected to the published paper or journal issue",
+      "Publication-related sharing on personal, lab, university, company, or social channels",
+    ],
+    note:
+      "This remains Academic & Editorial Use when the purpose is directly connected to announcing, discussing, documenting, or celebrating the specific publication or research result. It does not include general company, product, or organizational marketing.",
+  },
+  {
+    key: "commercial",
+    title: "Organizational & Promotional",
+    summary:
+      "For unpaid communication that promotes or represents an organization, technology, service, product, research group, or employer outside a specific publication context.",
+    includes: [
+      "Company or institutional websites",
+      "Organic LinkedIn and social-media posts",
+      "Press releases",
+      "Product pages",
+      "Brochures and newsletters",
+      "Recruitment and employer-branding material",
+      "Ongoing brand or technology marketing",
+    ],
+    note:
+      "This applies when the original Axivion Studio artwork is separated from its publication context and reused as a broader promotional asset. It does not include paid advertising, sponsored content, fundraising campaigns, large trade-show displays, or merchandise.",
+  },
+  {
+    key: "extended",
+    title: "Campaign, Fundraising & Large-Scale",
+    summary:
+      "For high-value, paid, investor-facing, fundraising, large-format, sponsored, or coordinated campaign use.",
+    includes: [
+      "Paid digital or print advertising",
+      "Sponsored social-media posts",
+      "Investor and fundraising presentations",
+      "Product-launch campaigns",
+      "Trade-show booths and large event displays",
+      "Keynote backdrops",
+      "Billboards and out-of-home advertising",
+      "Coordinated multi-channel campaigns",
+    ],
+    note:
+      "Choose this tier when the visual supports a broader campaign, paid placement, investor-facing communication, or large-format promotional environment.",
+  },
 ];
 
 const CAD_TO_USD_ESTIMATE = 0.73;
@@ -307,8 +456,25 @@ export default function Renders() {
   const [quoteUsage, setQuoteUsage] = useState("academic");
   const [quoteTimeline, setQuoteTimeline] = useState("standard");
   const [openFaqItems, setOpenFaqItems] = useState({});
+  const [licenseDialogOpen, setLicenseDialogOpen] = useState(false);
+  const [complexityDialogOpen, setComplexityDialogOpen] = useState(false);
+  const licenseDialogRef = useRef(null);
+  const licenseCloseRef = useRef(null);
+  const licenseInfoButtonRef = useRef(null);
+  const complexityDialogRef = useRef(null);
+  const complexityCloseRef = useRef(null);
+  const complexityInfoButtonRef = useRef(null);
 
   const heroImage = useMemo(() => renderImg("metasurface.png"), []);
+  const selectedUsageGuide = useMemo(
+    () => LICENSE_GUIDE.find((item) => item.key === quoteUsage) || LICENSE_GUIDE[0],
+    [quoteUsage]
+  );
+  const selectedComplexityGuide = useMemo(
+    () => COMPLEXITY_GUIDE.find((item) => item.key === quoteComplexity) || COMPLEXITY_GUIDE[1],
+    [quoteComplexity]
+  );
+
   const quoteEstimate = useMemo(() => {
     const selectedPackage = QUOTE_PACKAGES.find((item) => item.key === quotePackage) || QUOTE_PACKAGES[1];
     const complexity = QUOTE_COMPLEXITY.find((item) => item.key === quoteComplexity) || QUOTE_COMPLEXITY[1];
@@ -358,6 +524,86 @@ export default function Renders() {
     document.documentElement.classList.add("scrollbar-studio");
     return () => document.documentElement.classList.remove("scrollbar-studio");
   }, []);
+
+  useEffect(() => {
+    if (!licenseDialogOpen) return undefined;
+
+    licenseCloseRef.current?.focus();
+
+    const handleKeyDown = (event) => {
+      if (event.key === "Escape") {
+        setLicenseDialogOpen(false);
+        licenseInfoButtonRef.current?.focus();
+        return;
+      }
+
+      if (event.key !== "Tab" || !licenseDialogRef.current) return;
+
+      const focusable = licenseDialogRef.current.querySelectorAll(
+        'a[href], button:not([disabled]), textarea, input, select, [tabindex]:not([tabindex="-1"])'
+      );
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+
+      if (!first || !last) return;
+
+      if (event.shiftKey && document.activeElement === first) {
+        event.preventDefault();
+        last.focus();
+      } else if (!event.shiftKey && document.activeElement === last) {
+        event.preventDefault();
+        first.focus();
+      }
+    };
+
+    document.addEventListener("keydown", handleKeyDown);
+    return () => document.removeEventListener("keydown", handleKeyDown);
+  }, [licenseDialogOpen]);
+
+  useEffect(() => {
+    if (!complexityDialogOpen) return undefined;
+
+    complexityCloseRef.current?.focus();
+
+    const handleKeyDown = (event) => {
+      if (event.key === "Escape") {
+        setComplexityDialogOpen(false);
+        complexityInfoButtonRef.current?.focus();
+        return;
+      }
+
+      if (event.key !== "Tab" || !complexityDialogRef.current) return;
+
+      const focusable = complexityDialogRef.current.querySelectorAll(
+        'a[href], button:not([disabled]), textarea, input, select, [tabindex]:not([tabindex="-1"])'
+      );
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+
+      if (!first || !last) return;
+
+      if (event.shiftKey && document.activeElement === first) {
+        event.preventDefault();
+        last.focus();
+      } else if (!event.shiftKey && document.activeElement === last) {
+        event.preventDefault();
+        first.focus();
+      }
+    };
+
+    document.addEventListener("keydown", handleKeyDown);
+    return () => document.removeEventListener("keydown", handleKeyDown);
+  }, [complexityDialogOpen]);
+
+  const closeLicenseDialog = () => {
+    setLicenseDialogOpen(false);
+    licenseInfoButtonRef.current?.focus();
+  };
+
+  const closeComplexityDialog = () => {
+    setComplexityDialogOpen(false);
+    complexityInfoButtonRef.current?.focus();
+  };
 
   return (
     <div
@@ -627,6 +873,8 @@ export default function Renders() {
                       <span>{section.title}</span>
                     </div>
 
+                    <WorkMetadataPills metadata={section.metadata} />
+
                     <ul className="mt-3 space-y-2 text-sm">
                       {section.bullets.map((bullet) => (
                         <li key={bullet} className="flex items-start gap-2">
@@ -768,23 +1016,72 @@ export default function Renders() {
               <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
                 {[
                   ["Project type", quotePackage, setQuotePackage, QUOTE_PACKAGES],
+                  ["Timeline", quoteTimeline, setQuoteTimeline, QUOTE_TIMELINE],
                   ["Scientific complexity", quoteComplexity, setQuoteComplexity, QUOTE_COMPLEXITY],
                   ["Use rights", quoteUsage, setQuoteUsage, QUOTE_USAGE],
-                  ["Timeline", quoteTimeline, setQuoteTimeline, QUOTE_TIMELINE],
-                ].map(([label, value, setter, options]) => (
-                  <label key={label} className="studio-select-card block rounded-2xl border p-4">
-                    <span className="block text-sm text-white/58">{label}</span>
-                    <select
-                      value={value}
-                      onChange={(event) => setter(event.target.value)}
-                      className="studio-quote-select mt-3 w-full rounded-xl border px-3 py-3 pr-10 text-sm text-white outline-none focus:border-emerald-300/60"
-                    >
-                      {options.map((option) => (
-                        <option key={option.key} value={option.key}>{option.label}</option>
-                      ))}
-                    </select>
-                  </label>
-                ))}
+                ].map(([label, value, setter, options]) => {
+                  const selectId = `studio-quote-${label.toLowerCase().replace(/[^a-z0-9]+/g, "-")}`;
+                  const isComplexitySelect = label === "Scientific complexity";
+                  const isUsageSelect = label === "Use rights";
+
+                  return (
+                    <div key={label} className="studio-select-card rounded-2xl border p-4">
+                      <div className="flex items-center justify-between gap-3">
+                        <label htmlFor={selectId} className="block text-sm text-white/58">
+                          {label}
+                        </label>
+                        {isComplexitySelect && (
+                          <button
+                            ref={complexityInfoButtonRef}
+                            type="button"
+                            aria-haspopup="dialog"
+                            aria-expanded={complexityDialogOpen}
+                            aria-controls="studio-complexity-dialog"
+                            aria-label="Open scientific complexity explanation"
+                            onClick={() => setComplexityDialogOpen(true)}
+                            className="studio-info-button inline-flex h-8 w-8 items-center justify-center rounded-full border text-emerald-100 transition"
+                          >
+                            <Info size={15} aria-hidden="true" />
+                          </button>
+                        )}
+                        {isUsageSelect && (
+                          <button
+                            ref={licenseInfoButtonRef}
+                            type="button"
+                            aria-haspopup="dialog"
+                            aria-expanded={licenseDialogOpen}
+                            aria-controls="studio-license-dialog"
+                            aria-label="Open use rights explanation"
+                            onClick={() => setLicenseDialogOpen(true)}
+                            className="studio-info-button inline-flex h-8 w-8 items-center justify-center rounded-full border text-emerald-100 transition"
+                          >
+                            <Info size={15} aria-hidden="true" />
+                          </button>
+                        )}
+                      </div>
+                      <select
+                        id={selectId}
+                        value={value}
+                        onChange={(event) => setter(event.target.value)}
+                        className="studio-quote-select mt-3 w-full rounded-xl border px-3 py-3 pr-10 text-sm text-white outline-none focus:border-emerald-300/60"
+                      >
+                        {options.map((option) => (
+                          <option key={option.key} value={option.key}>{option.label}</option>
+                        ))}
+                      </select>
+                      {isComplexitySelect && (
+                        <p className="mt-3 text-xs leading-5 text-white/58">
+                          {selectedComplexityGuide.summary}
+                        </p>
+                      )}
+                      {isUsageSelect && (
+                        <p className="mt-3 text-xs leading-5 text-white/58">
+                          {selectedUsageGuide.summary}
+                        </p>
+                      )}
+                    </div>
+                  );
+                })}
               </div>
             </div>
           </div>
@@ -986,6 +1283,155 @@ export default function Renders() {
           </div>
         </section>
       </main>
+
+      {complexityDialogOpen && (
+        <div
+          className="studio-license-dialog-backdrop fixed inset-0 z-[80] flex items-end justify-center px-4 py-5 sm:items-center sm:p-6"
+          onPointerDown={(event) => {
+            if (event.target === event.currentTarget) closeComplexityDialog();
+          }}
+        >
+          <div
+            ref={complexityDialogRef}
+            id="studio-complexity-dialog"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="studio-complexity-dialog-title"
+            aria-describedby="studio-complexity-dialog-intro"
+            className="studio-license-dialog max-h-[88vh] w-full max-w-3xl overflow-y-auto rounded-[28px] border p-5 shadow-2xl sm:p-6"
+          >
+            <div className="flex items-start justify-between gap-4">
+              <div>
+                <p className="text-xs uppercase tracking-[0.24em] text-emerald-300/78">Scientific complexity</p>
+                <h3 id="studio-complexity-dialog-title" className="mt-2 text-2xl font-semibold tracking-tight text-white">
+                  Choosing the right complexity
+                </h3>
+                <p id="studio-complexity-dialog-intro" className="mt-3 max-w-2xl text-sm leading-7 text-white/66">
+                  Complexity reflects how much creative and technical development is needed to accurately communicate your science. It is not a judgment of the research importance, scientific sophistication, work quality, or publication prestige. The final written quote confirms the actual scope and price.
+                </p>
+              </div>
+              <button
+                ref={complexityCloseRef}
+                type="button"
+                aria-label="Close scientific complexity explanation"
+                onClick={closeComplexityDialog}
+                className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-white/15 bg-white/[0.045] text-white/80 transition hover:border-emerald-300/45 hover:text-white"
+              >
+                <X size={18} aria-hidden="true" />
+              </button>
+            </div>
+
+            <div className="mt-6 grid grid-cols-1 gap-4 md:grid-cols-3">
+              {COMPLEXITY_GUIDE.map((level) => (
+                <article key={level.key} className="studio-license-category-card rounded-2xl border p-4">
+                  <h4 className="text-base font-semibold text-white">{level.title}</h4>
+                  <p className="mt-3 text-sm leading-6 text-white/62">{level.summary}</p>
+                  <ul className="mt-4 space-y-2 text-sm leading-6 text-white/67">
+                    {level.items.map((item) => (
+                      <li key={item} className="flex gap-2.5">
+                        <CheckCircle2 size={15} className="mt-1 shrink-0 text-emerald-300/85" aria-hidden="true" />
+                        <span>{item}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </article>
+              ))}
+            </div>
+
+            <p className="mt-5 rounded-2xl border border-white/10 bg-black/25 p-4 text-sm leading-6 text-white/62">
+              Still unsure? Choose the closest match. After reviewing your references, technical constraints, intended use, and timeline, Axivion Studio will confirm the final complexity and scope before work begins.
+            </p>
+          </div>
+        </div>
+      )}
+      {licenseDialogOpen && (
+        <div
+          className="studio-license-dialog-backdrop fixed inset-0 z-[80] flex items-end justify-center px-4 py-5 sm:items-center sm:p-6"
+          onPointerDown={(event) => {
+            if (event.target === event.currentTarget) closeLicenseDialog();
+          }}
+        >
+          <div
+            ref={licenseDialogRef}
+            id="studio-license-dialog"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="studio-license-dialog-title"
+            aria-describedby="studio-license-dialog-intro"
+            className="studio-license-dialog max-h-[88vh] w-full max-w-4xl overflow-y-auto rounded-[28px] border p-5 shadow-2xl sm:p-6"
+          >
+            <div className="flex items-start justify-between gap-4">
+              <div>
+                <p className="text-xs uppercase tracking-[0.24em] text-emerald-300/78">Use rights</p>
+                <h3 id="studio-license-dialog-title" className="mt-2 text-2xl font-semibold tracking-tight text-white">
+                  Licence categories for final visuals
+                </h3>
+                <p id="studio-license-dialog-intro" className="mt-3 max-w-2xl text-sm leading-7 text-white/66">
+                  Choose the category that matches the main intended use of the final visual. When several categories apply, the broader applicable category should be selected. The final written quote confirms the actual licence.
+                </p>
+              </div>
+              <button
+                ref={licenseCloseRef}
+                type="button"
+                aria-label="Close use rights explanation"
+                onClick={closeLicenseDialog}
+                className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-white/15 bg-white/[0.045] text-white/80 transition hover:border-emerald-300/45 hover:text-white"
+              >
+                <X size={18} aria-hidden="true" />
+              </button>
+            </div>
+
+            <div className="mt-6 grid grid-cols-1 gap-4 lg:grid-cols-3">
+              {LICENSE_GUIDE.map((category) => (
+                <article key={category.key} className="studio-license-category-card rounded-2xl border p-4">
+                  <h4 className="text-base font-semibold text-white">{category.title}</h4>
+                  <ul className="mt-4 space-y-2 text-sm leading-6 text-white/67">
+                    {category.includes.map((item) => (
+                      <li key={item} className="flex gap-2.5">
+                        <CheckCircle2 size={15} className="mt-1 shrink-0 text-emerald-300/85" aria-hidden="true" />
+                        <span>{item}</span>
+                      </li>
+                    ))}
+                  </ul>
+                  <p className="mt-4 border-t border-white/10 pt-4 text-xs leading-5 text-white/55">{category.note}</p>
+                </article>
+              ))}
+            </div>
+
+            <div className="mt-5 rounded-2xl border border-white/10 bg-black/25 p-4">
+              <h4 className="text-sm font-semibold text-white">Publication sharing versus promotional reuse</h4>
+              <div className="mt-4 grid grid-cols-1 gap-3 md:grid-cols-2">
+                <div className="rounded-2xl border border-emerald-300/18 bg-emerald-300/[0.07] p-4">
+                  <p className="text-xs uppercase tracking-[0.2em] text-emerald-200/75">Publication-related sharing</p>
+                  <p className="mt-2 text-sm leading-6 text-white/72">Sharing the complete journal cover to announce your paper.</p>
+                </div>
+                <div className="rounded-2xl border border-white/12 bg-white/[0.045] p-4">
+                  <p className="text-xs uppercase tracking-[0.2em] text-white/48">Promotional reuse</p>
+                  <p className="mt-2 text-sm leading-6 text-white/72">Using the original artwork by itself as a permanent company marketing visual.</p>
+                </div>
+              </div>
+              <p className="mt-4 text-sm leading-6 text-white/62">
+                Example: Posting the complete published journal cover on LinkedIn to announce that your paper was selected is Academic & Editorial Use. Reusing the original artwork by itself as an ongoing company marketing image is Organizational & Promotional Use.
+              </p>
+              <p className="mt-3 text-sm leading-6 text-white/62">
+                Posting the artwork with a link to the applicable paper and a message celebrating the research publication is normally Academic & Editorial Use. Using the same artwork to advertise a product, service, company capability, or recruitment campaign is Organizational & Promotional Use.
+              </p>
+            </div>
+
+            <p className="mt-5 text-sm leading-6 text-white/58">
+              The Axivion Studio licence controls the final artwork delivered by Axivion Studio. It does not grant rights to third-party publisher branding, mastheads, typography, issue layouts, logos, or other publisher-owned material.
+            </p>
+
+            <Link
+              to="/terms#licence-categories-and-examples"
+              onClick={() => setLicenseDialogOpen(false)}
+              className="mt-5 inline-flex text-sm font-medium text-white/80 underline decoration-white/30 underline-offset-4 transition hover:text-white"
+            >
+              View full licensing terms
+            </Link>
+          </div>
+        </div>
+      )}
 
       <footer className="border-t border-white/10 bg-black">
         <div className="mx-auto max-w-7xl px-6 py-6 text-sm text-white/60 flex flex-col sm:flex-row gap-2 sm:items-center sm:justify-between">
