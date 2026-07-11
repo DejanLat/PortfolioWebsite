@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useRef, useState } from "react";
+﻿import React, { useEffect, useMemo, useRef, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useStudioPointerGlow } from "../hooks/useStudioPointerGlow";
 import { motion } from "framer-motion";
@@ -80,7 +80,7 @@ const WORK_EXAMPLES = [
     icon: Layers3,
     title: "Metasurface Visualization",
     tag: "Nanophotonics",
-    image: renderImg("metasurface.png"),
+    image: renderImg("metasurface.jpg"),
     metadata: [
       { category: "Service", label: "Technical Figure Render" },
       { category: "Complexity", label: "Simple" },
