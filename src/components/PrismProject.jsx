@@ -3986,9 +3986,9 @@ const rowsToRender = showAll ? allRows : diffRows;
 
   return (
     <div
-      className="min-h-screen w-full bg-black text-white scroll-smooth"
+      className="readability-page prism-readability-page min-h-screen w-full bg-black text-white scroll-smooth"
       onMouseMove={onMove}
-      style={rootStyle}
+      style={{ ...rootStyle, "--page-accent": ACCENT }}
     >
       {/* BACKGROUND LAYER (fixed) ; above black page bg, below all content */}
       <div className="pointer-events-none fixed inset-0 z-0" aria-hidden>
@@ -4090,8 +4090,7 @@ const rowsToRender = showAll ? allRows : diffRows;
       className="text-center px-6"
     >
       <div
-        className="mx-auto inline-flex items-center gap-2 rounded-full px-3 py-1 text-[11px] sm:text-xs uppercase tracking-[0.18em] text-white/90 border backdrop-blur-sm"
-        style={{ borderColor: "rgba(19,194,179,0.45)", background: "rgba(19,194,179,0.06)" }}
+        className="readability-glass-pill mx-auto inline-flex items-center gap-2 rounded-full px-3 py-1 text-[11px] sm:text-xs uppercase tracking-[0.18em] border"
       >
         <Microscope size={14} /> Instrumentation Preview
       </div>
@@ -4130,11 +4129,7 @@ const rowsToRender = showAll ? allRows : diffRows;
       {kpis.map((k) => (
         <div
           key={k.label}
-          className="rounded-2xl backdrop-blur px-4 py-3 text-center border"
-          style={{
-            background: "rgba(19,194,179,0.06)",
-            borderColor: "rgba(19,194,179,0.18)",
-          }}
+          className="readability-kpi-pill rounded-2xl backdrop-blur px-4 py-3 text-center border"
         >
           <div className="text-lg sm:text-xl font-semibold">{k.value}</div>
           <div className="text-[11px] sm:text-xs text-white/70">{k.label}</div>
@@ -4148,22 +4143,22 @@ const rowsToRender = showAll ? allRows : diffRows;
 <section className="sticky top-16 z-40 border-y border-white/10 bg-black/80 backdrop-blur">
   <div className="mx-auto max-w-7xl px-4 sm:px-6 py-2">
     <div className="flex flex-wrap items-center gap-x-4 gap-y-2 text-sm text-white w-full">
-      <span className="inline-flex items-center gap-1.5">
+      <span className="readability-meta-pill inline-flex items-center gap-1.5 rounded-full border px-3 py-1">
         <Move3DIcon size={16} style={{ color: ACCENT }} />
         <span>Full 3-axis motion</span>
       </span>
-<span className="inline-flex items-center gap-1.5">
+<span className="readability-meta-pill inline-flex items-center gap-1.5 rounded-full border px-3 py-1">
   <Ruler size={16} style={{ color: ACCENT }} />
   <span className="whitespace-nowrap">
     13.5&nbsp;mm<sup className="text-[0.8em] leading-none">3</sup>&nbsp;Range
   </span>
 </span>
 
-      <span className="inline-flex items-center gap-1.5">
+      <span className="readability-meta-pill inline-flex items-center gap-1.5 rounded-full border px-3 py-1">
         <Gauge size={16} style={{ color: ACCENT }} />
         <span>~50 nm Stepping</span>
       </span>
-      <span className="inline-flex items-center gap-1.5">
+      <span className="readability-meta-pill inline-flex items-center gap-1.5 rounded-full border px-3 py-1">
         <Zap size={16} style={{ color: ACCENT }} />
         <span>Piezo Actuation</span>
       </span>
@@ -4229,7 +4224,7 @@ const rowsToRender = showAll ? allRows : diffRows;
                     { h: "Retrofit", p: "Drop-in mounting and common accessory support." },
                     { h: "Stable", p: "Predictable motion and consistent alignment." },
                   ].map((c) => (
-                    <div key={c.h} className="rounded-2xl p-5 border border-white/15 bg-black/50">
+                    <div key={c.h} className="readability-surface-card rounded-2xl p-5 border">
                       <div className="text-lg font-semibold text-white">{c.h}</div>
                       <div className="text-sm text-white/70">{c.p}</div>
                     </div>
@@ -4385,7 +4380,7 @@ const rowsToRender = showAll ? allRows : diffRows;
           ].map((t) => (
             <div
               key={t}
-              className="rounded-2xl p-5 border border-white/15 bg-black/50"
+              className="readability-surface-card rounded-2xl p-5 border"
             >
               <div className="text-lg font-semibold text-white">{t}</div>
             </div>
@@ -4436,12 +4431,7 @@ const rowsToRender = showAll ? allRows : diffRows;
       <button
         key={id}
         onClick={() => setTier(id)}
-        className="rounded-full px-4 py-2 text-sm transition border"
-        style={{
-          backgroundColor: tier === id ? ACCENT : "transparent",
-          color: tier === id ? "#000" : "rgba(255,255,255,0.9)",
-          borderColor: "rgba(255,255,255,0.25)",
-        }}
+        className={`readability-tab-pill rounded-full px-4 py-2 text-sm transition border ${tier === id ? "is-selected" : ""}`}
       >
         {id === "cl-manual"
           ? "Closed-Loop Manual"
@@ -4454,7 +4444,7 @@ const rowsToRender = showAll ? allRows : diffRows;
   <div className="mt-2 text-sm text-white/70">{tierNotes[tier].tagline}</div>
 
  {/* Beam-power / clipping callout */}
-<div className="mt-4 rounded-2xl border border-white/15 bg-black/50 p-4">
+<div className="readability-surface-card mt-4 rounded-2xl border p-4">
   <div className="flex items-stretch gap-3">
     {/* teal bar (full height) */}
     <span
@@ -4476,7 +4466,7 @@ const rowsToRender = showAll ? allRows : diffRows;
 {/* Two model cards */}
 <div className="mt-6 grid grid-cols-1 md:grid-cols-2 gap-6">
   {/* Horizontal */}
-  <div className="rounded-3xl p-6 border border-white/15 bg-black/50">
+  <div className="readability-surface-card rounded-3xl p-6 border">
     <div className="text-sm uppercase tracking-widest text-white/80">Model</div>
     <h3 className="mt-1 text-2xl font-semibold text-white">{models.horizontal.name}</h3>
     <div className="mt-3 aspect-[3/4] rounded-2xl border border-white/15 overflow-hidden bg-black/50">
@@ -4520,7 +4510,7 @@ const rowsToRender = showAll ? allRows : diffRows;
   </div>
 
   {/* Vertical */}
-  <div className="rounded-3xl p-6 border border-white/15 bg-black/50">
+  <div className="readability-surface-card rounded-3xl p-6 border">
     <div className="text-sm uppercase tracking-widest text-white/80">Model</div>
     <h3 className="mt-1 text-2xl font-semibold text-white">{models.vertical.name}</h3>
     <div className="mt-3 aspect-[3/4] rounded-2xl border border-white/15 overflow-hidden bg-black/50">
@@ -4594,7 +4584,7 @@ const rowsToRender = showAll ? allRows : diffRows;
           {diffOnly.length !== comparisonRows.length && (
             <button
               onClick={() => setShowAllRows(s => !s)}
-              className="text-xs rounded-full border border-white/20 px-3 py-1 text-white/80 hover:text-white"
+              className="readability-meta-pill text-xs rounded-full border px-3 py-1 hover:text-white"
             >
               {showAllRows ? "Hide common rows" : "Show all rows"}
             </button>

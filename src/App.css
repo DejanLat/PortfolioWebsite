@@ -5476,3 +5476,134 @@ html.scrollbar-studio *::-webkit-scrollbar-thumb:hover {
     border-radius: 24px;
   }
 }
+
+/* Portfolio and PRISM page-colour scrollbars */
+html.scrollbar-orange,
+html.scrollbar-orange body,
+html.scrollbar-orange * {
+  scrollbar-color: rgba(245, 158, 11, 0.58) #080e14;
+  scrollbar-width: thin;
+}
+
+html.scrollbar-orange::-webkit-scrollbar,
+html.scrollbar-orange body::-webkit-scrollbar,
+html.scrollbar-orange *::-webkit-scrollbar,
+html.scrollbar-teal::-webkit-scrollbar,
+html.scrollbar-teal body::-webkit-scrollbar,
+html.scrollbar-teal *::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+html.scrollbar-orange::-webkit-scrollbar-track,
+html.scrollbar-orange body::-webkit-scrollbar-track,
+html.scrollbar-orange *::-webkit-scrollbar-track {
+  background: #080e14;
+}
+
+html.scrollbar-orange::-webkit-scrollbar-thumb,
+html.scrollbar-orange body::-webkit-scrollbar-thumb,
+html.scrollbar-orange *::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, rgba(245, 158, 11, 0.7), rgba(201, 122, 58, 0.42));
+  border: 2px solid #080e14;
+  border-radius: 999px;
+}
+
+html.scrollbar-orange::-webkit-scrollbar-thumb:hover,
+html.scrollbar-orange body::-webkit-scrollbar-thumb:hover,
+html.scrollbar-orange *::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, rgba(251, 191, 36, 0.82), rgba(245, 158, 11, 0.56));
+}
+
+html.scrollbar-teal,
+html.scrollbar-teal body,
+html.scrollbar-teal * {
+  scrollbar-color: rgba(19, 194, 179, 0.58) #020708;
+  scrollbar-width: thin;
+}
+
+html.scrollbar-teal::-webkit-scrollbar-track,
+html.scrollbar-teal body::-webkit-scrollbar-track,
+html.scrollbar-teal *::-webkit-scrollbar-track {
+  background: #020708;
+}
+
+html.scrollbar-teal::-webkit-scrollbar-thumb,
+html.scrollbar-teal body::-webkit-scrollbar-thumb,
+html.scrollbar-teal *::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, rgba(19, 194, 179, 0.7), rgba(9, 122, 132, 0.42));
+  border: 2px solid #020708;
+  border-radius: 999px;
+}
+
+html.scrollbar-teal::-webkit-scrollbar-thumb:hover,
+html.scrollbar-teal body::-webkit-scrollbar-thumb:hover,
+html.scrollbar-teal *::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, rgba(45, 212, 191, 0.84), rgba(19, 194, 179, 0.56));
+}
+
+/* Shared readable dark-page surfaces for portfolio contact and PRISM */
+.readability-page .readability-glass-pill,
+.readability-page .readability-meta-pill,
+.readability-page .readability-kpi-pill,
+.readability-page .readability-tab-pill {
+  border-color: color-mix(in srgb, var(--page-accent, #f59e0b) 26%, rgba(255, 255, 255, 0.14));
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.09), color-mix(in srgb, var(--page-accent, #f59e0b) 9%, transparent));
+  color: rgba(255, 255, 255, 0.84);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.045);
+  backdrop-filter: blur(10px);
+}
+
+.readability-page .readability-glass-pill {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.readability-page .readability-meta-pill,
+.readability-page .readability-kpi-pill {
+  border-color: rgba(255, 255, 255, 0.14);
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.07), color-mix(in srgb, var(--page-accent, #f59e0b) 7%, transparent));
+}
+
+.readability-page .readability-tab-pill:hover,
+.readability-page .readability-meta-pill:hover,
+.readability-page .readability-surface-card:hover {
+  border-color: color-mix(in srgb, var(--page-accent, #f59e0b) 34%, rgba(255, 255, 255, 0.18));
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.105), color-mix(in srgb, var(--page-accent, #f59e0b) 11%, transparent));
+}
+
+.readability-page .readability-tab-pill.is-selected {
+  border-color: color-mix(in srgb, var(--page-accent, #f59e0b) 52%, rgba(255, 255, 255, 0.16));
+  background: linear-gradient(135deg, color-mix(in srgb, var(--page-accent, #f59e0b) 28%, rgba(255, 255, 255, 0.07)), rgba(255, 255, 255, 0.08));
+  color: rgba(255, 255, 255, 0.96);
+}
+
+.readability-page .readability-surface-card {
+  border-color: rgba(255, 255, 255, 0.12);
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.07), color-mix(in srgb, var(--page-accent, #f59e0b) 6%, rgba(255, 255, 255, 0.025)));
+  box-shadow: 0 20px 70px rgba(0, 0, 0, 0.2);
+}
+
+.readability-page .readability-field,
+.readability-page .readability-select {
+  border-color: rgba(255, 255, 255, 0.16);
+  background-color: rgba(4, 8, 10, 0.68);
+  color: rgba(255, 255, 255, 0.9);
+  color-scheme: dark;
+}
+
+.readability-page .readability-select {
+  appearance: none;
+  -webkit-appearance: none;
+  background-image:
+    linear-gradient(45deg, transparent 50%, color-mix(in srgb, var(--page-accent, #f59e0b) 82%, white) 50%),
+    linear-gradient(135deg, color-mix(in srgb, var(--page-accent, #f59e0b) 82%, white) 50%, transparent 50%),
+    linear-gradient(145deg, rgba(255, 255, 255, 0.06), color-mix(in srgb, var(--page-accent, #f59e0b) 5%, transparent));
+  background-position: calc(100% - 19px) 50%, calc(100% - 13px) 50%, 0 0;
+  background-size: 6px 6px, 6px 6px, 100% 100%;
+  background-repeat: no-repeat;
+}
+
+.readability-page .readability-select option {
+  background: #080e14;
+  color: #f8fafc;
+}

@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import { motion } from "framer-motion";
 import {
   ArrowLeft,
@@ -28,7 +28,12 @@ export default function Contact({ contactEmail = CONTACT_EMAIL }) {
   const [message, setMessage] = useState("");
 
   const solidNav = useScrolledHeader();
-  const rootStyle = { "--mx": `${mx}px`, "--my": `${my}px` };
+  const rootStyle = { "--mx": `${mx}px`, "--my": `${my}px`, "--page-accent": ACCENT };
+
+  useEffect(() => {
+    document.documentElement.classList.add("scrollbar-orange");
+    return () => document.documentElement.classList.remove("scrollbar-orange");
+  }, []);
 
   const subjectMap = useMemo(
     () => ({
@@ -103,7 +108,7 @@ export default function Contact({ contactEmail = CONTACT_EMAIL }) {
 
   return (
     <div
-      className="min-h-screen w-full bg-black text-white"
+      className="readability-page min-h-screen w-full bg-black text-white"
       style={rootStyle}
       onMouseMove={(event) => {
         setMx(event.clientX);
@@ -154,8 +159,7 @@ export default function Contact({ contactEmail = CONTACT_EMAIL }) {
               className="max-w-3xl"
             >
               <div
-                className="inline-flex items-center gap-2 rounded-full border px-4 py-1 text-xs uppercase tracking-widest text-white/90 backdrop-blur-sm"
-                style={{ borderColor: "rgba(245,158,11,0.42)", background: "rgba(255,255,255,0.07)" }}
+                className="readability-glass-pill inline-flex items-center gap-2 rounded-full border px-4 py-1 text-xs uppercase tracking-widest"
               >
                 Contact
               </div>
@@ -177,8 +181,7 @@ export default function Contact({ contactEmail = CONTACT_EMAIL }) {
               <a
                 key={path.title}
                 href={path.href || buildMailto(subjectMap[path.topic], path.body)}
-                className="rounded-3xl border p-7 transition hover:bg-white/10"
-                style={{ borderColor: "rgba(245,158,11,0.26)", background: "rgba(245,158,11,0.07)" }}
+                className="readability-surface-card rounded-3xl border p-7 transition"
               >
                 <path.icon size={24} style={{ color: ACCENT }} />
                 <h2 className="mt-4 text-2xl font-semibold">{path.title}</h2>
@@ -195,7 +198,7 @@ export default function Contact({ contactEmail = CONTACT_EMAIL }) {
               <a
                 key={path.title}
                 href={path.href || buildMailto(subjectMap[path.topic], path.body)}
-                className="rounded-3xl border border-white/10 bg-white/5 p-5 transition hover:bg-white/10"
+                className="readability-surface-card rounded-3xl border p-5 transition"
               >
                 <path.icon size={20} className="text-white/80" />
                 <h3 className="mt-3 text-lg font-semibold">{path.title}</h3>
@@ -238,7 +241,7 @@ export default function Contact({ contactEmail = CONTACT_EMAIL }) {
                   <input
                     value={name}
                     onChange={(event) => setName(event.target.value)}
-                    className="w-full rounded-xl bg-black/60 border border-white/15 px-3 py-2 outline-none focus:border-white/40"
+                    className="readability-field w-full rounded-xl border px-3 py-2 outline-none focus:border-white/40"
                     placeholder="Your name"
                     autoComplete="name"
                   />
@@ -248,7 +251,7 @@ export default function Contact({ contactEmail = CONTACT_EMAIL }) {
                   <input
                     value={org}
                     onChange={(event) => setOrg(event.target.value)}
-                    className="w-full rounded-xl bg-black/60 border border-white/15 px-3 py-2 outline-none focus:border-white/40"
+                    className="readability-field w-full rounded-xl border px-3 py-2 outline-none focus:border-white/40"
                     placeholder="Lab / company / team"
                     autoComplete="organization"
                   />
@@ -260,7 +263,7 @@ export default function Contact({ contactEmail = CONTACT_EMAIL }) {
                 <select
                   value={topic}
                   onChange={(event) => setTopic(event.target.value)}
-                  className="w-full rounded-xl bg-black/60 border border-white/15 px-3 py-2 outline-none focus:border-white/40"
+                  className="readability-select w-full rounded-xl border px-3 py-2 outline-none focus:border-white/40"
                 >
                   {Object.keys(subjectMap).map((key) => (
                     <option key={key}>{key}</option>
@@ -274,7 +277,7 @@ export default function Contact({ contactEmail = CONTACT_EMAIL }) {
                   value={message}
                   onChange={(event) => setMessage(event.target.value)}
                   rows={6}
-                  className="w-full rounded-xl bg-black/60 border border-white/15 px-3 py-2 outline-none focus:border-white/40"
+                  className="readability-field w-full rounded-xl border px-3 py-2 outline-none focus:border-white/40"
                   placeholder="A brief description of your request, timeline, and relevant context..."
                 />
               </div>
