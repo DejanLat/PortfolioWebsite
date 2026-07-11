@@ -81,3 +81,24 @@ android-sdk/ -e
 # Environment files
 *.env
 *.env.*
+# Local AI/tooling configuration and generated agent notes
+.claude/
+.codex/
+.agents/
+.stitch/
+
+# Internal handoff, review, and testing notes
+Website-Update-Context.md
+Axivion-Studio-Codex-Handoff.md
+Axivion-Studio-Codex-Handoff_2_revised.md
+test_result.md
+docs/legal/
+
+# Public production source maps
+*.map
+docs/static/**/*.map
+build/static/**/*.map
+
+# Guard against accidental private archive copies inside this repository
+Axivion-Private-Archive/
+private-archive/

@@ -278,9 +278,8 @@ const TESTIMONIAL = {
   initials: "BS",
   image: `${renderImg("behrooz-semnani.avif")}?v=2`,
   linkedin: "https://www.linkedin.com/in/behrooz-semnani-phd-9a84b931/",
-  quote:
-    "Approved client quote pending.",
-  note: "Use only after Behrooz approves the exact quote, photo, title, and link.",
+  quote: "",
+  isReady: false,
 };
 
 const ARTIST_QUOTE = {
@@ -797,60 +796,6 @@ export default function Renders() {
           </div>
 
           <div className="space-y-6">
-            {/* Pending permission: keep Behrooz testimonial code disabled until quote/photo/link approval is confirmed.
-            <article
-              className="relative overflow-hidden rounded-[2rem] border border-emerald-300/35 bg-[#06110d] p-6 shadow-2xl shadow-emerald-950/30 md:p-8 lg:p-10"
-              aria-label="Client testimonial placeholder"
-            >
-              <div
-                className="pointer-events-none absolute inset-0 opacity-80"
-                style={{ background: "radial-gradient(58rem 26rem at 16% 0%, rgba(52,211,153,0.22), transparent 58%)" }}
-              />
-              <div className="relative grid grid-cols-1 gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(300px,380px)] lg:items-center">
-                <div className="min-w-0">
-                  <div className="text-xs uppercase tracking-[0.24em] text-emerald-200/75">
-                    {TESTIMONIAL.label}
-                  </div>
-                  <Quote size={48} className="mt-6 text-emerald-300/65" />
-                  <blockquote className="mt-5 max-w-4xl text-xl font-medium leading-9 text-white md:text-2xl md:leading-10 lg:text-[1.7rem] lg:leading-[2.8rem]">
-                    {TESTIMONIAL.quote}
-                  </blockquote>
-                  <p className="mt-5 max-w-2xl text-xs leading-5 text-white/40">
-                    {TESTIMONIAL.note}
-                  </p>
-                </div>
-
-                <aside className="border-t border-white/10 pt-6 lg:border-l lg:border-t-0 lg:pl-8 lg:pt-0">
-                  <div
-                    className="aspect-square w-[min(100%,360px)] overflow-hidden rounded-[2rem] border shadow-2xl shadow-black/35 lg:w-[min(100%,360px)]"
-                    style={{ borderColor: "rgba(52,211,153,0.48)", background: "linear-gradient(135deg, rgba(52,211,153,0.22), rgba(255,255,255,0.06))" }}
-                  >
-                    <img
-                      src={TESTIMONIAL.image}
-                      alt={`${TESTIMONIAL.name} profile`}
-                      className="h-full w-full object-cover"
-                      loading="eager"
-                      decoding="async"
-                    />
-                  </div>
-                  <div className="mt-5">
-                    <div className="text-lg font-semibold text-white">{TESTIMONIAL.name}</div>
-                    <div className="mt-1 text-sm text-white/60">{TESTIMONIAL.role}</div>
-                    <div className="mt-1 text-xs uppercase tracking-widest text-white/38">{TESTIMONIAL.organization}</div>
-                    <a
-                      href={TESTIMONIAL.linkedin}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="mt-4 inline-flex items-center justify-center gap-1.5 text-xs font-medium text-emerald-100/80 transition hover:text-emerald-200"
-                    >
-                      LinkedIn <ExternalLink size={12} />
-                    </a>
-                  </div>
-                </aside>
-              </div>
-            </article>
-
-            */}
 
             <article className="relative overflow-hidden rounded-[2rem] border border-white/10 bg-white/[0.035] p-6 shadow-2xl shadow-black/20 md:p-8 lg:p-8">
               <div className="grid grid-cols-1 gap-8 lg:grid-cols-[minmax(240px,320px)_minmax(0,1fr)] lg:items-center">
