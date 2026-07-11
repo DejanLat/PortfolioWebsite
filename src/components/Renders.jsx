@@ -186,7 +186,7 @@ export const TERMS_GROUPS = [
     items: [
       "Final usage rights are confirmed in the project quote and normally begin after required payment clears.",
       "Working files, source scenes, models, and editable assets are not included unless stated.",
-      "Expanded use, source files, or additional formats can be quoted before work begins or approved later in writing.",
+      "Expanded use or additional formats can be quoted before work begins or approved later in writing. Source files require a separate agreement based on the project.",
     ],
   },
   {
@@ -203,62 +203,67 @@ const FAQ_ITEMS = [
   {
     question: "What files will I receive?",
     answer:
-      "Your quote lists the final export files included. Typical deliveries are high-resolution PNG or JPEG files, with other formats added when agreed before work begins.",
+      "Your quote lists the final export files included. Typical deliverables are high-resolution PNG or JPEG files, with TIFF, MP4, transparent-background versions, alternate crops, or other formats added when agreed in the quote.",
   },
   {
     question: "Are Blender, CAD, or source files included?",
     answer:
-      "No. Working files, source scenes, models, textures, project folders, and editable assets are excluded unless they are specifically included in the written quote.",
+      "Not by default. Working files, source scenes, models, textures, project folders, and editable assets are only included when specifically listed in the written quote. If requested later, source files require a separate agreement based on the project.",
   },
   {
     question: "What information do you need to begin?",
     answer:
-      "Please share the project context, intended use, timeline, reference material, technical constraints, and any journal, proposal, web, or presentation requirements.",
+      "Please share the project context, intended use, timeline, reference material, technical constraints, and any journal, proposal, website, presentation, or publication requirements.",
   },
   {
     question: "How do revision rounds work?",
     answer:
-      "A revision round is one consolidated set of feedback for a draft or milestone. The round begins when Axivion Studio starts implementing that feedback, and your quote states how many rounds are included.",
+      "Each revision round consists of one consolidated set of feedback. Your quote states how many revision rounds are included for the project.",
   },
   {
     question: "Can confidential or embargoed projects be handled?",
     answer:
-      "Yes. Confidential or unpublished work can be handled privately when confidentiality, embargo, and portfolio-sharing expectations are agreed in writing before work begins.",
+      "Yes. Confidential or unpublished projects can be handled privately when confidentiality, embargo, and portfolio-sharing expectations are agreed in writing before sensitive material is shared.",
   },
   {
     question: "How are usage rights selected?",
     answer:
-      "Usage rights are selected during quoting based on whether the visual is for academic, internal, publication, commercial communication, promotional, or broader campaign use.",
+      "Your quote confirms the approved uses for the final visual, such as academic publication, internal communication, websites, promotional material, or broader commercial use.",
   },
   {
     question: "Can usage rights be expanded later?",
     answer:
-      "Usually, yes. Expanded use after approval may require an updated licence and an additional licensing fee under the Terms of Service.",
+      "Usually, yes. Expanded use may require written approval, an updated licence, and the current applicable usage rate plus an additional $250 CAD update fee.",
   },
   {
     question: "Do you guarantee journal or cover acceptance?",
     answer:
-      "No. Axivion Studio creates polished scientific visuals, but publication, journal, cover, funding, and business outcomes are never guaranteed.",
+      "No. Axivion Studio can design around journal specifications and cover requirements, but editorial selection, publication acceptance, funding, and other external outcomes are not guaranteed.",
   },
   {
     question: "What currencies and payment schedules are available?",
     answer:
-      "Prices are quoted in CAD with approximate USD guidance when useful. Most projects use a 50% deposit and 50% before final delivery; larger projects may use milestones.",
+      "Prices are quoted in CAD, with approximate USD guidance when useful. Most projects begin with a 50% deposit and the remaining balance is due before final delivery. Larger projects may use milestone payments.",
   },
   {
     question: "What happens if the project scope changes?",
     answer:
-      "New concepts, additional visuals, new formats, major direction changes, or expanded usage may require a revised quote and timeline.",
+      "New concepts, additional visuals, new formats, major direction changes, or expanded usage may require an updated quote, fee, and timeline.",
   },
   {
     question: "Can journal-specific dimensions or submission requirements be accommodated?",
     answer:
-      "Yes. Include the target dimensions, format, resolution, colour, and submission requirements during scoping so they can be included in the quote.",
+      "Yes. Include the target dimensions, format, resolution, colour requirements, and submission specifications during scoping so they can be included in the quote.",
   },
   {
     question: "Is rush work available?",
     answer:
-      "Rush work may be available depending on scope and schedule. Priority or rush timelines can carry an additional fee.",
+      "Rush work may be available depending on project scope and current schedule. Priority or accelerated timelines may carry an additional fee.",
+  },
+  {
+    question: "What happens after I request a quote?",
+    answer:
+      "You will receive a reply requesting any missing project details. Once the scope is clear, Axivion Studio will provide a written quote outlining deliverables, pricing, revision rounds, timeline, payment schedule, and usage rights.",
   },
 ];
 const PROCESS = [
@@ -301,6 +306,7 @@ export default function Renders() {
   const [quoteComplexity, setQuoteComplexity] = useState("technical");
   const [quoteUsage, setQuoteUsage] = useState("academic");
   const [quoteTimeline, setQuoteTimeline] = useState("standard");
+  const [openFaqItems, setOpenFaqItems] = useState({});
 
   const heroImage = useMemo(() => renderImg("metasurface.png"), []);
   const quoteEstimate = useMemo(() => {
@@ -678,11 +684,11 @@ export default function Renders() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-80px" }}
                 transition={{ duration: 0.45 }}
-                className={`flex h-full flex-col rounded-3xl border p-6 transition hover:-translate-y-0.5 hover:bg-white/10 ${pkg.label === "Most requested" ? "border-emerald-300/40 bg-emerald-300/[0.105] shadow-2xl shadow-emerald-950/20" : "border-emerald-300/25 bg-emerald-300/[0.07]"}`}
+                className={`studio-package-card flex h-full flex-col rounded-3xl border p-6 transition hover:-translate-y-0.5 ${pkg.label === "Most requested" ? "studio-package-card-featured shadow-2xl shadow-emerald-950/20" : "studio-package-card-neutral"}`}
               >
                 <div className="flex items-start justify-between gap-3">
                   <h3 className="text-xl font-semibold leading-tight">{pkg.name}</h3>
-                  <span className="rounded-full border border-emerald-300/28 bg-emerald-300/10 px-3 py-1 text-xs font-medium text-emerald-100 whitespace-nowrap">
+                  <span className="studio-soft-pill whitespace-nowrap rounded-full px-3 py-1 text-xs font-medium">
                     {pkg.label}
                   </span>
                 </div>
@@ -731,15 +737,13 @@ export default function Renders() {
           <div className="rounded-3xl border border-white/10 bg-white/5 p-6 shadow-[0_20px_70px_rgba(0,0,0,0.22)] md:p-8">
             <div className="grid grid-cols-1 gap-8 lg:grid-cols-[0.85fr_1.15fr] lg:items-start">
               <div>
-                <div className="text-sm uppercase tracking-widest" style={{ color: ACCENT }}>
-                  Quote Calculator
-                </div>
+                <p className="studio-section-pill inline-flex rounded-full px-3 py-1 text-xs font-semibold uppercase tracking-[0.24em]">Quote Calculator</p>
                 <h2 className="mt-2 text-3xl font-semibold tracking-tight">Estimate a starting range.</h2>
                 <p className="mt-4 text-sm leading-7 text-white/65">
                   Calculator results are planning estimates. Final pricing is confirmed in the written project quote.
                 </p>
-                <div className="mt-6 rounded-3xl border border-emerald-300/20 bg-emerald-300/10 p-5">
-                  <div className="flex items-center gap-2 text-sm uppercase tracking-widest text-emerald-100">
+                <div className="studio-quote-summary mt-6 rounded-3xl border p-5">
+                  <div className="flex items-center gap-2 text-sm uppercase tracking-widest text-white/58">
                     <Calculator size={16} /> Estimated range
                   </div>
                   <div className="mt-3 text-4xl font-semibold tracking-tight">
@@ -749,7 +753,7 @@ export default function Renders() {
                     Approx. ${quoteEstimate.usdLow.toLocaleString()}-${quoteEstimate.usdHigh.toLocaleString()} USD. Based on {quoteEstimate.label} with {quoteEstimate.timeline.toLowerCase()}.
                   </p>
                   <p className="mt-2 text-xs leading-5 text-white/52">
-                    Estimates include the usage selected when the project is quoted. Expanding usage after approval may require an additional licensing fee under the Terms of Service.
+                    Estimates include the usage selected when the project is quoted. Expanding usage after approval may require the current applicable usage rate plus an additional $250 CAD update fee under the Terms of Service.
                   </p>
                   <Link
                     to="/contact"
@@ -768,12 +772,12 @@ export default function Renders() {
                   ["Use rights", quoteUsage, setQuoteUsage, QUOTE_USAGE],
                   ["Timeline", quoteTimeline, setQuoteTimeline, QUOTE_TIMELINE],
                 ].map(([label, value, setter, options]) => (
-                  <label key={label} className="block rounded-2xl border border-white/10 bg-black/60 p-4">
+                  <label key={label} className="studio-select-card block rounded-2xl border p-4">
                     <span className="block text-sm text-white/58">{label}</span>
                     <select
                       value={value}
                       onChange={(event) => setter(event.target.value)}
-                      className="mt-3 w-full rounded-xl border border-white/15 bg-black/70 px-3 py-3 text-sm text-white outline-none focus:border-emerald-300/60"
+                      className="studio-quote-select mt-3 w-full rounded-xl border px-3 py-3 pr-10 text-sm text-white outline-none focus:border-emerald-300/60"
                     >
                       {options.map((option) => (
                         <option key={option.key} value={option.key}>{option.label}</option>
@@ -918,20 +922,42 @@ export default function Renders() {
             </div>
 
             <div className="mt-7 grid grid-cols-1 gap-3 lg:grid-cols-2">
-              {FAQ_ITEMS.map((item) => (
-                <details
-                  key={item.question}
-                  className="group rounded-2xl border border-white/10 bg-black/60 p-4 transition hover:border-emerald-300/25 hover:bg-white/[0.06]"
-                >
-                  <summary className="cursor-pointer list-none text-base font-medium text-white marker:hidden focus-visible:outline-none">
-                    <span className="flex items-start justify-between gap-4">
+              {FAQ_ITEMS.map((item, index) => {
+                const answerId = `studio-faq-answer-${index}`;
+                const questionId = `studio-faq-question-${index}`;
+                const isOpen = Boolean(openFaqItems[index]);
+
+                return (
+                  <article
+                    key={item.question}
+                    className="group overflow-hidden rounded-2xl border border-white/10 bg-black/25 transition hover:border-emerald-300/25 hover:bg-white/[0.06]"
+                  >
+                    <button
+                      id={questionId}
+                      type="button"
+                      aria-expanded={isOpen}
+                      aria-controls={answerId}
+                      onClick={() => setOpenFaqItems((current) => ({ ...current, [index]: !current[index] }))}
+                      className="flex w-full cursor-pointer items-start justify-between gap-4 p-4 text-left text-base font-medium text-white transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-[-2px] focus-visible:outline-emerald-300"
+                    >
                       <span>{item.question}</span>
-                      <span className="mt-1 text-emerald-300 transition group-open:rotate-45" aria-hidden>+</span>
-                    </span>
-                  </summary>
-                  <p className="mt-3 text-sm leading-7 text-white/68">{item.answer}</p>
-                </details>
-              ))}
+                      <span className="mt-0.5 shrink-0 text-lg leading-none text-emerald-300" aria-hidden="true">
+                        {isOpen ? "-" : "+"}
+                      </span>
+                    </button>
+                    <div
+                      id={answerId}
+                      role="region"
+                      aria-labelledby={questionId}
+                      className={`studio-faq-answer ${isOpen ? "is-open" : ""}`}
+                    >
+                      <div className="overflow-hidden">
+                        <p className="px-4 pb-4 text-sm leading-7 text-white/68">{item.answer}</p>
+                      </div>
+                    </div>
+                  </article>
+                );
+              })}
             </div>
           </div>
         </section>

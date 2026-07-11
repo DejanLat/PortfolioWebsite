@@ -98,7 +98,7 @@ const TERMS_SECTIONS = [
       "Final deliverables are only the final export files listed in the quote. Common final formats may include PNG, JPEG, TIFF, MP4, or other agreed formats. Alternate crops, transparent-background versions, layered files, journal-specific dimensions, or special submission specifications should be included in the quote or added by written approval.",
       "Drafts, previews, screenshots, low-resolution exports, and watermarked files are provided for review only. They are not final deliverables and may not be published, redistributed, submitted, or used externally unless Axivion Studio gives written permission.",
       "Blender scenes, CAD working files, models, textures, node systems, lighting setups, project folders, templates, workflows, reusable methods, non-client-specific assets, and general technical know-how are excluded unless the quote expressly includes source-file delivery or a different arrangement.",
-      "If future editability is important, source-file delivery or future update support can be discussed and quoted before work begins. If source files are sold, the quote should define exactly which files are delivered, whether third-party assets may be included, permitted use, whether support or compatibility is included, and whether any future software-version support is offered.",
+      "If future editability is important, source-file delivery or future update support can be discussed and quoted before work begins. Source files requested later require a separate written agreement based on the project, because file availability, third-party assets, permitted use, support, compatibility, and future software-version limits may vary.",
     ],
   },
   {
@@ -116,7 +116,7 @@ const TERMS_SECTIONS = [
     body: [
       "After full cleared payment, the client receives the licence identified in the quote for the final deliverables. The licence may cover academic or research use, internal use, website use, publication use, promotional use, commercial campaign use, paid advertising, packaging, merchandise, resale, sublicensing, geographic scope, duration, exclusivity, or non-exclusivity as applicable.",
       "Not every project needs a complex licence. The quote may use sensible licence categories, such as academic/research, internal/lab, publication/editorial, commercial communication, or extended campaign use, and may state exceptions or special restrictions.",
-      "Use outside the approved licence requires written approval and may require an additional licence fee. Unless the quote states otherwise, a later licence expansion may be priced at up to 1.5 times the equivalent usage add-on that would have applied if selected before work began. This is a later-use pricing rule, not a penalty or fine.",
+      "Use outside the approved licence requires written approval. Unless the quote states otherwise, a later licence expansion may be priced at the current applicable usage rate plus an additional $250 CAD update fee. This is a later-use pricing rule, not a penalty or fine.",
       "No licence is granted for unpaid work, drafts, previews, source files, or working materials unless the quote states otherwise.",
     ],
   },
@@ -297,17 +297,23 @@ const StudioTerms = () => {
         <div className="studio-cursor-glow absolute inset-0" />
         <div className="studio-top-glow absolute inset-x-0 top-0 h-[76vh]" />
       </div>
-      <section className="relative overflow-hidden border-b border-white/10 bg-black px-5 py-10 sm:px-8 lg:px-10 print:border-b-0 print:bg-white print:px-0 print:py-0">
+      <header className="fixed inset-x-0 top-0 z-50 border-b border-white/10 bg-black/75 backdrop-blur print:hidden">
+        <div className="mx-auto flex h-16 max-w-7xl items-center gap-3 px-4 sm:px-6 lg:px-8">
+          <Link to="/" className="inline-flex items-center gap-2 text-sm text-white/75 transition hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-emerald-300">
+            <ArrowLeft size={18} />
+            Back
+          </Link>
+          <div className="h-5 w-px bg-white/18" />
+          <div className="font-semibold tracking-widest">TERMS</div>
+          <div className="hidden text-white/45 sm:block">AXIVION STUDIO</div>
+        </div>
+      </header>
+
+      <section className="relative overflow-hidden border-b border-white/10 bg-transparent px-5 pb-10 pt-32 sm:px-8 lg:px-10 print:border-b-0 print:bg-white print:px-0 print:py-0">
         <div className="pointer-events-none absolute inset-0 studio-terms-header-glow print:hidden" aria-hidden="true" />
         <div className="relative mx-auto flex max-w-6xl flex-col gap-8 lg:flex-row lg:items-end lg:justify-between">
           <div className="max-w-3xl">
-            <Link
-              to="/"
-              className="mb-6 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.04] px-4 py-2 text-sm font-medium text-white/75 transition hover:border-emerald-300/45 hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-emerald-300 print:hidden"
-            >
-              <ArrowLeft className="h-4 w-4" aria-hidden="true" />
-              Back to Studio
-            </Link>
+
             <p className="mb-3 text-xs font-semibold uppercase tracking-[0.28em] text-emerald-300 print:text-black">
               Axivion Studio
             </p>
@@ -318,7 +324,7 @@ const StudioTerms = () => {
               These terms apply to scientific visualization, technical rendering, modeling, figure packages, animations, consulting, and related creative services provided by Axivion Studio. They are a business draft for professional review and have not been represented as reviewed or approved by a lawyer.
             </p>
           </div>
-          <div className="flex flex-col gap-3 rounded-[28px] border border-white/10 bg-white/[0.045] p-5 text-sm text-white/72 shadow-[0_20px_80px_rgba(0,0,0,0.34)] print:border print:border-black print:bg-white print:text-black print:shadow-none">
+          <div className="studio-terms-meta-card flex flex-col gap-3 rounded-[28px] border p-5 text-sm text-white/72 print:border print:border-black print:bg-white print:text-black print:shadow-none">
             <div>
               <span className="block text-xs uppercase tracking-[0.2em] text-white/42 print:text-black/60">Effective date</span>
               <strong className="mt-1 block text-white print:text-black">{EFFECTIVE_DATE}</strong>
@@ -345,8 +351,8 @@ const StudioTerms = () => {
         </div>
       </section>
 
-      <section className="border-b border-white/10 bg-black px-5 py-8 sm:px-8 lg:px-10 print:border-b-0 print:bg-white print:px-0 print:py-4">
-        <div className="relative mx-auto max-w-6xl overflow-hidden rounded-[28px] border border-white/10 bg-white/5 p-6 shadow-[0_22px_80px_rgba(0,0,0,0.32)] print:border-black print:bg-white print:shadow-none">
+      <section className="border-b border-white/10 bg-transparent px-5 py-8 sm:px-8 lg:px-10 print:border-b-0 print:bg-white print:px-0 print:py-4">
+        <div className="studio-terms-summary-card relative mx-auto max-w-6xl overflow-hidden rounded-[28px] border p-6 print:border-black print:bg-white print:shadow-none">
           <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(36rem_18rem_at_12%_0%,rgba(52,211,153,0.12),transparent_62%),linear-gradient(135deg,rgba(255,255,255,0.055),rgba(255,255,255,0.018))] print:hidden" />
           <div className="relative flex flex-col gap-5 lg:flex-row lg:items-start lg:justify-between">
             <div className="max-w-2xl">
@@ -370,7 +376,7 @@ const StudioTerms = () => {
 
       <div className="mx-auto grid max-w-6xl gap-8 px-5 py-10 sm:px-8 lg:grid-cols-[280px_minmax(0,1fr)] lg:px-10 print:block print:px-0 print:py-0">
         <aside className="hidden lg:block print:hidden">
-          <nav aria-label="Terms table of contents" className="sticky top-24 rounded-[28px] border border-white/10 bg-white/[0.045] p-5 shadow-[0_20px_80px_rgba(0,0,0,0.28)]">
+          <nav aria-label="Terms table of contents" className="studio-terms-toc sticky top-24 rounded-[28px] border p-5">
             <p className="mb-4 text-xs font-semibold uppercase tracking-[0.24em] text-white/45">Contents</p>
             <ol className="space-y-2 text-sm text-white/66">
               {TERMS_SECTIONS.map((section, index) => (
@@ -395,7 +401,7 @@ const StudioTerms = () => {
               <section
                 key={section.title}
                 id={id}
-                className="scroll-mt-28 rounded-[28px] border border-white/10 bg-white/[0.045] p-6 shadow-[0_20px_80px_rgba(0,0,0,0.22)] sm:p-8 print:break-inside-avoid print:rounded-none print:border-0 print:border-t print:border-black/20 print:bg-white print:p-0 print:pt-4 print:shadow-none"
+                className="studio-terms-section scroll-mt-28 rounded-[28px] border p-6 sm:p-8 print:break-inside-avoid print:rounded-none print:border-0 print:border-t print:border-black/20 print:bg-white print:p-0 print:pt-4 print:shadow-none"
               >
                 <div className="mb-5 flex items-start gap-4">
                   <span className="flex h-9 w-9 flex-none items-center justify-center rounded-full border border-emerald-300/30 bg-emerald-300/10 text-sm font-semibold text-emerald-100 print:border-black print:bg-white print:text-black">
@@ -414,8 +420,8 @@ const StudioTerms = () => {
         </article>
       </div>
 
-      <section className="border-t border-white/10 bg-black px-5 py-10 sm:px-8 lg:px-10 print:hidden">
-        <div className="mx-auto flex max-w-6xl flex-col gap-4 rounded-[28px] border border-white/10 bg-white/[0.04] p-6 sm:flex-row sm:items-center sm:justify-between">
+      <section className="border-t border-white/10 bg-transparent px-5 py-10 sm:px-8 lg:px-10 print:hidden">
+        <div className="studio-terms-footer-card mx-auto flex max-w-6xl flex-col gap-4 rounded-[28px] border p-6 sm:flex-row sm:items-center sm:justify-between">
           <div>
             <p className="text-sm font-semibold text-white">Ready to scope a project?</p>
             <p className="mt-1 text-sm text-white/58">Use the quote form to start with project context, intended use, timeline, and references.</p>

@@ -5283,3 +5283,132 @@ html.scrollbar-studio body::-webkit-scrollbar-thumb:hover,
 html.scrollbar-studio *::-webkit-scrollbar-thumb:hover {
   background: linear-gradient(180deg, rgba(52, 211, 153, 0.78), rgba(19, 194, 179, 0.48));
 }
+
+/* Studio readability and package/quote polish */
+.studio-page {
+  background: #050a0d;
+}
+
+.studio-page .studio-package-card,
+.studio-page .studio-soft-panel {
+  box-shadow: 0 20px 70px rgba(0, 0, 0, 0.22);
+}
+
+.studio-page .studio-package-card-neutral {
+  border-color: rgba(255, 255, 255, 0.105);
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.062), rgba(255, 255, 255, 0.034));
+}
+
+.studio-page .studio-package-card-neutral:hover {
+  border-color: rgba(255, 255, 255, 0.17);
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.088), rgba(255, 255, 255, 0.045));
+}
+
+.studio-page .studio-package-card-featured {
+  border-color: rgba(52, 211, 153, 0.42);
+  background: linear-gradient(145deg, rgba(52, 211, 153, 0.11), rgba(255, 255, 255, 0.045));
+}
+
+.studio-page .studio-package-card-featured:hover {
+  border-color: rgba(52, 211, 153, 0.58);
+  background: linear-gradient(145deg, rgba(52, 211, 153, 0.135), rgba(255, 255, 255, 0.06));
+}
+
+.studio-page .studio-soft-pill,
+.studio-page .studio-section-pill {
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.105), rgba(52, 211, 153, 0.06));
+  color: rgba(226, 232, 240, 0.86);
+}
+
+.studio-page .studio-section-pill {
+  border-color: rgba(52, 211, 153, 0.28);
+  color: rgba(167, 243, 208, 0.9);
+}
+
+.studio-page .studio-quote-summary {
+  border-color: rgba(255, 255, 255, 0.12);
+  background:
+    radial-gradient(36rem 18rem at 12% 0%, rgba(52, 211, 153, 0.075), transparent 62%),
+    linear-gradient(135deg, rgba(255, 255, 255, 0.066), rgba(255, 255, 255, 0.03));
+  box-shadow: 0 22px 80px rgba(0, 0, 0, 0.3);
+}
+
+/* Terms page readability surfaces */
+.studio-page .studio-terms-meta-card,
+.studio-page .studio-terms-toc,
+.studio-page .studio-terms-section,
+.studio-page .studio-terms-footer-card {
+  border-color: rgba(255, 255, 255, 0.105);
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.062), rgba(255, 255, 255, 0.032));
+  box-shadow: 0 20px 70px rgba(0, 0, 0, 0.24);
+}
+
+.studio-page .studio-terms-summary-card {
+  border-color: rgba(255, 255, 255, 0.12);
+  background:
+    radial-gradient(36rem 18rem at 12% 0%, rgba(52, 211, 153, 0.085), transparent 62%),
+    linear-gradient(135deg, rgba(255, 255, 255, 0.07), rgba(255, 255, 255, 0.034));
+  box-shadow: 0 22px 80px rgba(0, 0, 0, 0.3);
+}
+
+.studio-page .studio-terms-section:hover,
+.studio-page .studio-terms-toc:hover,
+.studio-page .studio-terms-footer-card:hover {
+  border-color: rgba(255, 255, 255, 0.15);
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.078), rgba(255, 255, 255, 0.04));
+}
+
+
+
+/* Studio FAQ accordion */
+.studio-page .studio-faq-answer {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 220ms ease;
+}
+
+.studio-page .studio-faq-answer.is-open {
+  grid-template-rows: 1fr;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .studio-page .studio-faq-answer {
+    transition: none;
+  }
+}
+
+/* Studio quote calculator select controls */
+.studio-page .studio-select-card {
+  border-color: rgba(255, 255, 255, 0.11);
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.055), rgba(255, 255, 255, 0.028));
+}
+
+.studio-page .studio-quote-select {
+  appearance: none;
+  -webkit-appearance: none;
+  border-color: rgba(255, 255, 255, 0.16);
+  background-color: rgba(2, 8, 7, 0.72);
+  background-image:
+    linear-gradient(45deg, transparent 50%, rgba(167, 243, 208, 0.9) 50%),
+    linear-gradient(135deg, rgba(167, 243, 208, 0.9) 50%, transparent 50%),
+    linear-gradient(145deg, rgba(255, 255, 255, 0.06), rgba(52, 211, 153, 0.035));
+  background-position:
+    calc(100% - 19px) 50%,
+    calc(100% - 13px) 50%,
+    0 0;
+  background-size: 6px 6px, 6px 6px, 100% 100%;
+  background-repeat: no-repeat;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  color-scheme: dark;
+}
+
+.studio-page .studio-quote-select:hover {
+  border-color: rgba(52, 211, 153, 0.36);
+  background-color: rgba(3, 12, 10, 0.86);
+}
+
+.studio-page .studio-quote-select option {
+  background: #050a0d;
+  color: #f8fafc;
+}
