@@ -1,4 +1,4 @@
-// src/data/mock.js
+﻿// src/data/mock.js
 
 const mockData = {
   personalInfo: {
@@ -284,7 +284,7 @@ projects: [
   title: "Axivion Studio",
   description:
     "Publication-ready scientific and technical visuals for papers, posters, grants, websites, presentations, and journal cover submissions.",
-  image: "metasurface.png",
+  image: "metasurface.jpg",
   technologies: ["Blender", "Scientific Visualization", "Technical Renders", "Optics", "Publication Graphics"],
   specifications: [
     "Science Advances cover art / visualization credit",
