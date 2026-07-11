@@ -808,8 +808,8 @@ const equipmentSlides = [
 const engProjectSlides = [  
   { base: "image1Engproject", title: "PRISM", description: "Test bench" },
   { base: "image4Engprojectcarosel", title: "Car Modding", description: "Rear shocks replacement" },
-  { image: "InsidePhoenix2k.jpg", title: "Scientific Visualization", description: "Inside Phoenix render" },
-  { image: "OutsidePhoenix2k.jpg", title: "Scientific Visualization", description: "Outside Phoenix render" },
+  { image: "NewWebPhotos/inside-phoenix-web.webp", title: "Scientific Visualization", description: "Inside Phoenix render" },
+  { image: "NewWebPhotos/outside-phoenix-web.webp", title: "Scientific Visualization", description: "Outside Phoenix render" },
   { base: "image5Engprojectcarosel", title: "Spectrometer", description: "Reviving old spectrometer" },
   { base: "image3Engprojectcarosel", title: "Pygame", description: "Screenshot" },
 

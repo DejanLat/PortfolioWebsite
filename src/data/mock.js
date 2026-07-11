@@ -284,7 +284,7 @@ projects: [
   title: "Axivion Studio",
   description:
     "Publication-ready scientific and technical visuals for papers, posters, grants, websites, presentations, and journal cover submissions.",
-  image: "metasurface.jpg",
+  image: "NewWebPhotos/metasurface-web.webp",
   technologies: ["Blender", "Scientific Visualization", "Technical Renders", "Optics", "Publication Graphics"],
   specifications: [
     "Science Advances cover art / visualization credit",

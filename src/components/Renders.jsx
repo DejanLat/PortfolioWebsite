@@ -32,7 +32,7 @@ const WORK_EXAMPLES = [
     icon: ImageIcon,
     title: "Inside Phoenix Figure Visual",
     tag: "Science Advances Cover",
-    image: renderImg("InsidePhoenix2k.jpg"),
+    image: renderImg("NewWebPhotos/inside-phoenix-web.webp"),
     metadata: [
       { category: "Service", label: "Scientific Visual Package" },
       { category: "Complexity", label: "Technical" },
@@ -53,8 +53,8 @@ const WORK_EXAMPLES = [
     key: "phoenix-outside",
     icon: ImageIcon,
     title: "Outside Phoenix Figure Visual",
-    tag: "Science Advances Cover",
-    image: renderImg("OutsidePhoenix2k.jpg"),
+    tag: "Quantum Optics",
+    image: renderImg("NewWebPhotos/outside-phoenix-web.webp"),
     metadata: [
       { category: "Service", label: "Scientific Visual Package" },
       { category: "Complexity", label: "Technical" },
@@ -80,7 +80,7 @@ const WORK_EXAMPLES = [
     icon: Layers3,
     title: "Metasurface Visualization",
     tag: "Nanophotonics",
-    image: renderImg("metasurface.jpg"),
+    image: renderImg("NewWebPhotos/metasurface-web.webp"),
     metadata: [
       { category: "Service", label: "Technical Figure Render" },
       { category: "Complexity", label: "Simple" },
@@ -97,24 +97,13 @@ const WORK_EXAMPLES = [
 
 const getWorkPillClassName = ({ category, label }) => {
   const base = "studio-work-pill inline-flex items-center rounded-full border px-2.5 py-1 text-[11px] font-medium leading-none";
+  const tier = (() => {
+    if (["Scientific Visual Package", "Advanced", "Campaign, Fundraising & Large-Scale", "Rush"].includes(label)) return "gold";
+    if (["Publication & Hero Visual", "Technical", "Organizational & Promotional", "Priority"].includes(label)) return "silver";
+    return "basic";
+  })();
 
-  if (category === "Service") {
-    return `${base} studio-work-pill-service`;
-  }
-
-  if (category === "Usage") {
-    return `${base} studio-work-pill-usage`;
-  }
-
-  if (category === "Delivery" && label === "Priority") {
-    return `${base} studio-work-pill-priority`;
-  }
-
-  if (category === "Delivery") {
-    return `${base} studio-work-pill-delivery`;
-  }
-
-  return `${base} studio-work-pill-neutral`;
+  return `${base} studio-work-pill-${tier} studio-work-pill-${category.toLowerCase()}`;
 };
 
 const WorkMetadataPills = ({ metadata }) => {
@@ -246,7 +235,7 @@ const COMPLEXITY_GUIDE = [
 ];
 
 const QUOTE_USAGE = [
-  { key: "academic", label: "Academic & Editorial", add: 0 },
+  { key: "academic", label: "Academic & Institutional", add: 0 },
   { key: "commercial", label: "Organizational & Promotional", add: 500 },
   { key: "extended", label: "Campaign, Fundraising & Large-Scale", add: 1250 },
 ];
@@ -254,20 +243,20 @@ const QUOTE_USAGE = [
 const LICENSE_GUIDE = [
   {
     key: "academic",
-    title: "Academic & Editorial",
+    title: "Academic & Institutional",
     summary:
-      "For scientific and editorial publication, including reasonable sharing directly connected to a specific paper, issue, cover, conference, or research result.",
+      "For journal publications, conference materials, teaching, university or laboratory websites, research news releases, and unpaid institutional communications directly relating to the research.",
     includes: [
-      "Research papers and journal articles",
+      "Journal publications and research articles",
       "Journal cover submissions and selected covers",
-      "Theses and dissertations",
-      "Academic grants",
-      "Conference posters and presentations",
-      "Ordinary promotion directly connected to the published paper or journal issue",
-      "Publication-related sharing on personal, lab, university, company, or social channels",
+      "Theses, dissertations, and teaching materials",
+      "Academic grants, conference posters, and presentations",
+      "University, laboratory, and research-group websites",
+      "Institutional research news articles and press releases",
+      "Unpaid communications that directly promote or explain the research",
     ],
     note:
-      "This remains Academic & Editorial Use when the purpose is directly connected to announcing, discussing, documenting, or celebrating the specific publication or research result. It does not include general company, product, or organizational marketing.",
+      "A university posting the completed image on its research news page to explain the associated study is generally Academic & Institutional use. It does not include paid advertising, commercial product marketing, corporate sales materials, investor campaigns, merchandise, fundraising campaigns, or unrelated promotional use.",
   },
   {
     key: "commercial",
@@ -465,7 +454,7 @@ export default function Renders() {
   const complexityCloseRef = useRef(null);
   const complexityInfoButtonRef = useRef(null);
 
-  const heroImage = useMemo(() => renderImg("metasurface.png"), []);
+  const heroImage = useMemo(() => renderImg("NewWebPhotos/metasurface-web.webp"), []);
   const selectedUsageGuide = useMemo(
     () => LICENSE_GUIDE.find((item) => item.key === quoteUsage) || LICENSE_GUIDE[0],
     [quoteUsage]
@@ -1411,10 +1400,10 @@ export default function Renders() {
                 </div>
               </div>
               <p className="mt-4 text-sm leading-6 text-white/62">
-                Example: Posting the complete published journal cover on LinkedIn to announce that your paper was selected is Academic & Editorial Use. Reusing the original artwork by itself as an ongoing company marketing image is Organizational & Promotional Use.
+                Example: Posting the complete published journal cover on LinkedIn to announce that your paper was selected is Academic & Institutional Use. Reusing the original artwork by itself as an ongoing company marketing image is Organizational & Promotional Use.
               </p>
               <p className="mt-3 text-sm leading-6 text-white/62">
-                Posting the artwork with a link to the applicable paper and a message celebrating the research publication is normally Academic & Editorial Use. Using the same artwork to advertise a product, service, company capability, or recruitment campaign is Organizational & Promotional Use.
+                Posting the artwork with a link to the applicable paper, university research news page, or a message explaining the associated study is normally Academic & Institutional Use. Using the same artwork to advertise a product, service, company capability, or recruitment campaign is Organizational & Promotional Use.
               </p>
             </div>
 
