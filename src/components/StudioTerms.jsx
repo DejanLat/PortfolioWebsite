@@ -4,12 +4,11 @@ import { ArrowLeft, CheckCircle2, Printer } from "lucide-react";
 import { useStudioPointerGlow } from "../hooks/useStudioPointerGlow";
 import { useScrolledHeader } from "../hooks/useScrolledHeader";
 
-const EFFECTIVE_DATE = "July 10, 2026";
-const TERMS_VERSION = "Version 2026-07-10";
+const EFFECTIVE_DATE = "July 11, 2026";
+const TERMS_VERSION = "Version 2026-07-11";
 const TERMS_URL = "https://axivionstudio.com/terms";
 
 // Maintain archived copies of materially different terms versions before publishing changes.
-// Professional legal review is recommended before relying on this page as a final contract.
 const IMPORTANT_POINTS = [
   "A written quote and project scope come before work begins.",
   "Most projects use a 50% deposit before work starts and 50% before final delivery.",
@@ -23,12 +22,10 @@ const IMPORTANT_POINTS = [
 const TERMS_SECTIONS = [
   {
     title: "Acceptance and project documents",
-    review: "Requires lawyer review: contract formation, electronic acceptance, purchase-order conflicts, and versioning.",
     body: [
       "These general terms cover a range of scientific visualization, technical rendering, modeling, figure package, animation, consulting, and related creative-service projects. For most projects, the written quote and project scope contain the most important project-specific details, including price, deliverables, revisions, timeline, and licence.",
       "A project agreement may be accepted by a signed agreement, electronic acceptance, clear written approval by email, or payment of the required deposit or first milestone after the client has received the quote and access to these terms. A general inquiry, informal discussion, or isolated email does not by itself create a project agreement.",
       "The version of these terms that normally applies is the version provided or linked when the client accepts the quote, unless both parties later agree in writing to use a different version. Website updates apply prospectively and do not automatically rewrite an already accepted project.",
-      "These terms have been prepared as a business draft for professional review. They should not be represented as reviewed or approved by a lawyer until that review has actually occurred.",
     ],
   },
   {
@@ -50,7 +47,6 @@ const TERMS_SECTIONS = [
   },
   {
     title: "Pricing, taxes, currency, and fees",
-    review: "Requires accountant or lawyer review: tax collection, invoicing currency, and cross-border sales treatment.",
     body: [
       "Website prices, package prices, and calculator outputs are starting prices or planning estimates. Final pricing is determined by the written quote and may depend on complexity, reference quality, technical risk, deadline, usage rights, deliverable count, revision scope, and source-file needs.",
       "Invoices may be issued in CAD, USD, or another currency identified in the quote or invoice. Approximate currency conversions are informational only and may differ from the amount charged by a bank, card provider, platform, or payment processor.",
@@ -104,10 +100,9 @@ const TERMS_SECTIONS = [
   },
   {
     title: "Copyright, client material, and reusable assets",
-    review: "Requires lawyer review: copyright ownership, assignments, moral rights, institutional ownership, and commissioned-work defaults.",
     body: [
       "Unless the quote expressly states otherwise, Axivion Studio retains copyright and ownership of its original visual work, working files, source scenes, reusable assets, production methods, templates, workflows, and general technical know-how. The client receives the licence stated in the quote after required payment clears.",
-      "Copyright ownership, source-file possession, attribution, and licence rights are separate concepts. Delivery of a final export does not transfer copyright or source-file ownership unless the quote expressly says so. Any copyright assignment, exclusive licence, or moral-rights language should be reviewed professionally before use.",
+      "Copyright ownership, source-file possession, attribution, and licence rights are separate concepts. Delivery of a final export does not transfer copyright or source-file ownership unless the quote expressly says so.",
       "The client retains ownership of its own confidential information, supplied data, research, inventions, trademarks, papers, CAD, technical materials, and other client-owned material. These terms do not give Axivion Studio ownership of the client's research, inventions, or institutional intellectual property.",
       "Axivion Studio may reuse general know-how, workflows, non-confidential methods, and non-client-specific assets in other work, provided it does not knowingly disclose the client's confidential information or use client-owned material outside the project licence.",
     ],
@@ -212,7 +207,6 @@ const TERMS_SECTIONS = [
   },
   {
     title: "Privacy and website contact",
-    review: "Requires privacy review if analytics, commercial intake, cookies, cross-border processing, or client personal information collection expands.",
     body: [
       "Website privacy information, project confidentiality, client personal information, and sensitive scientific material are related but separate issues. Confidential project material should be handled through the project scope, NDA, or other agreed arrangements rather than ordinary website browsing.",
       "The public website may use basic analytics if analytics are active in the deployed site. Contact requests currently open the visitor's email application through a mailto link. The website does not collect payment information directly. Visitors should avoid sending highly sensitive or confidential project files before confidentiality arrangements are confirmed.",
@@ -222,7 +216,6 @@ const TERMS_SECTIONS = [
   },
   {
     title: "Warranty and responsibility",
-    review: "Requires lawyer review to confirm the final disclaimer does not exclude obligations that cannot legally be excluded.",
     body: [
       "Axivion Studio provides services using reasonable professional care and commercially practical effort based on the approved scope and materials provided. The services are creative and technical in nature, and outcomes depend on client input, project complexity, available references, and external requirements.",
       "Except as expressly stated in the quote or required by applicable law, Axivion Studio does not warrant uninterrupted compatibility, perpetual software editability, external publication acceptance, journal or cover selection, grant results, investor response, research outcomes, commercial performance, third-party platform availability, or results controlled by journals, institutions, publishers, funders, platforms, reviewers, or audiences.",
@@ -231,16 +224,14 @@ const TERMS_SECTIONS = [
   },
   {
     title: "Limitation of liability",
-    review: "Requires Ontario legal review, especially for enforceability, consumer issues, gross negligence, intentional misconduct, and international clients.",
     body: [
       "Subject to applicable law and any project-specific agreement, Axivion Studio's total liability for claims arising from a project is limited to the amount paid to Axivion Studio for the affected project or affected project stage.",
       "Axivion Studio is not responsible for indirect, incidental, consequential, special, punitive, lost-profit, lost-opportunity, lost-funding, lost-publication, lost-data, or reputational damages, except where such limitation is not permitted by applicable law.",
-      "This limitation does not attempt to exclude liability for fraud, intentional misconduct, or other liability that cannot legally be limited. The enforceability and scope of this clause should be reviewed by an Ontario commercial lawyer before relying on it as a final contract term.",
+      "This limitation does not attempt to exclude liability for fraud, intentional misconduct, or other liability that cannot legally be limited.",
     ],
   },
   {
     title: "Indemnification",
-    review: "Requires lawyer review to confirm scope, reciprocity, procedure, and enforceability.",
     body: [
       "The client is responsible for third-party claims, losses, or costs arising from material the client supplied without appropriate permission, materially inaccurate information supplied by the client, use outside the agreed licence, unauthorized modifications, unauthorized redistribution, or breach of the client's written obligations.",
       "Subject to the limitations in these terms and applicable law, Axivion Studio is responsible for third-party claims arising from intentional infringement through material supplied directly by Axivion Studio, intentional misconduct, or clear material breach of its own written obligations.",
@@ -264,11 +255,10 @@ const TERMS_SECTIONS = [
   },
   {
     title: "Governing law and disputes",
-    review: "Requires lawyer review for Ontario venue, international clients, consumers, university procurement terms, and conflict-of-law issues.",
     body: [
       "Unless the quote or signed agreement states otherwise, these terms are intended to be governed by the laws of Ontario and the applicable federal laws of Canada.",
       "If a dispute arises, the parties should first try to resolve it through good-faith written discussion and a reasonable opportunity to correct the issue. The parties may use mediation if both agree. Court proceedings may be used where necessary.",
-      "These terms do not impose mandatory arbitration, a class-action waiver, an artificial limitation period, or a foreign-law clause. Jurisdiction, venue, consumer-protection issues, and international-client disputes should be reviewed by an Ontario commercial lawyer.",
+      "These terms do not impose mandatory arbitration, a class-action waiver, an artificial limitation period, or a foreign-law clause.",
     ],
   },
   {
@@ -283,7 +273,7 @@ const TERMS_SECTIONS = [
   {
     title: "Contact information",
     body: [
-      "Questions about these terms or a proposed project can be sent to axivioninstruments@gmail.com.",
+      "Questions about these terms or a proposed project can be sent to contact@axivionstudio.com.",
       "A project-specific written quote, scope, signed agreement, purchase order, NDA, or invoice may list additional contacts or instructions for that project.",
     ],
   },
@@ -346,7 +336,7 @@ const StudioTerms = () => {
               Axivion Studio Terms of Service
             </h1>
             <p className="mt-5 max-w-2xl text-base leading-8 text-white/68 sm:text-lg print:text-sm print:leading-6 print:text-black">
-              These terms apply to scientific visualization, technical rendering, modeling, figure packages, animations, consulting, and related creative services provided by Axivion Studio. They are a business draft for professional review and have not been represented as reviewed or approved by a lawyer.
+              These Terms apply to scientific visualization, technical rendering, modeling, figure packages, animations, consulting, and related creative services provided by Axivion Studio.
             </p>
           </div>
           <div className="studio-terms-meta-card flex flex-col gap-3 rounded-[28px] border p-5 text-sm text-white/72 print:border print:border-black print:bg-white print:text-black print:shadow-none">

@@ -203,9 +203,9 @@ function App() {
           <Route path="/renders" element={IS_PORTFOLIO_BUILD ? <ExternalRedirect to="https://axivionstudio.com/" /> : <Renders />} />
           <Route path="/portfolio" element={<Portfolio />} />
           <Route path="/prism" element={<PrismProject />} />
-          <Route path="/contact" element={<StudioContact contactEmail="axivioninstruments@gmail.com" />} />
+          <Route path="/contact" element={<StudioContact contactEmail="contact@axivionstudio.com" />} />
           <Route path="/dejan-latkovic" element={<DejanLatkovic />} />
-          <Route path="/portfolio/contact" element={<Contact contactEmail="axivioninstruments@gmail.com" />} />
+          <Route path="/portfolio/contact" element={<Contact contactEmail="contact@axivionstudio.com" />} />
           <Route path="/models" element={<Models />} />
           <Route path="/car-modding" element={<CarModding />} />
         </Routes>

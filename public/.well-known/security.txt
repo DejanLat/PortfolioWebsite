@@ -1,4 +1,4 @@
-Contact: mailto:axivioninstruments@gmail.com
+Contact: mailto:contact@axivionstudio.com
 Preferred-Languages: en
 Canonical: https://axivionstudio.com/.well-known/security.txt
 Policy: https://axivionstudio.com/contact

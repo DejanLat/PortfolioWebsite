@@ -86,7 +86,7 @@ const WORK_EXAMPLES = [
       { category: "Service", label: "Technical Figure Render" },
       { category: "Complexity", label: "Simple" },
       { category: "Usage", label: "Academic" },
-      { category: "Delivery", label: "Priority" },
+      { category: "Delivery", label: "Rush" },
     ],
     bullets: [
       "Blender render of a nanophotonic metasurface structure.",

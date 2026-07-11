@@ -14,7 +14,7 @@ import { Link } from "react-router-dom";
 import { useStudioPointerGlow } from "../hooks/useStudioPointerGlow";
 import { useScrolledHeader } from "../hooks/useScrolledHeader";
 
-const CONTACT_EMAIL = "axivioninstruments@gmail.com";
+const CONTACT_EMAIL = "contact@axivionstudio.com";
 const STUDIO_ACCENT = "#34d399";
 const PUBLIC = process.env.PUBLIC_URL || "";
 

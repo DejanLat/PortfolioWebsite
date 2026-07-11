@@ -14,7 +14,7 @@ import {
 import { Link } from "react-router-dom";
 import { useScrolledHeader } from "../hooks/useScrolledHeader";
 
-const CONTACT_EMAIL = "axivioninstruments@gmail.com";
+const CONTACT_EMAIL = "contact@axivionstudio.com";
 const ACCENT = "#f59e0b";
 const ACCENT_SOFT = "rgba(245, 158, 11, 0.15)";
 const PUBLIC = process.env.PUBLIC_URL || "";
