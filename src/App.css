@@ -5169,3 +5169,117 @@ body {
 .studio-terms-page section[id] {
   scroll-margin-top: 96px;
 }
+/* Shared Axivion Studio ambient visual system */
+.studio-page {
+  --studio-accent: #34d399;
+  --studio-accent-rgb: 52, 211, 153;
+  --studio-teal-rgb: 19, 194, 179;
+  --studio-base: #000;
+  --studio-surface: rgba(255, 255, 255, 0.045);
+  --studio-border: rgba(255, 255, 255, 0.1);
+  --studio-border-accent: rgba(52, 211, 153, 0.28);
+  --studio-glow-soft: rgba(52, 211, 153, 0.14);
+  --studio-glow-teal: rgba(19, 194, 179, 0.08);
+  --mx: -9999px;
+  --my: -9999px;
+  --hx: -9999px;
+  --hy: -9999px;
+  position: relative;
+  background: #000;
+}
+
+.studio-ambient-layer {
+  opacity: 0.82;
+  contain: paint;
+}
+
+.studio-cursor-glow {
+  background: radial-gradient(700px at var(--mx) var(--my), var(--studio-glow-soft), transparent 60%);
+  transition: opacity 180ms ease;
+}
+
+.studio-local-cursor-glow {
+  background: radial-gradient(700px at var(--hx) var(--hy), rgba(var(--studio-accent-rgb), 0.18), transparent 60%);
+}
+
+.studio-top-glow {
+  background: radial-gradient(52rem 18rem at 50% -14%, rgba(var(--studio-accent-rgb), 0.11), transparent 68%);
+}
+
+
+
+
+.studio-terms-header-glow {
+  background:
+    radial-gradient(46rem 20rem at 12% 0%, rgba(var(--studio-accent-rgb), 0.12), transparent 62%),
+    radial-gradient(36rem 18rem at 76% 4%, rgba(var(--studio-teal-rgb), 0.055), transparent 66%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.035), transparent 48%);
+}
+.studio-page .studio-glass,
+.studio-page .studio-terms-page article,
+.studio-page .studio-terms-page nav {
+  border-color: var(--studio-border);
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.028));
+  box-shadow: 0 20px 80px rgba(0, 0, 0, 0.28);
+}
+
+@media (hover: none), (pointer: coarse) {
+  .studio-cursor-glow,
+  .studio-local-cursor-glow {
+    display: none;
+  }
+
+  .studio-ambient-layer {
+    opacity: 0.55;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .studio-cursor-glow,
+  .studio-local-cursor-glow {
+    display: none;
+  }
+}
+
+@media print {
+  .studio-ambient-layer,
+  .studio-cursor-glow,
+  .studio-local-cursor-glow,
+  .studio-top-glow {
+    display: none !important;
+  }
+}
+
+html.scrollbar-studio,
+html.scrollbar-studio body,
+html.scrollbar-studio * {
+  scrollbar-color: rgba(52, 211, 153, 0.48) #020403;
+  scrollbar-width: thin;
+}
+
+html.scrollbar-studio::-webkit-scrollbar,
+html.scrollbar-studio body::-webkit-scrollbar,
+html.scrollbar-studio *::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+html.scrollbar-studio::-webkit-scrollbar-track,
+html.scrollbar-studio body::-webkit-scrollbar-track,
+html.scrollbar-studio *::-webkit-scrollbar-track {
+  background: #020403;
+}
+
+html.scrollbar-studio::-webkit-scrollbar-thumb,
+html.scrollbar-studio body::-webkit-scrollbar-thumb,
+html.scrollbar-studio *::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, rgba(52, 211, 153, 0.62), rgba(19, 194, 179, 0.34));
+  border: 2px solid #020403;
+  border-radius: 999px;
+}
+
+html.scrollbar-studio::-webkit-scrollbar-thumb:hover,
+html.scrollbar-studio body::-webkit-scrollbar-thumb:hover,
+html.scrollbar-studio *::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, rgba(52, 211, 153, 0.78), rgba(19, 194, 179, 0.48));
+}

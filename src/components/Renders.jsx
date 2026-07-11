@@ -1,5 +1,6 @@
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
+import { useStudioPointerGlow } from "../hooks/useStudioPointerGlow";
 import { motion } from "framer-motion";
 import {
   Calculator,
@@ -16,7 +17,6 @@ import {
 } from "lucide-react";
 
 const ACCENT = "#34d399";
-const ACCENT_SOFT = "rgba(52, 211, 153, 0.18)";
 const CONTACT_ACCENT = ACCENT;
 const IQC_ACCENT = "#A40C34";
 const PORTFOLIO_ACCENT = "#C97A3A";
@@ -170,23 +170,23 @@ export const TERMS_GROUPS = [
     items: [
       "You receive a written quote before work begins.",
       "Most projects begin with a 50% deposit.",
-      "Final high-resolution files are delivered after full payment.",
+      "Final unwatermarked high-resolution files are delivered after final payment clears.",
     ],
   },
   {
     title: "Deliverables and revisions",
     items: [
-      "Your quote lists exactly what files and revision rounds are included.",
-      "Feedback should be provided as one consolidated set per revision round.",
+      "Your quote lists exactly what files, formats, and revision rounds are included.",
+      "A revision round is one consolidated set of feedback for a draft or milestone.",
       "New concepts, additional visuals, or major direction changes may require a revised quote.",
     ],
   },
   {
     title: "Usage and ownership",
     items: [
-      "Final usage rights are confirmed in the project quote.",
+      "Final usage rights are confirmed in the project quote and normally begin after required payment clears.",
       "Working files, source scenes, models, and editable assets are not included unless stated.",
-      "Expanded commercial use, source files, or additional formats can be added before the project begins.",
+      "Expanded use, source files, or additional formats can be quoted before work begins or approved later in writing.",
     ],
   },
   {
@@ -218,7 +218,7 @@ const FAQ_ITEMS = [
   {
     question: "How do revision rounds work?",
     answer:
-      "Each revision round should be one consolidated set of feedback. Your quote states how many rounds are included for the project.",
+      "A revision round is one consolidated set of feedback for a draft or milestone. The round begins when Axivion Studio starts implementing that feedback, and your quote states how many rounds are included.",
   },
   {
     question: "Can confidential or embargoed projects be handled?",
@@ -228,7 +228,7 @@ const FAQ_ITEMS = [
   {
     question: "How are usage rights selected?",
     answer:
-      "Usage rights are selected during quoting based on whether the visual is for academic, internal, commercial, promotional, publication, or broader campaign use.",
+      "Usage rights are selected during quoting based on whether the visual is for academic, internal, publication, commercial communication, promotional, or broader campaign use.",
   },
   {
     question: "Can usage rights be expanded later?",
@@ -266,7 +266,7 @@ const PROCESS = [
   ["Direction", "Translate the core technical message into a visual approach that is accurate, readable, and polished."],
   ["Build", "Model, compose, light, render, and refine the scene around the agreed scientific or technical focus."],
   ["Check-ins", "Share progress during active work so the visual stays aligned before major time is spent in the wrong direction."],
-  ["Revisions", "Use included revision rounds for consolidated feedback after a draft or milestone."],
+  ["Revisions", "Use included revision rounds for consolidated feedback on a draft or milestone."],
   ["Delivery", "Provide final agreed export files for publication, presentation, web, or proposal use."],
 ];
 
@@ -295,13 +295,9 @@ const ARTIST_QUOTE = {
 export default function Renders() {
   const { pathname } = useLocation();
   const navigate = useNavigate();
-  const [mx, setMx] = useState(-9999);
-  const [my, setMy] = useState(-9999);
-  const [hx, setHx] = useState(-9999);
-  const [hy, setHy] = useState(-9999);
   const [navOpen, setNavOpen] = useState(false);
   const heroRef = useRef(null);
-  const rootStyle = { "--mx": `${mx}px`, "--my": `${my}px`, "--hx": `${hx}px`, "--hy": `${hy}px` };
+  const { rootRef, rootStyle, updateRootPointer, updateLocalPointer } = useStudioPointerGlow();
   const [quotePackage, setQuotePackage] = useState("hero");
   const [quoteComplexity, setQuoteComplexity] = useState("technical");
   const [quoteUsage, setQuoteUsage] = useState("academic");
@@ -337,13 +333,7 @@ export default function Renders() {
 
     window.scrollTo({ top, behavior: "smooth" });
   };
-
-  const updateHeroMouse = (event) => {
-    const bounds = heroRef.current?.getBoundingClientRect();
-    if (!bounds) return;
-    setHx(event.clientX - bounds.left);
-    setHy(event.clientY - bounds.top);
-  };
+  const updateHeroMouse = (event) => updateLocalPointer(heroRef, event);
   const navItems = [
     { label: "Work", href: "#work", sectionId: "work" },
     { label: "Pricing", href: "#pricing", sectionId: "pricing" },
@@ -360,38 +350,25 @@ export default function Renders() {
   };
 
   useEffect(() => {
-    document.documentElement.classList.add("scrollbar-teal");
-    return () => document.documentElement.classList.remove("scrollbar-teal");
+    document.documentElement.classList.add("scrollbar-studio");
+    return () => document.documentElement.classList.remove("scrollbar-studio");
   }, []);
 
   return (
     <div
+      ref={rootRef}
       className="studio-page min-h-screen w-full bg-black text-white"
-      onMouseMove={(event) => {
-        setMx(event.clientX);
-        setMy(event.clientY);
-      }}
+      onPointerMove={updateRootPointer}
       style={rootStyle}
     >
-      <div className="pointer-events-none fixed inset-0 z-0" aria-hidden>
-        <div
-          className="absolute inset-0"
-          style={{
-            background: `radial-gradient(700px at var(--mx) var(--my), ${ACCENT_SOFT}, transparent 60%)`,
-          }}
-        />
-        <div
-          className="absolute inset-x-0 top-0 h-[70vh]"
-          style={{
-            background:
-              "radial-gradient(60rem 30rem at 50% -10%, rgba(52,211,153,0.18), transparent 60%)",
-          }}
-        />
+      <div className="studio-ambient-layer pointer-events-none fixed inset-0 z-0" aria-hidden>
+        <div className="studio-cursor-glow absolute inset-0" />
+        <div className="studio-top-glow absolute inset-x-0 top-0 h-[70vh]" />
       </div>
 
                               <header className="fixed inset-x-0 top-0 z-50 bg-black/80 backdrop-blur border-b border-white/10">
         <div className="mx-auto flex min-h-16 max-w-7xl items-center justify-between gap-4 px-4 py-3 sm:px-6 lg:h-16 lg:px-8 lg:py-0">
-          <Link to="/studio" className="min-w-0 text-left" onClick={() => setNavOpen(false)}>
+          <Link to="/" className="min-w-0 text-left" onClick={() => setNavOpen(false)}>
             <div className="truncate font-semibold tracking-widest leading-none">AXIVION STUDIO</div>
             <div className="mt-1 truncate text-[11px] uppercase tracking-widest text-white/45">
               Scientific Visualization
@@ -538,7 +515,7 @@ export default function Renders() {
         )}
       </header>
 
-                  <section ref={heroRef} onMouseMove={updateHeroMouse} className="relative pt-36 pb-16">
+                  <section ref={heroRef} onPointerMove={updateHeroMouse} className="relative pt-36 pb-16">
         <div className="absolute inset-0 -z-10">
           <img
             src={heroImage}
@@ -554,10 +531,7 @@ export default function Renders() {
           <div className="absolute inset-0 [background-image:radial-gradient(60rem_30rem_at_50%_20%,rgba(52,211,153,0.12),transparent_60%)]" />
         </div>
 
-        <div
-          className="pointer-events-none absolute inset-0 -z-[5]"
-          style={{ background: "radial-gradient(700px at var(--hx) var(--hy), rgba(52, 211, 153, 0.18), transparent 60%)" }}
-        />
+        <div className="studio-local-cursor-glow pointer-events-none absolute inset-0 -z-[5]" />
 
         <div className="mx-auto max-w-7xl px-6">
           <motion.div
@@ -705,11 +679,11 @@ export default function Renders() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-80px" }}
                 transition={{ duration: 0.45 }}
-                className={`flex h-full flex-col rounded-3xl border p-6 ${pkg.label === "Most requested" ? "border-emerald-300/35 bg-emerald-300/[0.08] shadow-2xl shadow-emerald-950/20" : "border-white/10 bg-white/5"}`}
+                className={`flex h-full flex-col rounded-3xl border p-6 transition hover:-translate-y-0.5 hover:bg-white/10 ${pkg.label === "Most requested" ? "border-emerald-300/40 bg-emerald-300/[0.105] shadow-2xl shadow-emerald-950/20" : "border-emerald-300/25 bg-emerald-300/[0.07]"}`}
               >
                 <div className="flex items-start justify-between gap-3">
                   <h3 className="text-xl font-semibold leading-tight">{pkg.name}</h3>
-                  <span className="rounded-full border border-emerald-300/30 bg-emerald-300/10 px-3 py-1 text-xs text-emerald-100 whitespace-nowrap">
+                  <span className="rounded-full border border-emerald-300/28 bg-emerald-300/10 px-3 py-1 text-xs font-medium text-emerald-100 whitespace-nowrap">
                     {pkg.label}
                   </span>
                 </div>
@@ -755,7 +729,7 @@ export default function Renders() {
         </section>
 
         <section id="quote" className="mx-auto max-w-7xl px-6 py-12">
-          <div className="rounded-3xl border border-white/10 bg-white/5 p-6 md:p-8">
+          <div className="rounded-3xl border border-white/10 bg-white/5 p-6 shadow-[0_20px_70px_rgba(0,0,0,0.22)] md:p-8">
             <div className="grid grid-cols-1 gap-8 lg:grid-cols-[0.85fr_1.15fr] lg:items-start">
               <div>
                 <div className="text-sm uppercase tracking-widest" style={{ color: ACCENT }}>
@@ -795,7 +769,7 @@ export default function Renders() {
                   ["Use rights", quoteUsage, setQuoteUsage, QUOTE_USAGE],
                   ["Timeline", quoteTimeline, setQuoteTimeline, QUOTE_TIMELINE],
                 ].map(([label, value, setter, options]) => (
-                  <label key={label} className="block rounded-2xl border border-white/10 bg-black/25 p-4">
+                  <label key={label} className="block rounded-2xl border border-white/10 bg-black/60 p-4">
                     <span className="block text-sm text-white/58">{label}</span>
                     <select
                       value={value}
@@ -912,7 +886,7 @@ export default function Renders() {
           </div>
         </section>
         <section id="process" className="mx-auto max-w-7xl px-6 py-12">
-          <div className="rounded-3xl border border-white/10 bg-white/5 p-6 md:p-8">
+          <div className="rounded-3xl border border-white/10 bg-white/5 p-6 shadow-[0_20px_70px_rgba(0,0,0,0.22)] md:p-8">
             <div className="text-sm uppercase tracking-widest" style={{ color: ACCENT }}>
               Process
             </div>
@@ -928,7 +902,7 @@ export default function Renders() {
           </div>
         </section>
         <section id="terms" className="mx-auto max-w-7xl px-6 py-12">
-          <div className="rounded-3xl border border-white/10 bg-white/[0.04] p-6 md:p-8">
+          <div className="rounded-3xl border border-white/10 bg-white/5 p-6 shadow-[0_20px_70px_rgba(0,0,0,0.22)] md:p-8">
             <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
               <div className="max-w-2xl">
                 <div className="text-sm uppercase tracking-widest" style={{ color: ACCENT }}>
@@ -949,7 +923,7 @@ export default function Renders() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, margin: "-80px" }}
                   transition={{ duration: 0.4 }}
-                  className="flex h-full flex-col rounded-3xl border border-white/10 bg-black/25 p-5 md:p-6"
+                  className="flex h-full flex-col rounded-3xl border border-emerald-300/18 bg-white/[0.055] p-5 transition hover:border-emerald-300/28 hover:bg-white/[0.075] md:p-6"
                 >
                   <h3 className="text-lg font-semibold">{group.title}</h3>
                   <ul className="mt-4 space-y-3 text-sm leading-7 text-white/70">
@@ -987,7 +961,7 @@ export default function Renders() {
         </section>
 
         <section id="faq" className="mx-auto max-w-7xl px-6 py-12">
-          <div className="rounded-3xl border border-white/10 bg-white/[0.04] p-6 md:p-8">
+          <div className="rounded-3xl border border-white/10 bg-white/5 p-6 shadow-[0_20px_70px_rgba(0,0,0,0.22)] md:p-8">
             <div className="max-w-2xl">
               <div className="text-sm uppercase tracking-widest" style={{ color: ACCENT }}>
                 FAQ
@@ -1002,7 +976,7 @@ export default function Renders() {
               {FAQ_ITEMS.map((item) => (
                 <details
                   key={item.question}
-                  className="group rounded-2xl border border-white/10 bg-black/25 p-4 transition hover:border-emerald-300/25 hover:bg-white/[0.06]"
+                  className="group rounded-2xl border border-white/10 bg-black/60 p-4 transition hover:border-emerald-300/25 hover:bg-white/[0.06]"
                 >
                   <summary className="cursor-pointer list-none text-base font-medium text-white marker:hidden focus-visible:outline-none">
                     <span className="flex items-start justify-between gap-4">

@@ -11,10 +11,10 @@ import {
   Sparkles,
 } from "lucide-react";
 import { Link } from "react-router-dom";
+import { useStudioPointerGlow } from "../hooks/useStudioPointerGlow";
 
 const CONTACT_EMAIL = "axivioninstruments@gmail.com";
 const STUDIO_ACCENT = "#34d399";
-const STUDIO_ACCENT_SOFT = "rgba(52, 211, 153, 0.16)";
 const PUBLIC = process.env.PUBLIC_URL || "";
 
 const studioTopics = [
@@ -53,8 +53,7 @@ const studioCards = [
 ];
 
 export default function StudioContact({ contactEmail = CONTACT_EMAIL }) {
-  const [mx, setMx] = useState(-9999);
-  const [my, setMy] = useState(-9999);
+  const { rootRef, rootStyle, updateRootPointer } = useStudioPointerGlow();
   const [topic, setTopic] = useState(studioTopics[0]);
   const [name, setName] = useState("");
   const [org, setOrg] = useState("");
@@ -92,22 +91,14 @@ export default function StudioContact({ contactEmail = CONTACT_EMAIL }) {
 
   return (
     <div
+      ref={rootRef}
       className="studio-page min-h-screen w-full overflow-x-hidden bg-black text-white"
-      style={{ "--mx": `${mx}px`, "--my": `${my}px` }}
-      onMouseMove={(event) => {
-        setMx(event.clientX);
-        setMy(event.clientY);
-      }}
+      style={rootStyle}
+      onPointerMove={updateRootPointer}
     >
-      <div className="pointer-events-none fixed inset-0 z-0" aria-hidden>
-        <div
-          className="absolute inset-0"
-          style={{ background: `radial-gradient(700px at var(--mx) var(--my), ${STUDIO_ACCENT_SOFT}, transparent 60%)` }}
-        />
-        <div
-          className="absolute inset-x-0 top-0 h-[82vh]"
-          style={{ background: `radial-gradient(58rem 28rem at 50% -10%, ${STUDIO_ACCENT_SOFT}, transparent 62%)` }}
-        />
+      <div className="studio-ambient-layer pointer-events-none fixed inset-0 z-0" aria-hidden>
+        <div className="studio-cursor-glow absolute inset-0" />
+        <div className="studio-top-glow absolute inset-x-0 top-0 h-[82vh]" />
       </div>
 
       <header className="fixed inset-x-0 top-0 z-50 border-b border-white/10 bg-black/75 backdrop-blur">

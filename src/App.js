@@ -33,7 +33,7 @@ const META = {
     ogDescription:
       "Scientific and technical visualization for researchers, labs, papers, proposals, covers, and advanced hardware teams.",
     siteName: "Axivion Studio",
-    canonical: "https://axivionstudio.com/studio",
+    canonical: "https://axivionstudio.com/",
     image: "https://axivionstudio.com/axivion-studio-weblink-photo.png",
   },
   contact: {
@@ -49,7 +49,7 @@ const META = {
   terms: {
     title: "Axivion Studio Terms of Service",
     description:
-      "Terms of Service for Axivion Studio scientific visualization, technical rendering, modeling, figure packages, animations, consulting, and related creative services.",
+      "Terms of Service for Axivion Studio projects covering scope, payment, revisions, deliverables, licensing, confidentiality, cancellation, and scientific accuracy.",
     ogDescription:
       "Project terms for Axivion Studio scientific visualization, technical rendering, figure packages, animations, consulting, usage rights, revisions, and delivery.",
     siteName: "Axivion Studio",
