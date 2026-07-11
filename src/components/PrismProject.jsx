@@ -4011,7 +4011,7 @@ const rowsToRender = showAll ? allRows : diffRows;
       </div>
 
 {/* CONTENT WRAPPER */}
-<div className="relative z-10 pt-16 pb-14 md:pb-0">
+<div className="relative z-10 pb-14 md:pb-0">
   {/* ====== HEADER (drop-in) ====== */}
 <header
   className={`fixed inset-x-0 top-0 z-50 transition-all ${

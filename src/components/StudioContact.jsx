@@ -12,6 +12,7 @@ import {
 } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useStudioPointerGlow } from "../hooks/useStudioPointerGlow";
+import { useScrolledHeader } from "../hooks/useScrolledHeader";
 
 const CONTACT_EMAIL = "axivioninstruments@gmail.com";
 const STUDIO_ACCENT = "#34d399";
@@ -54,6 +55,7 @@ const studioCards = [
 
 export default function StudioContact({ contactEmail = CONTACT_EMAIL }) {
   const { rootRef, rootStyle, updateRootPointer } = useStudioPointerGlow();
+  const solidNav = useScrolledHeader();
   const [topic, setTopic] = useState(studioTopics[0]);
   const [name, setName] = useState("");
   const [org, setOrg] = useState("");
@@ -101,7 +103,7 @@ export default function StudioContact({ contactEmail = CONTACT_EMAIL }) {
         <div className="studio-top-glow absolute inset-x-0 top-0 h-[82vh]" />
       </div>
 
-      <header className="fixed inset-x-0 top-0 z-50 border-b border-white/10 bg-black/75 backdrop-blur">
+      <header className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${solidNav ? "border-b border-white/10 bg-black/75 backdrop-blur" : "border-b border-transparent bg-transparent"}`}>
         <div className="mx-auto flex h-16 max-w-7xl items-center gap-3 px-4 sm:px-6 lg:px-8">
           <Link to="/" className="inline-flex items-center gap-2 text-sm text-white/75 transition hover:text-white">
             <ArrowLeft size={18} />

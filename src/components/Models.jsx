@@ -1,6 +1,7 @@
 // src/components/Models.jsx
 import React, { useMemo, useState } from "react";
 import { Link } from "react-router-dom";
+import { useScrolledHeader } from "../hooks/useScrolledHeader";
 import { motion } from "framer-motion";
 import { ArrowLeft } from "lucide-react";
 
@@ -12,6 +13,7 @@ export default function Models() {
     { id: "cl-auto",    label: "Closed-Loop Auto",    short: "CL-Auto"   },
   ];
   const [tier, setTier] = useState(controlTiers[0].id);
+  const solidNav = useScrolledHeader();
 
   // Two orientations
   const models = useMemo(
@@ -81,7 +83,7 @@ export default function Models() {
   return (
     <div className="min-h-screen w-full bg-black text-white">
       {/* Top bar */}
-      <header className="sticky top-0 z-40 backdrop-blur bg-black/70 border-b border-white/10">
+      <header className={`sticky top-0 z-40 transition-all duration-300 ${solidNav ? "border-b border-white/10 bg-black/70 backdrop-blur" : "border-b border-transparent bg-transparent"}`}>
         <div className="mx-auto max-w-7xl px-6 h-16 flex items-center justify-between">
           <Link to="/prism" className="inline-flex items-center gap-2 text-sm text-white/80 hover:text-white">
             <ArrowLeft size={18} />

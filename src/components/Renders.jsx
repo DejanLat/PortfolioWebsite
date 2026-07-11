@@ -1,6 +1,7 @@
-﻿import React, { useEffect, useMemo, useRef, useState } from "react";
+import React, { useEffect, useMemo, useRef, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useStudioPointerGlow } from "../hooks/useStudioPointerGlow";
+import { useScrolledHeader } from "../hooks/useScrolledHeader";
 import { motion } from "framer-motion";
 import {
   Calculator,
@@ -438,6 +439,7 @@ export default function Renders() {
   const { pathname } = useLocation();
   const navigate = useNavigate();
   const [navOpen, setNavOpen] = useState(false);
+  const solidNav = useScrolledHeader();
   const heroRef = useRef(null);
   const { rootRef, rootStyle, updateRootPointer, updateLocalPointer } = useStudioPointerGlow();
   const [quotePackage, setQuotePackage] = useState("hero");
@@ -606,7 +608,7 @@ export default function Renders() {
         <div className="studio-top-glow absolute inset-x-0 top-0 h-[70vh]" />
       </div>
 
-                              <header className="fixed inset-x-0 top-0 z-50 bg-black/80 backdrop-blur border-b border-white/10">
+                              <header className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${solidNav || navOpen ? "border-b border-white/10 bg-black/80 backdrop-blur" : "border-b border-transparent bg-transparent"}`}>
         <div className="mx-auto flex min-h-16 max-w-7xl items-center justify-between gap-4 px-4 py-3 sm:px-6 lg:h-16 lg:px-8 lg:py-0">
           <Link to="/" className="min-w-0 text-left" onClick={() => setNavOpen(false)}>
             <div className="truncate font-semibold tracking-widest leading-none">AXIVION STUDIO</div>

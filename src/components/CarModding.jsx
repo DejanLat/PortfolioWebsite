@@ -178,6 +178,7 @@
 import React, { useState, useEffect, useRef, useCallback } from "react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
+import { useScrolledHeader } from "../hooks/useScrolledHeader";
 import WebpImg from "./WebpImg";
 import { Music2, Lightbulb, Shield, Wrench, Clock, ArrowLeft } from "lucide-react";
 
@@ -244,6 +245,7 @@ export default function CarModding() {
   // === Cursor-follow glow (global)
   const [mx, setMx] = useState(-9999);
   const [my, setMy] = useState(-9999);
+  const solidNav = useScrolledHeader();
   const onMove = (e) => { setMx(e.clientX); setMy(e.clientY); };
   const rootStyle = { "--mx": `${mx}px`, "--my": `${my}px` };
 
@@ -293,7 +295,7 @@ export default function CarModding() {
       </div>
 
       {/* Top bar */}
-      <header className="fixed inset-x-0 top-0 z-50 backdrop-blur bg-black/70 border-b border-white/10">
+      <header className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${solidNav ? "border-b border-white/10 bg-black/70 backdrop-blur" : "border-b border-transparent bg-transparent"}`}>
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 h-16 flex items-center gap-3">
           <Link to="/" className="inline-flex items-center gap-2 text-sm text-white/80 hover:text-white">
             <ArrowLeft size={18} />

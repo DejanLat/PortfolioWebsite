@@ -12,6 +12,7 @@ import {
   SendHorizonal,
 } from "lucide-react";
 import { Link } from "react-router-dom";
+import { useScrolledHeader } from "../hooks/useScrolledHeader";
 
 const CONTACT_EMAIL = "axivioninstruments@gmail.com";
 const ACCENT = "#f59e0b";
@@ -26,6 +27,7 @@ export default function Contact({ contactEmail = CONTACT_EMAIL }) {
   const [org, setOrg] = useState("");
   const [message, setMessage] = useState("");
 
+  const solidNav = useScrolledHeader();
   const rootStyle = { "--mx": `${mx}px`, "--my": `${my}px` };
 
   const subjectMap = useMemo(
@@ -118,7 +120,7 @@ export default function Contact({ contactEmail = CONTACT_EMAIL }) {
       </div>
 
 
-        <header className="fixed inset-x-0 top-0 z-50 backdrop-blur bg-black/70 border-b border-white/10">
+        <header className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${solidNav ? "border-b border-white/10 bg-black/70 backdrop-blur" : "border-b border-transparent bg-transparent"}`}>
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 h-16 flex items-center gap-3">
             <Link to="/portfolio" className="inline-flex items-center gap-2 text-sm text-white/80 hover:text-white">
               <ArrowLeft size={18} />

@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { ArrowLeft, CheckCircle2, Printer } from "lucide-react";
 import { useStudioPointerGlow } from "../hooks/useStudioPointerGlow";
+import { useScrolledHeader } from "../hooks/useScrolledHeader";
 
 const EFFECTIVE_DATE = "July 10, 2026";
 const TERMS_VERSION = "Version 2026-07-10";
@@ -297,6 +298,7 @@ const slugify = (value) =>
 
 const StudioTerms = () => {
   const { rootRef, rootStyle, updateRootPointer } = useStudioPointerGlow();
+  const solidNav = useScrolledHeader();
 
   useEffect(() => {
     document.documentElement.classList.add("scrollbar-studio");
@@ -320,7 +322,7 @@ const StudioTerms = () => {
         <div className="studio-cursor-glow absolute inset-0" />
         <div className="studio-top-glow absolute inset-x-0 top-0 h-[76vh]" />
       </div>
-      <header className="fixed inset-x-0 top-0 z-50 border-b border-white/10 bg-black/75 backdrop-blur print:hidden">
+      <header className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 print:hidden ${solidNav ? "border-b border-white/10 bg-black/75 backdrop-blur" : "border-b border-transparent bg-transparent"}`}>
         <div className="mx-auto flex h-16 max-w-7xl items-center gap-3 px-4 sm:px-6 lg:px-8">
           <Link to="/" className="inline-flex items-center gap-2 text-sm text-white/75 transition hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-emerald-300">
             <ArrowLeft size={18} />

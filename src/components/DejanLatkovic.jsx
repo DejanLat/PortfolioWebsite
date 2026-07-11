@@ -1,10 +1,12 @@
 import React, { useEffect } from "react";
 import { ArrowLeft, ExternalLink, Mail } from "lucide-react";
 import { Link } from "react-router-dom";
+import { useScrolledHeader } from "../hooks/useScrolledHeader";
 
 const ACCENT = "#34d399";
 
 export default function DejanLatkovic() {
+  const solidNav = useScrolledHeader();
   useEffect(() => {
     document.documentElement.classList.add("scrollbar-studio");
     return () => document.documentElement.classList.remove("scrollbar-studio");
@@ -12,7 +14,7 @@ export default function DejanLatkovic() {
 
   return (
     <div className="min-h-screen overflow-x-hidden bg-black text-white">
-      <header className="fixed inset-x-0 top-0 z-50 border-b border-white/10 bg-black/75 backdrop-blur">
+      <header className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${solidNav ? "border-b border-white/10 bg-black/75 backdrop-blur" : "border-b border-transparent bg-transparent"}`}>
         <div className="mx-auto flex h-16 max-w-7xl items-center gap-3 px-4 sm:px-6 lg:px-8">
           <Link to="/" className="inline-flex items-center gap-2 text-sm text-white/75 transition hover:text-white">
             <ArrowLeft size={18} />
