@@ -1450,11 +1450,20 @@ export default function PortfolioWhite() {
                 <div className="flex flex-col md:flex-row h-full">
                   {/* image */}
                   <div className="w-full md:w-1/3 md:min-h-[220px] lg:min-h-[260px]">
-  {exp.imageBase ? (
+  {exp.imageWebp ? (
+    <WebpImg
+      webp={`${process.env.PUBLIC_URL}/${exp.imageWebp}`}
+      fallback={`${process.env.PUBLIC_URL}/${exp.image}`}
+      alt={exp.imageAlt || exp.company}
+      className="h-full w-full object-cover object-center md:[object-position:var(--experience-image-position)]"
+      style={exp.imagePosition ? { "--experience-image-position": exp.imagePosition } : undefined}
+      loading="lazy"
+    />
+  ) : exp.imageBase ? (
     <WebpImg
       webp={`${process.env.PUBLIC_URL}/${exp.imageBase}.webp`}
       fallback={`${process.env.PUBLIC_URL}/${exp.imageBase}.png`}
-      alt={exp.company}
+      alt={exp.imageAlt || exp.company}
       className="h-full w-full object-cover"
       loading="lazy"
     />
@@ -1463,8 +1472,9 @@ export default function PortfolioWhite() {
       src={exp.image
         ? (exp.image.startsWith("http") ? exp.image : `${process.env.PUBLIC_URL}/${exp.image}`)
         : `${process.env.PUBLIC_URL}/image.jpg`}
-      alt={exp.company}
-      className={`h-full w-full object-cover ${exp.imagePosition === "left" ? "object-left" : ""}`}
+      alt={exp.imageAlt || exp.company}
+      className="h-full w-full object-cover object-center md:[object-position:var(--experience-image-position)]"
+      style={exp.imagePosition ? { "--experience-image-position": exp.imagePosition } : undefined}
       loading="lazy"
     />
   )}

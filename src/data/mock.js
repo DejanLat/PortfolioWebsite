@@ -61,6 +61,27 @@ const mockData = {
 
 experience: [
   {
+    company: "Axivion Studio",
+    role: "Founder & Scientific Visualization Designer",
+    engagement: "Self-employed / Studio",
+    period: "Jul 2026 – Present",
+    category: "Scientific Visualization",
+    imageWebp: "Dejan_Lat_Quotepicture.webp",
+    image: "Dejan_Lat_Quotepicture.jpg",
+    imageAlt: "Dejan Latkovic overlooking the Golden Gate Bridge",
+    imagePosition: "calc(50% + 100px) center",
+    keyMetrics: [
+      { value: "AAAS", description: "Science Advances cover art credit" },
+      { value: "Technical", description: "Optics, photonics & hardware fluency" },
+      { value: "Client work", description: "Research and commercial visuals" }
+    ],
+    achievements: [
+      "Founded Axivion Studio, a scientific and technical visualization practice serving researchers, laboratories, and advanced hardware teams",
+      "Create publication-ready visuals for papers, proposals, journal cover submissions, presentations, websites, and technical communication",
+      "Manage projects from technical intake and concept development through rendering, revisions, licensing, and final delivery"
+    ]
+  },
+  {
     company: "Atomic Semi",
     role: "Mechanical Engineering Intern",
     engagement: "Co-op",
