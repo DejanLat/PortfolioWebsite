@@ -771,7 +771,7 @@ import { Check } from "lucide-react";
 import {
   Award, Shield, Users, BarChart3, Target, Zap, Activity, Settings,
   ArrowRight, Cpu, MicroscopeIcon, GraduationCapIcon, Microscope,
-  Crosshair, ScanLine, Hammer, Menu, X,
+  Crosshair, ScanLine, Hammer, Menu, X, Quote, ExternalLink,
 } from "lucide-react";
 
 // --- helpers ---
@@ -819,6 +819,7 @@ const engProjectSlides = [
 
 export default function PortfolioWhite() {
   const navigate = useNavigate();
+
 
   // tabs + carousels
   const [activeTab, setActiveTab] = useState("Applied Skills");
@@ -1520,6 +1521,131 @@ export default function PortfolioWhite() {
                 </div>
               </motion.div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Approved recommendation excerpt */}
+      <section aria-labelledby="recommendation-heading" className="relative">
+        <div className="mx-auto max-w-7xl px-6 pb-20 lg:pb-24">
+          <div className="mb-8">
+            <p className="text-sm uppercase tracking-widest" style={{ color: ACCENT }}>Professional perspective</p>
+            <h2 id="recommendation-heading" className="mt-3 text-3xl font-semibold tracking-tight text-white md:text-4xl">Professional Recommendations</h2>
+            <p className="mt-3 max-w-2xl text-sm leading-6 text-white/55">Perspectives on engineering ownership, technical communication, and translating complex research into clear outcomes.</p>
+          </div>
+          <div className="space-y-6">
+          <motion.article
+            initial={{ opacity: 0, y: 18 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.55 }}
+            className="relative overflow-hidden rounded-[2rem] border border-white/10 bg-white/[0.045] p-6 shadow-2xl shadow-black/25 md:p-8"
+          >
+            <div
+              className="pointer-events-none absolute inset-0"
+              aria-hidden="true"
+              style={{
+                background: "radial-gradient(36rem 18rem at 12% 0%, rgba(201,122,58,0.15), transparent 62%), linear-gradient(135deg, rgba(255,255,255,0.055), rgba(255,255,255,0.018))",
+              }}
+            />
+
+            <div className="relative grid grid-cols-1 gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(240px,320px)] lg:items-center">
+              <aside className="order-2 border-t border-white/10 pt-6 lg:border-l lg:border-t-0 lg:pl-8 lg:pt-0">
+                <div className="aspect-square w-[min(100%,360px)] overflow-hidden rounded-[2rem] border border-white/15 bg-white/[0.06] shadow-2xl shadow-black/25 lg:ml-auto lg:w-[min(100%,300px)]">
+                  <img
+                    src={`${PUBLIC}/Fab2 logo.jpg`}
+                    alt="Fab2 logo"
+                    className="h-full w-full object-contain"
+                    loading="lazy"
+                  />
+                </div>
+                <div className="mt-5 lg:pl-1">
+                  <a
+                    href="https://www.linkedin.com/in/daniel-lacroix-99810144/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 text-lg font-semibold text-white underline decoration-white/25 underline-offset-4 transition hover:decoration-white/70"
+                  >
+                    Daniel LaCroix <ExternalLink size={15} aria-hidden="true" />
+                  </a>
+                  <div className="mt-1 text-xs uppercase tracking-widest text-white/48">Staff Mechanical Engineer</div>
+                  <div className="mt-1 text-sm text-white/55">Positioning Team</div>
+                  <div className="mt-1 text-sm text-white/40">Fab2 · Internship supervisor</div>
+                </div>
+              </aside>
+
+              <div className="order-1 min-w-0">
+                <p
+                  className="inline-flex rounded-full border px-3 py-1 text-xs font-semibold uppercase tracking-[0.24em]"
+                  style={{
+                    borderColor: "rgba(201,122,58,0.32)",
+                    backgroundColor: "rgba(201,122,58,0.11)",
+                    color: "#e7a56f",
+                  }}
+                >
+                  Professional recommendation
+                </p>
+                <Quote size={42} className="mt-6" style={{ color: "rgba(201,122,58,0.55)" }} aria-hidden="true" />
+                <blockquote className="mt-5 max-w-4xl text-lg leading-8 text-white/76 md:text-xl md:leading-9">
+                  Dejan proved himself to be a bright, self-motivated, and resourceful engineer. His ability to seek out and synthesize new technical information across mechanical engineering, optics, heat transfer, electronics, and software was especially strong. His technical communication and documentation were excellent, and he always maintained a positive outlook toward the problems he faced.
+                </blockquote>
+                <div className="mt-6 inline-flex items-center rounded-full border border-white/12 bg-white/[0.045] px-4 py-2.5 text-sm text-white/58">
+                  Letter of recommendation available on request.
+                </div>
+              </div>
+            </div>
+          </motion.article>
+
+          <motion.article
+            initial={{ opacity: 0, y: 18 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.55, delay: 0.06 }}
+            className="relative overflow-hidden rounded-[2rem] border border-white/10 bg-white/[0.035] p-6 shadow-2xl shadow-black/20 md:p-8"
+          >
+            <div className="relative grid grid-cols-1 gap-8 lg:grid-cols-[minmax(240px,320px)_minmax(0,1fr)] lg:items-center">
+              <aside className="order-2 border-t border-white/10 pt-6 lg:order-1 lg:border-r lg:border-t-0 lg:pr-8 lg:pt-0">
+                <div className="aspect-square w-[min(100%,360px)] overflow-hidden rounded-[2rem] border border-white/15 bg-white/[0.06] shadow-2xl shadow-black/25 lg:w-[min(100%,300px)]">
+                  <img
+                    src={`${PUBLIC}/behrooz-semnani.avif?v=2`}
+                    alt="Behrooz Semnani"
+                    className="h-full w-full object-cover"
+                    loading="lazy"
+                  />
+                </div>
+                <div className="mt-5">
+                  <div className="text-lg font-semibold text-white">Behrooz Semnani, PhD</div>
+                  <div className="mt-1 text-xs uppercase tracking-widest text-white/48">R&amp;D Team Leader, Flat Optics</div>
+                  <div className="mt-1 text-sm text-white/55">imec</div>
+                </div>
+              </aside>
+
+              <div className="order-1 min-w-0 lg:order-2">
+                <p
+                  className="inline-flex rounded-full border px-3 py-1 text-xs font-semibold uppercase tracking-[0.24em]"
+                  style={{
+                    borderColor: "rgba(201,122,58,0.32)",
+                    backgroundColor: "rgba(201,122,58,0.11)",
+                    color: "#e7a56f",
+                  }}
+                >
+                  Research collaboration
+                </p>
+                <Quote size={42} className="mt-6" style={{ color: "rgba(201,122,58,0.55)" }} aria-hidden="true" />
+                <blockquote className="mt-5 max-w-4xl text-lg leading-8 text-white/76 md:text-xl md:leading-9">
+                  I have had the pleasure of working with Dejan on several scientific visualization projects, with the most prominent being the cover image developed for our paper in Science Advances. Across these projects, Dejan consistently demonstrated a strong ability to understand complex scientific ideas and translate them into clear, accurate, and visually compelling images. His background in optics and quantum science is a major advantage, as it allows him to quickly grasp the technical concepts and identify the most important elements to communicate.
+                </blockquote>
+                <a
+                  href="https://www.linkedin.com/feed/update/urn:li:activity:7462984701742575617/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="mt-6 inline-flex items-center gap-2 text-sm font-medium text-white/65 underline decoration-white/25 underline-offset-4 transition hover:text-white"
+                >
+                  View the Science Advances cover announcement <ExternalLink size={14} aria-hidden="true" />
+                </a>
+              </div>
+            </div>
+          </motion.article>
           </div>
         </div>
       </section>
