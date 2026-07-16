@@ -1539,8 +1539,8 @@ export default function Renders() {
 
       <footer className="border-t border-white/10 bg-black">
         <div className="mx-auto max-w-7xl px-6 py-6 text-sm text-white/60 flex flex-col sm:flex-row gap-2 sm:items-center sm:justify-between">
-          <div>Axivion Studio is the scientific visualization practice of Dejan Latkovic. <a href="https://dejanlat.github.io/PortfolioWebsite/" className="font-medium text-white/80 underline decoration-white/30 underline-offset-4 hover:text-white">Dejan Latkovic Engineering Portfolio</a> <span className="text-white/25">/</span> <Link to="/terms" className="font-medium text-white/80 underline decoration-white/30 underline-offset-4 hover:text-white">Terms of Service</Link> <span className="text-white/25">/</span> <Link to="/terms#privacy-and-website-contact" className="font-medium text-white/80 underline decoration-white/30 underline-offset-4 hover:text-white">Privacy</Link></div>
-          <div>&copy; {new Date().getFullYear()} Dejan Latkovic / Axivion Studio</div>
+          <div>Axivion Studio is the registered business name of Innovations Boutique Inc. <a href="https://dejanlat.github.io/PortfolioWebsite/" className="font-medium text-white/80 underline decoration-white/30 underline-offset-4 hover:text-white">Founder Portfolio</a> <span className="text-white/25">/</span> <Link to="/terms" className="font-medium text-white/80 underline decoration-white/30 underline-offset-4 hover:text-white">Terms of Service</Link> <span className="text-white/25">/</span> <Link to="/terms#privacy-and-website-contact" className="font-medium text-white/80 underline decoration-white/30 underline-offset-4 hover:text-white">Privacy</Link></div>
+          <div>&copy; {new Date().getFullYear()} Innovations Boutique Inc. / Axivion Studio</div>
         </div>
       </footer>
     </div>

@@ -308,7 +308,7 @@ export default function StudioContact({ contactEmail = CONTACT_EMAIL }) {
 
       <footer className="border-t border-white/10">
         <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-3 px-6 py-8 text-sm text-white/55 sm:flex-row">
-          <div>&copy; {new Date().getFullYear()} Dejan Latkovic / Axivion Studio</div>
+          <div>&copy; {new Date().getFullYear()} Innovations Boutique Inc. / Axivion Studio</div>
           <div className="flex flex-wrap items-center justify-center gap-3 sm:justify-end"><Link to="/terms" className="underline decoration-white/30 underline-offset-4 hover:text-white">Terms of Service</Link><Link to="/terms#privacy-and-website-contact" className="underline decoration-white/30 underline-offset-4 hover:text-white">Privacy</Link><span>Scientific Visualization</span></div>
         </div>
       </footer>

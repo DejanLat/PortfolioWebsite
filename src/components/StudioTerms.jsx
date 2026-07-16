@@ -4,8 +4,8 @@ import { ArrowLeft, CheckCircle2, Printer } from "lucide-react";
 import { useStudioPointerGlow } from "../hooks/useStudioPointerGlow";
 import { useScrolledHeader } from "../hooks/useScrolledHeader";
 
-const EFFECTIVE_DATE = "July 11, 2026";
-const TERMS_VERSION = "Version 2026-07-11";
+const EFFECTIVE_DATE = "July 16, 2026";
+const TERMS_VERSION = "Version 2026-07-16";
 const TERMS_URL = "https://axivionstudio.com/terms";
 
 // Maintain archived copies of materially different terms versions before publishing changes.
@@ -25,13 +25,14 @@ const TERMS_SECTIONS = [
     body: [
       "These general terms cover a range of scientific visualization, technical rendering, modeling, figure package, animation, consulting, and related creative-service projects. For most projects, the written quote and project scope contain the most important project-specific details, including price, deliverables, revisions, timeline, and licence.",
       "A project agreement may be accepted by a signed agreement, electronic acceptance, clear written approval by email, or payment of the required deposit or first milestone after the client has received the quote and access to these terms. A general inquiry, informal discussion, or isolated email does not by itself create a project agreement.",
-      "The version of these terms that normally applies is the version provided or linked when the client accepts the quote, unless both parties later agree in writing to use a different version. Website updates apply prospectively and do not automatically rewrite an already accepted project.",
+      "For a project intended to use these published terms, the quote, project scope, or signed agreement should reference the Axivion Studio Terms of Service, Version 2026-07-16, available at https://axivionstudio.com/terms. That exact published version applies when the client accepts the project agreement unless both parties later agree in writing to use a different version. Website updates apply prospectively and do not automatically rewrite an already accepted project.",
     ],
   },
   {
     title: "Definitions and order of precedence",
     body: [
-      "Axivion Studio means the scientific visualization and technical rendering practice operated by Dejan Latkovic. Client means the person, researcher, lab, university, company, institution, or organization that requests, approves, pays for, or is identified in the project documents as receiving the services.",
+      "\"Axivion Studio\" means \"Innovations Boutique Inc., operating under its registered business name Axivion Studio.\" After this definition, Axivion Studio is used as the short brand name for Innovations Boutique Inc. Client means the person, researcher, lab, university, company, institution, or organization that requests, approves, pays for, or is identified in the project documents as receiving the services.",
+      "Innovations Boutique Inc. is the legal service provider, issuer of project invoices, recipient of project payments, and GST/HST registrant for services supplied under the Axivion Studio brand.",
       "Services may include scientific visualization, technical rendering, modeling, figure packages, animations, consulting, proposal graphics, publication figures, journal cover artwork, optics diagrams, engineering visuals, and related technical communication work. Deliverables means the final export files specifically listed in the written quote or project scope.",
       "If project documents conflict, the order of precedence is: 1. signed project-specific agreement or amendment; 2. written project quote and scope; 3. invoice or approved change order, where relevant; 4. these general Terms of Service. A more specific provision controls only the subject it addresses.",
     ],
@@ -49,8 +50,8 @@ const TERMS_SECTIONS = [
     title: "Pricing, taxes, currency, and fees",
     body: [
       "Website prices, package prices, and calculator outputs are starting prices or planning estimates. Final pricing is determined by the written quote and may depend on complexity, reference quality, technical risk, deadline, usage rights, deliverable count, revision scope, and source-file needs.",
-      "Invoices may be issued in CAD, USD, or another currency identified in the quote or invoice. Approximate currency conversions are informational only and may differ from the amount charged by a bank, card provider, platform, or payment processor.",
-      "Applicable taxes are added where legally required. Transaction, transfer, platform, wire, payment-processor, or currency-conversion fees are handled as stated in the quote or invoice. These terms do not state a specific GST/HST registration status.",
+      "Innovations Boutique Inc. issues all Axivion Studio invoices. Invoices may be issued in CAD, USD, or another currency identified in the quote or invoice. Approximate currency conversions are informational only and may differ from the amount charged by a bank, card provider, platform, or payment processor.",
+      "Innovations Boutique Inc. is the GST/HST registrant for Axivion Studio services. Applicable taxes are added where legally required and invoices will include the applicable tax and registration information where required. Transaction, transfer, platform, wire, payment-processor, or currency-conversion fees are handled as stated in the quote or invoice.",
       "A quote is valid for the period stated in the quote. If no validity period is stated, Axivion Studio may update the quote before the client accepts it.",
     ],
   },
@@ -58,6 +59,7 @@ const TERMS_SECTIONS = [
     title: "Payment, deposits, and late payments",
     body: [
       "The default payment structure is a 50% deposit before work begins and 50% before final unwatermarked, high-resolution delivery. Larger projects may use milestone billing, such as concept, draft, production, and final delivery stages.",
+      "All deposits, milestone payments, final payments, and other project amounts are payable to Innovations Boutique Inc., including when an invoice, payment instruction, or processor displays the Axivion Studio business name.",
       "Work does not begin until required start conditions are satisfied: quote approval, receipt of required project materials, and cleared deposit or first milestone payment, unless Axivion Studio confirms otherwise in writing. Proposed dates are not reserved until those start conditions are satisfied unless stated otherwise.",
       "Final unwatermarked high-resolution files are normally provided after final payment clears. Client usage rights become effective only after required payment has cleared, unless the quote states otherwise. If a payment is reversed, charged back, withdrawn, or materially disputed after delivery, the related licence may be suspended until the account is reasonably resolved.",
       "If a required milestone or final payment is late, Axivion Studio may pause work, withhold unfinished or final deliverables, move the project to a later production window, revise the schedule, or require overdue amounts to be resolved before continuing.",
@@ -265,7 +267,7 @@ const TERMS_SECTIONS = [
     title: "General provisions and amendments",
     body: [
       "If part of these terms is found invalid or unenforceable, the remaining terms continue to apply as far as reasonably possible. A failure to enforce a provision once does not waive the right to enforce it later.",
-      "The accepted quote, scope, invoice or approved change order where relevant, signed agreement where applicable, and these general terms form the project agreement for the relevant project. They replace prior discussions on the same subject unless those discussions are included in the written project documents.",
+      "The accepted quote, scope, invoice or approved change order where relevant, signed agreement where applicable, and the exact published version of these general terms identified in the project documents form the project agreement for the relevant project. For projects using this publication, the reference is Axivion Studio Terms of Service, Version 2026-07-16, available at https://axivionstudio.com/terms. These documents replace prior discussions on the same subject unless those discussions are included in the written project documents.",
       "Website terms may be updated prospectively. Axivion Studio will not use a later website update alone to rewrite the terms of an already accepted project. Material changes affecting an active project should be agreed in writing.",
       "University purchase orders, institutional terms, vendor forms, and client procurement documents may require separate review. They do not override these terms unless accepted in writing by Axivion Studio or clearly incorporated into the project agreement.",
     ],
