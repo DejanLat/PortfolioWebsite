@@ -41,7 +41,6 @@
 //   const [currentEquipmentImage, setCurrentEquipmentImage] = useState(0);
 //   const [currentProjectImage, setCurrentProjectImage] = useState(0);
 //   const [isPlaying, setIsPlaying] = useState(true);
-
 //   // logos bar (png/webp handled elsewhere)
 //   const companiesBarPng  = `${PUBLIC}/CompaniesBar.png`;
 //   const companiesBarWebp = `${PUBLIC}/CompaniesBar.webp`;
@@ -760,7 +759,7 @@
 // }
 // export default Portfolio;
 // --- imports ---
-import React, { useEffect, useState, useMemo } from "react";
+import React, { useEffect, useState, useMemo, useRef } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import WebpImg from "./WebpImg";
@@ -771,7 +770,7 @@ import { Check } from "lucide-react";
 import {
   Award, Shield, Users, BarChart3, Target, Zap, Activity, Settings,
   ArrowRight, Cpu, MicroscopeIcon, GraduationCapIcon, Microscope,
-  Crosshair, ScanLine, Hammer, Menu, X, Quote, ExternalLink,
+  Crosshair, ScanLine, Hammer, Menu, X, Quote, ExternalLink, Info,
 } from "lucide-react";
 
 // --- helpers ---
@@ -835,6 +834,43 @@ export default function PortfolioWhite() {
   const [currentEquipmentImage, setCurrentEquipmentImage] = useState(0);
   const [currentProjectImage, setCurrentProjectImage] = useState(0);
   const [isPlaying, setIsPlaying] = useState(true);
+  const [vladanTestimonialOpen, setVladanTestimonialOpen] = useState(false);
+  const vladanDialogRef = useRef(null);
+  const vladanCloseRef = useRef(null);
+  const vladanInfoButtonRef = useRef(null);
+
+  useEffect(() => {
+    if (!vladanTestimonialOpen) return undefined;
+
+    vladanCloseRef.current?.focus();
+
+    const handleKeyDown = (event) => {
+      if (event.key === "Escape") {
+        setVladanTestimonialOpen(false);
+        vladanInfoButtonRef.current?.focus();
+        return;
+      }
+
+      if (event.key !== "Tab" || !vladanDialogRef.current) return;
+      const focusable = vladanDialogRef.current.querySelectorAll(
+        'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
+      );
+      if (!focusable.length) return;
+
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+      if (event.shiftKey && document.activeElement === first) {
+        event.preventDefault();
+        last.focus();
+      } else if (!event.shiftKey && document.activeElement === last) {
+        event.preventDefault();
+        first.focus();
+      }
+    };
+
+    document.addEventListener("keydown", handleKeyDown);
+    return () => document.removeEventListener("keydown", handleKeyDown);
+  }, [vladanTestimonialOpen]);
 
   useEffect(() => {
     const onScroll = () => setSolidNav(window.scrollY > 40);
@@ -870,6 +906,7 @@ export default function PortfolioWhite() {
 
   const pageLinks = [
     { label: "Experience", action: () => scrollToSection("experience") },
+    { label: "Testimonials", action: () => scrollToSection("testimonials") },
     { label: "Credits", action: () => scrollToSection("publications") },
     { label: "Projects", action: () => scrollToSection("projects") },
     { label: "Precision Instrumentation", to: "/prism" },
@@ -986,6 +1023,9 @@ export default function PortfolioWhite() {
           <nav className="hidden min-[1100px]:flex items-center gap-3 text-sm overflow-x-auto no-scrollbar" aria-label="Primary">
             <button onClick={() => scrollToSection("experience")} className="whitespace-nowrap text-white/70 hover:text-white transition-colors">
               Experience
+            </button>
+            <button onClick={() => scrollToSection("testimonials")} className="whitespace-nowrap text-white/70 hover:text-white transition-colors">
+              Testimonials
             </button>
             <button onClick={() => scrollToSection("publications")} className="whitespace-nowrap text-white/70 hover:text-white transition-colors">
               Credits
@@ -1536,7 +1576,7 @@ export default function PortfolioWhite() {
       </section>
 
       {/* Approved recommendation excerpt */}
-      <section aria-labelledby="recommendation-heading" className="relative">
+      <section id="testimonials" aria-labelledby="recommendation-heading" className="relative scroll-mt-20">
         <div className="mx-auto max-w-7xl px-6 pb-20 lg:pb-24">
           <div className="mb-8">
             <p className="text-sm uppercase tracking-widest" style={{ color: ACCENT }}>Professional perspective</p>
@@ -1656,9 +1696,120 @@ export default function PortfolioWhite() {
               </div>
             </div>
           </motion.article>
+
+          <motion.article
+            initial={{ opacity: 0, y: 18 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.55, delay: 0.12 }}
+            className="relative overflow-hidden rounded-[2rem] border border-white/10 bg-white/[0.045] p-6 shadow-2xl shadow-black/25 md:p-8"
+          >
+            <div
+              className="pointer-events-none absolute inset-0"
+              aria-hidden="true"
+              style={{
+                background: "radial-gradient(34rem 18rem at 88% 0%, rgba(201,122,58,0.13), transparent 64%), linear-gradient(135deg, rgba(255,255,255,0.045), rgba(255,255,255,0.015))",
+              }}
+            />
+
+            <div className="relative grid grid-cols-1 gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(240px,320px)] lg:items-center">
+              <aside className="order-2 border-t border-white/10 pt-6 lg:border-l lg:border-t-0 lg:pl-8 lg:pt-0">
+                <div className="aspect-square w-[min(100%,360px)] overflow-hidden rounded-[2rem] border border-white/15 bg-white p-5 shadow-2xl shadow-black/25 lg:ml-auto lg:w-[min(100%,300px)]">
+                  <img
+                    src={`${PUBLIC}/pirlitor-squarelogo-1546834955391.png`}
+                    alt="Pirlitor Machine & Tool Ltd. logo"
+                    className="h-full w-full object-contain"
+                    loading="lazy"
+                  />
+                </div>
+                <div className="mt-5 lg:pl-1">
+                  <div className="text-lg font-semibold text-white">Vladan Gavrilovic</div>
+                  <div className="mt-1 text-xs uppercase tracking-widest text-white/48">Manager, Production Planning</div>
+                  <div className="mt-1 text-sm text-white/55">Pirlitor Machine &amp; Tool Ltd.</div>
+                </div>
+              </aside>
+
+              <div className="order-1 min-w-0">
+                <p
+                  className="inline-flex rounded-full border px-3 py-1 text-xs font-semibold uppercase tracking-[0.24em]"
+                  style={{
+                    borderColor: "rgba(201,122,58,0.32)",
+                    backgroundColor: "rgba(201,122,58,0.11)",
+                    color: "#e7a56f",
+                  }}
+                >
+                  Professional recommendation
+                </p>
+                <Quote size={42} className="mt-6" style={{ color: "rgba(201,122,58,0.55)" }} aria-hidden="true" />
+                <blockquote className="mt-5 max-w-4xl text-lg leading-8 text-white/76 md:text-xl md:leading-9">
+                  When provided with a high-level outline, Dejan proactively sets effective priorities, gathers the necessary information, and fulfills the task with minimal assistance. His autonomous work style enabled the rest of the team to concentrate on other critical tasks, assured of the quality of his work.
+                </blockquote>
+                <div className="mt-6 flex flex-wrap items-center gap-3">
+                  <button
+                    ref={vladanInfoButtonRef}
+                    type="button"
+                    aria-haspopup="dialog"
+                    aria-expanded={vladanTestimonialOpen}
+                    aria-controls="vladan-testimonial-dialog"
+                    onClick={() => setVladanTestimonialOpen(true)}
+                    className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/[0.055] px-4 py-2.5 text-sm font-medium text-white/85 transition hover:border-[#C97A3A]/60 hover:bg-[#C97A3A]/10 hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#C97A3A]"
+                  >
+                    <Info size={16} aria-hidden="true" /> Read the full testimonial
+                  </button>
+                </div>
+              </div>
+            </div>
+          </motion.article>
           </div>
         </div>
       </section>
+
+      {vladanTestimonialOpen && (
+        <div
+          className="fixed inset-0 z-[90] flex items-end justify-center bg-black/70 px-4 py-5 backdrop-blur-[14px] sm:items-center sm:p-6"
+          onPointerDown={(event) => {
+            if (event.target === event.currentTarget) {
+              setVladanTestimonialOpen(false);
+              vladanInfoButtonRef.current?.focus();
+            }
+          }}
+        >
+          <div
+            ref={vladanDialogRef}
+            id="vladan-testimonial-dialog"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="vladan-testimonial-title"
+            aria-describedby="vladan-testimonial-role"
+            className="max-h-[88vh] w-full max-w-3xl overflow-y-auto rounded-[28px] border border-white/15 bg-[linear-gradient(145deg,rgba(255,255,255,0.07),rgba(255,255,255,0.032))] bg-[#080e14] p-5 shadow-[0_24px_90px_rgba(0,0,0,0.46)] sm:p-6"
+          >
+            <div className="flex items-start justify-between gap-5">
+              <div>
+                <p className="text-xs font-semibold uppercase tracking-[0.24em]" style={{ color: "#e7a56f" }}>Professional recommendation</p>
+                <h3 id="vladan-testimonial-title" className="mt-2 text-2xl font-semibold tracking-tight text-white">Vladan Gavrilovic</h3>
+                <p id="vladan-testimonial-role" className="mt-2 text-sm leading-6 text-white/58">Manager, Production Planning · Pirlitor Machine &amp; Tool Ltd.</p>
+              </div>
+              <button
+                ref={vladanCloseRef}
+                type="button"
+                aria-label="Close Vladan Gavrilovic testimonial"
+                onClick={() => {
+                  setVladanTestimonialOpen(false);
+                  vladanInfoButtonRef.current?.focus();
+                }}
+                className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-white/15 bg-white/[0.045] text-white/80 transition hover:border-[#C97A3A]/60 hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#C97A3A]"
+              >
+                <X size={18} aria-hidden="true" />
+              </button>
+            </div>
+
+            <div className="mt-6 space-y-4 rounded-3xl border border-white/10 bg-black/25 p-5 sm:p-6">
+              <p className="text-sm leading-7 text-white/72 sm:text-base sm:leading-8">Throughout his work term with us, Dejan has shown numerous strengths, with his capacity for independent work standing out. When provided with a high-level outline of tasks to be accomplished, Dejan proactively sets effective priorities, gathers the necessary information, and fulfills the task with minimal assistance. His autonomous work style has been greatly beneficial, enabling the rest of the team to concentrate on other critical tasks, assured of the quality of his work.</p>
+              <p className="text-sm leading-7 text-white/72 sm:text-base sm:leading-8">Dejan's ability to quickly understand new concepts deserves special mention. Extensive training or in-depth explanations are not necessary for him. A broad summary is sufficient for him to master new skills. His critical-thinking ability is impressive, as he consistently brings unique insights and perspectives that show an understanding of the underlying principles. Whether mastering new skills or problem-solving, Dejan consistently demonstrates a logical and objective approach to analysis.</p>
+            </div>
+          </div>
+        </div>
+      )}
 <section id="publications" className="relative scroll-mt-20">
   <div className="mx-auto max-w-7xl px-6 py-20 lg:py-24">
     <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
