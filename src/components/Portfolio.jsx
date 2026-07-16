@@ -1496,7 +1496,7 @@ export default function PortfolioWhite() {
       fallback={`${process.env.PUBLIC_URL}/${exp.image}`}
       alt={exp.imageAlt || exp.company}
       className="h-full w-full object-cover object-center md:[object-position:var(--experience-image-position)]"
-      style={exp.imagePosition ? { "--experience-image-position": exp.imagePosition } : undefined}
+      style={(exp.imagePosition || exp.imageFilter) ? { "--experience-image-position": exp.imagePosition || "center", filter: exp.imageFilter } : undefined}
       loading="lazy"
     />
   ) : exp.imageBase ? (
@@ -1514,7 +1514,7 @@ export default function PortfolioWhite() {
         : `${process.env.PUBLIC_URL}/image.jpg`}
       alt={exp.imageAlt || exp.company}
       className="h-full w-full object-cover object-center md:[object-position:var(--experience-image-position)]"
-      style={exp.imagePosition ? { "--experience-image-position": exp.imagePosition } : undefined}
+      style={(exp.imagePosition || exp.imageFilter) ? { "--experience-image-position": exp.imagePosition || "center", filter: exp.imageFilter } : undefined}
       loading="lazy"
     />
   )}

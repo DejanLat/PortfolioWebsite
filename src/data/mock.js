@@ -69,6 +69,7 @@ experience: [
     image: "AxivionStudioJobCard.jpg",
     imageAlt: "Axivion Studio scientific visualization work",
     imagePosition: "calc(50% + 3px) center",
+    imageFilter: "brightness(0.72) saturate(0.78)",
     keyMetrics: [
       { value: "AAAS", description: "Science Advances cover art credit" },
       { value: "Technical", description: "Optics, photonics & hardware fluency" },
