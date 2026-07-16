@@ -66,10 +66,9 @@ experience: [
     engagement: "Self-employed / Studio",
     period: "Jul 2026 – Present",
     category: "Scientific Visualization",
-    imageWebp: "Dejan_Lat_Quotepicture.webp",
-    image: "Dejan_Lat_Quotepicture.jpg",
-    imageAlt: "Dejan Latkovic overlooking the Golden Gate Bridge",
-    imagePosition: "calc(50% + 100px) center",
+    image: "AxivionStudioJobCard.jpg",
+    imageAlt: "Axivion Studio scientific visualization work",
+    imagePosition: "center",
     keyMetrics: [
       { value: "AAAS", description: "Science Advances cover art credit" },
       { value: "Technical", description: "Optics, photonics & hardware fluency" },
