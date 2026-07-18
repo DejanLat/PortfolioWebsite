@@ -24,7 +24,7 @@ const META = {
       "Scientific and technical visualization for researchers, labs, papers, proposals, covers, and advanced hardware teams.",
     siteName: "Axivion Studio",
     canonical: "https://axivionstudio.com/",
-    image: "https://axivionstudio.com/Axivion%20Photos/WebsiteLinkPhotoStudio.jpg",
+    image: "https://axivionstudio.com/WebsiteLinkPhotoStudio.jpg",
   },
   studioRoute: {
     title: "Axivion Studio | Scientific Visualization",
@@ -34,7 +34,7 @@ const META = {
       "Scientific and technical visualization for researchers, labs, papers, proposals, covers, and advanced hardware teams.",
     siteName: "Axivion Studio",
     canonical: "https://axivionstudio.com/",
-    image: "https://axivionstudio.com/Axivion%20Photos/WebsiteLinkPhotoStudio.jpg",
+    image: "https://axivionstudio.com/WebsiteLinkPhotoStudio.jpg",
   },
   contact: {
     title: "Contact Axivion Studio | Project Quote",
@@ -44,7 +44,7 @@ const META = {
       "Request a project quote for scientific visualization, technical renders, publication figures, proposal graphics, and scientific visual packages.",
     siteName: "Axivion Studio",
     canonical: "https://axivionstudio.com/contact",
-    image: "https://axivionstudio.com/Axivion%20Photos/WebsiteLinkPhotoStudio.jpg",
+    image: "https://axivionstudio.com/WebsiteLinkPhotoStudio.jpg",
   },
   terms: {
     title: "Axivion Studio Terms of Service",
@@ -54,7 +54,7 @@ const META = {
       "Project terms for Axivion Studio scientific visualization, technical rendering, figure packages, animations, consulting, usage rights, revisions, and delivery.",
     siteName: "Axivion Studio",
     canonical: "https://axivionstudio.com/terms",
-    image: "https://axivionstudio.com/Axivion%20Photos/WebsiteLinkPhotoStudio.jpg",
+    image: "https://axivionstudio.com/WebsiteLinkPhotoStudio.jpg",
   },
   portfolio: {
     title: "Dejan Latkovic | Engineering Portfolio",
@@ -74,7 +74,7 @@ const META = {
       "Founder of Axivion Studio, creating scientific visualization for researchers, labs, papers, proposals, covers, and advanced hardware teams.",
     siteName: "Axivion Studio",
     canonical: "https://axivionstudio.com/dejan-latkovic",
-    image: "https://axivionstudio.com/Axivion%20Photos/WebsiteLinkPhotoStudio.jpg",
+    image: "https://axivionstudio.com/WebsiteLinkPhotoStudio.jpg",
   },
   prism: {
     title: "Axivion Instruments | Precision Scientific Instrumentation",
@@ -164,6 +164,11 @@ function MetadataManager() {
     upsertMeta('meta[property="og:type"]', { property: "og:type", content: "website" });
     upsertMeta('meta[property="og:url"]', { property: "og:url", content: meta.canonical });
     upsertMeta('meta[property="og:image"]', { property: "og:image", content: meta.image });
+    upsertMeta('meta[property="og:image:secure_url"]', { property: "og:image:secure_url", content: meta.image });
+    upsertMeta('meta[property="og:image:type"]', { property: "og:image:type", content: "image/jpeg" });
+    upsertMeta('meta[property="og:image:width"]', { property: "og:image:width", content: "1600" });
+    upsertMeta('meta[property="og:image:height"]', { property: "og:image:height", content: "900" });
+    upsertMeta('meta[property="og:image:alt"]', { property: "og:image:alt", content: `${meta.siteName} website preview` });
     upsertMeta('meta[property="og:site_name"]', { property: "og:site_name", content: meta.siteName });
     upsertMeta('meta[name="twitter:card"]', { name: "twitter:card", content: "summary_large_image" });
     upsertMeta('meta[name="twitter:title"]', { name: "twitter:title", content: meta.title });

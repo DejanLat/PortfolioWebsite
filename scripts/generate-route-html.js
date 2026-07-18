@@ -14,7 +14,7 @@ const studioRoutes = [
       "Scientific and technical visualization for researchers, labs, papers, proposals, covers, and advanced hardware teams.",
     canonical: "https://axivionstudio.com/",
     siteName: "Axivion Studio",
-    image: "https://axivionstudio.com/Axivion%20Photos/WebsiteLinkPhotoStudio.jpg",
+    image: "https://axivionstudio.com/WebsiteLinkPhotoStudio.jpg",
   },
   {
     path: "contact",
@@ -25,7 +25,7 @@ const studioRoutes = [
       "Request a project quote for scientific visualization, technical renders, publication figures, proposal graphics, and scientific visual packages.",
     canonical: "https://axivionstudio.com/contact",
     siteName: "Axivion Studio",
-    image: "https://axivionstudio.com/Axivion%20Photos/WebsiteLinkPhotoStudio.jpg",
+    image: "https://axivionstudio.com/WebsiteLinkPhotoStudio.jpg",
   },
   {
     path: "terms",
@@ -36,7 +36,7 @@ const studioRoutes = [
       "Project terms for Axivion Studio scientific visualization, technical rendering, figure packages, animations, consulting, usage rights, revisions, and delivery.",
     canonical: "https://axivionstudio.com/terms",
     siteName: "Axivion Studio",
-    image: "https://axivionstudio.com/Axivion%20Photos/WebsiteLinkPhotoStudio.jpg",
+    image: "https://axivionstudio.com/WebsiteLinkPhotoStudio.jpg",
   },
 ];
 
