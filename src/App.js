@@ -24,7 +24,7 @@ const META = {
       "Scientific and technical visualization for researchers, labs, papers, proposals, covers, and advanced hardware teams.",
     siteName: "Axivion Studio",
     canonical: "https://axivionstudio.com/",
-    image: "https://axivionstudio.com/axivion-studio-weblink-photo.png",
+    image: "https://axivionstudio.com/Axivion%20Photos/WebsiteLinkPhotoStudio.jpg",
   },
   studioRoute: {
     title: "Axivion Studio | Scientific Visualization",
@@ -34,7 +34,7 @@ const META = {
       "Scientific and technical visualization for researchers, labs, papers, proposals, covers, and advanced hardware teams.",
     siteName: "Axivion Studio",
     canonical: "https://axivionstudio.com/",
-    image: "https://axivionstudio.com/axivion-studio-weblink-photo.png",
+    image: "https://axivionstudio.com/Axivion%20Photos/WebsiteLinkPhotoStudio.jpg",
   },
   contact: {
     title: "Contact Axivion Studio | Project Quote",
@@ -44,7 +44,7 @@ const META = {
       "Request a project quote for scientific visualization, technical renders, publication figures, proposal graphics, and scientific visual packages.",
     siteName: "Axivion Studio",
     canonical: "https://axivionstudio.com/contact",
-    image: "https://axivionstudio.com/axivion-studio-weblink-photo.png",
+    image: "https://axivionstudio.com/Axivion%20Photos/WebsiteLinkPhotoStudio.jpg",
   },
   terms: {
     title: "Axivion Studio Terms of Service",
@@ -54,7 +54,7 @@ const META = {
       "Project terms for Axivion Studio scientific visualization, technical rendering, figure packages, animations, consulting, usage rights, revisions, and delivery.",
     siteName: "Axivion Studio",
     canonical: "https://axivionstudio.com/terms",
-    image: "https://axivionstudio.com/axivion-studio-weblink-photo.png",
+    image: "https://axivionstudio.com/Axivion%20Photos/WebsiteLinkPhotoStudio.jpg",
   },
   portfolio: {
     title: "Dejan Latkovic | Engineering Portfolio",
@@ -64,7 +64,7 @@ const META = {
       "Nanotechnology Engineering student at the University of Waterloo focused on optomechanical design, quantum optics instrumentation, precision engineering, and PRISM.",
     siteName: "Dejan Latkovic Portfolio",
     canonical: "https://dejanlat.github.io/PortfolioWebsite/",
-    image: "https://dejanlat.github.io/PortfolioWebsite/AxivionPrismBanner.png",
+    image: "https://dejanlat.github.io/PortfolioWebsite/Axivion%20Photos/WebsiteLinkPhotoIntruments.jpg",
   },
   person: {
     title: "Dejan Latkovic | Axivion Studio",
@@ -74,7 +74,7 @@ const META = {
       "Founder of Axivion Studio, creating scientific visualization for researchers, labs, papers, proposals, covers, and advanced hardware teams.",
     siteName: "Axivion Studio",
     canonical: "https://axivionstudio.com/dejan-latkovic",
-    image: "https://axivionstudio.com/axivion-studio-weblink-photo.png",
+    image: "https://axivionstudio.com/Axivion%20Photos/WebsiteLinkPhotoStudio.jpg",
   },
   prism: {
     title: "Axivion Instruments | Precision Scientific Instrumentation",
@@ -84,23 +84,27 @@ const META = {
       "Axivion Instruments develops precision scientific instrumentation for advanced microscopy and optical research workflows.",
     siteName: "Axivion Instruments",
     canonical: "https://axivionstudio.com/prism",
-    image: "https://axivionstudio.com/AxivionPrismBanner.png",
+    image: "https://axivionstudio.com/Axivion%20Photos/WebsiteLinkPhotoIntruments.jpg",
   },
 };
 
 function setFavicons(type) {
   const icons = type === "studio"
     ? [
-        { rel: "icon", href: `${PUBLIC_URL}/axivion-studio-favicon.ico?v=studio-3`, sizes: "any" },
-        { rel: "icon", type: "image/svg+xml", href: `${PUBLIC_URL}/axivion-studio-favicon.svg?v=studio-3` },
-        { rel: "shortcut icon", href: `${PUBLIC_URL}/axivion-studio-favicon.ico?v=studio-3` },
-        { rel: "apple-touch-icon", href: `${PUBLIC_URL}/axivion-studio-weblink-photo.png?v=studio-3` },
+        { rel: "icon", href: `${PUBLIC_URL}/Axivion%20Photos/axivion-studio-favicon.ico?v=studio-4`, sizes: "any" },
+        { rel: "icon", type: "image/svg+xml", href: `${PUBLIC_URL}/Axivion%20Photos/axivion-studio-favicon.svg?v=studio-4` },
+        { rel: "shortcut icon", href: `${PUBLIC_URL}/Axivion%20Photos/axivion-studio-favicon.ico?v=studio-4` },
+        { rel: "apple-touch-icon", href: `${PUBLIC_URL}/Axivion%20Photos/WebsiteLinkPhotoStudio.jpg?v=studio-4` },
       ]
-    : [
-        { rel: "icon", type: "image/x-icon", href: `${PUBLIC_URL}/axivion-favicon.ico` },
-        { rel: "icon", type: "image/webp", href: `${PUBLIC_URL}/axivion-favicon-32.webp`, sizes: "32x32" },
-        { rel: "icon", type: "image/png", href: `${PUBLIC_URL}/axivion-favicon-32.png`, sizes: "32x32" },
-      ];
+    : type === "instruments"
+      ? [
+          { rel: "icon", type: "image/svg+xml", href: `${PUBLIC_URL}/Axivion%20Photos/axivion-Intrumentsfavicon-13C2B3.svg?v=instruments-1` },
+          { rel: "shortcut icon", href: `${PUBLIC_URL}/Axivion%20Photos/axivion-Intrumentsfavicon-13C2B3.svg?v=instruments-1` },
+        ]
+      : [
+          { rel: "icon", type: "image/x-icon", href: `${PUBLIC_URL}/Axivion%20Photos/axivion-studio-favicon-13C2B3.ico?v=portfolio-1` },
+          { rel: "shortcut icon", href: `${PUBLIC_URL}/Axivion%20Photos/axivion-studio-favicon-13C2B3.ico?v=portfolio-1` },
+        ];
 
   document.head.querySelectorAll('link[rel="icon"], link[rel="shortcut icon"]').forEach((element) => element.remove());
   icons.forEach((icon) => {
@@ -166,7 +170,13 @@ function MetadataManager() {
     upsertMeta('meta[name="twitter:description"]', { name: "twitter:description", content: meta.ogDescription });
     upsertMeta('meta[name="twitter:image"]', { name: "twitter:image", content: meta.image });
     setCanonical(meta.canonical);
-    setFavicons(type === "studio" || type === "studioRoute" || type === "contact" || type === "terms" || type === "person" ? "studio" : "portfolio");
+    setFavicons(
+      type === "studio" || type === "studioRoute" || type === "contact" || type === "terms" || type === "person"
+        ? "studio"
+        : type === "prism"
+          ? "instruments"
+          : "portfolio"
+    );
   }, [pathname]);
 
   return null;

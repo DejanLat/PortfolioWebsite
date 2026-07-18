@@ -779,8 +779,8 @@ const PUBLIC = process.env.PUBLIC_URL || "";
 
 // Build /public paths for a base filename (without extension)
 const srcFor = (base) => ({
-  webp: `${PUBLIC}/${base}.webp`,
-  png:  `${PUBLIC}/${base}.png`,
+  webp: `${PUBLIC}/${base}${/\.[a-z0-9]+$/i.test(base) ? "" : ".webp"}`,
+  png:  `${PUBLIC}/${base}${/\.[a-z0-9]+$/i.test(base) ? "" : ".png"}`,
 });
 
 // --- slide lists (put files in /public with these names) ---
@@ -789,7 +789,7 @@ const topSlides = [
   // { base: "carmod_bg", title: "", description: "" },
   { base: "image2Engproject", title: "", description: "" },
   // { base: "carhorizon", title: "", description: "" },
-    { base: "Prism", title: "", description: "" },
+  { base: "Axivion Photos/AxivionInstrumentsBanner.jpg", title: "Axivion Instruments", description: "" },
   
 ];
 // --- equipment slides (put both .webp and .png in /public) ---
@@ -1511,7 +1511,7 @@ export default function PortfolioWhite() {
     <img
       src={exp.image
         ? (exp.image.startsWith("http") ? exp.image : `${process.env.PUBLIC_URL}/${exp.image}`)
-        : `${process.env.PUBLIC_URL}/image.jpg`}
+        : `${process.env.PUBLIC_URL}/Axivion Photos/AxivionInstrumentsBanner.jpg`}
       alt={exp.imageAlt || exp.company}
       className="h-full w-full object-cover object-center md:[object-position:var(--experience-image-position)]"
       style={(exp.imagePosition || exp.imageFilter) ? { "--experience-image-position": exp.imagePosition || "center", filter: exp.imageFilter } : undefined}

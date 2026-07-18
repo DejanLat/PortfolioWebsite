@@ -140,7 +140,7 @@ export default function Contact({ contactEmail = CONTACT_EMAIL }) {
         <section className="relative pt-36 pb-16">
           <div className="absolute inset-0 -z-10">
             <img
-              src={`${PUBLIC}/office.webp`}
+              src={`${PUBLIC}/Axivion Photos/AxivionInstrumentsBanner.jpg`}
               alt="Workspace background"
               className="absolute inset-0 h-full w-full object-cover"
               style={{

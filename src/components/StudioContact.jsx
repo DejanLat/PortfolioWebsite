@@ -118,7 +118,7 @@ export default function StudioContact({ contactEmail = CONTACT_EMAIL }) {
       <section className="relative pt-36 pb-16">
         <div className="absolute inset-0 -z-10">
           <img
-            src={`${PUBLIC}/office.webp`}
+            src={`${PUBLIC}/Axivion Photos/AxivionStudioBanner.jpg`}
             alt="Studio workspace background"
             className="absolute inset-0 h-full w-full object-cover"
             style={{ opacity: 0.18, filter: "brightness(0.72) contrast(1.04)" }}
