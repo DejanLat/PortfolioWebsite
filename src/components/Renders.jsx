@@ -125,7 +125,7 @@ const PACKAGES = [
   {
     label: "Entry point",
     name: "Technical Figure Render",
-    price: "$60 CAD",
+    price: "$100 CAD",
     bestFor:
       "Simple apparatus visuals, poster or presentation graphics, basic CAD-based renders, and small website support images",
     timeline: "1-3 days",
@@ -150,7 +150,7 @@ const PACKAGES = [
   {
     label: "Most requested",
     name: "Publication Visual",
-    price: "$500 CAD",
+    price: "$600 CAD",
     bestFor:
       "Publication figures, research communication, grant visuals, journal cover candidates, lab websites, and technical explainers",
     timeline: "1-2 weeks",
@@ -188,8 +188,8 @@ const PACKAGES = [
 ];
 
 const QUOTE_PACKAGES = [
-  { key: "technical", label: "Technical Figure Render", base: 60 },
-  { key: "hero", label: "Publication Visual", base: 500 },
+  { key: "technical", label: "Technical Figure Render", base: 100 },
+  { key: "hero", label: "Publication Visual", base: 600 },
   { key: "package", label: "Scientific Visual Package", base: 1000 },
 ];
 
