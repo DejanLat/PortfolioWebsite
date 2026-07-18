@@ -9,12 +9,12 @@ const studioRoutes = [
     path: "studio",
     title: "Axivion Studio | Scientific Visualization",
     description:
-      "Axivion Studio creates scientific visualization, technical renders, journal cover artwork, proposal graphics, optics diagrams, engineering visuals, and publication-ready figures for researchers, labs, and hardware teams.",
+      "Scientific and technical visualization for researchers, labs, papers, proposals, journal covers, and advanced hardware teams.",
     ogDescription:
-      "Scientific and technical visualization for researchers, labs, papers, proposals, covers, and advanced hardware teams.",
+      "Scientific and technical visualization for researchers, labs, papers, proposals, journal covers, and advanced hardware teams.",
     canonical: "https://axivionstudio.com/",
     siteName: "Axivion Studio",
-    image: "https://axivionstudio.com/WebsiteLinkPhotoStudio.jpg",
+    image: "https://axivionstudio.com/axivion-studio-social-preview-v2.jpg",
   },
   {
     path: "contact",
@@ -25,7 +25,7 @@ const studioRoutes = [
       "Request a project quote for scientific visualization, technical renders, publication figures, proposal graphics, and scientific visual packages.",
     canonical: "https://axivionstudio.com/contact",
     siteName: "Axivion Studio",
-    image: "https://axivionstudio.com/WebsiteLinkPhotoStudio.jpg",
+    image: "https://axivionstudio.com/axivion-studio-social-preview-v2.jpg",
   },
   {
     path: "terms",
@@ -36,7 +36,7 @@ const studioRoutes = [
       "Project terms for Axivion Studio scientific visualization, technical rendering, figure packages, animations, consulting, usage rights, revisions, and delivery.",
     canonical: "https://axivionstudio.com/terms",
     siteName: "Axivion Studio",
-    image: "https://axivionstudio.com/WebsiteLinkPhotoStudio.jpg",
+    image: "https://axivionstudio.com/axivion-studio-social-preview-v2.jpg",
   },
 ];
 
