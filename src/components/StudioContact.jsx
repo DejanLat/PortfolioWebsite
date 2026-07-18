@@ -20,7 +20,7 @@ const PUBLIC = process.env.PUBLIC_URL || "";
 
 const studioTopics = [
   "Technical Figure Render",
-  "Publication & Hero Visual",
+  "Publication Visual",
   "Scientific Visual Package",
   "Animation / Custom Scope",
   "General Studio Inquiry",
@@ -29,19 +29,19 @@ const studioTopics = [
 const studioCards = [
   {
     title: "Technical Figure Render",
-    label: "Focused visuals for posters, presentations, apparatus visuals, and clearly defined technical concepts.",
+    label: "Small, tightly scoped visuals using clean client-provided assets, CAD, models, diagrams, or references.",
     icon: PackageCheck,
     topic: "Technical Figure Render",
   },
   {
-    title: "Publication & Hero Visual",
-    label: "Publication-quality visuals for papers, cover candidates, proposals, grants, and major announcements.",
+    title: "Publication Visual",
+    label: "Complete custom scientific visuals for papers, proposals, research communication, labs, and cover candidates.",
     icon: ImageIcon,
-    topic: "Publication & Hero Visual",
+    topic: "Publication Visual",
   },
   {
     title: "Scientific Visual Package",
-    label: "Coordinated sets of related visuals for papers, grants, websites, lab groups, and launches.",
+    label: "Coordinated sets of three to five related scientific visuals for papers, grants, websites, and technical explanation pages.",
     icon: Layers3,
     topic: "Scientific Visual Package",
   },

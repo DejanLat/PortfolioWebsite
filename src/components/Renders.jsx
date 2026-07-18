@@ -100,7 +100,7 @@ const getWorkPillClassName = ({ category, label }) => {
   const base = "studio-work-pill inline-flex items-center rounded-full border px-2.5 py-1 text-[11px] font-medium leading-none";
   const tier = (() => {
     if (["Scientific Visual Package", "Advanced", "Campaign, Fundraising & Large-Scale", "Rush"].includes(label)) return "gold";
-    if (["Publication & Hero Visual", "Technical", "Organizational & Promotional", "Priority"].includes(label)) return "silver";
+    if (["Publication Visual", "Technical", "Organizational & Promotional", "Priority"].includes(label)) return "silver";
     return "basic";
   })();
 
@@ -125,69 +125,72 @@ const PACKAGES = [
   {
     label: "Entry point",
     name: "Technical Figure Render",
-    price: "$650+ CAD",
-    usd: "Approx. $475 USD",
+    price: "$60 CAD",
     bestFor:
-      "Posters, presentations, apparatus visuals, and clearly defined technical concepts",
-    timeline: "1-2 weeks",
+      "Simple apparatus visuals, poster or presentation graphics, basic CAD-based renders, and small website support images",
+    timeline: "1-3 days",
     description:
-      "A focused visual for a project with a clear concept and established direction.",
+      "A very small and tightly scoped technical visual using clean client-provided assets, CAD, models, diagrams, or reference material.",
     includes: [
-      "One final visual",
-      "Client-provided references and direction",
-      "Basic modeling and scene preparation",
-      "High-resolution PNG or JPEG",
-      "Up to 2 revision rounds",
+      "One simple final still image",
+      "Minimal scene development",
+      "Client-provided source material or usable assets",
+      "One small consolidated correction round",
+      "Standard PNG or JPEG delivery",
+    ],
+    limitations: [
+      "No major concept development",
+      "No complex scientific interpretation",
+      "No extensive material or lighting development",
+      "No alternate compositions",
+      "No source or Blender files",
+      "Major changes require a new quote",
     ],
   },
   {
     label: "Most requested",
-    name: "Publication & Hero Visual",
-    price: "$1,350+ CAD",
-    usd: "Approx. $990 USD",
+    name: "Publication Visual",
+    price: "$500 CAD",
     bestFor:
-      "Research papers, journal cover candidates, proposals, grants, and major scientific announcements",
-    timeline: "2-5 weeks",
+      "Publication figures, research communication, grant visuals, journal cover candidates, lab websites, and technical explainers",
+    timeline: "1-2 weeks",
     description:
-      "A polished scientific visual developed collaboratively through technical discussion and concept development.",
+      "A complete custom scientific visualization for a paper, proposal, research project, laboratory, or public technical communication.",
     includes: [
-      "Everything in Technical Figure Render",
-      "Technical consultation",
-      "Reference and source-material review",
-      "Concept and visual-direction development",
-      "Custom modeling and scene creation",
-      "One publication-quality hero visual",
-      "Alternate crops for common layouts",
-      "Up to 3 revision rounds",
+      "Technical discussion or project intake",
+      "Reference review",
+      "One agreed visual concept",
+      "Custom scene development",
+      "One final high-resolution still",
+      "Up to three consolidated revision rounds",
+      "One alternate crop when reasonably possible",
+      "PNG, JPEG, or TIFF delivery as agreed",
     ],
   },
   {
     label: "Complete package",
     name: "Scientific Visual Package",
-    price: "$3,000+ CAD",
-    usd: "Approx. $2,200 USD",
+    price: "$1,000 CAD",
     bestFor:
-      "Full papers, grant packages, websites, lab groups, and technical product launches",
-    timeline: "4-8 weeks",
+      "Paper visual packages, research-group websites, grant proposal visual sets, instrument or technology explanation pages, and multiple related project visuals",
+    timeline: "3-4 weeks",
     description:
-      "A coordinated set of related visuals with a consistent technical and visual direction.",
+      "A coordinated set of scientific visuals or a more developed visualization project requiring multiple related outputs.",
     includes: [
-      "Everything in Publication & Hero Visual",
-      "Three to five related final visuals",
-      "Shared visual direction across the set",
-      "Technical consistency between figures",
-      "Reusable scene assets across the project",
-      "Coordinated review milestones",
-      "Alternate crops for selected visuals",
-      "Up to 3 revision rounds per project stage",
+      "Three to five related still visuals, depending on complexity",
+      "Consistent visual style across the package",
+      "Technical alignment between visuals",
+      "Up to three consolidated revision rounds across the package",
+      "Final delivery in agreed image formats",
+      "Reasonable alternate crops where applicable",
     ],
   },
 ];
 
 const QUOTE_PACKAGES = [
-  { key: "technical", label: "Technical Figure Render", base: 650 },
-  { key: "hero", label: "Publication & Hero Visual", base: 1350 },
-  { key: "package", label: "Scientific Visual Package", base: 3000 },
+  { key: "technical", label: "Technical Figure Render", base: 60 },
+  { key: "hero", label: "Publication Visual", base: 500 },
+  { key: "package", label: "Scientific Visual Package", base: 1000 },
 ];
 
 const QUOTE_COMPLEXITY = [
@@ -296,8 +299,6 @@ const LICENSE_GUIDE = [
   },
 ];
 
-const CAD_TO_USD_ESTIMATE = 0.73;
-
 const QUOTE_TIMELINE = [
   { key: "standard", label: "Standard timeline", factor: 1 },
   { key: "priority", label: "Priority review", factor: 1.2 },
@@ -317,7 +318,7 @@ export const TERMS_GROUPS = [
     items: [
       "Your quote lists exactly what files, formats, and revision rounds are included.",
       "A revision round is one consolidated set of feedback for a draft or milestone.",
-      "New concepts, additional visuals, or major direction changes may require a revised quote.",
+      "Small corrections within the approved concept count as revisions; changing the core concept, replacing major structures, rebuilding the scene, or changing the intended use after approval is additional scope.",
     ],
   },
   {
@@ -357,7 +358,7 @@ const FAQ_ITEMS = [
   {
     question: "How do revision rounds work?",
     answer:
-      "Each revision round consists of one consolidated set of feedback. Your quote states how many revision rounds are included for the project.",
+      "A revision round means one consolidated set of feedback. Small corrections within the approved concept count as revisions. Changing the core concept, replacing major structures, rebuilding the scene, or changing the intended use after approval is additional scope. Your quote states how many revision rounds are included for the project.",
   },
   {
     question: "Can confidential or embargoed projects be handled?",
@@ -483,16 +484,14 @@ export default function Renders() {
     const complexity = QUOTE_COMPLEXITY.find((item) => item.key === quoteComplexity) || QUOTE_COMPLEXITY[1];
     const usage = QUOTE_USAGE.find((item) => item.key === quoteUsage) || QUOTE_USAGE[0];
     const timeline = QUOTE_TIMELINE.find((item) => item.key === quoteTimeline) || QUOTE_TIMELINE[0];
-    const low = Math.round(((selectedPackage.base * complexity.factor + usage.add) * timeline.factor) / 50) * 50;
+    const rawLow = (selectedPackage.base * complexity.factor + usage.add) * timeline.factor;
+    const isUnmodifiedBase = complexity.factor === 1 && usage.add === 0 && timeline.factor === 1;
+    const low = isUnmodifiedBase ? selectedPackage.base : Math.round(rawLow / 50) * 50;
     const high = Math.round((low * 1.35) / 50) * 50;
-    const usdLow = Math.round((low * CAD_TO_USD_ESTIMATE) / 25) * 25;
-    const usdHigh = Math.round((high * CAD_TO_USD_ESTIMATE) / 25) * 25;
 
     return {
       low,
       high,
-      usdLow,
-      usdHigh,
       label: selectedPackage.label,
       timeline: timeline.label,
     };
@@ -963,7 +962,7 @@ export default function Renders() {
               <h2 className="mt-2 text-3xl md:text-4xl font-semibold tracking-tight">Project Packages</h2>
             </div>
             <p className="max-w-xl text-sm leading-6 text-white/60">
-              Straightforward starting budgets for scientific visualization projects. Prices are listed in CAD, with approximate USD guidance for international clients. Final quotes depend on scientific complexity, reference quality, usage rights, and timeline.
+              Straightforward starting budgets for scientific visualization projects. Prices are listed in CAD. Final quotes depend on scientific complexity, reference quality, usage rights, and timeline.
             </p>
           </div>
 
@@ -984,7 +983,6 @@ export default function Renders() {
                   </span>
                 </div>
                 <div className="mt-4 text-3xl font-semibold tracking-tight">{pkg.price}</div>
-                <div className="mt-1 text-sm text-white/50">{pkg.usd}</div>
                 <p className="mt-3 text-sm leading-6 text-white/70">{pkg.description}</p>
                 <div className="mt-5 grid grid-cols-1 sm:grid-cols-2 gap-3 text-sm">
                   <div className="rounded-2xl border border-white/10 bg-black/25 p-3">
@@ -1019,6 +1017,16 @@ export default function Renders() {
                     );
                   })}
                 </ul>
+                {pkg.limitations && (
+                  <div className="mt-5 border-t border-white/10 pt-4 text-sm text-white/65">
+                    <div className="font-medium text-white/85">Limitations</div>
+                    <ul className="mt-2 space-y-1.5">
+                      {pkg.limitations.map((item) => (
+                        <li key={item}>- {item}</li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
               </motion.article>
             ))}
           </div>
@@ -1041,7 +1049,7 @@ export default function Renders() {
                     ${quoteEstimate.low.toLocaleString()}-${quoteEstimate.high.toLocaleString()} CAD
                   </div>
                   <p className="mt-3 text-sm leading-6 text-white/68">
-                    Approx. ${quoteEstimate.usdLow.toLocaleString()}-${quoteEstimate.usdHigh.toLocaleString()} USD. Based on {quoteEstimate.label} with {quoteEstimate.timeline.toLowerCase()}.
+                    Based on {quoteEstimate.label} with {quoteEstimate.timeline.toLowerCase()}.
                   </p>
                   <p className="mt-2 text-xs leading-5 text-white/52">
                     Estimates include the usage selected when the project is quoted. Expanding usage after approval may require the current applicable usage rate plus an additional $250 CAD update fee under the Terms of Service.

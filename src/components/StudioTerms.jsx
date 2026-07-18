@@ -78,8 +78,8 @@ const TERMS_SECTIONS = [
     title: "Review milestones and revision rounds",
     body: [
       "Projects may include review milestones such as direction checks, reference reviews, draft previews, composition reviews, technical checks, or final proofing. The exact review process depends on the quote and project type.",
-      "A revision round consists of one consolidated set of feedback submitted for a draft or milestone. A round begins when Axivion Studio starts implementing that feedback. The number of included rounds is stated in the quote.",
-      "Small refinements may be handled during ordinary check-ins at Axivion Studio's discretion. A new concept, major direction change, new technical requirement, replacement deliverable, new format, or expanded use may be treated as a scope change rather than a revision.",
+      "A revision round consists of one consolidated set of feedback submitted for a draft or milestone. A round begins when Axivion Studio starts implementing that feedback. Small corrections within the approved concept count as revisions. The number of included rounds is stated in the quote.",
+      "Changing the core concept, replacing major structures, rebuilding the scene, changing the intended use after approval, introducing a new technical requirement, requesting a replacement deliverable, or requesting a new format may be treated as additional scope rather than a revision.",
       "Additional revisions beyond the included rounds may be charged per round, hourly, or as a revised project fee. Axivion Studio will identify additional revision costs before substantial extra work begins where practical.",
     ],
   },
