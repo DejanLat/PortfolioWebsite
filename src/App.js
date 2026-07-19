@@ -39,9 +39,9 @@ const META = {
   contact: {
     title: "Contact Axivion Studio | Project Quote",
     description:
-      "Contact Axivion Studio to request a scientific visualization, technical render, publication figure, proposal graphic, or scientific visual package.",
+      "Contact Axivion Studio about Visual Refinement, a Custom Scientific Visual, a Coordinated Visual Set, animation, or another scientific visualization scope.",
     ogDescription:
-      "Request a project quote for scientific visualization, technical renders, publication figures, proposal graphics, and scientific visual packages.",
+      "Request a project quote for Visual Refinement, one custom scientific visual, a coordinated visual set, animation, or another technical visualization scope.",
     siteName: "Axivion Studio",
     canonical: "https://axivionstudio.com/contact",
     image: "https://axivionstudio.com/axivion-studio-social-preview-v2.jpg",

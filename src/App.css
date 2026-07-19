@@ -5171,6 +5171,14 @@ body {
 }
 /* Shared Axivion Studio ambient visual system */
 .studio-page {
+  --studio-page-bg: #050a0d;
+  --studio-hero-horizontal-overlay: linear-gradient(
+    90deg,
+    rgba(2, 4, 3, 0.97) 0%,
+    rgba(2, 4, 3, 0.84) 44%,
+    rgba(2, 4, 3, 0.38) 76%,
+    rgba(2, 4, 3, 0.24) 100%
+  );
   --studio-accent: #34d399;
   --studio-accent-rgb: 52, 211, 153;
   --studio-teal-rgb: 19, 194, 179;
@@ -5200,10 +5208,6 @@ body {
 
 .studio-local-cursor-glow {
   background: radial-gradient(700px at var(--hx) var(--hy), rgba(var(--studio-accent-rgb), 0.18), transparent 60%);
-}
-
-.studio-top-glow {
-  background: radial-gradient(52rem 18rem at 50% -14%, rgba(var(--studio-accent-rgb), 0.11), transparent 68%);
 }
 
 
@@ -5245,11 +5249,11 @@ body {
   .studio-ambient-layer,
   .studio-cursor-glow,
   .studio-local-cursor-glow,
-  .studio-top-glow {
+  .studio-top-glow,
+  .studio-terms-header-glow {
     display: none !important;
   }
 }
-
 html.scrollbar-studio,
 html.scrollbar-studio body,
 html.scrollbar-studio * {
@@ -5284,6 +5288,73 @@ html.scrollbar-studio *::-webkit-scrollbar-thumb:hover {
   background: linear-gradient(180deg, rgba(52, 211, 153, 0.78), rgba(19, 194, 179, 0.48));
 }
 
+.studio-page .studio-welcome-horizontal-overlay {
+  background: var(--studio-hero-horizontal-overlay);
+}
+
+.studio-page .studio-welcome-vertical-falloff {
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.45) 0%,
+    transparent 48%,
+    transparent 100%
+  );
+}
+
+.studio-page .studio-welcome-vertical-falloff::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  bottom: -28px;
+  left: 0;
+  height: clamp(320px, 38vh, 400px);
+  pointer-events: none;
+  background: linear-gradient(
+    to bottom,
+    transparent 0%,
+    rgba(5, 10, 13, 0.35) 25%,
+    rgba(5, 10, 13, 0.75) 60%,
+    var(--studio-page-bg) 100%
+  );
+  filter: blur(20px);
+  transform: scaleY(1.1);
+  transform-origin: center bottom;
+}
+
+.studio-page .studio-welcome-local-glow {
+  -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 66%, rgba(0, 0, 0, 0.46) 82%, transparent 100%);
+  mask-image: linear-gradient(to bottom, #000 0%, #000 66%, rgba(0, 0, 0, 0.46) 82%, transparent 100%);
+}
+.studio-page .studio-work-continuation {
+  isolation: isolate;
+  overflow: visible;
+}
+
+.studio-page .studio-work-continuation::before {
+  content: "";
+  position: absolute;
+  z-index: 0;
+  top: clamp(-210px, -20vh, -150px);
+  right: 0;
+  left: 0;
+  height: clamp(320px, 38vh, 400px);
+  pointer-events: none;
+  background: linear-gradient(
+    to bottom,
+    transparent 0%,
+    rgba(5, 10, 13, 0.35) 25%,
+    rgba(5, 10, 13, 0.75) 60%,
+    var(--studio-page-bg) 100%
+  );
+  filter: blur(20px);
+  transform: scaleY(1.1);
+  transform-origin: center;
+}
+
+.studio-page .studio-work-continuation > section {
+  position: relative;
+  z-index: 1;
+}
 /* Studio readability and package/quote polish */
 .studio-page {
   background: #050a0d;
@@ -5477,6 +5548,38 @@ html.scrollbar-studio *::-webkit-scrollbar-thumb:hover {
   }
 }
 
+/* Viewport-safe Studio package details dialog */
+.studio-page .studio-package-dialog-backdrop {
+  box-sizing: border-box;
+  padding:
+    max(16px, env(safe-area-inset-top))
+    max(16px, env(safe-area-inset-right))
+    max(16px, env(safe-area-inset-bottom))
+    max(16px, env(safe-area-inset-left));
+}
+
+.studio-page .studio-package-dialog-shell {
+  width: min(48rem, calc(100vw - 32px));
+  max-height: calc(100dvh - 32px - env(safe-area-inset-top) - env(safe-area-inset-bottom));
+  border-color: rgba(255, 255, 255, 0.11);
+}
+
+.studio-page .studio-package-dialog-scroll {
+  scrollbar-gutter: stable;
+  overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch;
+}
+
+@media (min-width: 640px) {
+  .studio-page .studio-package-dialog-backdrop {
+    padding: 24px;
+  }
+
+  .studio-page .studio-package-dialog-shell {
+    width: min(48rem, calc(100vw - 48px));
+    max-height: calc(100dvh - 48px);
+  }
+}
 /* Portfolio and PRISM page-colour scrollbars */
 html.scrollbar-orange,
 html.scrollbar-orange body,

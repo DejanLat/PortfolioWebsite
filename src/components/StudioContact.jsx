@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useState } from "react";
+import React, { useEffect, useMemo, useRef, useState } from "react";
 import { motion } from "framer-motion";
 import {
   ArrowLeft,
@@ -10,54 +10,72 @@ import {
   SendHorizonal,
   Sparkles,
 } from "lucide-react";
-import { Link } from "react-router-dom";
+import { Link, useSearchParams } from "react-router-dom";
 import { useStudioPointerGlow } from "../hooks/useStudioPointerGlow";
 import { useScrolledHeader } from "../hooks/useScrolledHeader";
+import studioPackages from "../data/studioPackages.json";
+import { calculateStudioEstimate, STUDIO_COMPLEXITIES, STUDIO_TIMELINES, STUDIO_USAGE } from "../data/studioQuote";
 
 const CONTACT_EMAIL = "contact@axivionstudio.com";
 const STUDIO_ACCENT = "#34d399";
 const PUBLIC = process.env.PUBLIC_URL || "";
 
+const PACKAGE_ICONS = {
+  refinement: PackageCheck,
+  custom: ImageIcon,
+  set: Layers3,
+};
+
 const studioTopics = [
-  "Technical Figure Render",
-  "Publication Visual",
-  "Scientific Visual Package",
+  ...studioPackages.map((pkg) => pkg.name),
   "Animation / Custom Scope",
   "General Studio Inquiry",
 ];
 
 const studioCards = [
-  {
-    title: "Technical Figure Render",
-    label: "Small, tightly scoped visuals using clean client-provided assets, CAD, models, diagrams, or references.",
-    icon: PackageCheck,
-    topic: "Technical Figure Render",
-  },
-  {
-    title: "Publication Visual",
-    label: "Complete custom scientific visuals for papers, proposals, research communication, labs, and cover candidates.",
-    icon: ImageIcon,
-    topic: "Publication Visual",
-  },
-  {
-    title: "Scientific Visual Package",
-    label: "Coordinated sets of three to five related scientific visuals for papers, grants, websites, and technical explanation pages.",
-    icon: Layers3,
-    topic: "Scientific Visual Package",
-  },
+  ...studioPackages.map((pkg) => ({
+    title: pkg.name,
+    label: pkg.contactSummary,
+    icon: PACKAGE_ICONS[pkg.key],
+    topic: pkg.name,
+    packageKey: pkg.key,
+  })),
   {
     title: "Animation / Custom Scope",
     label: "Motion, unusual scientific visualization needs, or custom scopes beyond the standard packages.",
     icon: Sparkles,
     topic: "Animation / Custom Scope",
+    packageKey: "",
   },
 ];
 
 export default function StudioContact({ contactEmail = CONTACT_EMAIL }) {
   const { rootRef, rootStyle, updateRootPointer } = useStudioPointerGlow();
   const solidNav = useScrolledHeader();
-  const [topic, setTopic] = useState(studioTopics[0]);
+  const [searchParams] = useSearchParams();
+  const formRef = useRef(null);
+
+  const requestedPackage = studioPackages.find((pkg) => pkg.key === searchParams.get("package"));
+  const requestedComplexity = STUDIO_COMPLEXITIES.some((item) => item.key === searchParams.get("complexity"))
+    ? searchParams.get("complexity")
+    : requestedPackage?.key === "refinement" ? "simple" : "technical";
+  const safeInitialPackage = requestedPackage?.key === "refinement" && requestedComplexity !== "simple"
+    ? studioPackages.find((pkg) => pkg.key === "custom")
+    : requestedPackage;
+
+  const [packageKey, setPackageKey] = useState(safeInitialPackage?.key || "refinement");
+  const [topic, setTopic] = useState(safeInitialPackage?.name || studioPackages[0].name);
+  const [complexityKey, setComplexityKey] = useState(requestedComplexity);
+  const [timelineKey, setTimelineKey] = useState(
+    STUDIO_TIMELINES.some((item) => item.key === searchParams.get("timeline")) ? searchParams.get("timeline") : "standard"
+  );
+  const [usageKey, setUsageKey] = useState(
+    STUDIO_USAGE.some((item) => item.key === searchParams.get("usage")) ? searchParams.get("usage") : "academic"
+  );
+  const [showEstimateSummary, setShowEstimateSummary] = useState(searchParams.has("package"));
+  const [scopeRecommendation, setScopeRecommendation] = useState("");
   const [name, setName] = useState("");
+  const [replyEmail, setReplyEmail] = useState("");
   const [org, setOrg] = useState("");
   const [timeline, setTimeline] = useState("");
   const [intendedUse, setIntendedUse] = useState("");
@@ -70,24 +88,102 @@ export default function StudioContact({ contactEmail = CONTACT_EMAIL }) {
   }, []);
 
   const topics = useMemo(() => studioTopics, []);
+  const selectedPackage = useMemo(
+    () => studioPackages.find((pkg) => pkg.key === packageKey) || studioPackages[0],
+    [packageKey]
+  );
+  const estimate = useMemo(
+    () => calculateStudioEstimate({ packageOption: selectedPackage, complexityKey, usageKey, timelineKey }),
+    [selectedPackage, complexityKey, usageKey, timelineKey]
+  );
 
   const encoded = (value) => encodeURIComponent(value || "");
   const buildMailto = (subject, body) =>
-    `mailto:${contactEmail}?subject=${encoded(subject)}&body=${encoded(body)}`;
+    "mailto:" + contactEmail + "?subject=" + encoded(subject) + "&body=" + encoded(body);
 
-  const buildStudioBody = (selectedTopic = topic) =>
-    `Name: ${name}\nOrganization: ${org}\nTopic: ${selectedTopic}\nTimeline: ${timeline}\nIntended use: ${intendedUse}\nReference material: ${referenceLink}\nProject context:\n${message}`;
+  const buildStudioBody = (selectedTopic = topic) => {
+    const estimateDetails = showEstimateSummary
+      ? "\nEstimator selections:\nPackage: " + selectedPackage.name +
+        "\nComplexity: " + estimate.complexity.label +
+        "\nTimeline: " + estimate.timeline.label +
+        "\nLicence: " + estimate.usage.label +
+        "\nEstimated starting range: " + estimate.range +
+        "\nScope note: " + selectedPackage.scopeNote + "\n"
+      : "";
+
+    return "Name: " + name +
+      "\nReply email: " + replyEmail +
+      "\nOrganization: " + org +
+      "\nTopic: " + selectedTopic + estimateDetails +
+      "\nRequested deadline: " + timeline +
+      "\nIntended use: " + intendedUse +
+      "\nReference material: " + referenceLink +
+      "\nProject context:\n" + message;
+  };
 
   const buildStudioSubject = (selectedTopic = topic) =>
-    `Axivion Studio Project Request - ${selectedTopic}`;
+    "Axivion Studio Project Request - " + selectedTopic;
 
-  const handleCardClick = (selectedTopic) => {
-    const body = `Name: \nOrganization: \nTopic: ${selectedTopic}\nTimeline: \nIntended use: \nReference material: \nProject context:\n`;
-    return buildMailto(buildStudioSubject(selectedTopic), body);
+  const scrollToForm = () => {
+    window.requestAnimationFrame(() => formRef.current?.scrollIntoView({ behavior: "smooth", block: "start" }));
+  };
+
+  const selectPackage = (nextPackageKey) => {
+    const nextPackage = studioPackages.find((pkg) => pkg.key === nextPackageKey);
+    if (!nextPackage) return;
+    setPackageKey(nextPackage.key);
+    setTopic(nextPackage.name);
+    setShowEstimateSummary(true);
+    setScopeRecommendation("");
+    if (nextPackage.key === "refinement") setComplexityKey("simple");
+  };
+
+  const handleCardClick = (card) => {
+    if (card.packageKey) {
+      selectPackage(card.packageKey);
+    } else {
+      setTopic(card.topic);
+      setShowEstimateSummary(false);
+    }
+    scrollToForm();
+  };
+
+  const handleTopicChange = (nextTopic) => {
+    setTopic(nextTopic);
+    const packageMatch = studioPackages.find((pkg) => pkg.name === nextTopic);
+    if (packageMatch) {
+      selectPackage(packageMatch.key);
+    } else {
+      setShowEstimateSummary(false);
+    }
+  };
+
+  const handleEstimatePackageChange = (nextPackageKey) => {
+    if (nextPackageKey === "refinement" && complexityKey !== "simple") {
+      selectPackage("custom");
+      setScopeRecommendation(
+        "This scope requires new concept or scene development and is better suited to the Custom Scientific Visual package."
+      );
+      return;
+    }
+    selectPackage(nextPackageKey);
+  };
+
+  const handleEstimateComplexityChange = (nextComplexity) => {
+    setComplexityKey(nextComplexity);
+    if (packageKey === "refinement" && nextComplexity !== "simple") {
+      selectPackage("custom");
+      setScopeRecommendation(
+        "This scope requires new concept or scene development and is better suited to the Custom Scientific Visual package."
+      );
+      return;
+    }
+    setScopeRecommendation("");
   };
 
   const handleSubmit = (event) => {
     event.preventDefault();
+    if (!event.currentTarget.reportValidity()) return;
     window.location.href = buildMailto(buildStudioSubject(), buildStudioBody());
   };
 
@@ -151,21 +247,23 @@ export default function StudioContact({ contactEmail = CONTACT_EMAIL }) {
 
       <section className="relative w-full">
         <div className="mx-auto max-w-7xl px-6 pb-12">
-          <div className="grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-5">
+          <div className="grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-4">
             {studioCards.map((card) => (
-              <a
+              <button
                 key={card.title}
-                href={handleCardClick(card.topic)}
-                className="rounded-3xl border p-5 transition hover:-translate-y-0.5 hover:bg-white/10"
+                type="button"
+                onClick={() => handleCardClick(card)}
+                aria-label={"Select " + card.title + " and continue to the project form"}
+                className="rounded-3xl border p-5 text-left transition hover:-translate-y-0.5 hover:bg-white/10"
                 style={{ borderColor: "rgba(52,211,153,0.25)", background: "rgba(52,211,153,0.07)" }}
               >
                 <card.icon size={22} style={{ color: STUDIO_ACCENT }} />
                 <h2 className="mt-4 text-lg font-semibold leading-tight">{card.title}</h2>
-                <p className="mt-2 text-sm leading-6 text-white/66">{card.label}</p>
+                <p className="mt-2 text-sm leading-6 text-white/72">{card.label}</p>
                 <div className="mt-5 text-sm font-medium" style={{ color: STUDIO_ACCENT }}>
-                  Start request
+                  Select and continue
                 </div>
-              </a>
+              </button>
             ))}
           </div>
         </div>
@@ -187,7 +285,7 @@ export default function StudioContact({ contactEmail = CONTACT_EMAIL }) {
                 <Mail size={16} className="mt-0.5 shrink-0" />
                 <div>
                   <div className="text-white/82">Studio inquiries</div>
-                  <a href={buildMailto("Axivion Studio Project Request", "Name:\nOrganization:\nTopic:\nTimeline:\nIntended use:\nReference material:\nProject context:\n")} className="underline hover:opacity-80">
+                  <a href={buildMailto("Axivion Studio Project Request", "Name:\nReply email:\nOrganization:\nTopic:\nTimeline:\nIntended use:\nReference material:\nProject context:\n")} className="underline hover:opacity-80">
                     {contactEmail}
                   </a>
                 </div>
@@ -196,49 +294,76 @@ export default function StudioContact({ contactEmail = CONTACT_EMAIL }) {
                 <Phone size={16} /> By appointment after scope review
               </div>
               <p className="text-sm leading-6 text-white/58">
-                Privacy note: this request opens your email application. The website does not collect payment information directly. Please avoid sending highly sensitive or confidential project files before confidentiality arrangements are confirmed.
+                Required fields are name, reply email, selected service, and project context. This request opens your email application. The website does not collect payment information directly. Please avoid sending highly sensitive or confidential project files before confidentiality arrangements are confirmed.
               </p>
             </div>
           </div>
 
-          <form onSubmit={handleSubmit} className="space-y-4">
+          <form ref={formRef} onSubmit={handleSubmit} className="scroll-mt-24 space-y-4">
+            {showEstimateSummary && (
+              <div className="studio-quote-summary rounded-3xl border p-5">
+                <div className="text-xs font-semibold uppercase tracking-[0.2em] text-emerald-200">Estimator summary</div>
+                <div className="mt-3 text-2xl font-semibold tracking-tight text-white">{estimate.range}</div>
+                <p className="mt-2 text-sm leading-6 text-white/72">{selectedPackage.scopeNote}</p>
+                {scopeRecommendation && (
+                  <p className="mt-3 rounded-2xl border border-emerald-300/22 bg-emerald-300/[0.08] px-3 py-2 text-sm leading-6 text-emerald-100">
+                    {scopeRecommendation}
+                  </p>
+                )}
+                {timelineKey === "rush" && (
+                  <p className="mt-3 text-sm font-medium text-amber-100">Rush availability requires scope review.</p>
+                )}
+                <div className="mt-4 grid gap-3 sm:grid-cols-2">
+                  <div>
+                    <label htmlFor="studio-estimate-package" className="mb-1 block text-sm text-white/72">Package</label>
+                    <select id="studio-estimate-package" value={packageKey} onChange={(event) => handleEstimatePackageChange(event.target.value)} className="studio-quote-select w-full rounded-xl border px-3 py-2 pr-10 text-sm text-white outline-none focus:border-emerald-300/60">
+                      {studioPackages.map((pkg) => <option key={pkg.key} value={pkg.key}>{pkg.name}</option>)}
+                    </select>
+                  </div>
+                  <div>
+                    <label htmlFor="studio-estimate-complexity" className="mb-1 block text-sm text-white/72">Complexity</label>
+                    <select id="studio-estimate-complexity" value={complexityKey} onChange={(event) => handleEstimateComplexityChange(event.target.value)} className="studio-quote-select w-full rounded-xl border px-3 py-2 pr-10 text-sm text-white outline-none focus:border-emerald-300/60">
+                      {STUDIO_COMPLEXITIES.map((item) => <option key={item.key} value={item.key}>{item.label}</option>)}
+                    </select>
+                  </div>
+                  <div>
+                    <label htmlFor="studio-estimate-timeline" className="mb-1 block text-sm text-white/72">Scheduling</label>
+                    <select id="studio-estimate-timeline" value={timelineKey} onChange={(event) => setTimelineKey(event.target.value)} className="studio-quote-select w-full rounded-xl border px-3 py-2 pr-10 text-sm text-white outline-none focus:border-emerald-300/60">
+                      {STUDIO_TIMELINES.map((item) => <option key={item.key} value={item.key}>{item.label}</option>)}
+                    </select>
+                  </div>
+                  <div>
+                    <label htmlFor="studio-estimate-usage" className="mb-1 block text-sm text-white/72">Licence</label>
+                    <select id="studio-estimate-usage" value={usageKey} onChange={(event) => setUsageKey(event.target.value)} className="studio-quote-select w-full rounded-xl border px-3 py-2 pr-10 text-sm text-white outline-none focus:border-emerald-300/60">
+                      {STUDIO_USAGE.map((item) => <option key={item.key} value={item.key}>{item.label}</option>)}
+                    </select>
+                  </div>
+                </div>
+              </div>
+            )}
+
             <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
               <div>
                 <label htmlFor="studio-name" className="mb-1 block text-sm text-white/72">Your Name</label>
-                <input
-                  id="studio-name"
-                  value={name}
-                  onChange={(event) => setName(event.target.value)}
-                  className="w-full rounded-xl border border-white/15 bg-black/60 px-3 py-2 outline-none focus:border-emerald-300/60"
-                  placeholder="Your name"
-                  autoComplete="name"
-                />
+                <input id="studio-name" value={name} onChange={(event) => setName(event.target.value)} className="w-full rounded-xl border border-white/15 bg-black/60 px-3 py-2 outline-none focus:border-emerald-300/60" placeholder="Your name" autoComplete="name" required />
               </div>
               <div>
-                <label htmlFor="studio-organization" className="mb-1 block text-sm text-white/72">Organization</label>
-                <input
-                  id="studio-organization"
-                  value={org}
-                  onChange={(event) => setOrg(event.target.value)}
-                  className="w-full rounded-xl border border-white/15 bg-black/60 px-3 py-2 outline-none focus:border-emerald-300/60"
-                  placeholder="Lab / company / team"
-                  autoComplete="organization"
-                />
+                <label htmlFor="studio-reply-email" className="mb-1 block text-sm text-white/72">Reply Email</label>
+                <input id="studio-reply-email" value={replyEmail} onChange={(event) => setReplyEmail(event.target.value)} className="w-full rounded-xl border border-white/15 bg-black/60 px-3 py-2 outline-none focus:border-emerald-300/60" placeholder="you@example.com" autoComplete="email" type="email" required />
               </div>
             </div>
 
-            <div>
-              <label htmlFor="studio-topic" className="mb-1 block text-sm text-white/72">Topic</label>
-              <select
-                id="studio-topic"
-                value={topic}
-                onChange={(event) => setTopic(event.target.value)}
-                className="w-full rounded-xl border border-white/15 bg-black/60 px-3 py-2 outline-none focus:border-emerald-300/60"
-              >
-                {topics.map((item) => (
-                  <option key={item}>{item}</option>
-                ))}
-              </select>
+            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+              <div>
+                <label htmlFor="studio-topic" className="mb-1 block text-sm text-white/72">Selected Service</label>
+                <select id="studio-topic" value={topic} onChange={(event) => handleTopicChange(event.target.value)} className="w-full rounded-xl border border-white/15 bg-black/60 px-3 py-2 outline-none focus:border-emerald-300/60" required>
+                  {topics.map((item) => <option key={item}>{item}</option>)}
+                </select>
+              </div>
+              <div>
+                <label htmlFor="studio-organization" className="mb-1 block text-sm text-white/72">Organization <span className="text-white/55">(optional)</span></label>
+                <input id="studio-organization" value={org} onChange={(event) => setOrg(event.target.value)} className="w-full rounded-xl border border-white/15 bg-black/60 px-3 py-2 outline-none focus:border-emerald-300/60" placeholder="Lab / company / team" autoComplete="organization" />
+              </div>
             </div>
 
             <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
@@ -282,6 +407,7 @@ export default function StudioContact({ contactEmail = CONTACT_EMAIL }) {
                 value={message}
                 onChange={(event) => setMessage(event.target.value)}
                 rows={6}
+                required
                 className="w-full rounded-xl border border-white/15 bg-black/60 px-3 py-2 outline-none focus:border-emerald-300/60"
                 placeholder="Briefly describe the scientific concept, intended use, deadline, reference material, and what the visual needs to communicate."
               />
@@ -296,10 +422,10 @@ export default function StudioContact({ contactEmail = CONTACT_EMAIL }) {
                 Open Email <SendHorizonal size={16} />
               </button>
               <a
-                href={buildMailto("Axivion Studio Project Request", "Name:\nOrganization:\nTopic:\nTimeline:\nIntended use:\nReference material:\nProject context:\n")}
+                href={buildMailto("Axivion Studio Project Request", "Name:\nReply email:\nOrganization:\nTopic:\nTimeline:\nIntended use:\nReference material:\nProject context:\n")}
                 className="inline-flex items-center justify-center rounded-full border border-white/20 px-6 py-3 text-sm font-medium text-white/82 hover:text-white"
               >
-                Email manually
+                Email directly
               </a>
             </div>
           </form>

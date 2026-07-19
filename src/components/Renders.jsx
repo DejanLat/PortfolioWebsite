@@ -2,6 +2,8 @@ import React, { useEffect, useMemo, useRef, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useStudioPointerGlow } from "../hooks/useStudioPointerGlow";
 import { useScrolledHeader } from "../hooks/useScrolledHeader";
+import studioPackages from "../data/studioPackages.json";
+import { calculateStudioEstimate, STUDIO_COMPLEXITIES, STUDIO_TIMELINES, STUDIO_USAGE } from "../data/studioQuote";
 import { motion } from "framer-motion";
 import {
   Calculator,
@@ -35,7 +37,7 @@ const WORK_EXAMPLES = [
     tag: "Science Advances Cover",
     image: renderImg("NewWebPhotos/inside-phoenix-web.webp"),
     metadata: [
-      { category: "Service", label: "Scientific Visual Package" },
+      { category: "Service", label: "Coordinated Visual Set" },
       { category: "Complexity", label: "Technical" },
       { category: "Usage", label: "Academic" },
       { category: "Delivery", label: "Standard" },
@@ -57,7 +59,7 @@ const WORK_EXAMPLES = [
     tag: "Quantum Optics",
     image: renderImg("NewWebPhotos/outside-phoenix-web.webp"),
     metadata: [
-      { category: "Service", label: "Scientific Visual Package" },
+      { category: "Service", label: "Coordinated Visual Set" },
       { category: "Complexity", label: "Technical" },
       { category: "Usage", label: "Academic" },
       { category: "Delivery", label: "Standard" },
@@ -83,7 +85,7 @@ const WORK_EXAMPLES = [
     tag: "Nanophotonics",
     image: renderImg("NewWebPhotos/metasurface-web.webp"),
     metadata: [
-      { category: "Service", label: "Technical Figure Render" },
+      { category: "Service", label: "Visual Refinement" },
       { category: "Complexity", label: "Simple" },
       { category: "Usage", label: "Academic" },
       { category: "Delivery", label: "Rush" },
@@ -99,8 +101,8 @@ const WORK_EXAMPLES = [
 const getWorkPillClassName = ({ category, label }) => {
   const base = "studio-work-pill inline-flex items-center rounded-full border px-2.5 py-1 text-[11px] font-medium leading-none";
   const tier = (() => {
-    if (["Scientific Visual Package", "Advanced", "Campaign, Fundraising & Large-Scale", "Rush"].includes(label)) return "gold";
-    if (["Publication Visual", "Technical", "Organizational & Promotional", "Priority"].includes(label)) return "silver";
+    if (["Coordinated Visual Set", "Advanced", "Campaign, Fundraising & Large-Scale", "Rush"].includes(label)) return "gold";
+    if (["Custom Scientific Visual", "Technical", "Organizational & Promotional", "Priority"].includes(label)) return "silver";
     return "basic";
   })();
 
@@ -121,83 +123,16 @@ const WorkMetadataPills = ({ metadata }) => {
     </div>
   );
 };
-const PACKAGES = [
-  {
-    label: "Entry point",
-    name: "Technical Figure Render",
-    price: "$100 CAD",
-    bestFor:
-      "Simple apparatus visuals, poster or presentation graphics, basic CAD-based renders, and small website support images",
-    timeline: "1-3 days",
-    description:
-      "A very small and tightly scoped technical visual using clean client-provided assets, CAD, models, diagrams, or reference material.",
-    includes: [
-      "One simple final still image",
-      "Minimal scene development",
-      "Client-provided source material or usable assets",
-      "One small consolidated correction round",
-      "Standard PNG or JPEG delivery",
-    ],
-    limitations: [
-      "No major concept development",
-      "No complex scientific interpretation",
-      "No extensive material or lighting development",
-      "No alternate compositions",
-      "No source or Blender files",
-      "Major changes require a new quote",
-    ],
-  },
-  {
-    label: "Most requested",
-    name: "Publication Visual",
-    price: "$600 CAD",
-    bestFor:
-      "Publication figures, research communication, grant visuals, journal cover candidates, lab websites, and technical explainers",
-    timeline: "1-2 weeks",
-    description:
-      "A complete custom scientific visualization for a paper, proposal, research project, laboratory, or public technical communication.",
-    includes: [
-      "Technical discussion or project intake",
-      "Reference review",
-      "One agreed visual concept",
-      "Custom scene development",
-      "One final high-resolution still",
-      "Up to three consolidated revision rounds",
-      "One alternate crop when reasonably possible",
-      "PNG, JPEG, or TIFF delivery as agreed",
-    ],
-  },
-  {
-    label: "Complete package",
-    name: "Scientific Visual Package",
-    price: "$1,000 CAD",
-    bestFor:
-      "Paper visual packages, research-group websites, grant proposal visual sets, instrument or technology explanation pages, and multiple related project visuals",
-    timeline: "3-4 weeks",
-    description:
-      "A coordinated set of scientific visuals or a more developed visualization project requiring multiple related outputs.",
-    includes: [
-      "Three to five related still visuals, depending on complexity",
-      "Consistent visual style across the package",
-      "Technical alignment between visuals",
-      "Up to three consolidated revision rounds across the package",
-      "Final delivery in agreed image formats",
-      "Reasonable alternate crops where applicable",
-    ],
-  },
-];
+const PACKAGES = studioPackages;
 
-const QUOTE_PACKAGES = [
-  { key: "technical", label: "Technical Figure Render", base: 100 },
-  { key: "hero", label: "Publication Visual", base: 600 },
-  { key: "package", label: "Scientific Visual Package", base: 1000 },
-];
+const QUOTE_PACKAGES = studioPackages.map((pkg) => ({
+  key: pkg.key,
+  label: pkg.name,
+  base: pkg.price,
+  scopeNote: pkg.scopeNote,
+}));
 
-const QUOTE_COMPLEXITY = [
-  { key: "simple", label: "Simple / well-defined", factor: 1 },
-  { key: "technical", label: "Technical / moderate detail", factor: 1.35 },
-  { key: "advanced", label: "Advanced / high concept", factor: 1.8 },
-];
+const QUOTE_COMPLEXITY = STUDIO_COMPLEXITIES;
 
 const COMPLEXITY_GUIDE = [
   {
@@ -238,11 +173,7 @@ const COMPLEXITY_GUIDE = [
   },
 ];
 
-const QUOTE_USAGE = [
-  { key: "academic", label: "Academic & Institutional", add: 0 },
-  { key: "commercial", label: "Organizational & Promotional", add: 500 },
-  { key: "extended", label: "Campaign, Fundraising & Large-Scale", add: 1250 },
-];
+const QUOTE_USAGE = STUDIO_USAGE;
 
 const LICENSE_GUIDE = [
   {
@@ -299,11 +230,7 @@ const LICENSE_GUIDE = [
   },
 ];
 
-const QUOTE_TIMELINE = [
-  { key: "standard", label: "Standard timeline", factor: 1 },
-  { key: "priority", label: "Priority review", factor: 1.2 },
-  { key: "rush", label: "Rush timeline", factor: 1.45 },
-];
+const QUOTE_TIMELINE = STUDIO_TIMELINES;
 export const TERMS_GROUPS = [
   {
     title: "Scope and payment",
@@ -429,7 +356,7 @@ const TESTIMONIAL = {
     "I have had the pleasure of working with Dejan on several scientific visualization projects, with the most prominent being the cover image developed for our paper in Science Advances. Across these projects, Dejan consistently demonstrated a strong ability to understand complex scientific ideas and translate them into clear, accurate, and visually compelling images. His background in optics and quantum science is a major advantage, as it allows him to quickly grasp the technical concepts and identify the most important elements to communicate.",
     "What makes working with Dejan particularly easy is his friendly, flexible, and approachable manner. Communication with him is always smooth, and he is responsive whenever questions, changes, or new ideas arise. He quickly digests the scientific concept and develops a strong visual direction, so we usually converge on the best final image with only a limited amount of back-and-forth.",
     "The Science Advances project was the clearest example of these strengths. The work began with a complex scientific concept and only a rough visual direction. Through discussion and a small number of focused revisions, Dejan transformed it into a final render that was both scientifically accurate and visually elegant. The image was ultimately selected for the cover of Science Advances, reflecting both the quality of the work and its ability to communicate complex research in an accessible and engaging way.",
-    "I have also been impressed by Dejan’s reliability and commitment. Even when working under tight timelines, he remains available, professional, and focused on delivering high-quality results.",
+    "I have also been impressed by Dejanâ€™s reliability and commitment. Even when working under tight timelines, he remains available, professional, and focused on delivering high-quality results.",
     "I would gladly recommend Dejan to researchers, companies, and institutions looking for high-quality scientific visualization. He combines scientific understanding, artistic skill, excellent communication, and a highly collaborative approach.",
   ],
   isReady: true,
@@ -451,7 +378,7 @@ export default function Renders() {
   const solidNav = useScrolledHeader();
   const heroRef = useRef(null);
   const { rootRef, rootStyle, updateRootPointer, updateLocalPointer } = useStudioPointerGlow();
-  const [quotePackage, setQuotePackage] = useState("hero");
+  const [quotePackage, setQuotePackage] = useState("custom");
   const [quoteComplexity, setQuoteComplexity] = useState("technical");
   const [quoteUsage, setQuoteUsage] = useState("academic");
   const [quoteTimeline, setQuoteTimeline] = useState("standard");
@@ -459,6 +386,8 @@ export default function Renders() {
   const [licenseDialogOpen, setLicenseDialogOpen] = useState(false);
   const [complexityDialogOpen, setComplexityDialogOpen] = useState(false);
   const [testimonialDialogOpen, setTestimonialDialogOpen] = useState(false);
+  const [packageDialogKey, setPackageDialogKey] = useState(null);
+  const [scopeRecommendation, setScopeRecommendation] = useState("");
   const licenseDialogRef = useRef(null);
   const licenseCloseRef = useRef(null);
   const licenseInfoButtonRef = useRef(null);
@@ -468,8 +397,12 @@ export default function Renders() {
   const testimonialDialogRef = useRef(null);
   const testimonialCloseRef = useRef(null);
   const testimonialButtonRef = useRef(null);
+  const packageDialogRef = useRef(null);
+  const packageDialogScrollRef = useRef(null);
+  const packageCloseRef = useRef(null);
+  const pageScrollPositionRef = useRef(0);
+  const packageInfoButtonRefs = useRef({});
 
-  const heroImage = useMemo(() => renderImg("NewWebPhotos/metasurface-web.webp"), []);
   const selectedUsageGuide = useMemo(
     () => LICENSE_GUIDE.find((item) => item.key === quoteUsage) || LICENSE_GUIDE[0],
     [quoteUsage]
@@ -479,23 +412,71 @@ export default function Renders() {
     [quoteComplexity]
   );
 
+  const selectedQuotePackage = useMemo(
+    () => QUOTE_PACKAGES.find((item) => item.key === quotePackage) || QUOTE_PACKAGES[1],
+    [quotePackage]
+  );
+
+  const selectedPackageDetails = useMemo(
+    () => PACKAGES.find((item) => item.key === packageDialogKey) || null,
+    [packageDialogKey]
+  );
+
   const quoteEstimate = useMemo(() => {
-    const selectedPackage = QUOTE_PACKAGES.find((item) => item.key === quotePackage) || QUOTE_PACKAGES[1];
-    const complexity = QUOTE_COMPLEXITY.find((item) => item.key === quoteComplexity) || QUOTE_COMPLEXITY[1];
-    const usage = QUOTE_USAGE.find((item) => item.key === quoteUsage) || QUOTE_USAGE[0];
-    const timeline = QUOTE_TIMELINE.find((item) => item.key === quoteTimeline) || QUOTE_TIMELINE[0];
-    const rawLow = (selectedPackage.base * complexity.factor + usage.add) * timeline.factor;
-    const isUnmodifiedBase = complexity.factor === 1 && usage.add === 0 && timeline.factor === 1;
-    const low = isUnmodifiedBase ? selectedPackage.base : Math.round(rawLow / 50) * 50;
-    const high = Math.round((low * 1.35) / 50) * 50;
+    const selectedPackage = PACKAGES.find((item) => item.key === selectedQuotePackage.key) || PACKAGES[1];
+    const estimate = calculateStudioEstimate({
+      packageOption: selectedPackage,
+      complexityKey: quoteComplexity,
+      usageKey: quoteUsage,
+      timelineKey: quoteTimeline,
+    });
 
     return {
-      low,
-      high,
-      label: selectedPackage.label,
-      timeline: timeline.label,
+      ...estimate,
+      label: selectedQuotePackage.label,
+      timeline: estimate.timeline.label,
     };
-  }, [quotePackage, quoteComplexity, quoteUsage, quoteTimeline]);
+  }, [selectedQuotePackage, quoteComplexity, quoteUsage, quoteTimeline]);
+
+  const handleQuotePackageChange = (nextPackage) => {
+    if (nextPackage === "refinement" && quoteComplexity !== "simple") {
+      setQuotePackage("custom");
+      setScopeRecommendation(
+        "This scope requires new concept or scene development and is better suited to the Custom Scientific Visual package."
+      );
+      return;
+    }
+    setQuotePackage(nextPackage);
+    setScopeRecommendation("");
+  };
+
+  const handleComplexityChange = (nextComplexity) => {
+    setQuoteComplexity(nextComplexity);
+    if (quotePackage === "refinement" && nextComplexity !== "simple") {
+      setQuotePackage("custom");
+      setScopeRecommendation(
+        "This scope requires new concept or scene development and is better suited to the Custom Scientific Visual package."
+      );
+      return;
+    }
+    setScopeRecommendation("");
+  };
+
+  const handlePackageAction = (packageKey) => {
+    setQuotePackage(packageKey);
+    if (packageKey === "refinement") setQuoteComplexity("simple");
+    setScopeRecommendation("");
+    window.requestAnimationFrame(() => scrollToId("quote"));
+  };
+
+  const contactParams = new URLSearchParams({
+    package: quotePackage,
+    complexity: quoteComplexity,
+    timeline: quoteTimeline,
+    usage: quoteUsage,
+    estimate: quoteEstimate.range,
+    scope: selectedQuotePackage.scopeNote,
+  }).toString();
 
   const scrollToId = (id) => {
     const section = document.getElementById(id);
@@ -631,6 +612,64 @@ export default function Renders() {
     document.addEventListener("keydown", handleKeyDown);
     return () => document.removeEventListener("keydown", handleKeyDown);
   }, [testimonialDialogOpen]);
+
+  const closePackageDialog = () => {
+    const closingKey = packageDialogKey;
+    setPackageDialogKey(null);
+    window.requestAnimationFrame(() => packageInfoButtonRefs.current[closingKey]?.focus({ preventScroll: true }));
+  };
+
+  useEffect(() => {
+    if (!packageDialogKey) return undefined;
+
+    if (packageDialogScrollRef.current) packageDialogScrollRef.current.scrollTop = 0;
+    window.requestAnimationFrame(() => {
+      if (packageDialogScrollRef.current) packageDialogScrollRef.current.scrollTop = 0;
+      packageCloseRef.current?.focus();
+    });
+
+    const handleKeyDown = (event) => {
+      if (event.key === "Escape") {
+        const closingKey = packageDialogKey;
+        setPackageDialogKey(null);
+        window.requestAnimationFrame(() => packageInfoButtonRefs.current[closingKey]?.focus({ preventScroll: true }));
+        return;
+      }
+
+      if (event.key !== "Tab" || !packageDialogRef.current) return;
+      const focusable = packageDialogRef.current.querySelectorAll(
+        'a[href], button:not([disabled]), textarea, input, select, [tabindex]:not([tabindex="-1"])'
+      );
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+      if (!first || !last) return;
+      if (event.shiftKey && document.activeElement === first) {
+        event.preventDefault();
+        last.focus();
+      } else if (!event.shiftKey && document.activeElement === last) {
+        event.preventDefault();
+        first.focus();
+      }
+    };
+
+    document.addEventListener("keydown", handleKeyDown);
+    return () => document.removeEventListener("keydown", handleKeyDown);
+  }, [packageDialogKey]);
+  useEffect(() => {
+    const dialogOpen = licenseDialogOpen || complexityDialogOpen || testimonialDialogOpen || Boolean(packageDialogKey);
+    if (!dialogOpen) return undefined;
+
+    const previousOverflow = document.body.style.overflow;
+    const previousOverscrollBehavior = document.body.style.overscrollBehavior;
+    pageScrollPositionRef.current = window.scrollY;
+    document.body.style.overflow = "hidden";
+    document.body.style.overscrollBehavior = "none";
+    return () => {
+      document.body.style.overflow = previousOverflow;
+      document.body.style.overscrollBehavior = previousOverscrollBehavior;
+      window.scrollTo({ top: pageScrollPositionRef.current, left: 0, behavior: "auto" });
+    };
+  }, [licenseDialogOpen, complexityDialogOpen, testimonialDialogOpen, packageDialogKey]);
 
   const closeLicenseDialog = () => {
     setLicenseDialogOpen(false);
@@ -808,68 +847,67 @@ export default function Renders() {
         )}
       </header>
 
-                  <section ref={heroRef} onPointerMove={updateHeroMouse} className="relative pt-36 pb-16">
-        <div className="absolute inset-0 -z-10">
+                  <section
+        ref={heroRef}
+        onPointerMove={updateHeroMouse}
+        className="studio-welcome-hero relative flex min-h-[760px] h-[88vh] max-h-[980px] items-center"
+      >
+        <div className="absolute inset-0 z-0">
           <img
-            src={heroImage}
-            alt="Metasurface scientific visualization"
-            className="absolute inset-0 h-full w-full object-cover"
-            style={{
-              opacity: 0.24,
-              mixBlendMode: "normal",
-              filter: "grayscale(8%) brightness(0.78) contrast(0.98)",
-            }}
+            src={`${PUBLIC}/Axivion%20Photos/WebsiteLinkPhotoStudio.jpg`}
+            alt="Emerald Axivion Studio prism mark"
+            className="h-full w-full object-cover" style={{ objectPosition: "calc(50% + 100px) center" }}
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-black/90 via-black/80 to-black" />
-          <div className="absolute inset-0 [background-image:radial-gradient(60rem_30rem_at_50%_20%,rgba(52,211,153,0.12),transparent_60%)]" />
+          <div className="studio-welcome-horizontal-overlay absolute inset-0" aria-hidden="true" />
+          <div className="studio-welcome-vertical-falloff absolute inset-0" aria-hidden="true" />
         </div>
 
-        <div className="studio-local-cursor-glow pointer-events-none absolute inset-0 -z-[5]" />
+        <div className="studio-local-cursor-glow studio-welcome-local-glow pointer-events-none absolute inset-0 z-[1]" aria-hidden="true" />
 
-        <div className="mx-auto max-w-7xl px-6">
-          <motion.div
-            initial={{ opacity: 0, y: 12 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="max-w-3xl"
-          >
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          className="relative z-10 mx-auto w-full max-w-7xl px-6 pt-16"
+        >
+          <div className="max-w-3xl">
             <div
-              className="inline-flex items-center gap-2 rounded-full px-4 py-1 text-xs uppercase tracking-widest text-white/90 border backdrop-blur-sm"
-              style={{ borderColor: "rgba(52,211,153,0.35)", background: "rgba(255,255,255,0.07)" }}
+              className="inline-flex items-center gap-2 rounded-full border px-4 py-1 text-xs uppercase tracking-widest text-white/90 backdrop-blur-sm"
+              style={{ borderColor: "rgba(52,211,153,0.35)", background: "rgba(5,10,13,0.48)" }}
             >
-              Scientific Visualization / Technical Renders / Hero Visuals
+              Welcome to Axivion Studio
             </div>
-            <h1 className="mt-4 text-5xl md:text-6xl font-semibold tracking-tight">Axivion <span style={{ color: ACCENT }}>Studio</span></h1>
-            <p className="mt-4 text-white/80 max-w-2xl">
+            <h1 className="mt-4 text-[clamp(3rem,7vw,5.5rem)] font-semibold leading-[0.95] tracking-tight text-white">
+              Axivion <span style={{ color: ACCENT }}>Studio</span>
+            </h1>
+            <p className="mt-5 max-w-2xl text-base text-white/82 sm:text-lg">
               Scientific visualization for researchers, labs, and advanced hardware teams.
             </p>
-            <p className="mt-4 text-white/65 max-w-2xl leading-7">
-              Publication-ready scientific and technical visuals built through direct collaboration with
-              researchers, with a focus on accuracy, clarity, and polished visual communication.
+            <p className="mt-4 max-w-2xl text-sm leading-7 text-white/68 sm:text-base">
+              Publication-ready scientific and technical visuals built through direct collaboration with researchers, with a focus on accuracy, clarity, and polished visual communication.
             </p>
-            <div className="mt-6 flex flex-col sm:flex-row gap-3">
+            <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
               <Link
                 to="/contact"
                 className="inline-flex items-center justify-center gap-2 rounded-full border px-5 py-3 text-sm font-medium text-white"
                 style={{ borderColor: "rgba(52,211,153,0.45)", background: "rgba(52,211,153,0.16)" }}
               >
-                Request a Project <SendHorizonal size={16} />
+                Request a Project <SendHorizonal size={16} aria-hidden="true" />
               </Link>
               <a
                 href="https://www.science.org/toc/sciadv/12/21"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center justify-center gap-2 rounded-full border border-white/20 px-5 py-3 text-sm font-medium text-white/85 hover:text-white"
+                className="inline-flex items-center justify-center gap-2 rounded-full border border-white/20 bg-black/15 px-5 py-3 text-sm font-medium text-white/85 backdrop-blur-sm hover:text-white"
               >
-                View AAAS Issue <ExternalLink size={16} />
+                View AAAS Issue <ExternalLink size={16} aria-hidden="true" />
               </a>
             </div>
-          </motion.div>
-        </div>
+          </div>
+        </motion.div>
       </section>
-
-      <main className="relative w-full">
-        <section id="work" className="mx-auto max-w-7xl px-6 pb-12">
+      <main className="studio-work-continuation relative w-full">
+        <section id="work" className="mx-auto max-w-7xl px-6 pb-12 pt-12 md:pt-16 lg:pt-20">
           <div className="space-y-8">
             {WORK_EXAMPLES.map((section) => (
               <motion.div
@@ -954,19 +992,19 @@ export default function Renders() {
         </section>
 
         <section id="pricing" className="mx-auto max-w-7xl px-6 py-12">
-          <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-4">
+          <div className="flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
             <div>
               <div className="text-sm uppercase tracking-widest" style={{ color: ACCENT }}>
                 Services
               </div>
-              <h2 className="mt-2 text-3xl md:text-4xl font-semibold tracking-tight">Project Packages</h2>
+              <h2 className="mt-2 text-3xl font-semibold tracking-tight md:text-4xl">Project Packages</h2>
             </div>
-            <p className="max-w-xl text-sm leading-6 text-white/60">
-              Straightforward starting budgets for scientific visualization projects. Prices are listed in CAD. Final quotes depend on scientific complexity, reference quality, usage rights, and timeline.
+            <p className="max-w-xl text-sm leading-6 text-white/70">
+              Straightforward <strong className="font-semibold text-white/90">starting budgets</strong> for scientific visualization projects. Prices are listed in CAD. Final quotes depend on scientific complexity, reference and asset quality, intended usage, licensing, deliverables, and timeline.
             </p>
           </div>
 
-          <div className="mt-8 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
+          <div className="mt-8 grid grid-cols-1 items-start gap-4 md:grid-cols-2 xl:grid-cols-3 xl:items-stretch">
             {PACKAGES.map((pkg) => (
               <motion.article
                 key={pkg.name}
@@ -974,59 +1012,68 @@ export default function Renders() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-80px" }}
                 transition={{ duration: 0.45 }}
-                className={`studio-package-card flex h-full flex-col rounded-3xl border p-6 transition hover:-translate-y-0.5 ${pkg.label === "Most requested" ? "studio-package-card-featured shadow-2xl shadow-emerald-950/20" : "studio-package-card-neutral"}`}
+                className={`studio-package-card flex flex-col rounded-3xl border p-6 transition xl:h-full hover:-translate-y-0.5 md:last:col-span-2 xl:last:col-span-1 ${pkg.badge === "Most requested" ? "studio-package-card-featured shadow-2xl shadow-emerald-950/20" : "studio-package-card-neutral"}`}
               >
-                <div className="flex items-start justify-between gap-3">
-                  <h3 className="text-xl font-semibold leading-tight">{pkg.name}</h3>
-                  <span className="studio-soft-pill whitespace-nowrap rounded-full px-3 py-1 text-xs font-medium">
-                    {pkg.label}
+                <div className="flex flex-col items-start gap-3 min-[900px]:flex-row min-[900px]:justify-between min-[900px]:gap-4">
+                  <h3 className="min-w-0 text-xl font-semibold leading-tight">{pkg.name}</h3>
+                  <span className="studio-soft-pill inline-flex h-7 w-max max-w-full shrink-0 items-center justify-center whitespace-nowrap rounded-full px-4 text-center text-xs font-medium">
+                    {pkg.badge}
                   </span>
                 </div>
-                <div className="mt-4 text-3xl font-semibold tracking-tight">{pkg.price}</div>
-                <p className="mt-3 text-sm leading-6 text-white/70">{pkg.description}</p>
-                <div className="mt-5 grid grid-cols-1 sm:grid-cols-2 gap-3 text-sm">
+                <p className="mt-3 text-sm font-medium leading-6 text-emerald-100">{pkg.distinction}</p>
+                <div className="mt-4 text-xs font-semibold uppercase tracking-[0.18em] text-white/58">Starting at</div>
+                <div className="mt-1 text-3xl font-semibold tracking-tight">{pkg.priceLabel}</div>
+                <p className="mt-3 text-sm leading-6 text-white/72">{pkg.description}</p>
+                <div className="mt-5 grid grid-cols-[minmax(0,1fr)_auto] gap-3 text-sm">
                   <div className="rounded-2xl border border-white/10 bg-black/25 p-3">
-                    <div className="text-white/45">Best for</div>
-                    <div className="mt-1 text-white/85">{pkg.bestFor}</div>
+                    <div className="text-white/60">Best for</div>
+                    <div className="mt-1 font-medium text-white/85">{pkg.bestForShort}</div>
                   </div>
-                  <div className="rounded-2xl border border-white/10 bg-black/25 p-3">
-                    <div className="text-white/45 flex items-center gap-1.5">
+                  <div className="min-w-[116px] rounded-2xl border border-white/10 bg-black/25 p-3">
+                    <div className="flex items-center gap-1.5 text-white/60">
                       <Clock size={14} /> Timeline
                     </div>
-                    <div className="mt-1 text-white/85">{pkg.timeline}</div>
+                    <div className="mt-1 font-medium text-white/85">{pkg.timeline}</div>
                   </div>
                 </div>
-                <ul className="mt-5 flex-1 space-y-2.5 text-sm text-white/75">
-                  {pkg.includes.map((item) => {
-                    const inherited = item.startsWith("Everything in ");
-                    const finalVisual = /final visual|hero visual|related final visuals/i.test(item);
-                    return (
-                      <li
-                        key={item}
-                        className={`flex items-start gap-2 rounded-xl ${inherited ? "border border-emerald-300/20 bg-emerald-300/10 px-3 py-2 text-emerald-50" : ""}`}
-                      >
-                        <CheckCircle2
-                          size={16}
-                          className="mt-0.5 shrink-0"
-                          style={{ color: inherited ? "#a7f3d0" : ACCENT }}
-                        />
-                        <span className={inherited ? "font-medium" : finalVisual ? "font-medium text-white" : ""}>
-                          {item}
-                        </span>
-                      </li>
-                    );
-                  })}
+                <dl className="mt-4 grid grid-cols-1 gap-2 text-xs sm:grid-cols-3">
+                  {pkg.facts.map((fact) => (
+                    <div key={fact.label} className="flex min-h-[68px] flex-col justify-center rounded-xl border border-white/10 bg-white/[0.035] px-3 py-2.5">
+                      <dt className="text-white/55">{fact.label}</dt>
+                      <dd className="mt-1 font-medium leading-5 text-white/85">{fact.value}</dd>
+                    </div>
+                  ))}
+                </dl>
+                <ul className="mt-5 space-y-2.5 text-sm text-white/76">
+                  {pkg.includes.slice(0, 3).map((item) => (
+                    <li key={item} className="flex items-start gap-2">
+                      <CheckCircle2 size={16} className="mt-0.5 shrink-0" style={{ color: ACCENT }} />
+                      <span className={/final still|related final/i.test(item) ? "font-medium text-white" : ""}>{item}</span>
+                    </li>
+                  ))}
                 </ul>
-                {pkg.limitations && (
-                  <div className="mt-5 border-t border-white/10 pt-4 text-sm text-white/65">
-                    <div className="font-medium text-white/85">Limitations</div>
-                    <ul className="mt-2 space-y-1.5">
-                      {pkg.limitations.map((item) => (
-                        <li key={item}>- {item}</li>
-                      ))}
-                    </ul>
-                  </div>
-                )}
+                <div className="mt-9 flex items-center gap-3 border-t border-white/10 pt-5 xl:mt-auto xl:pt-6">
+                  <button
+                    ref={(node) => { packageInfoButtonRefs.current[pkg.key] = node; }}
+                    type="button"
+                    aria-haspopup="dialog"
+                    aria-controls="studio-package-dialog"
+                    aria-label={`View full ${pkg.name} package details`}
+                    onClick={() => setPackageDialogKey(pkg.key)}
+                    className="inline-flex min-w-0 flex-1 items-center justify-center gap-2 whitespace-nowrap rounded-full border border-emerald-300/32 bg-emerald-300/[0.09] px-4 py-2.5 text-sm font-medium text-emerald-100 transition hover:border-emerald-300/55 hover:bg-emerald-300/[0.14]"
+                  >
+                    <Info size={16} className="shrink-0" aria-hidden="true" />
+                    <span>Package details</span>
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => handlePackageAction(pkg.key)}
+                    aria-label={`Select ${pkg.name} in the quote estimator`}
+                    className="inline-flex shrink-0 items-center justify-center gap-1.5 whitespace-nowrap rounded-full border border-white/15 bg-white/[0.035] px-3.5 py-2.5 text-sm font-medium text-white/75 transition hover:border-white/30 hover:text-white"
+                  >
+                    <span>Estimate</span> <Calculator size={14} className="shrink-0" />
+                  </button>
+                </div>
               </motion.article>
             ))}
           </div>
@@ -1038,7 +1085,7 @@ export default function Renders() {
               <div>
                 <p className="studio-section-pill inline-flex rounded-full px-3 py-1 text-xs font-semibold uppercase tracking-[0.24em]">Quote Calculator</p>
                 <h2 className="mt-2 text-3xl font-semibold tracking-tight">Estimate a starting range.</h2>
-                <p className="mt-4 text-sm leading-7 text-white/65">
+                <p className="mt-4 text-sm leading-7 text-white/70">
                   Calculator results are planning estimates. Final pricing is confirmed in the written project quote.
                 </p>
                 <div className="studio-quote-summary mt-6 rounded-3xl border p-5">
@@ -1046,16 +1093,24 @@ export default function Renders() {
                     <Calculator size={16} /> Estimated range
                   </div>
                   <div className="mt-3 text-4xl font-semibold tracking-tight">
-                    ${quoteEstimate.low.toLocaleString()}-${quoteEstimate.high.toLocaleString()} CAD
+                    {quoteEstimate.range}
                   </div>
-                  <p className="mt-3 text-sm leading-6 text-white/68">
+                  <p className="mt-3 text-sm leading-6 text-white/72">
                     Based on {quoteEstimate.label} with {quoteEstimate.timeline.toLowerCase()}.
                   </p>
-                  <p className="mt-2 text-xs leading-5 text-white/52">
+                  {scopeRecommendation && (
+                    <p className="mt-3 rounded-2xl border border-emerald-300/22 bg-emerald-300/[0.08] px-3 py-2 text-sm leading-6 text-emerald-100">
+                      {scopeRecommendation}
+                    </p>
+                  )}
+                  {quoteTimeline === "rush" && (
+                    <p className="mt-3 text-sm font-medium text-amber-100">Rush availability requires scope review.</p>
+                  )}
+                  <p className="mt-2 text-xs leading-5 text-white/65">
                     Estimates include the usage selected when the project is quoted. Expanding usage after approval may require the current applicable usage rate plus an additional $250 CAD update fee under the Terms of Service.
                   </p>
                   <Link
-                    to="/contact"
+                    to={`/contact?${contactParams}`}
                     className="mt-5 inline-flex items-center justify-center gap-2 rounded-full border px-5 py-3 text-sm font-medium text-white"
                     style={{ borderColor: "rgba(52,211,153,0.55)", background: "rgba(52,211,153,0.16)" }}
                   >
@@ -1066,19 +1121,21 @@ export default function Renders() {
 
               <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
                 {[
-                  ["Project type", quotePackage, setQuotePackage, QUOTE_PACKAGES],
+                  ["Project type", quotePackage, handleQuotePackageChange, QUOTE_PACKAGES],
                   ["Timeline", quoteTimeline, setQuoteTimeline, QUOTE_TIMELINE],
-                  ["Scientific complexity", quoteComplexity, setQuoteComplexity, QUOTE_COMPLEXITY],
+                  ["Scientific complexity", quoteComplexity, handleComplexityChange, QUOTE_COMPLEXITY],
                   ["Use rights", quoteUsage, setQuoteUsage, QUOTE_USAGE],
                 ].map(([label, value, setter, options]) => {
                   const selectId = `studio-quote-${label.toLowerCase().replace(/[^a-z0-9]+/g, "-")}`;
+                  const isPackageSelect = label === "Project type";
+                  const isTimelineSelect = label === "Timeline";
                   const isComplexitySelect = label === "Scientific complexity";
                   const isUsageSelect = label === "Use rights";
 
                   return (
                     <div key={label} className="studio-select-card rounded-2xl border p-4">
                       <div className="flex items-center justify-between gap-3">
-                        <label htmlFor={selectId} className="block text-sm text-white/58">
+                        <label htmlFor={selectId} className="block text-sm text-white/70">
                           {label}
                         </label>
                         {isComplexitySelect && (
@@ -1120,13 +1177,21 @@ export default function Renders() {
                           <option key={option.key} value={option.key}>{option.label}</option>
                         ))}
                       </select>
+                      {isPackageSelect && (
+                        <p className="mt-3 text-xs leading-5 text-white/65">{selectedQuotePackage.scopeNote}</p>
+                      )}
+                      {isTimelineSelect && (
+                        <p className="mt-3 text-xs leading-5 text-white/65">
+                          {QUOTE_TIMELINE.find((item) => item.key === quoteTimeline)?.description}
+                        </p>
+                      )}
                       {isComplexitySelect && (
-                        <p className="mt-3 text-xs leading-5 text-white/58">
+                        <p className="mt-3 text-xs leading-5 text-white/65">
                           {selectedComplexityGuide.summary}
                         </p>
                       )}
                       {isUsageSelect && (
-                        <p className="mt-3 text-xs leading-5 text-white/58">
+                        <p className="mt-3 text-xs leading-5 text-white/65">
                           {selectedUsageGuide.summary}
                         </p>
                       )}
@@ -1242,7 +1307,7 @@ export default function Renders() {
                   Project Terms
                 </div>
                 <h2 className="mt-2 text-3xl font-semibold tracking-tight">Clear terms before we begin.</h2>
-                <p className="mt-4 text-sm leading-7 text-white/65">
+                <p className="mt-4 text-sm leading-7 text-white/70">
                   A short summary of how Axivion Studio projects are scoped, reviewed, licensed, and delivered.
                 </p>
               </div>
@@ -1300,7 +1365,7 @@ export default function Renders() {
                 FAQ
               </div>
               <h2 className="mt-2 text-3xl font-semibold tracking-tight">Common project questions.</h2>
-              <p className="mt-4 text-sm leading-7 text-white/65">
+              <p className="mt-4 text-sm leading-7 text-white/70">
                 Short answers for scoping, deliverables, revisions, confidentiality, and usage rights.
               </p>
             </div>
@@ -1371,10 +1436,94 @@ export default function Renders() {
         </section>
       </main>
 
-      {testimonialDialogOpen && (
+      {selectedPackageDetails && (
+        <div
+          className="studio-license-dialog-backdrop studio-package-dialog-backdrop fixed inset-0 z-[80] flex items-center justify-center"
+          onPointerDown={(event) => { if (event.target === event.currentTarget) closePackageDialog(); }}
+        >
+          <div
+            ref={packageDialogRef}
+            id="studio-package-dialog"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="studio-package-dialog-title"
+            className="studio-license-dialog studio-package-dialog-shell relative flex w-full max-w-3xl flex-col overflow-hidden rounded-[28px] border shadow-2xl"
+          >
+            <button
+              ref={packageCloseRef}
+              type="button"
+              aria-label={`Close ${selectedPackageDetails.name} package details`}
+              onClick={closePackageDialog}
+              className="absolute right-3 top-3 z-20 inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-emerald-300/[0.28] bg-[#07100d]/95 text-emerald-100 shadow-lg shadow-black/25 backdrop-blur transition hover:border-emerald-300/50 hover:bg-emerald-300/[0.12] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-300 sm:right-4 sm:top-4"
+            >
+              <X size={18} aria-hidden="true" />
+            </button>
+
+            <div ref={packageDialogScrollRef} className="studio-package-dialog-scroll min-h-0 flex-1 overflow-x-hidden overflow-y-auto overscroll-contain p-4 sm:p-5">
+              <div className="rounded-3xl border border-emerald-300/[0.14] bg-emerald-300/[0.045] p-4 pr-14 sm:p-5 sm:pr-16">
+                <div className="min-w-0">
+                  <div className="flex flex-wrap items-center gap-2">
+                    <span className="studio-soft-pill inline-flex h-7 w-max max-w-full items-center whitespace-nowrap rounded-full px-4 text-xs font-medium">{selectedPackageDetails.badge}</span>
+                    <span className="text-xs font-semibold uppercase tracking-[0.18em] text-emerald-200">Package details</span>
+                  </div>
+                  <h2 id="studio-package-dialog-title" className="mt-3 text-2xl font-semibold tracking-tight text-white sm:text-3xl">
+                    {selectedPackageDetails.name}
+                  </h2>
+                  <p className="mt-1.5 text-sm font-medium leading-6 text-emerald-100">{selectedPackageDetails.distinction}</p>
+                  <p className="mt-2 max-w-2xl text-sm leading-6 text-white/70">{selectedPackageDetails.description}</p>
+                </div>
+
+                <div className="mt-4 grid grid-cols-2 gap-2.5 sm:grid-cols-[1.1fr_1fr_repeat(3,minmax(0,1fr))]">
+                  <div className="flex min-h-[72px] flex-col justify-center rounded-2xl border border-white/[0.09] bg-black/20 px-3 py-2.5">
+                    <div className="text-xs leading-4 text-white/52">Starting budget</div>
+                    <div className="mt-1 text-lg font-semibold leading-6 text-white">{selectedPackageDetails.priceLabel}</div>
+                  </div>
+                  <div className="flex min-h-[72px] flex-col justify-center rounded-2xl border border-white/[0.09] bg-black/20 px-3 py-2.5">
+                    <div className="flex items-center gap-1.5 text-xs leading-4 text-white/52"><Clock size={13} aria-hidden="true" /> Timeline</div>
+                    <div className="mt-1 text-sm font-medium leading-5 text-white/88">{selectedPackageDetails.timeline}</div>
+                  </div>
+                  {selectedPackageDetails.facts.map((fact) => (
+                    <div key={fact.label} className="flex min-h-[72px] flex-col justify-center rounded-2xl last:col-span-2 sm:last:col-span-1 border border-white/[0.09] bg-black/20 px-3 py-2.5">
+                      <div className="text-xs leading-4 text-white/50">{fact.label}</div>
+                      <div className="mt-1 text-xs font-medium leading-5 text-white/85">{fact.value}</div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              <div className="mt-4 grid items-start gap-4 lg:grid-cols-2">
+                <section className="studio-license-category-card rounded-2xl border p-4 lg:col-span-2">
+                  <div className="flex items-center gap-2 font-medium text-white"><Layers3 size={16} className="text-emerald-300" aria-hidden="true" /> Best for</div>
+                  <p className="mt-2 max-w-3xl text-sm leading-6 text-white/70">{selectedPackageDetails.bestFor}</p>
+                </section>
+                <section className="studio-license-category-card rounded-2xl border p-4">
+                  <div className="flex items-center gap-2 font-medium text-white"><CheckCircle2 size={16} className="text-emerald-300" aria-hidden="true" /> Included</div>
+                  <ul className="mt-3 space-y-2 text-sm leading-6 text-white/70">
+                    {selectedPackageDetails.includes.map((item) => <li key={item} className="flex items-start gap-2"><span className="mt-px text-emerald-300" aria-hidden="true">+</span><span>{item}</span></li>)}
+                  </ul>
+                </section>
+                <section className="studio-license-category-card rounded-2xl border p-4">
+                  <div className="flex items-center gap-2 font-medium text-white"><FileText size={16} className="text-emerald-300" aria-hidden="true" /> {selectedPackageDetails.boundaryHeading}</div>
+                  <ul className="mt-3 space-y-2 text-sm leading-6 text-white/70">
+                    {selectedPackageDetails.boundaries.map((item) => <li key={item} className="flex items-start gap-2"><span className="mt-px text-white/35" aria-hidden="true">-</span><span>{item}</span></li>)}
+                  </ul>
+                </section>
+                {selectedPackageDetails.clarifications && (
+                  <section className="rounded-2xl border border-emerald-300/[0.18] bg-emerald-300/[0.065] p-4 lg:col-span-2">
+                    <div className="flex items-center gap-2 font-medium text-emerald-100"><Info size={16} aria-hidden="true" /> {selectedPackageDetails.clarificationHeading}</div>
+                    <ul className="mt-3 grid gap-x-6 gap-y-2 text-sm leading-6 text-white/72 lg:grid-cols-2">
+                      {selectedPackageDetails.clarifications.map((item) => <li key={item} className="flex items-start gap-2"><span className="mt-px text-emerald-300" aria-hidden="true">+</span><span>{item}</span></li>)}
+                    </ul>
+                  </section>
+                )}
+              </div>
+            </div>
+          </div>
+        </div>
+      )}      {testimonialDialogOpen && (
         <div className="studio-license-dialog-backdrop fixed inset-0 z-[80] flex items-end justify-center px-4 py-5 sm:items-center sm:p-6" onPointerDown={(event) => { if (event.target === event.currentTarget) closeTestimonialDialog(); }}>
           <div ref={testimonialDialogRef} id="studio-testimonial-dialog" role="dialog" aria-modal="true" aria-labelledby="studio-testimonial-dialog-title" aria-describedby="studio-testimonial-dialog-intro" className="studio-license-dialog max-h-[88vh] w-full max-w-3xl overflow-y-auto rounded-[28px] border p-5 shadow-2xl sm:p-6">
-            <div className="flex items-start justify-between gap-4">
+            <div className="flex flex-col items-start gap-3 min-[900px]:flex-row min-[900px]:justify-between min-[900px]:gap-4">
               <div>
                 <p className="text-xs uppercase tracking-[0.24em] text-emerald-300/78">Client testimonial</p>
                 <h3 id="studio-testimonial-dialog-title" className="mt-2 text-2xl font-semibold tracking-tight text-white">{TESTIMONIAL.name}</h3>
@@ -1412,7 +1561,7 @@ export default function Renders() {
             aria-describedby="studio-complexity-dialog-intro"
             className="studio-license-dialog max-h-[88vh] w-full max-w-3xl overflow-y-auto rounded-[28px] border p-5 shadow-2xl sm:p-6"
           >
-            <div className="flex items-start justify-between gap-4">
+            <div className="flex flex-col items-start gap-3 min-[900px]:flex-row min-[900px]:justify-between min-[900px]:gap-4">
               <div>
                 <p className="text-xs uppercase tracking-[0.24em] text-emerald-300/78">Scientific complexity</p>
                 <h3 id="studio-complexity-dialog-title" className="mt-2 text-2xl font-semibold tracking-tight text-white">
@@ -1472,7 +1621,7 @@ export default function Renders() {
             aria-describedby="studio-license-dialog-intro"
             className="studio-license-dialog max-h-[88vh] w-full max-w-4xl overflow-y-auto rounded-[28px] border p-5 shadow-2xl sm:p-6"
           >
-            <div className="flex items-start justify-between gap-4">
+            <div className="flex flex-col items-start gap-3 min-[900px]:flex-row min-[900px]:justify-between min-[900px]:gap-4">
               <div>
                 <p className="text-xs uppercase tracking-[0.24em] text-emerald-300/78">Use rights</p>
                 <h3 id="studio-license-dialog-title" className="mt-2 text-2xl font-semibold tracking-tight text-white">

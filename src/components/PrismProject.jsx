@@ -4056,9 +4056,15 @@ const rowsToRender = showAll ? allRows : diffRows;
   className="relative h-[88vh] sm:h-[92vh] w-full"
 >
   {/* background */}
-  <div className="absolute inset-0 z-0">
-    <div className="absolute inset-0 bg-gradient-to-b from-[#062a2e] via-[#052024] to-black" />
-    <div className="absolute inset-0 [background-image:radial-gradient(60rem_30rem_at_50%_120%,rgba(19,194,179,0.18),transparent_60%),linear-gradient(to_bottom,rgba(0,0,0,0.25),rgba(0,0,0,0.55))]" />
+  <div className="absolute inset-0 z-0 overflow-hidden">
+    <img
+      src={(process.env.PUBLIC_URL || "") + "/Axivion%20Photos/WebsiteLinkPhotoIntruments.jpg"}
+      alt=""
+      className="absolute inset-0 h-full w-full object-cover"
+      aria-hidden="true"
+    />
+    <div className="absolute inset-0 bg-gradient-to-b from-[#062a2e]/45 via-[#052024]/55 to-black" />
+    <div className="absolute inset-0 [background-image:radial-gradient(60rem_30rem_at_50%_120%,rgba(19,194,179,0.18),transparent_60%),linear-gradient(to_bottom,rgba(0,0,0,0.32),rgba(0,0,0,0.68))]" />
   </div>
 
   {/* hero-local cursor halo */}

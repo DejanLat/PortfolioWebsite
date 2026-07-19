@@ -1603,9 +1603,9 @@ export default function PortfolioWhite() {
               <aside className="order-2 border-t border-white/10 pt-6 lg:border-l lg:border-t-0 lg:pl-8 lg:pt-0">
                 <div className="aspect-square w-[min(100%,360px)] overflow-hidden rounded-[2rem] border border-white/15 bg-white/[0.06] shadow-2xl shadow-black/25 lg:ml-auto lg:w-[min(100%,300px)]">
                   <img
-                    src={`${PUBLIC}/Fab2 logo.jpg`}
-                    alt="Fab2 logo"
-                    className="h-full w-full object-contain"
+                    src={`${PUBLIC}/Dan_LaCroix_Headshot.jpeg`}
+                    alt="Daniel LaCroix"
+                    className="h-full w-full object-cover object-top"
                     loading="lazy"
                   />
                 </div>
@@ -1718,7 +1718,7 @@ export default function PortfolioWhite() {
                   <img
                     src={`${PUBLIC}/pirlitor-squarelogo-1546834955391.png`}
                     alt="Pirlitor Machine & Tool Ltd. logo"
-                    className="h-full w-full object-contain"
+                    className="h-full w-full object-cover object-top"
                     loading="lazy"
                   />
                 </div>
