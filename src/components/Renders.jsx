@@ -109,6 +109,16 @@ const getWorkPillClassName = ({ category, label }) => {
   return `${base} studio-work-pill-${tier} studio-work-pill-${category.toLowerCase()}`;
 };
 
+const getPackageBadgeClassName = (badge) => {
+  const finish =
+    badge === "Multi-visual package"
+      ? "gold"
+      : badge === "Most requested"
+        ? "silver"
+        : "basic";
+
+  return "studio-soft-pill studio-work-pill studio-work-pill-" + finish;
+};
 const WorkMetadataPills = ({ metadata }) => {
   if (!Array.isArray(metadata) || metadata.length === 0) return null;
 
@@ -1016,7 +1026,7 @@ export default function Renders() {
               >
                 <div className="flex flex-col items-start gap-3 min-[900px]:flex-row min-[900px]:justify-between min-[900px]:gap-4">
                   <h3 className="min-w-0 text-xl font-semibold leading-tight">{pkg.name}</h3>
-                  <span className="studio-soft-pill inline-flex h-7 w-max max-w-full shrink-0 items-center justify-center whitespace-nowrap rounded-full px-4 text-center text-xs font-medium">
+                  <span className={getPackageBadgeClassName(pkg.badge) + " inline-flex h-7 w-max max-w-full shrink-0 items-center justify-center whitespace-nowrap rounded-full px-4 text-center text-xs font-medium"}>
                     {pkg.badge}
                   </span>
                 </div>
@@ -1463,7 +1473,7 @@ export default function Renders() {
               <div className="rounded-3xl border border-emerald-300/[0.14] bg-emerald-300/[0.045] p-4 pr-14 sm:p-5 sm:pr-16">
                 <div className="min-w-0">
                   <div className="flex flex-wrap items-center gap-2">
-                    <span className="studio-soft-pill inline-flex h-7 w-max max-w-full items-center whitespace-nowrap rounded-full px-4 text-xs font-medium">{selectedPackageDetails.badge}</span>
+                    <span className={getPackageBadgeClassName(selectedPackageDetails.badge) + " inline-flex h-7 w-max max-w-full items-center whitespace-nowrap rounded-full px-4 text-xs font-medium"}>{selectedPackageDetails.badge}</span>
                     <span className="text-xs font-semibold uppercase tracking-[0.18em] text-emerald-200">Package details</span>
                   </div>
                   <h2 id="studio-package-dialog-title" className="mt-3 text-2xl font-semibold tracking-tight text-white sm:text-3xl">
