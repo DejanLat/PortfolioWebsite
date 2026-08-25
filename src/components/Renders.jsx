@@ -83,17 +83,17 @@ const WORK_EXAMPLES = [
     icon: Layers3,
     title: "Metasurface Visualization",
     tag: "Nanophotonics",
-    image: renderImg("NewWebPhotos/metasurface-web.webp"),
+    image: renderImg("AxivionStudioWorkExperiencePhoto.jpg"),
     metadata: [
-      { category: "Service", label: "Visual Refinement" },
-      { category: "Complexity", label: "Simple" },
+      { category: "Service", label: "Custom Scientific Visual" },
+      { category: "Complexity", label: "Technical" },
       { category: "Usage", label: "Academic" },
       { category: "Delivery", label: "Rush" },
     ],
     bullets: [
-      "Blender render of a nanophotonic metasurface structure.",
-      "Communicates nanoscale geometry, material contrast, and photonic structure layout for research use.",
-      "Produced as scientific visualization support for ongoing photonics research.",
+      "Visualization of a metasurface-stabilized chiral cavity designed to separate right- and left-handed optical spin states.",
+      "The cavity allows the right-handed spin state to pass through while trapping the left-handed state so its energy can dissipate.",
+      "Communicates the cavity geometry and spin-selective filtering mechanism for photonics research.",
     ],
   },
 ];

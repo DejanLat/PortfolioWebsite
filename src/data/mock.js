@@ -66,7 +66,7 @@ experience: [
     engagement: "Self-employed / Studio",
     period: "Jul 2026 – Present",
     category: "Scientific Visualization",
-    image: "AxivionStudioJobCard.jpg",
+    image: "AxivionStudioWorkExperiencePhoto.jpg",
     imageAlt: "Axivion Studio scientific visualization work",
     imagePosition: "calc(50% + 3px) center",
     imageFilter: "brightness(0.72) saturate(0.78)",
