@@ -85,7 +85,7 @@ const WORK_EXAMPLES = [
     tag: "Nanophotonics",
     image: renderImg("AxivionStudioWorkExperiencePhoto.jpg"),
     metadata: [
-      { category: "Service", label: "Custom Scientific Visual" },
+      { category: "Service", label: "Visual Refinement" },
       { category: "Complexity", label: "Technical" },
       { category: "Usage", label: "Academic" },
       { category: "Delivery", label: "Rush" },
