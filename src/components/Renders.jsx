@@ -81,8 +81,8 @@ const WORK_EXAMPLES = [
   {
     key: "metasurface",
     icon: Layers3,
-    title: "Metasurface Visualization",
-    tag: "Nanophotonics",
+    title: "Client Metasurface Visual",
+    tag: "Client Render",
     image: renderImg("AxivionStudioWorkExperiencePhoto.jpg"),
     metadata: [
       { category: "Service", label: "Visual Refinement" },
@@ -91,9 +91,7 @@ const WORK_EXAMPLES = [
       { category: "Delivery", label: "Rush" },
     ],
     bullets: [
-      "Visualization of a metasurface-stabilized chiral cavity designed to separate right- and left-handed optical spin states.",
-      "The cavity allows the right-handed spin state to pass through while trapping the left-handed state so its energy can dissipate.",
-      "Communicates the cavity geometry and spin-selective filtering mechanism for photonics research.",
+      "Project details will be revealed once Behrooz Semnani's paper is published. A link will be provided here.",
     ],
   },
 ];
@@ -965,8 +963,9 @@ export default function Renders() {
 
                     <WorkMetadataPills metadata={section.metadata} />
 
-                    <ul className="mt-3 space-y-2 text-sm">
-                      {section.bullets.map((bullet) => (
+                    {section.bullets.length > 0 && (
+                      <ul className="mt-3 space-y-2 text-sm">
+                        {section.bullets.map((bullet) => (
                         <li key={bullet} className="flex items-start gap-2">
                           <span
                             aria-hidden
@@ -975,8 +974,9 @@ export default function Renders() {
                           />
                           <span className="text-white/90">{bullet}</span>
                         </li>
-                      ))}
-                    </ul>
+                        ))}
+                      </ul>
+                    )}
 
                     {Array.isArray(section.links) && (
                       <div className="mt-5 flex flex-wrap gap-3">
