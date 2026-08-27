@@ -12,11 +12,11 @@
     "timeline": "1–3 business days",
     "actionLabel": "Request Visual Refinement",
     "contactSummary": "Focused improvements to one existing approved scientific visual using usable client-provided assets.",
-    "facts": [{"label": "Deliverable", "value": "1 refined still"}, {"label": "Revisions", "value": "Written request list"}, {"label": "Workflow", "value": "Written intake"}],
+    "facts": [{"label": "Deliverable", "value": "Up to 3 angles"}, {"label": "Revisions", "value": "Written request list"}, {"label": "Workflow", "value": "Written intake"}],
     "scopeNote": "Basic refinement of existing approved assets and direction only. New concept or scene development requires a Custom Scientific Visual.",
-    "includes": ["One refined final still image", "Improvements to one existing client-provided model, scene, or visual", "Basic material, lighting, composition, or presentation adjustments", "Brief progress updates during active work", "One consolidated written request list confirmed before work begins", "Standard PNG or JPEG delivery"],
+    "includes": ["Up to three unique shot angles per unique 3D environment", "Each additional shot angle is $20 CAD", "Final still images for the included angles", "Improvements to one existing client-provided model, scene, or visual", "Basic material, lighting, composition, or presentation adjustments", "Brief progress updates during active work", "One consolidated written request list confirmed before work begins", "Standard PNG or JPEG delivery"],
     "boundaryHeading": "Requirements and exclusions",
-    "boundaries": ["Client must provide usable source assets", "Existing visual direction must already be approved", "No new concept development", "No substantial CAD reconstruction or custom modeling", "No complex scientific interpretation", "No extensive material, lighting, or environment development", "No alternate compositions", "Changes beyond the agreed request list, including additional or major requests, require a new quote.", "No source, Blender, CAD, or working files"]
+    "boundaries": ["Client must provide usable source assets", "Existing visual direction must already be approved", "No new concept development", "No substantial CAD reconstruction or custom modeling", "No complex scientific interpretation", "No extensive material, lighting, or environment development", "Changes beyond the included shot angles or agreed request list, including additional or major requests, require a new quote.", "No source, Blender, CAD, or working files"]
   },
   {
     "key": "custom",
@@ -31,9 +31,9 @@
     "timeline": "1–3 weeks",
     "actionLabel": "Request Custom Visual",
     "contactSummary": "One clearly defined custom scientific visual with scoped scene development and two revision rounds.",
-    "facts": [{"label": "Deliverable", "value": "1 high-res still"}, {"label": "Revisions", "value": "Up to 2 rounds"}, {"label": "Workflow", "value": "Initial scope discussion"}],
+    "facts": [{"label": "Deliverable", "value": "Up to 3 angles"}, {"label": "Revisions", "value": "Up to 2 rounds"}, {"label": "Workflow", "value": "Initial scope discussion"}],
     "scopeNote": "One clearly defined visual concept with modeling and scene development limited to the quoted scope.",
-    "includes": ["Initial scope discussion", "Review of client-provided references and scientific material", "One agreed visual concept", "Custom scene development for the agreed concept", "Reasonable CAD cleanup", "Limited custom modeling required for the quoted scope", "Designed materials, lighting, environment, and composition", "Progress check-ins during active work", "One final high-resolution still image", "Up to two consolidated revision rounds", "One alternate crop when the approved composition supports it", "PNG, JPEG, or TIFF delivery as agreed"],
+    "includes": ["Up to three unique shot angles per unique 3D environment", "Each additional shot angle is $20 CAD", "Initial scope discussion", "Review of client-provided references and scientific material", "One agreed visual concept", "Custom scene development for the agreed concept", "Reasonable CAD cleanup", "Limited custom modeling required for the quoted scope", "Designed materials, lighting, environment, and composition", "Progress check-ins during active work", "High-resolution final still images for the included angles", "Up to two consolidated revision rounds", "One alternate crop when the approved composition supports it", "PNG, JPEG, or TIFF delivery as agreed"],
     "boundaryHeading": "Scope boundaries",
     "boundaries": ["Pricing assumes one clearly defined visual concept", "Modeling and scene development are limited to the quoted scope", "Complex CAD reconstruction, engineering design, simulation, or extensive asset creation may increase the quote", "Separate visual concepts are not included", "Major direction changes after concept approval require a revised quote", "Client is responsible for reviewing and approving scientific accuracy", "Source, Blender, CAD, and working files are not included", "Animation is quoted separately"]
   },
@@ -50,9 +50,9 @@
     "timeline": "3–4 weeks",
     "actionLabel": "Request Visual Set",
     "contactSummary": "Two to four closely related visuals built from shared subject matter, assets, scene development, and visual direction.",
-    "facts": [{"label": "Deliverables", "value": "2-4 related stills"}, {"label": "Revisions", "value": "Up to 3 rounds total"}, {"label": "Workflow", "value": "Shared project foundation"}],
+    "facts": [{"label": "Deliverables", "value": "2-4 visuals + angles"}, {"label": "Revisions", "value": "Up to 3 rounds total"}, {"label": "Workflow", "value": "Shared project foundation"}],
     "scopeNote": "Includes two to four closely related visuals. Final count depends on modeling complexity and how much scene development can be reused across the set.",
-    "includes": ["The core process included in the Custom Scientific Visual package", "Two to four related final still visuals, depending on complexity", "Shared subject matter, source assets, scene development, and visual language", "Consistent materials, lighting, composition, and visual direction across the set", "Technical alignment between related visuals", "Up to three consolidated revision rounds across the complete package", "Final delivery in agreed image formats", "Reasonable alternate crops where the approved compositions support them"],
+    "includes": ["Up to three unique shot angles per unique 3D environment", "Each additional shot angle is $20 CAD", "The core process included in the Custom Scientific Visual package", "Two to four related final still visuals, depending on complexity", "Shared subject matter, source assets, scene development, and visual language", "Consistent materials, lighting, composition, and visual direction across the set", "Technical alignment between related visuals", "Up to three consolidated revision rounds across the complete package", "Final delivery in agreed image formats", "Reasonable alternate crops where the approved compositions support them"],
     "clarificationHeading": "How final visual count is set",
     "clarifications": ["Up to four simpler related outputs may be included when substantial assets and scene development can be reused", "More developed or modeling-intensive projects may include two final visuals", "The expected final visual count is confirmed in the quote before work begins", "The $945 starting price applies only to the smallest qualifying coordinated package scope"],
     "boundaryHeading": "Scope boundaries",
