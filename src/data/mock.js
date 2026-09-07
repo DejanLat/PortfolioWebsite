@@ -121,7 +121,7 @@ experience: [
   },
   {
     company: "Institute for Quantum Computing (IQC)",
-    role: "Research Affiliate",
+    role: "Research Associate",
     engagement: "Casual / On-call",
     affiliationNote: "Nano Photonics and Quantum Optics Lab, IQC",
     period: "May 2025 – Present",
@@ -160,7 +160,7 @@ experience: [
   },
   {
     company: "Institute for Quantum Computing (IQC)",
-    role: "Research Affiliate",
+    role: "Research Associate",
     engagement: "Casual / On-call",
     affiliationNote: "Nano Photonics and Quantum Optics Lab, IQC",
     period: "May – Aug 2024",
