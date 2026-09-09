@@ -59,6 +59,10 @@
   "scripts": {
     "start": "craco start",
     "build": "node scripts/build-production.js",
+    "build:portfolio": "node scripts/build-portfolio.js",
+    "verify:portfolio": "node scripts/verify-portfolio-build.js docs",
+    "predeploy:portfolio": "npm run build:portfolio",
+    "deploy:portfolio": "gh-pages -d docs --dotfiles --nojekyll",
     "test": "craco test",
     "predeploy": "npm run build",
     "deploy": "npx wrangler deploy",

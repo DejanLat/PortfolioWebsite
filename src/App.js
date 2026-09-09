@@ -155,7 +155,23 @@ function MetadataManager() {
           : pathname.startsWith("/prism")
             ? "prism"
             : "studio";
-    const meta = META[type];
+    let meta = META[type];
+    if (IS_PORTFOLIO_BUILD && pathname.startsWith("/portfolio/contact")) {
+      meta = {
+        ...META.portfolio,
+        title: "Contact Dejan Latkovic | Engineering Portfolio",
+        description: "Contact Dejan Latkovic about engineering, research, instrumentation, and collaboration opportunities.",
+        ogDescription: "Contact Dejan Latkovic about engineering, research, instrumentation, and collaboration opportunities.",
+        canonical: "https://dejanlat.github.io/PortfolioWebsite/portfolio/contact",
+      };
+    } else if (IS_PORTFOLIO_BUILD && type === "prism") {
+      meta = {
+        ...META.prism,
+        title: "Axivion Instruments | PRISM",
+        canonical: "https://dejanlat.github.io/PortfolioWebsite/prism",
+        image: META.portfolio.image,
+      };
+    }
 
     document.title = meta.title;
     upsertMeta('meta[name="description"]', { name: "description", content: meta.description });

@@ -50,6 +50,7 @@ const portfolioRoot = {
 };
 
 const portfolioRoutes = [
+  { ...portfolioRoot, path: "portfolio" },
   {
     path: "portfolio/contact",
     title: "Contact Dejan Latkovic | Engineering Portfolio",
@@ -89,6 +90,24 @@ function applyPortfolioFavicons(html, type = "portfolio") {
   const withoutIcons = html.replace(/<link\s+rel="(?:icon|shortcut icon|apple-touch-icon)"[^>]*\/?\s*>/gi, "");
   const links = `<link rel="icon" type="${iconType}" href="${iconHref}"/><link rel="shortcut icon" href="${iconHref}"/>`;
   return withoutIcons.replace(/<title>/i, `${links}<title>`);
+}
+function applyPortfolioContent(html, meta) {
+  const schema = {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    name: meta.title,
+    description: meta.description,
+    url: meta.canonical,
+  };
+  return html
+    .replace(/<script type="application\/ld\+json">[\s\S]*?<\/script>/i, `<script type="application/ld+json">${JSON.stringify(schema)}</script>`)
+    .replace(/<noscript>[\s\S]*?<\/noscript>/i, `<noscript><main><h1>${escapeAttr(meta.title)}</h1><p>${escapeAttr(meta.description)}</p><p>Enable JavaScript to explore the portfolio.</p></main></noscript>`)
+    .replace(/<meta name="author" content="[^"]*"\s*\/?>(?![^<]*<\/meta>)/i, '<meta name="author" content="Dejan Latkovic"/>')
+    .replace(/<meta name="keywords"[^>]*>/i, "")
+    .replace(/<meta property="og:image:secure_url" content="[^"]*"\s*\/?>/i, `<meta property="og:image:secure_url" content="${escapeAttr(meta.image)}"/>`)
+    .replace(/<meta property="og:image:width" content="[^"]*"\s*\/?>/i, '<meta property="og:image:width" content="1600"/>')
+    .replace(/<meta property="og:image:height" content="[^"]*"\s*\/?>/i, '<meta property="og:image:height" content="900"/>')
+    .replace(/<meta property="og:image:alt" content="[^"]*"\s*\/?>/i, `<meta property="og:image:alt" content="${escapeAttr(meta.siteName)} website preview"/>`);
 }
 function applyMeta(html, meta) {
   let output = html;
@@ -152,7 +171,7 @@ if (!fs.existsSync(indexPath)) {
 
 const sourceHtml = fs.readFileSync(indexPath, "utf8");
 const isPortfolioBuild = process.env.PUBLIC_URL === "/PortfolioWebsite";
-const baseHtml = isPortfolioBuild ? applyPortfolioFavicons(applyMeta(sourceHtml, portfolioRoot)) : sourceHtml;
+const baseHtml = isPortfolioBuild ? applyPortfolioFavicons(applyPortfolioContent(applyMeta(sourceHtml, portfolioRoot), portfolioRoot)) : sourceHtml;
 const routes = isPortfolioBuild ? portfolioRoutes : studioRoutes;
 
 fs.writeFileSync(indexPath, baseHtml);
@@ -162,10 +181,17 @@ for (const route of routes) {
   const routeDir = path.join(buildDir, route.path);
   fs.mkdirSync(routeDir, { recursive: true });
   const routeHtml = isPortfolioBuild
-    ? applyPortfolioFavicons(applyMeta(baseHtml, route), route.path === "prism" ? "instruments" : "portfolio")
+    ? applyPortfolioFavicons(applyPortfolioContent(applyMeta(baseHtml, route), route), route.path === "prism" ? "instruments" : "portfolio")
     : applyMeta(baseHtml, route);
   fs.writeFileSync(path.join(routeDir, "index.html"), routeHtml);
   fs.writeFileSync(path.join(buildDir, `${route.path.replace(/\//g, "-")}.html`), routeHtml);
+}
+
+if (isPortfolioBuild) {
+  const sitemapUrls = [portfolioRoot, ...portfolioRoutes.filter((route) => route.path !== "portfolio")];
+  fs.writeFileSync(path.join(buildDir, "robots.txt"), `User-agent: *\nAllow: /\n\nSitemap: ${portfolioRoot.canonical}sitemap.xml\n`);
+  fs.writeFileSync(path.join(buildDir, "sitemap.xml"), `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${sitemapUrls.map((route) => `  <url><loc>${route.canonical}</loc></url>`).join("\n")}\n</urlset>\n`);
+  fs.writeFileSync(path.join(buildDir, ".nojekyll"), "");
 }
 
 console.log(`Generated route HTML for ${routes.map((route) => `/${route.path}`).join(", ")}`);

@@ -29,6 +29,14 @@ Your app is ready to be deployed!
 
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
+### GitHub Pages portfolio
+
+Run `npm run build:portfolio` to build with `/PortfolioWebsite`, generate portfolio route HTML and metadata, validate asset paths, and refresh `docs/`. Run `npm run verify:portfolio` to check the generated output again.
+
+Commit the source changes and `docs/` to `main`, then run `npm run deploy:portfolio` to rebuild and publish to `gh-pages` without rewriting its history. GitHub Pages serves the `gh-pages` branch; pushing `main` alone does not update the live portfolio.
+
+The regular `npm run build` and `npm run deploy` commands target Axivion Studio on Cloudflare. Publishing that build to GitHub Pages produces incorrect `/static/` paths and a blank page.
+
 ### `npm run eject`
 
 **Note: this is a one-way operation. Once you `eject`, you can't go back!**
