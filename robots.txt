@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://axivionstudio.com/sitemap.xml
+Sitemap: https://dejanlat.github.io/PortfolioWebsite/sitemap.xml
