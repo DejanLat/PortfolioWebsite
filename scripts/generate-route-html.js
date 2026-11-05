@@ -18,14 +18,24 @@ const studioRoutes = [
   },
   {
     path: "contact",
-    title: "Contact Axivion Studio | Project Quote",
+    title: "Contact Axivion Studio | Let's Talk Science",
     description:
-      "Contact Axivion Studio about Visual Refinement, a Custom Scientific Visual, a Coordinated Visual Set, animation, or another scientific visualization scope.",
+      "Request a free introductory chat about your research, scientific visuals, publication figures, or technical communication project.",
     ogDescription:
-      "Request a project quote for Visual Refinement, one custom scientific visual, a coordinated visual set, animation, or another technical visualization scope.",
+      "Bring an idea, a paper, or a rough sketch. Talk through your science and the possibilities with Axivion Studio.",
     canonical: "https://axivionstudio.com/contact",
     siteName: "Axivion Studio",
     image: "https://axivionstudio.com/axivion-studio-social-preview-v2.jpg",
+  },
+  {
+    path: "project-guide",
+    title: "Project Guide | Axivion Studio",
+    description: "Axivion Studio project packages and indicative estimates for a project discussion.",
+    ogDescription: "Project packages and indicative estimates for discussing a scientific visualization project.",
+    canonical: "https://axivionstudio.com/project-guide",
+    siteName: "Axivion Studio",
+    image: "https://axivionstudio.com/axivion-studio-social-preview-v2.jpg",
+    noindex: true,
   },
   {
     path: "terms",
@@ -62,12 +72,21 @@ const portfolioRoutes = [
   },
   {
     path: "prism",
-    title: "Axivion Instruments | PRISM",
-    description: "PRISM is a precision objective-scanning microscope developed by Axivion Instruments for advanced optical research workflows.",
-    ogDescription: "Precision objective-scanning microscopy for advanced optical research workflows.",
+    title: "PRISM V5 | Precision Research Instrumentation",
+    description: "A vertical-scanning objective microscope used at IQC for diamond NV-center qubit measurements through a cryostat window.",
+    ogDescription: "PRISM V5 research, precision tooling, and opportunities for instrumentation collaboration and project funding.",
     canonical: "https://dejanlat.github.io/PortfolioWebsite/prism",
     siteName: "Axivion Instruments",
     image: "https://dejanlat.github.io/PortfolioWebsite/Axivion%20Photos/WebsiteLinkPhotoIntruments.jpg",
+  },
+  {
+    path: "car-modding",
+    title: "Car Build Notes | Dejan Latkovic",
+    description: "Hands-on repairs, retrofits, and build notes from work on my own car.",
+    ogDescription: "A growing build log of mechanical work, wiring, audio, and car projects by Dejan Latkovic.",
+    canonical: "https://dejanlat.github.io/PortfolioWebsite/car-modding",
+    siteName: "Dejan Latkovic Portfolio",
+    image: "https://dejanlat.github.io/PortfolioWebsite/carmod_bg.webp",
   },
 ];
 const escapeAttr = (value) =>
@@ -82,10 +101,10 @@ function replaceOrInsert(html, regex, replacement, before = "</head>") {
   return html.replace(before, `${replacement}${before}`);
 }
 
-function applyPortfolioFavicons(html, type = "portfolio") {
+function applyPortfolioFavicons(html, type = "portfolio", base = "/PortfolioWebsite") {
   const iconHref = type === "instruments"
-    ? "/PortfolioWebsite/Axivion%20Photos/axivion-Intrumentsfavicon-13C2B3.svg?v=instruments-1"
-    : "/PortfolioWebsite/Axivion%20Photos/axivion-studio-favicon-13C2B3.ico?v=portfolio-1";
+    ? `${base}/Axivion%20Photos/axivion-Intrumentsfavicon-13C2B3.svg?v=instruments-1`
+    : `${base}/Axivion%20Photos/axivion-studio-favicon-13C2B3.ico?v=portfolio-1`;
   const iconType = type === "instruments" ? "image/svg+xml" : "image/x-icon";
   const withoutIcons = html.replace(/<link\s+rel="(?:icon|shortcut icon|apple-touch-icon)"[^>]*\/?\s*>/gi, "");
   const links = `<link rel="icon" type="${iconType}" href="${iconHref}"/><link rel="shortcut icon" href="${iconHref}"/>`;
@@ -111,6 +130,8 @@ function applyPortfolioContent(html, meta) {
 }
 function applyMeta(html, meta) {
   let output = html;
+  output = replaceOrInsert(output, /<meta\s+name="robots"\s+content="[^"]*"\s*\/?>/i,
+    `<meta name="robots" content="${meta.noindex ? "noindex, follow" : "index, follow"}"/>`);
   output = replaceOrInsert(output, /<title>.*?<\/title>/i, `<title>${escapeAttr(meta.title)}</title>`);
   output = replaceOrInsert(
     output,
@@ -162,6 +183,12 @@ function applyMeta(html, meta) {
     /<meta\s+name="twitter:image"\s+content="[^"]*"\s*\/?>(?![^<]*<\/meta>)/i,
     `<meta name="twitter:image" content="${escapeAttr(meta.image)}"/>`
   );
+  if (meta.noindex) {
+    const schema = { "@context": "https://schema.org", "@type": "WebPage", name: meta.title, description: meta.description, url: meta.canonical };
+    output = output
+      .replace(/<script type="application\/ld\+json">[\s\S]*?<\/script>/i, `<script type="application/ld+json">${JSON.stringify(schema)}</script>`)
+      .replace(/<noscript>[\s\S]*?<\/noscript>/i, `<noscript><main><h1>${escapeAttr(meta.title)}</h1><p>Enable JavaScript to view the project guide.</p></main></noscript>`);
+  }
   return output;
 }
 
@@ -172,7 +199,9 @@ if (!fs.existsSync(indexPath)) {
 const sourceHtml = fs.readFileSync(indexPath, "utf8");
 const isPortfolioBuild = process.env.PUBLIC_URL === "/PortfolioWebsite";
 const baseHtml = isPortfolioBuild ? applyPortfolioFavicons(applyPortfolioContent(applyMeta(sourceHtml, portfolioRoot), portfolioRoot)) : sourceHtml;
-const routes = isPortfolioBuild ? portfolioRoutes : studioRoutes;
+const routes = isPortfolioBuild ? portfolioRoutes : [...studioRoutes, ...portfolioRoutes.map((route) =>
+  route.path === "prism" ? { ...route, canonical: "https://axivionstudio.com/prism", image: "https://axivionstudio.com/Axivion%20Photos/WebsiteLinkPhotoIntruments.jpg" } : route
+)];
 
 fs.writeFileSync(indexPath, baseHtml);
 fs.writeFileSync(path.join(buildDir, "404.html"), baseHtml);
@@ -180,8 +209,9 @@ fs.writeFileSync(path.join(buildDir, "404.html"), baseHtml);
 for (const route of routes) {
   const routeDir = path.join(buildDir, route.path);
   fs.mkdirSync(routeDir, { recursive: true });
-  const routeHtml = isPortfolioBuild
-    ? applyPortfolioFavicons(applyPortfolioContent(applyMeta(baseHtml, route), route), route.path === "prism" ? "instruments" : "portfolio")
+  const isEngineeringRoute = portfolioRoutes.some((entry) => entry.path === route.path);
+  const routeHtml = isPortfolioBuild || isEngineeringRoute
+    ? applyPortfolioFavicons(applyPortfolioContent(applyMeta(baseHtml, route), route), route.path === "prism" ? "instruments" : "portfolio", isPortfolioBuild ? "/PortfolioWebsite" : "")
     : applyMeta(baseHtml, route);
   fs.writeFileSync(path.join(routeDir, "index.html"), routeHtml);
   fs.writeFileSync(path.join(buildDir, `${route.path.replace(/\//g, "-")}.html`), routeHtml);

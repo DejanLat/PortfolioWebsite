@@ -11,7 +11,7 @@ import {
   Phone,
   SendHorizonal,
 } from "lucide-react";
-import { Link } from "react-router-dom";
+import { Link, useSearchParams } from "react-router-dom";
 import { useScrolledHeader } from "../hooks/useScrolledHeader";
 
 const CONTACT_EMAIL = "contact@axivionstudio.com";
@@ -22,7 +22,8 @@ const PUBLIC = process.env.PUBLIC_URL || "";
 export default function Contact({ contactEmail = CONTACT_EMAIL }) {
   const [mx, setMx] = useState(-9999);
   const [my, setMy] = useState(-9999);
-  const [topic, setTopic] = useState("Axivion Instruments");
+  const [searchParams] = useSearchParams();
+  const [topic, setTopic] = useState(searchParams.get("topic") === "PRISM" ? "PRISM / Precision Tooling" : "Full-time opportunities");
   const [name, setName] = useState("");
   const [org, setOrg] = useState("");
   const [message, setMessage] = useState("");
@@ -38,9 +39,9 @@ export default function Contact({ contactEmail = CONTACT_EMAIL }) {
   const subjectMap = useMemo(
     () => ({
       "Axivion Studio": "Axivion Studio visualization request",
-      "Axivion Instruments": "Axivion Instruments / PRISM inquiry",
+      "PRISM / Precision Tooling": "PRISM research and precision tooling inquiry",
       "Research Collaboration": "Research collaboration inquiry",
-      "Co-op / Work": "Co-op or work opportunity",
+      "Full-time opportunities": "Full-time opportunity after graduation",
       "Schedule a Meeting": "Meeting request",
       "General Inquiry": "General inquiry - Dejan Latkovic portfolio",
     }),
@@ -53,19 +54,19 @@ export default function Contact({ contactEmail = CONTACT_EMAIL }) {
 
   const primaryPaths = [
     {
-      title: "Axivion Instruments",
-      label: "PRISM instrument inquiries, specs, partnerships",
+      title: "PRISM / Precision Tooling",
+      label: "PRISM research, precision tooling, collaboration, and funding",
       icon: Microscope,
-      topic: "Axivion Instruments",
+      topic: "PRISM / Precision Tooling",
       body:
-        "Hi,\n\nI'd like to discuss Axivion Instruments / PRISM.\n\nOrganization:\nUse case:\nTimeline:\n\nThanks!",
+        "Hi,\n\nI'd like to discuss PRISM research or precision tooling.\n\nOrganization:\nUse case:\nTimeline:\n\nThanks!",
     },
     {
       title: "Axivion Studio",
       label: "Scientific visualization and technical rendering for papers, proposals, covers, and hardware teams",
       icon: ImageIcon,
       topic: "Axivion Studio",
-      href: "https://axivionstudio.com/",
+      href: `${PUBLIC}/studio`,
       cta: "Visit studio",
     },
   ];
@@ -80,12 +81,12 @@ export default function Contact({ contactEmail = CONTACT_EMAIL }) {
         "Hi,\n\nI'd like to discuss a research collaboration.\n\nTopic:\nOrganization:\nTimeline:\n\nThanks!",
     },
     {
-      title: "Co-op / Work",
+      title: "Full-time opportunities",
       label: "Precision engineering, optics, hardware",
       icon: Briefcase,
-      topic: "Co-op / Work",
+      topic: "Full-time opportunities",
       body:
-        "Hi,\n\nI'm reaching out about a co-op / work opportunity.\n\nRole or team:\nLocation:\nTimeline:\n\nThanks!",
+        "Hi,\n\nI'm reaching out about a full-time opportunity after your graduation in 2027.\n\nRole or team:\nLocation:\nTimeline:\n\nThanks!",
     },
     {
       title: "Schedule a Meeting",
@@ -125,7 +126,7 @@ export default function Contact({ contactEmail = CONTACT_EMAIL }) {
       </div>
 
 
-        <header className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${solidNav ? "border-b border-white/10 bg-black/70 backdrop-blur" : "border-b border-transparent bg-transparent"}`}>
+        <header className={`site-glass-header fixed inset-x-0 top-0 z-50 ${solidNav ? "is-scrolled" : ""}`}>
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 h-16 flex items-center gap-3">
             <Link to="/portfolio" className="inline-flex items-center gap-2 text-sm text-white/80 hover:text-white">
               <ArrowLeft size={18} />
@@ -167,7 +168,7 @@ export default function Contact({ contactEmail = CONTACT_EMAIL }) {
                 Let's Talk
               </h1>
               <p className="mt-4 max-w-2xl text-white/78">
-                Send a note about Axivion Instruments, the PRISM instrument, Axivion Studio visualization work,
+                Send a note about PRISM, precision tooling, scientific visualization,
                 research collaboration, or engineering opportunities.
               </p>
             </motion.div>

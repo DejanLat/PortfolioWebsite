@@ -1,414 +1,136 @@
-// // src/components/CarModding.jsx
-// import React from "react";
-// import { Link } from "react-router-dom";
-// import WebpImg from "./WebpImg";                  // default export ✅
-// import { Award, Zap, Shield, Wrench, Music2, Lightbulb } from "lucide-react";
-
-// const PUBLIC = process.env.PUBLIC_URL;
-// const srcFor = (base) => ({
-//   webp: `${PUBLIC}/${base}.webp`,
-//   png:  `${PUBLIC}/${base}.png`,
-// });
-
-// // one picture per subject (put matching .webp/.png in /public)
-// const SECTIONS = [
-//   {
-//     key: "audio",
-//     icon: Music2,
-//     title: "MOST-Fiber Audio Retrofit (13 speakers / 480 W)",
-//     hours: "4 days",
-//     img: srcFor("carmod_audio"),
-//     bullets: [
-//       "Upgraded from base system to OEM-grade 13-speaker/480 W amp on MOST fiber.",
-//       "3D-printed door brackets; trimmed panels; full wiring & power distribution.",
-//       "Used official BMW schematics for correct pinouts, routing, and integration."
-//     ],
-//   },
-//   {
-//     key: "lighting",
-//     icon: Lightbulb,
-//     title: "Interior Lighting System",
-//     hours: "4 hours",
-//     img: srcFor("carmod_lighting"),
-//     bullets: [
-//       "Full disassembly of interior panels to add RGB lighting controllers.",
-//       "Under-seat, door cards, and trim illumination with hidden wiring.",
-//       "Clean cable management; fused and serviceable connections."
-//     ],
-//   },
-//   {
-//     key: "security",
-//     icon: Shield,
-//     title: "Anti-Theft Retrofit",
-//     hours: "9 hours",
-//     img: srcFor("carmod_security"),
-//     bullets: [
-//       "Integrated OEM anti-theft hardware with proper wiring harnesses.",
-//       "Researched and followed professional BMW wiring documentation.",
-//       "Verified signaling, power, and fault-free operation."
-//     ],
-//   },
-//   {
-//     key: "mechanical",
-//     icon: Wrench,
-//     title: "Maintenance & Mechanical Upgrades",
-//     hours: "Varied",
-//     img: srcFor("carmod_mechanical"),
-//     bullets: [
-//       "Replaced engine air filter, control arms, and rear shocks.",
-//       "Retrofitted new headlight assemblies with correct alignment.",
-//       "Documented torque specs; verified ride and NVH improvements."
-//     ],
-//   },
-// ];
-
-// export default function CarModding() {
-//   // single faded background (no carousel)
-//   const bg = srcFor("carmod_bg");
-
-//   return (
-//     <div className="min-h-screen w-full bg-white text-black">
-//       {/* Hero with single faded background */}
-//       <section className="relative h-[60vh] overflow-hidden pt-16">
-//         <div className="absolute inset-0 -z-10">
-//           <WebpImg
-//             webp={bg.webp}
-//             fallback={bg.png}
-//             alt="Car Modding Background"
-//             className="h-full w-full object-cover"
-//             loading="lazy"
-//           />
-//           <div className="absolute inset-0 bg-gradient-to-b from-white/60 via-white/60 to-white" />
-//         </div>
-
-//         <div className="h-full flex items-end">
-//           <div className="mx-auto max-w-7xl w-full px-6 pb-10">
-//             <div className="inline-flex items-center gap-2 rounded-full border border-black/10 bg-white/80 px-4 py-1 text-xs uppercase tracking-widest text-black/70">
-//               Automotive Engineering
-//             </div>
-//             <h1 className="mt-4 text-5xl sm:text-6xl font-semibold tracking-tight">
-//               Car Modding
-//               <span className="block text-black/60 text-3xl sm:text-4xl">
-//                 OEM-grade retrofits & upgrades
-//               </span>
-//             </h1>
-//             <p className="mt-3 max-w-2xl text-black/70">
-//               Audio on fiber, hidden interior lighting, anti-theft integration, and key
-//               mechanical upgrades;planned with BMW schematics and executed with clean
-//               wiring and custom 3D-printed hardware.
-//             </p>
-//             <div className="mt-6">
-//               <Link
-//                 to="/"
-//                 className="inline-flex items-center rounded-full border border-black/20 px-4 py-2 text-sm hover:border-black/40"
-//               >
-//                 ← Back to Portfolio
-//               </Link>
-//             </div>
-//           </div>
-//         </div>
-//       </section>
-
-//       {/* Sections (styled like your Professional Performance cards) */}
-//       <section className="relative bg-white">
-//         <div className="mx-auto max-w-7xl px-6 py-12 lg:py-16">
-//           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-//             {SECTIONS.map((s) => (
-//               <div
-//                 key={s.key}
-//                 className="rounded-3xl border border-black/10 overflow-hidden bg-white hover:shadow-sm transition"
-//               >
-//                 <div className="flex flex-col md:flex-row h-full">
-//                   {/* Image column */}
-//                   <div className="w-full md:w-1/3 md:min-h-[220px] lg:min-h-[260px]">
-//                     <WebpImg
-//                       webp={s.img.webp}
-//                       fallback={s.img.png}
-//                       alt={s.title}
-//                       className="h-full w-full object-cover"
-//                       loading="lazy"
-//                     />
-//                   </div>
-
-//                   {/* Content column */}
-//                   <div className="flex-1 p-6">
-//                     <div className="flex items-center justify-between">
-//                       <div className="text-sm text-black/60">Project Work</div>
-//                       <span className="text-[11px] px-2 py-1 rounded-full border border-black/10 bg-white/90">
-//                         {s.hours}
-//                       </span>
-//                     </div>
-
-//                     <div className="mt-1 text-xl font-semibold flex items-center gap-2">
-//                       {/* s.icon is a component type (Music2, Lightbulb, etc.) */}
-//                       {s.icon && React.createElement(s.icon, { size: 18 })}
-//                       <span>{s.title}</span>
-//                     </div>
-
-//                     <ul className="mt-3 space-y-2 text-sm">
-//                       {s.bullets.map((b, j) => (
-//                         <li key={j} className="flex items-start gap-2">
-//                           <span
-//                             aria-hidden
-//                             className="mt-1 inline-block h-2 w-2 rounded-full bg-black shrink-0"
-//                           />
-//                           <span>{b}</span>
-//                         </li>
-//                       ))}
-//                     </ul>
-//                   </div>
-//                 </div>
-//               </div>
-//             ))}
-//           </div>
-
-//           {/* footnote */}
-//           <div className="mt-5 text-[11px] text-black/50">
-//             Safety first: all wiring fused appropriately, OEM documentation consulted,
-//             and work verified post-install.
-//           </div>
-//         </div>
-//       </section>
-//     </div>
-//   );
-// }
-
-
-// src/components/CarModding.jsx
-import React, { useState, useEffect, useRef, useCallback } from "react";
-import { motion } from "framer-motion";
+import React, { useEffect, useMemo, useRef, useState } from "react";
 import { Link } from "react-router-dom";
+import { ArrowDown, ArrowLeft, ChevronLeft, ChevronRight, Lightbulb, Music2, Shield, Wrench } from "lucide-react";
 import { useScrolledHeader } from "../hooks/useScrolledHeader";
+import { usePointerGlow } from "../hooks/usePointerGlow";
+import carContent from "../content/car.json";
+import ContentMedia, { contentAsset } from "./ContentMedia";
 import WebpImg from "./WebpImg";
-import { Music2, Lightbulb, Shield, Wrench, Clock, ArrowLeft } from "lucide-react";
+import OverlayPageScrollbar from "./OverlayPageScrollbar";
+import "./CarModding.css";
 
-const PUBLIC = process.env.PUBLIC_URL;
-const srcFor = (base) => ({ webp: `${PUBLIC}/${base}.webp`, png: `${PUBLIC}/${base}.png` });
+const CATEGORY_ICONS = { audio: Music2, lighting: Lightbulb, security: Shield, mechanical: Wrench };
+const mediaSource = (item) => typeof item === "string" ? item : item?.src;
 
-// ---- sections (one picture per subject)
-const SECTIONS = [
-  {
-    key: "audio",
-    icon: Music2,
-    title: "MOST-Fiber Audio Retrofit (13 speakers / 480 W)",
-    hours: "4 days",
-    img: srcFor("carmod_audio"),
-    bullets: [
-      "Upgraded from base system to OEM-grade 13-speaker / 480 W amp on MOST fiber.",
-      "3D-printed door brackets; trimmed panels; full wiring and power distribution.",
-      "Used official BMW schematics for correct pinouts, routing, and integration.",
-    ],
-  },
-  {
-    key: "lighting",
-    icon: Lightbulb,
-    title: "Interior Lighting System",
-    hours: "4 hours",
-    img: srcFor("carmod_lighting"),
-    bullets: [
-      "Full disassembly of interior panels to add RGB lighting controllers.",
-      "Under-seat, door cards, and trim illumination with hidden wiring.",
-      "Clean cable management; fused and serviceable connections.",
-    ],
-  },
-  {
-    key: "security",
-    icon: Shield,
-    title: "Anti-Theft Retrofit",
-    hours: "9 hours",
-    img: srcFor("carmod_security"),
-    bullets: [
-      "Integrated OEM anti-theft hardware with proper wiring harnesses.",
-      "Researched and followed professional BMW wiring documentation.",
-      "Verified signaling, power, and fault-free operation.",
-    ],
-  },
-  {
-    key: "mechanical",
-    icon: Wrench,
-    title: "Maintenance & Mechanical Upgrades",
-    hours: "Varied",
-    img: srcFor("carmod_mechanical"),
-    bullets: [
-      "Replaced brake calipers, rear shocks, engine components, filters.",
-      "Retrofitted new headlight assemblies with correct alignment.",
-      "Maintained detailed records of all work performed on the vehicle.",
-    ],
-  },
-];
+function ProjectPhoto({ photo, className = "", alt = "", eager = false }) {
+  return <WebpImg webp={contentAsset(mediaSource(photo))} fallback={contentAsset(typeof photo === "string" ? undefined : photo?.fallback)} alt={alt} className={className} loading={eager ? "eager" : "lazy"} />;
+}
 
 export default function CarModding() {
-  // === PINK accents
-  const ACCENT = "#ff2aa0";
-  const ACCENT_SOFT = "rgba(255, 42, 160, 0.18)";
-
-  // === Cursor-follow glow (global)
-  const [mx, setMx] = useState(-9999);
-  const [my, setMy] = useState(-9999);
   const solidNav = useScrolledHeader();
-  const onMove = (e) => { setMx(e.clientX); setMy(e.clientY); };
-  const rootStyle = { "--mx": `${mx}px`, "--my": `${my}px` };
-
-  // === Hero-local halo
-  const heroRef = useRef(null);
-  const onHeroMove = (e) => {
-    const el = heroRef.current; if (!el) return;
-    const r = el.getBoundingClientRect();
-    el.style.setProperty("--hx", `${e.clientX - r.left}px`);
-    el.style.setProperty("--hy", `${e.clientY - r.top}px`);
-  };
-  const updateHeroGlowFromViewport = useCallback(() => {
-    const el = heroRef.current; if (!el) return;
-    const r = el.getBoundingClientRect();
-    el.style.setProperty("--hx", `${mx - r.left}px`);
-    el.style.setProperty("--hy", `${my - r.top}px`);
-  }, [mx, my]);
-  useEffect(() => { updateHeroGlowFromViewport(); }, [updateHeroGlowFromViewport]);
-  useEffect(() => {
-    let raf = 0;
-    const schedule = () => { cancelAnimationFrame(raf); raf = requestAnimationFrame(updateHeroGlowFromViewport); };
-    schedule();
-    window.addEventListener("scroll", schedule, { passive: true });
-    window.addEventListener("resize", schedule, { passive: true });
-    return () => { cancelAnimationFrame(raf); window.removeEventListener("scroll", schedule); window.removeEventListener("resize", schedule); };
-  }, [updateHeroGlowFromViewport]);
+  const { rootRef, rootStyle, onPointerMove } = usePointerGlow();
+  const railRef = useRef(null);
+  const tabRefs = useRef([]);
+  const [selectedIndex, setSelectedIndex] = useState(0);
+  const labels = carContent.timelineLabels;
+  const entries = useMemo(() => [
+    ...carContent.timeline.filter((entry) => entry.publicationStatus !== "hidden").sort((a, b) => a.sortOrder - b.sortOrder),
+    ...(carContent.showPlaceholders === false ? [] : carContent.placeholders).filter((entry) => entry.publicationStatus !== "hidden").map((entry) => ({ ...entry, isPlaceholder: true })).sort((a, b) => a.sortOrder - b.sortOrder),
+  ], []);
+  useEffect(() => { setSelectedIndex((index) => Math.min(index, Math.max(0, entries.length - 1))); }, [entries.length]);
+  const current = entries[selectedIndex];
+  const Icon = CATEGORY_ICONS[current?.categoryKey] || Wrench;
+  const media = [...(current?.photos || []), ...(current?.videos || [])].filter(Boolean);
 
   useEffect(() => {
     document.documentElement.classList.add("scrollbar-pink");
     return () => document.documentElement.classList.remove("scrollbar-pink");
   }, []);
 
-  // === Backgrounhgfhgfd image for hero (place carmod_bg.webp/png in /public)
-  const bg = srcFor("carmod_bg");
+  const selectProject = (index, focus = false) => {
+    const next = Math.max(0, Math.min(entries.length - 1, index));
+    setSelectedIndex(next);
+    const rail = railRef.current;
+    const tab = tabRefs.current[next];
+    if (rail && tab) {
+      const railBounds = rail.getBoundingClientRect();
+      const tabBounds = tab.getBoundingClientRect();
+      const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      if (tabBounds.left < railBounds.left + 8 || tabBounds.right > railBounds.right - 8) {
+        rail.scrollTo({ left: rail.scrollLeft + tabBounds.left - railBounds.left - (rail.clientWidth - tabBounds.width) / 2, behavior: reduceMotion ? "auto" : "smooth" });
+      }
+      if (focus) tab.focus({ preventScroll: true });
+    }
+  };
+  const onTimelineKeyDown = (event, index) => {
+    let next;
+    if (event.key === "ArrowRight") next = (index + 1) % entries.length;
+    if (event.key === "ArrowLeft") next = (index - 1 + entries.length) % entries.length;
+    if (event.key === "Home") next = 0;
+    if (event.key === "End") next = entries.length - 1;
+    if (next === undefined) return;
+    event.preventDefault();
+    selectProject(next, true);
+  };
 
   return (
-    <div className="min-h-screen w-full text-white bg-black" onMouseMove={onMove} style={rootStyle}>
+    <div ref={rootRef} onPointerMove={onPointerMove} style={{ ...rootStyle, "--glow-rgb": "255,42,160", "--glass-accent-rgb": "255,42,160" }} className="car-page">
+      <div className="car-content-layer relative z-10">
+        <div className="page-cursor-glow pointer-events-none fixed inset-0" aria-hidden="true" />
+        <OverlayPageScrollbar controls="car-page-content" />
+        <header className={`site-glass-header fixed inset-x-0 top-0 z-50 ${solidNav ? "is-scrolled" : ""}`}>
+          <div className="mx-auto flex h-16 max-w-7xl items-center gap-3 px-4 sm:px-6 lg:px-8">
+            <Link to="/portfolio" className="car-focus inline-flex items-center gap-2 rounded text-sm text-white/85 hover:text-white"><ArrowLeft size={18} aria-hidden="true" /><span>Portfolio</span></Link>
+            <div className="h-5 w-px bg-white/25" aria-hidden="true" />
+            <span className="text-sm font-semibold tracking-widest">CAR MODDING</span>
+            <span className="ml-auto hidden text-xs tracking-widest text-white/60 sm:block">BUILD NOTES</span>
+          </div>
+        </header>
 
-      {/* BACKGROUND LAYER */}
-      <div className="pointer-events-none fixed inset-0 z-0" aria-hidden>
-        {/* Global cursor halo */}
-        <div className="absolute inset-0"
-             style={{ background: `radial-gradient(700px at var(--mx) var(--my), ${ACCENT_SOFT}, transparent 60%)` }} />
-        {/* Static top glow */}
-        <div className="absolute inset-x-0 top-0 h-[70vh]"
-             style={{ background: "radial-gradient(600rem 30rem at 50% -10%, rgba(255,42,160,0.18), transparent 60%)" }} />
-      </div>
-
-      {/* Top bar */}
-      <header className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${solidNav ? "border-b border-white/10 bg-black/70 backdrop-blur" : "border-b border-transparent bg-transparent"}`}>
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 h-16 flex items-center gap-3">
-          <Link to="/" className="inline-flex items-center gap-2 text-sm text-white/80 hover:text-white">
-            <ArrowLeft size={18} />
-            <span>Back</span>
-          </Link>
-          <div className="h-5 w-px bg-white/20" />
-          <div className="font-semibold tracking-widest">CAR MODDING</div>
-          <div className="text-white/40">BUILD NOTES</div>
-        </div>
-      </header>
-
-      {/* HERO */}
-      <section ref={heroRef} onMouseMove={onHeroMove} className="relative pt-36 pb-16">
-        {/* Darkened gradient base + faded background image */}
-{/* Background image first, then dark overlays on top */}
-<div className="absolute inset-0 -z-10">
-  {/* Background image (no screen blend) */}
-  <WebpImg
-    webp={bg.webp}
-    fallback={bg.png}
-    alt="Car Modding Background"
-    className="absolute inset-0 h-full w-full object-cover"
-    style={{
-      opacity: 0.22,                 // you can lower to 0.15 if needed
-      mixBlendMode: "normal",        // IMPORTANT: remove "screen"
-      filter: "grayscale(15%) brightness(0.8) contrast(0.9)",
-    }}
-  />
-
-  {/* Heavy black fade */}
-  <div className="absolute inset-0 bg-gradient-to-b from-black/90 via-black/80 to-black" />
-
-  {/* Subtle pink halo (kept soft) */}
-  <div className="absolute inset-0 [background-image:radial-gradient(60rem_30rem_at_50%_20%,rgba(255,42,160,0.10),transparent_60%)]" />
-</div>
-
-
-
-        {/* Hero-local cursor halo */}
-        <div className="pointer-events-none absolute inset-0 -z-[5]"
-             style={{ background: `radial-gradient(700px at var(--hx) var(--hy), ${ACCENT_SOFT}, transparent 60%)` }} />
-
-        <div className="mx-auto max-w-7xl px-6">
-          <motion.div initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }} className="max-w-3xl">
-            <div className="inline-flex items-center gap-2 rounded-full px-4 py-1 text-xs uppercase tracking-widest text-white/90 border backdrop-blur-sm"
-                 style={{ borderColor: "rgba(255,42,160,0.35)", background: "rgba(255,255,255,0.07)" }}>
-              Automotive Engineering
+        <main id="car-page-content">
+          <section data-glow-boundary className="car-hero" aria-labelledby="car-heading">
+            <div className="car-hero-media" aria-hidden="true">{carContent.hero.background?.enabled !== false && carContent.hero.background?.src && <ProjectPhoto photo={carContent.hero.background} className={`car-hero-photo${carContent.hero.background.mirrorHorizontally ? " is-mirrored" : ""}`} eager />}</div>
+            <div className="car-hero-copy mx-auto w-full max-w-7xl px-6">
+              <h1 id="car-heading" className="mt-4 max-w-3xl text-[clamp(3rem,7vw,5.5rem)] font-semibold leading-[0.95] tracking-tight">{carContent.hero.title} <span className="car-hero-highlight">{carContent.hero.titleHighlight}</span></h1>
+              <p className="mt-6 max-w-2xl text-base leading-7 text-white/85 sm:text-lg">{carContent.hero.description}</p>
+              <a href="#build-log" className="car-focus car-hero-link">Browse the build log <ArrowDown size={16} aria-hidden="true" /></a>
             </div>
-            <h1 className="mt-4 text-5xl md:text-6xl font-semibold tracking-tight">Car Modding</h1>
-            <p className="mt-4 text-white/80 max-w-2xl">
-              Audio on fiber, hidden interior lighting, anti-theft integration, and key mechanical upgrades. Referenced
-              with BMW schematics and executed with clean wiring and custom 3D-printed hardware.
-            </p>
-          </motion.div>
-        </div>
-      </section>
+          </section>
 
-      {/* SECTIONS */}
-      <section className="relative w-full">
-        <div className="mx-auto max-w-7xl px-6 pb-12">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {SECTIONS.map((s) => (
-              <div key={s.key} className="rounded-3xl p-0 overflow-hidden"
-                   style={{ border: "1px solid rgba(255,255,255,0.12)", background: "rgba(0,0,0,0.55)" }}>
-                <div className="flex flex-col md:flex-row h-full">
-                  <div className="w-full md:w-1/3 md:min-h-[220px] lg:min-h-[260px]">
-                    <WebpImg webp={s.img.webp} fallback={s.img.png} alt={s.title} className="h-full w-full object-cover" loading="lazy" />
-                  </div>
-                  <div className="flex-1 p-6">
-                    <div className="flex items-center justify-between">
-                      <div className="inline-flex items-center gap-2 text-xs rounded-full border px-2.5 py-1 text-white/80"
-                           style={{ borderColor: "rgba(255,255,255,0.18)", background: "rgba(255,255,255,0.06)" }}>
-                        <span className="inline-block h-1.5 w-1.5 rounded-full" style={{ backgroundColor: ACCENT }} />
-                        Project Work
-                      </div>
-                      <span className="inline-flex items-center gap-1.5 text-[11px] px-2 py-1 rounded-full border bg-white/5 text-white/85"
-                            style={{ borderColor: "rgba(255,255,255,0.14)", background: "rgba(255,255,255,0.06)" }}>
-                        <Clock size={12} /> {s.hours}
-                      </span>
-                    </div>
+          <section id="build-log" aria-labelledby="build-log-heading" className="car-build-log mx-auto max-w-[1440px] px-5 pb-20 sm:px-8">
+            <div className="car-timeline-heading">
+              <div><p className="car-eyebrow">{labels.eyebrow}</p><h2 id="build-log-heading" className="mt-2 text-2xl font-semibold tracking-tight sm:text-3xl">{labels.title}</h2><p className="mt-2 text-sm leading-6 text-white/70">{labels.description}</p></div>
+              {entries.length > 0 && <div className="car-timeline-controls"><span className="car-timeline-position" aria-live="polite">{selectedIndex + 1} / {entries.length}</span><button type="button" onClick={() => selectProject(selectedIndex - 1)} disabled={selectedIndex === 0} className="car-focus car-timeline-arrow" aria-label={labels.previous}><ChevronLeft size={20} aria-hidden="true" /></button><button type="button" onClick={() => selectProject(selectedIndex + 1)} disabled={selectedIndex === entries.length - 1} className="car-focus car-timeline-arrow" aria-label={labels.next}><ChevronRight size={20} aria-hidden="true" /></button></div>}
+            </div>
 
-                    <div className="mt-2 text-xl font-semibold flex items-center gap-2">
-                      {s.icon && <s.icon size={18} />}
-                      <span>{s.title}</span>
-                    </div>
-
-                    <ul className="mt-3 space-y-2 text-sm">
-                      {s.bullets.map((b, j) => (
-                        <li key={j} className="flex items-start gap-2">
-                          <span aria-hidden className="mt-1 inline-block h-2 w-2 rounded-full" style={{ backgroundColor: ACCENT }} />
-                          <span className="text-white/90">{b}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                </div>
+            <div ref={railRef} className="car-timeline-scroll" role="tablist" aria-label="Car build timeline" aria-orientation="horizontal">
+              <div className="car-timeline-track">
+                {entries.map((entry, index) => {
+                  const photo = entry.photos?.[0] || carContent.placeholderImage;
+                  const selected = selectedIndex === index;
+                  return (
+                    <button type="button" key={entry.id} id={`car-tab-${entry.id}`} ref={(element) => { tabRefs.current[index] = element; }} role="tab" aria-selected={selected} aria-controls="car-project-panel" tabIndex={selected ? 0 : -1} onClick={() => selectProject(index)} onKeyDown={(event) => onTimelineKeyDown(event, index)} className={`car-focus car-timeline-tab ${selected ? "is-selected" : ""} ${entry.isPlaceholder ? "is-placeholder" : ""}`}>
+                      <span className="car-timeline-date">{entry.date ? <time dateTime={entry.date}>{entry.dateLabel || entry.date}</time> : entry.dateLabel || "Date to add"}</span>
+                      <span className="car-timeline-dot" aria-hidden="true" />
+                      <span className="car-parallelogram"><span className="car-parallelogram-inner"><ProjectPhoto photo={photo} className="car-parallelogram-photo" />{entry.isPlaceholder && <span className="car-placeholder-photo-label">{labels.placeholderPhotoLabel}</span>}</span></span>
+                      <span className="car-timeline-card-category">{entry.isPlaceholder ? labels.placeholderLabel : entry.category}</span>
+                      <span className="car-timeline-card-title">{entry.title}</span>
+                    </button>
+                  );
+                })}
               </div>
-            ))}
-          </div>
+            </div>
+            <p className="car-timeline-date-note">{labels.dateNote}</p>
 
-          <div className="mt-5 text-[11px] text-white/60">
-            Safety first: all wiring fused appropriately, OEM documentation consulted, and professionally verified post-install.
-          </div>
-        </div>
-      </section>
-
-      {/* Footer */}
-      <footer className="border-top border-white/10 bg-black">
-        <div className="mx-auto max-w-7xl px-6 py-6 text-sm text-white/60 flex items-center justify-between">
-          <div>Car Modding</div>
-          <div>© {new Date().getFullYear()} Dejan Latkovic</div>
-        </div>
-      </footer>
+            {current && <div id="car-project-panel" role="tabpanel" aria-labelledby={`car-tab-${current.id}`} tabIndex={0} className="car-focus site-glass-panel car-project-panel">
+              <div className={`car-project-layout ${media.length ? "has-media" : ""}`}>
+                <div className="car-project-copy">
+                  <p className="car-project-category"><Icon size={14} aria-hidden="true" />{current.isPlaceholder ? labels.placeholderLabel : current.category}<span aria-hidden="true">·</span><span>{current.dateLabel || current.date || "Date to add"}</span></p>
+                  <h3 className="mt-4 text-2xl font-semibold tracking-tight sm:text-3xl">{current.title}</h3>
+                  <p className="mt-4 text-sm leading-7 text-white/80">{current.summary}</p>
+                  {current.context && <p className="mt-3 text-sm leading-7 text-white/65">{current.context}</p>}
+                  {current.workNotes?.length > 0 && <><h4 className="car-project-subheading">{labels.workHeading}</h4><ul className="mt-3 space-y-2 text-sm leading-6 text-white/80">{current.workNotes.map((note) => <li key={note} className="flex gap-3"><span aria-hidden="true" className="mt-2.5 h-1 w-1 shrink-0 rounded-full bg-[#ff78c1]" /><span>{note}</span></li>)}</ul></>}
+                  {current.outcome && <><h4 className="car-project-subheading">{labels.resultHeading}</h4><p className="mt-3 text-sm leading-7 text-white/80">{current.outcome}</p></>}
+                  {!current.isPlaceholder && current.publicationStatus === "draft" && <p className="mt-6 text-xs leading-5 text-white/50">More photos, dates, and notes to come.</p>}
+                </div>
+                {media.length > 0 && <div className="car-project-media">{media.map((item, index) => <ContentMedia key={`${current.id}-${index}`} item={item} />)}</div>}
+                {current.isPlaceholder && media.length === 0 && <div className="car-project-empty"><span>Photos and video can go here.</span><span>This is a sample slot, ready for a real project.</span></div>}
+              </div>
+            </div>}
+          </section>
+        </main>
+        <footer className="border-t border-white/15 bg-white/[0.025]"><div className="mx-auto flex max-w-7xl flex-wrap items-center justify-between gap-4 px-6 py-6 text-xs text-white/60"><Link to="/portfolio" className="car-focus rounded hover:text-white">Dejan Latkovic · Portfolio</Link><span>© {new Date().getFullYear()} Dejan Latkovic</span></div></footer>
+      </div>
     </div>
   );
 }

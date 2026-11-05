@@ -1,0 +1,174 @@
+.car-page {
+  --car-accent: #ff2aa0;
+  --car-accent-soft: #ff9bcf;
+  --car-background: #08070d;
+  --car-card-width: 320px;
+  --car-card-overlap: 29px;
+  position: relative;
+  isolation: isolate;
+  min-height: 100vh;
+  background: var(--car-background);
+  color: white;
+}
+
+.car-focus:focus-visible {
+  outline: 2px solid var(--car-accent-soft);
+  outline-offset: 4px;
+}
+
+.car-hero {
+  position: relative;
+  isolation: isolate;
+  display: flex;
+  align-items: center;
+  min-height: 78svh;
+  padding: 6rem 0;
+}
+
+.car-hero-media {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  overflow: hidden;
+}
+
+.car-hero-photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 58%;
+  opacity: 0.85;
+}
+.car-hero-photo.is-mirrored { transform: scaleX(-1); }
+
+.car-hero-media::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(90deg, rgba(38,0,34,0.7), rgba(45,0,38,0.24) 72%),
+    linear-gradient(180deg, rgba(8,7,13,0.1) 20%, rgba(8,7,13,0.12) 48%, var(--car-background) 100%);
+}
+
+.car-hero-copy { position: relative; z-index: 2; }
+.car-hero-highlight { color: var(--car-accent); }
+.car-hero::after {
+  content: "";
+  position: absolute;
+  inset-inline: 0;
+  bottom: -200px;
+  height: 600px;
+  z-index: 1;
+  pointer-events: none;
+  background: linear-gradient(to bottom, rgba(8,7,13,0), var(--car-background) 70%, rgba(8,7,13,0));
+}
+.car-eyebrow { color: var(--car-accent-soft); font-size: 0.7rem; font-weight: 500; text-transform: uppercase; letter-spacing: 0.2em; }
+.car-hero-link { display: inline-flex; align-items: center; gap: 0.5rem; margin-top: 2rem; border: 1px solid rgba(255,155,207,0.45); border-radius: 999px; background: rgba(255,42,160,0.18); padding: 0.8rem 1.25rem; font-size: 0.85rem; color: white; backdrop-filter: blur(14px); transition: background 200ms ease; }
+.car-hero-link:hover { background: rgba(255,42,160,0.3); }
+
+.car-build-log { position: relative; z-index: 2; scroll-margin-top: 5.5rem; }
+.car-timeline-heading { display: flex; align-items: flex-end; justify-content: space-between; gap: 1.5rem; margin-bottom: 1.25rem; }
+.car-timeline-controls { display: flex; align-items: center; gap: 0.55rem; flex-shrink: 0; }
+.car-timeline-position { padding-right: 0.5rem; color: rgba(255,255,255,0.65); font-size: 0.75rem; font-variant-numeric: tabular-nums; }
+.car-timeline-arrow { display: grid; width: 2.5rem; height: 2.5rem; place-items: center; border: 1px solid rgba(255,155,207,0.35); border-radius: 50%; background: rgba(255,42,160,0.1); color: white; transition: background 200ms ease; }
+.car-timeline-arrow:hover:not(:disabled) { background: rgba(255,42,160,0.26); }
+.car-timeline-arrow:disabled { opacity: 0.3; cursor: default; }
+
+.car-timeline-scroll {
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255,42,160,0.6) rgba(255,255,255,0.06);
+  scroll-padding-inline: 0.5rem;
+  padding-bottom: 0.65rem;
+  -webkit-overflow-scrolling: touch;
+}
+
+.car-timeline-scroll::-webkit-scrollbar { height: 5px; }
+.car-timeline-scroll::-webkit-scrollbar-track { background: rgba(255,255,255,0.06); border-radius: 10px; }
+.car-timeline-scroll::-webkit-scrollbar-thumb { background: rgba(255,42,160,0.6); border-radius: 10px; }
+.car-timeline-track { position: relative; display: flex; gap: 0; width: max-content; padding: 4px 8px 8px; }
+.car-timeline-track::before { content: ""; position: absolute; top: 36px; right: 6.5rem; left: 6.5rem; height: 1px; background: linear-gradient(90deg, rgba(255,42,160,0.7), rgba(255,155,207,0.22)); }
+
+.car-timeline-tab { position: relative; flex-shrink: 0; width: var(--car-card-width); border-radius: 12px; padding: 0 0 8px; text-align: center; color: rgba(255,255,255,0.72); cursor: pointer; }
+.car-timeline-tab + .car-timeline-tab { margin-left: calc(-1 * var(--car-card-overlap)); }
+.car-timeline-date { display: block; min-height: 20px; line-height: 20px; font-size: 0.7rem; white-space: nowrap; color: rgba(255,255,255,0.6); }
+.car-timeline-dot { position: relative; display: block; width: 8px; height: 8px; margin: 8px auto 14px; border: 1px solid rgba(255,155,207,0.7); border-radius: 50%; background: var(--car-background); }
+.car-parallelogram { display: block; width: 100%; height: 220px; padding: 2px; background: rgba(255,255,255,0.28); clip-path: polygon(11% 0, 100% 0, 89% 100%, 0 100%); transition: background 200ms ease; }
+.car-parallelogram-inner { position: relative; display: block; width: 100%; height: 100%; overflow: hidden; clip-path: polygon(11% 0, 100% 0, 89% 100%, 0 100%); background: var(--car-background); }
+.car-parallelogram-photo { width: 100%; height: 100%; object-fit: cover; opacity: 0.72; transition: opacity 200ms ease, transform 200ms ease; }
+.car-timeline-tab:hover .car-parallelogram-photo { opacity: 1; transform: scale(1.035); }
+.car-timeline-card-category { display: block; margin-top: 0.8rem; color: rgba(255,155,207,0.8); font-size: 0.6rem; text-transform: uppercase; letter-spacing: 0.13em; }
+.car-timeline-card-title { display: block; margin-top: 0.3rem; padding-inline: 14px; font-size: 0.94rem; font-weight: 500; line-height: 1.4; }
+.car-timeline-tab.is-selected { color: white; }
+.car-timeline-tab.is-selected .car-parallelogram { background: var(--car-accent); }
+.car-timeline-tab.is-selected .car-parallelogram-photo { opacity: 1; }
+.car-timeline-tab.is-selected .car-timeline-tab + .car-timeline-tab { margin-left: calc(-1 * var(--car-card-overlap)); }
+.car-timeline-date { color: #ffc3e2; }
+.car-timeline-tab.is-selected .car-timeline-dot { background: var(--car-accent); box-shadow: 0 0 14px rgba(255,42,160,0.7); }
+.car-timeline-tab.is-placeholder .car-parallelogram-photo { opacity: 0.3; }
+.car-placeholder-photo-label { position: absolute; right: 0.5rem; bottom: 0.6rem; left: 0.5rem; color: #ffc3e2; font-size: 0.6rem; text-transform: uppercase; letter-spacing: 0.08em; }
+.car-timeline-date-note { margin: 0.7rem 0 1.5rem; color: rgba(255,255,255,0.45); font-size: 0.7rem; line-height: 1.6; }
+
+.car-project-panel { min-height: 34rem; overflow-anchor: none; border: 1px solid rgba(255,155,207,0.25); border-radius: 24px; background: linear-gradient(135deg, rgba(255,255,255,0.12), rgba(255,42,160,0.055)); box-shadow: 0 18px 60px rgba(0,0,0,0.2); backdrop-filter: blur(20px); padding: 1.5rem; }
+.car-project-layout { display: grid; grid-template-columns: minmax(0,1fr); gap: 1.75rem; }
+.car-project-copy { min-width: 0; }
+.car-project-category { display: flex; align-items: center; flex-wrap: wrap; gap: 0.5rem; color: #ff9bcf; font-size: 0.7rem; }
+.car-project-subheading { margin-top: 1.5rem; font-size: 0.65rem; font-weight: 500; text-transform: uppercase; letter-spacing: 0.15em; color: #ffb7da; }
+.car-project-media { display: grid; align-content: start; gap: 1rem; min-width: 0; }
+.car-project-media img, .car-project-media video { max-height: 27rem; }
+.car-project-media img { height: 24rem; }
+.car-project-empty { display: flex; min-height: 150px; flex-direction: column; align-items: center; justify-content: center; gap: 0.5rem; border: 1px dashed rgba(255,155,207,0.25); border-radius: 18px; padding: 1.5rem; color: rgba(255,255,255,0.5); font-size: 0.8rem; text-align: center; }
+
+@media (min-width: 900px) {
+  .car-project-layout.has-media { grid-template-columns: minmax(0,1fr) minmax(0,1fr); }
+  .car-project-panel { padding: 2rem; }
+}
+
+@media (max-width: 640px) {
+  .car-hero { min-height: 76svh; padding-top: 6rem; padding-bottom: 4rem; }
+  .car-hero-photo { object-position: 62% center; }
+  .car-timeline-heading { align-items: flex-start; gap: 1rem; }
+  .car-timeline-controls { gap: 0.3rem; padding-top: 1.5rem; }
+  .car-timeline-position { display: none; }
+  .car-timeline-arrow { width: 2rem; height: 2rem; }
+  .car-page { --car-card-width: 252px; --car-card-overlap: 22px; }
+  .car-parallelogram { height: 176px; }
+  .car-timeline-card-title { font-size: 0.88rem; }
+  .car-project-media img { height: 18rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .car-page *, .car-page *::before, .car-page *::after { scroll-behavior: auto; transition: none; }
+}
+
+/* A real overlay: no native gutter is reserved, so artwork reaches the viewport edge. */
+html.scrollbar-pink.car-overlay-scrollbar-active,
+html.scrollbar-pink.car-overlay-scrollbar-active body { scrollbar-width: none; }
+html.scrollbar-pink.car-overlay-scrollbar-active::-webkit-scrollbar,
+html.scrollbar-pink.car-overlay-scrollbar-active body::-webkit-scrollbar { display: none; width: 0; }
+.car-overlay-scrollbar {
+  position: fixed;
+  z-index: 80;
+  top: 6px;
+  right: 0;
+  bottom: 6px;
+  width: 12px;
+  background: transparent;
+  cursor: default;
+  touch-action: none;
+}
+.car-overlay-scrollbar-thumb {
+  position: absolute;
+  top: 0;
+  right: 3px;
+  width: 6px;
+  border-radius: 999px;
+  background: rgba(255,42,160,0.64);
+  transition: background-color 180ms ease;
+}
+.car-overlay-scrollbar:hover .car-overlay-scrollbar-thumb,
+.car-overlay-scrollbar:focus-visible .car-overlay-scrollbar-thumb { background: #ff68bd; }
+.car-overlay-scrollbar:focus-visible { outline: 1px solid #ff9bcf; outline-offset: -1px; }
+@media (prefers-reduced-motion: reduce) { .car-overlay-scrollbar-thumb { transition: none; } }
+@media print { .car-overlay-scrollbar { display: none; } }

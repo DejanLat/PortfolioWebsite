@@ -314,7 +314,7 @@ const StudioTerms = () => {
         <div className="studio-cursor-glow absolute inset-0" />
         <div className="studio-top-glow absolute inset-x-0 top-0 h-[76vh]" />
       </div>
-      <header className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 print:hidden ${solidNav ? "border-b border-white/10 bg-black/75 backdrop-blur" : "border-b border-transparent bg-transparent"}`}>
+      <header className={`site-glass-header fixed inset-x-0 top-0 z-50 print:hidden ${solidNav ? "is-scrolled" : ""}`}>
         <div className="mx-auto flex h-16 max-w-7xl items-center gap-3 px-4 sm:px-6 lg:px-8">
           <Link to="/" className="inline-flex items-center gap-2 text-sm text-white/75 transition hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-emerald-300">
             <ArrowLeft size={18} />

@@ -24,3 +24,6 @@ Do not commit Cloudflare API tokens or private client materials. Keep final clie
 This repo contains three related but separate identities: Dejan Latkovic's personal portfolio, Axivion Instruments/PRISM content, and Axivion Studio scientific visualization content. Axivion Studio should feel like a separate premium rendering/design studio brand. Do not merge the teal portfolio identity into Studio pages, and do not reuse portfolio favicon/style fallbacks for Studio unless explicitly requested. While editing Studio pages, do not break portfolio routes, portfolio contact pages, or Axivion Instruments pages.
 
 Prefer simple React and Tailwind/CSS edits over new frameworks, new UI libraries, or broad rewrites. Keep code maintainable so the site owner can continue editing it directly. After meaningful frontend changes, always run `npm run build`. For visual changes, perform screenshot or browser-based QA when tooling is available; be explicit when visual QA could not be performed.
+
+## Working Notes
+Keep task plans, audits, editing checklists, and completed working notes on the owner's Desktop, outside this public repository. Keep README.md focused on the project and development setup. AGENTS.md may remain in the repository. Do not add internal review transcripts or temporary reports to source or public assets.

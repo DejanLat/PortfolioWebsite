@@ -1,0 +1,226 @@
+{
+  "brand": {
+    "name": "Axivion Studio",
+    "headerName": "AXIVION STUDIO",
+    "descriptor": "Scientific Visualization"
+  },
+  "navigation": {
+    "links": [
+      {
+        "label": "Work",
+        "href": "/#work"
+      },
+      {
+        "label": "Services",
+        "href": "/#services"
+      },
+      {
+        "label": "Process",
+        "href": "/#process"
+      },
+      {
+        "label": "Terms",
+        "to": "/terms"
+      }
+    ],
+    "proofLinks": [
+      {
+        "label": "IQC",
+        "href": "https://uwaterloo.ca/institute-for-quantum-computing/contacts/dejan-latkovic-0",
+        "accent": "#A40C34"
+      },
+      {
+        "label": "AAAS",
+        "href": "https://www.science.org/toc/sciadv/12/21",
+        "accent": "#273591"
+      },
+      {
+        "label": "Founder Portfolio",
+        "href": "https://dejanlat.github.io/PortfolioWebsite/",
+        "accent": "#C97A3A"
+      },
+      {
+        "label": "Contact",
+        "to": "/contact",
+        "accent": "#34d399"
+      }
+    ]
+  },
+  "hero": {
+    "badge": "Welcome to Axivion Studio",
+    "heading": "Axivion",
+    "highlight": "Studio",
+    "summary": "Scientific visualization for researchers, labs, and advanced hardware teams.",
+    "description": "Bring an idea, a paper, or a rough sketch. Let’s talk about the science and how to bring it to life.",
+    "primaryAction": {
+      "label": "Request a free chat",
+      "to": "/contact"
+    },
+    "secondaryAction": {
+      "label": "Explore the work",
+      "href": "#work"
+    },
+    "note": "Professional work, with scope shaped around student, academic, and laboratory budgets.",
+    "background": {
+      "type": "image",
+      "src": "Axivion Photos/WebsiteLinkPhotoStudio.jpg",
+      "alt": "Emerald Axivion Studio prism mark",
+      "objectPosition": "calc(50% + 100px) center"
+    },
+    "media": []
+  },
+  "services": {
+    "eyebrow": "What we can make",
+    "heading": "A clearer way into your research.",
+    "items": [
+      {
+        "id": "service-1",
+        "title": "Publication & proposal visuals",
+        "body": "Figures, journal cover artwork, and grant visuals that give your research a clear visual story.",
+        "media": []
+      },
+      {
+        "id": "service-2",
+        "title": "Research & instrument visuals",
+        "body": "Make structures, optical systems, and experimental hardware easier to understand.",
+        "media": []
+      },
+      {
+        "id": "service-3",
+        "title": "Animation & custom work",
+        "body": "Explore motion, technical explainers, and ideas that need a different visual approach.",
+        "media": []
+      }
+    ],
+    "media": []
+  },
+  "process": {
+    "eyebrow": "Working together",
+    "heading": "It starts with a conversation.",
+    "items": [
+      {
+        "id": "step-1",
+        "title": "Talk through the science",
+        "body": "Bring an idea, paper, or rough sketch. We can explore the message and who needs to understand it.",
+        "media": []
+      },
+      {
+        "id": "step-2",
+        "title": "Agree on a direction",
+        "body": "We define the visual, scope, timeline, and quote together before any project begins.",
+        "media": []
+      },
+      {
+        "id": "step-3",
+        "title": "Create and refine",
+        "body": "I build the visual and share progress, with time for your feedback and scientific review.",
+        "media": []
+      }
+    ],
+    "media": []
+  },
+  "faq": {
+    "eyebrow": "A few questions",
+    "heading": "Before we talk.",
+    "items": [
+      {
+        "id": "question-1",
+        "question": "Is the first chat free?",
+        "answer": "Yes. The first conversation is a chance to discuss your science, explore ideas, and see whether working together makes sense. There is no obligation to start a project."
+      },
+      {
+        "id": "question-2",
+        "question": "Do I need a finished brief?",
+        "answer": "No. An idea, paper, sketch, or description of what you want to communicate is enough to start talking."
+      },
+      {
+        "id": "question-3",
+        "question": "Can we work within an academic budget?",
+        "answer": "Tell me what you need and the budget you are working with. We can discuss a focused scope for a student project, paper, proposal, or laboratory."
+      },
+      {
+        "id": "question-4",
+        "question": "Can we discuss unpublished research?",
+        "answer": "Yes. We can agree on confidentiality and any embargo requirements before you share sensitive material."
+      },
+      {
+        "id": "question-5",
+        "question": "What happens after the conversation?",
+        "answer": "If we decide to move forward, you receive a written quote with the scope, deliverables, timeline, revisions, and usage rights before work begins."
+      }
+    ],
+    "media": []
+  },
+  "closing": {
+    "heading": "Tell me what you’re working on.",
+    "body": "You know the science. I can help find the visual that makes people want to understand it. Let’s start with a free conversation.",
+    "action": {
+      "label": "Request a free chat",
+      "to": "/contact"
+    },
+    "media": []
+  },
+  "contact": {
+    "headerTitle": "CONTACT",
+    "eyebrow": "A free first conversation",
+    "heading": "Let’s talk about your science.",
+    "description": "Tell me what you’re working on and what you want people to understand. An idea, a paper, or a rough sketch is enough to start.",
+    "reassurance": "We can explore a direction and a scope that fits your project before discussing a quote. The first chat is free, with no obligation to begin a project.",
+    "asideTitle": "Start where you are.",
+    "asideParagraphs": [
+      "You don’t need a finished brief or a polished concept. We can talk through the research, audience, and visual possibilities together.",
+      "Students, researchers, and laboratories are welcome. Let me know your constraints so we can discuss a focused scope."
+    ],
+    "privacyNote": "For unpublished or confidential work, describe the broad topic first. We can agree on confidentiality before you share sensitive material.",
+    "formTitle": "Request a free chat",
+    "formIntro": "Only your name, email, and a short description are needed.",
+    "email": "contact@axivionstudio.com",
+    "emailSubject": "Let’s talk science - Axivion Studio",
+    "emailGreeting": "Hi Dejan,",
+    "emailIntro": "I’d like to arrange a free chat about my project.",
+    "fields": [
+      {
+        "name": "name",
+        "label": "Your name",
+        "emailLabel": "Name",
+        "required": true,
+        "autoComplete": "name"
+      },
+      {
+        "name": "email",
+        "label": "Email",
+        "emailLabel": "Reply email",
+        "type": "email",
+        "required": true,
+        "autoComplete": "email"
+      },
+      {
+        "name": "institution",
+        "label": "Institution or organization (optional)",
+        "emailLabel": "Institution",
+        "autoComplete": "organization"
+      },
+      {
+        "name": "timing",
+        "label": "Project timing (optional)",
+        "emailLabel": "Project timing"
+      },
+      {
+        "name": "reference",
+        "label": "Reference link (optional)",
+        "emailLabel": "Reference",
+        "type": "url"
+      },
+      {
+        "name": "availability",
+        "label": "Availability and time zone (optional)",
+        "emailLabel": "Availability / time zone"
+      }
+    ],
+    "messageLabel": "What are you working on?",
+    "messagePlaceholder": "A little about the science, your audience, or the visual you have in mind…",
+    "buttonLabel": "Open email to request a chat",
+    "mailtoNote": "This opens your email app with a draft. Review and send it there; nothing is sent or booked on this page. You can also email me directly using the address above.",
+    "media": []
+  }
+}

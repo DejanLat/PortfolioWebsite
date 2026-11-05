@@ -1,78 +1,34 @@
-# Getting Started with Create React App
+# PortfolioWebsite
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+React websites for Dejan Latkovic's engineering portfolio, Axivion Instruments / PRISM, and Axivion Studio. Studio is a separate scientific visualization website and brand; the sites share source code and selected UI components.
 
-## Available Scripts
+Built with React, CRACO, Tailwind CSS, Framer Motion, and Lucide icons.
 
-In the project directory, you can run:
+## Development
 
-### `npm start`
+Install dependencies with `npm install`, then run `npm start`. The local preview is normally available at http://localhost:3000.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+| Command | Purpose |
+| --- | --- |
+| `npm start` | Start the local development server |
+| `npm run build` | Build Axivion Studio into `build/` and generate route HTML |
+| `npm run build:portfolio` | Build the GitHub Pages portfolio into `docs/` with the `/PortfolioWebsite` base path |
+| `npm run verify:portfolio` | Validate the generated portfolio asset paths and metadata |
+| `npm test` | Run the CRA/Jest test runner |
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Source layout
 
-### `npm test`
+- `src/components/`: route pages and shared UI.
+- `src/hooks/`: navigation and pointer-effect hooks.
+- `src/content/`: page text and media configuration.
+- `src/data/`: supporting project and pricing data.
+- `public/`: images, videos, icons, and other static assets.
+- `scripts/`: build and route-generation utilities.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Deployment targets
 
-### `npm run build`
+Axivion Studio uses the regular build and Cloudflare Workers configuration in `wrangler.jsonc`. `npm run deploy` builds and deploys that site.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+The portfolio uses the `/PortfolioWebsite` base path and the `gh-pages` branch. `npm run deploy:portfolio` rebuilds `docs/` and publishes it. Pushing source to `main` alone does not update GitHub Pages.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### GitHub Pages portfolio
-
-Run `npm run build:portfolio` to build with `/PortfolioWebsite`, generate portfolio route HTML and metadata, validate asset paths, and refresh `docs/`. Run `npm run verify:portfolio` to check the generated output again.
-
-Commit the source changes and `docs/` to `main`, then run `npm run deploy:portfolio` to rebuild and publish to `gh-pages` without rewriting its history. GitHub Pages serves the `gh-pages` branch; pushing `main` alone does not update the live portfolio.
-
-The regular `npm run build` and `npm run deploy` commands target Axivion Studio on Cloudflare. Publishing that build to GitHub Pages produces incorrect `/static/` paths and a blank page.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+The two builds use different base paths and metadata. Use the build for the intended deployment target.

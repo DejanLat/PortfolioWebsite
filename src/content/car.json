@@ -1,0 +1,245 @@
+{
+  "hero": {
+    "title": "Project",
+    "titleHighlight": "Car",
+    "description": "It took care of me, now I take care of it. I tinker, upgrade, and maintain the car. I've been making memories with it since 2011.",
+    "background": {
+      "src": "carmod_bg.webp",
+      "fallback": "carmod_bg.png",
+      "mirrorHorizontally": true,
+      "enabled": true
+    }
+  },
+  "timeline": [
+    {
+      "id": "most-audio-retrofit",
+      "date": null,
+      "dateLabel": "Undated build note",
+      "sortOrder": 10,
+      "publicationStatus": "draft",
+      "categoryKey": "audio",
+      "category": "Audio & wiring",
+      "title": "MOST-fiber audio retrofit",
+      "summary": "Upgrading my car's base audio system to a 13-speaker, 480 W setup.",
+      "workNotes": [
+        "Installed the amplifier and speaker system using the MOST fiber connection.",
+        "Made 3D-printed door brackets and trimmed panels to fit the speakers.",
+        "Worked from BMW wiring schematics for pinouts, cable routing, and power distribution."
+      ],
+      "outcome": "",
+      "photos": [
+        {
+          "type": "image",
+          "src": "carmod_audio.webp",
+          "fallback": "carmod_audio.png",
+          "alt": "Car audio retrofit work",
+          "caption": "Audio retrofit and installation work on my car."
+        }
+      ],
+      "videos": []
+    },
+    {
+      "id": "interior-lighting",
+      "date": null,
+      "dateLabel": "Undated build note",
+      "sortOrder": 20,
+      "publicationStatus": "draft",
+      "categoryKey": "lighting",
+      "category": "Interior & electrical",
+      "title": "Interior lighting",
+      "summary": "Adding lighting behind the trim, door cards, and seats.",
+      "workNotes": [
+        "Removed interior panels to install RGB lighting controllers.",
+        "Routed wiring for the under-seat, door-card, and trim lighting.",
+        "Kept connections fused and accessible for future maintenance."
+      ],
+      "outcome": "",
+      "photos": [
+        {
+          "type": "image",
+          "src": "carmod_lighting.webp",
+          "fallback": "carmod_lighting.png",
+          "alt": "Interior lighting in my car",
+          "caption": "The interior lighting project."
+        }
+      ],
+      "videos": []
+    },
+    {
+      "id": "anti-theft-retrofit",
+      "date": null,
+      "dateLabel": "Undated build note",
+      "sortOrder": 30,
+      "publicationStatus": "draft",
+      "categoryKey": "security",
+      "category": "Electrical integration",
+      "title": "Anti-theft retrofit",
+      "summary": "Integrating OEM anti-theft hardware with the car's wiring.",
+      "workNotes": [
+        "Researched the BMW wiring documentation and required connections.",
+        "Installed OEM anti-theft hardware and wiring harnesses.",
+        "Checked power and signaling after installation."
+      ],
+      "outcome": "",
+      "photos": [
+        {
+          "type": "image",
+          "src": "carmod_security.webp",
+          "fallback": "carmod_security.png",
+          "alt": "Car anti-theft retrofit work",
+          "caption": "Anti-theft hardware integration."
+        }
+      ],
+      "videos": []
+    },
+    {
+      "id": "mechanical-maintenance",
+      "date": null,
+      "dateLabel": "Undated build note",
+      "sortOrder": 40,
+      "publicationStatus": "draft",
+      "categoryKey": "mechanical",
+      "category": "Mechanical maintenance",
+      "title": "Repairs and mechanical work",
+      "summary": "Getting hands-on with the brakes, suspension, and routine maintenance.",
+      "workNotes": [
+        "Replaced brake calipers, rear shocks, engine components, and filters.",
+        "Retrofitted headlight assemblies and adjusted their alignment.",
+        "Kept records of the work performed on the car."
+      ],
+      "outcome": "",
+      "photos": [
+        {
+          "type": "image",
+          "src": "carmod_mechanical.webp",
+          "fallback": "carmod_mechanical.png",
+          "alt": "Mechanical maintenance work on my car",
+          "caption": "Mechanical repair and maintenance work."
+        }
+      ],
+      "videos": []
+    }
+  ],
+  "placeholders": [
+    {
+      "id": "sample-slot-1",
+      "date": "2025-02-01",
+      "dateLabel": "February 2025 · Sample date",
+      "sortOrder": 10,
+      "publicationStatus": "draft",
+      "isPlaceholder": true,
+      "categoryKey": "mechanical",
+      "category": "Placeholder",
+      "title": "A repair to document",
+      "summary": "Room for photos, a video, and a few notes about the job.",
+      "context": "Replace the sample date and fill in the details when this entry is ready.",
+      "workNotes": [],
+      "outcome": "",
+      "photos": [],
+      "videos": []
+    },
+    {
+      "id": "sample-slot-2",
+      "date": "2025-06-01",
+      "dateLabel": "June 2025 · Sample date",
+      "sortOrder": 20,
+      "publicationStatus": "draft",
+      "isPlaceholder": true,
+      "categoryKey": "mechanical",
+      "category": "Placeholder",
+      "title": "An upgrade to document",
+      "summary": "Room for photos, a video, and a few notes about the job.",
+      "context": "Replace the sample date and fill in the details when this entry is ready.",
+      "workNotes": [],
+      "outcome": "",
+      "photos": [],
+      "videos": []
+    },
+    {
+      "id": "sample-slot-3",
+      "date": "2025-10-01",
+      "dateLabel": "October 2025 · Sample date",
+      "sortOrder": 30,
+      "publicationStatus": "draft",
+      "isPlaceholder": true,
+      "categoryKey": "mechanical",
+      "category": "Placeholder",
+      "title": "A wiring project to document",
+      "summary": "Room for photos, a video, and a few notes about the job.",
+      "context": "Replace the sample date and fill in the details when this entry is ready.",
+      "workNotes": [],
+      "outcome": "",
+      "photos": [],
+      "videos": []
+    },
+    {
+      "id": "sample-slot-4",
+      "date": "2026-02-01",
+      "dateLabel": "February 2026 · Sample date",
+      "sortOrder": 40,
+      "publicationStatus": "draft",
+      "isPlaceholder": true,
+      "categoryKey": "mechanical",
+      "category": "Placeholder",
+      "title": "A maintenance note to add",
+      "summary": "Room for photos, a video, and a few notes about the job.",
+      "context": "Replace the sample date and fill in the details when this entry is ready.",
+      "workNotes": [],
+      "outcome": "",
+      "photos": [],
+      "videos": []
+    },
+    {
+      "id": "sample-slot-5",
+      "date": "2026-06-01",
+      "dateLabel": "June 2026 · Sample date",
+      "sortOrder": 50,
+      "publicationStatus": "draft",
+      "isPlaceholder": true,
+      "categoryKey": "mechanical",
+      "category": "Placeholder",
+      "title": "A photo or video build note",
+      "summary": "Room for photos, a video, and a few notes about the job.",
+      "context": "Replace the sample date and fill in the details when this entry is ready.",
+      "workNotes": [],
+      "outcome": "",
+      "photos": [],
+      "videos": []
+    },
+    {
+      "id": "sample-slot-6",
+      "date": "2026-10-01",
+      "dateLabel": "October 2026 · Sample date",
+      "sortOrder": 60,
+      "publicationStatus": "draft",
+      "isPlaceholder": true,
+      "categoryKey": "mechanical",
+      "category": "Placeholder",
+      "title": "Another project from the garage",
+      "summary": "Room for photos, a video, and a few notes about the job.",
+      "context": "Replace the sample date and fill in the details when this entry is ready.",
+      "workNotes": [],
+      "outcome": "",
+      "photos": [],
+      "videos": []
+    }
+  ],
+  "showPlaceholders": false,
+  "timelineLabels": {
+    "eyebrow": "From the garage",
+    "title": "The build log",
+    "description": "Scroll across and pick a project. The photos and notes open just below.",
+    "previous": "Previous project",
+    "next": "Next project",
+    "dateNote": "The work notes are waiting for dates. Sample slots are labelled separately.",
+    "placeholderLabel": "Sample slot",
+    "placeholderPhotoLabel": "Placeholder image",
+    "workHeading": "What I worked on",
+    "resultHeading": "How it turned out"
+  },
+  "placeholderImage": {
+    "src": "carmod_bg.webp",
+    "fallback": "carmod_bg.png",
+    "alt": "General car image used for a sample timeline slot"
+  }
+}

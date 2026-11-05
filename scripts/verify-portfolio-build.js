@@ -15,7 +15,8 @@ function verifyPortfolioBuild(directory) {
     ["404.html", "Dejan Latkovic | Engineering Portfolio", ""],
     ["portfolio/index.html", "Dejan Latkovic | Engineering Portfolio", ""],
     ["portfolio/contact/index.html", "Contact Dejan Latkovic | Engineering Portfolio", "portfolio/contact"],
-    ["prism/index.html", "Axivion Instruments | PRISM", "prism"],
+    ["prism/index.html", "PRISM V5 | Precision Research Instrumentation", "prism"],
+    ["car-modding/index.html", "Car Build Notes | Dejan Latkovic", "car-modding"],
   ];
   for (const [file, title, route] of routes) {
     const html = fs.readFileSync(path.join(directory, file), "utf8");

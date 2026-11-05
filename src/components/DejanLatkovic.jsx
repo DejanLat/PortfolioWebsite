@@ -14,7 +14,7 @@ export default function DejanLatkovic() {
 
   return (
     <div className="min-h-screen overflow-x-hidden bg-black text-white">
-      <header className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${solidNav ? "border-b border-white/10 bg-black/75 backdrop-blur" : "border-b border-transparent bg-transparent"}`}>
+      <header className={`site-glass-header fixed inset-x-0 top-0 z-50 ${solidNav ? "is-scrolled" : ""}`}>
         <div className="mx-auto flex h-16 max-w-7xl items-center gap-3 px-4 sm:px-6 lg:px-8">
           <Link to="/" className="inline-flex items-center gap-2 text-sm text-white/75 transition hover:text-white">
             <ArrowLeft size={18} />

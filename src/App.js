@@ -1,15 +1,15 @@
 import React from "react";
 import "./App.css";
-import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, useLocation, Navigate } from "react-router-dom";
 import Portfolio from "./components/Portfolio";
 import PrismProject from "./components/PrismProject";
 import Contact from "./components/Contact";
 import StudioContact from "./components/StudioContact";
 import DejanLatkovic from "./components/DejanLatkovic";
-import Models from "./components/Models";
 import CarModding from "./components/CarModding";
 import Renders from "./components/Renders";
 import StudioTerms from "./components/StudioTerms";
+import StudioProjectGuide from "./components/StudioProjectGuide";
 
 const PUBLIC_URL = process.env.PUBLIC_URL || "";
 const IS_PORTFOLIO_BUILD = PUBLIC_URL === "/PortfolioWebsite";
@@ -37,13 +37,21 @@ const META = {
     image: "https://axivionstudio.com/axivion-studio-social-preview-v2.jpg",
   },
   contact: {
-    title: "Contact Axivion Studio | Project Quote",
+    title: "Contact Axivion Studio | Let's Talk Science",
     description:
-      "Contact Axivion Studio about Visual Refinement, a Custom Scientific Visual, a Coordinated Visual Set, animation, or another scientific visualization scope.",
+      "Request a free introductory chat about your research, scientific visuals, publication figures, or technical communication project.",
     ogDescription:
-      "Request a project quote for Visual Refinement, one custom scientific visual, a coordinated visual set, animation, or another technical visualization scope.",
+      "Bring an idea, a paper, or a rough sketch. Talk through your science and the possibilities with Axivion Studio.",
     siteName: "Axivion Studio",
     canonical: "https://axivionstudio.com/contact",
+    image: "https://axivionstudio.com/axivion-studio-social-preview-v2.jpg",
+  },
+  guide: {
+    title: "Project Guide | Axivion Studio",
+    description: "Axivion Studio project packages and indicative estimates for a project discussion.",
+    ogDescription: "Project packages and indicative estimates for discussing a scientific visualization project.",
+    siteName: "Axivion Studio",
+    canonical: "https://axivionstudio.com/project-guide",
     image: "https://axivionstudio.com/axivion-studio-social-preview-v2.jpg",
   },
   terms: {
@@ -77,14 +85,22 @@ const META = {
     image: "https://axivionstudio.com/axivion-studio-social-preview-v2.jpg",
   },
   prism: {
-    title: "Axivion Instruments | Precision Scientific Instrumentation",
+    title: "PRISM V5 | Precision Research Instrumentation",
     description:
-      "Precision scientific instrumentation for advanced microscopy and optical research workflows.",
+      "A vertical-scanning objective microscope used at IQC for diamond NV-center qubit measurements through a cryostat window.",
     ogDescription:
-      "Axivion Instruments develops precision scientific instrumentation for advanced microscopy and optical research workflows.",
+      "PRISM V5 research, precision tooling, and opportunities for instrumentation collaboration and project funding.",
     siteName: "Axivion Instruments",
     canonical: "https://axivionstudio.com/prism",
     image: "https://axivionstudio.com/Axivion%20Photos/WebsiteLinkPhotoIntruments.jpg",
+  },
+  car: {
+    title: "Car Build Notes | Dejan Latkovic",
+    description: "Hands-on repairs, retrofits, and build notes from work on my own car.",
+    ogDescription: "A growing build log of mechanical work, wiring, audio, and car projects by Dejan Latkovic.",
+    siteName: "Dejan Latkovic Portfolio",
+    canonical: "https://dejanlat.github.io/PortfolioWebsite/car-modding",
+    image: "https://dejanlat.github.io/PortfolioWebsite/carmod_bg.webp",
   },
 };
 
@@ -106,7 +122,7 @@ function setFavicons(type) {
           { rel: "shortcut icon", href: `${PUBLIC_URL}/Axivion%20Photos/axivion-studio-favicon-13C2B3.ico?v=portfolio-1` },
         ];
 
-  document.head.querySelectorAll('link[rel="icon"], link[rel="shortcut icon"]').forEach((element) => element.remove());
+  document.head.querySelectorAll('link[rel="icon"], link[rel="shortcut icon"], link[rel="apple-touch-icon"]').forEach((element) => element.remove());
   icons.forEach((icon) => {
     const link = document.createElement("link");
     link.setAttribute("rel", icon.rel);
@@ -142,7 +158,9 @@ function MetadataManager() {
   React.useEffect(() => {
     const type = IS_PORTFOLIO_BUILD && pathname === "/"
       ? "portfolio"
-      : pathname.startsWith("/terms")
+      : pathname.startsWith("/project-guide")
+        ? "guide"
+        : pathname.startsWith("/terms")
         ? "terms"
         : pathname.startsWith("/contact")
         ? "contact"
@@ -154,9 +172,11 @@ function MetadataManager() {
           ? "person"
           : pathname.startsWith("/prism")
             ? "prism"
-            : "studio";
+            : pathname.startsWith("/car-modding")
+              ? "car"
+              : "studio";
     let meta = META[type];
-    if (IS_PORTFOLIO_BUILD && pathname.startsWith("/portfolio/contact")) {
+    if (pathname.startsWith("/portfolio/contact")) {
       meta = {
         ...META.portfolio,
         title: "Contact Dejan Latkovic | Engineering Portfolio",
@@ -167,13 +187,14 @@ function MetadataManager() {
     } else if (IS_PORTFOLIO_BUILD && type === "prism") {
       meta = {
         ...META.prism,
-        title: "Axivion Instruments | PRISM",
+        title: "PRISM V5 | Precision Research Instrumentation",
         canonical: "https://dejanlat.github.io/PortfolioWebsite/prism",
         image: META.portfolio.image,
       };
     }
 
     document.title = meta.title;
+    upsertMeta('meta[name="robots"]', { name: "robots", content: type === "guide" ? "noindex, follow" : "index, follow" });
     upsertMeta('meta[name="description"]', { name: "description", content: meta.description });
     upsertMeta('meta[property="og:title"]', { property: "og:title", content: meta.title });
     upsertMeta('meta[property="og:description"]', { property: "og:description", content: meta.ogDescription });
@@ -192,7 +213,7 @@ function MetadataManager() {
     upsertMeta('meta[name="twitter:image"]', { name: "twitter:image", content: meta.image });
     setCanonical(meta.canonical);
     setFavicons(
-      type === "studio" || type === "studioRoute" || type === "contact" || type === "terms" || type === "person"
+      type === "studio" || type === "studioRoute" || type === "contact" || type === "terms" || type === "person" || type === "guide"
         ? "studio"
         : type === "prism"
           ? "instruments"
@@ -204,11 +225,16 @@ function MetadataManager() {
 }
 
 function ScrollToTop() {
-  const { pathname } = useLocation();
+  const { pathname, hash } = useLocation();
 
   React.useEffect(() => {
-    window.scrollTo(0, 0);
-  }, [pathname]);
+    const frame = requestAnimationFrame(() => {
+      const target = hash ? document.getElementById(hash.slice(1)) : null;
+      if (target) target.scrollIntoView();
+      else window.scrollTo(0, 0);
+    });
+    return () => cancelAnimationFrame(frame);
+  }, [pathname, hash]);
 
   return null;
 }
@@ -231,13 +257,14 @@ function App() {
           <Route path="/" element={IS_PORTFOLIO_BUILD ? <Portfolio /> : <Renders />} />
           <Route path="/studio" element={IS_PORTFOLIO_BUILD ? <ExternalRedirect to="https://axivionstudio.com/" /> : <Renders />} />
           <Route path="/terms" element={IS_PORTFOLIO_BUILD ? <ExternalRedirect to="https://axivionstudio.com/terms" /> : <StudioTerms />} />
+          <Route path="/project-guide" element={IS_PORTFOLIO_BUILD ? <ExternalRedirect to="https://axivionstudio.com/project-guide" /> : <StudioProjectGuide />} />
           <Route path="/renders" element={IS_PORTFOLIO_BUILD ? <ExternalRedirect to="https://axivionstudio.com/" /> : <Renders />} />
           <Route path="/portfolio" element={<Portfolio />} />
           <Route path="/prism" element={<PrismProject />} />
           <Route path="/contact" element={<StudioContact contactEmail="contact@axivionstudio.com" />} />
           <Route path="/dejan-latkovic" element={<DejanLatkovic />} />
           <Route path="/portfolio/contact" element={<Contact contactEmail="contact@axivionstudio.com" />} />
-          <Route path="/models" element={<Models />} />
+          <Route path="/models" element={<Navigate to="/prism" replace />} />
           <Route path="/car-modding" element={<CarModding />} />
         </Routes>
       </Router>
