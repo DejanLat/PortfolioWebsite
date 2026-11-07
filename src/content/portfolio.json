@@ -24,9 +24,10 @@
         "overlayOpacity": 0.45
       },
       {
-        "src": "photos/portfolio/PRISM_V4_Setup.jpg",
-        "alt": "PRISM V4 experimental setup",
-        "blurPx": 0.5,
+        "src": "setup5.webp",
+        "fallback": "setup5.png",
+        "alt": "Optical station setup",
+        "blurPx": 0,
         "overlayOpacity": 0.4
       }
     ]
@@ -364,9 +365,57 @@
   ],
   "bench": {
     "eyebrow": "At the bench",
-    "heading": "A few things I work with.",
+    "heading": "Applied R&D and lab work",
     "intro": "Some photos from my lab and workshop work. Click through for a closer look.",
     "photos": [
+            {
+        "src": "photos/portfolio/PRISM_V4_Setup.jpg",
+        "alt": "PRISM V4 optical station setup",
+        "title": "Optical station setup",
+        "context": "Imaging and optical integration",
+        "notes": [
+          "Aligning and setting up the inital PRISM optical station",
+          "Integrating PRISM, a laser and LED source, with a camera and fiber-coupled detector",
+          "Working with the space and access available on the bench"
+        ]
+      },
+      {
+        "src": "image1equipment.webp",
+        "fallback": "image1equipment.png",
+        "alt": "50x microscope image of a calibration slide",
+        "title": "Inital Imaging & Calibration",
+        "context": "Optical metrology · Calibration slide",
+        "notes": [
+          "50x objective imaging of a calibration slide",
+          "Verifying optical resolution and jog movement",
+          "Camera and objective alignment"
+        ]
+      },
+      {
+        "src": "image2equipment.webp",
+        "fallback": "image2equipment.png",
+        "alt": "100x microscope image of a calibration slide",
+        "title": "Imaging using 100x Objective",
+        "context": "Microscope imaging",
+        "notes": [
+          "Imaging fine features on a calibration slide",
+          "Verifying optical resolution and jog movement at higher magnification",
+          "Ensuring stable scanning at high magnification",
+          "Beginning of raster scan testing and calibration for PRISM V4"
+        ]
+      },
+            {
+        "src": "rasterscan.webp",
+        "fallback": "rasterscan.png",
+        "alt": "Photon detector raster scanning",
+        "title": "Photon detector scanning",
+        "context": "LabVIEW and instrument control",
+        "notes": [
+          "Raster scan control with piezo motion",
+          "Detector readout and imaging feedback",
+          "Putting the hardware and software together"
+        ]
+      },
       {
         "src": "image3equipment.webp",
         "fallback": "image3equipment.png",
@@ -375,71 +424,25 @@
         "title": "Fiber coupling",
         "context": "Laser alignment and optical setup",
         "notes": [
-          "Free-space alignment with mirrors and irises",
-          "Coupling light into a fiber for photon-detector readout",
-          "Building and adjusting optical paths on the bench"
+          "Free space alignment, 4 degrees of freedom, 2 kinematic mirrors",
+          "Coupling light into a fiber for detector readout",
+          "Fiber coupled system used for raster scanning"
         ]
       },
       {
         "src": "image4equipment.webp",
         "fallback": "image4equipment.png",
         "alt": "Manual milling machine",
-        "title": "Manual mill",
+        "title": "3-Axis Manual mill",
         "context": "Mechanical machining",
         "notes": [
           "Making custom mounts and parts for lab setups",
           "Preparing drawings and thinking through how a part will be made",
-          "Hands-on manual machining alongside CNC process-planning experience"
-        ]
-      },
-      {
-        "src": "rasterscan.webp",
-        "fallback": "rasterscan.png",
-        "alt": "Photon detector raster scanning",
-        "title": "Photon-detector scanning",
-        "context": "LabVIEW and instrument control",
-        "notes": [
-          "Raster-scan control with piezo motion",
-          "Detector readout and imaging feedback",
-          "Putting the hardware and software together"
-        ]
-      },
-      {
-        "src": "setup5.webp",
-        "fallback": "setup5.png",
-        "alt": "Optical station setup",
-        "title": "Optical station setup",
-        "context": "Imaging and optical integration",
-        "notes": [
-          "Aligning an optical path around the experiment",
-          "Integrating objectives, cameras, and mounts",
-          "Working with the space and access available on the bench"
-        ]
-      },
-      {
-        "src": "image1equipment.webp",
-        "fallback": "image1equipment.png",
-        "alt": "50x microscope image of a calibration slide",
-        "title": "Imaging & calibration",
-        "context": "Optical metrology · Calibration slide",
-        "notes": [
-          "Setting up the imaging path",
-          "Checking field of view and pixel scale",
-          "Camera and objective alignment"
-        ]
-      },
-      {
-        "src": "image2equipment.webp",
-        "fallback": "image2equipment.png",
-        "alt": "100x microscope image of a calibration slide",
-        "title": "Imaging at 100x",
-        "context": "Microscope imaging",
-        "notes": [
-          "Imaging fine features on a calibration slide",
-          "Working through focus and alignment",
-          "Comparing views at different magnifications"
+          "Hands on manual machining later upgraded to CNC machined parts"
         ]
       }
+
+
     ]
   },
   "courseworkSection": {
