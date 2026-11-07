@@ -35,7 +35,7 @@ export default function PortfolioBenchGallery() {
       </div>
       <div className="mt-4 flex flex-wrap gap-2" aria-label="Choose a bench photo">
         {bench.photos.map((item, itemIndex) => <button type="button" key={item.src} onClick={() => setIndex(itemIndex)} aria-pressed={itemIndex === index}
-          className={`rounded-full border px-4 py-2 text-xs transition ${itemIndex === index ? "border-[#C97A3A]/55 bg-[#C97A3A]/15 text-[#efbc95]" : "border-white/15 bg-white/5 text-white/65 hover:bg-white/10"}`}>{item.title}</button>)}
+          className={`rounded-full border px-4 py-2 text-xs transition ${itemIndex === index ? "border-[#e7a56f]/55 bg-[#e7a56f]/15 text-[#e7a56f]" : "border-white/15 bg-white/5 text-white/65 hover:bg-white/10"}`}>{item.title}</button>)}
       </div>
     </section>
   );

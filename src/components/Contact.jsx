@@ -15,8 +15,8 @@ import { Link, useSearchParams } from "react-router-dom";
 import { useScrolledHeader } from "../hooks/useScrolledHeader";
 
 const CONTACT_EMAIL = "contact@axivionstudio.com";
-const ACCENT = "#f59e0b";
-const ACCENT_SOFT = "rgba(245, 158, 11, 0.15)";
+const ACCENT = "#e7a56f";
+const ACCENT_SOFT = "rgba(231, 165, 111, 0.15)";
 const PUBLIC = process.env.PUBLIC_URL || "";
 
 export default function Contact({ contactEmail = CONTACT_EMAIL }) {
@@ -109,7 +109,7 @@ export default function Contact({ contactEmail = CONTACT_EMAIL }) {
 
   return (
     <div
-      className="readability-page min-h-screen w-full bg-black text-white"
+      className="readability-page min-h-screen w-full bg-[#080e14] text-white"
       style={rootStyle}
       onMouseMove={(event) => {
         setMx(event.clientX);
@@ -122,7 +122,7 @@ export default function Contact({ contactEmail = CONTACT_EMAIL }) {
              style={{ background: `radial-gradient(700px at var(--mx) var(--my), ${ACCENT_SOFT}, transparent 60%)` }} />
         {/* Static top glow */}
         <div className="absolute inset-x-0 top-0 h-[90vh]"
-             style={{ background: "radial-gradient(600rem 26rem at 50% -10%,rgba(245,158,11,0.42), transparent 60%)" }} />
+             style={{ background: "radial-gradient(600rem 26rem at 50% -10%,rgba(201,122,58,0.22), transparent 60%)" }} />
       </div>
 
 
@@ -287,7 +287,7 @@ export default function Contact({ contactEmail = CONTACT_EMAIL }) {
                 <button
                   type="submit"
                   className="inline-flex items-center justify-center gap-2 rounded-full border px-6 py-3 text-sm font-medium text-white"
-                  style={{ borderColor: "rgba(245,158,11,0.48)", background: "rgba(245,158,11,0.16)" }}
+                  style={{ borderColor: "rgba(231,165,111,0.48)", background: "rgba(231,165,111,0.16)" }}
                 >
                   Open Email <SendHorizonal size={16} />
                 </button>

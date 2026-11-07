@@ -225,9 +225,9 @@ export default function PortfolioWhite() {
                 border: "1.5px solid rgba(255,255,255,0.2)"
               }}
               onMouseEnter={e => {
-                e.currentTarget.style.borderColor = ACCENT;
-                e.currentTarget.style.color = ACCENT;
-                e.currentTarget.style.boxShadow = "inset 0 0 12px rgba(201,122,58,0.35)";
+                e.currentTarget.style.borderColor = "#e7a56f";
+                e.currentTarget.style.color = "#e7a56f";
+                e.currentTarget.style.boxShadow = "inset 0 0 12px rgba(231,165,111,0.35)";
               }}
               onMouseLeave={e => {
                 e.currentTarget.style.borderColor = "rgba(255,255,255,0.2)";
@@ -339,7 +339,7 @@ export default function PortfolioWhite() {
       <div className="mx-auto max-w-7xl">
         <div
           className="inline-flex items-center gap-2 rounded-full px-4 py-1 text-[10px] sm:text-xs uppercase tracking-widest border"
-          style={{ borderColor: `rgba(201,122,58,0.4)`, color: ACCENT }}
+          style={{ borderColor: "rgba(231,165,111,0.4)", backgroundColor: "rgba(8,14,20,0.3)", color: "#e7a56f" }}
         >
           <MicroscopeIcon size={14} /> {content.hero.eyebrow}
         </div>
@@ -372,7 +372,7 @@ export default function PortfolioWhite() {
           </Link>
           <Link
             to="/portfolio/contact"
-            className="portfolio-contact-button inline-flex items-center justify-center rounded-full border border-[#C97A3A]/60 bg-[#C97A3A]/20 px-6 py-3 text-sm font-medium text-[#ffd8b8] transition hover:bg-[#C97A3A]/30"
+            className="portfolio-contact-button inline-flex items-center justify-center rounded-full border border-white/20 px-6 py-3 text-sm font-medium text-white transition-colors"
           >
             {content.hero.contactLabel}
           </Link>
@@ -414,7 +414,7 @@ export default function PortfolioWhite() {
       <section id="testimonials" aria-labelledby="recommendation-heading" className="relative scroll-mt-20">
         <div className="mx-auto max-w-7xl px-6 pb-20 lg:pb-24">
           <div className="mb-8">
-            <p className="text-sm uppercase tracking-widest" style={{ color: ACCENT }}>Professional perspective</p>
+            <p className="text-sm uppercase tracking-widest text-[#e7a56f]">Professional perspective</p>
             <h2 id="recommendation-heading" className="mt-3 text-3xl font-semibold tracking-tight text-white md:text-4xl">Professional Recommendations</h2>
             <p className="mt-3 max-w-2xl text-sm leading-6 text-white/55">Perspectives on engineering ownership, technical communication, and translating complex research into clear outcomes.</p>
           </div>
