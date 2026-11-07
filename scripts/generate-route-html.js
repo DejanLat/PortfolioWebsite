@@ -1,3 +1,4 @@
+const prismConfig = require("../src/content/prism.json").configuration;
 const fs = require("fs");
 const path = require("path");
 
@@ -71,11 +72,29 @@ const portfolioRoutes = [
     image: "https://dejanlat.github.io/PortfolioWebsite/Axivion%20Photos/WebsiteLinkPhotoIntruments.jpg",
   },
   {
+    path: "portfolio/school-projects",
+    title: "School Projects | Dejan Latkovic",
+    description: "Coursework, lab work, and projects from my time at Waterloo.",
+    ogDescription: "Coursework, lab work, and projects from my time at Waterloo.",
+    canonical: "https://dejanlat.github.io/PortfolioWebsite/portfolio/school-projects",
+    siteName: "Dejan Latkovic Portfolio",
+    image: "https://dejanlat.github.io/PortfolioWebsite/Axivion%20Photos/WebsiteLinkPhotoIntruments.jpg",
+  },
+  {
     path: "prism",
     title: "PRISM V5 | Precision Research Instrumentation",
-    description: "A vertical-scanning objective microscope used at IQC for diamond NV-center qubit measurements through a cryostat window.",
+    description: "PRISM V5: a piezo-actuated XYZ objective-scanning module with 13.5 mm travel per axis, used in confocal diamond NV-center experiments at IQC.",
     ogDescription: "PRISM V5 research, precision tooling, and opportunities for instrumentation collaboration and project funding.",
     canonical: "https://dejanlat.github.io/PortfolioWebsite/prism",
+    siteName: "Axivion Instruments",
+    image: "https://dejanlat.github.io/PortfolioWebsite/Axivion%20Photos/WebsiteLinkPhotoIntruments.jpg",
+  },
+  {
+    path: "prism/lab-work",
+    title: prismConfig.shieldTitle,
+    description: prismConfig.shieldText,
+    ogDescription: prismConfig.shieldText,
+    canonical: "https://dejanlat.github.io/PortfolioWebsite/prism/lab-work",
     siteName: "Axivion Instruments",
     image: "https://dejanlat.github.io/PortfolioWebsite/Axivion%20Photos/WebsiteLinkPhotoIntruments.jpg",
   },
@@ -200,7 +219,7 @@ const sourceHtml = fs.readFileSync(indexPath, "utf8");
 const isPortfolioBuild = process.env.PUBLIC_URL === "/PortfolioWebsite";
 const baseHtml = isPortfolioBuild ? applyPortfolioFavicons(applyPortfolioContent(applyMeta(sourceHtml, portfolioRoot), portfolioRoot)) : sourceHtml;
 const routes = isPortfolioBuild ? portfolioRoutes : [...studioRoutes, ...portfolioRoutes.map((route) =>
-  route.path === "prism" ? { ...route, canonical: "https://axivionstudio.com/prism", image: "https://axivionstudio.com/Axivion%20Photos/WebsiteLinkPhotoIntruments.jpg" } : route
+  route.path.split("/")[0] === "prism" ? { ...route, canonical: `https://axivionstudio.com/${route.path}`, image: "https://axivionstudio.com/Axivion%20Photos/WebsiteLinkPhotoIntruments.jpg" } : route
 )];
 
 fs.writeFileSync(indexPath, baseHtml);
@@ -211,7 +230,7 @@ for (const route of routes) {
   fs.mkdirSync(routeDir, { recursive: true });
   const isEngineeringRoute = portfolioRoutes.some((entry) => entry.path === route.path);
   const routeHtml = isPortfolioBuild || isEngineeringRoute
-    ? applyPortfolioFavicons(applyPortfolioContent(applyMeta(baseHtml, route), route), route.path === "prism" ? "instruments" : "portfolio", isPortfolioBuild ? "/PortfolioWebsite" : "")
+    ? applyPortfolioFavicons(applyPortfolioContent(applyMeta(baseHtml, route), route), route.path.split("/")[0] === "prism" ? "instruments" : "portfolio", isPortfolioBuild ? "/PortfolioWebsite" : "")
     : applyMeta(baseHtml, route);
   fs.writeFileSync(path.join(routeDir, "index.html"), routeHtml);
   fs.writeFileSync(path.join(buildDir, `${route.path.replace(/\//g, "-")}.html`), routeHtml);

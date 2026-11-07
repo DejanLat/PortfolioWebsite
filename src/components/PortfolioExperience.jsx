@@ -1,5 +1,5 @@
-import React, { useRef, useState } from "react";
-import { Link, useSearchParams } from "react-router-dom";
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import { ArrowRight, ChevronLeft, ChevronRight, GraduationCap, Youtube } from "lucide-react";
 import WebpImg from "./WebpImg";
 import ContentMedia, { contentAsset } from "./ContentMedia";
@@ -44,45 +44,17 @@ function ExperienceImage({ experience }) {
 }
 
 export default function PortfolioExperience() {
-  const [params, setParams] = useSearchParams();
-  const tabRefs = useRef([]);
-  const view = PORTFOLIO_VIEWS.find((item) => item.key === params.get("focus")) || PORTFOLIO_VIEWS[0];
-  const selectView = (key) => {
-    const next = new URLSearchParams(params);
-    if (key === "overview") next.delete("focus"); else next.set("focus", key);
-    setParams(next, { replace: true, preventScrollReset: true });
-  };
-  const onTabKeyDown = (event, index) => {
-    let next;
-    if (event.key === "ArrowRight") next = (index + 1) % PORTFOLIO_VIEWS.length;
-    if (event.key === "ArrowLeft") next = (index - 1 + PORTFOLIO_VIEWS.length) % PORTFOLIO_VIEWS.length;
-    if (event.key === "Home") next = 0;
-    if (event.key === "End") next = PORTFOLIO_VIEWS.length - 1;
-    if (next === undefined) return;
-    event.preventDefault();
-    selectView(PORTFOLIO_VIEWS[next].key);
-    tabRefs.current[next]?.focus();
-  };
+  const view = PORTFOLIO_VIEWS[0];
   return (
     <>
       <section id="experience" aria-labelledby="experience-heading" className="relative scroll-mt-24">
         <div className="mx-auto max-w-7xl px-6 py-20 lg:py-24">
           <p className="text-xs uppercase tracking-[0.22em] text-[#e7a56f]">{content.experienceSection.eyebrow}</p>
           <h2 id="experience-heading" className="mt-3 text-3xl font-semibold tracking-tight md:text-4xl">{content.experienceSection.heading}</h2>
-          <p className="mt-4 max-w-2xl leading-7 text-white/65">{content.experienceSection.intro}</p>
-          <div role="tablist" aria-label="Explore engineering experience" className="mt-8 grid grid-cols-2 gap-2 lg:flex lg:flex-wrap">
-            {PORTFOLIO_VIEWS.map((item, index) => (
-              <button key={item.key} id={`focus-${item.key}`} role="tab" type="button"
-                ref={(element) => { tabRefs.current[index] = element; }}
-                aria-selected={view.key === item.key} aria-controls={`focus-panel-${item.key}`}
-                tabIndex={view.key === item.key ? 0 : -1} onClick={() => selectView(item.key)} onKeyDown={(event) => onTabKeyDown(event, index)}
-                className={`rounded-2xl border px-4 py-3 text-sm font-medium transition lg:rounded-full ${view.key === item.key ? "border-[#C97A3A]/60 bg-[#C97A3A]/15 text-[#f0bc91]" : "border-white/15 bg-white/[0.035] text-white/65 hover:border-white/35 hover:text-white"}`}>{item.label}</button>
-            ))}
-          </div>
-          <div key={view.key} id={`focus-panel-${view.key}`} role="tabpanel" aria-labelledby={`focus-${view.key}`} tabIndex={0} className="site-glass-panel mt-8 rounded-[28px] border border-white/15 p-6 md:p-8">
+          <div className="site-glass-panel mt-8 rounded-[28px] border border-white/15 p-6 md:p-8">
             <h3 className="text-xl font-semibold md:text-2xl">{view.title}</h3>
             <p className="mt-3 max-w-3xl text-sm leading-6 text-white/65">{view.summary}</p>
-            <div className="mt-7 grid gap-6 md:grid-cols-3">
+            <div className="mt-7 grid gap-6 sm:grid-cols-2 xl:grid-cols-4">
               {view.skills.map((skill) => (
                 <div key={skill.title} className="border-t border-white/15 pt-4">
                   <h4 className="font-medium text-white/90">{skill.title}</h4>
@@ -134,15 +106,14 @@ export default function PortfolioExperience() {
       </section>
 
       <section id="coursework" aria-labelledby="coursework-heading" className="relative scroll-mt-24">
-        <div className="mx-auto max-w-7xl px-6 pb-20 lg:pb-24">
-          <p className="text-xs uppercase tracking-[0.22em] text-[#e7a56f]">{content.courseworkSection.eyebrow}</p>
-          <h2 id="coursework-heading" className="mt-3 text-3xl font-semibold tracking-tight md:text-4xl">{content.courseworkSection.heading}</h2>
-          <p className="mt-4 max-w-2xl text-sm leading-7 text-white/65">{content.courseworkSection.intro}</p>
-          <div className="mt-8 grid gap-6 md:grid-cols-2">
+        <div className="mx-auto grid max-w-7xl items-center gap-8 px-6 pb-20 lg:grid-cols-2 lg:gap-12 lg:pb-24">
+          <div>
+            <p className="text-xs uppercase tracking-[0.22em] text-[#e7a56f]">{content.courseworkSection.eyebrow}</p>
+            <h2 id="coursework-heading" className="mt-3 text-3xl font-semibold tracking-tight md:text-4xl">{content.courseworkSection.heading}</h2>
+            <p className="mt-4 max-w-2xl text-sm leading-7 text-white/65">{content.courseworkSection.intro}</p>
             {COURSEWORK.map((course) => (
-              <article key={course.id} className="rounded-3xl border border-white/10 bg-white/[0.035] p-6 md:p-8">
-                <GraduationCap size={24} className="text-[#e7a56f]" />
-                <h3 className="mt-5 text-xl font-semibold">{course.title}</h3>
+              <article key={course.id} className="mt-7">
+                <h3 className="text-xl font-semibold">{course.title}</h3>
                 <p className="mt-2 text-xs leading-5 text-white/50">{course.institution} · {course.context}{course.term ? ` · ${course.term}` : ""}</p>
                 <p className="mt-4 text-sm leading-7 text-white/65">{course.summary}</p>
                 <p className="mt-4 text-xs text-[#e7a56f]">{course.status}</p>
@@ -150,11 +121,13 @@ export default function PortfolioExperience() {
                 {course.methods.length > 0 && <ul className="mt-4 space-y-2 text-sm text-white/70">{course.methods.map((method) => <li key={method}>{method}</li>)}</ul>}
               </article>
             ))}
-            <div className="flex flex-col justify-center rounded-3xl border border-dashed border-white/15 p-6 md:p-8">
-              <p className="text-sm font-medium text-white/80">{content.courseworkSection.upcomingTitle}</p>
-              <p className="mt-3 text-sm leading-7 text-white/55">{content.courseworkSection.upcomingText}</p>
-            </div>
           </div>
+            <Link to="/portfolio/school-projects" className="site-glass-panel group relative flex min-h-[290px] flex-col justify-between overflow-hidden rounded-3xl border border-white/15 p-7 transition-colors hover:border-[#C97A3A]/50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#e7a56f] sm:p-9 lg:min-h-96">
+              <img src={contentAsset("photos/portfolio/WaterrlooCleanRoomPlasmaPhoto.jpg")} alt="" aria-hidden="true" loading="lazy" className="pointer-events-none absolute -inset-2 h-[calc(100%+1rem)] w-[calc(100%+1rem)] object-cover opacity-35 blur-[4px]" />
+              <div aria-hidden="true" className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/90 via-black/55 to-black/35" />
+              <div className="relative z-10 flex items-center justify-between gap-3"><GraduationCap size={24} className="text-[#e7a56f]" aria-hidden="true" /><span className="rounded-full border border-white/20 px-3 py-1 text-xs text-white/75">Coming soon</span></div>
+              <div className="relative z-10 mt-7"><h3 className="text-xl font-semibold">UWaterloo Lab Experiences</h3><span className="mt-5 inline-flex items-center gap-2 text-sm text-[#e7a56f]">Explore school projects <ArrowRight size={15} aria-hidden="true" /></span></div>
+            </Link>
         </div>
       </section>
 
@@ -177,5 +150,20 @@ export default function PortfolioExperience() {
         </div>
       </section>}
     </>
+  );
+}
+
+export function SchoolProjects() {
+  return (
+    <main className="min-h-screen bg-[#080e14] px-6 py-12 text-white">
+      <div className="mx-auto max-w-3xl">
+        <Link to="/portfolio#coursework" className="inline-flex items-center gap-2 text-sm text-[#e7a56f] hover:underline"><ArrowRight size={16} className="rotate-180" aria-hidden="true" />Back to portfolio</Link>
+        <div className="site-glass-panel mt-12 rounded-3xl border border-white/15 p-6 sm:p-10">
+          <p className="text-xs uppercase tracking-[0.2em] text-[#e7a56f]">Coming soon</p>
+          <h1 className="mt-3 text-3xl font-semibold tracking-tight sm:text-4xl">School Projects</h1>
+          <p className="mt-4 max-w-xl leading-7 text-white/70">Coursework, lab work, and projects from my time at Waterloo.</p>
+        </div>
+      </div>
+    </main>
   );
 }

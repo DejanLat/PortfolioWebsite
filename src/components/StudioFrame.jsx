@@ -9,7 +9,7 @@ const PILL_STYLE = {
   border: "1.5px solid rgba(255,255,255,0.2)",
 };
 
-export default function StudioFrame({ children, title, backTo, showPublicNav = true }) {
+export default function StudioFrame({ children, title, backTo, showPublicNav = true, className = "" }) {
   const { rootRef, rootStyle, updateRootPointer } = useStudioPointerGlow();
   const [menuOpen, setMenuOpen] = useState(false);
   const scrolled = useScrolledHeader();
@@ -53,7 +53,7 @@ export default function StudioFrame({ children, title, backTo, showPublicNav = t
   };
 
   return (
-    <div ref={rootRef} style={rootStyle} onPointerMove={updateRootPointer} className="studio-page min-h-screen w-full text-white">
+    <div ref={rootRef} style={rootStyle} onPointerMove={updateRootPointer} className={`studio-page min-h-screen w-full text-white ${className}`}>
       <div className="studio-ambient-layer pointer-events-none fixed inset-0 z-0" aria-hidden="true">
         <div className="studio-cursor-glow absolute inset-0" />
         <div className="studio-top-glow absolute inset-x-0 top-0 h-[70vh]" />

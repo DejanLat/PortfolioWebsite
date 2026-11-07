@@ -18,7 +18,7 @@ export default function PortfolioBenchGallery() {
       <div className="site-glass-panel mt-7 grid overflow-hidden rounded-[28px] border border-white/15 lg:grid-cols-[1.25fr_1fr]">
         <div className="relative min-h-[280px] bg-black/20 sm:min-h-[360px]" role="region" aria-label="Lab and workshop photos" tabIndex={0}
           onKeyDown={(event) => { if (["ArrowLeft", "ArrowRight"].includes(event.key)) { event.preventDefault(); move(event.key === "ArrowRight" ? 1 : -1); } }}>
-          <WebpImg key={photo.src} webp={contentAsset(photo.src)} fallback={contentAsset(photo.fallback)} alt={photo.alt} className="absolute inset-0 h-full w-full object-cover" />
+          <WebpImg key={photo.src} webp={contentAsset(photo.src)} fallback={contentAsset(photo.fallback)} alt={photo.alt} className="absolute inset-0 h-full w-full object-cover" style={{ objectPosition: photo.imagePosition || "center" }} />
           <div className="absolute inset-x-0 bottom-0 flex items-center justify-between gap-3 bg-gradient-to-t from-black/80 to-transparent p-5 pt-16">
             <span className="text-xs text-white/75">{index + 1} / {bench.photos.length}</span>
             <div className="flex gap-2">

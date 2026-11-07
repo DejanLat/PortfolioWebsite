@@ -3,25 +3,31 @@
     "eyebrow": "Instruments · Photonics · Precision Engineering",
     "name": "Dejan Latkovic",
     "title": "Engineering Portfolio",
-    "description": "Nanotechnology Engineering student at Waterloo. I work on optics, precision hardware, and tools for the lab. Previously at Atomic Semi, with research work at IQC and process planning in aerospace manufacturing.",
+    "tagline": "From concept to working hardware, I bring ideas to life",
+    "description": "Hi! I'm a Nanotechnology Engineering student at Waterloo. I work on optics, precision hardware, and tools for the lab. Previously at Atomic Semi, with research work at IQC and process planning in aerospace manufacturing.",
     "instrumentsLabel": "Axivion Instruments",
     "contactLabel": "Contact",
     "autoplay": true,
-    "intervalMs": 5500,
+    "intervalMs": 8000,
     "slides": [
+      {
+        "src": "photos/portfolio/OverlookingGoldenGateBridge.jpg",
+        "alt": "Overlooking the Golden Gate Bridge",
+        "blurPx": 0,
+        "overlayOpacity": 0.45
+      },
       {
         "src": "presenting.webp",
         "fallback": "presenting.png",
-        "alt": "Presenting my engineering work"
+        "alt": "Presenting at Photonics North",
+        "blurPx": 1.2,
+        "overlayOpacity": 0.45
       },
       {
-        "src": "image2Engproject.webp",
-        "fallback": "image2Engproject.png",
-        "alt": "Precision instrumentation project"
-      },
-      {
-        "src": "Axivion Photos/AxivionInstrumentsBanner.jpg",
-        "alt": "Axivion Instruments"
+        "src": "photos/portfolio/PRISM_V4_Setup.jpg",
+        "alt": "PRISM V4 experimental setup",
+        "blurPx": 0.5,
+        "overlayOpacity": 0.4
       }
     ]
   },
@@ -48,30 +54,37 @@
     }
   ],
   "experienceSection": {
-    "eyebrow": "Explore my work",
+    "eyebrow": "Skillset Overview",
     "heading": "Engineering Experience",
-    "intro": "Here's some of the work I've done. Pick an area if you want to take a closer look."
+    "intro": "Below are tabs for different areas of my experience. Each is a more focused view of the work I've done, with links to more details."
   },
   "views": [
     {
       "key": "overview",
       "label": "Overview",
-      "title": "Precision hardware, from design to the lab.",
-      "summary": "I like getting involved in the whole build: the mechanics, the optics, and the details that make it work.",
+      "title": "End to end ownership, from an idea to a working instrument.",
+      "summary": "I like getting involved in the whole build. I enjoy collaborating with others, but also working independently to design, build, and test instruments and tools. I have experience with optics, mechanics, electronics, and software, and I enjoy connecting them together into a working system.",
       "skills": [
         {
           "title": "Design & build",
           "href": "#experience-atomic",
           "linkLabel": "Atomic Semi experience",
           "context": "Atomic Semi · IQC",
-          "text": "CAD, fixtures, optical assemblies, and hardware integration."
+          "text": "CAD, fixtures, mechanical drawings, and hardware integration."
         },
         {
           "title": "Align & measure",
           "href": "#experience-iqc",
           "linkLabel": "IQC experience",
           "context": "IQC · Instrument projects",
-          "text": "Laser alignment, fiber coupling, imaging, and scanning control."
+          "text": "Laser alignment, fiber coupling, microscopy, and optical calibration."
+        },
+        {
+          "title": "Automate & control",
+          "href": "#experience-iqc",
+          "linkLabel": "Scanning control at IQC",
+          "context": "LabVIEW · Precision motion",
+          "text": "Piezo scanning, detector readout, and instrument control."
         },
         {
           "title": "Plan production",
@@ -86,14 +99,14 @@
       "key": "optomechanical",
       "label": "Optomechanical Design",
       "title": "From an optical requirement to working hardware.",
-      "summary": "Mechanical design and fabrication informed by how the optics, assembly, and experiment need to work together.",
+      "summary": "Mechanical design and machining informed by how the optics, assembly, and experiment need to work together.",
       "skills": [
         {
           "title": "Mechanical design",
           "href": "#experience-iqc",
           "linkLabel": "Instrument development at IQC",
           "context": "Fusion 360 · IQC",
-          "text": "Optical mounts, fixtures, tolerance considerations, and drawings for fabrication."
+          "text": "Optical mounts, fixtures, tolerance considerations, and mechanical drawings for machining."
         },
         {
           "title": "Build & integrate",
@@ -181,10 +194,11 @@
       "image": "AtomicSemiPhoto.jpeg",
       "imageAlt": "Atomic Semi engineering team",
       "imagePosition": "left",
-      "summary": "Owned hardware projects across optics, precision motion, imaging, and substrate handling.",
+      "summary": "Owned four hardware systems from design through testing across optics, precision motion, imaging, and substrate handling.",
       "achievements": [
         "Developed a laser optics module, automated XY stage, custom microscope camera, and automated substrate loader.",
-        "Used Onshape for mechanical design and Rust for software development, alongside fabrication, integration, and technical documentation.",
+        "Used Onshape for mechanical design and Rust for software development, alongside hardware development, integration, and technical documentation.",
+        "Wrote technical documentation praised by my supervising staff engineer as excellent and to be used as positive examples for future interns.",
         "A recommendation from my internship supervisor is available below; the full letter is available on request."
       ],
       "evidence": {
@@ -197,16 +211,16 @@
       "company": "Institute for Quantum Computing",
       "role": "Associate Researcher",
       "period": "Appointments since 2024",
-      "engagement": "Research Assistant & Associate Researcher appointments",
+      "engagement": "Research Assistant & Associate Researcher · Co-op and casual/on-call appointments",
       "affiliationNote": "Nano Photonics and Quantum Optics Lab · University of Waterloo",
       "category": "Research instrumentation",
       "imageBase": "image3experience",
-      "summary": "Developed research instruments and custom lab hardware, from early prototypes to PRISM V5.",
+      "summary": "Designed and built PRISM from the ground up as a piezo-actuated XYZ objective-scanning module for optical experiments.",
       "achievements": [
-        "Designed and fabricated optical assemblies, fixtures, and instrument components; prepared drawings and coordinated machining.",
+        "Designed optical assemblies, fixtures, and instrument components; prepared mechanical drawings, machined parts, and coordinated machining.",
         "Built optical setups, aligned beam paths, and worked on fiber coupling and microscope imaging.",
-        "Implemented LabVIEW raster-scan control with piezo motion and photon-detector readout.",
-        "PRISM V5 is now used at IQC for diamond NV-center qubit measurements through a cryostat window."
+        "Implemented initial LabVIEW raster-scan control with piezo motion and photon-detector readout; completed initial testing and setup to prepare the instrument for scanning.",
+        "PRISM V5 is now used in the lab's confocal setup for diamond NV-center measurements through a cryostat window. The scanning software was subsequently extended for those experiments."
       ],
       "gallery": [
         {
@@ -256,14 +270,14 @@
     {
       "id": "axivion-instruments",
       "company": "Axivion Instruments",
-      "role": "Founder | Instrument Development",
+      "role": "Founder & Instrument Development",
       "period": "Sep 2025–present",
-      "engagement": "Self-employed · Waterloo, Ontario · Hybrid",
+      "engagement": "Independent projects · Undertaken as time permits",
       "category": "Optical & precision tooling",
-      "image": "photos/portfolio/TranslationStage_Photo_AxivionInstruments_ExpereinceImage.jpg",
-      "imageAlt": "Encoder-equipped translation stage on the workbench",
+      "image": "photos/portfolio/axivion-instruments-university-lab.png",
+      "imageAlt": "Microscope objective above a cryostat beside optical components in my professor's lab",
       "imageFit": "cover",
-      "summary": "I develop optical and precision tooling at Axivion Instruments.",
+      "summary": "My instrument development began in my professor's lab. I now continue independent optical and precision-tooling projects in my home lab as time permits.",
       "achievements": [
         "Current projects include an encoder-equipped stage and a tool for inspecting stage precision.",
         "Share builds and testing on my YouTube channel, KicoLabCO.",
@@ -277,6 +291,13 @@
       "imagePosition": "55% center",
       "gallery": [
         {
+          "src": "photos/portfolio/axivion-instruments-university-lab.png",
+          "alt": "Microscope objective above a cryostat beside optical components in my professor's lab",
+          "caption": "Where the work began: my professor's lab",
+          "imageFit": "cover",
+          "imagePosition": "center"
+        },
+        {
           "src": "photos/portfolio/TranslationStage_Photo_AxivionInstruments_ExpereinceImage.jpg",
           "alt": "Encoder-equipped translation stage on the workbench",
           "caption": "Encoder-equipped translation stage"
@@ -285,7 +306,7 @@
           "src": "photos/portfolio/HomeLab_Photo.jpg",
           "alt": "Home prototyping workspace with a workbench and 3D printer",
           "caption": "My home lab and prototyping workspace",
-          "imageFit": "contain"
+          "imageFit": "cover"
         }
       ]
     },
@@ -313,7 +334,7 @@
       "company": "Axivion Studio",
       "role": "Founder & Scientific Visualization Designer",
       "period": "Jul 2026–present",
-      "engagement": "Independent practice",
+      "engagement": "Independent practice · Undertaken as time permits",
       "category": "Scientific communication",
       "image": "AxivionStudioWorkExperiencePhoto.jpg",
       "imageAlt": "Axivion Studio scientific visualization",
@@ -335,8 +356,8 @@
       "title": "Cleanroom & Microfabrication",
       "institution": "University of Waterloo",
       "context": "Undergraduate coursework",
-      "status": "Coursework experience",
-      "summary": "Cleanroom experience through my Nanotechnology Engineering degree. Course-specific lab notes and further coursework will be added here.",
+      "status": "",
+      "summary": "Labratory and cleanroom experience through my Nanotechnology Engineering degree. Course specific lab notes and further coursework will be added here.",
       "methods": [],
       "media": []
     }
@@ -350,6 +371,7 @@
         "src": "image3equipment.webp",
         "fallback": "image3equipment.png",
         "alt": "Fiber coupling setup",
+        "imagePosition": "50% 10%",
         "title": "Fiber coupling",
         "context": "Laser alignment and optical setup",
         "notes": [
@@ -363,7 +385,7 @@
         "fallback": "image4equipment.png",
         "alt": "Manual milling machine",
         "title": "Manual mill",
-        "context": "Machining and fabrication",
+        "context": "Mechanical machining",
         "notes": [
           "Making custom mounts and parts for lab setups",
           "Preparing drawings and thinking through how a part will be made",
@@ -383,8 +405,8 @@
         ]
       },
       {
-        "src": "setup2.webp",
-        "fallback": "setup2.png",
+        "src": "setup5.webp",
+        "fallback": "setup5.png",
         "alt": "Optical station setup",
         "title": "Optical station setup",
         "context": "Imaging and optical integration",
@@ -423,7 +445,7 @@
   "courseworkSection": {
     "eyebrow": "Learning in the lab",
     "heading": "Coursework & Lab Training",
-    "intro": "There is plenty of hands-on work in my Waterloo degree, too. I'll keep adding lab notes here as I go.",
+    "intro": "There is plenty of hands-on work that comes with my Waterloo degree. I'll keep adding lab notes here as I go.",
     "upcomingTitle": "More lab notes to come",
     "upcomingText": "I'll add the next cleanroom labs and coursework as I complete them."
   },
@@ -443,7 +465,7 @@
   "footer": {
     "education": "Nanotechnology Engineering · University of Waterloo",
     "graduation": "Class of 2027",
-    "availability": "Looking for full-time opportunities after graduation in 2027",
+    "availability": "Actively seeking full-time opportunities following graduation in April 2027",
     "contactLabel": "Contact me",
     "contactUrl": "/portfolio/contact",
     "links": [
@@ -482,7 +504,7 @@
   "projects": [
     {
       "title": "PRISM V5",
-      "description": "A vertical-scanning objective microscope used at IQC for diamond NV-center qubit measurements through a cryostat window. Developed through successive design, fabrication, and integration cycles.",
+      "description": "A piezo-actuated XYZ objective-scanning module with 13.5 mm of travel per axis. Integrates with external illumination and detection optics; currently used in a confocal diamond NV-center setup at IQC.",
       "image": "https://images.unsplash.com/photo-1579684256060-d5a308109e21",
       "technologies": [
         "Optomechanics",
@@ -492,14 +514,14 @@
         "System Integration"
       ],
       "specifications": [
-        "Downward-facing objective",
+        "13.5 mm objective travel per axis (XYZ)",
+        "Piezo-actuated stepping motion",
+        "Configurable external detection paths",
+        "Photodetector, spectrometer, and camera integration",
+        "Channel configuration depends on optical routing and power budget",
+        "Current use: confocal diamond NV-center research at IQC",
         "Optical access through a cryostat window",
-        "Diamond NV-center research at IQC",
-        "Piezo scanning and instrument control",
-        "Modular interfaces; retrofit-friendly",
-        "Predictable optical path",
-        "Orthogonal to sample plane",
-        "LabVIEW raster-scan control"
+        "Initial LabVIEW raster-scan control"
       ],
       "patentStatus": "Selected design details withheld",
       "featured": true,

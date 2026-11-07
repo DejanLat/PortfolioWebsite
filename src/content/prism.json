@@ -12,62 +12,68 @@
     "eyebrow": "PRISM V5 · Research instrumentation",
     "title": "Periscopic Relay Imaging",
     "accentTitle": "Scanning Microscope",
-    "description": "In use at IQC's NPQO Lab for diamond nitrogen-vacancy (NV) center qubit measurements. A vertical-scanning microscope with a downward-facing objective and optical access through a cryostat window.",
+    "description": "A piezo-actuated XYZ objective-scanning module with 13.5 mm of travel on each axis. PRISM V5 integrates at the objective end of an optical system and is currently used in a confocal setup at IQC's NPQO Lab for diamond nitrogen-vacancy (NV) center measurements.",
     "exploreLabel": "Explore PRISM",
     "exploreUrl": "#current-work",
-    "videoLabel": "Watch the lab work",
+    "videoLabel": "Home lab videos",
     "proof": [
-      { "value": "V5", "label": "Current research instrument" },
-      { "value": "IQC", "label": "NPQO Lab · Waterloo" },
-      { "value": "Vertical", "label": "Downward-facing objective" },
-      { "value": "Cryostat", "label": "Optical access through a window" }
-    ]
+      { "value": "13.5 mm", "label": "Travel per axis · X / Y / Z" },
+      { "value": "Piezo-actuated", "label": "Stepping motion" },
+      { "value": "10–30 nm", "label": "Minimum step size" },
+      { "value": "60 µm/s", "label": "Maximum velocity" }
+    ],
+    "specContext": "Open-loop configuration"
   },
   "navigationLabel": "Explore PRISM",
   "navigation": [
     { "id": "current-work", "label": "In the lab" },
-    { "id": "configuration", "label": "Vertical scanning" },
+    { "id": "configuration", "label": "XYZ scanning & detection" },
     { "id": "home-lab", "label": "Home lab" },
     { "id": "collaborate", "label": "Research & funding" }
   ],
   "currentWork": {
-    "eyebrow": "Current work · IQC",
-    "title": "Built for the experiment.",
+    "eyebrow": "PRISM V5 at IQC",
+    "title": "From Idea to Instrument",
     "paragraphs": [
-      "PRISM V5 is used in the Nano Photonics and Quantum Optics Lab at the Institute for Quantum Computing, University of Waterloo. Current work involves diamond NV-center qubit measurements inside a cryostat.",
-      "The objective sits above the sample enclosure and looks down through its window. My work has included mechanical design, fabrication coordination, optical integration, and scanning control."
+      "PRISM V5 is used by the Nano Photonics and Quantum Optics Lab at the Institute for Quantum Computing, University of Waterloo, for diamond NV-center qubit measurements through a cryostat window.",
+      "I designed and built PRISM from the ground up, including its optomechanical assemblies, initial manual machining, and optical integration. I transitioned the early prototypes to professionally machined components by developing production-ready engineering drawings and incorporating design for manufacturability (DFM) principles. I also developed the initial LabVIEW scanning controls and completed instrument setup and validation, establishing the foundation for subsequent software development and diamond experiments conducted by the lab."
     ],
     "galleryLabel": "PRISM laboratory photos",
     "previousLabel": "Previous lab photo",
     "nextLabel": "Next lab photo",
     "chooseLabel": "Choose a lab photo",
     "gallery": [
-      { "type": "image", "src": "setup2.webp", "alt": "Downward-facing microscope objective above the cryostat, beside the optical relay", "caption": "The objective above the cryostat, with optical components alongside it." },
+      { "type": "image", "src": "setup3.webp", "alt": "Vertical microscope objective above the cryostat, beside the optical bench", "caption": "The objective above the cryostat, with optical components alongside it." },
       { "type": "image", "src": "setup4.webp", "alt": "Close view of the objective aligned over the cryostat window", "caption": "Optical access from above, through the cryostat window." },
-      { "type": "image", "src": "setup6.webp", "alt": "PRISM optical components arranged on the laboratory optical table", "caption": "A view of the experimental optical setup." },
+      { "type": "image", "src": "setup6.webp", "alt": "NV Center experimental optical components arranged on the optical table", "caption": "A view of the experimental optical setup." },
       { "type": "image", "src": "diamond1.webp", "alt": "Diamond sample viewed in the experimental imaging setup", "caption": "Diamond sample imaging from the lab setup." },
       { "type": "image", "src": "diamond2.webp", "alt": "Fluorescence image captured in the diamond sample setup", "caption": "Sample fluorescence from the experimental setup." }
     ]
   },
   "configuration": {
-    "eyebrow": "Vertical-scanning PRISM",
-    "title": "A downward-facing objective. A window into the experiment.",
-    "description": "PRISM is an objective-scanning microscope. Its vertical configuration places the objective above the cryostat, giving the optics access to the enclosed diamond sample through a window.",
-    "work": [
-      { "icon": "wrench", "title": "Design & fabrication", "text": "Mechanical design, custom fixtures, CNC-ready drawings, and assembly across successive instrument builds." },
-      { "icon": "microscope", "title": "Optical integration", "text": "Objective positioning, optical alignment, and integration with the laboratory's experimental setup." },
-      { "icon": "scan", "title": "Instrument control", "text": "LabVIEW raster-scan control with piezo positioning and detector readout." }
+    "eyebrow": "The Solution PRISM Provides",
+    "title": "What is PRISM?",
+    "description": [
+      "PRISM works at the objective end of an optical system, where a stationary microscope objective would normally be mounted. Instead of moving the sample or steering the beam through the objective, PRISM moves the objective itself in X, Y, and Z.",
+      "Its periscopic optical design allows the beam to remain centered on the objective as it moves, maintaining alignment with the rest of the optical system.",
+      "This means researchers can continue using their existing optical setup, including cameras, photodetectors, spectrometers, and other equipment, while adding precise three-dimensional scanning at the objective."
     ],
-    "shieldTitle": "Selected design details withheld",
-    "shieldText": "This page shares the research context and selected development work. Internal design documents and detailed drawings are not public.",
+    "work": [
+      { "icon": "wrench", "title": "Design & machining", "text": "Mechanical design, custom fixtures, CNC-ready drawings, and assembly across successive instrument builds." },
+      { "icon": "microscope", "title": "Optical integration", "text": "A periscopic optical path that keeps the beam centered on the moving objective, with cameras and detectors arranged to suit the experiment." },
+      { "icon": "scan", "title": "Instrument control", "text": "Initial LabVIEW raster-scan control with piezo positioning and detector readout, plus initial testing and setup for scanning." }
+    ],
+    "shieldTitle": "PRISM Lab Work & Development",
+    "shieldText": "A dedicated page for the lab-work timeline, PRISM development, documentation, and characterization.",
+    "placeholderStatus": "Coming soon",
     "shieldNote": "Provisional patent documents and technical drawings were prepared during early commercialization exploration. Nothing was filed. Company plans are currently paused."
   },
   "homeLab": {
     "eyebrow": "Independent precision tooling",
-    "title": "From the optical bench to the home lab.",
+    "title": "Bringing the lab home",
     "paragraphs": [
-      "My home lab is where I explore motion, measurement, and practical optical tooling. Current projects include an encoder-equipped stage and a tool for inspecting stage precision.",
-      "These are independent builds alongside my lab work. I share the experiments, adjustments, and development process on KicoLabCO."
+      "My home lab is the beginning of my independent precision tooling. Current projects include an encoder-equipped stage and a tool for inspecting that stage's precision. The goal is to build on the skills learned over the years in optics, mechanics, and electronics to create a small-scale precision tooling lab, with one main encompassing project in mind.",
+      "These are self-directed builds I work on as time permits. I will share the experiments and development process on KicoLabCO."
     ],
     "photos": [],
     "videos": [],

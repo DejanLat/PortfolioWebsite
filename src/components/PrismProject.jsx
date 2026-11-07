@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import {
   ArrowLeft, ArrowRight, ChevronLeft, ChevronRight, ExternalLink,
-  FlaskConical, Microscope, Play, ScanLine, Shield, Wrench,
+  FileText, FlaskConical, Microscope, Play, ScanLine, Wrench,
 } from "lucide-react";
 import { useScrolledHeader } from "../hooks/useScrolledHeader";
 import { useStudioPointerGlow } from "../hooks/useStudioPointerGlow";
@@ -60,7 +60,7 @@ export default function PrismProject() {
   const solidNav = useScrolledHeader();
   const heroRef = useRef(null);
   const { rootRef, rootStyle, updateRootPointer, updateLocalPointer } = useStudioPointerGlow();
-  const { hero, currentWork, configuration, homeLab, collaboration, history, footer } = content;
+  const { hero, currentWork, configuration, homeLab, collaboration, footer } = content;
   const channel = homeLab.channel;
 
   useEffect(() => {
@@ -92,7 +92,7 @@ export default function PrismProject() {
         </header>
 
         <main>
-          <section ref={heroRef} onPointerMove={(event) => updateLocalPointer(heroRef, event)} className="relative flex min-h-[760px] w-full flex-col justify-center pb-52 pt-28 sm:min-h-[780px] sm:pb-44 lg:h-[92vh] lg:min-h-[740px] lg:max-h-[1100px]">
+          <section ref={heroRef} onPointerMove={(event) => updateLocalPointer(heroRef, event)} className="relative flex min-h-[760px] w-full flex-col justify-center pb-64 pt-28 sm:min-h-[780px] sm:pb-52 lg:h-[92vh] lg:min-h-[740px] lg:max-h-[1100px]">
             <div className="absolute inset-0 z-0 overflow-hidden" aria-hidden="true">
               <img src={mediaPath(hero.image)} alt="" className="absolute inset-0 h-full w-full object-cover" fetchPriority="high" />
               <div className="absolute inset-0 bg-gradient-to-b from-[#062a2e]/45 via-[#052024]/55 to-black" />
@@ -114,6 +114,7 @@ export default function PrismProject() {
               <div className="mx-auto grid max-w-5xl grid-cols-2 gap-2 px-6 md:grid-cols-4">
                 {hero.proof.map((proof) => <div key={proof.label} className="readability-kpi-pill rounded-2xl border px-3 py-3 text-center backdrop-blur"><div className="text-lg font-semibold sm:text-xl">{proof.value}</div><div className="mt-1 text-[10px] leading-4 text-white/65 sm:text-xs">{proof.label}</div></div>)}
               </div>
+              <p className="mx-auto mt-3 max-w-5xl px-6 text-center text-xs leading-5 text-white/65">{hero.specContext}</p>
             </div>
           </section>
 
@@ -142,23 +143,28 @@ export default function PrismProject() {
           </section>
 
           <section id="configuration" aria-labelledby="configuration-title" className="scroll-mt-36">
-            <div className="mx-auto max-w-7xl px-6 pb-20 lg:pb-28">
-              <p className="text-xs uppercase tracking-[0.2em]" style={{ color: content.accent }}>{configuration.eyebrow}</p>
-              <h2 id="configuration-title" className="mt-4 max-w-3xl text-3xl font-semibold tracking-tight sm:text-4xl">{configuration.title}</h2>
-              <p className="mt-5 max-w-3xl text-base leading-7 text-white/75">{configuration.description}</p>
-              <div className="readability-surface-card mt-8 grid overflow-hidden rounded-3xl border lg:grid-cols-[0.9fr_1.1fr]">
-                <div className="flex min-h-[300px] flex-col items-center justify-center border-b border-white/10 bg-black/30 p-8 text-center lg:border-b-0 lg:border-r sm:p-12">
-                  <Shield size={44} strokeWidth={1.25} className="text-white/55" aria-hidden="true" />
-                  <h3 className="mt-5 max-w-xs text-xl font-medium text-white/85">{configuration.shieldTitle}</h3>
-                  <p className="mt-4 max-w-sm text-sm leading-7 text-white/55">{configuration.shieldText}</p>
-                </div>
-                <div className="p-6 sm:p-8 lg:p-10">
-                  <div className="space-y-6">
-                    {configuration.work.map((work) => <div key={work.title}><h3 className="text-base font-medium text-white/90">{work.title}</h3><p className="mt-2 text-sm leading-6 text-white/65">{work.text}</p></div>)}
-                  </div>
-                  <p className="mt-7 border-t border-white/10 pt-5 text-xs leading-6 text-white/45">{configuration.shieldNote}</p>
+            <div className="mx-auto grid max-w-7xl items-center gap-8 px-6 pb-20 lg:grid-cols-2 lg:gap-12 lg:pb-28">
+              <div>
+                <p className="text-xs uppercase tracking-[0.2em]" style={{ color: content.accent }}>{configuration.eyebrow}</p>
+                <h2 id="configuration-title" className="mt-4 text-3xl font-semibold tracking-tight sm:text-4xl">{configuration.title}</h2>
+                <div className="mt-5 max-w-3xl space-y-4 text-base leading-7 text-white/75">
+                  {configuration.description.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
                 </div>
               </div>
+              <Link to="/prism/lab-work" aria-labelledby="prism-documentation-title" className="readability-surface-card group relative flex min-h-[290px] flex-col justify-between overflow-hidden rounded-3xl border p-7 transition-colors hover:border-[#13c2b3]/50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#13c2b3] sm:p-9 lg:min-h-96">
+                <img src={mediaPath("photos/prism/Rastor_Scanning_Experimentation_Line_Photo.PNG")} alt="" aria-hidden="true" loading="lazy" className="pointer-events-none absolute -inset-2 h-[calc(100%+1rem)] w-[calc(100%+1rem)] object-cover opacity-35 blur-[4px]" />
+                <div aria-hidden="true" className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/90 via-black/55 to-black/35" />
+                <div className="relative z-10 flex items-center justify-between gap-3">
+                  <FileText size={24} strokeWidth={1.5} style={{ color: content.accent }} aria-hidden="true" />
+                  <span className="rounded-full border border-white/15 px-3 py-1 text-xs text-white/70">{configuration.placeholderStatus}</span>
+                </div>
+                <div className="relative z-10">
+                  <h3 id="prism-documentation-title" className="mt-4 flex items-center justify-between gap-3 text-xl font-semibold text-white/90">
+                    {configuration.shieldTitle}<ArrowRight size={18} className="shrink-0 text-[#a4eee6]" aria-hidden="true" />
+                  </h3>
+                  <p className="mt-2 text-sm leading-6 text-white/65">{configuration.shieldText}</p>
+                </div>
+              </Link>
             </div>
           </section>
 
@@ -170,9 +176,11 @@ export default function PrismProject() {
                   <h2 id="home-lab-title" className="mt-4 text-3xl font-semibold tracking-tight sm:text-4xl">{homeLab.title}</h2>
                   <div className="mt-5 space-y-4 text-base leading-7 text-white/70">{homeLab.paragraphs.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}</div>
                 </div>
-                <a href={channel.url} target="_blank" rel="noopener noreferrer" className="readability-surface-card group relative flex min-h-[290px] flex-col justify-between overflow-hidden rounded-3xl border p-7 sm:p-9">
-                  <div className="flex items-center justify-between"><span className="inline-flex h-12 w-12 items-center justify-center rounded-full border border-white/20 bg-black/25" style={{ color: content.accent }}><Play size={22} aria-hidden="true" /></span><ExternalLink size={18} className="text-white/40 group-hover:text-white" aria-hidden="true" /></div>
-                  <div className="mt-7"><p className="text-[10px] uppercase tracking-[0.18em] text-white/50">{channel.eyebrow}</p><h3 className="mt-3 text-3xl font-semibold">{channel.name}</h3><p className="mt-3 text-sm leading-6 text-white/65">{channel.description}</p><span className="mt-5 inline-flex items-center gap-2 text-sm" style={{ color: content.accent }}>{channel.actionLabel}<ArrowRight size={15} aria-hidden="true" /></span></div>
+                <a href={channel.url} target="_blank" rel="noopener noreferrer" className="readability-surface-card group relative flex min-h-[290px] flex-col justify-between overflow-hidden rounded-3xl border p-7 sm:p-9 lg:min-h-96">
+                  <img src={mediaPath("photos/portfolio/HomeLab_Photo.jpg")} alt="" aria-hidden="true" loading="lazy" className="pointer-events-none absolute -inset-2 h-[calc(100%+1rem)] w-[calc(100%+1rem)] object-cover opacity-35 blur-[4px]" />
+                  <div aria-hidden="true" className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/90 via-black/55 to-black/35" />
+                  <div className="relative z-10 flex items-center justify-between"><span className="inline-flex h-12 w-12 items-center justify-center rounded-full border border-white/20 bg-black/25" style={{ color: content.accent }}><Play size={22} aria-hidden="true" /></span><ExternalLink size={18} className="text-white/40 group-hover:text-white" aria-hidden="true" /></div>
+                  <div className="relative z-10 mt-7"><p className="text-[10px] uppercase tracking-[0.18em] text-white/70">{channel.eyebrow}</p><h3 className="mt-3 text-3xl font-semibold">{channel.name}</h3><p className="mt-3 text-sm leading-6 text-white/80">{channel.description}</p><span className="mt-5 inline-flex items-center gap-2 text-sm" style={{ color: content.accent }}>{channel.actionLabel}<ArrowRight size={15} aria-hidden="true" /></span></div>
                 </a>
               </div>
               {(homeLab.photos.length > 0 || homeLab.videos.length > 0) && (
@@ -190,13 +198,6 @@ export default function PrismProject() {
                 <div className="flex-1"><p className="flex items-center gap-2 text-xs uppercase tracking-[0.2em]" style={{ color: content.accent }}><FlaskConical size={16} aria-hidden="true" />{collaboration.eyebrow}</p><h2 id="collaborate-title" className="mt-4 text-3xl font-semibold tracking-tight">{collaboration.title}</h2><p className="mt-4 max-w-2xl text-sm leading-7 text-white/70">{collaboration.description}</p></div>
                 <Link to={collaboration.actionUrl} className="inline-flex shrink-0 items-center gap-2 rounded-full px-5 py-3 text-sm font-medium hover:brightness-110" style={{ backgroundColor: content.accent, color: "#001b19" }}>{collaboration.actionLabel}<ArrowRight size={16} aria-hidden="true" /></Link>
               </div>
-              <details className="mt-8 overflow-hidden rounded-2xl border border-white/10 bg-black/25">
-                <summary className="cursor-pointer px-6 py-5 text-sm font-medium text-white/75 hover:text-white">{history.title}</summary>
-                <div className="space-y-5 border-t border-white/10 px-6 py-6 text-sm leading-7 text-white/60">
-                  {history.items.map((item) => <div key={item.title}><h3 className="font-medium text-white/85">{item.title}</h3><p className="mt-2">{item.text}</p></div>)}
-                  <Link to={history.actionUrl} className="inline-flex items-center gap-2 text-white/80 underline decoration-white/25 underline-offset-4 hover:text-white">{history.actionLabel}<ArrowRight size={14} aria-hidden="true" /></Link>
-                </div>
-              </details>
             </div>
           </section>
         </main>
@@ -209,5 +210,32 @@ export default function PrismProject() {
         </footer>
       </div>
     </div>
+  );
+}
+
+export function PrismLabWork() {
+  const { configuration } = content;
+  const { rootRef, rootStyle, updateRootPointer } = useStudioPointerGlow();
+
+  useEffect(() => {
+    document.documentElement.classList.add("scrollbar-teal");
+    return () => document.documentElement.classList.remove("scrollbar-teal");
+  }, []);
+
+  return (
+    <main ref={rootRef} onPointerMove={updateRootPointer} style={{ ...rootStyle, "--page-accent": content.accent }} className="readability-page prism-readability-page relative min-h-screen overflow-hidden bg-black px-6 py-12 text-white">
+      <div className="pointer-events-none absolute inset-x-0 top-0 h-[70vh]" aria-hidden="true" style={{ background: "radial-gradient(60rem 30rem at 50% -10%, rgba(19,194,179,0.18), transparent 60%)" }} />
+      <div className="pointer-events-none absolute inset-0" aria-hidden="true" style={{ background: "radial-gradient(700px at var(--mx) var(--my), rgba(19,194,179,0.14), transparent 60%)" }} />
+      <div className="relative mx-auto max-w-3xl">
+        <Link to="/prism#configuration" className="inline-flex items-center gap-2 text-sm text-[#a4eee6] hover:underline">
+          <ArrowLeft size={16} aria-hidden="true" />Back to PRISM
+        </Link>
+        <div className="readability-surface-card mt-12 rounded-3xl border p-6 sm:p-10">
+          <p className="text-xs uppercase tracking-[0.2em]" style={{ color: content.accent }}>{configuration.placeholderStatus}</p>
+          <h1 className="mt-3 text-3xl font-semibold tracking-tight sm:text-4xl">{configuration.shieldTitle}</h1>
+          <p className="mt-4 max-w-xl leading-7 text-white/70">{configuration.shieldText}</p>
+        </div>
+      </div>
+    </main>
   );
 }

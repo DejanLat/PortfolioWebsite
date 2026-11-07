@@ -53,6 +53,7 @@ export default function PortfolioWhite() {
   const solidNav = useScrolledHeader();
   const [navOpen, setNavOpen] = useState(false);
   const [currentHeroImage, setCurrentHeroImage] = useState(0);
+  const [heroImageVisible, setHeroImageVisible] = useState(true);
   const [currentProjectImage, setCurrentProjectImage] = useState(0);
   const [vladanTestimonialOpen, setVladanTestimonialOpen] = useState(false);
   const vladanDialogRef = useRef(null);
@@ -103,8 +104,22 @@ export default function PortfolioWhite() {
 
   useEffect(() => {
     if (!content.hero.autoplay || reducedMotion || heroImages.length < 2) return undefined;
-    const timer = window.setInterval(() => setCurrentHeroImage((current) => (current + 1) % heroImages.length), Math.max(3000, content.hero.intervalMs || 5500));
-    return () => window.clearInterval(timer);
+    heroImages.forEach((slide) => {
+      const image = new Image();
+      image.src = contentAsset(slide.fallback || slide.src);
+    });
+    let fadeTimer;
+    const timer = window.setInterval(() => {
+      setHeroImageVisible(false);
+      fadeTimer = window.setTimeout(() => {
+        setCurrentHeroImage((current) => (current + 1) % heroImages.length);
+        setHeroImageVisible(true);
+      }, 400);
+    }, Math.max(3000, content.hero.intervalMs || 5500));
+    return () => {
+      window.clearInterval(timer);
+      window.clearTimeout(fadeTimer);
+    };
   }, [reducedMotion, heroImages.length]);
 
 
@@ -294,30 +309,17 @@ export default function PortfolioWhite() {
       
      {/* TOP HERO */}
 <section data-glow-boundary className="portfolio-main-hero relative min-h-[100svh]" style={{ backgroundColor: PAGE_BG }}>
-  {/* background image with cross-fade */}
-  <div className="absolute inset-0 z-0 overflow-hidden">
-    <AnimatePresence mode="wait">
-      {(() => {
-        const h = heroImages[currentHeroImage];
-        const s = { webp: contentAsset(h.src), png: contentAsset(h.fallback) };
-        return (
-          <MotionWebpImg
-            key={currentHeroImage}
-            webp={s.webp}
-            fallback={s.png}
-            alt={h.alt || ""}
-            className="absolute inset-0 h-full w-full object-cover"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 0.35 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: reducedMotion ? 0 : 0.9 }}
-          />
-        );
-      })()}
-    </AnimatePresence>
+  {/* Background image fades through black between slides. */}
+  <div className="absolute inset-0 z-0 overflow-hidden bg-black">
+    <img
+      src={contentAsset(heroImages[currentHeroImage].fallback || heroImages[currentHeroImage].src)}
+      alt={heroImages[currentHeroImage].alt || ""}
+      className="absolute inset-0 h-full w-full object-cover"
+      style={{ opacity: heroImageVisible ? 1 : 0, filter: `blur(${heroImages[currentHeroImage].blurPx}px)`, transform: "scale(1.02)", transition: reducedMotion ? "none" : "opacity 400ms ease-in-out" }}
+    />
 
     <div className="absolute inset-0 pointer-events-none" style={{
-      background: `linear-gradient(to bottom, rgba(8,14,20,0.65) 0%, rgba(8,14,20,0.25) 60%, rgba(8,14,20,0.85) 100%)`
+      background: `linear-gradient(to top, rgba(8,14,20,0.8), transparent 45%), linear-gradient(to right, rgba(8,14,20,0.45), transparent 75%), rgba(0,0,0,${heroImages[currentHeroImage].overlayOpacity})`
     }} />
 
     {/* cursor glow */}
@@ -353,7 +355,8 @@ export default function PortfolioWhite() {
           <span className="block text-white/55">{content.hero.title}</span>
         </h1>
 
-        <p className="mt-5 max-w-2xl leading-7 text-white/75">
+        <p className="mt-5 max-w-2xl text-lg font-medium leading-7 text-white/90 sm:text-xl">{content.hero.tagline}</p>
+        <p className="mt-3 max-w-2xl leading-7 text-white/75">
           {content.hero.description}
         </p>
 

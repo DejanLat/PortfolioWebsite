@@ -2,7 +2,9 @@ import React from "react";
 import "./App.css";
 import { BrowserRouter as Router, Routes, Route, useLocation, Navigate } from "react-router-dom";
 import Portfolio from "./components/Portfolio";
-import PrismProject from "./components/PrismProject";
+import { SchoolProjects } from "./components/PortfolioExperience";
+import prismContent from "./content/prism.json";
+import PrismProject, { PrismLabWork } from "./components/PrismProject";
 import Contact from "./components/Contact";
 import StudioContact from "./components/StudioContact";
 import DejanLatkovic from "./components/DejanLatkovic";
@@ -87,7 +89,7 @@ const META = {
   prism: {
     title: "PRISM V5 | Precision Research Instrumentation",
     description:
-      "A vertical-scanning objective microscope used at IQC for diamond NV-center qubit measurements through a cryostat window.",
+      "PRISM V5: a piezo-actuated XYZ objective-scanning module with 13.5 mm travel per axis, used in confocal diamond NV-center experiments at IQC.",
     ogDescription:
       "PRISM V5 research, precision tooling, and opportunities for instrumentation collaboration and project funding.",
     siteName: "Axivion Instruments",
@@ -193,6 +195,13 @@ function MetadataManager() {
       };
     }
 
+    if (pathname.replace(/\/$/, "") === "/portfolio/school-projects") {
+      meta = { ...META.portfolio, title: "School Projects | Dejan Latkovic", description: "Coursework, lab work, and projects from my time at Waterloo.",
+        ogDescription: "Coursework, lab work, and projects from my time at Waterloo.", canonical: "https://dejanlat.github.io/PortfolioWebsite/portfolio/school-projects" };
+    } else if (pathname.replace(/\/$/, "") === "/prism/lab-work") {
+      meta = { ...meta, title: prismContent.configuration.shieldTitle, description: prismContent.configuration.shieldText,
+        ogDescription: prismContent.configuration.shieldText, canonical: meta.canonical + "/lab-work" };
+    }
     document.title = meta.title;
     upsertMeta('meta[name="robots"]', { name: "robots", content: type === "guide" ? "noindex, follow" : "index, follow" });
     upsertMeta('meta[name="description"]', { name: "description", content: meta.description });
@@ -260,7 +269,9 @@ function App() {
           <Route path="/project-guide" element={IS_PORTFOLIO_BUILD ? <ExternalRedirect to="https://axivionstudio.com/project-guide" /> : <StudioProjectGuide />} />
           <Route path="/renders" element={IS_PORTFOLIO_BUILD ? <ExternalRedirect to="https://axivionstudio.com/" /> : <Renders />} />
           <Route path="/portfolio" element={<Portfolio />} />
+          <Route path="/portfolio/school-projects" element={<SchoolProjects />} />
           <Route path="/prism" element={<PrismProject />} />
+          <Route path="/prism/lab-work" element={<PrismLabWork />} />
           <Route path="/contact" element={<StudioContact contactEmail="contact@axivionstudio.com" />} />
           <Route path="/dejan-latkovic" element={<DejanLatkovic />} />
           <Route path="/portfolio/contact" element={<Contact contactEmail="contact@axivionstudio.com" />} />

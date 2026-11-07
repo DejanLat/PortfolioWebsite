@@ -1,34 +1,14 @@
-import React, { useEffect } from "react";
-import { ArrowLeft, ExternalLink, Mail } from "lucide-react";
+import React from "react";
+import { ExternalLink, Mail } from "lucide-react";
 import { Link } from "react-router-dom";
-import { useScrolledHeader } from "../hooks/useScrolledHeader";
-
-const ACCENT = "#34d399";
+import StudioFrame from "./StudioFrame";
 
 export default function DejanLatkovic() {
-  const solidNav = useScrolledHeader();
-  useEffect(() => {
-    document.documentElement.classList.add("scrollbar-studio");
-    return () => document.documentElement.classList.remove("scrollbar-studio");
-  }, []);
-
   return (
-    <div className="min-h-screen overflow-x-hidden bg-black text-white">
-      <header className={`site-glass-header fixed inset-x-0 top-0 z-50 ${solidNav ? "is-scrolled" : ""}`}>
-        <div className="mx-auto flex h-16 max-w-7xl items-center gap-3 px-4 sm:px-6 lg:px-8">
-          <Link to="/" className="inline-flex items-center gap-2 text-sm text-white/75 transition hover:text-white">
-            <ArrowLeft size={18} />
-            Back
-          </Link>
-          <div className="h-5 w-px bg-white/18" />
-          <div className="font-semibold tracking-widest">AXIVION STUDIO</div>
-        </div>
-      </header>
-
-      <main className="relative pt-32">
-        <div className="pointer-events-none absolute inset-x-0 top-0 h-[70vh]" style={{ background: "radial-gradient(54rem 28rem at 50% -10%, rgba(52,211,153,0.16), transparent 62%)" }} />
-        <section className="relative mx-auto max-w-4xl px-6 pb-16">
-          <div className="inline-flex rounded-full border border-emerald-300/35 bg-emerald-300/10 px-4 py-1 text-xs uppercase tracking-widest text-emerald-100">
+    <StudioFrame title="Founder" backTo="/" showPublicNav={false} className="flex flex-col">
+      <main className="relative mx-auto w-full max-w-6xl flex-1 px-6 pb-20 pt-36">
+        <section className="studio-terms-summary-card relative overflow-hidden rounded-[28px] border p-6 shadow-[0_22px_80px_rgba(0,0,0,0.3)] sm:p-8 lg:p-12">
+          <div className="relative inline-flex rounded-full border border-emerald-300/35 bg-emerald-300/10 px-4 py-1 text-xs uppercase tracking-widest text-emerald-100">
             Founder
           </div>
           <h1 className="mt-5 text-4xl font-semibold tracking-tight sm:text-5xl">Dejan Latkovic</h1>
@@ -49,7 +29,7 @@ export default function DejanLatkovic() {
             ))}
           </div>
 
-          <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+          <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
             <Link
               to="/contact"
               className="inline-flex items-center justify-center gap-2 rounded-full border px-5 py-3 text-sm font-medium text-white"
@@ -82,6 +62,6 @@ export default function DejanLatkovic() {
           </div>
         </section>
       </main>
-    </div>
+    </StudioFrame>
   );
 }
