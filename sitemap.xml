@@ -2,6 +2,8 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url><loc>https://dejanlat.github.io/PortfolioWebsite/</loc></url>
   <url><loc>https://dejanlat.github.io/PortfolioWebsite/portfolio/contact</loc></url>
+  <url><loc>https://dejanlat.github.io/PortfolioWebsite/portfolio/school-projects</loc></url>
   <url><loc>https://dejanlat.github.io/PortfolioWebsite/prism</loc></url>
+  <url><loc>https://dejanlat.github.io/PortfolioWebsite/prism/lab-work</loc></url>
   <url><loc>https://dejanlat.github.io/PortfolioWebsite/car-modding</loc></url>
 </urlset>
