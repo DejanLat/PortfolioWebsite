@@ -1,3 +1,4 @@
+import "./Portfolio.css";
 import React, { useEffect, useMemo, useState } from "react";
 import { motion } from "framer-motion";
 import {
@@ -15,8 +16,8 @@ import { Link, useSearchParams } from "react-router-dom";
 import { useScrolledHeader } from "../hooks/useScrolledHeader";
 
 const CONTACT_EMAIL = "contact@axivionstudio.com";
-const ACCENT = "#e7a56f";
-const ACCENT_SOFT = "rgba(231, 165, 111, 0.15)";
+const ACCENT = "#e4e3ac";
+const ACCENT_SOFT = "rgba(110,80,150,0.07)";
 const PUBLIC = process.env.PUBLIC_URL || "";
 
 export default function Contact({ contactEmail = CONTACT_EMAIL }) {
@@ -29,11 +30,11 @@ export default function Contact({ contactEmail = CONTACT_EMAIL }) {
   const [message, setMessage] = useState("");
 
   const solidNav = useScrolledHeader();
-  const rootStyle = { "--mx": `${mx}px`, "--my": `${my}px`, "--page-accent": ACCENT };
+  const rootStyle = { "--mx": `${mx}px`, "--my": `${my}px`, "--page-accent": "#b995ed", "--glass-accent-rgb": "185,149,237" };
 
   useEffect(() => {
-    document.documentElement.classList.add("scrollbar-orange");
-    return () => document.documentElement.classList.remove("scrollbar-orange");
+    document.documentElement.classList.add("scrollbar-end");
+    return () => document.documentElement.classList.remove("scrollbar-end");
   }, []);
 
   const subjectMap = useMemo(
@@ -109,7 +110,7 @@ export default function Contact({ contactEmail = CONTACT_EMAIL }) {
 
   return (
     <div
-      className="readability-page min-h-screen w-full bg-[#080e14] text-white"
+      className="portfolio-end readability-page min-h-screen w-full bg-[#0b0910] text-white"
       style={rootStyle}
       onMouseMove={(event) => {
         setMx(event.clientX);
@@ -122,7 +123,7 @@ export default function Contact({ contactEmail = CONTACT_EMAIL }) {
              style={{ background: `radial-gradient(700px at var(--mx) var(--my), ${ACCENT_SOFT}, transparent 60%)` }} />
         {/* Static top glow */}
         <div className="absolute inset-x-0 top-0 h-[90vh]"
-             style={{ background: "radial-gradient(600rem 26rem at 50% -10%,rgba(201,122,58,0.22), transparent 60%)" }} />
+             style={{ background: "radial-gradient(600rem 26rem at 50% -10%,rgba(110,80,150,0.10), transparent 60%)" }} />
       </div>
 
 
@@ -287,7 +288,7 @@ export default function Contact({ contactEmail = CONTACT_EMAIL }) {
                 <button
                   type="submit"
                   className="inline-flex items-center justify-center gap-2 rounded-full border px-6 py-3 text-sm font-medium text-white"
-                  style={{ borderColor: "rgba(231,165,111,0.48)", background: "rgba(231,165,111,0.16)" }}
+                  style={{ borderColor: "rgba(185,149,237,0.48)", background: "rgba(185,149,237,0.12)" }}
                 >
                   Open Email <SendHorizonal size={16} />
                 </button>

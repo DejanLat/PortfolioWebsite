@@ -2,6 +2,7 @@ import React, { useEffect, useState, useMemo, useRef } from "react";
 import { Link } from "react-router-dom";
 import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
 import WebpImg from "./WebpImg";
+import "./Portfolio.css";
 import PortfolioExperience from "./PortfolioExperience";
 import content from "../content/portfolio.json";
 import { contentAsset } from "./ContentMedia";
@@ -44,9 +45,9 @@ export default function PortfolioWhite() {
 
 
   // tabs + carousels
-  const ACCENT       = "#C97A3A";
-  const ACCENT_SOFT  = "rgba(201, 122, 58, 0.13)";
-  const PAGE_BG      = "#080e14";
+  const ACCENT       = "#b995ed";
+  const ACCENT_SOFT  = "rgba(185, 149, 237, 0.13)";
+  const PAGE_BG      = "#0b0910";
 
   const { rootRef, rootStyle, onPointerMove } = usePointerGlow();
   const reducedMotion = useReducedMotion();
@@ -94,8 +95,8 @@ export default function PortfolioWhite() {
   }, [vladanTestimonialOpen]);
 
   useEffect(() => {
-    document.documentElement.classList.add("scrollbar-orange");
-    return () => document.documentElement.classList.remove("scrollbar-orange");
+    document.documentElement.classList.add("scrollbar-end");
+    return () => document.documentElement.classList.remove("scrollbar-end");
   }, []);
 
   // use the placeholder slide arrays
@@ -161,9 +162,9 @@ export default function PortfolioWhite() {
   return (
     
     <div
-      className="g21 isolate relative min-h-screen w-full text-white"
+      className="portfolio-end g21 isolate relative min-h-screen w-full text-white"
       ref={rootRef}
-      style={{ ...rootStyle, backgroundColor: PAGE_BG, "--glow-rgb": "201,122,58", "--glass-accent-rgb": "201,122,58" }}
+      style={{ ...rootStyle, backgroundColor: PAGE_BG, "--glow-rgb": "185,149,237", "--glass-accent-rgb": "185,149,237" }}
       onPointerMove={onPointerMove}
     >
       {/* Header */}
@@ -225,9 +226,9 @@ export default function PortfolioWhite() {
                 border: "1.5px solid rgba(255,255,255,0.2)"
               }}
               onMouseEnter={e => {
-                e.currentTarget.style.borderColor = "#e7a56f";
-                e.currentTarget.style.color = "#e7a56f";
-                e.currentTarget.style.boxShadow = "inset 0 0 12px rgba(231,165,111,0.35)";
+                e.currentTarget.style.borderColor = "#e4e3ac";
+                e.currentTarget.style.color = "#e4e3ac";
+                e.currentTarget.style.boxShadow = "inset 0 0 12px rgba(228,227,172,0.35)";
               }}
               onMouseLeave={e => {
                 e.currentTarget.style.borderColor = "rgba(255,255,255,0.2)";
@@ -303,6 +304,7 @@ export default function PortfolioWhite() {
         )}
       </header>
 
+      <div className="portfolio-stone-texture" aria-hidden="true" />
       <div className="portfolio-content-layer relative z-10">
       <div className="page-cursor-glow pointer-events-none fixed inset-0" aria-hidden="true" />
 
@@ -319,7 +321,7 @@ export default function PortfolioWhite() {
     />
 
     <div className="absolute inset-0 pointer-events-none" style={{
-      background: `linear-gradient(to top, rgba(8,14,20,0.8), transparent 45%), linear-gradient(to right, rgba(8,14,20,0.45), transparent 75%), rgba(0,0,0,${heroImages[currentHeroImage].overlayOpacity})`
+      background: `linear-gradient(to top, rgba(11,9,16,0.8), transparent 45%), linear-gradient(to right, rgba(11,9,16,0.45), transparent 75%), rgba(0,0,0,${heroImages[currentHeroImage].overlayOpacity})`
     }} />
 
     {/* cursor glow */}
@@ -339,7 +341,7 @@ export default function PortfolioWhite() {
       <div className="mx-auto max-w-7xl">
         <div
           className="inline-flex items-center gap-2 rounded-full px-4 py-1 text-[10px] sm:text-xs uppercase tracking-widest border"
-          style={{ borderColor: "rgba(231,165,111,0.4)", backgroundColor: "rgba(8,14,20,0.3)", color: "#e7a56f" }}
+          style={{ borderColor: "rgba(228,227,172,0.4)", backgroundColor: "rgba(11,9,16,0.3)", color: "#e4e3ac" }}
         >
           <MicroscopeIcon size={14} /> {content.hero.eyebrow}
         </div>
@@ -414,7 +416,7 @@ export default function PortfolioWhite() {
       <section id="testimonials" aria-labelledby="recommendation-heading" className="relative scroll-mt-20">
         <div className="mx-auto max-w-7xl px-6 pb-20 lg:pb-24">
           <div className="mb-8">
-            <p className="text-sm uppercase tracking-widest text-[#e7a56f]">Professional perspective</p>
+            <p className="text-sm uppercase tracking-widest text-[#e4e3ac]">Professional perspective</p>
             <h2 id="recommendation-heading" className="mt-3 text-3xl font-semibold tracking-tight text-white md:text-4xl">Professional Recommendations</h2>
             <p className="mt-3 max-w-2xl text-sm leading-6 text-white/55">Perspectives on engineering ownership, technical communication, and translating complex research into clear outcomes.</p>
           </div>
@@ -430,7 +432,8 @@ export default function PortfolioWhite() {
               className="pointer-events-none absolute inset-0"
               aria-hidden="true"
               style={{
-                background: "radial-gradient(36rem 18rem at 12% 0%, rgba(201,122,58,0.15), transparent 62%), linear-gradient(135deg, rgba(255,255,255,0.055), rgba(255,255,255,0.018))",
+                backgroundColor: "rgba(17,17,22,.98)",
+                backgroundImage: "radial-gradient(36rem 18rem at 12% 0%, rgba(108,88,128,0.065), transparent 62%), linear-gradient(135deg, rgba(255,255,255,0.055), rgba(255,255,255,0.018))",
               }}
             />
 
@@ -463,14 +466,14 @@ export default function PortfolioWhite() {
                 <p
                   className="inline-flex rounded-full border px-3 py-1 text-xs font-semibold uppercase tracking-[0.24em]"
                   style={{
-                    borderColor: "rgba(201,122,58,0.32)",
-                    backgroundColor: "rgba(201,122,58,0.11)",
-                    color: "#e7a56f",
+                    borderColor: "rgba(174,159,196,0.26)",
+                    backgroundColor: "rgba(135,112,160,0.07)",
+                    color: "#d9d2e4",
                   }}
                 >
                   Professional recommendation
                 </p>
-                <Quote size={42} className="mt-6" style={{ color: "rgba(201,122,58,0.55)" }} aria-hidden="true" />
+                <Quote size={42} className="mt-6" style={{ color: "rgba(151,128,177,0.65)" }} aria-hidden="true" />
                 <blockquote className="mt-5 max-w-4xl text-lg leading-8 text-white/76 md:text-xl md:leading-9">
                   Dejan proved himself to be a bright, self-motivated, and resourceful engineer. His ability to seek out and synthesize new technical information across mechanical engineering, optics, heat transfer, electronics, and software was especially strong. His technical communication and documentation were excellent, and he always maintained a positive outlook toward the problems he faced.
                 </blockquote>
@@ -497,7 +500,7 @@ export default function PortfolioWhite() {
                     className="h-auto w-full rounded-sm shadow-2xl shadow-black/30" loading="lazy" />
                 </a>
                 <figcaption className="mt-5">
-                  <p className="text-xs font-medium uppercase tracking-[0.18em] text-[#e7a56f]">{content.coverCredit.type}</p>
+                  <p className="text-xs font-medium uppercase tracking-[0.18em] text-[#e4e3ac]">{content.coverCredit.type}</p>
                   <p className="mt-2 text-sm leading-6 text-white/80">{content.coverCredit.venue}</p>
                   <p className="mt-1 text-sm text-white/60">{content.coverCredit.attribution}</p>
                   <p className="mt-1 text-xs text-white/50">{content.coverCredit.date}</p>
@@ -516,14 +519,14 @@ export default function PortfolioWhite() {
                 <p
                   className="inline-flex rounded-full border px-3 py-1 text-xs font-semibold uppercase tracking-[0.24em]"
                   style={{
-                    borderColor: "rgba(201,122,58,0.32)",
-                    backgroundColor: "rgba(201,122,58,0.11)",
-                    color: "#e7a56f",
+                    borderColor: "rgba(174,159,196,0.26)",
+                    backgroundColor: "rgba(135,112,160,0.07)",
+                    color: "#d9d2e4",
                   }}
                 >
                   Research collaboration
                 </p>
-                <Quote size={42} className="mt-6" style={{ color: "rgba(201,122,58,0.55)" }} aria-hidden="true" />
+                <Quote size={42} className="mt-6" style={{ color: "rgba(151,128,177,0.65)" }} aria-hidden="true" />
                 <blockquote className="mt-5 max-w-4xl text-lg leading-8 text-white/76 md:text-xl md:leading-9">
                   I have had the pleasure of working with Dejan on several scientific visualization projects, with the most prominent being the cover image developed for our paper in Science Advances. Across these projects, Dejan consistently demonstrated a strong ability to understand complex scientific ideas and translate them into clear, accurate, and visually compelling images. His background in optics and quantum science is a major advantage, as it allows him to quickly grasp the technical concepts and identify the most important elements to communicate.
                 </blockquote>
@@ -550,7 +553,8 @@ export default function PortfolioWhite() {
               className="pointer-events-none absolute inset-0"
               aria-hidden="true"
               style={{
-                background: "radial-gradient(34rem 18rem at 88% 0%, rgba(201,122,58,0.13), transparent 64%), linear-gradient(135deg, rgba(255,255,255,0.045), rgba(255,255,255,0.015))",
+                backgroundColor: "rgba(17,17,22,.98)",
+                backgroundImage: "radial-gradient(34rem 18rem at 88% 0%, rgba(108,88,128,0.055), transparent 64%), linear-gradient(135deg, rgba(255,255,255,0.045), rgba(255,255,255,0.015))",
               }}
             />
 
@@ -575,14 +579,14 @@ export default function PortfolioWhite() {
                 <p
                   className="inline-flex rounded-full border px-3 py-1 text-xs font-semibold uppercase tracking-[0.24em]"
                   style={{
-                    borderColor: "rgba(201,122,58,0.32)",
-                    backgroundColor: "rgba(201,122,58,0.11)",
-                    color: "#e7a56f",
+                    borderColor: "rgba(174,159,196,0.26)",
+                    backgroundColor: "rgba(135,112,160,0.07)",
+                    color: "#d9d2e4",
                   }}
                 >
                   Professional recommendation
                 </p>
-                <Quote size={42} className="mt-6" style={{ color: "rgba(201,122,58,0.55)" }} aria-hidden="true" />
+                <Quote size={42} className="mt-6" style={{ color: "rgba(151,128,177,0.65)" }} aria-hidden="true" />
                 <blockquote className="mt-5 max-w-4xl text-lg leading-8 text-white/76 md:text-xl md:leading-9">
                   When provided with a high-level outline, Dejan proactively sets effective priorities, gathers the necessary information, and fulfills the task with minimal assistance. His autonomous work style enabled the rest of the team to concentrate on other critical tasks, assured of the quality of his work.
                 </blockquote>
@@ -594,7 +598,7 @@ export default function PortfolioWhite() {
                     aria-expanded={vladanTestimonialOpen}
                     aria-controls="vladan-testimonial-dialog"
                     onClick={() => setVladanTestimonialOpen(true)}
-                    className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/[0.055] px-4 py-2.5 text-sm font-medium text-white/85 transition hover:border-[#C97A3A]/60 hover:bg-[#C97A3A]/10 hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#C97A3A]"
+                    className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/[0.055] px-4 py-2.5 text-sm font-medium text-white/85 transition hover:border-[#b995ed]/60 hover:bg-[#b995ed]/10 hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#b995ed]"
                   >
                     <Info size={16} aria-hidden="true" /> Read the full testimonial
                   </button>
@@ -696,7 +700,7 @@ export default function PortfolioWhite() {
         transition={{ duration: 0.45, delay: index * 0.06 }}
         whileHover={{ scale: 1.03 }}
         aria-label={projectUrl ? `Open project: ${project.title}` : undefined}
-        className={`block w-full text-left rounded-3xl border p-6 transition-all duration-200 ease-out
+        className={`portfolio-reading-panel block w-full text-left rounded-3xl border p-6 transition-all duration-200 ease-out
                     focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/20
                     ${isFeatured ? "bg-white/10 border-white/20 hover:bg-white/15" : "bg-white/5 border-white/10 hover:bg-white/10"}
                     ${project.slug === "prism" ? "prism-card" : ""}
@@ -781,11 +785,11 @@ export default function PortfolioWhite() {
             <p className="mt-3 max-w-sm text-sm leading-6 text-white/60">{content.footer.education}</p>
             <p className="text-sm leading-6 text-white/45">{content.footer.graduation}</p>
             <p className="mt-5 inline-flex max-w-full items-center gap-3 rounded-[22px] border border-white/15 bg-white/[0.05] px-4 py-3 text-sm leading-6 text-white/80 shadow-[inset_0_1px_0_rgba(255,255,255,0.08)] backdrop-blur-md sm:rounded-full">
-              <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-[#C97A3A]" aria-hidden="true" />
+              <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-[#b995ed]" aria-hidden="true" />
               <span>{content.footer.availability}</span>
             </p>
             <nav aria-label="Portfolio contact links" className="mt-5 flex flex-wrap items-center gap-x-5 gap-y-3 text-sm">
-              <Link to={content.footer.contactUrl} className="inline-flex items-center gap-2 rounded-full border border-[#C97A3A]/45 bg-[#C97A3A]/10 px-4 py-2.5 font-medium text-white transition hover:border-[#C97A3A]/75 hover:bg-[#C97A3A]/20">
+              <Link to={content.footer.contactUrl} className="inline-flex items-center gap-2 rounded-full border border-[#b995ed]/45 bg-[#b995ed]/10 px-4 py-2.5 font-medium text-white transition hover:border-[#b995ed]/75 hover:bg-[#b995ed]/20">
                 {content.footer.contactLabel}<ArrowRight size={15} aria-hidden="true" />
               </Link>
               {content.footer.links.map((link) => <a key={link.href} href={link.href} target="_blank" rel="noopener noreferrer" className="rounded text-white/65 transition hover:text-white">{link.label}</a>)}
@@ -830,11 +834,11 @@ export default function PortfolioWhite() {
             aria-modal="true"
             aria-labelledby="vladan-testimonial-title"
             aria-describedby="vladan-testimonial-role"
-            className="max-h-[88vh] w-full max-w-3xl overflow-y-auto rounded-[28px] border border-white/15 bg-[linear-gradient(145deg,rgba(255,255,255,0.07),rgba(255,255,255,0.032))] bg-[#080e14] p-5 shadow-[0_24px_90px_rgba(0,0,0,0.46)] sm:p-6"
+            className="max-h-[88vh] w-full max-w-3xl overflow-y-auto rounded-[28px] border border-white/15 bg-[linear-gradient(145deg,rgba(255,255,255,0.07),rgba(255,255,255,0.032))] bg-[#0b0910] p-5 shadow-[0_24px_90px_rgba(0,0,0,0.46)] sm:p-6"
           >
             <div className="flex items-start justify-between gap-5">
               <div>
-                <p className="text-xs font-semibold uppercase tracking-[0.24em]" style={{ color: "#e7a56f" }}>Professional recommendation</p>
+                <p className="text-xs font-semibold uppercase tracking-[0.24em]" style={{ color: "#e4e3ac" }}>Professional recommendation</p>
                 <h3 id="vladan-testimonial-title" className="mt-2 text-2xl font-semibold tracking-tight text-white">Vladan Gavrilovic</h3>
                 <p id="vladan-testimonial-role" className="mt-2 text-sm leading-6 text-white/58">Manager, Production Planning · Pirlitor Machine &amp; Tool Ltd.</p>
               </div>
@@ -846,7 +850,7 @@ export default function PortfolioWhite() {
                   setVladanTestimonialOpen(false);
                   vladanInfoButtonRef.current?.focus();
                 }}
-                className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-white/15 bg-white/[0.045] text-white/80 transition hover:border-[#C97A3A]/60 hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#C97A3A]"
+                className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-white/15 bg-white/[0.045] text-white/80 transition hover:border-[#b995ed]/60 hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#b995ed]"
               >
                 <X size={18} aria-hidden="true" />
               </button>

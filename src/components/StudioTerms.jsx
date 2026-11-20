@@ -326,7 +326,7 @@ const StudioTerms = () => {
         </div>
       </header>
 
-      <section className="relative overflow-hidden border-b border-white/10 bg-transparent px-5 pb-10 pt-32 sm:px-8 lg:px-10 print:border-b-0 print:bg-white print:px-0 print:py-0">
+      <section className="relative overflow-hidden bg-transparent px-5 pb-10 pt-32 sm:px-8 lg:px-10 print:border-b-0 print:bg-white print:px-0 print:py-0">
         <div className="pointer-events-none absolute inset-0 studio-terms-header-glow print:hidden" aria-hidden="true" />
         <div className="relative mx-auto flex max-w-6xl flex-col gap-8 lg:flex-row lg:items-end lg:justify-between">
           <div className="max-w-3xl">
@@ -368,7 +368,7 @@ const StudioTerms = () => {
         </div>
       </section>
 
-      <section className="border-b border-white/10 bg-transparent px-5 py-8 sm:px-8 lg:px-10 print:border-b-0 print:bg-white print:px-0 print:py-4">
+      <section className="bg-transparent px-5 py-8 sm:px-8 lg:px-10 print:border-b-0 print:bg-white print:px-0 print:py-4">
         <div className="studio-terms-summary-card relative mx-auto max-w-6xl overflow-hidden rounded-[28px] border p-6 print:border-black print:bg-white print:shadow-none">
           <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(36rem_18rem_at_12%_0%,rgba(52,211,153,0.12),transparent_62%),linear-gradient(135deg,rgba(255,255,255,0.055),rgba(255,255,255,0.018))] print:hidden" />
           <div className="relative flex flex-col gap-5 lg:flex-row lg:items-start lg:justify-between">
@@ -444,7 +444,7 @@ const StudioTerms = () => {
         </article>
       </div>
 
-      <section className="border-t border-white/10 bg-transparent px-5 py-10 sm:px-8 lg:px-10 print:hidden">
+      <section className="bg-transparent px-5 py-10 sm:px-8 lg:px-10 print:hidden">
         <div className="studio-terms-footer-card mx-auto flex max-w-6xl flex-col gap-4 rounded-[28px] border p-6 sm:flex-row sm:items-center sm:justify-between">
           <div>
             <p className="text-sm font-semibold text-white">Ready to scope a project?</p>

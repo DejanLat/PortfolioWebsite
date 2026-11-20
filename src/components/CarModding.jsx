@@ -2,7 +2,6 @@ import React, { useEffect, useMemo, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import { ArrowDown, ArrowLeft, ChevronLeft, ChevronRight, Lightbulb, Music2, Shield, Wrench } from "lucide-react";
 import { useScrolledHeader } from "../hooks/useScrolledHeader";
-import { usePointerGlow } from "../hooks/usePointerGlow";
 import carContent from "../content/car.json";
 import ContentMedia, { contentAsset } from "./ContentMedia";
 import WebpImg from "./WebpImg";
@@ -18,7 +17,6 @@ function ProjectPhoto({ photo, className = "", alt = "", eager = false }) {
 
 export default function CarModding() {
   const solidNav = useScrolledHeader();
-  const { rootRef, rootStyle, onPointerMove } = usePointerGlow();
   const railRef = useRef(null);
   const tabRefs = useRef([]);
   const [selectedIndex, setSelectedIndex] = useState(0);
@@ -33,8 +31,8 @@ export default function CarModding() {
   const media = [...(current?.photos || []), ...(current?.videos || [])].filter(Boolean);
 
   useEffect(() => {
-    document.documentElement.classList.add("scrollbar-pink");
-    return () => document.documentElement.classList.remove("scrollbar-pink");
+    document.documentElement.classList.add("scrollbar-eden");
+    return () => document.documentElement.classList.remove("scrollbar-eden");
   }, []);
 
   const selectProject = (index, focus = false) => {
@@ -64,9 +62,8 @@ export default function CarModding() {
   };
 
   return (
-    <div ref={rootRef} onPointerMove={onPointerMove} style={{ ...rootStyle, "--glow-rgb": "255,42,160", "--glass-accent-rgb": "255,42,160" }} className="car-page">
+    <div style={{ "--glass-accent-rgb": "166,217,174" }} className="car-page">
       <div className="car-content-layer relative z-10">
-        <div className="page-cursor-glow pointer-events-none fixed inset-0" aria-hidden="true" />
         <OverlayPageScrollbar controls="car-page-content" />
         <header className={`site-glass-header fixed inset-x-0 top-0 z-50 ${solidNav ? "is-scrolled" : ""}`}>
           <div className="mx-auto flex h-16 max-w-7xl items-center gap-3 px-4 sm:px-6 lg:px-8">
@@ -119,7 +116,7 @@ export default function CarModding() {
                   <h3 className="mt-4 text-2xl font-semibold tracking-tight sm:text-3xl">{current.title}</h3>
                   <p className="mt-4 text-sm leading-7 text-white/80">{current.summary}</p>
                   {current.context && <p className="mt-3 text-sm leading-7 text-white/65">{current.context}</p>}
-                  {current.workNotes?.length > 0 && <><h4 className="car-project-subheading">{labels.workHeading}</h4><ul className="mt-3 space-y-2 text-sm leading-6 text-white/80">{current.workNotes.map((note) => <li key={note} className="flex gap-3"><span aria-hidden="true" className="mt-2.5 h-1 w-1 shrink-0 rounded-full bg-[#ff78c1]" /><span>{note}</span></li>)}</ul></>}
+                  {current.workNotes?.length > 0 && <><h4 className="car-project-subheading">{labels.workHeading}</h4><ul className="mt-3 space-y-2 text-sm leading-6 text-white/80">{current.workNotes.map((note) => <li key={note} className="flex gap-3"><span aria-hidden="true" className="mt-2.5 h-1 w-1 shrink-0 rounded-full bg-[var(--car-accent-soft)]" /><span>{note}</span></li>)}</ul></>}
                   {current.outcome && <><h4 className="car-project-subheading">{labels.resultHeading}</h4><p className="mt-3 text-sm leading-7 text-white/80">{current.outcome}</p></>}
                   {!current.isPlaceholder && current.publicationStatus === "draft" && <p className="mt-6 text-xs leading-5 text-white/50">More photos, dates, and notes to come.</p>}
                 </div>

@@ -1,0 +1,74 @@
+/* End-inspired palette: obsidian, chorus violet, and pale End stone. */
+.portfolio-end {
+  --portfolio-accent: #b995ed;
+  --portfolio-accent-rgb: 185,149,237;
+  --portfolio-label: #e4e3ac;
+  --portfolio-label-rgb: 228,227,172;
+  background-image: none;
+}
+
+.portfolio-end :is(h1, h2) { color: #f0efd3; }
+.portfolio-end ::selection { background: #b995ed; color: #0b0910; }
+.portfolio-end :focus-visible { outline-color: #e4e3ac; }
+
+html.scrollbar-end,
+html.scrollbar-end body,
+html.scrollbar-end * {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(185, 149, 237, 0.6) #0b0910;
+}
+
+html.scrollbar-end ::-webkit-scrollbar,
+html.scrollbar-end::-webkit-scrollbar { width: 10px; height: 10px; }
+html.scrollbar-end ::-webkit-scrollbar-track,
+html.scrollbar-end::-webkit-scrollbar-track { background: #0b0910; }
+html.scrollbar-end ::-webkit-scrollbar-thumb,
+html.scrollbar-end::-webkit-scrollbar-thumb {
+  background: #8f6bb5;
+  border: 2px solid #0b0910;
+  border-radius: 999px;
+}
+html.scrollbar-end ::-webkit-scrollbar-thumb:hover,
+html.scrollbar-end::-webkit-scrollbar-thumb:hover { background: #b995ed; }
+
+.portfolio-end.readability-page .readability-select option { background: #0b0910; }
+.portfolio-end .page-cursor-glow { display: none; }
+.portfolio-end .site-glass-panel {
+  background: radial-gradient(36rem 18rem at 12% 0%, rgba(130,100,170,.055), transparent 62%), linear-gradient(135deg, rgba(255,255,255,.06), rgba(255,255,255,.025));
+}
+
+/* Low-contrast mineral pixel texture; the hero and header retain their own surfaces. */
+.portfolio-stone-texture {
+  position: absolute;
+  inset: 90svh 0 0;
+  z-index: 0;
+  pointer-events: none;
+  background: url("./void-lights.svg") repeat;
+  opacity: .7;
+  -webkit-mask-image: linear-gradient(transparent, #000 240px);
+  mask-image: linear-gradient(transparent, #000 240px);
+}
+@media print { .portfolio-stone-texture { display: none; } }
+
+/* Reading surfaces suppress the decorative field, including the experience cards. */
+.portfolio-end .site-glass-panel,
+.portfolio-end .portfolio-reading-panel {
+  background-color: rgba(20,18,26,.98);
+  background-image: linear-gradient(135deg, rgba(255,255,255,.025), transparent);
+  -webkit-backdrop-filter: blur(20px);
+  backdrop-filter: blur(20px);
+}
+
+/* Secondary portfolio routes share the End field without a hero fade. */
+.portfolio-end.readability-page,
+.portfolio-end.portfolio-school-page {
+  background-image: linear-gradient(rgba(11,9,16,.3), rgba(11,9,16,.3)), url("./void-lights.svg");
+}
+
+.portfolio-end .readability-surface-card {
+  background-color: rgba(20,18,26,.98);
+  background-image: linear-gradient(135deg, rgba(255,255,255,.025), transparent);
+}
+@media print {
+  .portfolio-end.readability-page, .portfolio-end.portfolio-school-page { background-image: none; }
+}

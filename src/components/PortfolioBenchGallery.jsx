@@ -12,7 +12,7 @@ export default function PortfolioBenchGallery() {
   const move = (direction) => setIndex((current) => (current + direction + bench.photos.length) % bench.photos.length);
   return (
     <section aria-labelledby="bench-heading" className="mt-12">
-      <p className="text-xs uppercase tracking-[0.22em] text-[#e7a56f]">{bench.eyebrow}</p>
+      <p className="text-xs uppercase tracking-[0.22em] text-[var(--portfolio-label,#e7a56f)]">{bench.eyebrow}</p>
       <h3 id="bench-heading" className="mt-3 text-2xl font-semibold tracking-tight md:text-3xl">{bench.heading}</h3>
       <p className="mt-3 text-sm leading-6 text-white/65">{bench.intro}</p>
       <div className="site-glass-panel mt-7 grid overflow-hidden rounded-[28px] border border-white/15 lg:grid-cols-[1.25fr_1fr]">
@@ -28,14 +28,14 @@ export default function PortfolioBenchGallery() {
           </div>
         </div>
         <div className="p-6 md:p-8" aria-live="polite">
-          <p className="text-xs uppercase tracking-widest text-[#e7a56f]">{photo.context}</p>
+          <p className="text-xs uppercase tracking-widest text-[var(--portfolio-label,#e7a56f)]">{photo.context}</p>
           <h4 className="mt-3 text-2xl font-semibold">{photo.title}</h4>
-          <ul className="mt-5 space-y-3 text-sm leading-7 text-white/75">{photo.notes.map((note) => <li key={note} className="flex gap-3"><span className="mt-3 h-1 w-1 shrink-0 rounded-full bg-[#C97A3A]" aria-hidden="true" />{note}</li>)}</ul>
+          <ul className="mt-5 space-y-3 text-sm leading-7 text-white/75">{photo.notes.map((note) => <li key={note} className="flex gap-3"><span className="mt-3 h-1 w-1 shrink-0 rounded-full bg-[var(--portfolio-accent,#C97A3A)]" aria-hidden="true" />{note}</li>)}</ul>
         </div>
       </div>
       <div className="mt-4 flex flex-wrap gap-2" aria-label="Choose a bench photo">
         {bench.photos.map((item, itemIndex) => <button type="button" key={item.src} onClick={() => setIndex(itemIndex)} aria-pressed={itemIndex === index}
-          className={`rounded-full border px-4 py-2 text-xs transition ${itemIndex === index ? "border-[#e7a56f]/55 bg-[#e7a56f]/15 text-[#e7a56f]" : "border-white/15 bg-white/5 text-white/65 hover:bg-white/10"}`}>{item.title}</button>)}
+          className={`rounded-full border px-4 py-2 text-xs transition ${itemIndex === index ? "border-[rgba(var(--portfolio-label-rgb,231,165,111),0.55)] bg-[rgba(var(--portfolio-label-rgb,231,165,111),0.15)] text-[var(--portfolio-label,#e7a56f)]" : "border-white/15 bg-white/5 text-white/65 hover:bg-white/10"}`}>{item.title}</button>)}
       </div>
     </section>
   );

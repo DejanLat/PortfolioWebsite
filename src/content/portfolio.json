@@ -17,18 +17,18 @@
         "overlayOpacity": 0.45
       },
       {
-        "src": "presenting.webp",
-        "fallback": "presenting.png",
-        "alt": "Presenting at Photonics North",
-        "blurPx": 1.2,
-        "overlayOpacity": 0.45
-      },
-      {
         "src": "setup5.webp",
         "fallback": "setup5.png",
         "alt": "Optical station setup",
         "blurPx": 0,
         "overlayOpacity": 0.4
+      },
+      {
+        "src": "presenting.webp",
+        "fallback": "presenting.png",
+        "alt": "Presenting at Photonics North",
+        "blurPx": 1.2,
+        "overlayOpacity": 0.45
       }
     ]
   },
