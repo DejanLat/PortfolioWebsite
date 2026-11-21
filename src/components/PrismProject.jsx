@@ -152,7 +152,9 @@ export default function PrismProject() {
                 </div>
               </div>
               <Link to="/prism/lab-work" aria-labelledby="prism-documentation-title" className="readability-surface-card group relative flex min-h-[290px] flex-col justify-between overflow-hidden rounded-3xl border p-7 transition-colors hover:border-[#13c2b3]/50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#13c2b3] sm:p-9 lg:min-h-96">
-                <img src={mediaPath("photos/prism/Rastor_Scanning_Experimentation_Line_Photo.PNG")} alt="" aria-hidden="true" loading="lazy" className="pointer-events-none absolute -inset-2 h-[calc(100%+1rem)] w-[calc(100%+1rem)] object-cover opacity-35 blur-[4px]" />
+                <div aria-hidden="true" className="pointer-events-none absolute inset-0 [clip-path:inset(0_round_1.5rem)]">
+                  <img src={mediaPath("photos/prism/Rastor_Scanning_Experimentation_Line_Photo.PNG")} alt="" loading="lazy" className="absolute -inset-2 h-[calc(100%+1rem)] w-[calc(100%+1rem)] object-cover opacity-35 blur-[4px]" />
+                </div>
                 <div aria-hidden="true" className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/90 via-black/55 to-black/35" />
                 <div className="relative z-10 flex items-center justify-between gap-3">
                   <FileText size={24} strokeWidth={1.5} style={{ color: content.accent }} aria-hidden="true" />
@@ -177,7 +179,9 @@ export default function PrismProject() {
                   <div className="mt-5 space-y-4 text-base leading-7 text-white/70">{homeLab.paragraphs.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}</div>
                 </div>
                 <a href={channel.url} target="_blank" rel="noopener noreferrer" className="readability-surface-card group relative flex min-h-[290px] flex-col justify-between overflow-hidden rounded-3xl border p-7 sm:p-9 lg:min-h-96">
-                  <img src={mediaPath("photos/portfolio/HomeLab_Photo.jpg")} alt="" aria-hidden="true" loading="lazy" className="pointer-events-none absolute -inset-2 h-[calc(100%+1rem)] w-[calc(100%+1rem)] object-cover opacity-35 blur-[4px]" />
+                  <div aria-hidden="true" className="pointer-events-none absolute inset-0 [clip-path:inset(0_round_1.5rem)]">
+                    <img src={mediaPath("photos/portfolio/HomeLab_Photo.jpg")} alt="" loading="lazy" className="absolute -inset-2 h-[calc(100%+1rem)] w-[calc(100%+1rem)] object-cover opacity-35 blur-[4px]" />
+                  </div>
                   <div aria-hidden="true" className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/90 via-black/55 to-black/35" />
                   <div className="relative z-10 flex items-center justify-between"><span className="inline-flex h-12 w-12 items-center justify-center rounded-full border border-white/20 bg-black/25" style={{ color: content.accent }}><Play size={22} aria-hidden="true" /></span><ExternalLink size={18} className="text-white/40 group-hover:text-white" aria-hidden="true" /></div>
                   <div className="relative z-10 mt-7"><p className="text-[10px] uppercase tracking-[0.18em] text-white/70">{channel.eyebrow}</p><h3 className="mt-3 text-3xl font-semibold">{channel.name}</h3><p className="mt-3 text-sm leading-6 text-white/80">{channel.description}</p><span className="mt-5 inline-flex items-center gap-2 text-sm" style={{ color: content.accent }}>{channel.actionLabel}<ArrowRight size={15} aria-hidden="true" /></span></div>

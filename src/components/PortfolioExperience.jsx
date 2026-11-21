@@ -123,7 +123,9 @@ export default function PortfolioExperience() {
             ))}
           </div>
             <Link to="/portfolio/school-projects" className="site-glass-panel group relative flex min-h-[290px] flex-col justify-between overflow-hidden rounded-3xl border border-white/15 p-7 transition-colors hover:border-[rgba(var(--portfolio-accent-rgb,201,122,58),0.5)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-[var(--portfolio-label,#e7a56f)] sm:p-9 lg:min-h-96">
-              <img src={contentAsset("photos/portfolio/WaterrlooCleanRoomPlasmaPhoto.jpg")} alt="" aria-hidden="true" loading="lazy" className="pointer-events-none absolute -inset-2 h-[calc(100%+1rem)] w-[calc(100%+1rem)] object-cover opacity-35 blur-[4px]" />
+              <div aria-hidden="true" className="pointer-events-none absolute inset-0 [clip-path:inset(0_round_1.5rem)]">
+                <img src={contentAsset("photos/portfolio/WaterrlooCleanRoomPlasmaPhoto.jpg")} alt="" loading="lazy" className="absolute -inset-2 h-[calc(100%+1rem)] w-[calc(100%+1rem)] object-cover opacity-35 blur-[4px]" />
+              </div>
               <div aria-hidden="true" className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/90 via-black/55 to-black/35" />
               <div className="relative z-10 flex items-center justify-between gap-3"><GraduationCap size={24} className="text-[var(--portfolio-label,#e7a56f)]" aria-hidden="true" /><span className="rounded-full border border-white/20 px-3 py-1 text-xs text-white/75">Coming soon</span></div>
               <div className="relative z-10 mt-7"><h3 className="text-xl font-semibold">UWaterloo Lab Experiences</h3><span className="mt-5 inline-flex items-center gap-2 text-sm text-[var(--portfolio-label,#e7a56f)]">Explore school projects <ArrowRight size={15} aria-hidden="true" /></span></div>
