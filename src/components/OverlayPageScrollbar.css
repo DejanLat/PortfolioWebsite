@@ -1,0 +1,44 @@
+/* A real overlay: no native gutter is reserved, so artwork reaches the viewport edge. */
+html:root.page-overlay-scrollbar-active,
+html:root.page-overlay-scrollbar-active body { scrollbar-width: none; }
+html:root.page-overlay-scrollbar-active::-webkit-scrollbar,
+html:root.page-overlay-scrollbar-active body::-webkit-scrollbar { display: none; width: 0; }
+.page-overlay-scrollbar {
+  --scrollbar-accent: 166, 217, 174;
+  --scrollbar-highlight: #c0e5bd;
+  position: fixed;
+  z-index: 80;
+  top: 6px;
+  right: 0;
+  bottom: 6px;
+  width: 12px;
+  background: transparent;
+  cursor: default;
+  touch-action: none;
+}
+.page-overlay-scrollbar[data-theme="portfolio"] {
+  --scrollbar-accent: 185, 149, 237;
+  --scrollbar-highlight: #d7bdfa;
+}
+.page-overlay-scrollbar[data-theme="prism"] {
+  --scrollbar-accent: 19, 194, 179;
+  --scrollbar-highlight: #a4eee6;
+}
+.page-overlay-scrollbar[data-theme="studio"] {
+  --scrollbar-accent: 52, 211, 153;
+  --scrollbar-highlight: #bdebdc;
+}
+.page-overlay-scrollbar-thumb {
+  position: absolute;
+  top: 0;
+  right: 3px;
+  width: 6px;
+  border-radius: 999px;
+  background: rgba(var(--scrollbar-accent), 0.64);
+  transition: background-color 180ms ease;
+}
+.page-overlay-scrollbar:hover .page-overlay-scrollbar-thumb,
+.page-overlay-scrollbar:focus-visible .page-overlay-scrollbar-thumb { background: var(--scrollbar-highlight); }
+.page-overlay-scrollbar:focus-visible { outline: 1px solid #f1f0eb; outline-offset: -1px; }
+@media (prefers-reduced-motion: reduce) { .page-overlay-scrollbar-thumb { transition: none; } }
+@media print { .page-overlay-scrollbar { display: none; } }

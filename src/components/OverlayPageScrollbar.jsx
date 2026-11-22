@@ -1,7 +1,8 @@
 import React, { useEffect, useRef, useState } from "react";
+import "./OverlayPageScrollbar.css";
 
 // Keep the document scroll native, but draw its scrollbar over the full-bleed artwork.
-export default function OverlayPageScrollbar({ controls }) {
+export default function OverlayPageScrollbar({ controls, theme }) {
   const trackRef = useRef(null);
   const thumbRef = useRef(null);
   const dragRef = useRef(null);
@@ -10,7 +11,7 @@ export default function OverlayPageScrollbar({ controls }) {
 
   useEffect(() => {
     const html = document.documentElement;
-    html.classList.add("car-overlay-scrollbar-active");
+    html.classList.add("page-overlay-scrollbar-active");
     let frame = 0;
     const update = () => {
       const trackHeight = Math.max(0, window.innerHeight - 12);
@@ -32,7 +33,7 @@ export default function OverlayPageScrollbar({ controls }) {
     const observer = new ResizeObserver(schedule);
     observer.observe(document.body);
     return () => {
-      html.classList.remove("car-overlay-scrollbar-active");
+      html.classList.remove("page-overlay-scrollbar-active");
       cancelAnimationFrame(frame);
       observer.disconnect();
       window.removeEventListener("scroll", schedule);
@@ -68,14 +69,14 @@ export default function OverlayPageScrollbar({ controls }) {
   };
   if (!values?.maxScroll) return null;
   return (
-    <div ref={trackRef} className="car-overlay-scrollbar" role="scrollbar" aria-label="Page scroll"
+    <div ref={trackRef} className="page-overlay-scrollbar" data-theme={theme} role="scrollbar" aria-label="Page scroll"
       aria-controls={controls} aria-orientation="vertical" aria-valuemin={0} aria-valuemax={100}
       aria-valuenow={Math.round(values.progress * 100)} aria-valuetext={`${Math.round(values.progress * 100)}% down the page`}
       tabIndex={0} onKeyDown={onKeyDown} onPointerDown={onPointerDown}
       onPointerMove={(event) => { if (dragRef.current !== null) scrollAt(event.clientY, dragRef.current); }}
       onPointerUp={() => { dragRef.current = null; }} onPointerCancel={() => { dragRef.current = null; }}
       onLostPointerCapture={() => { dragRef.current = null; }}>
-      <span ref={thumbRef} className="car-overlay-scrollbar-thumb" style={{ height: values.thumbHeight, transform: `translateY(${values.top}px)` }} />
+      <span ref={thumbRef} className="page-overlay-scrollbar-thumb" style={{ height: values.thumbHeight, transform: `translateY(${values.top}px)` }} />
     </div>
   );
 }

@@ -1,5 +1,6 @@
 import React from "react";
 import "./App.css";
+import OverlayPageScrollbar from "./components/OverlayPageScrollbar";
 import { BrowserRouter as Router, Routes, Route, useLocation, Navigate } from "react-router-dom";
 import Portfolio from "./components/Portfolio";
 import { SchoolProjects } from "./components/PortfolioExperience";
@@ -256,9 +257,20 @@ function ExternalRedirect({ to }) {
   return null;
 }
 
+function PageScrollbar() {
+  const { pathname } = useLocation();
+  const section = pathname.split("/")[1];
+  const theme = section === "car-modding" ? "car"
+    : section === "prism" ? "prism"
+    : section === "portfolio" || (!section && IS_PORTFOLIO_BUILD) ? "portfolio"
+    : "studio";
+
+  return <OverlayPageScrollbar controls="app-page-content" theme={theme} />;
+}
+
 function App() {
   return (
-    <div className="App">
+    <div id="app-page-content" className="App">
       <Router basename={ROUTER_BASENAME}>
         <MetadataManager />
         <ScrollToTop />
@@ -278,6 +290,7 @@ function App() {
           <Route path="/models" element={<Navigate to="/prism" replace />} />
           <Route path="/car-modding" element={<CarModding />} />
         </Routes>
+        <PageScrollbar />
       </Router>
     </div>
   );

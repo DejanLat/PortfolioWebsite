@@ -143,37 +143,6 @@
   .car-page *, .car-page *::before, .car-page *::after { scroll-behavior: auto; transition: none; }
 }
 
-/* A real overlay: no native gutter is reserved, so artwork reaches the viewport edge. */
-html.scrollbar-eden.car-overlay-scrollbar-active,
-html.scrollbar-eden.car-overlay-scrollbar-active body { scrollbar-width: none; }
-html.scrollbar-eden.car-overlay-scrollbar-active::-webkit-scrollbar,
-html.scrollbar-eden.car-overlay-scrollbar-active body::-webkit-scrollbar { display: none; width: 0; }
-.car-overlay-scrollbar {
-  position: fixed;
-  z-index: 80;
-  top: 6px;
-  right: 0;
-  bottom: 6px;
-  width: 12px;
-  background: transparent;
-  cursor: default;
-  touch-action: none;
-}
-.car-overlay-scrollbar-thumb {
-  position: absolute;
-  top: 0;
-  right: 3px;
-  width: 6px;
-  border-radius: 999px;
-  background: rgba(166,217,174,0.64);
-  transition: background-color 180ms ease;
-}
-.car-overlay-scrollbar:hover .car-overlay-scrollbar-thumb,
-.car-overlay-scrollbar:focus-visible .car-overlay-scrollbar-thumb { background: #c0e5bd; }
-.car-overlay-scrollbar:focus-visible { outline: 1px solid #f1f0eb; outline-offset: -1px; }
-@media (prefers-reduced-motion: reduce) { .car-overlay-scrollbar-thumb { transition: none; } }
-@media print { .car-overlay-scrollbar { display: none; } }
-
 /* Pearl-white highlights and aurora mint accents over neutral graphite. */
 .car-page .site-glass-header.is-scrolled { background-color: rgba(14,16,19,0.72); border-bottom-color: rgba(166,217,174,0.18); }
 .car-page .car-project-panel {

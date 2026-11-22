@@ -5,7 +5,6 @@ import { useScrolledHeader } from "../hooks/useScrolledHeader";
 import carContent from "../content/car.json";
 import ContentMedia, { contentAsset } from "./ContentMedia";
 import WebpImg from "./WebpImg";
-import OverlayPageScrollbar from "./OverlayPageScrollbar";
 import "./CarModding.css";
 
 const CATEGORY_ICONS = { audio: Music2, lighting: Lightbulb, security: Shield, mechanical: Wrench };
@@ -64,7 +63,6 @@ export default function CarModding() {
   return (
     <div style={{ "--glass-accent-rgb": "166,217,174" }} className="car-page">
       <div className="car-content-layer relative z-10">
-        <OverlayPageScrollbar controls="car-page-content" />
         <header className={`site-glass-header fixed inset-x-0 top-0 z-50 ${solidNav ? "is-scrolled" : ""}`}>
           <div className="mx-auto flex h-16 max-w-7xl items-center gap-3 px-4 sm:px-6 lg:px-8">
             <Link to="/portfolio" className="car-focus inline-flex items-center gap-2 rounded text-sm text-white/85 hover:text-white"><ArrowLeft size={18} aria-hidden="true" /><span>Portfolio</span></Link>
