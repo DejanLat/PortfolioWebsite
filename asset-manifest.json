@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/PortfolioWebsite/static/css/main.16cb3df1.css",
-    "main.js": "/PortfolioWebsite/static/js/main.40e9ca65.js",
+    "main.css": "/PortfolioWebsite/static/css/main.f8be8056.css",
+    "main.js": "/PortfolioWebsite/static/js/main.3b5eb528.js",
     "static/media/void-lights-car.svg": "/PortfolioWebsite/static/media/void-lights-car.50bb508ab0452e84090b.svg",
     "static/media/void-lights-prism.svg": "/PortfolioWebsite/static/media/void-lights-prism.1f4cbcded4720bd5b603.svg",
     "static/media/void-lights-studio.svg": "/PortfolioWebsite/static/media/void-lights-studio.5a66d33d7837f4ddd06e.svg",
@@ -9,7 +9,7 @@
     "index.html": "/PortfolioWebsite/index.html"
   },
   "entrypoints": [
-    "static/css/main.16cb3df1.css",
-    "static/js/main.40e9ca65.js"
+    "static/css/main.f8be8056.css",
+    "static/js/main.3b5eb528.js"
   ]
 }
