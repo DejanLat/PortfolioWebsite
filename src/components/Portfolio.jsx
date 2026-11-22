@@ -418,7 +418,7 @@ export default function PortfolioWhite() {
           <div className="mb-8">
             <p className="text-sm uppercase tracking-widest text-[#e4e3ac]">Professional perspective</p>
             <h2 id="recommendation-heading" className="mt-3 text-3xl font-semibold tracking-tight text-white md:text-4xl">Professional Recommendations</h2>
-            <p className="mt-3 max-w-2xl text-sm leading-6 text-white/55">Perspectives on engineering ownership, technical communication, and translating complex research into clear outcomes.</p>
+            <p className="mt-3 max-w-2xl text-sm leading-6 text-white/55">Perspectives on my engineering ownership, technical execution, and how I turn complex research into clear visions.</p>
           </div>
           <div className="space-y-6">
           <motion.article id="reference-atomic"

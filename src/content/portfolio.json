@@ -354,11 +354,11 @@
   "coursework": [
     {
       "id": "waterloo-cleanroom",
-      "title": "Cleanroom & Microfabrication",
+      "title": "Microfabrication & Material Characterization",
       "institution": "University of Waterloo",
       "context": "Undergraduate coursework",
       "status": "",
-      "summary": "Labratory and cleanroom experience through my Nanotechnology Engineering degree. Course specific lab notes and further coursework will be added here.",
+      "summary": "Labratory and cleanroom experience through my Nanotechnology Engineering degree. There are a variety of machines I've gotten familiar with throughout my undergraduate studies. The pill below will showcase these experiences and the skills I've gained from them.",
       "methods": [],
       "media": []
     }
@@ -448,7 +448,7 @@
   "courseworkSection": {
     "eyebrow": "Learning in the lab",
     "heading": "Coursework & Lab Training",
-    "intro": "There is plenty of hands-on work that comes with my Waterloo degree. I'll keep adding lab notes here as I go.",
+    "intro": "There is plenty of hands-on work that comes with my Waterloo degree. I'll keep adding lab notes here as I go. This streches from cleanroom, microfabrication labs, material characterization, and organic chemistry.",
     "upcomingTitle": "More lab notes to come",
     "upcomingText": "I'll add the next cleanroom labs and coursework as I complete them."
   },
