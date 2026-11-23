@@ -225,16 +225,16 @@
       ],
       "gallery": [
         {
-          "base": "image3experience",
-          "caption": "Rough early PRISM prototyping"
+          "base": "image5experience",
+          "caption": "Warm NV Center Setup, introduction to NPQO Lab"
         },
         {
           "base": "image4experience",
           "caption": "Late PRISM V4 setup with fiber-coupled detector and microscope objective"
         },
         {
-          "base": "image5experience",
-        "caption": "Warm NV Center Setup, introduction to NPQO Lab"
+          "base": "image3experience",
+          "caption": "Rough early PRISM prototyping"
         },
         {
           "base": "image2experience",
